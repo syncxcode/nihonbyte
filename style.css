@@ -18,10 +18,18 @@ header {
   top: 0;
   z-index: 10;
 
-  padding: 1.4rem 1rem 1.6rem;
+  padding: 1.6rem 1rem 2.2rem;
 
-  background: #f6f1e7;
-  border-bottom: 1px solid #e0dccc;
+  /* PAKAI GAMBAR YANG SUDAH DI COMMIT */
+  background-image: url("./assets/header.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* fallback warna */
+  background-color: #111;
+
+  color: #fff;
 }
 
 /* ================= TITLE ================= */

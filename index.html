@@ -1,34 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>KotobaLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar Kanji</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <h1>🧪 KotobaLab</h1>
-  <p>Practice Japanese Vocabulary N5–N4</p>
-
-  <select id="filter">
+<header>
+  <h1>📘 Belajar Kanji</h1>
+  <select id="category">
     <option value="all">Semua</option>
-    <option value="level-N5">Level N5</option>
-    <option value="level-N4">Level N4</option>
-    <option value="type-verb">Verb</option>
-    <option value="type-i-adj">i-Adjective</option>
-    <option value="type-na-adj">na-Adjective</option>
+    <option value="verb">Kata Kerja</option>
+    <option value="adj-i">Kata Sifat i</option>
+    <option value="adj-na">Kata Sifat na</option>
+    <option value="noun">Kata Benda</option>
   </select>
+</header>
 
-  <button onclick="startQuiz()">Start Quiz</button>
+<main id="kanjiGrid"></main>
 
-  <p id="question"></p>
-  <div id="options"></div>
-  <p id="result"></p>
-</div>
-
-<script src="data.js"></script>
-<script src="script.js"></script>
-
+<script src="kanji-data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

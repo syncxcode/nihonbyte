@@ -1,66 +1,39 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #f3f3f3;
+  font-family: system-ui, sans-serif;
+  background: #f2f2f2;
 }
 
-.header {
+header {
   position: sticky;
   top: 0;
   background: #111;
   color: white;
   padding: 1rem;
-  z-index: 10;
 }
 
-.header h1 {
-  margin: 0 0 0.7rem 0;
-}
-
-.controls {
-  display: flex;
-  gap: 0.6rem;
-}
-
-select,
-input {
+select, input {
   width: 100%;
+  margin-top: 0.5rem;
   padding: 0.6rem;
   border-radius: 8px;
   border: none;
-  font-size: 15px;
 }
 
-#kanjiGrid {
+main {
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 1rem;
 }
 
 .card {
   background: white;
-  border-radius: 14px;
+  border-radius: 12px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-.kanji {
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.kana {
-  margin-top: 0.3rem;
-  color: #666;
-}
-
-.meaning {
-  margin-top: 0.4rem;
-  font-size: 14px;
-}
+.kanji { font-size: 48px; font-weight: bold; }
+.kana { color: #555; }
+.meaning { font-size: 14px; }

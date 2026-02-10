@@ -1,46 +1,107 @@
+:root {
+  --bg: #f7f6f2;          /* washi */
+  --ink: #1c1c1c;         /* sumi */
+  --soft-ink: #555;
+  --card: #ffffff;
+  --accent: #c23b3b;     /* sakura red */
+  --line: #e5e3dc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f2f2f2;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Noto Sans JP", system-ui, sans-serif;
 }
 
+/* ===== HEADER ===== */
 header {
-  background: #111;
-  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(180deg, #111, #1b1b1b);
+  color: #fff;
   padding: 1rem;
 }
 
-select, input {
+header h1 {
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ===== CONTROLS ===== */
+select,
+input {
   width: 100%;
-  margin-top: 0.5rem;
-  padding: 0.6rem;
-  border-radius: 8px;
-  border: none;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  background: #fff;
+  font-family: inherit;
 }
 
+select:focus,
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ===== GRID ===== */
 #grid {
-  padding: 1rem;
+  padding: 1.2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.2rem;
 }
 
+/* ===== CARD ===== */
 .card {
-  background: white;
-  border-radius: 12px;
-  padding: 1rem;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 1rem 0.8rem;
   text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== TEXT ===== */
 .kanji {
-  font-size: 48px;
-  font-weight: bold;
+  font-family: "Noto Serif JP", serif;
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .kana {
-  color: #555;
+  margin-top: 0.4rem;
+  font-size: 13px;
+  color: var(--soft-ink);
 }
 
 .meaning {
+  margin-top: 0.3rem;
+  font-size: 13px;
+  color: #000;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #777;
+  padding: 2rem 0;
   font-size: 14px;
 }

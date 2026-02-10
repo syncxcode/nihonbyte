@@ -4,63 +4,69 @@
 
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f2f2f2;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f4f4f4;
 }
 
-header {
+.header {
+  position: sticky;
+  top: 0;
   background: #111;
   color: white;
   padding: 1rem;
 }
 
-header h1 {
+.header h1 {
   margin: 0 0 0.5rem 0;
 }
 
-select {
-  width: 100%;
-  padding: 0.6rem;
-  border-radius: 8px;
-  font-size: 16px;
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
 }
 
-main {
+.filters button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filters button.active {
+  background: #00bcd4;
+  color: black;
+}
+
+#kanjiGrid {
   padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1rem;
 }
 
 .card {
   background: white;
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .kanji {
   font-size: 48px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .kana {
-  color: #555;
   margin-top: 0.3rem;
+  color: #666;
 }
 
 .meaning {
-  font-size: 14px;
   margin-top: 0.4rem;
-  color: #222;
-}
-
-.tag {
-  margin-top: 0.6rem;
-  font-size: 12px;
-  padding: 3px 8px;
-  display: inline-block;
-  border-radius: 6px;
-  background: #eee;
+  font-size: 14px;
 }

@@ -4,24 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Belajar Kanji</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<header>
+<header class="header">
   <h1>📘 Belajar Kanji</h1>
-  <select id="category">
-    <option value="all">Semua</option>
-    <option value="verb">Kata Kerja</option>
-    <option value="adj-i">Kata Sifat i</option>
-    <option value="adj-na">Kata Sifat na</option>
-    <option value="noun">Kata Benda</option>
-  </select>
+  <div class="filters">
+    <button data-type="all" class="active">Semua</button>
+    <button data-type="noun">Kata Benda</button>
+    <button data-type="verb">Kata Kerja</button>
+    <button data-type="adj-i">Kata Sifat i</button>
+    <button data-type="adj-na">Kata Sifat na</button>
+  </div>
 </header>
 
 <main id="kanjiGrid"></main>
 
-<script src="kanji-data.js"></script>
-<script src="app.js"></script>
+<script src="./kanji-data.js"></script>
+<script src="./app.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 
 /* ================= BODY ================= */
 body {
-  font-family: "Noto Sans JP", system-ui, sans-serif;
+  font-family: "Comic Sans MS", system-ui, sans-serif;
   background: #f6f1e7; /* krem washi */
   color: #111;
 }
@@ -18,37 +18,32 @@ header {
   top: 0;
   z-index: 10;
 
-  padding: 1.6rem 1rem 2.2rem;
+  /* HEADER JADI TIPIS */
+  padding: 0.6rem 1rem 0.8rem;
 
-  /* PAKAI GAMBAR YANG SUDAH DI COMMIT */
+  /* BACKGROUND IMAGE TETAP */
   background-image: url("./assets/header.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
-
-  /* fallback warna */
-  background-color: #111;
 
   color: #fff;
 }
 
 /* ================= TITLE ================= */
 header h1 {
-  font-family: "Comic Sans MS", serif;
-  font-size: 26px;
-  letter-spacing: 4px;
-  margin-bottom: 0.8rem;
+  display: none;
 }
 
 /* ================= CONTROLS ================= */
 header select,
 header input {
   width: 100%;
-  margin-top: 0.6rem;
+  margin-top: 0.4rem;
   padding: 0.7rem 0.9rem;
 
   font-size: 14px;
-  font-family: inherit;
+  font-family: Comic Sans MS;
 
   /* FULL TRANSPARENT */
   background: transparent;
@@ -92,7 +87,7 @@ header input::placeholder {
 
 /* ================= TEXT ================= */
 .kanji {
-  font-family: "Noto Serif JP", serif;
+  font-family: "Comic Sans MS", serif;
   font-size: 46px;
   font-weight: 600;
   color: #264653;

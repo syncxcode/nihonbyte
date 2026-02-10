@@ -117,13 +117,13 @@ header input {
 .kanji {
   font-family: "Comic Sans MS", serif;
   font-size: 46px;
-  font-weight: 600;
-  color: #264653;
+  font-weight: 900;
+  color: #000;
 }
 
 .kana {
   font-size: 13px;
-  color: #555;
+  color: #000;
   margin-top: 0.3rem;
 }
 

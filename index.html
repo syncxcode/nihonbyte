@@ -10,14 +10,25 @@
 <div class="card">
   <h1>🧪 KotobaLab</h1>
   <p>Practice Japanese Vocabulary N5–N4</p>
+
+  <select id="filter">
+    <option value="all">Semua</option>
+    <option value="level-N5">Level N5</option>
+    <option value="level-N4">Level N4</option>
+    <option value="type-verb">Verb</option>
+    <option value="type-i-adj">i-Adjective</option>
+    <option value="type-na-adj">na-Adjective</option>
+  </select>
+
   <button onclick="startQuiz()">Start Quiz</button>
+
   <p id="question"></p>
   <div id="options"></div>
   <p id="result"></p>
 </div>
 
 <script src="data.js"></script>
-<script src="script.js"></script>  
+<script src="script.js"></script>
 
 </body>
 </html>

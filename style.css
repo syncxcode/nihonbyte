@@ -21,7 +21,7 @@ header {
   padding: 1.6rem 1rem 2.2rem;
 
   /* PAKAI GAMBAR YANG SUDAH DI COMMIT */
-  background-image: url("./assets/header.jpg");
+  background-image: url("./assets/header.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

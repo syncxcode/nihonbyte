@@ -10,18 +10,23 @@ body {
   font-family: "Comic Sans MS", system-ui, sans-serif;
   color: #111;
 
-  /* BACKGROUND IMAGE */
-  background-image:
-    linear-gradient(
-      rgba(247, 242, 233, 0.92),
-      rgba(247, 242, 233, 0.92)
-    ),
-    url("./assets/bg.jpg");
-
+  background-image: url("./assets/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.12); /* gelap dikit */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  z-index: -1;
 }
 
 /* ========== HEADER ========== */
@@ -97,12 +102,15 @@ header input {
 
 /* ========== CARD KANJI ========== */
 .card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   border-radius: 16px;
   padding: 1rem 0.8rem;
   text-align: center;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
 
 /* ========== TEXT ========== */

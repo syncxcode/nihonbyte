@@ -130,4 +130,5 @@ header input {
 
 .meaning {
   font-weight: 700;
+  text-transform: capitalize;
 }

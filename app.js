@@ -1,28 +1,31 @@
 const grid = document.getElementById("kanjiGrid");
-const categorySelect = document.getElementById("category");
+const buttons = document.querySelectorAll(".filters button");
 
-function render(category = "all") {
+function render(type = "all") {
   grid.innerHTML = "";
 
-  const filtered = category === "all"
+  const data = type === "all"
     ? kanjiData
-    : kanjiData.filter(k => k.type === category);
+    : kanjiData.filter(k => k.type === type);
 
-  filtered.forEach(k => {
+  data.forEach(k => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
       <div class="kanji">${k.kanji}</div>
       <div class="kana">${k.kana}</div>
       <div class="meaning">${k.meaning}</div>
-      <div class="tag">${k.type}</div>
     `;
     grid.appendChild(card);
   });
 }
 
-categorySelect.addEventListener("change", e => {
-  render(e.target.value);
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    render(btn.dataset.type);
+  });
 });
 
 render();

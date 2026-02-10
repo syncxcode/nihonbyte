@@ -1,13 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("grid");
+  const grid = document.getElementById("kanjiGrid");
   const category = document.getElementById("category");
   const search = document.getElementById("search");
+
+  if (!grid) {
+    console.error("kanjiGrid tidak ditemukan");
+    return;
+  }
 
   function render() {
     grid.innerHTML = "";
 
     const cat = category.value;
-    const key = search.value.toLowerCase();
+    const key = search.value.trim().toLowerCase();
 
     kanjiData.forEach(k => {
       if (cat !== "all" && k.type !== cat) return;

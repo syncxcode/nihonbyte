@@ -1,11 +1,24 @@
-/* ================= HEADER ================= */
+/* ========== RESET ========== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== BODY ========== */
+body {
+  font-family: "Comic Sans MS", system-ui, sans-serif;
+  background: #f7f2e9;
+  color: #111;
+}
+
+/* ========== HEADER ========== */
 header {
   position: sticky;
   top: 0;
   z-index: 10;
 
   padding: 0.6rem 1rem;
-
   background-image: url("./assets/header.jpg");
   background-size: cover;
   background-position: center;
@@ -18,17 +31,15 @@ header {
   box-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
-/* ================= BAR CONTAINER ================= */
+/* ========== HEADER FORM ========== */
 header select,
 header input {
   width: 100%;
-  max-width: 320px;   /* <<< KUNCI: tidak kepanjangan */
-}
+  max-width: 320px;
 
-/* ================= SELECT ================= */
-header select {
   padding: 0.55rem 0.9rem;
   font-size: 14px;
+  font-family: Comic Sans MS;
 
   background: rgba(255,255,255,0.9);
   color: #111;
@@ -39,41 +50,40 @@ header select {
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* ================= SEARCH ================= */
-header input {
-  padding: 0.55rem 0.9rem;
-  font-size: 14px;
-
-  background: rgba(255,255,255,0.9);
-  color: #111;
-
-  border: none;
-  border-radius: 999px;
-
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+header input::placeholder {
+  color: #666;
 }
 
-/* ================= FOCUS ================= */
 header select:focus,
 header input:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
 }
 
-/* ================= PLACEHOLDER ================= */
-header input::placeholder {
-  color: #666;
+/* ================= BAR WRAPPER ================= */
+header select,
+header input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 320px;   /* SAMA PERSIS */
 }
 
-/* ================= GRID KANJI ================= */
+header select,
+header input {
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+}
+
+/* ========== GRID KANJI ========== */
 #grid {
   padding: 1.4rem;
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 1.2rem;
 }
 
-/* ================= CARD KANJI ================= */
+/* ========== CARD KANJI ========== */
 .card {
   background: #ffffff;
   border-radius: 16px;
@@ -81,15 +91,9 @@ header input::placeholder {
   text-align: center;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-}
-
-/* ================= TEXT ================= */
+/* ========== TEXT ========== */
 .kanji {
   font-family: "Comic Sans MS", serif;
   font-size: 46px;
@@ -107,4 +111,3 @@ header input::placeholder {
   font-size: 13px;
   margin-top: 0.2rem;
 }
-

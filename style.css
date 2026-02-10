@@ -64,3 +64,47 @@ header input:focus {
 header input::placeholder {
   color: #666;
 }
+
+/* ================= GRID KANJI ================= */
+#grid {
+  padding: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.2rem;
+}
+
+/* ================= CARD KANJI ================= */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem 0.8rem;
+  text-align: center;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+/* ================= TEXT ================= */
+.kanji {
+  font-family: "Noto Serif JP", serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #264653;
+}
+
+.kana {
+  font-size: 13px;
+  color: #555;
+  margin-top: 0.3rem;
+}
+
+.meaning {
+  font-size: 13px;
+  margin-top: 0.2rem;
+}
+

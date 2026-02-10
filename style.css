@@ -1,10 +1,14 @@
 :root {
-  --bg: #f7f6f2;          /* washi */
-  --ink: #1c1c1c;         /* sumi */
-  --soft-ink: #555;
+  --bg: #f8f5f0;          /* washi */
+  --ink: #1f1f1f;
+  --muted: #6b6b6b;
+
+  --indigo: #264653;     /* ai-iro */
+  --sakura: #e16b8c;
+  --matcha: #6a994e;
+
   --card: #ffffff;
-  --accent: #c23b3b;     /* sakura red */
-  --line: #e5e3dc;
+  --line: #e6e2da;
 }
 
 * {
@@ -13,7 +17,7 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, #f8f5f0, #f2efe9);
   color: var(--ink);
   font-family: "Noto Sans JP", system-ui, sans-serif;
 }
@@ -23,8 +27,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(180deg, #111, #1b1b1b);
-  color: #fff;
+  background: linear-gradient(135deg, var(--indigo), #1b2f3a);
+  color: white;
   padding: 1rem;
 }
 
@@ -41,8 +45,8 @@ input {
   width: 100%;
   margin-top: 0.6rem;
   padding: 0.6rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid var(--line);
+  border-radius: 12px;
+  border: 1px solid transparent;
   font-size: 14px;
   background: #fff;
   font-family: inherit;
@@ -51,7 +55,8 @@ input {
 select:focus,
 input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--sakura);
+  box-shadow: 0 0 0 2px rgba(225,107,140,0.2);
 }
 
 /* ===== GRID ===== */
@@ -65,16 +70,17 @@ input:focus {
 /* ===== CARD ===== */
 .card {
   background: var(--card);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1rem 0.8rem;
   text-align: center;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  border-top: 4px solid var(--matcha);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.14);
 }
 
 /* ===== TEXT ===== */
@@ -83,25 +89,25 @@ input:focus {
   font-size: 46px;
   font-weight: 600;
   line-height: 1;
+  color: var(--indigo);
 }
 
 .kana {
   margin-top: 0.4rem;
   font-size: 13px;
-  color: var(--soft-ink);
+  color: var(--muted);
 }
 
 .meaning {
   margin-top: 0.3rem;
   font-size: 13px;
-  color: #000;
+  color: var(--ink);
 }
 
-/* ===== EMPTY STATE ===== */
+/* ===== EMPTY ===== */
 .empty {
   grid-column: 1 / -1;
   text-align: center;
-  color: #777;
+  color: var(--muted);
   padding: 2rem 0;
-  font-size: 14px;
 }

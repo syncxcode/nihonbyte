@@ -49,29 +49,26 @@ header input {
 
   font-size: 14px;
   font-family: inherit;
-  color: #111;
 
-  /* TRANSPARAN BENERAN */
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(2px);
+  /* FULL TRANSPARENT */
+  background: transparent;
+  color: #fff;
 
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
   border-radius: 14px;
 
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
 }
 
 header select:focus,
 header input:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.55);
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: 0 0 0 2px rgba(0,0,0,0.15);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.4);
 }
 
 header input::placeholder {
-  color: rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.8);
 }
 
 

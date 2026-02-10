@@ -1,32 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("kanjiGrid");
-  const categorySelect = document.getElementById("category");
-  const searchInput = document.getElementById("search");
-
-  let currentCategory = "all";
-  let currentSearch = "";
+  const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
 
   function render() {
     grid.innerHTML = "";
 
-    const filtered = kanjiData.filter(k => {
-      const matchCategory =
-        currentCategory === "all" || k.type === currentCategory;
+    const cat = category.value;
+    const key = search.value.toLowerCase();
 
-      const matchSearch =
-        k.kanji.includes(currentSearch) ||
-        k.kana.includes(currentSearch) ||
-        k.meaning.toLowerCase().includes(currentSearch);
+    kanjiData.forEach(k => {
+      if (cat !== "all" && k.type !== cat) return;
 
-      return matchCategory && matchSearch;
-    });
+      const text = (k.kanji + k.kana + k.meaning).toLowerCase();
+      if (key && !text.includes(key)) return;
 
-    if (filtered.length === 0) {
-      grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;">Data tidak ditemukan</p>`;
-      return;
-    }
-
-    filtered.forEach(k => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
@@ -38,15 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  categorySelect.addEventListener("change", e => {
-    currentCategory = e.target.value;
-    render();
-  });
-
-  searchInput.addEventListener("input", e => {
-    currentSearch = e.target.value.trim().toLowerCase();
-    render();
-  });
+  category.addEventListener("change", render);
+  search.addEventListener("input", render);
 
   render();
 });

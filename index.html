@@ -10,12 +10,21 @@
 
 <header class="header">
   <h1>📘 Belajar Kanji</h1>
-  <div class="filters">
-    <button data-type="all" class="active">Semua</button>
-    <button data-type="noun">Kata Benda</button>
-    <button data-type="verb">Kata Kerja</button>
-    <button data-type="adj-i">Kata Sifat i</button>
-    <button data-type="adj-na">Kata Sifat na</button>
+
+  <div class="controls">
+    <select id="category">
+      <option value="all">Semua Kategori</option>
+      <option value="noun">Kata Benda</option>
+      <option value="verb">Kata Kerja</option>
+      <option value="adj-i">Kata Sifat i</option>
+      <option value="adj-na">Kata Sifat na</option>
+    </select>
+
+    <input 
+      type="text" 
+      id="search" 
+      placeholder="Cari kanji / kana / arti..."
+    >
   </div>
 </header>
 

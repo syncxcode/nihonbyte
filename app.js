@@ -1,14 +1,26 @@
 const grid = document.getElementById("kanjiGrid");
-const buttons = document.querySelectorAll(".filters button");
+const categorySelect = document.getElementById("category");
+const searchInput = document.getElementById("search");
 
-function render(type = "all") {
+function render() {
+  const category = categorySelect.value;
+  const keyword = searchInput.value.toLowerCase();
+
   grid.innerHTML = "";
 
-  const data = type === "all"
-    ? kanjiData
-    : kanjiData.filter(k => k.type === type);
+  const filtered = kanjiData.filter(k => {
+    const matchCategory =
+      category === "all" || k.type === category;
 
-  data.forEach(k => {
+    const matchSearch =
+      k.kanji.includes(keyword) ||
+      k.kana.includes(keyword) ||
+      k.meaning.toLowerCase().includes(keyword);
+
+    return matchCategory && matchSearch;
+  });
+
+  filtered.forEach(k => {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
@@ -20,12 +32,7 @@ function render(type = "all") {
   });
 }
 
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    render(btn.dataset.type);
-  });
-});
+categorySelect.addEventListener("change", render);
+searchInput.addEventListener("input", render);
 
 render();

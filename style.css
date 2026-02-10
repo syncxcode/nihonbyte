@@ -8,7 +8,7 @@
 /* ================= BODY ================= */
 body {
   font-family: "Noto Sans JP", system-ui, sans-serif;
-  background: #f6f1e7;
+  background: #f6f1e7; /* krem washi */
   color: #111;
 }
 
@@ -17,68 +17,40 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  padding: 1.6rem 1rem 2rem;
 
-  /* POSTER JAPAN SVG */
-  background:
-    url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300'>\
-  <rect width='800' height='300' fill='%23f6f1e7'/>\
-  <!-- Sun -->\
-  <circle cx='600' cy='150' r='110' fill='%23c81d25'/>\
-  <!-- Fuji -->\
-  <path d='M500 260 L600 120 L700 260 Z' fill='%23ffffff'/>\
-  <path d='M530 260 L600 160 L670 260 Z' fill='%23222222'/>\
-  <!-- Branch -->\
-  <path d='M60 90 C200 120 360 170 520 210' stroke='%237a2d2d' stroke-width='6' fill='none'/>\
-  <!-- Sakura flowers -->\
-  <g fill='%23e16b8c'>\
-    <g transform='translate(200 120)'>\
-      <circle cx='0' cy='-14' r='16'/>\
-      <circle cx='14' cy='0' r='16'/>\
-      <circle cx='0' cy='14' r='16'/>\
-      <circle cx='-14' cy='0' r='16'/>\
-      <circle cx='0' cy='0' r='10' fill='%23ffd1dc'/>\
-    </g>\
-    <g transform='translate(280 155) scale(0.9)'>\
-      <circle cx='0' cy='-14' r='15'/>\
-      <circle cx='14' cy='0' r='15'/>\
-      <circle cx='0' cy='14' r='15'/>\
-      <circle cx='-14' cy='0' r='15'/>\
-      <circle cx='0' cy='0' r='9' fill='%23ffd1dc'/>\
-    </g>\
-    <g transform='translate(360 135) scale(0.8)'>\
-      <circle cx='0' cy='-14' r='14'/>\
-      <circle cx='14' cy='0' r='14'/>\
-      <circle cx='0' cy='14' r='14'/>\
-      <circle cx='-14' cy='0' r='14'/>\
-      <circle cx='0' cy='0' r='8' fill='%23ffd1dc'/>\
-    </g>\
-  </g>\
-</svg>") center / cover no-repeat;
+  padding: 1.4rem 1rem 1.6rem;
 
-  border-bottom: 6px solid #c81d25;
+  background: #f6f1e7;
+  border-bottom: 1px solid #e0dccc;
 }
 
 /* ================= TITLE ================= */
 header h1 {
   font-family: "Noto Serif JP", serif;
-  font-size: 30px;
-  letter-spacing: 6px;
+  font-size: 26px;
+  letter-spacing: 4px;
   margin-bottom: 0.8rem;
 }
 
 /* ================= CONTROLS ================= */
-select,
-input {
+header select,
+header input {
   width: 100%;
   margin-top: 0.6rem;
   padding: 0.7rem 0.8rem;
-  border-radius: 10px;
-  border: none;
+
   font-size: 14px;
-  background: #ffffffcc;
-  backdrop-filter: blur(2px);
+  font-family: inherit;
+
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+header select:focus,
+header input:focus {
+  outline: none;
+  border-color: #c81d25;
 }
 
 /* ================= GRID ================= */
@@ -92,11 +64,11 @@ input {
 /* ================= CARD ================= */
 .card {
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 14px;
   padding: 1rem 0.8rem;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  border-top: 4px solid #6a994e;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
 
 /* ================= TEXT ================= */

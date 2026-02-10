@@ -6,14 +6,16 @@ function startQuiz(){
 
 function loadQuestion(){
   current = words[Math.floor(Math.random() * words.length)];
+  
   document.getElementById("question").innerText =
     "Apa arti dari: " + current.kanji + " ?";
-  
+
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
 
   let options = words.map(w => w.arti);
   options.sort(() => Math.random() - 0.5);
+  options = options.slice(0, 4);
 
   options.forEach(opt => {
     let btn = document.createElement("button");

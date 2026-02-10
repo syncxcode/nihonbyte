@@ -5,8 +5,6 @@ body {
 }
 
 header {
-  position: sticky;
-  top: 0;
   background: #111;
   color: white;
   padding: 1rem;
@@ -20,7 +18,7 @@ select, input {
   border: none;
 }
 
-main {
+#grid {
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -34,6 +32,15 @@ main {
   text-align: center;
 }
 
-.kanji { font-size: 48px; font-weight: bold; }
-.kana { color: #555; }
-.meaning { font-size: 14px; }
+.kanji {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.kana {
+  color: #555;
+}
+
+.meaning {
+  font-size: 14px;
+}

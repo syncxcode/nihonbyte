@@ -116,18 +116,18 @@ header input {
 /* ========== TEXT ========== */
 .kanji {
   font-family: "Comic Sans MS", serif;
-  font-size: 46px;
-  font-weight: 900;
+  font-size: 60px;
+  font-weight: 800;
   color: #000;
+  line-height: 1;
 }
 
-.kana {
-  font-size: 13px;
+.kana,
+.meaning {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
   color: #000;
-  margin-top: 0.3rem;
 }
 
 .meaning {
-  font-size: 13px;
-  margin-top: 0.2rem;
+  font-weight: 700;
 }

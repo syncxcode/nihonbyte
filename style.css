@@ -16,7 +16,7 @@ body {
   /* ini kuncinya */
   background-attachment: fixed;
 
-  font-family: "Ubuntu", serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* ========== HEADER ========== */
@@ -103,23 +103,19 @@ header input {
 }
 
 /* ========== TEXT ========== */
+.kana {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
 .kanji {
-  font-family: "Ubuntu", serif;
-  font-size: 60px;
-  font-weight: 800;
-  color: #000;
-  line-height: 1;
-}
-
-.kana,
-.meaning {
-  font-family: "Ubuntu", "Comic Sans", cursive;
-  color: #000;
+  font-size: 42px;
+  line-height: 1.1;
 }
 
 .meaning {
-  font-weight: 700;
-  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .topbar {

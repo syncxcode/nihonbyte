@@ -3,9 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("grid");
   const category = document.getElementById("category");
   const search = document.getElementById("search");
-  const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("overlay");
 
   function render() {
     grid.innerHTML = "";
@@ -15,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     vocabularyData.forEach(k => {
 
-      if (cat !== "all" && !k.type.includes(cat)) return;
+      if (cat !== "all" && !k.type.startsWith(cat)) return;
 
       const text = (k.kanji + k.kana + k.meaning).toLowerCase();
       if (key && !text.includes(key)) return;
@@ -36,6 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", render);
   search.addEventListener("input", render);
 
+  render();
+
+});
+
+  category.addEventListener("change", render);
+  search.addEventListener("input", render);
+
   hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("active");
     overlay.classList.toggle("active");
@@ -46,5 +50,4 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.remove("active");
   });
 
-  render();
 });

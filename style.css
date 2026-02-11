@@ -123,38 +123,33 @@ header input {
 }
 
 .topbar {
-  display: flex;
-  align-items: center; /* penting biar sejajar */
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-template-rows: auto auto;
   gap: 12px;
-  padding: 16px;
-  background: rgba(255,255,255,0.05);
+  padding: 20px;
 }
 
+/* hamburger span 2 baris */
 .hamburger {
-  width: 36px;
+  grid-row: span 2;
+  align-self: center;
+  width: 40px;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .hamburger span {
   display: block;
   height: 4px;
   background: black;
-  margin: 6px 0;
+  margin: 7px 0;
   border-radius: 2px;
 }
 
-.search-area {
-  display: flex;          /* 🔥 ubah jadi flex */
-  align-items: center;    /* sejajar */
-  gap: 12px;
-  flex: 1;
-}
-
 #category {
-  width: 160px;
+  grid-column: 2;
 }
 
 #search {
-  flex: 1;
+  grid-column: 2;
 }

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
-
+  console.log("DATA:", vocabularyData);
   function render() {
     grid.innerHTML = "";
 

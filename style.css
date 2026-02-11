@@ -18,17 +18,18 @@
   z-index: -2;
 }
 
-/* APP LAYER */
 #app {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+
+  height: 100%;          /* ⬅️ PENTING */
+  overflow-y: auto;     /* ⬅️ YANG SCROLL */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ========== HEADER ========== */
 header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 10;
 
   padding: 0.6rem 1rem;

@@ -121,3 +121,22 @@ header input {
   font-weight: 700;
   text-transform: capitalize;
 }
+
+/* ===== HAMBURGER MENU ===== */
+
+.menu-btn {
+  width: 34px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: #222;
+  border-radius: 3px;
+}

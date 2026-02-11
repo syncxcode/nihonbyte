@@ -1,3 +1,4 @@
+const vocabularyData = [
 {
   kanji: "魚",
   kana: "さかな",
@@ -3001,3 +3002,4 @@
   type: "adverb",
   level: "N4"
 }
+];

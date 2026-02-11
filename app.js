@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const category = document.getElementById("category");
   const search = document.getElementById("search");
 
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
   function render() {
     grid.innerHTML = "";
 
@@ -33,13 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", render);
   search.addEventListener("input", render);
 
-  render();
-
-});
-
-  category.addEventListener("change", render);
-  search.addEventListener("input", render);
-
   hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("active");
     overlay.classList.toggle("active");
@@ -49,5 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
   });
+
+  render();
 
 });

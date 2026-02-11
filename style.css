@@ -29,6 +29,19 @@ body::before {
   z-index: -1;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -2;
+}
+
 /* ========== HEADER ========== */
 header {
   position: sticky;

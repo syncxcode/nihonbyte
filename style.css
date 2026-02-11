@@ -16,7 +16,7 @@ body {
   /* ini kuncinya */
   background-attachment: fixed;
 
-  font-family: "Comic Sans MS", serif;
+  font-family: "Ubuntu", serif;
 }
 
 /* ========== HEADER ========== */
@@ -45,7 +45,7 @@ header input {
 
   padding: 0.55rem 0.9rem;
   font-size: 14px;
-  font-family: Comic Sans MS;
+  font-family: Ubuntu;
 
   background: rgba(255,255,255,0.9);
   color: #111;
@@ -104,7 +104,7 @@ header input {
 
 /* ========== TEXT ========== */
 .kanji {
-  font-family: "Comic Sans MS", serif;
+  font-family: "Ubuntu", serif;
   font-size: 60px;
   font-weight: 800;
   color: #000;
@@ -113,7 +113,7 @@ header input {
 
 .kana,
 .meaning {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: "Ubuntu", "Comic Sans", cursive;
   color: #000;
 }
 
@@ -172,7 +172,7 @@ header input {
 
     /* FONT & WARNA */
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #sidebar h3,

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         vocabularyData.forEach(k => {
 
-            if (cat !== "all" && !k.type.includes(cat)) return;
+            if (cat !== "all" && k.type !== cat) return;
             const text = (k.kanji + k.kana + k.meaning).toLowerCase();
             if (key && !text.includes(key)) return;
 

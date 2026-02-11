@@ -35,8 +35,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "飲みます",
-  kana: "のみます",
+  kanji: "飲む",
+  kana: "のむ",
   meaning: "Minum",
   type: "verb-godan",
   level: "N5"
@@ -147,43 +147,43 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "言います",
-  kana: "いいます",
+  kanji: "言う",
+  kana: "いう",
   meaning: "Mengatakan",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "話します",
-  kana: "はなします",
+  kanji: "話す",
+  kana: "はなす",
   meaning: "Berbicara",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "読みます",
-  kana: "よみます",
+  kanji: "読む",
+  kana: "よむ",
   meaning: "Membaca",
   type: "verb-godan",
   level: "N5"
 },
 {
   kanji: "見ます",
-  kana: "みます",
+  kana: "む",
   meaning: "Melihat",
   type: "verb-ru",
   level: "N5"
 },
 {
-  kanji: "聞きます",
-  kana: "ききます",
+  kanji: "聞く",
+  kana: "きく",
   meaning: "Mendengar",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "書きます",
-  kana: "かきます",
+  kanji: "書く",
+  kana: "かく",
   meaning: "Menulis",
   type: "verb-godan",
   level: "N5"
@@ -343,8 +343,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "買います",
-  kana: "かいます",
+  kanji: "買う",
+  kana: "かう",
   meaning: "Membeli",
   type: "verb-godan",
   level: "N5"
@@ -413,29 +413,29 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "行きます",
-  kana: "いきます",
+  kanji: "行く",
+  kana: "いく",
   meaning: "Pergi",
   type: "verb-godan",
   level: "N5"
 },
 {
   kanji: "来ます",
-  kana: "きます",
+  kana: "く",
   meaning: "Datang",
   type: "verb-irregular",
   level: "N5"
 },
 {
-  kanji: "会います",
-  kana: "あいます",
+  kanji: "会う",
+  kana: "あう",
   meaning: "Bertemu",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "休みます",
-  kana: "やすみます",
+  kanji: "休む",
+  kana: "やすむ",
   meaning: "Istirahat / Libur",
   type: "verb-godan",
   level: "N5"
@@ -889,15 +889,15 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "待ちます",
-  kana: "まちます",
+  kanji: "待つ",
+  kana: "まつ",
   meaning: "Menunggu",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "止まります",
-  kana: "とまります",
+  kanji: "止まる",
+  kana: "とまる",
   meaning: "Berhenti",
   type: "verb-godan",
   level: "N5"
@@ -952,8 +952,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "乗ります",
-  kana: "のります",
+  kanji: "乗る",
+  kana: "のる",
   meaning: "Naik (kendaraan)",
   type: "verb-godan",
   level: "N5"
@@ -1120,15 +1120,15 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "作ります",
-  kana: "つくります",
+  kanji: "作る",
+  kana: "つくる",
   meaning: "Membuat",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "持っていきます",
-  kana: "もっていきます",
+  kanji: "持っていく",
+  kana: "もっていく",
   meaning: "Membawa (pergi)",
   type: "verb-godan",
   level: "N5"
@@ -1183,8 +1183,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "入っています",
-  kana: "はいっています",
+  kanji: "入ってう",
+  kana: "はいってう",
   meaning: "Masuk / Berada di dalam",
   type: "verb-godan",
   level: "N5"
@@ -1288,22 +1288,22 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "送ります",
-  kana: "おくります",
+  kanji: "送る",
+  kana: "おくる",
   meaning: "Mengirim",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "使います",
-  kana: "つかいます",
+  kanji: "使う",
+  kana: "つかう",
   meaning: "Menggunakan",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "借ります",
-  kana: "かります",
+  kanji: "借る",
+  kana: "かる",
   meaning: "Meminjam",
   type: "verb-ru",
   level: "N5"
@@ -1414,29 +1414,29 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "起きます",
-  kana: "おきます",
+  kanji: "起く",
+  kana: "おく",
   meaning: "Bangun",
   type: "verb-ru",
   level: "N5"
 },
 {
-  kanji: "歩きます",
-  kana: "あるきます",
+  kanji: "歩く",
+  kana: "あるく",
   meaning: "Berjalan kaki",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "走ります",
-  kana: "はしります",
+  kanji: "走る",
+  kana: "はしる",
   meaning: "Berlari",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "泳ぎます",
-  kana: "およぎます",
+  kanji: "泳ぐ",
+  kana: "およぐ",
   meaning: "Berenang",
   type: "verb-godan",
   level: "N5"
@@ -1485,7 +1485,7 @@ const vocabularyData = [
 },
 {
   kanji: "着ます",
-  kana: "きます",
+  kana: "く",
   meaning: "Memakai (pakaian atas)",
   type: "verb-ru",
   level: "N5"
@@ -1554,8 +1554,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "思います",
-  kana: "おもいます",
+  kanji: "思う",
+  kana: "おもう",
   meaning: "Berpikir",
   type: "verb-godan",
   level: "N5"
@@ -1596,15 +1596,15 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "住みます",
-  kana: "すみます",
+  kanji: "住む",
+  kana: "すむ",
   meaning: "Tinggal / Menetap",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "働きます",
-  kana: "はたらきます",
+  kanji: "働く",
+  kana: "はたらく",
   meaning: "Bekerja",
   type: "verb-godan",
   level: "N5"
@@ -1701,8 +1701,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "歌います",
-  kana: "うたいます",
+  kanji: "歌う",
+  kana: "うたう",
   meaning: "Bernyanyi",
   type: "verb-godan",
   level: "N5"
@@ -1869,22 +1869,22 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "帰ります",
-  kana: "かえります",
+  kanji: "帰る",
+  kana: "かえる",
   meaning: "Pulang",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "予約します",
-  kana: "よやくします",
+  kanji: "予約する",
+  kana: "よやくする",
   meaning: "Memesan / Reservasi",
   type: "verb-irregular",
   level: "N5"
 },
 {
-  kanji: "運転します",
-  kana: "うんてんします",
+  kanji: "運転する",
+  kana: "うんてんする",
   meaning: "Mengemudi",
   type: "verb-irregular",
   level: "N5"
@@ -2009,29 +2009,29 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "集まります",
-  kana: "あつまります",
+  kanji: "集まる",
+  kana: "あつまる",
   meaning: "Berkumpul",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "始まります",
-  kana: "はじまります",
+  kanji: "始まる",
+  kana: "はじまる",
   meaning: "Mulai (intransitif)",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "終わります",
-  kana: "おわります",
+  kanji: "終わる",
+  kana: "おわる",
   meaning: "Selesai",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "中止します",
-  kana: "ちゅうしします",
+  kanji: "中止する",
+  kana: "ちゅうしする",
   meaning: "Membatalkan",
   type: "verb-irregular",
   level: "N5"
@@ -2079,8 +2079,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "急ぎます",
-  kana: "いそぎます",
+  kanji: "急ぐ",
+  kana: "いそぐ",
   meaning: "Bergegas",
   type: "verb-godan",
   level: "N5"
@@ -2093,8 +2093,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "知ります",
-  kana: "しります",
+  kanji: "知る",
+  kana: "しる",
   meaning: "Mengetahui",
   type: "verb-godan",
   level: "N5"
@@ -2149,8 +2149,8 @@ const vocabularyData = [
   level: "N4"
 },
 {
-  kanji: "喜びます",
-  kana: "よろこびます",
+  kanji: "喜ぶ",
+  kana: "よろこぶ",
   meaning: "Bergembira",
   type: "verb-godan",
   level: "N4"
@@ -2226,8 +2226,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "動きます",
-  kana: "うごきます",
+  kanji: "動く",
+  kana: "うごく",
   meaning: "Bergerak",
   type: "verb-godan",
   level: "N4"
@@ -2289,15 +2289,15 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "洗います",
-  kana: "あらいます",
+  kanji: "洗う",
+  kana: "あらう",
   meaning: "Mencuci",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "満足します",
-  kana: "まんぞくします",
+  kanji: "満足する",
+  kana: "まんぞくする",
   meaning: "Puas",
   type: "verb-irregular",
   level: "N4"
@@ -2401,8 +2401,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "出します",
-  kana: "だします",
+  kanji: "出す",
+  kana: "だす",
   meaning: "Mengeluarkan",
   type: "verb-godan",
   level: "N4"
@@ -2443,29 +2443,29 @@ const vocabularyData = [
   level: "N4"
 },
 {
-  kanji: "売ります",
-  kana: "うります",
+  kanji: "売る",
+  kana: "うる",
   meaning: "Menjual",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "貸します",
-  kana: "かします",
+  kanji: "貸す",
+  kana: "かす",
   meaning: "Meminjamkan",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "返します",
-  kana: "かえします",
+  kanji: "返す",
+  kana: "かえす",
   meaning: "Mengembalikan",
   type: "verb-godan",
   level: "N5"
 },
 {
-  kanji: "変わります",
-  kana: "かわります",
+  kanji: "変わる",
+  kana: "かわる",
   meaning: "Berubah",
   type: "verb-godan",
   level: "N4"
@@ -2576,8 +2576,8 @@ const vocabularyData = [
   level: "N4"
 },
 {
-  kanji: "選びます",
-  kana: "えらびます",
+  kanji: "選ぶ",
+  kana: "えらぶ",
   meaning: "Memilih",
   type: "verb-godan",
   level: "N4"

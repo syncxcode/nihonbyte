@@ -168,7 +168,7 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "見ます",
+  kanji: "見る",
   kana: "みる",
   meaning: "Melihat",
   type: "verb-ru",

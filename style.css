@@ -6,18 +6,12 @@
 }
 
 /* BACKGROUND FIXED – PALING STABIL */
-#bg-fixed {
+#bg {
   position: fixed;
   inset: 0;
-
-  background-image: url("./assets/bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  z-index: -2;
+  background: url("/kotobalab/assets/bg.jpg") center / cover no-repeat;
+  z-index: 0;
 }
-
 #app {
   position: relative;
   z-index: 1;

@@ -10,76 +10,84 @@
 
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
 
-<header>
-  
-  <select id="category">
-    <option value="all">Semua</option>
-    <option value="noun">Kata Benda</option>
-    <option value="verb">Kata Kerja</option>
-    <option value="adj-i">Kata Sifat i</option>
-    <option value="adj-na">Kata Sifat na</option>
-  </select>
+  <!-- BACKGROUND DIAM -->
+  <div id="bg"></div>
 
-  <input id="search" placeholder="Cari kanji / kana / arti">
-</header>
+  <!-- SATU-SATUNYA YANG BOLEH SCROLL -->
+  <div id="scroll">
 
-<main id="grid"></main>
+    <header>
+      <select id="category">
+        <option value="all">Semua</option>
+        <option value="noun">Kata Benda</option>
+        <option value="verb">Kata Kerja</option>
+        <option value="adj-i">Kata Sifat i</option>
+        <option value="adj-na">Kata Sifat na</option>
+      </select>
 
-<script>
-/* ================= DATA ================= */
-const kanjiData = [
-  { kanji:"水", kana:"みず", meaning:"air", type:"noun" },
-  { kanji:"火", kana:"ひ", meaning:"api", type:"noun" },
-  { kanji:"山", kana:"やま", meaning:"gunung", type:"noun" },
+      <input id="search" placeholder="Cari kanji / kana / arti">
+    </header>
 
-  { kanji:"行", kana:"いく", meaning:"pergi", type:"verb" },
-  { kanji:"食", kana:"たべる", meaning:"makan", type:"verb" },
+    <main id="grid"></main>
 
-  { kanji:"高", kana:"たかい", meaning:"tinggi / mahal", type:"adj-i" },
-  { kanji:"安", kana:"やすい", meaning:"murah", type:"adj-i" },
+  </div>
 
-  { kanji:"元気", kana:"げんき", meaning:"sehat", type:"adj-na" },
-  { kanji:"静", kana:"しずか", meaning:"tenang", type:"adj-na" }
-];
+  <script>
+  /* ================= DATA ================= */
+  const kanjiData = [
+    { kanji:"水", kana:"みず", meaning:"air", type:"noun" },
+    { kanji:"火", kana:"ひ", meaning:"api", type:"noun" },
+    { kanji:"山", kana:"やま", meaning:"gunung", type:"noun" },
 
-/* ================= ELEMENT ================= */
-const grid = document.getElementById("grid");
-const category = document.getElementById("category");
-const search = document.getElementById("search");
+    { kanji:"行", kana:"いく", meaning:"pergi", type:"verb" },
+    { kanji:"食", kana:"たべる", meaning:"makan", type:"verb" },
 
-/* ================= RENDER ================= */
-function render() {
-  grid.innerHTML = "";
+    { kanji:"高", kana:"たかい", meaning:"tinggi / mahal", type:"adj-i" },
+    { kanji:"安", kana:"やすい", meaning:"murah", type:"adj-i" },
 
-  const cat = category.value;
-  const key = search.value.toLowerCase();
+    { kanji:"元気", kana:"げんき", meaning:"sehat", type:"adj-na" },
+    { kanji:"静", kana:"しずか", meaning:"tenang", type:"adj-na" }
+  ];
 
-  kanjiData.forEach(k => {
-    if (cat !== "all" && k.type !== cat) return;
+  /* ================= ELEMENT ================= */
+  const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
 
-    const text = (k.kanji + k.kana + k.meaning).toLowerCase();
-    if (key && !text.includes(key)) return;
+  /* ================= RENDER ================= */
+  function render() {
+    grid.innerHTML = "";
 
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <div class="kanji">${k.kanji}</div>
-      <div class="kana">${k.kana}</div>
-      <div class="meaning">${k.meaning}</div>
-    `;
-    grid.appendChild(card);
-  });
-}
+    const cat = category.value;
+    const key = search.value.toLowerCase();
 
-/* ================= EVENT ================= */
-category.onchange = render;
-search.oninput = render;
+    kanjiData.forEach(k => {
+      if (cat !== "all" && k.type !== cat) return;
 
-/* ================= INIT ================= */
-render();
-</script>
+      const text = (k.kanji + k.kana + k.meaning).toLowerCase();
+      if (key && !text.includes(key)) return;
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="kanji">${k.kanji}</div>
+        <div class="kana">${k.kana}</div>
+        <div class="meaning">${k.meaning}</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  /* ================= EVENT ================= */
+  category.onchange = render;
+  search.oninput = render;
+
+  /* ================= INIT ================= */
+  render();
+  </script>
 
 </body>
 </html>

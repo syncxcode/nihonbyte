@@ -8,15 +8,16 @@ html, body {
 }
 
 body {
-  background-image: url("./assets/bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* ini kuncinya */
-  background-attachment: fixed;
-
+  background: none;
   font-family: 'Ubuntu', sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("./assets/bg.jpg") center / cover no-repeat;
+  z-index: -1;
 }
 
 /* ========== HEADER ========== */

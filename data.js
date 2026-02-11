@@ -635,7 +635,7 @@ const vocabularyData = [
   meaning: "Musim dingin",
   type: "noun",
   level: "N5"
-}
+},
 {
   kanji: "今",
   kana: "いま",
@@ -950,7 +950,7 @@ const vocabularyData = [
   meaning: "Malam",
   type: "noun",
   level: "N5"
-}
+},
 {
   kanji: "乗ります",
   kana: "のります",
@@ -1370,7 +1370,7 @@ const vocabularyData = [
   meaning: "Bawah",
   type: "noun",
   level: "N5"
-}
+},
 {
   kanji: "毎～",
   kana: "まい~",
@@ -1720,7 +1720,7 @@ const vocabularyData = [
   meaning: "Pesanan",
   type: "noun",
   level: "N5"
-}
+},
 {
   kanji: "洋食",
   kana: "ようしょく",
@@ -2098,7 +2098,7 @@ const vocabularyData = [
   meaning: "Mengetahui",
   type: "verb-godan",
   level: "N5"
-}
+},
 {
   kanji: "正月",
   kana: "しょうがつ",
@@ -2357,7 +2357,7 @@ const vocabularyData = [
   meaning: "Alat",
   type: "noun",
   level: "N4"
-}
+},
 {
   kanji: "博物館",
   kana: "はくぶつかん",
@@ -2651,7 +2651,7 @@ const vocabularyData = [
   meaning: "Halaman",
   type: "noun",
   level: "N5"
-}
+},
 {
   kanji: "公園",
   kana: "こうえん",
@@ -2826,7 +2826,7 @@ const vocabularyData = [
   meaning: "Menolong",
   type: "verb-ru",
   level: "N5"
-}
+},
 {
   kanji: "会話",
   kana: "かいわ",
@@ -2924,14 +2924,14 @@ const vocabularyData = [
   meaning: "Berdiri",
   type: "verb-godan",
   level: "N5"
-}
+},
 {
   kanji: "約～",
   kana: "やく~",
   meaning: "Sekitar / Kira-kira",
   type: "prefix",
   level: "N4"
-}
+},
 {
   kanji: "自信",
   kana: "じしん",

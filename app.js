@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("grid");
-
-  if (!grid) {
-    console.error("grid tidak ditemukan");
-    return;
-  }
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
 
   const kanjiData = [
     { kanji:"水", kana:"みず", meaning:"air", type:"noun" },
@@ -22,7 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
+    const cat = category.value;
+    const key = search.value.toLowerCase();
+
     kanjiData.forEach(k => {
+      if (cat !== "all" && k.type !== cat) return;
+
+      const text = (k.kanji + k.kana + k.meaning).toLowerCase();
+      if (key && !text.includes(key)) return;
+
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
@@ -33,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.appendChild(card);
     });
   }
+
+  category.addEventListener("change", render);
+  search.addEventListener("input", render);
 
   render();
 

@@ -1,36 +1,12 @@
-/* ========== RESET ========== */
+/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ========== BODY ========== */
-body {
-  font-family: "Comic Sans MS", system-ui, sans-serif;
-  color: #111;
-
-  background-image: url("./assets/bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.12); /* gelap dikit */
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-
-  z-index: -1;
-}
-
-body::before {
-  content: "";
+/* BACKGROUND FIXED – PALING STABIL */
+#bg-fixed {
   position: fixed;
   inset: 0;
 
@@ -40,6 +16,13 @@ body::before {
   background-repeat: no-repeat;
 
   z-index: -2;
+}
+
+/* APP LAYER */
+#app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
 }
 
 /* ========== HEADER ========== */

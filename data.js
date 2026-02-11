@@ -1,4 +1,4 @@
-const vocabularyData = [
+7const vocabularyData = [
 {
   kanji: "魚",
   kana: "さかな",
@@ -313,7 +313,7 @@ const vocabularyData = [
   meaning: "Pintu keluar / Mulut (sebagai akhiran)",
   type: "suffix",
   level: "N5"
-}
+},
 {
   kanji: "東口",
   kana: "ひがしぐち",

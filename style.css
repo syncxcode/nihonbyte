@@ -158,23 +158,22 @@ header input {
 #sidebar {
   position: fixed;
   top: 0;
-  left: -280px;
-  width: 280px;
+  left: 0;
+  width: 260px;
   height: 100vh;
 
-  background: url("./assets/bg.jpg") center/cover no-repeat;
-  backdrop-filter: blur(6px);
+  background: url('./assets/bg.jpg') center/cover no-repeat;
 
-  box-shadow: 4px 0 25px rgba(0,0,0,0.25);
-  transition: left 0.3s ease;
-  z-index: 1001;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
 
-  padding: 30px 20px;
-  color: white;
+  z-index: 1000;
+  padding: 2rem 1.5rem;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.3);
 }
 
 #sidebar.active {
-  left: 0;
+  transform: translateX(0);
 }
 
 #sidebar h3 {
@@ -201,17 +200,19 @@ header input {
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.25);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.3);
+
   opacity: 0;
-  pointer-events: none;
-  transition: 0.3s;
-  z-index: 900;
+  visibility: hidden;
+  transition: 0.3s ease;
+
+  z-index: 999;
 }
 
 #overlay.active {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
 }
 
 #sidebar {

@@ -1,4 +1,4 @@
-7const vocabularyData = [
+const vocabularyData = [
 {
   kanji: "魚",
   kana: "さかな",

@@ -30,7 +30,7 @@ header {
   z-index: 10;
 
   padding: 0.6rem 1rem;
-  background-image: url("./assets/header.jpg");
+  background-image: url("./assets/header.d");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

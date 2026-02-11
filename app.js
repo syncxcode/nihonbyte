@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
         grid.appendChild(card);
     });
 }
-
     category.addEventListener("change", render);
     search.addEventListener("input", render);
 

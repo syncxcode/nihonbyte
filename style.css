@@ -6,19 +6,22 @@
 }
 
 /* BACKGROUND FIXED – PALING STABIL */
-#bg {
-  position: fixed;
-  inset: 0;
-  background: url("/kotobalab/assets/bg.jpg") center / cover no-repeat;
-  z-index: 0;
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
-#app {
-  position: relative;
-  z-index: 1;
 
-  height: 100%;          /* ⬅️ PENTING */
-  overflow-y: auto;     /* ⬅️ YANG SCROLL */
-  -webkit-overflow-scrolling: touch;
+body {
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* ini kuncinya */
+  background-attachment: fixed;
+
+  font-family: "Comic Sans MS", serif;
 }
 
 /* ========== HEADER ========== */

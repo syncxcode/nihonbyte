@@ -5,64 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Belajar Kanji</title>
 
-  <!-- Japanese-style fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
 
-  <!-- BACKGROUND DIAM -->
-  <div id="bg"></div>
+<header>
+  <select id="category">
+    <option value="all">Semua</option>
+    <option value="noun">Kata Benda</option>
+    <option value="verb">Kata Kerja</option>
+    <option value="adj-i">Kata Sifat i</option>
+    <option value="adj-na">Kata Sifat na</option>
+  </select>
 
-  <!-- SATU-SATUNYA YANG BOLEH SCROLL -->
-  <div id="scroll">
-
-    <header class="topbar">
-  <div class="menu-icon">☰</div>
-
-  <div class="search-icon" id="openSearch">🔍</div>
+  <input id="search" placeholder="Cari kanji / kana / arti">
 </header>
 
-    <main id="grid"></main>
-  <div id="searchOverlay" class="search-overlay">
-  <div class="search-box">
-    <input id="searchInput" placeholder="Cari kanji / kana / arti">
-    <div id="searchResult"></div>
-  </div>
-</div>
+<main id="grid"></main>
 
-  <script>
-
-/* ================= DATA ================= */
-const kanjiData = [ ... ];
-
-/* ================= ELEMENT ================= */
-const grid = document.getElementById("grid");
-
-/* ================= RENDER ================= */
-function render() { ... }
-
-/* ================= EVENT ================= */
-render();
-
-/* ================= SEARCH OVERLAY ================= */
-const openSearch = document.getElementById("openSearch");
-const searchOverlay = document.getElementById("searchOverlay");
-
-openSearch.onclick = () => {
-  searchOverlay.classList.add("active");
-};
-
-searchOverlay.onclick = (e) => {
-  if (e.target === searchOverlay) {
-    searchOverlay.classList.remove("active");
-  }
-};
-
-</script>
-
-
+<script src="./app.js"></script>
 </body>
 </html>

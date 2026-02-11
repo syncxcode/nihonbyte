@@ -28,8 +28,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "食べます",
-  kana: "たべます",
+  kanji: "食る",
+  kana: "たる",
   meaning: "Makan",
   type: "verb-ru",
   level: "N5"
@@ -169,7 +169,7 @@ const vocabularyData = [
 },
 {
   kanji: "見ます",
-  kana: "む",
+  kana: "みる",
   meaning: "Melihat",
   type: "verb-ru",
   level: "N5"
@@ -882,8 +882,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "出かけます",
-  kana: "でかけます",
+  kanji: "出かける",
+  kana: "でかける",
   meaning: "Pergi keluar",
   type: "verb-ru",
   level: "N5"
@@ -1302,8 +1302,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "借る",
-  kana: "かる",
+  kanji: "借りる",
+  kana: "かりる",
   meaning: "Meminjam",
   type: "verb-ru",
   level: "N5"
@@ -1414,8 +1414,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "起く",
-  kana: "おく",
+  kanji: "起きる",
+  kana: "おきる",
   meaning: "Bangun",
   type: "verb-ru",
   level: "N5"
@@ -1485,7 +1485,7 @@ const vocabularyData = [
 },
 {
   kanji: "着ます",
-  kana: "く",
+  kana: "きる",
   meaning: "Memakai (pakaian atas)",
   type: "verb-ru",
   level: "N5"
@@ -1820,8 +1820,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "入れます",
-  kana: "いれます",
+  kanji: "入れる",
+  kana: "いれる",
   meaning: "Memasukkan",
   type: "verb-ru",
   level: "N5"
@@ -2037,8 +2037,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "教えます",
-  kana: "おしえます",
+  kanji: "教える",
+  kana: "おしえる",
   meaning: "Mengajar / Memberi tahu",
   type: "verb-ru",
   level: "N5"
@@ -2086,8 +2086,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "決めます",
-  kana: "きめます",
+  kanji: "決める",
+  kana: "きめる",
   meaning: "Memutuskan",
   type: "verb-ru",
   level: "N5"
@@ -2233,8 +2233,8 @@ const vocabularyData = [
   level: "N4"
 },
 {
-  kanji: "考えます",
-  kana: "かんがえます",
+  kanji: "考える",
+  kana: "かんがえる",
   meaning: "Berpikir",
   type: "verb-ru",
   level: "N4"
@@ -2247,8 +2247,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "出ます",
-  kana: "でます",
+  kanji: "出る",
+  kana: "でる",
   meaning: "Keluar",
   type: "verb-ru",
   level: "N5"
@@ -2527,8 +2527,8 @@ const vocabularyData = [
   level: "N5"
 },
 {
-  kanji: "生まれます",
-  kana: "うまれます",
+  kanji: "生まれる",
+  kana: "うまれる",
   meaning: "Lahir",
   type: "verb-ru",
   level: "N5"
@@ -2584,7 +2584,7 @@ const vocabularyData = [
 },
 {
   kanji: "寝ます",
-  kana: "ねます",
+  kana: "ねる",
   meaning: "Tidur",
   type: "verb-ru",
   level: "N5"

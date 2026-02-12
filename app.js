@@ -386,11 +386,11 @@
       body.appendChild(sectionEl);
     });
  
-       const text = (k.kanji  k.kana  k.meaning).toLowerCase();
+       const text = (k.kanji + k.kana + k.meaning).toLowerCase();
        if (key && !text.includes(key)) return;
     poster.appendChild(body);
     grid.appendChild(poster);
-    resultInfo.textContent = `${data.title} • Gojūon  Dakuon/Handakuon  Yōon`;
+    resultInfo.textContent = `${data.title} - Gojūon - Dakuon/Handakuon - Yōon`;
   }
  
        const card = document.createElement("div");

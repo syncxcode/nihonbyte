@@ -3247,13 +3247,13 @@ const vocabularyData = [
    type: "noun",
    level: "N5"
  },
--{
--  kanji: "漢字",
--  kana: "かんじ",
--  meaning: "Kanji",
--  type: "noun",
--  level: "N5"
--},
+{
+  kanji: "漢字",
+  kana: "かんじ",
+  meaning: "Kanji",
+  type: "noun",
+  level: "N5"
+},
  {
    kanji: "答え",
    kana: "こたえ",
@@ -3429,8 +3429,7 @@ const vocabularyData = [
    meaning: "Baru-baru ini",
    type: "adverb",
    level: "N4"
--}
-},
+}
 {
   kanji: "大事",
   kana: "だいじ",

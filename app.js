@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("grid");
@@ -346,51 +347,48 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderLetterPoster(script) {
-    const data = letterSets[script];
-    if (!data) return;
+  const data = letterSets[script];
+  if (!data) return;
 
-  function render() {
-    grid.innerHTML = "";
-    closeModal();
+  grid.innerHTML = "";
+  closeModal();
 
-    const poster = document.createElement("section");
-    poster.className = "letter-poster";
-    poster.innerHTML = `<h2>${data.title}</h2>`;
+  const poster = document.createElement("section");
+  poster.className = "letter-poster";
+  poster.innerHTML = `<h2>${data.title}</h2>`;
 
-    const body = document.createElement("div");
-    body.className = "letter-poster-body";
+  const body = document.createElement("div");
+  body.className = "letter-poster-body";
 
-    data.sections.forEach((section) => {
-      const sectionEl = document.createElement("section");
-      sectionEl.className = "letter-section";
-      sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
+  data.sections.forEach((section) => {
+    const sectionEl = document.createElement("section");
+    sectionEl.className = "letter-section";
+    sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
 
-      section.rows.forEach((row) => {
-        const rowEl = document.createElement("div");
-        rowEl.className = "letter-row";
-        rowEl.style.setProperty("--cols", row.length);
+    section.rows.forEach((row) => {
+      const rowEl = document.createElement("div");
+      rowEl.className = "letter-row";
+      rowEl.style.setProperty("--cols", row.length);
 
-        row.forEach((ch, index) => {
-          const cell = document.createElement("div");
-          cell.className = index === 0 ? "letter-label" : "letter-cell";
-          cell.textContent = ch;
-          rowEl.appendChild(cell);
-        });
-
-    const cat = category.value;
-    const key = search.value.toLowerCase();
-        sectionEl.appendChild(rowEl);
+      row.forEach((ch, index) => {
+        const cell = document.createElement("div");
+        cell.className = index === 0 ? "letter-label" : "letter-cell";
+        cell.textContent = ch;
+        rowEl.appendChild(cell);
       });
 
-    vocabularyData.forEach(k => {
-      body.appendChild(sectionEl);
+      sectionEl.appendChild(rowEl);
     });
 
-      if (cat !== "all" && !k.type.startsWith(cat)) return;
-    poster.appendChild(body);
-    grid.appendChild(poster);
-    resultInfo.textContent = `${data.title} • Gojūon + Dakuon/Handakuon + Yōon`;
-  }
+    body.appendChild(sectionEl);
+  });
+
+  poster.appendChild(body);
+  grid.appendChild(poster);
+
+  resultInfo.textContent =
+    `${data.title} • Gojūon + Dakuon/Handakuon + Yōon`;
+}
 
       const text = (k.kanji + k.kana + k.meaning).toLowerCase();
       if (key && !text.includes(key)) return;

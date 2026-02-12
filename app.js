@@ -256,7 +256,7 @@
     grid.innerHTML = `
       <section class="test-board">
         <div class="test-header">
-          <p class="test-progress">Soal ${testState.currentIndex  1}/${total} • ${testState.type.toUpperCase()} ${testState.level}</p>
+          <p class="test-progress">Soal ${testState.currentIndex + 1}/${total} • ${testState.type.toUpperCase()} ${testState.level}</p>
           <p class="test-timer">Sisa waktu: <strong id="testTimer">${timerLimit}s</strong></p>
         </div>
 

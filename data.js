@@ -1,8 +1,3 @@
-diff --git a/data.js b/data.js
-index 00292698a9ca6df4608b5cb1106de3df4e62ab3d..9bbf75cb4f5af88ca5edcfb0a68a5ec067ffdedc 100644
---- a/data.js
-+++ b/data.js
-@@ -1,3005 +1,5253 @@
  const vocabularyData = [
  {
    kanji: "魚",

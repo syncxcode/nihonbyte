@@ -1,4 +1,5 @@
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+
   const grid = document.getElementById("grid");
   const category = document.getElementById("category");
   const search = document.getElementById("search");
@@ -345,69 +346,61 @@
   }
 
   function renderLetterPoster(script) {
-  const data = letterSets[script];
-  if (!data) return;
+    const data = letterSets[script];
+    if (!data) return;
 
-  grid.innerHTML = "";
-  closeModal();
+  function render() {
+    grid.innerHTML = "";
+    closeModal();
 
-  const poster = document.createElement("section");
-  poster.className = "letter-poster";
-  poster.innerHTML = `<h2>${data.title}</h2>`;
+    const poster = document.createElement("section");
+    poster.className = "letter-poster";
+    poster.innerHTML = `<h2>${data.title}</h2>`;
 
-  const body = document.createElement("div");
-  body.className = "letter-poster-body";
+    const body = document.createElement("div");
+    body.className = "letter-poster-body";
 
-  const cat = category.value;
-  const key = search.value.toLowerCase();
+    data.sections.forEach((section) => {
+      const sectionEl = document.createElement("section");
+      sectionEl.className = "letter-section";
+      sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
 
-  data.sections.forEach((section) => {
-    const sectionEl = document.createElement("section");
-    sectionEl.className = "letter-section";
-    sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
+      section.rows.forEach((row) => {
+        const rowEl = document.createElement("div");
+        rowEl.className = "letter-row";
+        rowEl.style.setProperty("--cols", row.length);
 
-    section.rows.forEach((row) => {
-      const rowEl = document.createElement("div");
-      rowEl.className = "letter-row";
-      rowEl.style.setProperty("--cols", row.length);
+        row.forEach((ch, index) => {
+          const cell = document.createElement("div");
+          cell.className = index === 0 ? "letter-label" : "letter-cell";
+          cell.textContent = ch;
+          rowEl.appendChild(cell);
+        });
 
-      row.forEach((ch, index) => {
-        const cell = document.createElement("div");
-        cell.className = index === 0 ? "letter-label" : "letter-cell";
-        cell.textContent = ch;
-        rowEl.appendChild(cell);
+    const cat = category.value;
+    const key = search.value.toLowerCase();
+        sectionEl.appendChild(rowEl);
       });
 
-      sectionEl.appendChild(rowEl);
+    vocabularyData.forEach(k => {
+      body.appendChild(sectionEl);
     });
 
-    body.appendChild(sectionEl);
-  });
-
-  poster.appendChild(body);
-  grid.appendChild(poster);
-
-  resultInfo.textContent =
-    `${data.title} • Gojūon • Dakuon/Handakuon • Yōon`;
-}
- 
-  function renderSupportPoster() {
-    grid.innerHTML = `
-      <section class="support-poster">
-        <h2>Dukung Pengembang</h2>
-        <p>Dukung perjalanan ini agar semakin banyak orang bisa belajar bahasa Jepang tanpa terkendala biaya.<br>Setiap support berarti.</p>
-        <a class="support-link-btn" href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer">Klik Disini</a>
-      </section>
-    `;
-    closeModal();
-    resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
+      if (cat !== "all" && !k.type.startsWith(cat)) return;
+    poster.appendChild(body);
+    grid.appendChild(poster);
+    resultInfo.textContent = `${data.title} • Gojūon + Dakuon/Handakuon + Yōon`;
   }
 
+      const text = (k.kanji + k.kana + k.meaning).toLowerCase();
+      if (key && !text.includes(key)) return;
   function renderPatternPoster(level) {
     const patterns = (sentencePatternData && sentencePatternData[level]) || [];
     grid.innerHTML = "";
     closeModal();
 
+      const card = document.createElement("div");
+      card.className = "card";
     if (!patterns.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada pola kalimat untuk level ini.</div>';
       resultInfo.textContent = `0 pola kalimat (${level})`;
@@ -418,12 +411,15 @@
     patterns.forEach((item) => {
       const card = document.createElement("article");
       card.className = "pattern-card";
-       card.innerHTML = `
+      card.innerHTML = `
+        <div class="kanji">${k.kanji}</div>
+        <div class="kana">${k.kana}</div>
+        <div class="meaning">${k.meaning}</div>
         <div class="pattern-title">${item.pattern}</div>
         <div class="pattern-example">${item.example}</div>
         <div class="pattern-meaning">${item.meaning}</div>
         <button class="pattern-audio-btn" type="button" data-text="${item.example}" aria-label="Putar audio pola ${item.pattern}">▶</button>
-       `;
+      `;
       fragment.appendChild(card);
     });
 
@@ -441,7 +437,7 @@
 
     return source.slice(0, maxItems);
   }
-  
+
   function openModal(word) {
     modalSubtitle.style.display = "block";
     recommendationRow.style.display = "grid";
@@ -479,6 +475,7 @@
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
+      grid.appendChild(card);
   function render() {
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
@@ -493,11 +490,6 @@
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
-      return;
-    }
-
-    if (viewMode === "support") {
-      renderSupportPoster();
       return;
     }
 
@@ -526,15 +518,15 @@
         }
       });
       fragment.appendChild(cardButton);
-     });
+    });
 
     grid.appendChild(fragment);
     const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
-   }
- 
-   category.addEventListener("change", render);
-   search.addEventListener("input", render);
+  }
+
+  category.addEventListener("change", render);
+  search.addEventListener("input", render);
   function pickRandomWord() {
     if (viewMode.startsWith("letters:")) return;
     const source = getFilteredWords();
@@ -552,16 +544,18 @@
     viewMode = "vocab";
     render();
   });
- 
-   hamburger.addEventListener("click", () => {
-  const active = sidebar.classList.toggle("active");
-  overlay.classList.toggle("active", active);
-  hamburger.setAttribute("aria-expanded", active ? "true" : "false");
-});
- 
-   overlay.addEventListener("click", () => {
-     sidebar.classList.remove("active");
-     overlay.classList.remove("active");
+
+  hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+    overlay.classList.toggle("active");
+    const active = sidebar.classList.toggle("active");
+    overlay.classList.toggle("active", active);
+    hamburger.setAttribute("aria-expanded", active ? "true" : "false");
+  });
+
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
   overlay.addEventListener("click", closeSidebar);
   randomWordButton.addEventListener("click", pickRandomWord);
   modalBackdrop.addEventListener("click", closeModal);
@@ -581,9 +575,9 @@
     event.preventDefault();
     event.stopPropagation();
     speakWord(patternAudioButton.dataset.text || "");
-   });
- 
-   render();
+  });
+
+  render();
   recommendationRow.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".rec-audio-btn");
     if (!audioButton) return;
@@ -630,9 +624,8 @@
         closeSidebar();
         return;
       }
- 
- });
-   
+
+});
       viewMode = `patterns:${level}`;
       search.value = "";
       category.value = "all";
@@ -676,10 +669,6 @@
         selectedLevel = "all";
         selectedType = "all";
         category.value = "all";
-      }
-
-      if (action === "support") {
-        viewMode = "support";
       }
 
       render();

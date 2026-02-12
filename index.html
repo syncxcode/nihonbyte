@@ -10,71 +10,81 @@
 </head>
 <body>
 
-<div id="overlay"></div>
+  <!-- Overlay -->
+  <div id="overlay"></div>
 
-<aside id="sidebar" aria-label="Menu samping">
-  <h3>Kategori Folder</h3>
-  <div class="sidebar-tree">
-    <!-- isi folder lu tetap sama -->
-  </div>
+  <!-- Sidebar -->
+  <aside id="sidebar" aria-label="Menu samping">
+    <h3>Kategori Folder</h3>
 
-  <div class="sidebar-actions">
-    <button class="menu-btn" data-action="all">📚 Semua Kategori</button>
-    <button class="menu-btn" data-action="random">🎲 Kata Acak</button>
-    <button class="menu-btn" data-action="reset">🧹 Reset Filter</button>
-  </div>
-</aside>
+    <div class="sidebar-tree">
+      <!-- Folder content tetap pakai yang dari app.js -->
+    </div>
 
-<header class="topbar">
-  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+    <div class="sidebar-actions">
+      <button class="menu-btn" data-action="all">📚 Semua Kategori</button>
+      <button class="menu-btn" data-action="random">🎲 Kata Acak</button>
+      <button class="menu-btn" data-action="reset">🧹 Reset Filter</button>
+    </div>
+  </aside>
 
-  <div class="branding">
-    <h1>日本の世界</h1>
-    <p>理解を重視し、単なる暗記にとどまりません。</p>
-  </div>
+  <!-- Header -->
+  <header class="topbar">
 
-  <div class="controls">
-    <select id="category" aria-label="Filter kategori kata">
-      <option value="all">Semua</option>
-      <option value="noun">Noun</option>
-      <option value="verb-godan">Godan Verb</option>
-      <option value="verb-ru">Ichidan Verb</option>
-      <option value="verb-irregular">Irreguler / Suru Verb</option>
-      <option value="adj-na">NA Keiyoushi</option>
-      <option value="adj-i">I Keiyoushi</option>
-      <option value="counter">Satuan Bilangan / Hitungan</option>
-      <option value="adverb">Adverb</option>
-    </select>
-
-    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
-
-    <button id="randomWord" class="action-btn" type="button">
-      🎯 Pilih kata acak
+    <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-  </div>
 
-  <p id="resultInfo" class="result-info"></p>
-</header>
+    <div class="branding">
+      <h1>日本の世界</h1>
+      <p>理解を重視し、単なる暗記にとどまりません。</p>
+    </div>
 
-<main>
-  <div id="grid"></div>
-</main>
+    <div class="controls">
+      <select id="category" aria-label="Filter kategori kata">
+        <option value="all">Semua</option>
+        <option value="noun">Noun</option>
+        <option value="verb-godan">Godan Verb</option>
+        <option value="verb-ru">Ichidan Verb</option>
+        <option value="verb-irregular">Irreguler / Suru Verb</option>
+        <option value="adj-na">NA Keiyoushi</option>
+        <option value="adj-i">I Keiyoushi</option>
+        <option value="counter">Satuan Bilangan / Hitungan</option>
+        <option value="adverb">Adverb</option>
+      </select>
 
-<section id="kanjiModal" class="kanji-modal" aria-hidden="true">
-  <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
-  <div class="kanji-modal-content" role="dialog" aria-modal="true">
-    <button id="modalClose" class="modal-close">✕</button>
-    <article id="expandedCard"></article>
-    <h4 id="modalSubtitle">Rekomendasi terkait</h4>
-    <div id="recommendationRow"></div>
-  </div>
-</section>
+      <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
 
-<script src="./data.js"></script>
-<script src="./app.js"></script>
+      <button id="randomWord" class="action-btn" type="button">
+        🎯 Pilih kata acak
+      </button>
+    </div>
+
+    <p id="resultInfo" class="result-info"></p>
+
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div id="grid"></div>
+  </main>
+
+  <!-- Modal -->
+  <section id="kanjiModal" class="kanji-modal" aria-hidden="true">
+    <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
+    <div class="kanji-modal-content" role="dialog" aria-modal="true">
+      <button id="modalClose" class="modal-close">✕</button>
+      <article id="expandedCard"></article>
+      <h4 id="modalSubtitle">Rekomendasi terkait</h4>
+      <div id="recommendationRow"></div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+
 </body>
 </html>

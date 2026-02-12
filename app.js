@@ -219,7 +219,7 @@
 
   function moveToNextQuestion() {
     if (!testState.active) return;
-    testState.currentIndex = 1;
+    testState.currentIndex += 1;
     if (testState.currentIndex >= testState.questions.length) {
       finishTest();
       return;
@@ -233,7 +233,7 @@
 
     const currentQuestion = testState.questions[testState.currentIndex];
     const isCorrect = selectedValue === currentQuestion.correct;
-    if (isCorrect) testState.correctCount = 1;
+    if (isCorrect) testState.correctCount += 1;
 
     optionButtons.forEach((button) => {
       button.disabled = true;
@@ -345,56 +345,51 @@
   }
 
   function renderLetterPoster(script) {
-    const data = letterSets[script];
-    if (!data) return;
- 
-   function render() {
-     grid.innerHTML = "";
-    closeModal();
+  const data = letterSets[script];
+  if (!data) return;
 
-    const poster = document.createElement("section");
-    poster.className = "letter-poster";
-    poster.innerHTML = `<h2>${data.title}</h2>`;
+  grid.innerHTML = "";
+  closeModal();
 
-    const body = document.createElement("div");
-    body.className = "letter-poster-body";
+  const poster = document.createElement("section");
+  poster.className = "letter-poster";
+  poster.innerHTML = `<h2>${data.title}</h2>`;
 
-    data.sections.forEach((section) => {
-      const sectionEl = document.createElement("section");
-      sectionEl.className = "letter-section";
-      sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
+  const body = document.createElement("div");
+  body.className = "letter-poster-body";
 
-      section.rows.forEach((row) => {
-        const rowEl = document.createElement("div");
-        rowEl.className = "letter-row";
-        rowEl.style.setProperty("--cols", row.length);
- 
-     const cat = category.value;
-     const key = search.value.toLowerCase();
-        row.forEach((ch, index) => {
-          const cell = document.createElement("div");
-          cell.className = index === 0 ? "letter-label" : "letter-cell";
-          cell.textContent = ch;
-          rowEl.appendChild(cell);
-        });
- 
-     vocabularyData.forEach(k => {
-        sectionEl.appendChild(rowEl);
+  const cat = category.value;
+  const key = search.value.toLowerCase();
+
+  data.sections.forEach((section) => {
+    const sectionEl = document.createElement("section");
+    sectionEl.className = "letter-section";
+    sectionEl.innerHTML = `<h3>${section.subtitle}</h3>`;
+
+    section.rows.forEach((row) => {
+      const rowEl = document.createElement("div");
+      rowEl.className = "letter-row";
+      rowEl.style.setProperty("--cols", row.length);
+
+      row.forEach((ch, index) => {
+        const cell = document.createElement("div");
+        cell.className = index === 0 ? "letter-label" : "letter-cell";
+        cell.textContent = ch;
+        rowEl.appendChild(cell);
       });
- 
-       if (cat !== "all" && !k.type.startsWith(cat)) return;
-      body.appendChild(sectionEl);
+
+      sectionEl.appendChild(rowEl);
     });
- 
-       const text = (k.kanji + k.kana + k.meaning).toLowerCase();
-       if (key && !text.includes(key)) return;
-    poster.appendChild(body);
-    grid.appendChild(poster);
-    resultInfo.textContent = data.title + " - Gojūon - Dakuon/Handakuon - Yōon";
-  }
- 
-       const card = document.createElement("div");
-       card.className = "card";
+
+    body.appendChild(sectionEl);
+  });
+
+  poster.appendChild(body);
+  grid.appendChild(poster);
+
+  resultInfo.textContent =
+    `${data.title} • Gojūon • Dakuon/Handakuon • Yōon`;
+}
  
   function renderSupportPoster() {
     grid.innerHTML = `
@@ -424,9 +419,6 @@
       const card = document.createElement("article");
       card.className = "pattern-card";
        card.innerHTML = `
-         <div class="kanji">${k.kanji}</div>
-         <div class="kana">${k.kana}</div>
-         <div class="meaning">${k.meaning}</div>
         <div class="pattern-title">${item.pattern}</div>
         <div class="pattern-example">${item.example}</div>
         <div class="pattern-meaning">${item.meaning}</div>
@@ -563,12 +555,10 @@
   });
  
    hamburger.addEventListener("click", () => {
-     sidebar.classList.toggle("active");
-     overlay.classList.toggle("active");
-    const active = sidebar.classList.toggle("active");
-    overlay.classList.toggle("active", active);
-    hamburger.setAttribute("aria-expanded", active ? "true" : "false");
-   });
+  const active = sidebar.classList.toggle("active");
+  overlay.classList.toggle("active", active);
+  hamburger.setAttribute("aria-expanded", active ? "true" : "false");
+});
  
    overlay.addEventListener("click", () => {
      sidebar.classList.remove("active");
@@ -643,7 +633,7 @@
       }
  
  });
-  No newline at end of file
+   
       viewMode = `patterns:${level}`;
       search.value = "";
       category.value = "all";

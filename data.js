@@ -3429,7 +3429,6 @@ const vocabularyData = [
   meaning: "Baru-baru ini",
   type: "adverb",
   level: "N4"
-}
 },
 {
   kanji: "大事",

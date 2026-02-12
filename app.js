@@ -441,8 +441,7 @@
 
     return source.slice(0, maxItems);
   }
- 
-       grid.appendChild(card);
+  
   function openModal(word) {
     modalSubtitle.style.display = "block";
     recommendationRow.style.display = "grid";

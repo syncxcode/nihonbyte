@@ -1,10 +1,10 @@
  document.addEventListener("DOMContentLoaded", () => {
-   const grid = document.getElementById("grid");
-   const category = document.getElementById("category");
-   const search = document.getElementById("search");
-   const hamburger = document.getElementById("hamburger");
-   const sidebar = document.getElementById("sidebar");
-   const overlay = document.getElementById("overlay");
+  const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
   const randomWordButton = document.getElementById("randomWord");
   const menuButtons = document.querySelectorAll(".menu-btn[data-action]");
@@ -348,7 +348,7 @@
     const data = letterSets[script];
     if (!data) return;
  
--  function render() {
+   function render() {
      grid.innerHTML = "";
     closeModal();
 
@@ -369,8 +369,8 @@
         rowEl.className = "letter-row";
         rowEl.style.setProperty("--cols", row.length);
  
--    const cat = category.value;
--    const key = search.value.toLowerCase();
+     const cat = category.value;
+     const key = search.value.toLowerCase();
         row.forEach((ch, index) => {
           const cell = document.createElement("div");
           cell.className = index === 0 ? "letter-label" : "letter-cell";
@@ -378,23 +378,23 @@
           rowEl.appendChild(cell);
         });
  
--    vocabularyData.forEach(k => {
+     vocabularyData.forEach(k => {
         sectionEl.appendChild(rowEl);
       });
  
--      if (cat !== "all" && !k.type.startsWith(cat)) return;
+       if (cat !== "all" && !k.type.startsWith(cat)) return;
       body.appendChild(sectionEl);
     });
  
--      const text = (k.kanji  k.kana  k.meaning).toLowerCase();
--      if (key && !text.includes(key)) return;
+       const text = (k.kanji  k.kana  k.meaning).toLowerCase();
+       if (key && !text.includes(key)) return;
     poster.appendChild(body);
     grid.appendChild(poster);
     resultInfo.textContent = `${data.title} • Gojūon  Dakuon/Handakuon  Yōon`;
   }
  
--      const card = document.createElement("div");
--      card.className = "card";
+       const card = document.createElement("div");
+       card.className = "card";
  
   function renderSupportPoster() {
     grid.innerHTML = `
@@ -424,9 +424,9 @@
       const card = document.createElement("article");
       card.className = "pattern-card";
        card.innerHTML = `
--        <div class="kanji">${k.kanji}</div>
--        <div class="kana">${k.kana}</div>
--        <div class="meaning">${k.meaning}</div>
+         <div class="kanji">${k.kanji}</div>
+         <div class="kana">${k.kana}</div>
+         <div class="meaning">${k.meaning}</div>
         <div class="pattern-title">${item.pattern}</div>
         <div class="pattern-example">${item.example}</div>
         <div class="pattern-meaning">${item.meaning}</div>
@@ -450,7 +450,7 @@
     return source.slice(0, maxItems);
   }
  
--      grid.appendChild(card);
+       grid.appendChild(card);
   function openModal(word) {
     modalSubtitle.style.display = "block";
     recommendationRow.style.display = "grid";
@@ -542,8 +542,8 @@
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
    }
  
--  category.addEventListener("change", render);
--  search.addEventListener("input", render);
+   category.addEventListener("change", render);
+   search.addEventListener("input", render);
   function pickRandomWord() {
     if (viewMode.startsWith("letters:")) return;
     const source = getFilteredWords();
@@ -563,16 +563,16 @@
   });
  
    hamburger.addEventListener("click", () => {
--    sidebar.classList.toggle("active");
--    overlay.classList.toggle("active");
+     sidebar.classList.toggle("active");
+     overlay.classList.toggle("active");
     const active = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", active);
     hamburger.setAttribute("aria-expanded", active ? "true" : "false");
    });
  
--  overlay.addEventListener("click", () => {
--    sidebar.classList.remove("active");
--    overlay.classList.remove("active");
+   overlay.addEventListener("click", () => {
+     sidebar.classList.remove("active");
+     overlay.classList.remove("active");
   overlay.addEventListener("click", closeSidebar);
   randomWordButton.addEventListener("click", pickRandomWord);
   modalBackdrop.addEventListener("click", closeModal);
@@ -594,7 +594,7 @@
     speakWord(patternAudioButton.dataset.text || "");
    });
  
--  render();
+   render();
   recommendationRow.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".rec-audio-btn");
     if (!audioButton) return;
@@ -642,8 +642,8 @@
         return;
       }
  
--});
-\ No newline at end of file
+ });
+  No newline at end of file
       viewMode = `patterns:${level}`;
       search.value = "";
       category.value = "all";

@@ -1,8 +1,3 @@
-diff --git a/app.js b/app.js
-index 7ed40c9c345c7fc23f5c97725ffd12f40532e1eb..d98f56560ca342e08047bd1d753c60d73889df32 100644
---- a/app.js
-+++ b/app.js
-@@ -1,51 +1,686 @@
  document.addEventListener("DOMContentLoaded", () => {
 -
    const grid = document.getElementById("grid");

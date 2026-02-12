@@ -3230,16 +3230,16 @@ const vocabularyData = [
    meaning: "Menolong",
    type: "verb-ru",
    level: "N5"
- },
- {
+},
+{
    kanji: "会話",
    kana: "かいわ",
   romaji: "Kaiwa",
    meaning: "Percakapan",
    type: "noun",
    level: "N5"
- },
- {
+},
+{
    kanji: "形",
    kana: "かたち",
   romaji: "Katachi",
@@ -3429,7 +3429,7 @@ const vocabularyData = [
    meaning: "Baru-baru ini",
    type: "adverb",
    level: "N4"
-}
+},
 {
   kanji: "大事",
   kana: "だいじ",

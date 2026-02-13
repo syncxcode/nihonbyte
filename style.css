@@ -414,9 +414,7 @@ input,
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  overflow-y: auto;  /* Tambahkan ini untuk enable scroll internal di sidebar */
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 #sidebar::before {
@@ -519,6 +517,22 @@ input,
 
   #resultInfo {
     grid-column: 2 / 4;
+  }
+  
+  #grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Lebih lebar di desktop */
+  }
+  
+  #sidebar {
+    width: 280px; /* Sedikit lebih lebar di desktop */
+  }
+  
+  .kanji-modal-content {
+    width: min(80vw, 900px); /* Modal lebih besar di desktop */
+  }
+  
+  .expanded-card .card-image.expanded img {
+    height: 350px; /* Gambar expand lebih tinggi di desktop */
   }
 }
 

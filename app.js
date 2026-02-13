@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getRecommendations(word) {
-    const maxItems = 5;
+    const maxItems = 10; // Diubah ke 10 untuk lebih banyak rekomendasi
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
     const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
     const source = sameType.length >= maxItems ? sameType : fallback;
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openModal(word) {
     modalSubtitle.style.display = "block";
-    recommendationRow.style.display = "grid";
+    recommendationRow.style.display = "flex";
     expandedCard.innerHTML = cardImageTemplate(word, true);
     recommendationRow.innerHTML = "";
 

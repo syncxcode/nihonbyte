@@ -652,6 +652,6 @@ input,
 
 /* Ukuran lebih besar untuk expanded card */
 .expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } /* Lebih besar, responsif */
-.expanded-card .kanji { font-size: clamp(50px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
+.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
 .expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
 .expanded-card .meaning { font-size: clamp(18px, 4vw, 22px); }

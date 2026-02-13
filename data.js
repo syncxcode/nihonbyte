@@ -3461,4 +3461,4 @@ const vocabularyData = [
   { kanji: "お腹がすく", kana: "おなかがすく", romaji: "onaka ga suku", meaning: "lapar", type: "verb-godan", level: "N5" },
   { kanji: "お祭り", kana: "おまつり", romaji: "omatsuri", meaning: "festival", type: "noun", level: "N5" },
   { kanji: "お客さん", kana: "おきゃくさん", romaji: "okyakusan", meaning: "pelanggan", type: "noun", level: "N5" },
-  };
+  ]

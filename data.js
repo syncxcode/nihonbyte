@@ -171,7 +171,7 @@ const vocabularyData = [
   {
     kanji: "始まる",
     kana: "はじまる",
-    romaji": "hajimaru",
+    romaji: "hajimaru",
     meaning: "to begin",
     type: "verb-godan",
     level: "N5"
@@ -179,7 +179,7 @@ const vocabularyData = [
   {
     kanji: "走る",
     kana: "はしる",
-    romaji": "hashiru",
+    romaji: "hashiru",
     meaning: "to run",
     type: "verb-godan",
     level: "N5"
@@ -187,7 +187,7 @@ const vocabularyData = [
   {
     kanji: "働く",
     kana: "はたるく",
-    romaji": "hataraku",
+    romaji: "hataraku",
     meaning: "to work",
     type: "verb-godan",
     level: "N5"
@@ -195,7 +195,7 @@ const vocabularyData = [
   {
     kanji: "使う",
     kana: "つかう",
-    romaji": "tsukau",
+    romaji: "tsukau",
     meaning: "to use",
     type: "verb-godan",
     level: "N5"
@@ -203,7 +203,7 @@ const vocabularyData = [
   {
     kanji: "言う",
     kana: "いう",
-    romaji": "iu",
+    romaji: "iu",
     meaning: "to say",
     type: "verb-godan",
     level: "N5"
@@ -213,7 +213,7 @@ const vocabularyData = [
   {
     kanji: "食べる",
     kana: "たべる",
-    romaji": "taberu",
+    romaji: "taberu",
     meaning: "to eat",
     type: "verb-ru",
     level: "N5"
@@ -221,7 +221,7 @@ const vocabularyData = [
   {
     kanji: "寝る",
     kana: "ねる",
-    romaji": "neru",
+    romaji: "neru",
     meaning: "to sleep, to go to bed",
     type: "verb-ru",
     level: "N5"
@@ -229,7 +229,7 @@ const vocabularyData = [
   {
     kanji: "見る",
     kana: "みる",
-    romaji": "miru",
+    romaji: "miru",
     meaning: "to see, to look, to watch",
     type: "verb-ru",
     level: "N5"
@@ -237,7 +237,7 @@ const vocabularyData = [
   {
     kanji: "来る",
     kana: "くる",
-    romaji": "kuru",
+    romaji: "kuru",
     meaning: "to come",
     type: "verb-ru",
     level: "N5"
@@ -245,7 +245,7 @@ const vocabularyData = [
   {
     kanji: "開ける",
     kana: "あける",
-    romaji": "akeru",
+    romaji: "akeru",
     meaning: "to open",
     type: "verb-ru",
     level: "N5"
@@ -253,7 +253,7 @@ const vocabularyData = [
   {
     kanji: "教える",
     kana: "おしえる",
-    romaji": "oshieru",
+    romaji: "oshieru",
     meaning: "to teach, to tell",
     type: "verb-ru",
     level: "N5"
@@ -261,7 +261,7 @@ const vocabularyData = [
   {
     kanji: "忘れる",
     kana: "わすれる",
-    romaji": "wasureru",
+    romaji: "wasureru",
     meaning: "to forget",
     type: "verb-ru",
     level: "N5"
@@ -269,7 +269,7 @@ const vocabularyData = [
   {
     kanji: "出る",
     kana: "でる",
-    romaji": "deru",
+    romaji: "deru",
     meaning: "to go out",
     type: "verb-ru",
     level: "N5"
@@ -277,7 +277,7 @@ const vocabularyData = [
   {
     kanji: "着る",
     kana: "きる",
-    romaji": "kiru",
+    romaji: "kiru",
     meaning: "to wear",
     type: "verb-ru",
     level: "N5"
@@ -285,7 +285,7 @@ const vocabularyData = [
   {
     kanji: "生きる",
     kana: "いきる",
-    romaji": "ikiru",
+    romaji: "ikiru",
     meaning: "to live",
     type: "verb-ru",
     level: "N5"
@@ -295,7 +295,7 @@ const vocabularyData = [
   {
     kanji: "する",
     kana: "する",
-    romaji": "suru",
+    romaji: "suru",
     meaning: "to do",
     type: "verb-irregular",
     level: "N5"
@@ -303,7 +303,7 @@ const vocabularyData = [
   {
     kanji: "勉強する",
     kana: "べんきょうする",
-    romaji": "benkyou suru",
+    romaji: "benkyou suru",
     meaning: "to study",
     type: "verb-irregular",
     level: "N5"
@@ -311,7 +311,7 @@ const vocabularyData = [
   {
     kanji: "来る",
     kana: "くる",
-    romaji": "kuru",
+    romaji: "kuru",
     meaning: "to come",
     type: "verb-irregular",
     level: "N5"
@@ -321,7 +321,7 @@ const vocabularyData = [
   {
     kanji: "大きい",
     kana: "おおきい",
-    romaji": "ookii",
+    romaji: "ookii",
     meaning: "big, large",
     type: "adj-i",
     level: "N5"
@@ -329,7 +329,7 @@ const vocabularyData = [
   {
     kanji: "小さい",
     kana: "ちいさい",
-    romaji": "chiisai",
+    romaji: "chiisai",
     meaning: "small",
     type: "adj-i",
     level: "N5"
@@ -337,7 +337,7 @@ const vocabularyData = [
   {
     kanji: "新しい",
     kana: "あたらし",
-    romaji": "atarashii",
+    romaji: "atarashii",
     meaning: "new",
     type: "adj-i",
     level: "N5"
@@ -345,7 +345,7 @@ const vocabularyData = [
   {
     kanji: "古い",
     kana: "ふるい",
-    romaji": "furui",
+    romaji: "furui",
     meaning: "old",
     type: "adj-i",
     level: "N5"
@@ -353,7 +353,7 @@ const vocabularyData = [
   {
     kanji: "いい",
     kana: "いい",
-    romaji": "ii",
+    romaji: "ii",
     meaning: "good",
     type: "adj-i",
     level: "N5"
@@ -361,7 +361,7 @@ const vocabularyData = [
   {
     kanji: "悪い",
     kana: "わるい",
-    romaji": "warui",
+    romaji: "warui",
     meaning: "bad",
     type: "adj-i",
     level: "N5"
@@ -369,7 +369,7 @@ const vocabularyData = [
   {
     kanji: "熱い",
     kana: "あつい",
-    romaji": "atsui",
+    romaji: "atsui",
     meaning: "hot (touch)",
     type: "adj-i",
     level: "N5"
@@ -377,7 +377,7 @@ const vocabularyData = [
   {
     kanji: "寒い",
     kana: "さむい",
-    romaji": "samui",
+    romaji: "samui",
     meaning: "cold (weather)",
     type: "adj-i",
     level: "N5"
@@ -385,7 +385,7 @@ const vocabularyData = [
   {
     kanji: "冷たい",
     kana: "つめたい",
-    romaji": "tsumetai",
+    romaji: "tsumetai",
     meaning: "cold (touch)",
     type: "adj-i",
     level: "N5"
@@ -393,7 +393,7 @@ const vocabularyData = [
   {
     kanji: "難しい",
     kana: "むずかしい",
-    romaji": "muzukashii",
+    romaji: "muzukashii",
     meaning: "difficult",
     type: "adj-i",
     level: "N5"
@@ -401,7 +401,7 @@ const vocabularyData = [
   {
     kanji: "易しい",
     kana: "やさしい",
-    romaji": "yasashii",
+    romaji: "yasashii",
     meaning: "easy, kind",
     type: "adj-i",
     level: "N5"
@@ -409,7 +409,7 @@ const vocabularyData = [
   {
     kanji: "高い",
     kana: "たかい",
-    romaji": "takai",
+    romaji: "takai",
     meaning: "high, tall, expensive",
     type: "adj-i",
     level: "N5"
@@ -417,7 +417,7 @@ const vocabularyData = [
   {
     kanji: "安い",
     kana: "やすい",
-    romaji": "yasui",
+    romaji: "yasui",
     meaning: "cheap",
     type: "adj-i",
     level: "N5"
@@ -425,7 +425,7 @@ const vocabularyData = [
   {
     kanji: "低い",
     kana: "ひくい",
-    romaji": "hikui",
+    romaji: "hikui",
     meaning: "low",
     type: "adj-i",
     level: "N5"
@@ -433,7 +433,7 @@ const vocabularyData = [
   {
     kanji: "面白い",
     kana: "おもしろい",
-    romaji": "omoshiroi",
+    romaji: "omoshiroi",
     meaning: "interesting",
     type: "adj-i",
     level: "N5"
@@ -441,7 +441,7 @@ const vocabularyData = [
   {
     kanji: "美味しい",
     kana: "おいしい",
-    romaji": "oishii",
+    romaji: "oishii",
     meaning: "delicious",
     type: "adj-i",
     level: "N5"
@@ -449,7 +449,7 @@ const vocabularyData = [
   {
     kanji: "忙しい",
     kana: "いそがしい",
-    romaji": "isogashii",
+    romaji: "isogashii",
     meaning: "busy",
     type: "adj-i",
     level: "N5"
@@ -457,7 +457,7 @@ const vocabularyData = [
   {
     kanji: "楽しい",
     kana: "たのしい",
-    romaji": "tanoshii",
+    romaji: "tanoshii",
     meaning: "fun",
     type: "adj-i",
     level: "N5"
@@ -465,7 +465,7 @@ const vocabularyData = [
   {
     kanji: "白い",
     kana: "しろい",
-    romaji": "shiroi",
+    romaji: "shiroi",
     meaning: "white",
     type: "adj-i",
     level: "N5"
@@ -473,7 +473,7 @@ const vocabularyData = [
   {
     kanji: "黒い",
     kana: "くろい",
-    romaji": "kuroi",
+    romaji: "kuroi",
     meaning: "black",
     type: "adj-i",
     level: "N5"
@@ -481,7 +481,7 @@ const vocabularyData = [
   {
     kanji: "赤い",
     kana: "あかい",
-    romaji": "akai",
+    romaji: "akai",
     meaning: "red",
     type: "adj-i",
     level: "N5"
@@ -489,7 +489,7 @@ const vocabularyData = [
   {
     kanji: "青い",
     kana: "あおい",
-    romaji": "aoi",
+    romaji: "aoi",
     meaning: "blue",
     type: "adj-i",
     level: "N5"
@@ -497,7 +497,7 @@ const vocabularyData = [
   {
     kanji: "寂しい",
     kana: "さびしい",
-    romaji": "sabishii",
+    romaji: "sabishii",
     meaning: "lonely",
     type: "adj-i",
     level: "N5"
@@ -507,7 +507,7 @@ const vocabularyData = [
   {
     kanji: "好き",
     kana: "すき",
-    romaji": "suki",
+    romaji: "suki",
     meaning: "like",
     type: "adj-na",
     level: "N5"
@@ -515,7 +515,7 @@ const vocabularyData = [
   {
     kanji: "嫌い",
     kana: "きらい",
-    romaji": "kirai",
+    romaji: "kirai",
     meaning: "dislike",
     type: "adj-na",
     level: "N5"
@@ -523,7 +523,7 @@ const vocabularyData = [
   {
     kanji: "上手",
     kana: "じょうず",
-    romaji": "jouzu",
+    romaji: "jouzu",
     meaning: "skilled",
     type: "adj-na",
     level: "N5"
@@ -531,7 +531,7 @@ const vocabularyData = [
   {
     kanji: "下手",
     kana: "へた",
-    romaji": "heta",
+    romaji: "heta",
     meaning: "unskilled",
     type: "adj-na",
     level: "N5"
@@ -539,7 +539,7 @@ const vocabularyData = [
   {
     kanji: "有名",
     kana: "ゆうめい",
-    romaji": "yuumei",
+    romaji: "yuumei",
     meaning: "famous",
     type: "adj-na",
     level: "N5"
@@ -547,7 +547,7 @@ const vocabularyData = [
   {
     kanji: "大切",
     kana: "たいせつ",
-    romaji": "taisetsu",
+    romaji: "taisetsu",
     meaning: "important",
     type: "adj-na",
     level: "N5"
@@ -555,7 +555,7 @@ const vocabularyData = [
   {
     kanji: "安全",
     kana: "あんぜん",
-    romaji": "anzen",
+    romaji: "anzen",
     meaning: "safe",
     type: "adj-na",
     level: "N5"
@@ -563,7 +563,7 @@ const vocabularyData = [
   {
     kanji: "大丈夫",
     kana: "だいじょうぶ",
-    romaji": "daijoubu",
+    romaji: "daijoubu",
     meaning: "all right",
     type: "adj-na",
     level: "N5"
@@ -571,7 +571,7 @@ const vocabularyData = [
   {
     kanji: "便利",
     kana: "べんり",
-    romaji": "benri",
+    romaji: "benri",
     meaning: "convenient",
     type: "adj-na",
     level: "N5"
@@ -579,7 +579,7 @@ const vocabularyData = [
   {
     kanji: "静か",
     kana: "しずか",
-    romaji": "shizuka",
+    romaji: "shizuka",
     meaning: "quiet",
     type: "adj-na",
     level: "N5"
@@ -587,7 +587,7 @@ const vocabularyData = [
   {
     kanji: "自由",
     kana: "じゆう",
-    romaji": "jiyuu",
+    romaji: "jiyuu",
     meaning: "free",
     type: "adj-na",
     level: "N5"
@@ -595,7 +595,7 @@ const vocabularyData = [
   {
     kanji: "きれい",
     kana: "きれい",
-    romaji": "kirei",
+    romaji: "kirei",
     meaning: "pretty, clean",
     type: "adj-na",
     level: "N5"
@@ -603,7 +603,7 @@ const vocabularyData = [
   {
     kanji: "親切",
     kana: "しんせつ",
-    romaji": "shinsetsu",
+    romaji: "shinsetsu",
     meaning: "kind",
     type: "adj-na",
     level: "N5"
@@ -613,7 +613,7 @@ const vocabularyData = [
   {
     kanji: "朝",
     kana: "あさ",
-    romaji": "asa",
+    romaji: "asa",
     meaning: "morning",
     type: "noun",
     level: "N5"
@@ -621,7 +621,7 @@ const vocabularyData = [
   {
     kanji: "足",
     kana: "あし",
-    romaji": "ashi",
+    romaji: "ashi",
     meaning: "leg, foot",
     type: "noun",
     level: "N5"
@@ -629,7 +629,7 @@ const vocabularyData = [
   {
     kanji: "雨",
     kana: "あめ",
-    romaji": "ame",
+    romaji: "ame",
     meaning: "rain",
     type: "noun",
     level: "N5"
@@ -637,7 +637,7 @@ const vocabularyData = [
   {
     kanji: "目",
     kana: "め",
-    romaji": "me",
+    romaji: "me",
     meaning: "eye",
     type: "noun",
     level: "N5"
@@ -645,7 +645,7 @@ const vocabularyData = [
   {
     kanji: "耳",
     kana: "みみ",
-    romaji": "mimi",
+    romaji: "mimi",
     meaning: "ear",
     type: "noun",
     level: "N5"
@@ -653,7 +653,7 @@ const vocabularyData = [
   {
     kanji: "口",
     kana: "くち",
-    romaji": "kuchi",
+    romaji: "kuchi",
     meaning: "mouth",
     type: "noun",
     level: "N5"
@@ -661,7 +661,7 @@ const vocabularyData = [
   {
     kanji: "手",
     kana: "て",
-    romaji": "te",
+    romaji: "te",
     meaning: "hand",
     type: "noun",
     level: "N5"
@@ -669,7 +669,7 @@ const vocabularyData = [
   {
     kanji: "人",
     kana: "ひと",
-    romaji": "hito",
+    romaji: "hito",
     meaning: "person",
     type: "noun",
     level: "N5"
@@ -677,7 +677,7 @@ const vocabularyData = [
   {
     kanji: "私",
     kana: "わたし",
-    romaji": "watashi",
+    romaji: "watashi",
     meaning: "I",
     type: "noun",
     level: "N5"
@@ -685,7 +685,7 @@ const vocabularyData = [
   {
     kanji: "あなた",
     kana: "あなた",
-    romaji": "anata",
+    romaji: "anata",
     meaning: "you",
     type: "noun",
     level: "N5"
@@ -693,7 +693,7 @@ const vocabularyData = [
   {
     kanji: "父",
     kana: "ちち",
-    romaji": "chichi",
+    romaji: "chichi",
     meaning: "father",
     type: "noun",
     level: "N5"
@@ -701,7 +701,7 @@ const vocabularyData = [
   {
     kanji: "母",
     kana: "はは",
-    romaji": "haha",
+    romaji: "haha",
     meaning: "mother",
     type: "noun",
     level: "N5"
@@ -709,7 +709,7 @@ const vocabularyData = [
   {
     kanji: "お父さん",
     kana: "おとうさん",
-    romaji": "otousan",
+    romaji: "otousan",
     meaning: "father (polite)",
     type: "noun",
     level: "N5"
@@ -717,7 +717,7 @@ const vocabularyData = [
   {
     kanji: "お母さん",
     kana: "おかあさん",
-    romaji": "okaasan",
+    romaji: "okaasan",
     meaning: "mother (polite)",
     type: "noun",
     level: "N5"
@@ -725,7 +725,7 @@ const vocabularyData = [
   {
     kanji: "兄",
     kana: "あに",
-    romaji": "ani",
+    romaji: "ani",
     meaning: "older brother",
     type: "noun",
     level: "N5"
@@ -733,7 +733,7 @@ const vocabularyData = [
   {
     kanji: "姉",
     kana: "あね",
-    romaji": "ane",
+    romaji: "ane",
     meaning: "older sister",
     type: "noun",
     level: "N5"
@@ -741,7 +741,7 @@ const vocabularyData = [
   {
     kanji: "弟",
     kana: "おとうと",
-    romaji": "otouto",
+    romaji: "otouto",
     meaning: "younger brother",
     type: "noun",
     level: "N5"
@@ -749,7 +749,7 @@ const vocabularyData = [
   {
     kanji: "妹",
     kana: "いもうと",
-    romaji": "imouto",
+    romaji: "imouto",
     meaning: "younger sister",
     type: "noun",
     level: "N5"
@@ -757,7 +757,7 @@ const vocabularyData = [
   {
     kanji: "友達",
     kana: "ともだち",
-    romaji": "tomodachi",
+    romaji: "tomodachi",
     meaning: "friend",
     type: "noun",
     level: "N5"
@@ -765,7 +765,7 @@ const vocabularyData = [
   {
     kanji: "学校",
     kana: "がっこう",
-    romaji": "gakkou",
+    romaji: "gakkou",
     meaning: "school",
     type: "noun",
     level: "N5"
@@ -773,7 +773,7 @@ const vocabularyData = [
   {
     kanji: "先生",
     kana: "せんせい",
-    romaji": "sensei",
+    romaji: "sensei",
     meaning: "teacher",
     type: "noun",
     level: "N5"
@@ -781,7 +781,7 @@ const vocabularyData = [
   {
     kanji: "学生",
     kana: "がくせい",
-    romaji": "gakusei",
+    romaji: "gakusei",
     meaning: "student",
     type: "noun",
     level: "N5"
@@ -789,7 +789,7 @@ const vocabularyData = [
   {
     kanji: "会社",
     kana: "かいしゃ",
-    romaji": "kaisha",
+    romaji: "kaisha",
     meaning: "company",
     type: "noun",
     level: "N5"
@@ -797,7 +797,7 @@ const vocabularyData = [
   {
     kanji: "本",
     kana: "ほん",
-    romaji": "hon",
+    romaji: "hon",
     meaning: "book",
     type: "noun",
     level: "N5"
@@ -805,7 +805,7 @@ const vocabularyData = [
   {
     kanji: "新聞",
     kana: "しんぶん",
-    romaji": "shinbun",
+    romaji: "shinbun",
     meaning: "newspaper",
     type: "noun",
     level: "N5"
@@ -813,7 +813,7 @@ const vocabularyData = [
   {
     kanji: "雑誌",
     kana: "ざっし",
-    romaji": "zasshi",
+    romaji: "zasshi",
     meaning: "magazine",
     type: "noun",
     level: "N5"
@@ -821,7 +821,7 @@ const vocabularyData = [
   {
     kanji: "家",
     kana: "いえ",
-    romaji": "ie",
+    romaji: "ie",
     meaning: "house",
     type: "noun",
     level: "N5"
@@ -829,7 +829,7 @@ const vocabularyData = [
   {
     kanji: "部屋",
     kana: "へや",
-    romaji": "heya",
+    romaji: "heya",
     meaning: "room",
     type: "noun",
     level: "N5"
@@ -837,7 +837,7 @@ const vocabularyData = [
   {
     kanji: "トイレ",
     kana: "といれ",
-    romaji": "toire",
+    romaji: "toire",
     meaning: "toilet",
     type: "noun",
     level: "N5"
@@ -845,7 +845,7 @@ const vocabularyData = [
   {
     kanji: "お風呂",
     kana: "おふろ",
-    romaji": "ofuro",
+    romaji: "ofuro",
     meaning: "bath",
     type: "noun",
     level: "N5"
@@ -853,7 +853,7 @@ const vocabularyData = [
   {
     kanji: "公園",
     kana: "こうえん",
-    romaji": "kouen",
+    romaji: "kouen",
     meaning: "park",
     type: "noun",
     level: "N5"
@@ -861,7 +861,7 @@ const vocabularyData = [
   {
     kanji: "店",
     kana: "みせ",
-    romaji": "mise",
+    romaji: "mise",
     meaning: "shop",
     type: "noun",
     level: "N5"
@@ -869,7 +869,7 @@ const vocabularyData = [
   {
     kanji: "病院",
     kana: "びょういん",
-    romaji": "byouin",
+    romaji: "byouin",
     meaning: "hospital",
     type: "noun",
     level: "N5"
@@ -877,7 +877,7 @@ const vocabularyData = [
   {
     kanji: "駅",
     kana: "えき",
-    romaji": "eki",
+    romaji: "eki",
     meaning: "station",
     type: "noun",
     level: "N5"
@@ -885,7 +885,7 @@ const vocabularyData = [
   {
     kanji: "国",
     kana: "くに",
-    romaji": "kuni",
+    romaji: "kuni",
     meaning: "country",
     type: "noun",
     level: "N5"
@@ -893,7 +893,7 @@ const vocabularyData = [
   {
     kanji: "日本",
     kana: "にほん",
-    romaji": "nihon",
+    romaji: "nihon",
     meaning: "Japan",
     type: "noun",
     level: "N5"
@@ -901,7 +901,7 @@ const vocabularyData = [
   {
     kanji: "名前",
     kana: "なまえ",
-    romaji": "namae",
+    romaji: "namae",
     meaning: "name",
     type: "noun",
     level: "N5"
@@ -909,7 +909,7 @@ const vocabularyData = [
   {
     kanji: "時間",
     kana: "じかん",
-    romaji": "jikan",
+    romaji: "jikan",
     meaning: "time",
     type: "noun",
     level: "N5"
@@ -917,7 +917,7 @@ const vocabularyData = [
   {
     kanji: "年",
     kana: "とし",
-    romaji": "toshi",
+    romaji: "toshi",
     meaning: "year",
     type: "noun",
     level: "N5"
@@ -925,7 +925,7 @@ const vocabularyData = [
   {
     kanji: "午前",
     kana: "ごぜん",
-    romaji": "gozen",
+    romaji: "gozen",
     meaning: "AM",
     type: "noun",
     level: "N5"
@@ -933,7 +933,7 @@ const vocabularyData = [
   {
     kanji: "午後",
     kana: "ごご",
-    romaji": "gogo",
+    romaji: "gogo",
     meaning: "PM",
     type: "noun",
     level: "N5"
@@ -941,7 +941,7 @@ const vocabularyData = [
   {
     kanji: "今",
     kana: "いま",
-    romaji": "ima",
+    romaji: "ima",
     meaning: "now",
     type: "noun",
     level: "N5"
@@ -949,7 +949,7 @@ const vocabularyData = [
   {
     kanji: "今日",
     kana: "きょう",
-    romaji": "kyou",
+    romaji: "kyou",
     meaning: "today",
     type: "noun",
     level: "N5"
@@ -957,7 +957,7 @@ const vocabularyData = [
   {
     kanji: "明日",
     kana: "あした",
-    romaji": "ashita",
+    romaji: "ashita",
     meaning: "tomorrow",
     type: "noun",
     level: "N5"
@@ -965,7 +965,7 @@ const vocabularyData = [
   {
     kanji: "昨日",
     kana: "きのう",
-    romaji": "kinou",
+    romaji: "kinou",
     meaning: "yesterday",
     type: "noun",
     level: "N5"
@@ -973,7 +973,7 @@ const vocabularyData = [
   {
     kanji: "朝",
     kana: "あさ",
-    romaji": "asa",
+    romaji: "asa",
     meaning: "morning",
     type: "noun",
     level: "N5"
@@ -981,7 +981,7 @@ const vocabularyData = [
   {
     kanji: "昼",
     kana: "ひる",
-    romaji": "hiru",
+    romaji: "hiru",
     meaning: "noon",
     type: "noun",
     level: "N5"
@@ -989,7 +989,7 @@ const vocabularyData = [
   {
     kanji: "夜",
     kana: "よる",
-    romaji": "yoru",
+    romaji: "yoru",
     meaning: "night",
     type: "noun",
     level: "N5"
@@ -997,7 +997,7 @@ const vocabularyData = [
   {
     kanji: "毎朝",
     kana: "まいあさ",
-    romaji": "maiasa",
+    romaji: "maiasa",
     meaning: "every morning",
     type: "noun",
     level: "N5"
@@ -1005,7 +1005,7 @@ const vocabularyData = [
   {
     kanji: "毎日",
     kana: "まいにち",
-    romaji": "mainichi",
+    romaji: "mainichi",
     meaning: "every day",
     type: "noun",
     level: "N5"
@@ -1013,7 +1013,7 @@ const vocabularyData = [
   {
     kanji: "毎年",
     kana: "まいとし",
-    romaji": "maitoshi",
+    romaji: "maitoshi",
     meaning: "every year",
     type: "noun",
     level: "N5"
@@ -1021,7 +1021,7 @@ const vocabularyData = [
   {
     kanji: "月曜日",
     kana: "げつようび",
-    romaji": "getsuyoubi",
+    romaji: "getsuyoubi",
     meaning: "Monday",
     type: "noun",
     level: "N5"
@@ -1029,7 +1029,7 @@ const vocabularyData = [
   {
     kanji: "火曜日",
     kana: "かようび",
-    romaji": "kayoubi",
+    romaji: "kayoubi",
     meaning: "Tuesday",
     type: "noun",
     level: "N5"
@@ -1037,7 +1037,7 @@ const vocabularyData = [
   {
     kanji: "水曜日",
     kana: "すいようび",
-    romaji": "suiyoubi",
+    romaji: "suiyoubi",
     meaning: "Wednesday",
     type: "noun",
     level: "N5"
@@ -1045,7 +1045,7 @@ const vocabularyData = [
   {
     kanji: "木曜日",
     kana: "もくようび",
-    romaji": "mokuyoubi",
+    romaji: "mokuyoubi",
     meaning: "Thursday",
     type: "noun",
     level: "N5"
@@ -1053,7 +1053,7 @@ const vocabularyData = [
   {
     kanji: "金曜日",
     kana: "きんようび",
-    romaji": "kinyoubi",
+    romaji: "kinyoubi",
     meaning: "Friday",
     type: "noun",
     level: "N5"
@@ -1061,7 +1061,7 @@ const vocabularyData = [
   {
     kanji: "土曜日",
     kana: "どようび",
-    romaji": "doyoubi",
+    romaji: "doyoubi",
     meaning: "Saturday",
     type: "noun",
     level: "N5"
@@ -1069,7 +1069,7 @@ const vocabularyData = [
   {
     kanji: "日曜日",
     kana: "にちようび",
-    romaji": "nichiyoubi",
+    romaji: "nichiyoubi",
     meaning: "Sunday",
     type: "noun",
     level: "N5"
@@ -1077,7 +1077,7 @@ const vocabularyData = [
   {
     kanji: "何曜日",
     kana: "なんようび",
-    romaji": "nanyoubi",
+    romaji: "nanyoubi",
     meaning: "what day of the week",
     type: "noun",
     level: "N5"
@@ -1085,7 +1085,7 @@ const vocabularyData = [
   {
     kanji: "食べ物",
     kana: "たべもの",
-    romaji": "tabemono",
+    romaji: "tabemono",
     meaning: "food",
     type: "noun",
     level: "N5"
@@ -1093,7 +1093,7 @@ const vocabularyData = [
   {
     kanji: "飲み物",
     kana: "のみもの",
-    romaji": "nomimono",
+    romaji: "nomimono",
     meaning: "drink",
     type: "noun",
     level: "N5"
@@ -1101,7 +1101,7 @@ const vocabularyData = [
   {
     kanji: "水",
     kana: "みず",
-    romaji": "mizu",
+    romaji: "mizu",
     meaning: "water",
     type: "noun",
     level: "N5"
@@ -1109,7 +1109,7 @@ const vocabularyData = [
   {
     kanji: "お茶",
     kana: "おちゃ",
-    romaji": "ocha",
+    romaji: "ocha",
     meaning: "tea",
     type: "noun",
     level: "N5"
@@ -1117,7 +1117,7 @@ const vocabularyData = [
   {
     kanji: "牛乳",
     kana: "ぎゅうにゅう",
-    romaji": "gyuunyuu",
+    romaji: "gyuunyuu",
     meaning: "milk",
     type: "noun",
     level: "N5"
@@ -1125,7 +1125,7 @@ const vocabularyData = [
   {
     kanji: "ジュース",
     kana: "じゅーす",
-    romaji": "juusu",
+    romaji: "juusu",
     meaning: "juice",
     type: "noun",
     level: "N5"
@@ -1133,7 +1133,7 @@ const vocabularyData = [
   {
     kanji: "ビール",
     kana: "びーる",
-    romaji": "biiru",
+    romaji: "biiru",
     meaning: "beer",
     type: "noun",
     level: "N5"
@@ -1141,7 +1141,7 @@ const vocabularyData = [
   {
     kanji: "ご飯",
     kana: "ごはん",
-    romaji": "gohan",
+    romaji: "gohan",
     meaning: "rice, meal",
     type: "noun",
     level: "N5"
@@ -1149,7 +1149,7 @@ const vocabularyData = [
   {
     kanji: "朝ご飯",
     kana: "あさごはん",
-    romaji": "asagohan",
+    romaji: "asagohan",
     meaning: "breakfast",
     type: "noun",
     level: "N5"
@@ -1157,7 +1157,7 @@ const vocabularyData = [
   {
     kanji: "昼ご飯",
     kana: "ひるごはん",
-    romaji": "hirugohan",
+    romaji: "hirugohan",
     meaning: "lunch",
     type: "noun",
     level: "N5"
@@ -1165,7 +1165,7 @@ const vocabularyData = [
   {
     kanji: "晩ご飯",
     kana: "ばんごはん",
-    romaji": "bangohan",
+    romaji: "bangohan",
     meaning: "dinner",
     type: "noun",
     level: "N5"
@@ -1173,7 +1173,7 @@ const vocabularyData = [
   {
     kanji: "パン",
     kana: "ぱん",
-    romaji": "pan",
+    romaji: "pan",
     meaning: "bread",
     type: "noun",
     level: "N5"
@@ -1181,7 +1181,7 @@ const vocabularyData = [
   {
     kanji: "野菜",
     kana: "やさい",
-    romaji": "yasai",
+    romaji: "yasai",
     meaning: "vegetable",
     type: "noun",
     level: "N5"
@@ -1189,7 +1189,7 @@ const vocabularyData = [
   {
     kanji: "果物",
     kana: "くだもの",
-    romaji": "kudamono",
+    romaji: "kudamono",
     meaning: "fruit",
     type: "noun",
     level: "N5"
@@ -1197,7 +1197,7 @@ const vocabularyData = [
   {
     kanji: "肉",
     kana: "にく",
-    romaji": "niku",
+    romaji: "niku",
     meaning: "meat",
     type: "noun",
     level: "N5"
@@ -1205,7 +1205,7 @@ const vocabularyData = [
   {
     kanji: "魚",
     kana: "さかな",
-    romaji": "sakana",
+    romaji: "sakana",
     meaning: "fish",
     type: "noun",
     level: "N5"
@@ -1213,7 +1213,7 @@ const vocabularyData = [
   {
     kanji: "卵",
     kana: "たまご",
-    romaji": "tamago",
+    romaji: "tamago",
     meaning: "egg",
     type: "noun",
     level: "N5"
@@ -1223,7 +1223,7 @@ const vocabularyData = [
   {
     kanji: "一つ",
     kana: "ひとつ",
-    romaji": "hitotsu",
+    romaji: "hitotsu",
     meaning: "one (general counter)",
     type: "counter",
     level: "N5"
@@ -1231,7 +1231,7 @@ const vocabularyData = [
   {
     kanji: "二つ",
     kana: "ふたつ",
-    romaji": "futatsu",
+    romaji: "futatsu",
     meaning: "two (general counter)",
     type: "counter",
     level: "N5"
@@ -1239,7 +1239,7 @@ const vocabularyData = [
   {
     kanji: "三つ",
     kana: "みっつ",
-    romaji": "mittsu",
+    romaji: "mittsu",
     meaning: "three (general counter)",
     type: "counter",
     level: "N5"
@@ -1247,7 +1247,7 @@ const vocabularyData = [
   {
     kanji: "四つ",
     kana: "よっつ",
-    romaji": "yottsu",
+    romaji: "yottsu",
     meaning: "four (general counter)",
     type: "counter",
     level: "N5"
@@ -1255,7 +1255,7 @@ const vocabularyData = [
   {
     kanji: "五つ",
     kana: "いつつ",
-    romaji": "itsutsu",
+    romaji: "itsutsu",
     meaning: "five (general counter)",
     type: "counter",
     level: "N5"
@@ -1263,7 +1263,7 @@ const vocabularyData = [
   {
     kanji: "六つ",
     kana: "むっつ",
-    romaji": "muttsu",
+    romaji: "muttsu",
     meaning: "six (general counter)",
     type: "counter",
     level: "N5"
@@ -1271,7 +1271,7 @@ const vocabularyData = [
   {
     kanji: "七つ",
     kana: "ななつ",
-    romaji": "nanatsu",
+    romaji: "nanatsu",
     meaning: "seven (general counter)",
     type: "counter",
     level: "N5"
@@ -1279,7 +1279,7 @@ const vocabularyData = [
   {
     kanji: "八つ",
     kana: "やっつ",
-    romaji": "yattsu",
+    romaji: "yattsu",
     meaning: "eight (general counter)",
     type: "counter",
     level: "N5"
@@ -1287,7 +1287,7 @@ const vocabularyData = [
   {
     kanji: "九つ",
     kana: "ここのつ",
-    romaji": "kokonotsu",
+    romaji: "kokonotsu",
     meaning: "nine (general counter)",
     type: "counter",
     level: "N5"
@@ -1295,7 +1295,7 @@ const vocabularyData = [
   {
     kanji: "十",
     kana: "とお",
-    romaji": "too",
+    romaji: "too",
     meaning: "ten (general counter)",
     type: "counter",
     level: "N5"
@@ -1303,7 +1303,7 @@ const vocabularyData = [
   {
     kanji: "何",
     kana: "なん",
-    romaji": "nan",
+    romaji: "nan",
     meaning: "what, how many (counter)",
     type: "counter",
     level: "N5"
@@ -1311,7 +1311,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "いっぽん",
-    romaji": "ippon",
+    romaji: "ippon",
     meaning: "one (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1319,7 +1319,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "にほん",
-    romaji": "nihon",
+    romaji: "nihon",
     meaning: "two (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1327,7 +1327,7 @@ const vocabularyData = [
   {
     kanji: "三本",
     kana: "さんぼん",
-    romaji": "sanbon",
+    romaji: "sanbon",
     meaning: "three (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1335,7 +1335,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "よんほん",
-    romaji": "yonhon",
+    romaji: "yonhon",
     meaning: "four (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1343,7 +1343,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "ごほん",
-    romaji": "gohon",
+    romaji: "gohon",
     meaning: "five (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1351,7 +1351,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "ろっぽん",
-    romaji": "roppon",
+    romaji: "roppon",
     meaning: "six (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1359,7 +1359,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "ななほん",
-    romaji": "nanahon",
+    romaji: "nanahon",
     meaning: "seven (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1367,7 +1367,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "はちほん",
-    romaji": "hachihon",
+    romaji: "hachihon",
     meaning: "eight (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1375,7 +1375,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "きゅうほん",
-    romaji": "kyuuhon",
+    romaji: "kyuuhon",
     meaning: "nine (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1383,7 +1383,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "じゅっぽん",
-    romaji": "juppon",
+    romaji: "juppon",
     meaning: "ten (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1391,7 +1391,7 @@ const vocabularyData = [
   {
     kanji: "一本",
     kana: "なんぼん",
-    romaji": "nanbon",
+    romaji: "nanbon",
     meaning: "how many (long cylindrical objects)",
     type: "counter",
     level: "N5"
@@ -1399,7 +1399,7 @@ const vocabularyData = [
   {
     kanji: "一枚",
     kana: "いちまい",
-    romaji": "ichimai",
+    romaji: "ichimai",
     meaning: "one (flat objects)",
     type: "counter",
     level: "N5"
@@ -1407,7 +1407,7 @@ const vocabularyData = [
   {
     kanji: "二枚",
     kana: "にまい",
-    romaji": "nimai",
+    romaji: "nimai",
     meaning: "two (flat objects)",
     type: "counter",
     level: "N5"
@@ -1415,7 +1415,7 @@ const vocabularyData = [
   {
     kanji: "三枚",
     kana: "さんまい",
-    romaji": "sanmai",
+    romaji: "sanmai",
     meaning: "three (flat objects)",
     type: "counter",
     level: "N5"
@@ -1423,7 +1423,7 @@ const vocabularyData = [
   {
     kanji: "何枚",
     kana: "なんまい",
-    romaji": "nanmai",
+    romaji: "nanmai",
     meaning: "how many (flat objects)",
     type: "counter",
     level: "N5"
@@ -1431,7 +1431,7 @@ const vocabularyData = [
   {
     kanji: "一人",
     kana: "ひとり",
-    romaji": "hitori",
+    romaji: "hitori",
     meaning: "one person",
     type: "counter",
     level: "N5"
@@ -1439,7 +1439,7 @@ const vocabularyData = [
   {
     kanji: "二人",
     kana: "ふたり",
-    romaji": "futari",
+    romaji: "futari",
     meaning: "two people",
     type: "counter",
     level: "N5"
@@ -1447,7 +1447,7 @@ const vocabularyData = [
   {
     kanji: "三人",
     kana: "さんにん",
-    romaji": "sannin",
+    romaji: "sannin",
     meaning: "three people",
     type: "counter",
     level: "N5"
@@ -1455,7 +1455,7 @@ const vocabularyData = [
   {
     kanji: "四人",
     kana: "よにん",
-    romaji": "yonin",
+    romaji: "yonin",
     meaning: "four people",
     type: "counter",
     level: "N5"
@@ -1463,7 +1463,7 @@ const vocabularyData = [
   {
     kanji: "何人",
     kana: "なんにん",
-    romaji": "nannin",
+    romaji: "nannin",
     meaning: "how many people",
     type: "counter",
     level: "N5"
@@ -1471,7 +1471,7 @@ const vocabularyData = [
   {
     kanji: "一歳",
     kana: "いっさい",
-    romaji": "issai",
+    romaji: "issai",
     meaning: "one year old",
     type: "counter",
     level: "N5"
@@ -1479,7 +1479,7 @@ const vocabularyData = [
   {
     kanji: "二十歳",
     kana: "はたち",
-    romaji": "hatachi",
+    romaji: "hatachi",
     meaning: "twenty years old",
     type: "counter",
     level: "N5"
@@ -1487,7 +1487,7 @@ const vocabularyData = [
   {
     kanji: "何歳",
     kana: "なんさい",
-    romaji": "nansai",
+    romaji: "nansai",
     meaning: "how old",
     type: "counter",
     level: "N5"
@@ -1495,7 +1495,7 @@ const vocabularyData = [
   {
     kanji: "時",
     kana: "じ",
-    romaji": "ji",
+    romaji: "ji",
     meaning: "o'clock",
     type: "counter",
     level: "N5"
@@ -1503,7 +1503,7 @@ const vocabularyData = [
   {
     kanji: "分",
     kana: "ふん",
-    romaji": "fun",
+    romaji: "fun",
     meaning: "minute",
     type: "counter",
     level: "N5"
@@ -1511,7 +1511,7 @@ const vocabularyData = [
   {
     kanji: "半",
     kana: "はん",
-    romaji": "han",
+    romaji: "han",
     meaning: "half",
     type: "counter",
     level: "N5"
@@ -1519,7 +1519,7 @@ const vocabularyData = [
   {
     kanji: "何時",
     kana: "なんじ",
-    romaji": "nanji",
+    romaji: "nanji",
     meaning: "what time",
     type: "counter",
     level: "N5"
@@ -1527,7 +1527,7 @@ const vocabularyData = [
   {
     kanji: "何分",
     kana: "なんふん",
-    romaji": "nanpun",
+    romaji: "nanpun",
     meaning: "how many minutes",
     type: "counter",
     level: "N5"
@@ -1535,7 +1535,7 @@ const vocabularyData = [
   {
     kanji: "日",
     kana: "にち",
-    romaji": "nichi",
+    romaji: "nichi",
     meaning: "day (date)",
     type: "counter",
     level: "N5"
@@ -1543,7 +1543,7 @@ const vocabularyData = [
   {
     kanji: "月",
     kana: "がつ",
-    romaji": "gatsu",
+    romaji: "gatsu",
     meaning: "month",
     type: "counter",
     level: "N5"
@@ -1551,7 +1551,7 @@ const vocabularyData = [
   {
     kanji: "年",
     kana: "ねん",
-    romaji": "nen",
+    romaji: "nen",
     meaning: "year",
     type: "counter",
     level: "N5"

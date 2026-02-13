@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
+  const resetFilterButton = document.getElementById("resetFilter");
   const sidebarFilterButtons = document.querySelectorAll(".sidebar-filter-btn");
   const letterButtons = document.querySelectorAll(".letter-btn");
   const patternButtons = document.querySelectorAll(".pattern-btn");
@@ -585,6 +586,14 @@ document.addEventListener("DOMContentLoaded", () => {
       startTest(level, kind);
       closeSidebar();
     });
+  });
+
+  resetFilterButton.addEventListener("click", () => {
+    selectedLevel = "all";
+    selectedType = "all";
+    category.value = "all";
+    search.value = "";
+    render();
   });
 
   document.addEventListener("keydown", (event) => {

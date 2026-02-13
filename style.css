@@ -534,6 +534,24 @@ input,
   .expanded-card .card-image.expanded img {
     height: 350px; /* Gambar expand lebih tinggi di desktop */
   }
+  
+  .recommendation-item {
+    min-width: 120px; /* Rekomendasi lebih besar di desktop */
+  }
+  
+  .rec-kanji {
+    font-size: 36px;
+  }
+  
+  .rec-kana {
+    font-size: 14px;
+  }
+  
+  .rec-audio-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
 }
 
 

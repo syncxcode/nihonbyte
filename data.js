@@ -796,7 +796,7 @@ const vocabularyData = [
     { kanji: "資格", kana: "しかく", romaji: "shikaku", meaning: "kualifikasi", type: "noun", level: "N5" },
     { kanji: "取る", kana: "とる", romaji: "toru", meaning: "mengambil (kualifikasi)", type: "verb-godan", level: "N5" },
     { kanji: "勉強", kana: "べんきょう", romaji: "benkyou", meaning: "belajar", type: "noun", level: "N5" },
-    { kanji: "がんばる", kana: "がんばる", romaji: "ganbaru", meaning: "berusaha semaksimal mungkin", type: "verb-godan", level: "N5" }
+    { kanji: "がんばる", kana: "がんばる", romaji: "ganbaru", meaning: "berusaha semaksimal mungkin", type: "verb-godan", level: "N5" },
     { kanji: "交通事故", kana: "こうつうじこ", romaji: "koutsuu jiko", meaning: "kecelakaan lalu lintas", type: "noun", level: "N5" },
     { kanji: "怪我", kana: "けが", romaji: "kega", meaning: "luka; cedera", type: "noun", level: "N5" },
     { kanji: "する", kana: "する", romaji: "suru", meaning: "melakukan", type: "verb-irregular", level: "N5" },
@@ -836,7 +836,7 @@ const vocabularyData = [
     { kanji: "傷口", kana: "きずぐち", romaji: "kizuguchi", meaning: "luka", type: "noun", level: "N5" },
     { kanji: "冷やす", kana: "ひやす", romaji: "hiyasu", meaning: "mendinginkan", type: "verb-godan", level: "N5" },
     { kanji: "止血", kana: "しけつ", romaji: "shiketsu", meaning: "menghentikan pendarahan", type: "noun", level: "N5" },
-    { kanji: "三角巾", kana: "さんかくいん", romaji: "sankakuin", meaning: "perban segitiga", type: "noun", level: "N5" }
+    { kanji: "三角巾", kana: "さんかくいん", romaji: "sankakuin", meaning: "perban segitiga", type: "noun", level: "N5" },
     { kanji: "旅行", kana: "りょこう", romaji: "ryokou", meaning: "perjalanan; wisata", type: "noun", level: "N5" },
     { kanji: "どこか", kana: "どこか", romaji: "dokoka", meaning: "suatu tempat", type: "noun", level: "N5" },
     { kanji: "行きたい", kana: "いきたい", romaji: "ikitai", meaning: "ingin pergi", type: "verb-irregular", level: "N5" },

@@ -1,4 +1,4 @@
-const vocabularyData = {
+const vocabularyData = [
     { kanji: "先輩", kana: "せんぱい", romaji: "senpai", meaning: "kakak tingkat; senior", type: "noun", level: "N5" },
     { kanji: "後輩", kana: "こうはい", romaji: "kouhai", meaning: "adik tingkat; junior", type: "noun", level: "N5" },
     { kanji: "知り合い", kana: "しりあい", romaji: "shiriai", meaning: "kenalan", type: "noun", level: "N5" },

@@ -458,12 +458,18 @@ document.addEventListener("DOMContentLoaded", () => {
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
       cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji}`);
+      cardButton.dataset.word = JSON.stringify(word); // Simpan data word
       cardButton.innerHTML = cardImageTemplate(word);
-      cardButton.addEventListener("click", () => openModal(word));
+      cardButton.addEventListener("click", (e) => {
+        if (e.target.closest(".play-audio-btn")) return; // Skip jika klik play
+        const storedWord = JSON.parse(cardButton.dataset.word);
+        openModal(storedWord);
+      });
       cardButton.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          openModal(word);
+          const storedWord = JSON.parse(cardButton.dataset.word);
+          openModal(storedWord);
         }
       });
       fragment.appendChild(cardButton);

@@ -1,14 +1,3 @@
-// app.js (versi diperbaiki)
-// Perbaikan:
-// - Hapus data lama tidak selaras: Misalnya, renderSupportPoster() dan viewMode="support" (tidak ada button di HTML, jadi hapus).
-// - Perbaiki duplikasi event listener (misalnya overlay.addEventListener dua kali).
-// - Pastikan selaras dengan HTML/CSS: Gunakan class seperti .letter-poster, .pattern-card, .test-board.
-// - Di startTest, untuk "kanji" gunakan vocabularyData; untuk "bunpou" gunakan patternData.
-// - Tambah error handling jika data kosong.
-// - Perbaiki closeSidebar() dan hamburger toggle.
-// - Di render, pastikan jika viewMode bukan vocab, clear grid dengan benar.
-// - Hapus truncated code dan lengkapi fungsi yang hilang (asumsi dari konteks; saya lengkapi berdasarkan logic).
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("grid");
@@ -18,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
-  const randomWordButton = document.getElementById("randomWord");
-  const menuButtons = document.querySelectorAll(".menu-btn[data-action]");
   const sidebarFilterButtons = document.querySelectorAll(".sidebar-filter-btn");
   const letterButtons = document.querySelectorAll(".letter-btn");
   const patternButtons = document.querySelectorAll(".pattern-btn");
@@ -489,14 +476,6 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", render);
   search.addEventListener("input", render);
 
-  function pickRandomWord() {
-    if (viewMode.startsWith("letters:")) return;
-    const source = getFilteredWords();
-    if (!source.length) return;
-    const selected = source[Math.floor(Math.random() * source.length)];
-    openModal(selected);
-  }
-
   category.addEventListener("change", () => {
     viewMode = "vocab";
     selectedType = "all";
@@ -514,7 +493,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   overlay.addEventListener("click", closeSidebar);
-  randomWordButton.addEventListener("click", pickRandomWord);
   modalBackdrop.addEventListener("click", closeModal);
   modalClose.addEventListener("click", closeModal);
 
@@ -605,31 +583,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       startTest(level, kind);
-      closeSidebar();
-    });
-  });
-
-  menuButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const action = button.dataset.action;
-      if (action === "random") pickRandomWord();
-
-      if (action === "reset") {
-        viewMode = "vocab";
-        selectedLevel = "all";
-        selectedType = "all";
-        category.value = "all";
-        search.value = "";
-      }
-
-      if (action === "all") {
-        viewMode = "vocab";
-        selectedLevel = "all";
-        selectedType = "all";
-        category.value = "all";
-      }
-
-      render();
       closeSidebar();
     });
   });

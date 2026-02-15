@@ -729,49 +729,28 @@ input,
   background: #f3f4f6;
 }
 
-/* Grid - tepat 2 card lebar ke samping di desktop, 1 di mobile */
-.expression-wide-grid {
-  display: grid;
-  grid-template-columns: 1fr;                     /* mobile: 1 card full lebar */
-  gap: 2.5rem;
-  padding: 2rem 1.5rem 4rem;
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .expression-wide-grid {
-    grid-template-columns: repeat(2, 1fr);        /* desktop: tepat 2 card lebar berdampingan */
-    gap: 3rem 5rem;                               /* jarak lebar agar terlihat luas */
-  }
-}
-
-/* Card lebar ke samping (horizontal) */
 .expression-wide-card {
-  background: #fdf4f4;                           
+  background: #fdf4f4;
   border-radius: 24px;
   box-shadow: 0 12px 35px rgba(0,0,0,0.55);
-  height: 175px;                                  
-  padding: 0rem 18rem;                             
+
+  height: 200px;
+  padding: 30px 40px; /* HAPUS 18rem kalau masih ada */
+
   position: relative;
-  cursor: pointer;
-  transition: all 0.35s ease;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+
   text-align: center;
   overflow: hidden;
-}
-
-.expression-wide-card:hover {
-  transform: translateY(-15px) scale(1.04);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+  box-sizing: border-box;
 }
 
 /* =========================
-   PAKSA TEKS HORIZONTAL
+   PAKSA TEKS NORMAL
 ========================= */
 
 .wide-kanji,
@@ -780,40 +759,40 @@ input,
 .wide-meaning {
   writing-mode: horizontal-tb !important;
   text-orientation: mixed !important;
+  white-space: nowrap;        /* biar gak turun satu-satu */
+  word-break: keep-all;
 
   display: block;
+  width: 100%;
   color: #222;
 }
 
-
-/* TEXT SIZE */
-
 .wide-kanji {
-  font-size: 3rem;
+  font-size: 2.8rem;
   font-weight: bold;
   margin-bottom: 6px;
 }
 
 .wide-kana {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 4px;
 }
 
 .wide-romaji {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-style: italic;
   margin-bottom: 6px;
   color: #444;
 }
 
 .wide-meaning {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #333;
+  margin-bottom: 0; /* karena tombol absolute */
 }
 
-
 /* =========================
-   PLAY BUTTON POJOK KANAN BAWAH
+   PLAY BUTTON KANAN BAWAH
 ========================= */
 
 .wide-play-btn {
@@ -821,22 +800,22 @@ input,
   bottom: 20px;
   right: 20px;
 
-  background: #e51f1f;
-  border: none;
-  color: white;
-
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  border: none;
 
-  font-size: 1.5rem;
+  background: #e51f1f;
+  color: white;
+  font-size: 1.4rem;
   cursor: pointer;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .wide-play-btn:hover {
   transform: scale(1.15);
   background: #c81b1b;
 }
+

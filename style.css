@@ -134,7 +134,7 @@ input,
   justify-items: center;
   gap: 6px;
   padding: 0.85rem;
-  background: linear-gradient(to top, rgba(6, 10, 20, 0.85), rgba(6, 10, 20, 0.45));
+  background: linear-gradient(to top, rgba(6, 10, 20, 0.76), rgba(6, 10, 20, 0.36));
   color: #fff;
 }
 
@@ -153,7 +153,7 @@ input,
 .card-overlay > * {
   position: relative;
   z-index: 1;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 .card-image img {
@@ -178,10 +178,10 @@ input,
 .play-audio-btn:hover {
   background: #ffffff;
 }
-.kana { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; text-align: center; }
-.kanji { font-size: 36px; line-height: 1.2; font-weight: 800; text-align: center; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.romaji { font-size: 16px; opacity: 0.9; font-style: italic; text-align: center; color: #a9a9a9; }
-.meaning { font-size: 13px; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+.kana { font-size: 16px; font-weight: 500; }
+.kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
+.romaji { font-size: 14px; opacity: 0.95; }
+.meaning { font-size: 15px; font-weight: 700; }
 
 
 .letter-poster {
@@ -645,7 +645,13 @@ input,
 }
 
 /* Ukuran default untuk card normal */
-.kana { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; text-align: center; }
-.kanji { font-size: 36px; line-height: 1.2; font-weight: 800; text-align: center; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.romaji { font-size: 16px; opacity: 0.9; font-style: italic; text-align: center; color: #a9a9a9; }
-.meaning { font-size: 13px
+.kana { font-size: 16px; font-weight: 500; }
+.kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
+.romaji { font-size: 14px; opacity: 0.95; }
+.meaning { font-size: 15px; font-weight: 700; }
+
+/* Ukuran lebih besar untuk expanded card */
+.expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } /* Lebih besar, responsif */
+.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
+.expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
+.expanded-card .meaning { font-size: clamp(18px, 4vw, 22px); }

@@ -729,28 +729,16 @@ input,
   background: #f3f4f6;
 }
 
-/* =========================
-   FIX TOTAL: POSTER CARD
-========================= */
+/* =================================l=========
+   FINAL RENDER: JAPANESE EXPRESSION POSTER
+============================================= */
 
-/* 1. Paksa Grid utama agar membolehkan poster melebar */
-#grid {
-  display: grid !important;
-  /* Biarkan baris poster mengambil 100% lebar tanpa terpotong kolom 170px */
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
-}
-
-/* =========================
-   CONTAINER POSTER (2 KOLOM)
-========================= */
 .expression-wide-grid {
-  /* Keluar dari jebakan kolom 170px */
-  grid-column: 1 / -1 !important; 
-  
+  grid-column: 1 / -1 !important;
   display: grid !important;
-  /* Pakai minmax: minimal 400px, maksimal bagi rata 2 kolom */
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; 
-  gap: 30px !important;
+  /* Membagi 2 kolom sama rata */
+  grid-template-columns: 1fr 1fr !important; 
+  gap: 25px !important;
   
   width: 100% !important;
   max-width: 1200px !important;
@@ -759,48 +747,50 @@ input,
   box-sizing: border-box !important;
 }
 
-/* =========================
-   KARTU POSTER (PAS DI TENGAH)
-========================= */
 .expression-wide-card {
   background: #fdf4f4 !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
-  min-height: 240px !important;
-  padding: 30px 40px !important;
+  min-height: 220px !important;
+  padding: 30px !important;
   
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
-  
   position: relative !important;
 }
 
-/* =========================
-   TEXT (AGAR SATU BARIS)
-========================= */
 .wide-kanji {
-  font-size: 2.6rem !important; /* Ukuran font pas */
+  font-size: 2.5rem !important;
   font-weight: bold !important;
+  color: #222 !important;
   margin-bottom: 8px !important;
-  
-  /* Biar teks lebar ke samping dan tidak patah */
   width: 100% !important;
-  white-space: normal !important;
-  word-break: keep-all !important; 
-  line-height: 1.3 !important;
+  word-break: keep-all !important;
+  line-height: 1.2 !important;
 }
 
-.wide-kana, .wide-romaji, .wide-meaning {
-  display: block !important;
-  width: 100% !important;
+.wide-kana {
+  font-size: 1.5rem !important;
+  color: #444 !important;
   margin-bottom: 4px !important;
 }
 
-/* Tombol Play */
+.wide-romaji {
+  font-size: 1.1rem !important;
+  color: #666 !important;
+  font-style: italic !important;
+}
+
+.wide-meaning {
+  font-size: 1.2rem !important;
+  color: #333 !important;
+  margin-top: 10px !important;
+}
+
 .wide-play-btn {
   position: absolute !important;
   bottom: 20px !important;
@@ -811,11 +801,17 @@ input,
   background: #e51f1f !important;
   color: white !important;
   border: none !important;
+  cursor: pointer !important;
+  transition: transform 0.2s !important;
 }
 
-/* Responsif HP */
+.wide-play-btn:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Responsif untuk Layar Kecil / HP */
 @media (max-width: 900px) {
   .expression-wide-grid {
-    grid-template-columns: 1fr !important; /* Jadi 1 kolom di HP */
+    grid-template-columns: 1fr !important;
   }
 }

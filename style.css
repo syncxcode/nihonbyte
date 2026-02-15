@@ -729,67 +729,70 @@ input,
   background: #f3f4f6;
 }
 
-/* Grid untuk ungkapan umum - 2 kolom di desktop, 1 kolom di mobile */
+/* Grid untuk ungkapan umum - 2 kolom lebar di desktop, 1 kolom di mobile */
 .expression-rect-grid {
   display: grid;
-  grid-template-columns: 1fr;                     /* mobile: 1 kolom */
-  gap: 1.5rem;
+  grid-template-columns: 1fr;                     /* mobile: 1 kolom full width */
+  gap: 1.8rem;
   padding: 1.5rem 1rem 3rem;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
   .expression-rect-grid {
-    grid-template-columns: repeat(2, 1fr);        /* desktop: 2 kolom lebar */
-    gap: 2rem 1.5rem;
+    grid-template-columns: repeat(2, 1fr);        /* desktop: 2 kolom lebar berdampingan */
+    gap: 2.5rem 2rem;                             /* jarak lebih lebar antar card */
   }
 }
 
-/* Card persegi panjang lebar ke samping */
+/* Card lebar ke samping (horizontal) */
 .expression-rect-card {
   background: #e51f1f;                           /* merah solid */
-  border-radius: 18px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
-  height: 180px;                                  /* tinggi tetap rendah */
-  padding: 1.8rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  height: 160px;                                  /* tinggi rendah agar lebar mendominasi */
+  padding: 2rem 3rem;                             /* padding lebar agar isi tidak terlalu padat */
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   color: white;
   text-align: center;
   overflow: hidden;
 }
 
 .expression-rect-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
-/* Teks */
+/* Teks - ukuran lebih besar agar terlihat jelas di card lebar */
 .rect-kanji {
-  font-size: 2.6rem;
+  font-size: 3.2rem;
   font-weight: bold;
   line-height: 1.1;
+  margin-bottom: 0.5rem;
 }
 
 .rect-kana {
-  font-size: 1.9rem;
-  margin: 0.5rem 0;
+  font-size: 2.4rem;
+  margin: 0.6rem 0;
 }
 
 .rect-romaji {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-style: italic;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .rect-meaning {
-  font-size: 1.4rem;
-  line-height: 1.35;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
 }
 
 /* Play button di bawah arti, tengah card */
@@ -797,17 +800,16 @@ input,
   background: #111;
   border: none;
   color: white;
-  width: 68px;
-  height: 68px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   font-size: 2.2rem;
   cursor: pointer;
-  margin: 0 auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
   transition: all 0.25s;
 }
 
 .rect-play-btn:hover {
   background: #000;
-  transform: scale(1.15);
+  transform: scale(1.18);
 }

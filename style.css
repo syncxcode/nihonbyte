@@ -729,100 +729,95 @@ input,
   background: #f3f4f6;
 }
 
-.expression-poster-container {
+.expression-poster-grid {
   display: grid;
-  grid-template-columns: 1fr;           /* mobile: 1 card per baris */
+  grid-template-columns: 1fr;               /* mobile: 1 kolom */
   gap: 1rem;
-  padding: 1rem 0.5rem 2rem;
-  max-width: 1000px;
+  padding: 1rem 0.6rem 2.5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 @media (min-width: 768px) {
-  .expression-poster-container {
-    grid-template-columns: repeat(2, 1fr);   /* desktop: 2 card horizontal */
+  .expression-poster-grid {
+    grid-template-columns: repeat(2, 1fr);  /* desktop: 2 kolom */
   }
 }
 
-.expression-card.horizontal {
-  background: linear-gradient(135deg, rgba(30,40,70,0.9), rgba(20,30,60,0.9));
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  transition: all 0.3s ease;
+.expression-card {
+  background: rgba(20, 30, 60, 0.92);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  transition: all 0.28s ease;
   cursor: pointer;
-  height: 140px;                    /* tinggi tetap, lebar yang menyesuaikan */
+  height: 110px;                            /* tinggi tetap rendah */
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
-  border: 1px solid rgba(100,160,255,0.3);
+  padding: 0 1.4rem;
+  border: 1px solid rgba(90, 140, 255, 0.3);
   position: relative;
   overflow: hidden;
 }
 
-.expression-card.horizontal:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
-  border-color: #60a0ff;
+.expression-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+  border-color: rgba(100, 160, 255, 0.7);
 }
 
-.expression-left {
-  flex: 0 0 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  padding-right: 1rem;
-  border-right: 1px solid rgba(255,255,255,0.12);
-}
-
-.expression-kanji {
-  font-size: 1.9rem;
+.expression-card .expression-kanji {
+  font-size: 1.85rem;
   font-weight: 700;
-  color: #d0e8ff;
-  line-height: 1;
+  color: #c3e0ff;
+  min-width: 120px;
+  text-align: center;
 }
 
-.expression-kana {
-  font-size: 1.35rem;
-  color: #e0e8ff;
+.expression-card .expression-kana {
+  font-size: 1.3rem;
+  color: #e8f0ff;
+  min-width: 140px;
+  text-align: center;
 }
 
-.expression-romaji {
+.expression-card .expression-romaji {
   font-size: 1rem;
-  color: #a8b8d0;
+  color: #b0c0d8;
   font-style: italic;
+  min-width: 120px;
+  text-align: center;
 }
 
-.expression-right {
+.expression-card .expression-separator {
+  color: rgba(255,255,255,0.3);
+  font-size: 1.8rem;
+  margin: 0 0.8rem;
+  user-select: none;
+}
+
+.expression-card .expression-meaning {
   flex: 1;
-  padding-left: 1.2rem;
-  display: flex;
-  align-items: center;
-}
-
-.expression-meaning {
-  font-size: 1.25rem;
-  color: #fffacd;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: 1.18rem;
+  color: #ffeba0;
+  line-height: 1.35;
+  padding-left: 0.8rem;
 }
 
 .expression-card .play-audio-btn {
-  position: absolute;
-  right: 1.2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(80,140,255,0.8);
+  background: rgba(60, 120, 255, 0.8);
   border: none;
   color: white;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: all 0.22s;
+  margin-left: 1rem;
+  flex-shrink: 0;
 }
 
 .expression-card .play-audio-btn:hover {
-  background: rgba(100,160,255,1);
-  transform: translateY(-50%) scale(1.15);
+  background: rgba(80, 140, 255, 1);
+  transform: scale(1.12);
 }

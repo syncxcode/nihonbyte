@@ -659,6 +659,6 @@ input,
 /* Perbesar ukuran title image */
 #titleImage {
   max-height: 4.0rem; /* Diperbesar 2x dari 1.2rem sebelumnya */
-  width: 250px; /* Tambah lebar tetap (ubah ke 200px/300px kalau mau lebih/kurang) */
+  width: 200px; /* Tambah lebar tetap (ubah ke 200px/300px kalau mau lebih/kurang) */
   height: auto; /* Tinggi auto biar proporsional */
 }

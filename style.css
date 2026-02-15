@@ -730,95 +730,124 @@ input,
 }
 
 /* =========================
-   1. GRID (BIAR KARTU GAK NEMPEL KIRI LAYAR)
+   GRID LANDSCAPE 2 KOLOM
 ========================= */
-/* =========================
-   FIX PARENT GRID
-========================= */
-#grid {
-  padding: 1rem;
-  display: grid;
-  /* Kolom default untuk vocab (tetap biarkan) */
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
-  gap: 1rem;
-}
 
-/* =========================
-   KUNCI UTAMA: POSTER GRID
-========================= */
 .expression-wide-grid {
-  /* Paksa container ini mengambil seluruh lebar layar (breakout dari 170px) */
-  grid-column: 1 / -1 !important; 
-  
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
-  gap: 40px !important;
-  
-  width: 100% !important;
-  max-width: 1100px !important; /* Batasi lebar agar cantik */
-  margin: 40px auto !important;  /* PUSATKAN GRID DI TENGAH HALAMAN */
-  padding: 0 20px !important;
-  box-sizing: border-box !important;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+
+  width: 100%;
+  max-width: 1400px;
+  margin: 80px auto;
+  padding: 0 80px;
+
+  box-sizing: border-box;
 }
 
+
 /* =========================
-   CARD STYLE (Pasti Tengah)
+   CARD LANDSCAPE STYLE
 ========================= */
+
 .expression-wide-card {
-  background: #fdf4f4 !important;
-  border-radius: 24px !important;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
-  
-  min-height: 220px !important;
-  padding: 30px !important;
-  
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important; /* Tengah Vertikal */
-  align-items: center !important;     /* Tengah Horizontal */
-  text-align: center !important;
-  
-  position: relative !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 60px;
+
+  background: #fdf4f4;
+  border-radius: 28px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  position: relative;
+
+  box-sizing: border-box;
 }
 
+
 /* =========================
-   TEXT FIX (Anti Vertikal)
+   TEXT — PAKSA HORIZONTAL
 ========================= */
-.wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
-  writing-mode: horizontal-tb !important; /* Paksa horizontal */
-  display: block !important;
-  width: 100% !important;
-  margin: 0 auto !important;
+
+.wide-kanji,
+.wide-kana,
+.wide-romaji,
+.wide-meaning {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+
+  white-space: nowrap;
+  word-break: keep-all;
+
+  width: 100%;
+  display: block;
 }
 
 .wide-kanji {
-  font-size: 3rem !important;
-  font-weight: bold !important;
-  margin-bottom: 10px !important;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
-.wide-kana { font-size: 1.6rem !important; margin-bottom: 5px !important; }
-.wide-romaji { font-size: 1.1rem !important; color: #555 !important; font-style: italic !important; }
-.wide-meaning { font-size: 1.2rem !important; margin-top: 5px !important; }
+.wide-kana {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
 
-/* Tombol Play */
+.wide-romaji {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.wide-meaning {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+
+/* =========================
+   PLAY BUTTON — KANAN BAWAH
+========================= */
+
 .wide-play-btn {
-  position: absolute !important;
-  bottom: 20px !important;
-  right: 20px !important;
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50% !important;
-  background: #e51f1f !important;
-  color: white !important;
-  border: none !important;
-  cursor: pointer !important;
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+
+  background: #e51f1f;
+  color: white;
+  font-size: 1.4rem;
+
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
 }
 
-/* Responsif HP */
-@media (max-width: 850px) {
+.wide-play-btn:hover {
+  transform: scale(1.15);
+}
+
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 1000px) {
   .expression-wide-grid {
-    grid-template-columns: 1fr !important; /* Jadi 1 kolom di HP */
+    grid-template-columns: 1fr;
+    padding: 0 30px;
   }
 }

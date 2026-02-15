@@ -729,53 +729,48 @@ input,
   background: #f3f4f6;
 }
 
-/* =================================l=========
-   FINAL RENDER: JAPANESE EXPRESSION POSTER
-============================================= */
-#grid {
-  display: grid !important;
-  /* Biarkan baris poster mengambil 100% lebar tanpa terpotong kolom 170px */
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
-}
-
+/* =========================
+   FIX ANTI OFFSIDE
+========================= */
 .expression-wide-grid {
-  grid-column: 1 / -1 !important;
+  grid-column: 1 / -1 !important; 
   display: grid !important;
-  /* Membagi 2 kolom sama rata */
-  grid-template-columns: 1fr 1fr !important; 
-  gap: 25px !important;
+  
+  /* Gunakan minmax 350px agar kartu fleksibel tapi gak maksa lebar */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important; 
+  gap: 20px !important;
   
   width: 100% !important;
-  max-width: 1200px !important;
+  max-width: 1000px !important; /* Kita kecilkan sedikit max-width-nya agar tidak offside */
   margin: 40px auto !important;
   padding: 0 20px !important;
-  box-sizing: border-box !important;
+  box-sizing: border-box !important; /* PENTING: Agar padding tidak nambah lebar */
 }
 
 .expression-wide-card {
   background: #fdf4f4 !important;
   border-radius: 24px !important;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
   
-  min-height: 220px !important;
-  padding: 30px !important;
+  min-height: 200px !important;
+  width: 100% !important; /* Mengikuti lebar grid */
+  padding: 25px !important;
   
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  text-align: center !important;
   position: relative !important;
+  box-sizing: border-box !important;
 }
 
 .wide-kanji {
-  font-size: 2.5rem !important;
+  font-size: 2.2rem !important; /* Ukuran yang lebih aman untuk layar tanggung */
   font-weight: bold !important;
-  color: #222 !important;
-  margin-bottom: 8px !important;
+  text-align: center !important;
   width: 100% !important;
   word-break: keep-all !important;
-  line-height: 1.2 !important;
+  line-height: 1.3 !important;
 }
 
 .wide-kana {

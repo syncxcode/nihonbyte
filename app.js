@@ -170,9 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // ────────────────────────────────────────────────
-  // POSTER UNGKAPAN UMUM – PERSEGI PANJANG, 2 KOLOM, BORDER JELAS
-  // ────────────────────────────────────────────────
+  // ================================================
+  // FITUR BARU: Poster Ungkapan Umum (Persegi Panjang)
+  // ================================================
   function renderExpressionPoster() {
     grid.innerHTML = "";
 
@@ -183,13 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (!expressions.length) {
-      grid.innerHTML = '<div class="empty-state">Tidak ada ungkapan umum untuk ditampilkan.</div>';
+      grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
       resultInfo.textContent = "0 ungkapan ditemukan";
       return;
     }
 
     const container = document.createElement("div");
-    container.className = "expression-grid-container";
+    container.className = "expression-rect-grid";
 
     expressions.forEach((word) => {
       const card = document.createElement("div");
@@ -205,13 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const displayText = word.kana || word.kanji || "—";
-
       card.innerHTML = `
-        <div class="rect-content">
-          <div class="rect-text">${displayText}</div>
-          <button class="rect-play-btn" type="button" data-text="${displayText}" aria-label="Putar">▶</button>
+        <div class="rect-top">
+          <div class="rect-kanji">${word.kanji || "—"}</div>
+          <div class="rect-kana">${word.kana || "—"}</div>
+          <div class="rect-romaji">${word.romaji || ""}</div>
         </div>
+        <div class="rect-meaning">${word.meaning || "—"}</div>
+        <button class="rect-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
       `;
 
       card.addEventListener("click", (e) => {
@@ -219,9 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
           const storedWord = JSON.parse(card.dataset.word);
           openModal(storedWord);
-        } catch (err) {
-          console.error("Gagal buka modal ungkapan:", err);
-        }
+        } catch (err) {}
       });
 
       card.querySelector(".rect-play-btn").addEventListener("click", (e) => {
@@ -242,9 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     grid.appendChild(container);
-
-    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
-    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${levelText}`;
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
   }
 
   function shuffle(array) {
@@ -509,6 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
+    // === FITUR BARU: Deteksi Ungkapan Umum ===
     const isExpressionView = 
       viewMode === "vocab" && 
       (category.value === "ekspresi" || 
@@ -619,6 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       event.stopPropagation();
       speakWord(audioButton.dataset.text || "");
+      return;
     }
   });
 

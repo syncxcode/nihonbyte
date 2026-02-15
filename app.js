@@ -170,6 +170,81 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  // ────────────────────────────────────────────────
+  // Fungsi BARU: Poster khusus untuk ungkapan umum (expression)
+  // ────────────────────────────────────────────────
+  function renderExpressionPoster() {
+    grid.innerHTML = "";
+
+    // Ambil semua expression (bisa ditambah filter level jika diinginkan)
+    const expressions = vocabularyData.filter(w => 
+      w.type === "expression" || 
+      w.type === "ekspresi" || 
+      w.type === "ungkapan"
+    );
+
+    if (!expressions.length) {
+      grid.innerHTML = '<div class="empty-state">Tidak ada ungkapan umum untuk ditampilkan.</div>';
+      resultInfo.textContent = "0 ungkapan ditemukan";
+      return;
+    }
+
+    const container = document.createElement("div");
+    container.className = "expression-poster-grid";
+
+    expressions.forEach((word) => {
+      const card = document.createElement("article");
+      card.className = "expression-card";
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", `Detail ungkapan ${word.kanji || word.kana}`);
+
+      try {
+        card.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal stringify expression:", word);
+        return;
+      }
+
+      card.innerHTML = `
+        <div class="expression-content">
+          <div class="expression-kanji">${word.kanji || "—"}</div>
+          <div class="expression-kana">${word.kana || "—"}</div>
+          <div class="expression-romaji">${word.romaji || ""}</div>
+          <div class="expression-meaning">${word.meaning || "—"}</div>
+          <button class="play-audio-btn expression-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar audio ungkapan">▶</button>
+        </div>
+      `;
+
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".play-audio-btn")) return;
+        try {
+          const storedWord = JSON.parse(card.dataset.word);
+          openModal(storedWord);
+        } catch (err) {
+          console.error("Gagal parse expression card:", err);
+        }
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          try {
+            const storedWord = JSON.parse(card.dataset.word);
+            openModal(storedWord);
+          } catch (err) {}
+        }
+      });
+
+      container.appendChild(card);
+    });
+
+    grid.appendChild(container);
+
+    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${levelText}`;
+  }
+
   function shuffle(array) {
     if (!Array.isArray(array)) return [];
     const copy = [...array];
@@ -432,6 +507,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
+    // Cek apakah sedang menampilkan mode ungkapan umum
+    const isExpressionMode = 
+      viewMode === "vocab" && 
+      (category.value === "ekspresi" || 
+       selectedType === "ekspresi" || 
+       selectedType === "expression" || 
+       selectedType === "ungkapan");
+
+    if (isExpressionMode) {
+      renderExpressionPoster();
+      return;
+    }
+
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
@@ -525,19 +613,11 @@ document.addEventListener("DOMContentLoaded", () => {
   modalClose.addEventListener("click", closeModal);
 
   grid.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn");
+    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .expression-play-btn");
     if (audioButton) {
       event.preventDefault();
       event.stopPropagation();
       speakWord(audioButton.dataset.text || "");
-      return;
-    }
-
-    const patternAudioButton = event.target.closest(".pattern-audio-btn");
-    if (patternAudioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(patternAudioButton.dataset.text || "");
     }
   });
 

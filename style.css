@@ -728,3 +728,92 @@ input,
 .dropdown-menu button:hover {
   background: #f3f4f6;
 }
+
+.expression-poster-grid {
+  display: grid;
+  grid-template-columns: 1fr;               /* mobile: 1 kolom */
+  gap: 1.25rem;
+  padding: 1rem 0.8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .expression-poster-grid {
+    grid-template-columns: repeat(2, 1fr);  /* desktop: 2 kolom */
+  }
+}
+
+.expression-card {
+  background: rgba(25, 35, 65, 0.88);
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.45);
+  transition: all 0.28s ease;
+  cursor: pointer;
+  min-height: 130px;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(90, 140, 255, 0.25);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.expression-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.55);
+  border-color: rgba(100, 160, 255, 0.6);
+}
+
+.expression-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.expression-kanji {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b3e0ff;
+  line-height: 1.1;
+}
+
+.expression-kana {
+  font-size: 1.45rem;
+  color: #f0f4ff;
+}
+
+.expression-romaji {
+  font-size: 1.1rem;
+  color: #c0c8d8;
+  font-style: italic;
+}
+
+.expression-meaning {
+  font-size: 1.25rem;
+  color: #ffeb99;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.expression-play-btn {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(50, 110, 255, 0.75);
+  border: none;
+  color: white;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+
+.expression-play-btn:hover {
+  background: rgba(70, 130, 255, 0.95);
+  transform: translateY(-50%) scale(1.12);
+}

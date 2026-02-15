@@ -732,6 +732,11 @@ input,
 /* =================================l=========
    FINAL RENDER: JAPANESE EXPRESSION POSTER
 ============================================= */
+#grid {
+  display: grid !important;
+  /* Biarkan baris poster mengambil 100% lebar tanpa terpotong kolom 170px */
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
+}
 
 .expression-wide-grid {
   grid-column: 1 / -1 !important;

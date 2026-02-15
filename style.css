@@ -658,7 +658,6 @@ input,
 
 /* Perbesar ukuran title image */
 #titleImage {
-  max-height: 4.4rem; /* Diperbesar 2x dari 1.2rem sebelumnya */
-  width: 10rem;
-  object-fit: contain;
+  max-height: 4.0rem; /* Diperbesar 2x dari 1.2rem sebelumnya */
+  max-width: 90vm;
 }

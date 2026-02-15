@@ -729,8 +729,8 @@ input,
   background: #f3f4f6;
 }
 
-/* Grid untuk 2 card lebar ke samping di desktop, 1 card full width di mobile */
-.expression-rect-grid {
+/* Grid - tepat 2 card lebar ke samping di desktop, 1 di mobile */
+.expression-wide-grid {
   display: grid;
   grid-template-columns: 1fr;                     /* mobile: 1 card full lebar */
   gap: 2.5rem;
@@ -740,19 +740,19 @@ input,
 }
 
 @media (min-width: 768px) {
-  .expression-rect-grid {
+  .expression-wide-grid {
     grid-template-columns: repeat(2, 1fr);        /* desktop: tepat 2 card lebar berdampingan */
-    gap: 3rem 4rem;                               /* jarak lebar agar terlihat luas */
+    gap: 3rem 5rem;                               /* jarak lebar agar terlihat luas */
   }
 }
 
-/* Card lebar ke samping (horizontal/landscape) */
-.expression-rect-card {
+/* Card lebar ke samping (horizontal) */
+.expression-wide-card {
   background: #e51f1f;                           /* merah solid */
   border-radius: 24px;
   box-shadow: 0 12px 35px rgba(0,0,0,0.55);
   height: 220px;                                  /* tinggi rendah agar lebar mendominasi */
-  padding: 3rem 5rem;                             /* padding super lebar agar isi longgar */
+  padding: 3rem 6rem;                             /* padding super lebar agar isi longgar */
   position: relative;
   cursor: pointer;
   transition: all 0.35s ease;
@@ -765,38 +765,38 @@ input,
   overflow: hidden;
 }
 
-.expression-rect-card:hover {
+.expression-wide-card:hover {
   transform: translateY(-15px) scale(1.04);
   box-shadow: 0 25px 60px rgba(0,0,0,0.7);
 }
 
-/* Teks besar dan center untuk card lebar */
-.rect-kanji {
+/* Teks besar dan center */
+.wide-kanji {
   font-size: 5rem;
   font-weight: bold;
   line-height: 1;
   margin-bottom: 1rem;
 }
 
-.rect-kana {
+.wide-kana {
   font-size: 3.5rem;
   margin-bottom: 1rem;
 }
 
-.rect-romaji {
+.wide-romaji {
   font-size: 2.5rem;
   font-style: italic;
   margin-bottom: 1.5rem;
 }
 
-.rect-meaning {
+.wide-meaning {
   font-size: 2.5rem;
   line-height: 1.3;
   margin-bottom: 2rem;
 }
 
 /* Play button di bawah arti, tengah card */
-.rect-play-btn {
+.wide-play-btn {
   background: #000;
   border: none;
   color: white;
@@ -809,7 +809,7 @@ input,
   transition: all 0.3s;
 }
 
-.rect-play-btn:hover {
+.wide-play-btn:hover {
   background: #222;
   transform: scale(1.2);
 }

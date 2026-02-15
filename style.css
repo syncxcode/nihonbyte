@@ -729,36 +729,36 @@ input,
   background: #f3f4f6;
 }
 
-/* =========================
-   GRID LANDSCAPE 2 KOLOM
-========================= */
+/* ===============================
+   GRID CONTAINER (STABIL & CENTER)
+================================= */
 
 .expression-wide-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
+  gap: 40px;
 
   width: 100%;
-  max-width: 1400px;
-  margin: 80px auto;
-  padding: 0 80px;
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 30px;
 
   box-sizing: border-box;
 }
 
 
-/* =========================
-   CARD LANDSCAPE STYLE
-========================= */
+/* ===============================
+   LANDSCAPE CARD
+================================= */
 
 .expression-wide-card {
   width: 100%;
-  min-height: 200px;
-  padding: 40px 60px;
+  min-height: 180px;
+  padding: 30px 35px;
 
   background: #fdf4f4;
-  border-radius: 28px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 
   display: flex;
   flex-direction: column;
@@ -772,9 +772,9 @@ input,
 }
 
 
-/* =========================
-   TEXT — PAKSA HORIZONTAL
-========================= */
+/* ===============================
+   TEXT NORMAL (ANTI VERTICAL)
+================================= */
 
 .wide-kanji,
 .wide-kana,
@@ -786,24 +786,24 @@ input,
   white-space: nowrap;
   word-break: keep-all;
 
-  width: 100%;
   display: block;
+  width: 100%;
 }
 
 .wide-kanji {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
 .wide-kana {
-  font-size: 1.6rem;
-  margin-bottom: 6px;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
 }
 
 .wide-romaji {
   font-size: 1.1rem;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: #555;
 }
 
@@ -813,41 +813,48 @@ input,
 }
 
 
-/* =========================
-   PLAY BUTTON — KANAN BAWAH
-========================= */
+/* ===============================
+   PLAY BUTTON
+================================= */
 
 .wide-play-btn {
   position: absolute;
-  bottom: 20px;
-  right: 25px;
+  bottom: 18px;
+  right: 18px;
 
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: none;
 
   background: #e51f1f;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: 0.2s ease;
 }
 
 .wide-play-btn:hover {
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 
-/* =========================
-   RESPONSIVE HP
-========================= */
+/* ===============================
+   RESPONSIVE
+================================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .expression-wide-grid {
     grid-template-columns: 1fr;
-    padding: 0 30px;
   }
 }
+
+
+/* EXTRA SAFETY (NO HORIZONTAL SCROLL) */
+
+body {
+  overflow-x: hidden;
+}
+

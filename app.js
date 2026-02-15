@@ -7,11 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
-  const resetFilterButton = document.getElementById("resetFilter");
-  const sidebarFilterButtons = document.querySelectorAll(".sidebar-filter-btn");
-  const letterButtons = document.querySelectorAll(".letter-btn");
-  const patternButtons = document.querySelectorAll(".pattern-btn");
-  const testButtons = document.querySelectorAll(".test-btn");
 
   const kanjiModal = document.getElementById("kanjiModal");
   const modalBackdrop = document.getElementById("modalBackdrop");
@@ -106,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function speakWord(text) {
-    if (!window.speechSynthesis) return;
+    if (!window.speechSynthesis || !text) return;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "ja-JP";
     utterance.rate = 0.95;
@@ -132,13 +127,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
     if (targetType === "verb-irregular") {
-      return wordType.startsWith("verb-irregular") || wordType.startsWith("verb-suru") || wordType === "suru";
+      return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
     }
-    return wordType.startsWith(targetType);
+    return wordType?.startsWith(targetType) || false;
   }
 
   function getFilteredWords() {
-    const key = search.value.toLowerCase().trim();
+    const key = (search.value || "").toLowerCase().trim();
     const selectedFromDropdown = category.value;
 
     return vocabularyData.filter((word) => {
@@ -147,7 +142,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
 
-      const text = `${word.kanji}${word.kana}${word.romaji || ""}${word.meaning}`.toLowerCase();
+      const text = [
+        word.kanji || "",
+        word.kana || "",
+        word.romaji || "",
+        word.meaning || ""
+      ].join("").toLowerCase();
+
       return !key || text.includes(key);
     });
   }
@@ -157,22 +158,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return `
       <div class="card-image ${expandedClass}">
-        <img src="./assets/header.jpg" alt="Kartu ilustrasi ${word.kanji}">
-        <button class="play-audio-btn" type="button" data-text="${word.kana}" aria-label="Putar audio ${word.kanji}">▶</button>
+        <img src="./assets/header.jpg" alt="Kartu ilustrasi ${word.kanji || word.kana || 'kata'}">
+        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
         <div class="card-overlay">
-          <div class="kanji">${word.kanji}</div>
-          <div class="kana">${word.kana}</div>
+          <div class="kanji">${word.kanji || "—"}</div>
+          <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
-          <div class="meaning">${word.meaning}</div>
+          <div class="meaning">${word.meaning || "—"}</div>
         </div>
       </div>
     `;
   }
 
-
   function shuffle(array) {
+    if (!Array.isArray(array)) return [];
     const copy = [...array];
-    for (let i = copy.length - 1; i > 0; i -= 1) {
+    for (let i = copy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [copy[i], copy[j]] = [copy[j], copy[i]];
     }
@@ -180,9 +181,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function stopTestTimer() {
-    if (!testState.timerId) return;
-    clearInterval(testState.timerId);
-    testState.timerId = null;
+    if (testState.timerId) {
+      clearInterval(testState.timerId);
+      testState.timerId = null;
+    }
   }
 
   function startQuestionTimer(seconds) {
@@ -215,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     testState.active = false;
     viewMode = "vocab";
+    render();
   }
 
   function moveToNextQuestion() {
@@ -301,16 +304,17 @@ document.addEventListener("DOMContentLoaded", () => {
       sourceData = patternData[level] || [];
     }
 
-    if (!sourceData.length) {
+    if (!sourceData || !sourceData.length) {
       openInfoModal("Tidak ada data untuk test ini.");
       testState.active = false;
       viewMode = "vocab";
+      render();
       return;
     }
 
     const questions = shuffle(sourceData).slice(0, 10).map((item) => {
       const correctOption = { ...item, correct: true };
-      const wrongOptions = shuffle(sourceData.filter((w) => w.kanji !== item.kanji || w.pattern !== item.pattern)).slice(0, 3).map((w) => ({ ...w, correct: false }));
+      const wrongOptions = shuffle(sourceData.filter((w) => (w.kanji !== item.kanji || w.pattern !== item.pattern))).slice(0, 3).map((w) => ({ ...w, correct: false }));
       return { ...item, options: shuffle([correctOption, ...wrongOptions]) };
     });
 
@@ -379,7 +383,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getRecommendations(word) {
-    const maxItems = 10; // Diubah ke 10 untuk lebih banyak rekomendasi
+    const maxItems = 10;
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
     const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
     const source = sameType.length >= maxItems ? sameType : fallback;
@@ -388,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openModal(word) {
+    if (!word) return;
     modalSubtitle.style.display = "block";
     recommendationRow.style.display = "flex";
     expandedCard.innerHTML = cardImageTemplate(word, true);
@@ -399,9 +404,9 @@ document.addEventListener("DOMContentLoaded", () => {
       recBtn.setAttribute("role", "button");
       recBtn.setAttribute("tabindex", "0");
       recBtn.innerHTML = `
-        <span class="rec-kanji">${item.kanji}</span>
-        <span class="rec-kana">${item.kana}</span>
-        <button class="rec-audio-btn" type="button" data-text="${item.kana}" aria-label="Putar audio ${item.kanji}">▶</button>
+        <span class="rec-kanji">${item.kanji || "—"}</span>
+        <span class="rec-kana">${item.kana || "—"}</span>
+        <button class="rec-audio-btn" type="button" data-text="${item.kana || ""}" aria-label="Putar audio ${item.kanji || item.kana || ''}">▶</button>
       `;
       recBtn.addEventListener("click", () => openModal(item));
       recBtn.addEventListener("keydown", (event) => {
@@ -457,21 +462,39 @@ document.addEventListener("DOMContentLoaded", () => {
       cardButton.className = "card";
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
-      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji}`);
-      cardButton.dataset.word = JSON.stringify(word); // Simpan data word
+      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
+
+      try {
+        cardButton.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal menyimpan data word:", word);
+        return;
+      }
+
       cardButton.innerHTML = cardImageTemplate(word);
+
       cardButton.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return; // Skip jika klik play
-        const storedWord = JSON.parse(cardButton.dataset.word);
-        openModal(storedWord);
+        if (e.target.closest(".play-audio-btn")) return;
+        try {
+          const storedWord = JSON.parse(cardButton.dataset.word);
+          openModal(storedWord);
+        } catch (err) {
+          console.error("Gagal membaca data kartu:", err);
+        }
       });
+
       cardButton.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
-          const storedWord = JSON.parse(cardButton.dataset.word);
-          openModal(storedWord);
+          try {
+            const storedWord = JSON.parse(cardButton.dataset.word);
+            openModal(storedWord);
+          } catch (err) {
+            console.error("Gagal membaca data kartu (keyboard):", err);
+          }
         }
       });
+
       fragment.appendChild(cardButton);
     });
 
@@ -480,14 +503,12 @@ document.addEventListener("DOMContentLoaded", () => {
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
   }
 
-  category.addEventListener("change", render);
-  search.addEventListener("input", render);
-
   category.addEventListener("change", () => {
     viewMode = "vocab";
     selectedType = "all";
     render();
   });
+
   search.addEventListener("input", () => {
     viewMode = "vocab";
     render();
@@ -538,7 +559,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  sidebarFilterButtons.forEach((button) => {
+  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = "vocab";
       selectedLevel = button.dataset.level || "all";
@@ -550,7 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  letterButtons.forEach((button) => {
+  document.querySelectorAll(".letter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = `letters:${button.dataset.script}`;
       search.value = "";
@@ -560,7 +581,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  patternButtons.forEach((button) => {
+  document.querySelectorAll(".pattern-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const level = button.dataset.level;
       if (["N3", "N2", "N1"].includes(level)) {
@@ -578,7 +599,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  testButtons.forEach((button) => {
+  document.querySelectorAll(".test-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const level = button.dataset.level;
       const kind = button.dataset.kind;
@@ -594,11 +615,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  resetFilterButton.addEventListener("click", () => {
+  document.getElementById("logo")?.addEventListener("click", () => {
     selectedLevel = "all";
     selectedType = "all";
     category.value = "all";
     search.value = "";
+    viewMode = "vocab";
     render();
   });
 

@@ -178,6 +178,7 @@ input,
 .play-audio-btn:hover {
   background: #ffffff;
 }
+
 .kana { font-size: 16px; font-weight: 500; }
 .kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
 .romaji { font-size: 14px; opacity: 0.95; }
@@ -729,69 +730,90 @@ input,
   background: #f3f4f6;
 }
 
+/* =========================
+   FIX PARENT GRID
+========================= */
+#grid {
+  padding: 1rem;
+  display: grid;
+  /* Kolom default untuk vocab (tetap biarkan) */
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
+  gap: 1rem;
+}
+
+/* =========================
+   KUNCI UTAMA: POSTER GRID
+========================= */
 .expression-wide-grid {
-  /* Keluar dari jebakan kolom 170px */
+  /* Paksa container ini mengambil seluruh lebar layar (breakout dari 170px) */
   grid-column: 1 / -1 !important; 
   
   display: grid !important;
-  /* Pakai minmax: minimal 400px, maksimal bagi rata 2 kolom */
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; 
-  gap: 30px !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
+  gap: 40px !important;
   
   width: 100% !important;
-  max-width: 1200px !important;
-  margin: 40px auto !important;
+  max-width: 1100px !important; /* Batasi lebar agar cantik */
+  margin: 40px auto !important;  /* PUSATKAN GRID DI TENGAH HALAMAN */
   padding: 0 20px !important;
   box-sizing: border-box !important;
 }
 
+/* =========================
+   CARD STYLE (Pasti Tengah)
+========================= */
 .expression-wide-card {
   background: #fdf4f4 !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
-  min-height: 240px !important;
-  padding: 30px 40px !important;
+  min-height: 220px !important;
+  padding: 30px !important;
   
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
+  justify-content: center !important; /* Tengah Vertikal */
+  align-items: center !important;     /* Tengah Horizontal */
   text-align: center !important;
   
   position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* =========================
+   TEXT FIX (Anti Vertikal)
+========================= */
+.wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
+  writing-mode: horizontal-tb !important; /* Paksa horizontal */
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 .wide-kanji {
-  font-size: 2.6rem !important; /* Ukuran font pas */
+  font-size: 3rem !important;
   font-weight: bold !important;
-  margin-bottom: 8px !important;
-  
-  /* Biar teks lebar ke samping dan tidak patah */
-  width: 100% !important;
-  white-space: normal !important;
-  word-break: keep-all !important; 
-  line-height: 1.3 !important;
+  margin-bottom: 10px !important;
 }
 
-.wide-kana, .wide-romaji, .wide-meaning {
-  display: block !important;
-  width: 100% !important;
-  margin-bottom: 4px !important;
-}
+.wide-kana { font-size: 1.6rem !important; margin-bottom: 5px !important; }
+.wide-romaji { font-size: 1.1rem !important; color: #555 !important; font-style: italic !important; }
+.wide-meaning { font-size: 1.2rem !important; margin-top: 5px !important; }
 
+/* Tombol Play */
 .wide-play-btn {
-  position: absolute !important;
-  bottom: 20px !important;
-  right: 20px !important;
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50% !important;
-  background: #e51f1f !important;
-  color: white !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: transform 0.2s !important;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111827;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .wide-play-btn:hover {

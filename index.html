@@ -131,12 +131,26 @@
   </button>
 
   <div class="branding">
-    <img id="titleImage" src="./assets/title.PNG" alt="日本の世界" style="cursor: pointer;">
+    <h1>日本の世界</h1>
     <p>理解を重視し、単なる暗記にとどまりません。</p>
   </div>
 
   <div class="controls">
+    <select id="category" aria-label="Filter kategori kata">
+      <option value="all">Semua</option>
+      <option value="noun">Noun</option>
+      <option value="verb-godan">Godan Verb</option>
+      <option value="verb-ru">Ichidan Verb</option>
+      <option value="verb-irregular">Irreguler / Suru Verb</option>
+      <option value="adj-na">NA Keiyoushi</option>
+      <option value="adj-i">I Keiyoushi</option>
+      <option value="counter">Satuan Bilangan / Hitungan</option>
+      <option value="adverb">Adverb</option>
+    </select>
+
     <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
+
+    <button id="resetFilter" class="action-btn" type="button">🧹 Reset Filter</button>
   </div>
 
   <p id="resultInfo" class="result-info"></p>

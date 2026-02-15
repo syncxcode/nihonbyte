@@ -730,58 +730,72 @@ input,
 }
 
 /* =========================
-   CARD STYLE - VERSI FIXED
+   1. FORCE GRID KE TENGAH
 ========================= */
-
-.expression-wide-card {
-  background: #fdf4f4;
-  border-radius: 24px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-
-  height: 220px;
-  padding: 30px 40px;
-  position: relative;
-
-  /* PAKSA KE TENGAH */
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;    /* Ini yang menarik konten ke tengah horizontal */
-  text-align: center !important;     /* Ini yang meratakan teksnya */
-
-  box-sizing: border-box;
-  width: 100%;
+.expression-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 40px !important;
+  
+  /* Ini kunci agar grid tidak menempel ke kiri */
+  justify-items: center !important; 
+  align-items: center !important;
+  
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 100px auto !important; /* Tambah margin atas agar tidak tertutup header */
+  padding: 0 20px !important;
+  
+  position: relative !important;
+  z-index: 99 !important; /* Biar nangkring di depan gambar kuil */
 }
 
 /* =========================
-   TEXT RESET
+   2. CARD STYLE (FIX TOTAL)
 ========================= */
+.expression-wide-card {
+  background: rgba(253, 244, 244, 0.95) !important; /* Sedikit transparan biar keren */
+  border-radius: 24px !important;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5) !important;
 
-.wide-kanji,
-.wide-kana,
-.wide-romaji,
-.wide-meaning {
-  /* Pastikan tidak ada floating atau margin kiri yang mengganggu */
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
+  min-height: 220px !important;
   width: 100% !important;
-  
-  /* Hilangkan nowrap agar tidak lari keluar kotak */
-  white-space: normal !important; 
+  max-width: 500px !important; /* Batasi lebar kartu */
+  padding: 30px !important;
+
+  /* FLEXBOX UNTUK KONTEN TENGAH */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important; /* PAKSA ISI KE TENGAH */
   text-align: center !important;
+  
+  position: relative !important;
 }
 
-/* Ukuran Font Tetap Sama */
-.wide-kanji { font-size: 2.8rem; font-weight: bold; margin-bottom: 8px; }
-.wide-kana { font-size: 1.6rem; margin-bottom: 4px; }
-.wide-romaji { font-size: 1.1rem; font-style: italic; margin-bottom: 6px; color: #555; }
-.wide-meaning { font-size: 1.1rem; color: #333; }
+/* =========================
+   3. TEXT ALIGNMENT FIX
+========================= */
+.wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
+  width: 100% !important;
+  text-align: center !important; /* Paksa teks ke tengah */
+  display: block !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
 
-/* Tombol Play tetap di pojok kanan bawah */
+.wide-kanji {
+  font-size: 2.8rem !important;
+  margin-bottom: 10px !important;
+}
+
+/* =========================
+   4. TOMBOL PLAY (TETAP DI POJOK)
+========================= */
 .wide-play-btn {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 10;
+  position: absolute !important;
+  bottom: 15px !important;
+  right: 15px !important;
+  width: 50px !important;
+  height: 50px !important;
 }

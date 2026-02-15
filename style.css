@@ -751,8 +751,8 @@ input,
   background: #fdf4f4;                           
   border-radius: 24px;
   box-shadow: 0 12px 35px rgba(0,0,0,0.55);
-  height: 175px;                                  /* tinggi rendah agar lebar mendominasi */
-  padding: 0rem 18rem;                             /* padding super lebar agar isi longgar */
+  height: 175px;                                  
+  padding: 0rem 18rem;                             
   position: relative;
   cursor: pointer;
   transition: all 0.35s ease;
@@ -770,50 +770,73 @@ input,
   box-shadow: 0 25px 60px rgba(0,0,0,0.7);
 }
 
-/* Teks horizontal, besar, dan center */
+/* =========================
+   PAKSA TEKS HORIZONTAL
+========================= */
+
+.wide-kanji,
+.wide-kana,
+.wide-romaji,
+.wide-meaning {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+
+  display: block;
+  color: #222;
+}
+
+
+/* TEXT SIZE */
+
 .wide-kanji {
-  font-size: 4.5rem;
+  font-size: 3rem;
   font-weight: bold;
-  line-height: 1.1;
-  margin-bottom: 1.2rem;
-  color: #222;                                    /* hitam */
+  margin-bottom: 6px;
 }
 
 .wide-kana {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #333;                                    /* abu gelap */
+  font-size: 1.8rem;
+  margin-bottom: 4px;
 }
 
 .wide-romaji {
-  font-size: 2.2rem;
+  font-size: 1.2rem;
   font-style: italic;
-  margin-bottom: 1.5rem;
-  color: #444;                                    /* abu lebih gelap */
+  margin-bottom: 6px;
+  color: #444;
 }
 
 .wide-meaning {
-  font-size: 2.2rem;
-  line-height: 1.3;
-  margin-bottom: 2rem;
-  color: #222;                                    /* hitam */
+  font-size: 1.2rem;
+  color: #333;
 }
 
-/* Play button di bawah arti, tengah card */
+
+/* =========================
+   PLAY BUTTON POJOK KANAN BAWAH
+========================= */
+
 .wide-play-btn {
-  background: #e51f1f;                            /* merah sesuai tema */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
+  background: #e51f1f;
   border: none;
   color: white;
-  width: 90px;
-  height: 90px;
+
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  font-size: 3rem;
+
+  font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-  transition: all 0.3s;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
 }
 
 .wide-play-btn:hover {
+  transform: scale(1.15);
   background: #c81b1b;
-  transform: scale(1.2);
 }

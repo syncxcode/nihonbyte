@@ -729,132 +729,93 @@ input,
   background: #f3f4f6;
 }
 
-/* ===============================
-   GRID CONTAINER (STABIL & CENTER)
-================================= */
-
-.expression-wide-grid {
+/* =========================
+   FIX PARENT GRID
+========================= */
+#grid {
+  padding: 1rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-
-  width: 100%;
-  max-width: 1200px;
-  margin: 60px auto;
-  padding: 0 30px;
-
-  box-sizing: border-box;
+  /* Kolom default untuk vocab (tetap biarkan) */
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
+  gap: 1rem;
 }
 
+/* =========================
+   KUNCI UTAMA: POSTER GRID
+========================= */
+.expression-wide-grid {
+  /* Paksa container ini mengambil seluruh lebar layar (breakout dari 170px) */
+  grid-column: 1 / -1 !important; 
+  
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
+  gap: 40px !important;
+  
+  width: 100% !important;
+  max-width: 1100px !important; /* Batasi lebar agar cantik */
+  margin: 40px auto !important;  /* PUSATKAN GRID DI TENGAH HALAMAN */
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
 
-/* ===============================
-   LANDSCAPE CARD
-================================= */
-
+/* =========================
+   CARD STYLE (Pasti Tengah)
+========================= */
 .expression-wide-card {
-  width: 100%;
-  min-height: 180px;
-  padding: 30px 35px;
-
-  background: #fdf4f4;
-  border-radius: 24px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  position: relative;
-
-  box-sizing: border-box;
+  background: #fdf4f4 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
+  
+  min-height: 220px !important;
+  padding: 30px !important;
+  
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; /* Tengah Vertikal */
+  align-items: center !important;     /* Tengah Horizontal */
+  text-align: center !important;
+  
+  position: relative !important;
+  box-sizing: border-box !important;
 }
 
-
-/* ===============================
-   TEXT NORMAL (ANTI VERTICAL)
-================================= */
-
-.wide-kanji,
-.wide-kana,
-.wide-romaji,
-.wide-meaning {
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed !important;
-
-  white-space: nowrap;
-  word-break: keep-all;
-
-  display: block;
-  width: 100%;
+/* =========================
+   TEXT FIX (Anti Vertikal)
+========================= */
+.wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
+  writing-mode: horizontal-tb !important; /* Paksa horizontal */
+  display: block !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 .wide-kanji {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 6px;
+  font-size: 3rem !important;
+  font-weight: bold !important;
+  margin-bottom: 10px !important;
 }
 
-.wide-kana {
-  font-size: 1.5rem;
-  margin-bottom: 4px;
-}
+.wide-kana { font-size: 1.6rem !important; margin-bottom: 5px !important; }
+.wide-romaji { font-size: 1.1rem !important; color: #555 !important; font-style: italic !important; }
+.wide-meaning { font-size: 1.2rem !important; margin-top: 5px !important; }
 
-.wide-romaji {
-  font-size: 1.1rem;
-  margin-bottom: 4px;
-  color: #555;
-}
-
-.wide-meaning {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-
-/* ===============================
-   PLAY BUTTON
-================================= */
-
+/* Tombol Play */
 .wide-play-btn {
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-
-  background: #e51f1f;
-  color: white;
-  font-size: 1.3rem;
-
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-  transition: 0.2s ease;
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  background: #e51f1f !important;
+  color: white !important;
+  border: none !important;
+  cursor: pointer !important;
 }
 
-.wide-play-btn:hover {
-  transform: scale(1.12);
-}
-
-
-/* ===============================
-   RESPONSIVE
-================================= */
-
-@media (max-width: 900px) {
+/* Responsif HP */
+@media (max-width: 850px) {
   .expression-wide-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important; /* Jadi 1 kolom di HP */
   }
 }
-
-
-/* EXTRA SAFETY (NO HORIZONTAL SCROLL) */
-
-body {
-  overflow-x: hidden;
-}
-

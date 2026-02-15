@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ────────────────────────────────────────────────
-  // POSTER KHUSUS UNTUK UNGKAPAN UMUM (CARD PANJANG KE SAMPING)
+  // POSTER UNGKAPAN UMUM – PERSEGI PANJANG, 2 KOLOM, BORDER JELAS
   // ────────────────────────────────────────────────
   function renderExpressionPoster() {
     grid.innerHTML = "";
@@ -183,54 +183,58 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (!expressions.length) {
-      grid.innerHTML = '<div class="empty-state">Tidak ada ungkapan umum saat ini.</div>';
+      grid.innerHTML = '<div class="empty-state">Tidak ada ungkapan umum untuk ditampilkan.</div>';
       resultInfo.textContent = "0 ungkapan ditemukan";
       return;
     }
 
     const container = document.createElement("div");
-    container.className = "expression-poster-grid";
+    container.className = "expression-grid-container";
 
     expressions.forEach((word) => {
-      const card = document.createElement("article");
-      card.className = "expression-card";
+      const card = document.createElement("div");
+      card.className = "expression-rect-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
-      card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
+      card.setAttribute("aria-label", `Ungkapan: ${word.kana || word.kanji}`);
 
       try {
         card.dataset.word = JSON.stringify(word);
       } catch (err) {
-        console.warn("Gagal menyimpan data ungkapan:", word);
+        console.warn("Gagal stringify ungkapan:", word);
         return;
       }
 
+      const displayText = word.kana || word.kanji || "—";
+
       card.innerHTML = `
-        <div class="expression-kanji">${word.kanji || "—"}</div>
-        <div class="expression-kana">${word.kana || "—"}</div>
-        <div class="expression-romaji">${word.romaji || ""}</div>
-        <div class="expression-separator">|</div>
-        <div class="expression-meaning">${word.meaning || "—"}</div>
-        <button class="play-audio-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar audio ungkapan">▶</button>
+        <div class="rect-content">
+          <div class="rect-text">${displayText}</div>
+          <button class="rect-play-btn" type="button" data-text="${displayText}" aria-label="Putar">▶</button>
+        </div>
       `;
 
       card.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return;
+        if (e.target.closest(".rect-play-btn")) return;
         try {
           const storedWord = JSON.parse(card.dataset.word);
           openModal(storedWord);
         } catch (err) {
-          console.error("Gagal parse data ungkapan:", err);
+          console.error("Gagal buka modal ungkapan:", err);
         }
       });
 
-      card.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
+      card.querySelector(".rect-play-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        speakWord(card.querySelector(".rect-play-btn").dataset.text);
+      });
+
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
           try {
-            const storedWord = JSON.parse(card.dataset.word);
-            openModal(storedWord);
-          } catch (err) {}
+            openModal(JSON.parse(card.dataset.word));
+          } catch {}
         }
       });
 
@@ -610,7 +614,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modalClose.addEventListener("click", closeModal);
 
   grid.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn");
+    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .rect-play-btn");
     if (audioButton) {
       event.preventDefault();
       event.stopPropagation();

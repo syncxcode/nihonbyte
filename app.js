@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
-  let selectedLevel = "all";
+  let selectedLevel = "N5";
   let selectedType = "all";
   let viewMode = "vocab";
 
@@ -270,56 +270,57 @@ document.addEventListener("DOMContentLoaded", () => {
       testState.answered = true;
       stopTestTimer();
 
-      const correct = btn.dataset.correct === "true";
-      if (correct) testState.correctCount += 1;
+      const isCorrect = btn.dataset.correct === "true";
+      if (isCorrect) testState.correctCount += 1;
 
-      Array.from(optionGrid.children).forEach((optBtn) => {
-        optBtn.disabled = true;
-        if (optBtn.dataset.correct === "true") optBtn.classList.add("correct");
-        else optBtn.classList.add("wrong");
+      Array.from(optionGrid.children).forEach((b) => {
+        if (b.dataset.correct === "true") b.classList.add("correct");
+        else if (b === btn) b.classList.add("wrong");
+        b.disabled = true;
       });
 
       setTimeout(moveToNextQuestion, 1500);
     });
 
-    board.querySelector(".finish-test-btn").addEventListener("click", finishTest);
+    board.querySelector(".finish-test-btn").addEventListener("click", () => {
+      if (confirm("Yakin ingin menyelesaikan test sekarang?")) finishTest();
+    });
   }
 
   function startTest(level, kind) {
-    viewMode = `test:${kind}:${level}`;
-    testState.active = true;
+    const typeMap = { kanji: "Kanji", bunpou: "Bunpou" };
     testState.type = kind;
     testState.level = level;
     testState.correctCount = 0;
     testState.currentIndex = 0;
-    testState.answered = false;
+    testState.active = true;
+    viewMode = `test:${kind}`;
 
-    let sourceData;
-    if (kind === "kanji") {
-      sourceData = vocabularyData.filter((word) => word.level === level);
-    } else if (kind === "bunpou") {
-      sourceData = patternData[level] || [];
-    }
+    const dataSource = kind === "kanji" ? vocabularyData.filter((w) => w.level === level) : patternData[level] || [];
 
-    if (!sourceData.length) {
-      openInfoModal("Tidak ada data untuk test ini.");
+    if (!dataSource.length) {
+      openInfoModal(`Tidak ada data test untuk ${typeMap[kind]} level ${level}.`);
       testState.active = false;
       viewMode = "vocab";
       return;
     }
 
-    const questions = shuffle(sourceData).slice(0, 10).map((item) => {
-      const correctOption = { ...item, correct: true };
-      const wrongOptions = shuffle(sourceData.filter((w) => w.kanji !== item.kanji || w.pattern !== item.pattern)).slice(0, 3).map((w) => ({ ...w, correct: false }));
-      return { ...item, options: shuffle([correctOption, ...wrongOptions]) };
+    testState.questions = shuffle(dataSource).slice(0, 10).map((item) => {
+      const correct = kind === "kanji" ? { meaning: item.meaning, correct: true } : { meaning: item.meaning, correct: true };
+      const wrongOptions = shuffle(dataSource.filter((w) => w !== item)).slice(0, 3).map((w) => ({
+        meaning: kind === "kanji" ? w.meaning : w.meaning,
+        correct: false,
+      }));
+      return {
+        ...(kind === "kanji" ? { kanji: item.kanji } : { pattern: item.pattern }),
+        options: shuffle([correct, ...wrongOptions]),
+      };
     });
 
-    testState.questions = questions;
     renderCurrentTestQuestion();
   }
 
   function renderLetterPoster(script) {
-    grid.innerHTML = "";
     const data = letterSets[script];
     if (!data) return;
 

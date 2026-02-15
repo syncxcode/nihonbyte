@@ -645,10 +645,10 @@ input,
 }
 
 /* Ukuran default untuk card normal */
-.kana { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; text-align: center; }
+.kana { font-size: 14px; font-weight: 600; letter-spacing: 0.5px; text-align: center; }
 .kanji { font-size: 36px; line-height: 1.2; font-weight: 800; text-align: center; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.romaji { font-size: 16px; opacity: 0.9; font-style: italic; text-align: center; color: #a9a9a9; }
-.meaning { font-size: 13px; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+.romaji { font-size: 10px; opacity: 0.9; font-style: normal; text-align: center; color: #a9a9a9; }
+.meaning { font-size: 10px; font-weight: 700; text-align: center; text-transform: capitalize; letter-spacing: 1px; color: #ffffff; }
 
 /* Ukuran lebih besar untuk expanded card */
 .expanded-card .kana { font-size: clamp(22px, 5vw, 26px); font-weight: 600; letter-spacing: 0.5px; text-align: center; } /* Lebih besar, responsif */

@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
   const search = document.getElementById("search");
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
-  const titleImage = document.getElementById("titleImage");
+  const resetFilterButton = document.getElementById("resetFilter");
   const sidebarFilterButtons = document.querySelectorAll(".sidebar-filter-btn");
   const letterButtons = document.querySelectorAll(".letter-btn");
   const patternButtons = document.querySelectorAll(".pattern-btn");
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
-  let selectedLevel = "N5";
+  let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
 
@@ -138,11 +139,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getFilteredWords() {
     const key = search.value.toLowerCase().trim();
+    const selectedFromDropdown = category.value;
 
     return vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
 
-      if (selectedType !== "all" && !matchType(word.type, selectedType)) return false;
+      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
 
       const text = `${word.kanji}${word.kana}${word.romaji || ""}${word.meaning}`.toLowerCase();
       return !key || text.includes(key);
@@ -267,57 +270,56 @@ document.addEventListener("DOMContentLoaded", () => {
       testState.answered = true;
       stopTestTimer();
 
-      const isCorrect = btn.dataset.correct === "true";
-      if (isCorrect) testState.correctCount += 1;
+      const correct = btn.dataset.correct === "true";
+      if (correct) testState.correctCount += 1;
 
-      Array.from(optionGrid.children).forEach((b) => {
-        if (b.dataset.correct === "true") b.classList.add("correct");
-        else if (b === btn) b.classList.add("wrong");
-        b.disabled = true;
+      Array.from(optionGrid.children).forEach((optBtn) => {
+        optBtn.disabled = true;
+        if (optBtn.dataset.correct === "true") optBtn.classList.add("correct");
+        else optBtn.classList.add("wrong");
       });
 
       setTimeout(moveToNextQuestion, 1500);
     });
 
-    board.querySelector(".finish-test-btn").addEventListener("click", () => {
-      if (confirm("Yakin ingin menyelesaikan test sekarang?")) finishTest();
-    });
+    board.querySelector(".finish-test-btn").addEventListener("click", finishTest);
   }
 
   function startTest(level, kind) {
-    const typeMap = { kanji: "Kanji", bunpou: "Bunpou" };
+    viewMode = `test:${kind}:${level}`;
+    testState.active = true;
     testState.type = kind;
     testState.level = level;
     testState.correctCount = 0;
     testState.currentIndex = 0;
-    testState.active = true;
-    viewMode = `test:${kind}`;
+    testState.answered = false;
 
-    const dataSource = kind === "kanji" ? vocabularyData.filter((w) => w.level === level) : patternData[level] || [];
+    let sourceData;
+    if (kind === "kanji") {
+      sourceData = vocabularyData.filter((word) => word.level === level);
+    } else if (kind === "bunpou") {
+      sourceData = patternData[level] || [];
+    }
 
-    if (!dataSource.length) {
-      openInfoModal(`Tidak ada data test untuk ${typeMap[kind]} level ${level}.`);
+    if (!sourceData.length) {
+      openInfoModal("Tidak ada data untuk test ini.");
       testState.active = false;
       viewMode = "vocab";
       return;
     }
 
-    testState.questions = shuffle(dataSource).slice(0, 10).map((item) => {
-      const correct = kind === "kanji" ? { meaning: item.meaning, correct: true } : { meaning: item.meaning, correct: true };
-      const wrongOptions = shuffle(dataSource.filter((w) => w !== item)).slice(0, 3).map((w) => ({
-        meaning: kind === "kanji" ? w.meaning : w.meaning,
-        correct: false,
-      }));
-      return {
-        ...(kind === "kanji" ? { kanji: item.kanji } : { pattern: item.pattern }),
-        options: shuffle([correct, ...wrongOptions]),
-      };
+    const questions = shuffle(sourceData).slice(0, 10).map((item) => {
+      const correctOption = { ...item, correct: true };
+      const wrongOptions = shuffle(sourceData.filter((w) => w.kanji !== item.kanji || w.pattern !== item.pattern)).slice(0, 3).map((w) => ({ ...w, correct: false }));
+      return { ...item, options: shuffle([correctOption, ...wrongOptions]) };
     });
 
+    testState.questions = questions;
     renderCurrentTestQuestion();
   }
 
   function renderLetterPoster(script) {
+    grid.innerHTML = "";
     const data = letterSets[script];
     if (!data) return;
 
@@ -377,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getRecommendations(word) {
-    const maxItems = 10;
+    const maxItems = 10; // Diubah ke 10 untuk lebih banyak rekomendasi
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
     const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
     const source = sameType.length >= maxItems ? sameType : fallback;
@@ -422,13 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
-  function resetFilter() {
-    selectedLevel = "all";
-    selectedType = "all";
-    search.value = "";
-    render();
-  }
-
   function render() {
     grid.innerHTML = "";
 
@@ -463,10 +458,10 @@ document.addEventListener("DOMContentLoaded", () => {
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
       cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji}`);
-      cardButton.dataset.word = JSON.stringify(word);
+      cardButton.dataset.word = JSON.stringify(word); // Simpan data word
       cardButton.innerHTML = cardImageTemplate(word);
       cardButton.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return;
+        if (e.target.closest(".play-audio-btn")) return; // Skip jika klik play
         const storedWord = JSON.parse(cardButton.dataset.word);
         openModal(storedWord);
       });
@@ -485,8 +480,14 @@ document.addEventListener("DOMContentLoaded", () => {
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
   }
 
+  category.addEventListener("change", render);
   search.addEventListener("input", render);
 
+  category.addEventListener("change", () => {
+    viewMode = "vocab";
+    selectedType = "all";
+    render();
+  });
   search.addEventListener("input", () => {
     viewMode = "vocab";
     render();
@@ -542,6 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
       viewMode = "vocab";
       selectedLevel = button.dataset.level || "all";
       selectedType = button.dataset.type || "all";
+      if (selectedType !== "all") category.value = selectedType;
       search.value = "";
       render();
       closeSidebar();
@@ -569,6 +571,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       viewMode = `patterns:${level}`;
       search.value = "";
+      category.value = "all";
       closeModal();
       render();
       closeSidebar();
@@ -591,7 +594,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  titleImage.addEventListener("click", resetFilter);
+  resetFilterButton.addEventListener("click", () => {
+    selectedLevel = "all";
+    selectedType = "all";
+    category.value = "all";
+    search.value = "";
+    render();
+  });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {

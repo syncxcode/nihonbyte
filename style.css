@@ -729,65 +729,85 @@ input,
   background: #f3f4f6;
 }
 
-/* =========================
-   GRID CONTAINER
-========================= */
-
+/* Grid untuk ungkapan umum - 2 kolom di desktop, 1 kolom di mobile */
 .expression-rect-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;   /* 2 kolom tetap */
-  gap: 32px;
-
-  width: 100%;
-  padding: 40px 100px;              /* bikin area lebar */
-  box-sizing: border-box;
+  grid-template-columns: 1fr;                     /* mobile: 1 kolom */
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 3rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
+@media (min-width: 768px) {
+  .expression-rect-grid {
+    grid-template-columns: repeat(2, 1fr);        /* desktop: 2 kolom lebar */
+    gap: 2rem 1.5rem;
+  }
+}
 
-/* =========================
-   CARD STYLE
-========================= */
-
+/* Card persegi panjang lebar ke samping */
 .expression-rect-card {
-  width: 100%;
-  height: 190px;                    /* tinggi fix supaya gak menjulang */
-  padding: 25px;
-
-  background: #ff1f1f;
-  border: 4px solid #ffffff;
-  border-radius: 10px;
-
+  background: #e51f1f;                           /* merah solid */
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45);
+  height: 180px;                                  /* tinggi tetap rendah */
+  padding: 1.8rem 2rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  box-sizing: border-box;
-}
-
-
-/* =========================
-   TEXT
-========================= */
-
-.rect-kanji,
-.rect-kana,
-.rect-romaji,
-.rect-meaning {
+  justify-content: space-between;
   color: white;
-  font-weight: 700;
   text-align: center;
-  margin: 6px 0;
+  overflow: hidden;
 }
 
+.expression-rect-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.6);
+}
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* Teks */
+.rect-kanji {
+  font-size: 2.6rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
 
-@media (max-width: 900px) {
-  .expression-rect-grid {
-    grid-template-columns: 1fr;
-    padding: 30px;
-  }
+.rect-kana {
+  font-size: 1.9rem;
+  margin: 0.5rem 0;
+}
+
+.rect-romaji {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+}
+
+.rect-meaning {
+  font-size: 1.4rem;
+  line-height: 1.35;
+}
+
+/* Play button di bawah arti, tengah card */
+.rect-play-btn {
+  background: #111;
+  border: none;
+  color: white;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  font-size: 2.2rem;
+  cursor: pointer;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  transition: all 0.25s;
+}
+
+.rect-play-btn:hover {
+  background: #000;
+  transform: scale(1.15);
 }

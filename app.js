@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
           subtitle: "Yōon",
           rows: [
             ["YA", "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "りゃ", "ぎゃ", "じゃ", "びゃ", "ぴゃ"],
-            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴゅ"],
+            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴュ"],
             ["YO", "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "りょ", "ぎょ", "じょ", "びょ", "ぴょ"],
           ],
         },
@@ -170,16 +170,14 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // ==================================================================
-  // FITUR BARU: Poster Ungkapan Umum (sesuai gambar terbaru kamu)
-  // ==================================================================
+  // ================================================
+  // FITUR BARU: Poster Ungkapan Umum (PERSEGI PANJANG LEBAR KE SAMPING, 2 PER BARIS)
+  // ================================================
   function renderExpressionPoster() {
     grid.innerHTML = "";
 
     const expressions = vocabularyData.filter(w => 
-      w.type === "expression" || 
-      w.type === "ekspresi" || 
-      w.type === "ungkapan umum"
+      w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
     );
 
     if (!expressions.length) {
@@ -189,11 +187,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const container = document.createElement("div");
-    container.className = "expression-rect-grid";
+    container.className = "expression-wide-grid";
 
     expressions.forEach((word) => {
       const card = document.createElement("div");
-      card.className = "expression-rect-card";
+      card.className = "expression-wide-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
@@ -206,31 +204,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       card.innerHTML = `
-        <div class="rect-kanji">${word.kanji || "—"}</div>
-        <div class="rect-kana">${word.kana || "—"}</div>
-        <div class="rect-romaji">${word.romaji || ""}</div>
-        <div class="rect-meaning">${word.meaning || "—"}</div>
-        <button class="rect-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar audio">▶</button>
+        <div class="wide-kanji">${word.kanji || "—"}</div>
+        <div class="wide-kana">${word.kana || "—"}</div>
+        <div class="wide-romaji">${word.romaji || ""}</div>
+        <div class="wide-meaning">${word.meaning || "—"}</div>
+        <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
       `;
 
-      // Klik seluruh card (kecuali tombol play) → buka modal ekspand + rekomendasi
       card.addEventListener("click", (e) => {
-        if (e.target.closest(".rect-play-btn")) return;
+        if (e.target.closest(".wide-play-btn")) return;
         try {
           const storedWord = JSON.parse(card.dataset.word);
           openModal(storedWord);
-        } catch (err) {
-          console.error("Gagal parse data card:", err);
-        }
+        } catch (err) {}
       });
 
-      // Klik tombol play → langsung putar audio
-      card.querySelector(".rect-play-btn").addEventListener("click", (e) => {
+      card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
-        speakWord(card.querySelector(".rect-play-btn").dataset.text);
+        speakWord(card.querySelector(".wide-play-btn").dataset.text);
       });
 
-      // Keyboard support
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -244,9 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     grid.appendChild(container);
-
-    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
-    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${levelText}`;
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
   }
 
   function shuffle(array) {
@@ -501,7 +492,9 @@ document.addEventListener("DOMContentLoaded", () => {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  function closeModal() {
+  function 
+
+closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
     kanjiModal.setAttribute("aria-hidden", "true");
@@ -511,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
-    // === DETEKSI FITUR BARU: UNGKAPAN UMUM ===
+    // DETEKSI FITUR BARU: UNGKAPAN UMUM
     const isExpressionView = 
       viewMode === "vocab" && 
       (category.value === "ekspresi" || 
@@ -524,7 +517,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Kode lama tetap utuh di bawah ini
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
@@ -618,7 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
   modalClose.addEventListener("click", closeModal);
 
   grid.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .rect-play-btn");
+    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {
       event.preventDefault();
       event.stopPropagation();

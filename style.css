@@ -748,11 +748,11 @@ input,
 
 /* Card lebar ke samping (horizontal) */
 .expression-wide-card {
-  background: #e51f1f;                           /* merah solid */
+  background: #fdf4f4;                           
   border-radius: 24px;
   box-shadow: 0 12px 35px rgba(0,0,0,0.55);
-  height: 220px;                                  /* tinggi rendah agar lebar mendominasi */
-  padding: 3rem 6rem;                             /* padding super lebar agar isi longgar */
+  height: 175px;                                  /* tinggi rendah agar lebar mendominasi */
+  padding: 0rem 18rem;                             /* padding super lebar agar isi longgar */
   position: relative;
   cursor: pointer;
   transition: all 0.35s ease;

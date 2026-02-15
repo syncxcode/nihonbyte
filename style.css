@@ -655,3 +655,76 @@ input,
 .expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
 .expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
 .expanded-card .meaning { font-size: clamp(18px, 4vw, 22px); }
+
+/* Logo Title */
+.branding img {
+  height: 54px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.branding img:hover {
+  transform: scale(1.05);
+}
+
+/* Card text center sempurna */
+.card-overlay {
+  text-align: center;
+  align-content: center;
+  justify-items: center;
+}
+
+/* Custom Dropdown */
+.category-selector {
+  position: relative;
+}
+
+#categoryBtn {
+  min-width: 220px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding: 12px 0;
+  min-width: 280px;
+  z-index: 100;
+  margin-top: 8px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-group {
+  padding: 8px 0;
+}
+
+.dropdown-header {
+  font-weight: 700;
+  color: #1f2937;
+  padding: 8px 16px 4px;
+  font-size: 0.95rem;
+}
+
+.dropdown-item,
+.dropdown-menu button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-item:hover,
+.dropdown-menu button:hover {
+  background: #f3f4f6;
+}

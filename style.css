@@ -659,5 +659,6 @@ input,
 /* Perbesar ukuran title image */
 #titleImage {
   max-height: 4.4rem; /* Diperbesar 2x dari 1.2rem sebelumnya */
-  width: auto;
+  width: 10rem;
+  object-fit: contain;
 }

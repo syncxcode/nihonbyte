@@ -730,24 +730,9 @@ input,
 }
 
 /* =========================
-   GRID CONTAINER
+   CARD STYLE - VERSI FIXED
 ========================= */
-.expression-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
 
-  width: 100%;
-  max-width: 1200px;      /* Biar tidak terlalu melebar */
-  margin: 60px auto;      /* CENTER secara horizontal */
-  padding: 0 40px;
-
-  box-sizing: border-box;
-}
-
-/* =========================
-   CARD STYLE
-========================= */
 .expression-wide-card {
   background: #fdf4f4;
   border-radius: 24px;
@@ -755,94 +740,48 @@ input,
 
   height: 220px;
   padding: 30px 40px;
+  position: relative;
 
-  position: relative; /* Menjaga tombol play tetap di dalam card */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Rata tengah vertikal */
-  align-items: center;      /* PERBAIKAN: Rata tengah horizontal */
-  text-align: center;       /* PERBAIKAN: Teks di dalam ikut rata tengah */
+  /* PAKSA KE TENGAH */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;    /* Ini yang menarik konten ke tengah horizontal */
+  text-align: center !important;     /* Ini yang meratakan teksnya */
 
   box-sizing: border-box;
   width: 100%;
 }
 
 /* =========================
-   TEXT STYLING
+   TEXT RESET
 ========================= */
+
 .wide-kanji,
 .wide-kana,
 .wide-romaji,
 .wide-meaning {
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed !important;
+  /* Pastikan tidak ada floating atau margin kiri yang mengganggu */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+  width: 100% !important;
   
-  /* PERBAIKAN: Mengubah nowrap ke normal agar teks bisa turun baris jika panjang */
-  white-space: normal; 
-  word-break: keep-all;
-
-  display: block;
-  color: #222;
-  width: 100%; /* Memastikan elemen mengambil ruang penuh untuk alignment */
+  /* Hilangkan nowrap agar tidak lari keluar kotak */
+  white-space: normal !important; 
+  text-align: center !important;
 }
 
-.wide-kanji {
-  font-size: 2.8rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
+/* Ukuran Font Tetap Sama */
+.wide-kanji { font-size: 2.8rem; font-weight: bold; margin-bottom: 8px; }
+.wide-kana { font-size: 1.6rem; margin-bottom: 4px; }
+.wide-romaji { font-size: 1.1rem; font-style: italic; margin-bottom: 6px; color: #555; }
+.wide-meaning { font-size: 1.1rem; color: #333; }
 
-.wide-kana {
-  font-size: 1.6rem;
-  margin-bottom: 4px;
-}
-
-.wide-romaji {
-  font-size: 1.1rem;
-  font-style: italic;
-  margin-bottom: 6px;
-  color: #555;
-}
-
-.wide-meaning {
-  font-size: 1.1rem;
-  color: #333;
-}
-
-/* =========================
-   PLAY BUTTON (KANAN BAWAH)
-========================= */
+/* Tombol Play tetap di pojok kanan bawah */
 .wide-play-btn {
-  position: absolute; /* Tombol ini tidak akan terpengaruh alignment tengah di atas */
+  position: absolute;
   bottom: 20px;
   right: 20px;
-
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: none;
-
-  background: #e51f1f;
-  color: white;
-  font-size: 1.4rem;
-
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transition: 0.3s;
-}
-
-.wide-play-btn:hover {
-  transform: scale(1.15);
-  background: #c81b1b;
-}
-
-/* =========================
-   RESPONSIVE (HP)
-========================= */
-@media (max-width: 900px) {
-  .expression-grid {
-    grid-template-columns: 1fr; /* Jadi satu kolom di layar kecil */
-    padding: 0 20px;
-  }
+  z-index: 10;
 }

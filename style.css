@@ -770,34 +770,38 @@ input,
   box-shadow: 0 25px 60px rgba(0,0,0,0.7);
 }
 
-/* Teks besar dan center */
+/* Teks horizontal, besar, dan center */
 .wide-kanji {
-  font-size: 5rem;
+  font-size: 4.5rem;
   font-weight: bold;
-  line-height: 1;
-  margin-bottom: 1rem;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  color: #222;                                    /* hitam */
 }
 
 .wide-kana {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
+  color: #333;                                    /* abu gelap */
 }
 
 .wide-romaji {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-style: italic;
   margin-bottom: 1.5rem;
+  color: #444;                                    /* abu lebih gelap */
 }
 
 .wide-meaning {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   line-height: 1.3;
   margin-bottom: 2rem;
+  color: #222;                                    /* hitam */
 }
 
 /* Play button di bawah arti, tengah card */
 .wide-play-btn {
-  background: #000;
+  background: #e51f1f;                            /* merah sesuai tema */
   border: none;
   color: white;
   width: 90px;
@@ -805,11 +809,11 @@ input,
   border-radius: 50%;
   font-size: 3rem;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   transition: all 0.3s;
 }
 
 .wide-play-btn:hover {
-  background: #222;
+  background: #c81b1b;
   transform: scale(1.2);
 }

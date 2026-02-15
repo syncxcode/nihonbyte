@@ -740,19 +740,22 @@ input,
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
 }
 
-/* 2. Container Poster */
+/* =========================
+   POSTER GRID - FIX 2 KOLOM
+========================= */
 .expression-wide-grid {
-  /* KUNCI: Agar tidak hilang dan tetap lebar */
+  /* Memaksa container ini keluar dari kolom 170px */
   grid-column: 1 / -1 !important; 
-  display: flex !important; /* Pakai Flex agar lebih stabil daripada Grid di dalam Grid */
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 30px !important;
+  
+  display: grid !important;
+  /* Paksa 2 kolom dengan perbandingan lebar yang sama (1fr 1fr) */
+  grid-template-columns: 1fr 1fr !important; 
+  gap: 20px !important; /* Kecilkan gap sedikit agar muat 2 kartu */
   
   width: 100% !important;
-  max-width: 1200px !important;
+  max-width: 1250px !important; /* Lebarkan container utama */
   margin: 40px auto !important;
-  padding: 20px !important;
+  padding: 0 15px !important;
   box-sizing: border-box !important;
 }
 
@@ -762,11 +765,10 @@ input,
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
-  /* Tambah lebar kartu agar kalimat panjang tidak turun */
-  width: 550px !important; 
-  max-width: 100% !important;
+  /* Hilangkan width statis 550px agar dia fleksibel mengikuti grid 1fr */
+  width: 100% !important; 
   min-height: 220px !important;
-  padding: 30px !important;
+  padding: 25px !important;
   
   display: flex !important;
   flex-direction: column !important;
@@ -776,16 +778,14 @@ input,
   position: relative !important;
 }
 
-/* 4. Teks (Anti Vertikal & Pas di Tengah) */
+/* Biar teks kanji panjang gak maksa turun baris */
 .wide-kanji {
-  font-size: 2.8rem !important;
+  font-size: clamp(1.5rem, 2.2vw, 2.5rem) !important; /* Ukuran dinamis */
   font-weight: bold !important;
   width: 100% !important;
-  display: block !important;
-  writing-mode: horizontal-tb !important;
-  margin-bottom: 10px !important;
-  /* Biar kalimat panjang otomatis menyesuaikan */
-  word-break: keep-all !important; 
+  white-space: normal !important;
+  word-break: keep-all !important; /* Jaga agar kata tidak putus sembarangan */
+  line-height: 1.2 !important;
 }
 
 .wide-kana, .wide-romaji, .wide-meaning {

@@ -729,96 +729,66 @@ input,
   background: #f3f4f6;
 }
 
-.expression-rect-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-  padding: 1.5rem 1rem 3rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
+/* =========================
+   GRID CONTAINER
+========================= */
 
 .expression-rect-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.2rem;
-  padding: 1.5rem 1rem 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  width: 100%;
+  padding: 30px 50px;
+  box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  .expression-rect-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+
+/* =========================
+   CARD STYLE
+========================= */
 
 .expression-rect-card {
-  background: rgba(20, 35, 70, 0.9);
-  border-radius: 12px;
-  border: 2px solid rgba(90, 150, 255, 0.4);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
-  height: 180px;
-  padding: 1.4rem;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  overflow: hidden;
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 30px;
+
+  background: #ff1c1c; /* contoh merah kayak gambar */
+  border: 4px solid #ffffff;
+  border-radius: 6px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
 }
 
-.expression-rect-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-  border-color: rgba(120, 180, 255, 0.7);
-}
 
-.rect-kanji {
-  font-size: 2.4rem;
-  font-weight: bold;
-  color: #d0e8ff;
-  text-align: center;
-  margin-bottom: 0.3rem;
-}
+/* =========================
+   TEXT STYLE
+========================= */
 
-.rect-kana {
-  font-size: 1.6rem;
-  color: #f0f8ff;
-  text-align: center;
-  margin-bottom: 0.4rem;
-}
-
-.rect-romaji {
-  font-size: 1.15rem;
-  color: #b0c8e0;
-  font-style: italic;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
+.rect-kanji,
+.rect-kana,
+.rect-romaji,
 .rect-meaning {
-  font-size: 1.25rem;
-  color: #fffacd;
-  text-align: center;
-  line-height: 1.4;
-}
-
-.rect-play-btn {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background: rgba(70, 130, 255, 0.9);
-  border: none;
   color: white;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  font-size: 1.8rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  transition: all 0.25s;
+  font-weight: 700;
+  text-align: center;
+  margin: 8px 0;
+  letter-spacing: 1px;
 }
 
-.rect-play-btn:hover {
-  background: rgba(90, 150, 255, 1);
-  transform: scale(1.12);
+
+/* =========================
+   RESPONSIVE (HP)
+========================= */
+
+@media (max-width: 768px) {
+  .expression-rect-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
 }

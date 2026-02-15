@@ -732,17 +732,15 @@ input,
 /* =========================
    1. GRID (BIAR KARTU GAK NEMPEL KIRI LAYAR)
 ========================= */
-.expression-grid {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 30px !important;
-  
-  width: 90% !important; 
-  max-width: 1200px !important;
-  margin: 50px auto !important; /* Auto kiri-kanan biar grid-nya di tengah */
-  
-  padding: 20px !important;
-  box-sizing: border-box !important;
+.expression-wide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* =========================

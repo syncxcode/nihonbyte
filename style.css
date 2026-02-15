@@ -730,72 +730,86 @@ input,
 }
 
 /* =========================
-   1. FORCE GRID KE TENGAH
+   1. GRID (BIAR KARTU GAK NEMPEL KIRI LAYAR)
 ========================= */
 .expression-grid {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
-  gap: 40px !important;
+  gap: 30px !important;
   
-  /* Ini kunci agar grid tidak menempel ke kiri */
-  justify-items: center !important; 
-  align-items: center !important;
-  
-  width: 100% !important;
+  width: 90% !important; 
   max-width: 1200px !important;
-  margin: 100px auto !important; /* Tambah margin atas agar tidak tertutup header */
-  padding: 0 20px !important;
+  margin: 50px auto !important; /* Auto kiri-kanan biar grid-nya di tengah */
   
-  position: relative !important;
-  z-index: 99 !important; /* Biar nangkring di depan gambar kuil */
+  padding: 20px !important;
+  box-sizing: border-box !important;
 }
 
 /* =========================
-   2. CARD STYLE (FIX TOTAL)
+   2. CARD (PAKSA SEMUA KE TENGAH)
 ========================= */
 .expression-wide-card {
-  background: rgba(253, 244, 244, 0.95) !important; /* Sedikit transparan biar keren */
+  background: #fdf4f4 !important;
   border-radius: 24px !important;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.5) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
 
   min-height: 220px !important;
   width: 100% !important;
-  max-width: 500px !important; /* Batasi lebar kartu */
   padding: 30px !important;
-
-  /* FLEXBOX UNTUK KONTEN TENGAH */
+  
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important; /* PAKSA ISI KE TENGAH */
-  text-align: center !important;
+  justify-content: center !important; /* Tengah vertikal */
+  align-items: center !important;     /* Tengah horizontal */
   
   position: relative !important;
+  box-sizing: border-box !important;
 }
 
 /* =========================
-   3. TEXT ALIGNMENT FIX
+   3. TEXT (ANTI VERTIKAL / ANTI BERANTAKAN)
 ========================= */
 .wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
+  /* Reset mode menulis biar nggak vertikal lagi */
+  writing-mode: horizontal-tb !important; 
+  text-orientation: unset !important;
+  
+  text-align: center !important;
   width: 100% !important;
-  text-align: center !important; /* Paksa teks ke tengah */
   display: block !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  white-space: normal !important; /* Biar kalau panjang dia turun ke bawah, bukan meluber */
+  margin: 0 auto !important;
 }
 
 .wide-kanji {
-  font-size: 2.8rem !important;
-  margin-bottom: 10px !important;
+  font-size: 2.5rem !important;
+  font-weight: bold !important;
+  margin-bottom: 5px !important;
 }
 
+.wide-kana { font-size: 1.4rem !important; margin-bottom: 5px !important; }
+.wide-romaji { font-size: 1.1rem !important; color: #666 !important; margin-bottom: 5px !important; }
+.wide-meaning { font-size: 1.1rem !important; color: #333 !important; }
+
 /* =========================
-   4. TOMBOL PLAY (TETAP DI POJOK)
+   4. BUTTON (POJOK KANAN BAWAH)
 ========================= */
 .wide-play-btn {
   position: absolute !important;
   bottom: 15px !important;
   right: 15px !important;
-  width: 50px !important;
-  height: 50px !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  background: #e51f1f !important;
+  border: none !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+/* RESPONSIVE LAYAR HP */
+@media (max-width: 800px) {
+  .expression-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

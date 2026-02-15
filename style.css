@@ -732,25 +732,22 @@ input,
 /* =========================
    GRID CONTAINER
 ========================= */
-
 .expression-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
 
   width: 100%;
-  max-width: 1200px;      /* biar gak terlalu melebar */
-  margin: 60px auto;      /* CENTER */
+  max-width: 1200px;      /* Biar tidak terlalu melebar */
+  margin: 60px auto;      /* CENTER secara horizontal */
   padding: 0 40px;
 
   box-sizing: border-box;
 }
 
-
 /* =========================
    CARD STYLE
 ========================= */
-
 .expression-wide-card {
   background: #fdf4f4;
   border-radius: 24px;
@@ -759,34 +756,35 @@ input,
   height: 220px;
   padding: 30px 40px;
 
-  position: relative;
+  position: relative; /* Menjaga tombol play tetap di dalam card */
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;  /* biar teks rata kiri */
-  text-align: left;
+  justify-content: center; /* Rata tengah vertikal */
+  align-items: center;      /* PERBAIKAN: Rata tengah horizontal */
+  text-align: center;       /* PERBAIKAN: Teks di dalam ikut rata tengah */
 
   box-sizing: border-box;
   width: 100%;
 }
 
-
 /* =========================
-   TEXT NORMAL HORIZONTAL
+   TEXT STYLING
 ========================= */
-
 .wide-kanji,
 .wide-kana,
 .wide-romaji,
 .wide-meaning {
   writing-mode: horizontal-tb !important;
   text-orientation: mixed !important;
-  white-space: nowrap;
+  
+  /* PERBAIKAN: Mengubah nowrap ke normal agar teks bisa turun baris jika panjang */
+  white-space: normal; 
   word-break: keep-all;
 
   display: block;
   color: #222;
+  width: 100%; /* Memastikan elemen mengambil ruang penuh untuk alignment */
 }
 
 .wide-kanji {
@@ -812,13 +810,11 @@ input,
   color: #333;
 }
 
-
 /* =========================
-   PLAY BUTTON KANAN BAWAH
+   PLAY BUTTON (KANAN BAWAH)
 ========================= */
-
 .wide-play-btn {
-  position: absolute;
+  position: absolute; /* Tombol ini tidak akan terpengaruh alignment tengah di atas */
   bottom: 20px;
   right: 20px;
 
@@ -841,21 +837,12 @@ input,
   background: #c81b1b;
 }
 
-
 /* =========================
    RESPONSIVE (HP)
 ========================= */
-
 @media (max-width: 900px) {
   .expression-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Jadi satu kolom di layar kecil */
     padding: 0 20px;
   }
 }
-
-
-.wide-play-btn:hover {
-  transform: scale(1.15);
-  background: #c81b1b;
-}
-

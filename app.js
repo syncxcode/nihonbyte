@@ -12,7 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const letterButtons = document.querySelectorAll(".letter-btn");
   const patternButtons = document.querySelectorAll(".pattern-btn");
   const testButtons = document.querySelectorAll(".test-btn");
-
+  const logoTitle = document.getElementById("logoTitle");
+  const categoryBtn = document.getElementById("categoryBtn");
+  const categoryDropdown = document.getElementById("categoryDropdown");
   const kanjiModal = document.getElementById("kanjiModal");
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalClose = document.getElementById("modalClose");
@@ -609,5 +611,62 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+ // Klik logo = reset semua filter
+  logoTitle.addEventListener("click", () => {
+    selectedLevel = "all";
+    selectedType = "all";
+    search.value = "";
+    category.value = "all"; // kalau masih pakai select lama
+    render();
+  });
+
+  // Dropdown kategori
+  categoryBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    categoryDropdown.classList.toggle("show");
+  });
+
+  document.addEventListener("click", () => {
+    categoryDropdown.classList.remove("show");
+  });
+
+  // Klik item di dropdown
+  categoryDropdown.addEventListener("click", (e) => {
+    const btn = e.target.closest("button, .dropdown-item");
+    if (!btn) return;
+
+    viewMode = "vocab";
+    selectedLevel = btn.dataset.level || "all";
+    selectedType = btn.dataset.type || "all";
+
+    search.value = "";
+    render();
+    categoryDropdown.classList.remove("show");
+  });
+
+  // Maintenance popup untuk test baru
+  document.querySelectorAll(".maintenance").forEach(btn => {
+    btn.addEventListener("click", () => {
+      openInfoModal(`
+        Mohon Maaf, Test ini masih sedang dalam pengembangan.<br>
+        Silahkan kembali lagi nanti <span style="font-size:1.4rem">🔧</span>
+      `);
+      closeSidebar();
+    });
+  });
+
+  // Sidebar filter (sudah disesuaikan dengan data-type & data-level baru)
+  sidebarFilterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      viewMode = "vocab";
+      selectedLevel = btn.dataset.level || "all";
+      selectedType = btn.dataset.type || "all";
+      search.value = "";
+      render();
+      closeSidebar();
+    });
+  });
+
+  // Render awal
   render();
 });

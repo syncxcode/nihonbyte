@@ -741,94 +741,63 @@ input,
 }
 
 /* =========================
-   POSTER GRID - FIX 2 KOLOM
+   CONTAINER POSTER (2 KOLOM)
 ========================= */
 .expression-wide-grid {
-  /* Memaksa container ini keluar dari kolom 170px */
+  /* Keluar dari jebakan kolom 170px */
   grid-column: 1 / -1 !important; 
   
   display: grid !important;
-  /* Paksa 2 kolom dengan perbandingan lebar yang sama (1fr 1fr) */
-  grid-template-columns: 1fr 1fr !important; 
-  gap: 20px !important; /* Kecilkan gap sedikit agar muat 2 kartu */
+  /* Pakai minmax: minimal 400px, maksimal bagi rata 2 kolom */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important; 
+  gap: 30px !important;
   
   width: 100% !important;
-  max-width: 1250px !important; /* Lebarkan container utama */
+  max-width: 1200px !important;
   margin: 40px auto !important;
-  padding: 0 15px !important;
+  padding: 0 20px !important;
   box-sizing: border-box !important;
 }
 
-/* 3. Kartu Poster */
+/* =========================
+   KARTU POSTER (PAS DI TENGAH)
+========================= */
 .expression-wide-card {
   background: #fdf4f4 !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
-  /* Hilangkan width statis 550px agar dia fleksibel mengikuti grid 1fr */
-  width: 100% !important; 
-  min-height: 220px !important;
-  padding: 25px !important;
+  min-height: 240px !important;
+  padding: 30px 40px !important;
   
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
+  
   position: relative !important;
 }
 
-/* Biar teks kanji panjang gak maksa turun baris */
+/* =========================
+   TEXT (AGAR SATU BARIS)
+========================= */
 .wide-kanji {
-  font-size: clamp(1.5rem, 2.2vw, 2.5rem) !important; /* Ukuran dinamis */
+  font-size: 2.6rem !important; /* Ukuran font pas */
   font-weight: bold !important;
+  margin-bottom: 8px !important;
+  
+  /* Biar teks lebar ke samping dan tidak patah */
   width: 100% !important;
   white-space: normal !important;
-  word-break: keep-all !important; /* Jaga agar kata tidak putus sembarangan */
-  line-height: 1.2 !important;
+  word-break: keep-all !important; 
+  line-height: 1.3 !important;
 }
 
 .wide-kana, .wide-romaji, .wide-meaning {
   display: block !important;
   width: 100% !important;
-  text-align: center !important;
-}
-
-/* 5. Tombol Play */
-.wide-play-btn {
-  position: absolute !important;
-  bottom: 20px !important;
-  right: 20px !important;
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50% !important;
-}
-
-/* =========================
-   2. ADJUST FONT (BIAR GAK TURUN)
-========================= */
-.wide-kanji {
-  /* Gunakan clamp agar font fleksibel: 
-     minimal 1.8rem, ideal 2.5vw, maksimal 2.8rem */
-  font-size: clamp(1.8rem, 2.5vw, 2.8rem) !important; 
-  font-weight: bold !important;
-  line-height: 1.2 !important;
-  margin-bottom: 10px !important;
-  
-  /* Mencegah pemotongan kata yang kasar */
-  word-break: keep-all !important; 
-  overflow-wrap: anywhere !important;
-  width: 100% !important;
-}
-
-.wide-kana {
-  font-size: clamp(1.2rem, 1.8vw, 1.5rem) !important;
-  margin-bottom: 5px !important;
-}
-
-/* Tambahkan ini untuk memastikan teks tidak dipaksa turun baris */
-.wide-kanji, .wide-kana {
-  white-space: normal !important; 
+  margin-bottom: 4px !important;
 }
 
 /* Tombol Play */
@@ -842,7 +811,6 @@ input,
   background: #e51f1f !important;
   color: white !important;
   border: none !important;
-  cursor: pointer !important;
 }
 
 /* Responsif HP */

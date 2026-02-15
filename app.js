@@ -170,9 +170,9 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // ================================================
-  // FITUR BARU: Poster Ungkapan Umum (Persegi Panjang)
-  // ================================================
+  // ==================================================================
+  // FITUR BARU: Poster Ungkapan Umum (sesuai gambar terbaru kamu)
+  // ==================================================================
   function renderExpressionPoster() {
     grid.innerHTML = "";
 
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "expression-rect-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
-      card.setAttribute("aria-label", `Ungkapan: ${word.kana || word.kanji}`);
+      card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
 
       try {
         card.dataset.word = JSON.stringify(word);
@@ -206,28 +206,31 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       card.innerHTML = `
-        <div class="rect-top">
-          <div class="rect-kanji">${word.kanji || "—"}</div>
-          <div class="rect-kana">${word.kana || "—"}</div>
-          <div class="rect-romaji">${word.romaji || ""}</div>
-        </div>
+        <div class="rect-kanji">${word.kanji || "—"}</div>
+        <div class="rect-kana">${word.kana || "—"}</div>
+        <div class="rect-romaji">${word.romaji || ""}</div>
         <div class="rect-meaning">${word.meaning || "—"}</div>
-        <button class="rect-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
+        <button class="rect-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar audio">▶</button>
       `;
 
+      // Klik seluruh card (kecuali tombol play) → buka modal ekspand + rekomendasi
       card.addEventListener("click", (e) => {
         if (e.target.closest(".rect-play-btn")) return;
         try {
           const storedWord = JSON.parse(card.dataset.word);
           openModal(storedWord);
-        } catch (err) {}
+        } catch (err) {
+          console.error("Gagal parse data card:", err);
+        }
       });
 
+      // Klik tombol play → langsung putar audio
       card.querySelector(".rect-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         speakWord(card.querySelector(".rect-play-btn").dataset.text);
       });
 
+      // Keyboard support
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -241,7 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     grid.appendChild(container);
-    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
+
+    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${levelText}`;
   }
 
   function shuffle(array) {
@@ -506,7 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
-    // === FITUR BARU: Deteksi Ungkapan Umum ===
+    // === DETEKSI FITUR BARU: UNGKAPAN UMUM ===
     const isExpressionView = 
       viewMode === "vocab" && 
       (category.value === "ekspresi" || 
@@ -519,6 +524,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Kode lama tetap utuh di bawah ini
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;

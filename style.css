@@ -729,9 +729,9 @@ input,
   background: #f3f4f6;
 }
 
-.expression-grid-container {
+.expression-rect-grid {
   display: grid;
-  grid-template-columns: 1fr;                    /* mobile: 1 kolom */
+  grid-template-columns: 1fr;
   gap: 1.2rem;
   padding: 1.5rem 1rem 3rem;
   max-width: 1100px;
@@ -739,65 +739,77 @@ input,
 }
 
 @media (min-width: 768px) {
-  .expression-grid-container {
-    grid-template-columns: repeat(2, 1fr);       /* desktop: 2 kolom */
+  .expression-rect-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .expression-rect-card {
-  background: rgba(30, 45, 80, 0.88);
-  border: 2px solid rgba(100, 160, 255, 0.4);
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
-  transition: all 0.25s ease;
-  cursor: pointer;
-  height: 140px;                                 /* tinggi tetap, sesuai persegi panjang */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: rgba(25, 35, 70, 0.92);
+  border: 2px solid rgba(100, 160, 255, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  height: 160px;
+  padding: 1.2rem 1.4rem;
   position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .expression-rect-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-  border-color: rgba(120, 180, 255, 0.8);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.6);
 }
 
-.rect-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  padding: 1rem;
-}
-
-.rect-text {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #e8f0ff;
+.rect-top {
   text-align: center;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.rect-kanji {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #c3e0ff;
+}
+
+.rect-kana {
+  font-size: 1.45rem;
+  color: #e8f0ff;
+  margin-top: 4px;
+}
+
+.rect-romaji {
+  font-size: 1.05rem;
+  color: #a8b8d8;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+.rect-meaning {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #ffe070;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .rect-play-btn {
-  background: rgba(70, 130, 255, 0.85);
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(70, 130, 255, 0.9);
   border: none;
   color: white;
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   cursor: pointer;
-  transition: all 0.22s;
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: all 0.25s;
 }
 
 .rect-play-btn:hover {
-  background: rgba(90, 150, 255, 1);
-  transform: scale(1.1);
+  background: #4a90ff;
+  transform: scale(1.15);
 }

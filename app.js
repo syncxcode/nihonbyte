@@ -535,21 +535,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Handle dropdown item click
   filterDropdown.addEventListener("click", (e) => {
-    const item = e.target.closest(".dropdown-item");
-    if (!item) return;
+  const btn = e.target.closest("button[data-action='select']");
+  if (!btn) return;
 
-    if (item.dataset.type !== undefined) {
-      selectedType = item.dataset.type || "all";
-      updateLevelVisibility();
-    }
-    if (item.dataset.level !== undefined) {
-      selectedLevel = item.dataset.level || "all";
-    }
+  selectedType = btn.dataset.type || "all";
+  selectedLevel = btn.dataset.level || "all";
 
-    filterDropdown.classList.remove("show");
-    filterBtn.setAttribute("aria-expanded", "false");
-    render();
-  });
+  // Hapus active dari semua, tambahkan ke yang dipilih + parent jika ada
+  document.querySelectorAll("#filterDropdown .dropdown-item.active").forEach(el => el.classList.remove("active"));
+  btn.closest(".dropdown-item")?.classList.add("active");
+  if (btn.closest(".has-submenu")) {
+    btn.closest(".has-submenu").classList.add("active");
+  }
+
+  filterDropdown.classList.remove("show");
+  filterBtn.setAttribute("aria-expanded", "false");
+  render();
+});
 
   // Sidebar sync
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {

@@ -98,11 +98,14 @@ input,
   border-radius: 2px;
 }
 
-/* Grid – tetap exactly 5 desktop, 2 mobile */
+/* =========================================
+   GRID UTAMA (LEBIH LEBAR)
+========================================= */
 #grid {
   display: grid !important;
+  /* Mobile: 2 Kolom */
   grid-template-columns: repeat(2, 1fr) !important;
-  gap: 24px !important;
+  gap: 20px !important;
   padding: 20px !important;
 }
 
@@ -112,88 +115,110 @@ input,
 
 @media (min-width: 1024px) {
   #grid {
+    /* Desktop: 5 Kolom, tapi dibuat lebih lega */
     grid-template-columns: repeat(5, 1fr) !important;
-    gap: 36px !important;
-    padding: 36px !important;
+    gap: 30px !important;
+    padding: 30px !important;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 }
 
-/* Card normal – height lebih lega untuk long text */
+/* =========================================
+   KANJI CARD (HALAMAN AWAL)
+========================================= */
 .card-image {
-  height: 240px !important;                      /* Naik sedikit biar wrap nyaman */
+  height: 250px !important; /* Tinggi ditambah agar teks panjang nyaman */
   background-color: #000000 !important;
   position: relative;
   border-radius: 20px !important;
   overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* =========================================
-   PERBAIKAN KANJI CARD & MODAL EXPANDED
-========================================= */
-
-/* 1. CENTER KANJI CARD (HALAMAN AWAL) */
 .card-overlay {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important; /* Paksa ke tengah secara vertikal */
-  align-items: center !important;     /* Paksa ke tengah secara horizontal */
-  padding: 20px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 15px !important;
   text-align: center !important;
+  color: #ffffff !important; /* Semua teks jadi putih */
 }
 
-/* Merapikan jarak teks agar tidak tumpang tindih */
+/* Mencegah kanji panjang (seperti 日本語学校) turun ke bawah */
 .card-overlay .kanji {
+  font-size: clamp(22px, 5vw, 32px) !important;
   margin: 0 0 8px 0 !important;
+  white-space: nowrap !important; /* KUNCI: Biar gak turun baris */
+  color: #ffffff !important;
 }
-.card-overlay .kana {
-  margin: 0 0 4px 0 !important;
-}
-.card-overlay .romaji {
-  margin: 0 0 12px 0 !important;
-}
+
+.card-overlay .kana, 
+.card-overlay .romaji, 
 .card-overlay .meaning {
-  margin: 0 !important;
+  color: #ffffff !important;
+  margin: 2px 0 !important;
 }
 
-/* 2. MENGECILKAN PLAY BUTTON DI KARTU AWAL */
+/* =========================================
+   PLAY BUTTON (BULAT PUTIH DI KANAN BAWAH)
+========================================= */
 .play-audio-btn {
-  width: 36px !important;  /* Dikecilkan dari 48px */
-  height: 36px !important; /* Dikecilkan dari 48px */
-  font-size: 14px !important;
-  bottom: 12px !important;
-  right: 12px !important;
+  position: absolute !important;
+  bottom: 15px !important;
+  right: 15px !important;
+  
+  /* Bentuk Bulat Putih */
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+  
+  /* Isi Tombol (Ikon Play) */
+  color: #000000 !important; /* Warna ikon play hitam agar kontras */
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  z-index: 10;
+  transition: transform 0.2s ease !important;
 }
 
-/* 3. MEMPERKECIL MODAL EXPAND & TINGGI KARTUNYA */
+.play-audio-btn:hover {
+  transform: scale(1.1) !important;
+  background-color: #f0f0f0 !important;
+}
+
+/* =========================================
+   MODAL EXPANDED (LEBIH LEBAR)
+========================================= */
 @media (min-width: 768px) {
   .kanji-modal-content {
-    width: min(80vw, 450px) !important; /* Dikecilkan drastis dari 900px agar tidak raksasa */
+    /* Lebar modal ditambah agar lega */
+    width: min(90vw, 600px) !important; 
+    border-radius: 24px !important;
   }
   .card-image.expanded { 
-    height: 320px !important; /* Dikecilkan dari 500px */
+    height: 380px !important; 
+    background-color: #000000 !important;
   }
 }
 
-/* Batas tinggi default HP untuk expanded card */
-.card-image.expanded {
-  height: 300px !important; /* Dikecilkan dari 400px */
+.expanded-card .kanji { 
+  font-size: clamp(40px, 10vw, 70px) !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  margin-bottom: 15px !important;
 }
 
-/* 4. MERAPIKAN TEKS DI DALAM MODAL EXPANDED */
-.expanded-card .kanji { 
-  font-size: clamp(48px, 8vw, 64px) !important; /* Font diturunkan agar proporsional */
-  margin-bottom: 10px !important;
-}
-.expanded-card .kana { 
-  font-size: 22px !important; 
-}
-.expanded-card .romaji { 
-  font-size: 18px !important; 
-  margin-bottom: 16px !important;
-}
-.expanded-card .meaning { 
-  font-size: 20px !important; 
+.expanded-card .kana,
+.expanded-card .romaji,
+.expanded-card .meaning {
+  color: #ffffff !important;
 }
 
 .letter-poster {

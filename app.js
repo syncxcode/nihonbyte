@@ -513,6 +513,23 @@ closeModal() {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
+  modalBackdrop.addEventListener("click", closeModal);
+modalClose.addEventListener("click", closeModal);
+
+// <<< LISTENER BARU: Robust close dengan klik/tap di luar content >>>
+kanjiModal.addEventListener("click", (e) => {
+  if (!e.target.closest(".kanji-modal-content")) {
+    closeModal();
+  }
+});
+
+// Listener ESC (yang udah ada — jangan diubah!)
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+    closeSidebar();
+  }
+
   function render() {
     grid.innerHTML = "";
 

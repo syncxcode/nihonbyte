@@ -516,35 +516,22 @@ html, body {
   font-size: 11px;
 }
 
-/* =========================================
-   SIDEBAR + OVERLAY: VERSI DIPERBAIKI (BERDASARKAN KODE ASLI ANDA)
-   - Pertahankan 99% tampilan asli: background bg.jpg, overlay gelap 0.45 di sidebar, rounded corner kanan, shadow, slide transform
-   - Perbaikan kunci:
-     • Overlay (#overlay) sekarang TIDAK menutupi sidebar lagi → hanya redupkan konten di KANAN sidebar
-     • Hilangkan backdrop-filter blur di .menu-btn (penyebab utama "kabur" pada button/menu)
-     • Tambah background-attachment: fixed pada sidebar → bg.jpg stabil saat scroll
-     • Tambah text-shadow ringan pada teks → tulisan putih lebih tajam di background cerah
-     • Transition lebih smooth (0.35s ease-in-out)
-     • Overlay blur tetap ada tapi lebih halus, dan hanya aktif di area kanan
-========================================= */
-
 #sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 260px;
   height: 100vh;
-  background: url('./assets/bg.jpg') center/cover no-repeat fixed; /* fixed → bg stabil saat scroll */
+  background: url('./assets/bg.jpg') center/cover no-repeat fixed;
   transform: translateX(-100%);
-  transition: transform 0.35s ease-in-out; /* lebih smooth dari 0.3s */
+  transition: transform 0.35s ease-in-out;
   z-index: 1000;
   padding: 2rem 1.5rem;
   color: #ffffff;
-  box-shadow: 4px 0 Panthers 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: auto;
-  position: relative; /* Penting agar ::before menutupi dengan benar */
 }
 
 #sidebar::before {

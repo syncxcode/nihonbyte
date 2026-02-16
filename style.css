@@ -1032,6 +1032,61 @@ html, body {
 }
 
 /* =========================================
+   TOPBAR & CONTROLS - Optimasi search + filter icon button
+========================================= */
+.topbar {
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  max-width: 520px;
+}
+
+#search {
+  flex: 1;
+  min-width: 0;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+  border-radius: 50%; /* Round icon button */
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  width: 48px;
+  height: 48px;
+}
+
+.filter-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 1);
+}
+
+.filter-btn img {
+  height: 28px;
+  width: auto;
+}
+
+/* Mobile adjustment */
+@media (max-width: 767px) {
+  .topbar {
+    grid-template-columns: 48px 1fr;
+  }
+  .controls {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+  }
+}
+
+/* =========================================
    CUSTOM FILTER DROPDOWN - Mirip contoh gambar
 ========================================= */
 #filterDropdown {

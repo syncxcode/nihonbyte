@@ -1139,7 +1139,7 @@ html, body {
 }
 
 .branding img {
-  height: 90px !important;         /* Besarkan dari 54px jadi 90px (sesuaikan: coba 80–110px) */
+  height: 65px !important;         /* Besarkan dari 54px jadi 90px (sesuaikan: coba 80–110px) */
   width: auto !important;          /* Proporsional (atau fixed kalau mau bulat sempurna) */
   max-width: none !important;      /* Override limit kalau ada */
   border-radius: 50% !important;   /* Pastikan bulat sempurna */

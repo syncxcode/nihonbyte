@@ -14,7 +14,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("./assets/bg.jpg") center / cover no-repeat;
+  background: url("./assets/bg.webp") center / cover no-repeat;
   z-index: -1;
 }
 
@@ -522,7 +522,7 @@ html, body {
   left: 0;
   width: 260px;
   height: 100vh;
-  background: url('./assets/bg.jpg') center/cover no-repeat;
+  background: url('./assets/bg.webp') center/cover no-repeat;
   will-change: transform;
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;

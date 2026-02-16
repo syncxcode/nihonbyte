@@ -109,12 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.speechSynthesis.speak(utterance);
   }
 
-  function closeSidebar() {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-    hamburger.setAttribute("aria-expanded", "false");
-  }
-
   function openInfoModal(message) {
     expandedCard.innerHTML = `<div class="info-poster">${message}</div>`;
     modalSubtitle.style.display = "none";
@@ -617,29 +611,39 @@ closeModal() {
     render();
   });
 
-  hamburger.addEventListener("click", () => {
+  // Simpan kondisi overflow asli biar bisa dikembalikan pas sidebar ditutup
+let originalBodyOverflow = '';
+let originalHtmlOverflow = '';
+
+hamburger.addEventListener("click", () => {
   const isActive = sidebar.classList.toggle("active");
   overlay.classList.toggle("active", isActive);
   hamburger.setAttribute("aria-expanded", isActive);
 
   if (isActive) {
-    document.body.classList.add("no-scroll");
-    // document.documentElement.classList.add("no-scroll"); // opsional, uncomment jika perlu
+    // Simpan dulu kondisi overflow sebelum diubah
+    originalBodyOverflow = document.body.style.overflow || '';
+    originalHtmlOverflow = document.documentElement.style.overflow || '';
+
+    // Kunci scroll total: halaman nggak bisa digulir sama sekali
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   } else {
-    document.body.classList.remove("no-scroll");
-    // document.documentElement.classList.remove("no-scroll");
+    // Kalau sidebar ditutup lewat hamburger, langsung panggil fungsi tutup
+    closeSidebar();
   }
 });
 
 overlay.addEventListener("click", closeSidebar);
 
-// Update function closeSidebar agar konsisten
 function closeSidebar() {
   sidebar.classList.remove("active");
   overlay.classList.remove("active");
   hamburger.setAttribute("aria-expanded", "false");
-  document.body.classList.remove("no-scroll");
-  // document.documentElement.classList.remove("no-scroll"); // opsional
+
+  // Kembalikan scroll ke kondisi semula (biar aman kalau ada style lain)
+  document.body.style.overflow = originalBodyOverflow;
+  document.documentElement.style.overflow = originalHtmlOverflow;
 }
   
   grid.addEventListener("click", (event) => {

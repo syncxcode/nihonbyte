@@ -31,8 +31,6 @@
       <div class="subfolder-list">
         <button class="menu-btn sidebar-filter-btn" data-type="verb-godan" data-level="all">KATA KERJA GODAN</button>
         <button class="menu-btn sidebar-filter-btn" data-type="verb-ru" data-level="all">KATA KERJA ICHIDAN</button>
-
-
         <button class="menu-btn sidebar-filter-btn" data-type="verb-irregular" data-level="all">KATA KERJA SURU</button>
       </div>
     </details>
@@ -118,47 +116,109 @@
   </div>
 
   <div class="controls">
-    <!-- DIPERBAIKI: Tag <input> yang rusak karena typo "input" duplikat -->
     <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
 
     <button id="filterBtn" class="filter-btn" aria-label="Buka filter" aria-expanded="false">
       <img src="./assets/filter.png" alt="Filter">
     </button>
 
-    <!-- FILTER DROPDOWN (tetap di dalam .controls agar positioning benar) -->
-    <div id="filterDropdown" class="dropdown-menu">
-      <div class="dropdown-group">
-        <div class="dropdown-header">Kosakata</div>
-        <button class="dropdown-item active" data-type="all">Semua</button>
-        <button class="dropdown-item" data-type="verb-godan">KATA KERJA GODAN</button>
-        <button class="dropdown-item" data-type="verb-ru">KATA KERJA ICHIDAN</button>
-        <button class="dropdown-item" data-type="verb-irregular">KATA KERJA SURU</button>
-        <button class="dropdown-item" data-type="adj-i">KATA SIFAT い</button>
-        <button class="dropdown-item" data-type="adj-na">KATA SIFAT な</button>
-        <button class="dropdown-item" data-type="noun-body">KOSAKATA ANGGOTA TUBUH</button>
-        <button class="dropdown-item" data-type="noun-number">KOSAKATA ANGKA</button>
-        <button class="dropdown-item" data-type="noun-month">KOSAKATA BULAN</button>
-        <button class="dropdown-item" data-type="noun-weather">KOSAKATA CUACA</button>
-        <button class="dropdown-item" data-type="noun-time">KOSAKATA JAM/WAKTU</button>
-        <button class="dropdown-item" data-type="noun-medical">KOSAKATA MEDIS</button>
-        <button class="dropdown-item" data-type="noun-vehicle">KOSAKATA KENDARAAN</button>
-        <button class="dropdown-item" data-type="noun-animal">KOSAKATA NAMA BINATANG</button>
-        <button class="dropdown-item" data-type="noun-family">KOSAKATA NAMA KELUARGA</button>
-        <button class="dropdown-item" data-type="noun-kitchen">KOSAKATA DAPUR</button>
-        <button class="dropdown-item" data-type="noun-counter">KOSAKATA SATUAN BILANGAN</button>
-        <button class="dropdown-item" data-type="noun-place">KOSAKATA TEMPAT/BANGUNAN</button>
-        <button class="dropdown-item" data-type="ekspresi">UNGKAPAN UMUM</button>
+    <!-- NEW COMPACT NESTED DROPDOWN (mirip context menu Windows dengan sub-menu) -->
+    <div id="filterDropdown" class="dropdown-menu nested-dropdown">
+      <!-- Semua -->
+      <button class="dropdown-item active" data-action="select" data-type="all" data-level="all">Semua</button>
+
+      <!-- Kata Kerja Godan (dengan sub-level) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KATA KERJA GODAN</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="verb-godan" data-level="all">Semua Level</button>
+          <button data-action="select" data-type="verb-godan" data-level="N5">N5</button>
+          <button data-action="select" data-type="verb-godan" data-level="N4">N4</button>
+          <button data-action="select" data-type="verb-godan" data-level="N3">N3</button>
+          <button data-action="select" data-type="verb-godan" data-level="N2">N2</button>
+          <button data-action="select" data-type="verb-godan" data-level="N1">N1</button>
+        </div>
       </div>
 
-      <div class="dropdown-group" id="levelGroup">
-        <div class="dropdown-header">TINGKAT</div>
-        <button class="dropdown-item active" data-level="all">Semua</button>
-        <button class="dropdown-item" data-level="N5">N5</button>
-        <button class="dropdown-item" data-level="N4">N4</button>
-        <button class="dropdown-item" data-level="N3">N3</button>
-        <button class="dropdown-item" data-level="N2">N2</button>
-        <button class="dropdown-item" data-level="N1">N1</button>
+      <!-- Kata Kerja Ichidan (dengan sub-level) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KATA KERJA ICHIDAN</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="verb-ru" data-level="all">Semua Level</button>
+          <button data-action="select" data-type="verb-ru" data-level="N5">N5</button>
+          <button data-action="select" data-type="verb-ru" data-level="N4">N4</button>
+          <button data-action="select" data-type="verb-ru" data-level="N3">N3</button>
+          <button data-action="select" data-type="verb-ru" data-level="N2">N2</button>
+          <button data-action="select" data-type="verb-ru" data-level="N1">N1</button>
+        </div>
       </div>
+
+      <!-- Kata Kerja Suru / Irregular (dengan sub-level) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KATA KERJA SURU</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="verb-irregular" data-level="all">Semua Level</button>
+          <button data-action="select" data-type="verb-irregular" data-level="N5">N5</button>
+          <button data-action="select" data-type="verb-irregular" data-level="N4">N4</button>
+          <button data-action="select" data-type="verb-irregular" data-level="N3">N3</button>
+          <button data-action="select" data-type="verb-irregular" data-level="N2">N2</button>
+          <button data-action="select" data-type="verb-irregular" data-level="N1">N1</button>
+        </div>
+      </div>
+
+      <!-- Kata Sifat い (dengan sub-level) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KATA SIFAT い</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="adj-i" data-level="all">Semua Level</button>
+          <button data-action="select" data-type="adj-i" data-level="N5">N5</button>
+          <button data-action="select" data-type="adj-i" data-level="N4">N4</button>
+          <button data-action="select" data-type="adj-i" data-level="N3">N3</button>
+          <button data-action="select" data-type="adj-i" data-level="N2">N2</button>
+          <button data-action="select" data-type="adj-i" data-level="N1">N1</button>
+        </div>
+      </div>
+
+      <!-- Kata Sifat な (dengan sub-level) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KATA SIFAT な</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="adj-na" data-level="all">Semua Level</button>
+          <button data-action="select" data-type="adj-na" data-level="N5">N5</button>
+          <button data-action="select" data-type="adj-na" data-level="N4">N4</button>
+          <button data-action="select" data-type="adj-na" data-level="N3">N3</button>
+          <button data-action="select" data-type="adj-na" data-level="N2">N2</button>
+          <button data-action="select" data-type="adj-na" data-level="N1">N1</button>
+        </div>
+      </div>
+
+      <!-- Kosakata Noun (grouped dengan sub-menu agar tidak panjang) -->
+      <div class="dropdown-item has-submenu">
+        <span class="menu-label">KOSAKATA NOUN</span>
+        <span class="arrow">></span>
+        <div class="submenu">
+          <button data-action="select" data-type="noun-body" data-level="all">ANGGOTA TUBUH</button>
+          <button data-action="select" data-type="noun-number" data-level="all">ANGKA</button>
+          <button data-action="select" data-type="noun-month" data-level="all">BULAN</button>
+          <button data-action="select" data-type="noun-weather" data-level="all">CUACA</button>
+          <button data-action="select" data-type="noun-time" data-level="all">JAM/WAKTU</button>
+          <button data-action="select" data-type="noun-medical" data-level="all">MEDIS</button>
+          <button data-action="select" data-type="noun-vehicle" data-level="all">KENDARAAN</button>
+          <button data-action="select" data-type="noun-animal" data-level="all">NAMA BINATANG</button>
+          <button data-action="select" data-type="noun-family" data-level="all">NAMA KELUARGA</button>
+          <button data-action="select" data-type="noun-kitchen" data-level="all">DAPUR</button>
+          <button data-action="select" data-type="noun-counter" data-level="all">SATUAN BILANGAN</button>
+          <button data-action="select" data-type="noun-place" data-level="all">TEMPAT/BANGUNAN</button>
+        </div>
+      </div>
+
+      <!-- Ungkapan Umum (tanpa sub-level) -->
+      <button class="dropdown-item" data-action="select" data-type="ekspresi" data-level="all">UNGKAPAN UMUM</button>
     </div>
   </div>
 

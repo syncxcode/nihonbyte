@@ -124,34 +124,53 @@ document.addEventListener("DOMContentLoaded", () => {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  function matchType(wordType, targetType) {
-    if (targetType === "all") return true;
-    if (targetType === "verb-irregular") {
-      return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
-    }
-    return wordType?.startsWith(targetType) || false;
+ function matchType(wordType, targetType) {
+  if (targetType === "all") return true;
+
+  // Verb irregular (suru, etc.)
+  if (targetType === "verb-irregular") {
+    return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
   }
 
-  function getFilteredWords() {
-    const key = (search.value || "").toLowerCase().trim();
-    const selectedFromDropdown = category.value;
-
-    return vocabularyData.filter((word) => {
-      if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
-
-      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
-
-      const text = [
-        word.kanji || "",
-        word.kana || "",
-        word.romaji || "",
-        word.meaning || ""
-      ].join("").toLowerCase();
-
-      return !key || text.includes(key);
-    });
+  // Exact match untuk semua kategori noun (umum dan sub-kategori seperti noun-body, noun-weather, dll.)
+  if (targetType === "noun" || targetType.startsWith("noun-")) {
+    return wordType === targetType;
   }
+
+  // Ekspresi / Ungkapan Umum (kompatibilitas dengan berbagai varian type di data.js)
+  if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
+    return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
+  }
+
+  // Default: startsWith (untuk verb-godan, verb-ru, adj-i, adj-na)
+  return wordType?.startsWith(targetType) || false;
+}
+
+function getFilteredWords() {
+  const key = (search.value || "").toLowerCase().trim();
+  const selectedFromDropdown = category.value;
+
+  return vocabularyData.filter((word) => {
+    // Filter level
+    if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
+
+    // Tentukan effective type: prioritas dari sidebar (selectedType), fallback ke dropdown
+    const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+
+    // Filter type menggunakan matchType yang sudah dimodifikasi
+    if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
+
+    // Search keyword
+    const text = [
+      word.kanji || "",
+      word.kana || "",
+      word.romaji || "",
+      word.meaning || ""
+    ].join("").toLowerCase();
+
+    return !key || text.includes(key);
+  });
+}
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";

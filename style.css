@@ -182,71 +182,76 @@ input,
 }
 
 /* =========================================
-   MODAL (FIX: TERSEMBUNYI SAAT START)
+   FIX MODAL: ANTI MEPER KANAN & CENTERED
 ========================================= */
 
-/* Pastikan modal sembunyi di awal agar tidak menghalangi klik */
+/* 1. Backdrop Modal */
 #kanjiModal {
-  display: none; /* JANGAN pakai !important di sini */
+  display: none; /* Default sembunyi */
   position: fixed !important;
   inset: 0 !important;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  
+  /* Paksa isi modal tepat di tengah layar */
   align-items: center !important;
   justify-content: center !important;
-  background: rgba(0, 0, 0, 0.8) !important; /* Backdrop gelap */
+  padding: 20px !important;
+  box-sizing: border-box !important;
 }
 
-/* Saat modal dibuka (ditambah via JS), baru pakai flex */
+/* Munculkan lewat class active */
 #kanjiModal.active {
   display: flex !important;
 }
 
+/* 2. Kontainer Putih/Hitam Modal */
 .kanji-modal-content {
-  width: 90% !important;
-  max-width: 500px !important;
+  width: 100% !important; /* Mulai dari 100% dulu */
+  max-width: 500px !important; /* Batas maksimal biar gak raksasa */
   background: #000000 !important;
   border-radius: 28px !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
-  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  
+  /* Kunci utama agar TIDAK MEPER KANAN */
+  margin: auto !important; 
   position: relative !important;
+  overflow: hidden !important; 
+  box-sizing: border-box !important;
 }
 
+/* 3. Area Kartu Ter-expand */
 .card-image.expanded {
+  width: 100% !important;
   height: auto !important;
-  min-height: 250px !important;
-  padding: 40px 20px !important;
+  min-height: 280px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
+  padding: 40px 20px !important;
+  box-sizing: border-box !important; /* Wajib biar padding gak bikin meper */
+  background: transparent !important;
 }
 
-.expanded-card .kanji {
-  font-size: clamp(50px, 12vw, 80px) !important;
-  color: #ffffff !important;
-  white-space: nowrap !important;
-  margin-bottom: 15px !important;
-}
-
-/* Rekomendasi Horizontal */
-#modalSubtitle {
-  color: #888 !important;
-  font-size: 0.85rem !important;
-  padding: 15px 20px 5px !important;
-  background: #000 !important;
-}
-
+/* 4. Rekomendasi Row (Tetap Horizontal tapi Aman) */
 #recommendationRow {
   display: flex !important;
+  flex-direction: row !important;
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
-  padding: 10px 20px 20px !important;
+  width: 100% !important;
+  padding: 15px 20px !important;
   gap: 12px !important;
+  box-sizing: border-box !important;
   background: #000 !important;
   -webkit-overflow-scrolling: touch;
 }
 
-#recommendationRow::-webkit-scrollbar { display: none; }
+/* Sembunyikan scrollbar agar aesthetic */
+#recommendationRow::-webkit-scrollbar {
+  display: none;
+}
 
 #recommendationRow .card {
   flex: 0 0 110px !important;

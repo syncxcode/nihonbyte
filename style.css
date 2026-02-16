@@ -98,66 +98,60 @@ input,
   border-radius: 2px;
 }
 
-#grid {
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 1rem;
-}
-
-/* Grid container utama – force jumlah columns responsif */
-#main, #grid {  /* Target both just in case */
-  display: grid;
-  gap: 24px;                    /* Lebih lega antar card */
-  padding: 20px;
-  grid-template-columns: repeat(2, 1fr);  /* Mobile: 2 card per baris */
+/* Force grid layout – EXACT columns responsif */
+#grid {  /* Selector pasti dari app.js repo kamu */
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;  /* Mobile: 2 card */
+  gap: 20px !important;
+  padding: 16px !important;
 }
 
 @media (min-width: 640px) {
-  #main, #grid {
-    grid-template-columns: repeat(3, 1fr);  /* Tablet: 3 card */
-    gap: 28px;
+  #grid {
+    grid-template-columns: repeat(3, 1fr) !important;  /* Tablet: 3 card */
+    gap: 24px !important;
+    padding: 24px !important;
   }
 }
 
 @media (min-width: 1024px) {
-  #main, #grid {
-    grid-template-columns: repeat(5, 1fr);  /* Desktop: exactly 5 card per baris */
-    gap: 32px;
-    padding: 32px;
+  #grid {
+    grid-template-columns: repeat(5, 1fr) !important;  /* Desktop: EXACTLY 5 card */
+    gap: 32px !important;
+    padding: 32px !important;
   }
 }
 
-/* Card utama – solid hitam + height optimal */
+/* Card base – solid hitam + height lebih lega */
 .card-image {
-  height: 210px;                         /* Naik sedikit biar teks lega (dari 190px asli) */
-  background-color: #000000;
+  height: 230px !important;                      /* Lebih tinggi biar teks breathing */
+  background-color: #000000 !important;
   position: relative;
-  border-radius: 16px;
+  border-radius: 20px !important;                /* Sedikit lebih rounded biar modern */
   overflow: hidden;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);  /* Shadow lebih soft */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35) !important;
 }
 
-/* Expanded card (saat klik/detail) */
+/* Expanded card */
 .card-image.expanded {
-  height: 300px;                         /* Adjust ikut height baru */
+  height: 320px !important;
 }
 
 @media (min-width: 768px) {
   .card-image.expanded {
-    height: 380px;
+    height: 420px !important;
   }
 }
 
-/* Overlay glassy – premium black */
+/* Overlay – glassy ringan, blur dikurangi biar teks tajam */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;        /* Kanji atas, detail bawah */
-  padding: 24px 20px 20px;               /* Lebih banyak ruang atas untuk kanji */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.35));
+  justify-content: space-between;
+  padding: 28px 20px 20px;                       /* Ruang atas lebih untuk kanji */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.2)) !important;
   color: #ffffff;
 }
 
@@ -165,77 +159,69 @@ input,
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.08);  /* Glossy subtle */
-  backdrop-filter: blur(6px);            /* Kembali ke 6px seperti asli – teks lebih tajam */
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.06);         /* Glossy sangat subtle */
+  backdrop-filter: blur(4px) !important;         /* Dikurangi jadi 4px → glassy tetap, teks TAJAM */
+  -webkit-backdrop-filter: blur(4px) !important;
 }
 
-/* Kanji – dominan di atas */
+/* Kanji – dominan, tajam, center */
 .card-overlay .kanji {
-  font-size: 38px;                       /* Custom kamu */
+  font-size: 42px !important;                    /* Sedikit lebih besar */
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: 800;
   text-align: center;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
-  margin: 0 0 8px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;  /* Shadow lebih ringan biar tidak buram */
+  margin: 0 0 12px;
 }
 
-/* Detail bawah – rapi & readable */
+/* Detail bawah – rapi, wrap aman, kontras tinggi */
 .card-overlay .kana {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px !important;
+  font-weight: 600;
   text-align: left;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
   margin: 4px 0 0;
 }
 
 .card-overlay .romaji {
-  font-size: 14px;
-  opacity: 0.95;
+  font-size: 15px !important;
   font-style: italic;
+  opacity: 0.92;
   text-align: left;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-  margin: 2px 0 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  margin: 3px 0 0;
 }
 
 .card-overlay .meaning {
-  font-size: 15px;
+  font-size: 16px !important;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.45;
   text-align: left;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
-  margin: 6px 0 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  margin: 8px 0 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  max-width: 100%;
 }
 
-/* Play button – kanan bawah, premium */
+/* Play button – kanan bawah, lebih visible */
 .play-audio-btn {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
-  z-index: 2;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  transition: all 0.25s ease;
+  bottom: 18px !important;
+  right: 18px !important;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.25) !important;
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 26px !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .play-audio-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: scale(1.12);
+  background: rgba(255, 255, 255, 0.4) !important;
+  transform: scale(1.15);
 }
-
 .letter-poster {
   grid-column: 1 / -1;
   background: rgba(255, 255, 255, 0.78);

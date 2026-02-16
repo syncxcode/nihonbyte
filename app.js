@@ -15,6 +15,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
+  function openSidebar() {
+  sidebar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  }
+  
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";

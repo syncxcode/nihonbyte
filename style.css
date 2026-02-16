@@ -44,9 +44,11 @@ body::before {
 }
 
 .controls {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  max-width: 520px;
+  position: relative; /* 🔥 INI FIX UTAMA */
 }
 
 #resultInfo {

@@ -933,7 +933,7 @@ html, body {
   }
 }
 
-/* HEADER FIXED + LAYOUT BARU: hamburger kiri | logo tengah | controls kanan */
+/* HEADER FIXED + LAYOUT BARU: hamburger + logo di kiri (samping), controls di kanan, resultInfo di bawah controls (kanan) */
 .topbar {
   position: fixed !important;
   top: 0;
@@ -942,59 +942,72 @@ html, body {
   box-sizing: border-box;
   z-index: 50;
   padding: 12px 16px !important;
-  gap: 16px !important;
-  align-items: center !important;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
 
-  /* 3 kolom: hamburger | logo | controls */
+  /* Grid 3 kolom + 2 baris (biar resultInfo di bawah tanpa header jadi terlalu tinggi) */
   display: grid !important;
-  grid-template-columns: auto 1fr auto !important;
+  grid-template-columns: auto auto 1fr !important;   /* kolom1: hamburger, kolom2: logo, kolom3: controls + resultInfo */
+  grid-template-rows: auto auto !important;          /* baris1: hamburger/logo/controls, baris2: resultInfo */
+  gap: 8px 16px !important;                          /* jarak vertikal/horizontal kecil agar ramping */
+  align-items: center !important;
 }
 
-/* Logo title di tengah */
+/* Hamburger di kiri atas */
+#hamburger {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* Logo tepat di samping hamburger (kiri, sejajar horizontal) */
 .branding {
-  justify-self: center !important;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start !important;
 }
 .branding img {
-  height: 48px !important;
+  height: 48px !important;   /* ukuran logo konsisten, tidak acak-acakan */
 }
 
-/* Dropdown + search di kanan, sejajar horizontal */
+/* Dropdown + search di pojok kanan atas */
 .controls {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end !important;
   display: grid !important;
-  grid-template-columns: minmax(160px, 240px) 1fr !important; /* dropdown tetap lebar, search ambil sisa */
+  grid-template-columns: minmax(160px, 240px) 1fr !important;   /* dropdown tetap lebar, search ambil sisa */
   gap: 12px !important;
   align-items: center;
-  justify-self: end !important;
 }
 
-/* Result info pindah ke bawah controls (biar tidak numpuk) */
+/* Result info tepat di bawah dropdown/search (align kanan, tidak numpuk) */
 #resultInfo {
-  grid-column: 1 / -1 !important;   /* ambil full width */
-  margin-top: 8px !important;
-  text-align: center;
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end !important;
+  margin: 0 !important;
   font-size: 0.85rem;
+  color: #374151;
 }
 
-/* Mobile: kalau layar kecil, controls tetap di kanan tapi lebih ramping */
+/* Mobile: lebih ramping, logo sedikit lebih kecil */
 @media (max-width: 767px) {
   .topbar {
-    grid-template-columns: auto 1fr auto !important;
     padding: 10px 12px !important;
+    gap: 6px 12px !important;
+  }
+  .branding img {
+    height: 42px !important;
   }
   .controls {
     grid-template-columns: minmax(120px, 180px) 1fr !important;
     gap: 8px !important;
   }
-  .branding img {
-    height: 42px !important;
-  }
 }
 
 /* Padding konten utama agar tidak tertutup header */
 #grid {
-  padding-top: 140px !important;   /* sesuaikan kalau masih kurang (130-160px biasanya pas) */
+  padding-top: 150px !important;   /* naikkan sedikit karena sekarang 2 baris (biasanya 140-160px pas) */
 }

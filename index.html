@@ -96,7 +96,7 @@
         <details>
           <summary>聴解</summary>
           <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn maintenance-btn">N5</button>
+            <button class="menu-btn maintenance-btn">N5</button943
             <button class="menu-btn maintenance-btn">N4</button>
           </div>
         </details>
@@ -116,50 +116,50 @@
   </div>
 
   <div class="controls">
-    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
+    <input>input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
     <button id="filterBtn" class="filter-btn" aria-label="Buka filter" aria-expanded="false">
       <img src="./assets/filter.png" alt="Filter">
     </button>
+
+    <!-- FILTER DROPDOWN DIPINDAHKAN KE DALAM .controls UNTUK POSITIONING YANG BENAR -->
+    <div id="filterDropdown" class="dropdown-menu">
+      <div class="dropdown-group">
+        <div class="dropdown-header">Kosakata</div>
+        <button class="dropdown-item active" data-type="all">Semua</button>
+        <button class="dropdown-item" data-type="verb-godan">KATA KERJA GODAN</button>
+        <button class="dropdown-item" data-type="verb-ru">KATA KERJA ICHIDAN</button>
+        <button class="dropdown-item" data-type="verb-irregular">KATA KERJA SURU</button>
+        <button class="dropdown-item" data-type="adj-i">KATA SIFAT い</button>
+        <button class="dropdown-item" data-type="adj-na">KATA SIFAT な</button>
+        <button class="dropdown-item" data-type="noun-body">KOSAKATA ANGGOTA TUBUH</button>
+        <button class="dropdown-item" data-type="noun-number">KOSAKATA ANGKA</button>
+        <button class="dropdown-item" data-type="noun-month">KOSAKATA BULAN</button>
+        <button class="dropdown-item" data-type="noun-weather">KOSAKATA CUACA</button>
+        <button class="dropdown-item" data-type="noun-time">KOSAKATA JAM/WAKTU</button>
+        <button class="dropdown-item" data-type="noun-medical">KOSAKATA MEDIS</button>
+        <button class="dropdown-item" data-type="noun-vehicle">KOSAKATA KENDARAAN</button>
+        <button class="dropdown-item" data-type="noun-animal">KOSAKATA NAMA BINATANG</button>
+        <button class="dropdown-item" data-type="noun-family">KOSAKATA NAMA KELUARGA</button>
+        <button class="dropdown-item" data-type="noun-kitchen">KOSAKATA DAPUR</button>
+        <button class="dropdown-item" data-type="noun-counter">KOSAKATA SATUAN BILANGAN</button>
+        <button class="dropdown-item" data-type="noun-place">KOSAKATA TEMPAT/BANGUNAN</button>
+        <button class="dropdown-item" data-type="ekspresi">UNGKAPAN UMUM</button>
+      </div>
+
+      <div class="dropdown-group" id="levelGroup">
+        <div class="dropdown-header">TINGKAT</div>
+        <button class="dropdown-item active" data-level="all">Semua</button>
+        <button class="dropdown-item" data-level="N5">N5</button>
+        <button class="dropdown-item" data-level="N4">N4</button>
+        <button class="dropdown-item" data-level="N3">N3</button>
+        <button class="dropdown-item" data-level="N2">N2</button>
+        <button class="dropdown-item" data-level="N1">N1</button>
+      </div>
+    </div>
   </div>
 
   <p id="resultInfo" class="result-info"></p>
 </header>
-
-<!-- CUSTOM FILTER DROPDOWN -->
-<div id="filterDropdown" class="dropdown-menu">
-  <div class="dropdown-group">
-    <div class="dropdown-header">Kosakata</div>
-    <button class="dropdown-item active" data-type="all">Semua</button>
-    <button class="dropdown-item" data-type="verb-godan">KATA KERJA GODAN</button>
-    <button class="dropdown-item" data-type="verb-ru">KATA KERJA ICHIDAN</button>
-    <button class="dropdown-item" data-type="verb-irregular">KATA KERJA SURU</button>
-    <button class="dropdown-item" data-type="adj-i">KATA SIFAT い</button>
-    <button class="dropdown-item" data-type="adj-na">KATA SIFAT な</button>
-    <button class="dropdown-item" data-type="noun-body">KOSAKATA ANGGOTA TUBUH</button>
-    <button class="dropdown-item" data-type="noun-number">KOSAKATA ANGKA</button>
-    <button class="dropdown-item" data-type="noun-month">KOSAKATA BULAN</button>
-    <button class="dropdown-item" data-type="noun-weather">KOSAKATA CUACA</button>
-    <button class="dropdown-item" data-type="noun-time">KOSAKATA JAM/WAKTU</button>
-    <button class="dropdown-item" data-type="noun-medical">KOSAKATA MEDIS</button>
-    <button class="dropdown-item" data-type="noun-vehicle">KOSAKATA KENDARAAN</button>
-    <button class="dropdown-item" data-type="noun-animal">KOSAKATA NAMA BINATANG</button>
-    <button class="dropdown-item" data-type="noun-family">KOSAKATA NAMA KELUARGA</button>
-    <button class="dropdown-item" data-type="noun-kitchen">KOSAKATA DAPUR</button>
-    <button class="dropdown-item" data-type="noun-counter">KOSAKATA SATUAN BILANGAN</button>
-    <button class="dropdown-item" data-type="noun-place">KOSAKATA TEMPAT/BANGUNAN</button>
-    <button class="dropdown-item" data-type="ekspresi">UNGKAPAN UMUM</button>
-  </div>
-
-  <div class="dropdown-group" id="levelGroup">
-    <div class="dropdown-header">TINGKAT</div>
-    <button class="dropdown-item active" data-level="all">Semua</button>
-    <button class="dropdown-item" data-level="N5">N5</button>
-    <button class="dropdown-item" data-level="N4">N4</button>
-    <button class="dropdown-item" data-level="N3">N3</button>
-    <button class="dropdown-item" data-level="N2">N2</button>
-    <button class="dropdown-item" data-level="N1">N1</button>
-  </div>
-</div>
 
 <main id="grid"></main>
 

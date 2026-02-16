@@ -112,74 +112,112 @@ input,
   cursor: pointer;
 }
 
-/* Card utama – background solid hitam + fix height setelah img dihapus */
+/* Card utama – solid hitam + height fixed */
 .card-image {
-  height: 190px;                          /* Height normal (sama seperti img asli) */
-  background-color: #000000;              /* Solid hitam murni */
+  height: 190px;
+  background-color: #000000;
   position: relative;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
-/* Expanded card (saat diklik / modal view) */
+/* Expanded card (saat klik) */
 .card-image.expanded {
   height: 280px;
 }
 
 @media (min-width: 768px) {
   .card-image.expanded {
-    height: 350px;                        /* Lebih besar di desktop seperti asli */
+    height: 350px;
   }
 }
 
-/* Overlay glassy – gradient + blur untuk efek premium di atas hitam */
+/* Overlay utama – glassy effect */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 16px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.45));
+  justify-content: space-between;     /* Kanji di atas, detail di bawah */
+  padding: 20px 16px 16px;             /* Padding atas lebih besar biar kanji tidak nempel top */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+  color: #ffffff;
 }
 
 .card-overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.08);   /* Subtle glossy highlight */
+  background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Teks di dalam overlay – kontras tinggi + shadow biar readable */
-.card-overlay > * {
-  position: relative;
-  z-index: 1;
-  color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+/* Kanji – besar, center horizontally, sedikit ke atas */
+.card-overlay .kanji {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  margin: 0;
 }
 
-/* Optional: Button play audio tetap di atas overlay */
+/* Section detail bawah (kana, romaji, meaning) */
+.card-overlay .kana,
+.card-overlay .romaji,
+.card-overlay .meaning {
+  margin: 4px 0 0;
+  text-align: left;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Kana agak besar, romaji kecil italic, meaning normal */
+.card-overlay .kana {
+  font-size: 20px;
+  opacity: 0.95;
+}
+
+.card-overlay .romaji {
+  font-size: 14px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.card-overlay .meaning {
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* Play button – pindah ke pojok KANAN BAWAH */
 .play-audio-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  bottom: 12px;           /* Ubah dari top jadi bottom */
+  right: 12px;            /* Tetap kanan */
   z-index: 2;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 
 .play-audio-btn:hover {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
 }
 
 .kana { font-size: 16px; font-weight: 500; }

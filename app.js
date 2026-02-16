@@ -158,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return `
       <div class="card-image ${expandedClass}">
-        <img src="./assets/header.jpg" alt="Kartu ilustrasi ${word.kanji || word.kana || 'kata'}">
         <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
         <div class="card-overlay">
           <div class="kanji">${word.kanji || "—"}</div>

@@ -618,15 +618,30 @@ closeModal() {
   });
 
   hamburger.addEventListener("click", () => {
-    const active = sidebar.classList.toggle("active");
-    overlay.classList.toggle("active", active);
-    hamburger.setAttribute("aria-expanded", active ? "true" : "false");
-  });
+  const isActive = sidebar.classList.toggle("active");
+  overlay.classList.toggle("active", isActive);
+  hamburger.setAttribute("aria-expanded", isActive);
 
-  overlay.addEventListener("click", closeSidebar);
-  modalBackdrop.addEventListener("click", closeModal);
-  modalClose.addEventListener("click", closeModal);
+  if (isActive) {
+    document.body.classList.add("no-scroll");
+    // document.documentElement.classList.add("no-scroll"); // opsional, uncomment jika perlu
+  } else {
+    document.body.classList.remove("no-scroll");
+    // document.documentElement.classList.remove("no-scroll");
+  }
+});
 
+overlay.addEventListener("click", closeSidebar);
+
+// Update function closeSidebar agar konsisten
+function closeSidebar() {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  hamburger.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("no-scroll");
+  // document.documentElement.classList.remove("no-scroll"); // opsional
+}
+  
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {

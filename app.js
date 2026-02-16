@@ -521,7 +521,6 @@ kanjiModal.addEventListener("click", (e) => {
   if (!e.target.closest(".kanji-modal-content")) {
     closeModal();
   }
-});
 
 // Listener ESC (yang udah ada — jangan diubah!)
 document.addEventListener("keydown", (event) => {

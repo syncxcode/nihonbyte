@@ -611,9 +611,12 @@ closeModal() {
     render();
   });
 
-  // Simpan kondisi overflow asli biar bisa dikembalikan pas sidebar ditutup
-let originalBodyOverflow = '';
-let originalHtmlOverflow = '';
+// Variabel buat simpan kondisi asli
+let originalOverflow = '';
+let originalPosition = '';
+let originalTop = '';
+let originalWidth = '';
+let savedScrollPosition = 0; // Buat simpan posisi scroll
 
 hamburger.addEventListener("click", () => {
   const isActive = sidebar.classList.toggle("active");
@@ -621,15 +624,25 @@ hamburger.addEventListener("click", () => {
   hamburger.setAttribute("aria-expanded", isActive);
 
   if (isActive) {
-    // Simpan dulu kondisi overflow sebelum diubah
-    originalBodyOverflow = document.body.style.overflow || '';
-    originalHtmlOverflow = document.documentElement.style.overflow || '';
+    // Simpan posisi scroll saat ini
+    savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Kunci scroll total: halaman nggak bisa digulir sama sekali
+    // Simpan style asli (biar bisa restore 100%)
+    originalOverflow = document.body.style.overflow || '';
+    originalPosition = document.body.style.position || '';
+    originalTop = document.body.style.top || '';
+    originalWidth = document.body.style.width || '';
+
+    // Kunci total: freeze scroll + posisi
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollPosition}px`;
+    document.body.style.width = '100%';
+
+    // Tambahan untuk html (biar ekstra aman di semua browser)
     document.documentElement.style.overflow = 'hidden';
   } else {
-    // Kalau sidebar ditutup lewat hamburger, langsung panggil fungsi tutup
+    // Tutup sidebar
     closeSidebar();
   }
 });
@@ -641,10 +654,18 @@ function closeSidebar() {
   overlay.classList.remove("active");
   hamburger.setAttribute("aria-expanded", "false");
 
-  // Kembalikan scroll ke kondisi semula (biar aman kalau ada style lain)
-  document.body.style.overflow = originalBodyOverflow;
-  document.documentElement.style.overflow = originalHtmlOverflow;
-}
+  // Kembalikan semua style ke semula
+  document.body.style.overflow = originalOverflow;
+  document.body.style.position = originalPosition;
+  document.body.style.top = originalTop;
+  document.body.style.width = originalWidth;
+
+  // Restore posisi scroll (biar nggak lompat)
+  window.scrollTo(0, savedScrollPosition);
+
+  // Reset html juga
+  document.documentElement.style.overflow = '';
+}  
   
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");

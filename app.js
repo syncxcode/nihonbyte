@@ -504,9 +504,7 @@ function getFilteredWords() {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  function 
-
-closeModal() {
+  function closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
     kanjiModal.setAttribute("aria-hidden", "true");

@@ -916,8 +916,8 @@ html, body {
   width: 34px;
   height: 34px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #111827;
+  background: rgba(0, 0, 0, 0.92);
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
 }

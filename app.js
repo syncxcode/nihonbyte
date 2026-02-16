@@ -462,7 +462,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return shuffle(source).slice(0, maxItems);
   }
 
-  // === FUNGSI MODAL (openModal & closeModal) – didefinisikan sebelum listener ===
   function openModal(word) {
     if (!word) return;
     modalSubtitle.style.display = "block";
@@ -501,18 +500,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
-  // === SEMUA LISTENER MODAL CLOSING (setelah function closeModal didefinisikan) ===
   modalClose.addEventListener("click", closeModal);
   modalBackdrop.addEventListener("click", closeModal);
 
-  // Robust close: tap/klik di luar content modal (fix mobile/Safari)
   kanjiModal.addEventListener("click", (e) => {
     if (!e.target.closest(".kanji-modal-content")) {
       closeModal();
     }
   });
 
-  // ESC: nutup modal + sidebar (hanya satu listener, duplikat dihapus)
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();
@@ -520,7 +516,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === SIDEBAR SCROLL FREEZE (versi final yang sudah work di Safari) ===
   let originalOverflow = '';
   let originalPosition = '';
   let originalTop = '';
@@ -566,7 +561,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.overflow = '';
   }
 
-  // === AUDIO & LAINNYA ===
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {
@@ -595,7 +589,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === SIDEBAR BUTTONS ===
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = "vocab";
@@ -661,7 +654,6 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // === RENDER & INPUT LISTENERS ===
   function render() {
     grid.innerHTML = "";
 

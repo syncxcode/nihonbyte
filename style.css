@@ -516,27 +516,23 @@ html, body {
   font-size: 11px;
 }
 
-/* =========================================
-   SIDEBAR: BACKGROUND BG.JPG SAMA DENGAN BODY UTAMA + OVERLAY GELAP RINGAN UNTUK KONTRAS
-   (Background tetap 100% terlihat, tapi area sidebar sedikit digelapkan + blur halus agar tulisan putih mudah dibaca)
-========================================= */
-
 #sidebar {
   position: fixed;
   top: 0;
-  left: -100%;
+  left: 0;                                      /* Mulai dari posisi normal */
   width: 320px;
   max-width: 90vw;
   height: 100%;
-  background: url("./assets/bg.jpg") center / cover no-repeat fixed;   /* PAKAI BG.JPG YANG SAMA DENGAN BODY */
-  transition: left 0.35s ease;
+  background: url("./assets/bg.jpg") center / cover no-repeat fixed;   /* BG.JPG SAMA PERSIS DENGAN BODY */
+  transform: translateX(-100%);                 /* Hidden di kiri */
+  transition: transform 0.4s ease-in-out;       /* Animasi slide lebih smooth & reliable */
   z-index: 100;
   padding: 20px;
   box-sizing: border-box;
   overflow-y: auto;
   color: #ffffff !important;
 
-  /* Overlay pseudo-element untuk gelapkan + blur (tidak menghilangkan detail background) */
+  /* Overlay untuk kontras teks (tidak terlalu gelap) */
   position: relative;
 }
 
@@ -544,28 +540,28 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.52);              /* Tint hitam semi-transparan – cukup gelap agar kontras tinggi, tapi background masih jelas terlihat */
-  backdrop-filter: blur(6px);                   /* Blur halus agar background tidak terlalu "ramai" di belakang teks */
-  -webkit-backdrop-filter: blur(6px);
-  z-index: -1;                                 /* Di belakang konten sidebar */
-  pointer-events: none;                        /* Agar tidak mengganggu klik */
+  background: rgba(0, 0, 0, 0.42);              /* Lebih ringan → background tetap jelas terlihat */
+  backdrop-filter: blur(3px);                  /* Blur sangat halus (hanya untuk efek frosted ringan, tidak kabur ke atas) */
+  -webkit-backdrop-filter: blur(3px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 #sidebar.active {
-  left: 0;
+  transform: translateX(0);                    /* Slide masuk ke kanan (tampil penuh) */
 }
 
-/* Overlay luar (saat sidebar terbuka) – redupkan konten utama */
+/* Overlay luar (redupkan konten utama saat sidebar terbuka) */
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.38);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 90;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s ease, visibility 0.35s ease;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
 
 #overlay.active {
@@ -573,7 +569,7 @@ html, body {
   visibility: visible;
 }
 
-/* Teks putih dengan shadow ekstra tajam */
+/* Teks putih + shadow optimal (readable di background cerah) */
 #sidebar h3,
 #sidebar summary,
 #sidebar .menu-btn,
@@ -582,33 +578,32 @@ html, body {
 #sidebar div {
   color: #ffffff !important;
   text-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.8) !important;
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 2px 5px rgba(0, 0, 0, 0.7) !important;
   font-weight: 500;
-  position: relative;         /* Agar teks di atas overlay */
+  position: relative;
   z-index: 1;
 }
 
-/* Hover effect */
+/* Hover tetap jelas */
 #sidebar .menu-btn:hover,
 #sidebar button:hover {
-  background: rgba(255, 255, 255, 0.24) !important;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 1) !important;
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 
-/* Judul folder lebih menonjol */
+/* Judul folder lebih tebal */
 #sidebar summary {
   font-weight: 700;
   font-size: 1.15rem;
   padding: 14px 0;
 }
 
-/* Scrollbar elegan */
+/* Scrollbar */
 #sidebar::-webkit-scrollbar {
   width: 6px;
 }
 #sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 3px;
 }
 

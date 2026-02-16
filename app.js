@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = shuffle(question.options);
     const isKanji = testState.type === "kanji";
 
-    const board Hp= document.createElement("div");
+    const board = document.createElement("div");
     board.className = "test-board";
     board.innerHTML = `
       <header class="test-header">

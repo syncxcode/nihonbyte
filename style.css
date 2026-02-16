@@ -1091,35 +1091,37 @@ html, body {
 }
 
 /* ============================================= */
-/* Hilangkan semua efek interaktif di expanded card (modal) */
+/* Hilangkan efek interaktif di expanded card (modal) - VERSI FIXED */
+/* Hanya matikan di overlay teks (bukan seluruh card-image) */
+/* Play button tetap interaktif karena sibling, bukan child overlay */
 /* ============================================= */
-#kanjiModal .card-image.expanded,
-#kanjiModal .card-image.expanded *,
 #kanjiModal .card-overlay,
 #kanjiModal .card-overlay * {
-  cursor: default !important;        /* No icon pointer */
-  pointer-events: none !important;   /* Matikan hover/tap effect total */
-  transition: none !important;       /* No animasi gerak */
+  cursor: default !important;        /* No pointer di teks */
+  pointer-events: none !important;   /* Matikan hover/tap di teks only */
+  transition: none !important;       /* No animasi di teks */
 }
 
 #kanjiModal .card-image.expanded:hover {
   transform: none !important;        /* No scale saat hover */
   box-shadow: none !important;       /* No shadow tambahan */
+  transition: none !important;       /* No gerak saat hover */
 }
 
-/* Kembalikan interaksi untuk play button (biar audio tetap bisa diklik) */
+/* Pastikan play button tetap fully interaktif (audio jalan normal) */
 #kanjiModal .play-audio-btn {
-  pointer-events: auto !important;
-  cursor: pointer !important;
+  pointer-events: auto !important;   /* Bisa diklik/tap */
+  cursor: pointer !important;        /* Icon pointer pas hover */
+  transition: none !important;       /* Optional: biar konsisten no animasi */
 }
 
-/* Bonus: Buat backdrop lebih jelas bisa di-tap untuk close */
+/* Bonus: backdrop lebih jelas bisa di-tap */
 .kanji-modal-backdrop {
   cursor: pointer;
 }
 
-/* Hilangkan highlight/ripple pas tap di mobile (Android & iOS) */
+/* Hilangkan ripple/highlight pas tap di mobile (seluruh expanded card) */
 #kanjiModal .card-image.expanded {
-  -webkit-tap-highlight-color: transparent;  /* Chrome/Android/Safari */
+  -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
 }

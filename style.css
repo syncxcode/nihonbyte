@@ -182,94 +182,100 @@ input,
 }
 
 /* =========================================
-   FIX MODAL: TOTAL CENTER (ANTI MEPER)
+   FIX MODAL CENTER PERFECT (NO MEPER)
 ========================================= */
 
-/* 1. Backdrop (Layar Hitam) */
+/* 1. BACKDROP */
 #kanjiModal {
-  display: none; 
-  position: fixed !important;
-  inset: 0 !important; /* Kunci atas, bawah, kiri, kanan di 0 */
-  width: 100vw !important;
-  height: 100vh !important;
-  z-index: 99999 !important;
-  background: rgba(0, 0, 0, 0.85) !important;
-  
-  /* Hilangkan semua padding yang mungkin dorong konten */
-  padding: 0 !important;
-  margin: 0 !important;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
 
-  /* Paksa Flex Center */
-  display: none; 
-  align-items: center !important;
-  justify-content: center !important;
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px; /* kasih ruang biar ga nempel tepi */
+  box-sizing: border-box;
+
+  overflow: hidden; /* penting */
 }
 
 #kanjiModal.active {
-  display: flex !important;
+  display: flex;
 }
 
-/* 2. Kontainer Hitam (Harus di Tengah) */
+/* 2. CONTAINER */
 .kanji-modal-content {
-  position: relative !important;
-  /* Jangan pakai margin auto kalau flexbox sudah jalan */
-  margin: 0 !important; 
-  
-  width: 90% !important;
-  max-width: 450px !important;
-  background: #000000 !important;
-  border-radius: 28px !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  
-  /* Kunci lebar agar tidak meledak ke kanan */
-  box-sizing: border-box !important;
-  overflow: hidden !important;
+  width: 100%;
+  max-width: 450px;
+  max-height: 90vh;
+
+  background: #000;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* 3. Kartu Expanded di Dalam */
+/* 3. EXPANDED CARD AREA */
 .card-image.expanded {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  min-height: 250px !important;
-  padding: 30px !important;
-  box-sizing: border-box !important; /* WAJIB: biar padding gak nambah lebar */
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: transparent !important;
+  width: 100%;
+  padding: 30px;
+  min-height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
 }
 
-/* 4. Rekomendasi (Pastikan tidak mendorong container) */
+/* 4. RECOMMENDATION ROW */
 #recommendationRow {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important;
-  width: 100% !important;
-  padding: 15px !important;
-  gap: 12px !important;
-  box-sizing: border-box !important; /* Cegah meledak ke kanan */
-  background: #000 !important;
+  display: flex;
+  gap: 12px;
+
+  padding: 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  box-sizing: border-box;
+  width: 100%;
+
+  scroll-behavior: smooth;
 }
 
-/* Sembunyikan Scrollbar */
-#recommendationRow::-webkit-scrollbar { display: none; }
+/* hide scrollbar */
+#recommendationRow::-webkit-scrollbar {
+  display: none;
+}
 
 #recommendationRow .card {
-  flex: 0 0 110px !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  padding: 10px !important;
-  text-align: center !important;
+  flex: 0 0 110px;
+  min-width: 110px;
 }
 
-/* Pastikan semua teks di modal warna putih */
-.expanded-card .kanji, 
-.expanded-card .kana, 
-.expanded-card .romaji, 
+/* 5. ANTI OVERFLOW GLOBAL */
+#kanjiModal * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 6. TEXT COLOR */
+.expanded-card .kanji,
+.expanded-card .kana,
+.expanded-card .romaji,
 .expanded-card .meaning {
-  color: #fff !important;
+  color: #fff;
 }
 
 .letter-poster {

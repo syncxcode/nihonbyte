@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日本の世界</title>
+  <title>NihonByte</title>
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
@@ -111,115 +111,31 @@
     <span></span><span></span><span></span>
   </button>
 
+  <!-- LOGO (klik = reset filter) -->
   <div class="branding">
     <img id="logo" src="./assets/title.PNG" alt="日本の世界" title="Klik untuk reset filter">
   </div>
 
   <div class="controls">
+    <select id="category" aria-label="Filter kategori">
+      <option value="all">Semua</option>
+      
+      <optgroup label="KATA KERJA">
+        <option value="verb-godan">KATA KERJA GODAN</option>
+        <option value="verb-ru">KATA KERJA ICHIDAN</option>
+        <option value="verb-irregular">KATA KERJA SURU</option>
+      </optgroup>
+      
+      <optgroup label="KATA SIFAT">
+        <option value="adj-i">KATA SIFAT い</option>
+        <option value="adj-na">KATA SIFAT な</option>
+      </optgroup>
+      
+      <option value="noun">KOSAKATA</option>
+      <option value="ekspresi">UNGKAPAN UMUM</option>
+    </select>
+
     <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
-
-    <button id="filterBtn" class="filter-btn" aria-label="Buka filter" aria-expanded="false">
-      <img src="./assets/filter.png" alt="Filter">
-    </button>
-
-    <!-- NESTED DROPDOWN SUPER COMPACT & CLICKABLE SUB-MENU -->
-    <div id="filterDropdown" class="dropdown-menu nested-dropdown">
-      <!-- Semua -->
-      <button class="dropdown-item active" data-action="select" data-type="all" data-level="all">Semua</button>
-
-      <!-- Kata Kerja Godan -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KATA KERJA GODAN</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="verb-godan" data-level="all">Semua Level</button>
-          <button data-action="select" data-type="verb-godan" data-level="N5">N5</button>
-          <button data-action="select" data-type="verb-godan" data-level="N4">N4</button>
-          <button data-action="select" data-type="verb-godan" data-level="N3">N3</button>
-          <button data-action="select" data-type="verb-godan" data-level="N2">N2</button>
-          <button data-action="select" data-type="verb-godan" data-level="N1">N1</button>
-        </div>
-      </div>
-
-      <!-- Kata Kerja Ichidan -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KATA KERJA ICHIDAN</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="verb-ru" data-level="all">Semua Level</button>
-          <button data-action="select" data-type="verb-ru" data-level="N5">N5</button>
-          <button data-action="select" data-type="verb-ru" data-level="N4">N4</button>
-          <button data-action="select" data-type="verb-ru" data-level="N3">N3</button>
-          <button data-action="select" data-type="verb-ru" data-level="N2">N2</button>
-          <button data-action="select" data-type="verb-ru" data-level="N1">N1</button>
-        </div>
-      </div>
-
-      <!-- Kata Kerja Suru -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KATA KERJA SURU</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="verb-irregular" data-level="all">Semua Level</button>
-          <button data-action="select" data-type="verb-irregular" data-level="N5">N5</button>
-          <button data-action="select" data-type="verb-irregular" data-level="N4">N4</button>
-          <button data-action="select" data-type="verb-irregular" data-level="N3">N3</button>
-          <button data-action="select" data-type="verb-irregular" data-level="N2">N2</button>
-          <button data-action="select" data-type="verb-irregular" data-level="N1">N1</button>
-        </div>
-      </div>
-
-      <!-- Kata Sifat い -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KATA SIFAT い</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="adj-i" data-level="all">Semua Level</button>
-          <button data-action="select" data-type="adj-i" data-level="N5">N5</button>
-          <button data-action="select" data-type="adj-i" data-level="N4">N4</button>
-          <button data-action="select" data-type="adj-i" data-level="N3">N3</button>
-          <button data-action="select" data-type="adj-i" data-level="N2">N2</button>
-          <button data-action="select" data-type="adj-i" data-level="N1">N1</button>
-        </div>
-      </div>
-
-      <!-- Kata Sifat な -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KATA SIFAT な</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="adj-na" data-level="all">Semua Level</button>
-          <button data-action="select" data-type="adj-na" data-level="N5">N5</button>
-          <button data-action="select" data-type="adj-na" data-level="N4">N4</button>
-          <button data-action="select" data-type="adj-na" data-level="N3">N3</button>
-          <button data-action="select" data-type="adj-na" data-level="N2">N2</button>
-          <button data-action="select" data-type="adj-na" data-level="N1">N1</button>
-        </div>
-      </div>
-
-      <!-- Kosakata Noun (grup) -->
-      <div class="dropdown-item has-submenu">
-        <span class="menu-label">KOSAKATA NOUN</span>
-        <span class="arrow">></span>
-        <div class="submenu">
-          <button data-action="select" data-type="noun-body" data-level="all">ANGGOTA TUBUH</button>
-          <button data-action="select" data-type="noun-number" data-level="all">ANGKA</button>
-          <button data-action="select" data-type="noun-month" data-level="all">BULAN</button>
-          <button data-action="select" data-type="noun-weather" data-level="all">CUACA</button>
-          <button data-action="select" data-type="noun-time" data-level="all">JAM/WAKTU</button>
-          <button data-action="select" data-type="noun-medical" data-level="all">MEDIS</button>
-          <button data-action="select" data-type="noun-vehicle" data-level="all">KENDARAAN</button>
-          <button data-action="select" data-type="noun-animal" data-level="all">NAMA BINATANG</button>
-          <button data-action="select" data-type="noun-family" data-level="all">NAMA KELUARGA</button>
-          <button data-action="select" data-type="noun-kitchen" data-level="all">DAPUR</button>
-          <button data-action="select" data-type="noun-counter" data-level="all">SATUAN BILANGAN</button>
-          <button data-action="select" data-type="noun-place" data-level="all">TEMPAT/BANGUNAN</button>
-        </div>
-      </div>
-
-      <!-- Ungkapan Umum -->
-      <button class="dropdown-item" data-action="select" data-type="ekspresi" data-level="all">UNGKAPAN UMUM</button>
-    </div>
   </div>
 
   <p id="resultInfo" class="result-info"></p>
@@ -232,7 +148,7 @@
   <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
     <button id="modalClose" class="modal-close" aria-label="Tutup detail">✕</button>
     <article id="expandedCard" class="expanded-card"></article>
-    <h4 id="modalSubtitle">Rekomendasi Terkait</h4>
+    <h4 id="modalSubtitle">Rekomendasi terkait</h4>
     <div id="recommendationRow" class="recommendation-row"></div>
   </div>
 </section>

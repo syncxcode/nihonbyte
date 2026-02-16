@@ -31,6 +31,8 @@
       <div class="subfolder-list">
         <button class="menu-btn sidebar-filter-btn" data-type="verb-godan" data-level="all">KATA KERJA GODAN</button>
         <button class="menu-btn sidebar-filter-btn" data-type="verb-ru" data-level="all">KATA KERJA ICHIDAN</button>
+
+
         <button class="menu-btn sidebar-filter-btn" data-type="verb-irregular" data-level="all">KATA KERJA SURU</button>
       </div>
     </details>
@@ -96,7 +98,7 @@
         <details>
           <summary>聴解</summary>
           <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn maintenance-btn">N5</button943
+            <button class="menu-btn maintenance-btn">N5</button>
             <button class="menu-btn maintenance-btn">N4</button>
           </div>
         </details>
@@ -116,12 +118,14 @@
   </div>
 
   <div class="controls">
-    <input>input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
+    <!-- DIPERBAIKI: Tag <input> yang rusak karena typo "input" duplikat -->
+    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
+
     <button id="filterBtn" class="filter-btn" aria-label="Buka filter" aria-expanded="false">
       <img src="./assets/filter.png" alt="Filter">
     </button>
 
-    <!-- FILTER DROPDOWN DIPINDAHKAN KE DALAM .controls UNTUK POSITIONING YANG BENAR -->
+    <!-- FILTER DROPDOWN (tetap di dalam .controls agar positioning benar) -->
     <div id="filterDropdown" class="dropdown-menu">
       <div class="dropdown-group">
         <div class="dropdown-header">Kosakata</div>

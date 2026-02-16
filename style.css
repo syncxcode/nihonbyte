@@ -1089,8 +1089,3 @@ html, body {
     transform: scale(1.03) !important;
   }
 }
-
-body.no-scroll {
-  overflow: hidden;
-}
-

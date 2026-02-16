@@ -103,11 +103,11 @@ input,
 ========================================= */
 #grid {
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Mobile 2 kolom */
+  grid-template-columns: repeat(2, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
   width: 100% !important;
-  max-width: 100vw !important; /* Cegah kabur ke kanan */
+  max-width: 100vw !important;
   box-sizing: border-box !important;
   margin: 0 auto !important;
 }
@@ -118,7 +118,7 @@ input,
 
 @media (min-width: 1024px) {
   #grid {
-    grid-template-columns: repeat(5, 1fr) !important; /* Desktop 5 kolom */
+    grid-template-columns: repeat(5, 1fr) !important;
     gap: 25px !important;
     padding: 30px !important;
     max-width: 1300px !important;
@@ -154,7 +154,7 @@ input,
 .card-overlay .kanji {
   font-size: clamp(22px, 4vw, 32px) !important;
   margin-bottom: 8px !important;
-  white-space: nowrap !important; /* Anti turun baris */
+  white-space: nowrap !important;
   color: #ffffff !important;
 }
 
@@ -182,12 +182,23 @@ input,
 }
 
 /* =========================================
-   MODAL & REKOMENDASI (ANTI OVER VERTIKAL)
+   MODAL (FIX: TERSEMBUNYI SAAT START)
 ========================================= */
+
+/* Pastikan modal sembunyi di awal agar tidak menghalangi klik */
 #kanjiModal {
-  display: flex !important;
+  display: none; /* JANGAN pakai !important di sini */
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1000 !important;
   align-items: center !important;
   justify-content: center !important;
+  background: rgba(0, 0, 0, 0.8) !important; /* Backdrop gelap */
+}
+
+/* Saat modal dibuka (ditambah via JS), baru pakai flex */
+#kanjiModal.active {
+  display: flex !important;
 }
 
 .kanji-modal-content {
@@ -197,9 +208,9 @@ input,
   border-radius: 28px !important;
   border: 1px solid rgba(255,255,255,0.2) !important;
   overflow: hidden !important;
+  position: relative !important;
 }
 
-/* Kartu Utama di Modal */
 .card-image.expanded {
   height: auto !important;
   min-height: 250px !important;
@@ -208,7 +219,6 @@ input,
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  background: transparent !important;
 }
 
 .expanded-card .kanji {
@@ -218,7 +228,7 @@ input,
   margin-bottom: 15px !important;
 }
 
-/* Bagian Rekomendasi (Carousel Horizontal) */
+/* Rekomendasi Horizontal */
 #modalSubtitle {
   color: #888 !important;
   font-size: 0.85rem !important;
@@ -228,33 +238,22 @@ input,
 
 #recommendationRow {
   display: flex !important;
-  flex-wrap: nowrap !important; /* Berbaris ke samping */
-  overflow-x: auto !important;  /* Scroll horizontal */
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
   padding: 10px 20px 20px !important;
   gap: 12px !important;
   background: #000 !important;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Sembunyikan Scrollbar Rekomendasi */
 #recommendationRow::-webkit-scrollbar { display: none; }
 
 #recommendationRow .card {
-  flex: 0 0 110px !important; /* Ukuran tetap untuk item rekomendasi */
+  flex: 0 0 110px !important;
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 12px !important;
   padding: 10px !important;
   border: 1px solid rgba(255,255,255,0.1) !important;
-}
-
-#recommendationRow .card .kanji {
-  font-size: 1.4rem !important;
-  color: #fff !important;
-}
-
-#recommendationRow .card .meaning {
-  font-size: 0.7rem !important;
-  color: #bbb !important;
 }
 
 .letter-poster {

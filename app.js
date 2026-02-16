@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
           subtitle: "Yōon",
           rows: [
             ["YA", "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "りゃ", "ぎゃ", "じゃ", "びゃ", "ぴゃ"],
-            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴュ"],
+            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴゅ"],
             ["YO", "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "りょ", "ぎょ", "じょ", "びょ", "ぴょ"],
           ],
         },
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = shuffle(question.options);
     const isKanji = testState.type === "kanji";
 
-    const board = document.createElement("div");
+    const board Hp= document.createElement("div");
     board.className = "test-board";
     board.innerHTML = `
       <header class="test-header">
@@ -709,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      viewMode =اجر `patterns:${level}`;
+      viewMode = `patterns:${level}`;
       search.value = "";
       closeModal();
       render();

@@ -98,10 +98,10 @@ input,
   border-radius: 2px;
 }
 
-/* Grid – exactly 5 card desktop, 2 mobile */
+/* Grid – tetap exactly 5 desktop, 2 mobile */
 #grid {
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;  /* Mobile */
+  grid-template-columns: repeat(2, 1fr) !important;
   gap: 24px !important;
   padding: 20px !important;
 }
@@ -112,15 +112,15 @@ input,
 
 @media (min-width: 1024px) {
   #grid {
-    grid-template-columns: repeat(5, 1fr) !important;  /* Desktop exactly 5 */
-    gap: 32px !important;
-    padding: 32px !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 36px !important;
+    padding: 36px !important;
   }
 }
 
-/* Card normal – solid hitam, no blur */
+/* Card normal – height lebih lega untuk long text */
 .card-image {
-  height: 230px !important;
+  height: 240px !important;                      /* Naik sedikit biar wrap nyaman */
   background-color: #000000 !important;
   position: relative;
   border-radius: 20px !important;
@@ -128,38 +128,38 @@ input,
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Overlay normal – gradient ringan, NO BLUR */
+/* Overlay – gradient ringan, no blur */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 20px 20px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15)) !important;
+  padding: 28px 24px 24px !important;            /* Padding horizontal lebih biar teks tidak nempel pinggir */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.12)) !important;
   color: #ffffff !important;
 }
 
-/* Hapus blur total biar teks tajam */
-.card-overlay::before {
-  display: none !important;  /* No glassy blur */
-}
-
-/* Teks – tajam, bold, kontras maksimal */
+/* Kanji – lebih compact & wrap rapi untuk long text */
 .card-overlay .kanji {
-  font-size: 42px !important;
+  font-size: 38px !important;                    /* Turun sedikit dari 42px biar long kanji fit better */
   font-weight: 800;
-  text-align: center;
+  text-align: center !important;
+  line-height: 1.2 !important;                   /* Line height nyaman untuk multi-line */
+  letter-spacing: -1px !important;               /* Compress sedikit biar lebih rapi & jarang wrap jelek */
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  margin: 0 0 10px;
-  color: #ffffff !important;
+  margin: 0 0 12px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: none;                                 /* Jangan hyphen Jepang */
 }
 
+/* Detail bawah – rapi, wrap aman */
 .card-overlay .kana {
   font-size: 18px !important;
   font-weight: 600;
   text-align: left;
-  color: #e0e0e0 !important;
+  color: #f0f0f0 !important;
   margin: 4px 0 0;
 }
 
@@ -167,81 +167,60 @@ input,
   font-size: 15px !important;
   font-style: italic;
   text-align: left;
-  color: #bbbbbb !important;
+  color: #cccccc !important;
   margin: 3px 0 0;
 }
 
 .card-overlay .meaning {
   font-size: 16px !important;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.5 !important;
   text-align: left;
   color: #ffffff !important;
-  margin: 8px 0 0;
+  margin: 10px 0 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-/* Play button – hijau neon premium seperti mockup */
+/* Play button – putih solid, ukuran lebih kecil & clean */
 .play-audio-btn {
   position: absolute;
   bottom: 16px !important;
   right: 16px !important;
   z-index: 3;
-  background: #39ff14 !important;  /* Hijau neon */
-  width: 56px !important;
-  height: 56px !important;
+  background: #ffffff !important;                /* Putih solid */
+  width: 48px !important;                        /* Lebih kecil dari 56px */
+  height: 48px !important;
   border-radius: 50% !important;
-  border: 3px solid #000000 !important;
-  box-shadow: 0 6px 20px rgba(57, 255, 20, 0.4) !important;
-  color: #000000 !important;
-  font-size: 28px !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;                     /* Icon hitam biar kontras */
+  font-size: 24px !important;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .play-audio-btn:hover {
-  background: #5aff3b !important;
-  transform: scale(1.15);
-  box-shadow: 0 8px 28px rgba(57, 255, 20, 0.6) !important;
+  background: #f0f0f0 !important;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* Expanded card (modal/detail) – lebih lega & tajam */
+/* Bonus: Expanded card – teks lebih lega */
 .card-image.expanded {
-  height: 380px !important;
-  max-width: 600px;
-  margin: 0 auto;
+  height: 400px !important;
 }
 
 @media (min-width: 768px) {
-  .card-image.expanded { height: 480px !important; }
-}
-
-/* Overlay expanded – gradient lebih ringan, teks lebih besar */
-.expanded-card .card-overlay {
-  padding: 40px 32px !important;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1)) !important;
+  .card-image.expanded { height: 500px !important; }
 }
 
 .expanded-card .kanji {
-  font-size: 64px !important;
-  margin-bottom: 20px !important;
+  font-size: 56px !important;
+  letter-spacing: -1.5px !important;
 }
-
-.expanded-card .kana {
-  font-size: 28px !important;
-}
-
-.expanded-card .romaji {
-  font-size: 22px !important;
-}
-
-.expanded-card .meaning {
-  font-size: 24px !important;
-  line-height: 1.6;
-}
-
-/* Rekomendasi terkait (bottom section) – biar rapi */
-.related-cards .card-image { height: 180px !important; }
 
 .letter-poster {
   grid-column: 1 / -1;

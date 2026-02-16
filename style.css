@@ -516,30 +516,42 @@ html, body {
   font-size: 11px;
 }
 
+/* =========================================
+   SIDEBAR + OVERLAY: VERSI DIPERBAIKI (BERDASARKAN KODE ASLI ANDA)
+   - Pertahankan 99% tampilan asli: background bg.jpg, overlay gelap 0.45 di sidebar, rounded corner kanan, shadow, slide transform
+   - Perbaikan kunci:
+     • Overlay (#overlay) sekarang TIDAK menutupi sidebar lagi → hanya redupkan konten di KANAN sidebar
+     • Hilangkan backdrop-filter blur di .menu-btn (penyebab utama "kabur" pada button/menu)
+     • Tambah background-attachment: fixed pada sidebar → bg.jpg stabil saat scroll
+     • Tambah text-shadow ringan pada teks → tulisan putih lebih tajam di background cerah
+     • Transition lebih smooth (0.35s ease-in-out)
+     • Overlay blur tetap ada tapi lebih halus, dan hanya aktif di area kanan
+========================================= */
+
 #sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 260px;
   height: 100vh;
-  background: url('./assets/bg.jpg') center/cover no-repeat fixed; /* fixed agar stabil saat scroll */
+  background: url('./assets/bg.jpg') center/cover no-repeat fixed; /* fixed → bg stabil saat scroll */
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out; /* lebih smooth dari 0.3s */
   z-index: 1000;
   padding: 2rem 1.5rem;
   color: #ffffff;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 0 Panthers 20px rgba(0, 0, 0, 0.15);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: auto;
-  position: relative; /* PENTING: agar ::before menutupi dengan benar */
+  position: relative; /* Penting agar ::before menutupi dengan benar */
 }
 
 #sidebar::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* overlay gelap asli, tanpa blur */
+  background: rgba(0, 0, 0, 0.45); /* overlay gelap asli sidebar */
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   z-index: -1;
@@ -584,7 +596,7 @@ html, body {
   display: grid;
   gap: 8px;
   margin-top: 10px;
-  padding-left: 12px; /* sedikit indent agar lebih rapi */
+  padding-left: 8px; /* indent halus agar lebih rapi */
 }
 
 .sidebar-actions {
@@ -593,10 +605,52 @@ html, body {
   margin-top: 12px;
 }
 
-/* Button/menu item lebih tajam */
-.sidebar-tree .menu-btn,
-#sidebar button {
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* MENU BTN: hilangkan blur (penyebab kabur), tetap pertahankan efek hover asli */
+.menu-btn {
+  text-align: left;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.menu-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(4px);
+}
+
+/* OVERLAY: hanya redupkan KONTEN KANAN (tidak menutupi sidebar) */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px); /* blur asli tetap ada */
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease-in-out;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  left: 260px;               /* Geser ke kanan = lebar sidebar */
+  width: calc(100vw - 260px); /* Hanya tutupi area kanan */
 }
 
 /* Scrollbar tetap elegan */
@@ -606,36 +660,6 @@ html, body {
 #sidebar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
-}
-
-.menu-btn {
-  text-align: left;
-  color: #fff;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  cursor: pointer;
-}
-
-.menu-btn:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateX(4px);
-}
-
-#overlay {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(3px);
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease;
-  z-index: 999;
-}
-
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
 }
 
 @media (min-width: 768px) {

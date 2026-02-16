@@ -516,78 +516,100 @@ html, body {
   font-size: 11px;
 }
 
+/* =========================================
+   SIDEBAR: BACKGROUND BG.JPG SAMA DENGAN BODY UTAMA + OVERLAY GELAP RINGAN UNTUK KONTRAS
+   (Background tetap 100% terlihat, tapi area sidebar sedikit digelapkan + blur halus agar tulisan putih mudah dibaca)
+========================================= */
+
 #sidebar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 260px;
-  height: 100vh;
-  background: url('./assets/bg.jpg') center/cover no-repeat;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-  padding: 2rem 1.5rem;
-  color: #ffffff;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  left: -100%;
+  width: 320px;
+  max-width: 90vw;
+  height: 100%;
+  background: url("./assets/bg.jpg") center / cover no-repeat fixed;   /* PAKAI BG.JPG YANG SAMA DENGAN BODY */
+  transition: left 0.35s ease;
+  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
   overflow-y: auto;
+  color: #ffffff !important;
+
+  /* Overlay pseudo-element untuk gelapkan + blur (tidak menghilangkan detail background) */
+  position: relative;
 }
 
 #sidebar::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: -1;
+  background: rgba(0, 0, 0, 0.52);              /* Tint hitam semi-transparan – cukup gelap agar kontras tinggi, tapi background masih jelas terlihat */
+  backdrop-filter: blur(6px);                   /* Blur halus agar background tidak terlalu "ramai" di belakang teks */
+  -webkit-backdrop-filter: blur(6px);
+  z-index: -1;                                 /* Di belakang konten sidebar */
+  pointer-events: none;                        /* Agar tidak mengganggu klik */
 }
 
-#sidebar.active { transform: translateX(0); }
-
-#sidebar h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
+#sidebar.active {
+  left: 0;
 }
 
-.sidebar-tree {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 14px;
+/* Overlay luar (saat sidebar terbuka) – redupkan konten utama */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-.sidebar-tree details {
-  background: rgba(255,255,255,0.12);
-  border-radius: 12px;
-  padding: 8px 10px;
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.sidebar-tree summary {
-  cursor: pointer;
-  font-weight: 600;
-  list-style: none;
+/* Teks putih dengan shadow ekstra tajam */
+#sidebar h3,
+#sidebar summary,
+#sidebar .menu-btn,
+#sidebar button,
+#sidebar details,
+#sidebar div {
+  color: #ffffff !important;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.8) !important;
+  font-weight: 500;
+  position: relative;         /* Agar teks di atas overlay */
+  z-index: 1;
 }
 
-.sidebar-tree summary::-webkit-details-marker {
-  display: none;
+/* Hover effect */
+#sidebar .menu-btn:hover,
+#sidebar button:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 1) !important;
 }
 
-.subfolder-list {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
+/* Judul folder lebih menonjol */
+#sidebar summary {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 14px 0;
 }
 
-.sidebar-actions {
-  display: grid;
-  gap: 10px;
-  margin-top: 12px;
+/* Scrollbar elegan */
+#sidebar::-webkit-scrollbar {
+  width: 6px;
 }
-
-#sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+#sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.32);
+  border-radius: 3px;
 }
 
 .menu-btn {

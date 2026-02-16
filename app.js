@@ -504,28 +504,24 @@ function getFilteredWords() {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  function closeModal() {
-    stopTestTimer();
-    kanjiModal.classList.remove("active");
-    kanjiModal.setAttribute("aria-hidden", "true");
-    if (window.speechSynthesis) window.speechSynthesis.cancel();
-  }
-  
-  modalBackdrop.addEventListener("click", closeModal);
+  // Existing modal close button & backdrop (biar tetap ada)
   modalClose.addEventListener("click", closeModal);
+  modalBackdrop.addEventListener("click", closeModal);
 
-// <<< LISTENER BARU: Robust close dengan klik/tap di luar content >>>
+// <<< LISTENER BARU: Robust close modal dengan klik/tap di luar content (fix mobile/Safari) >>>
   kanjiModal.addEventListener("click", (e) => {
     if (!e.target.closest(".kanji-modal-content")) {
-      closeModal();
+    closeModal();
     }
+  });
 
-// Listener ESC (yang udah ada — jangan diubah!)
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeModal();
-        closeSidebar();
-      }
+// Listener ESC (yang udah ada — nutup modal + sidebar, jangan dihapus!)
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+      closeSidebar();
+    }
+  });
 
   function render() {
     grid.innerHTML = "";

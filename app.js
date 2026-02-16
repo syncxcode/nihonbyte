@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
           subtitle: "Yōon",
           rows: [
             ["YA", "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "りゃ", "ぎゃ", "じゃ", "びゃ", "ぴゃ"],
-            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴュ"],
+            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴゅ"],
             ["YO", "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "りょ", "ぎょ", "じょ", "びょ", "ぴょ"],
           ],
         },
@@ -118,53 +118,45 @@ document.addEventListener("DOMContentLoaded", () => {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
- function matchType(wordType, targetType) {
-  if (targetType === "all") return true;
+  function matchType(wordType, targetType) {
+    if (targetType === "all") return true;
 
-  // Verb irregular (suru, etc.)
-  if (targetType === "verb-irregular") {
-    return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
+    if (targetType === "verb-irregular") {
+      return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
+    }
+
+    if (targetType === "noun" || targetType.startsWith("noun-")) {
+      return wordType === targetType;
+    }
+
+    if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
+      return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
+    }
+
+    return wordType?.startsWith(targetType) || false;
   }
 
-  // Exact match untuk semua kategori noun (umum dan sub-kategori seperti noun-body, noun-weather, dll.)
-  if (targetType === "noun" || targetType.startsWith("noun-")) {
-    return wordType === targetType;
+  function getFilteredWords() {
+    const key = (search.value || "").toLowerCase().trim();
+    const selectedFromDropdown = category.value;
+
+    return vocabularyData.filter((word) => {
+      if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
+
+      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+
+      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
+
+      const text = [
+        word.kanji || "",
+        word.kana || "",
+        word.romaji || "",
+        word.meaning || ""
+      ].join("").toLowerCase();
+
+      return !key || text.includes(key);
+    });
   }
-
-  // Ekspresi / Ungkapan Umum (kompatibilitas dengan berbagai varian type di data.js)
-  if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
-    return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
-  }
-
-  // Default: startsWith (untuk verb-godan, verb-ru, adj-i, adj-na)
-  return wordType?.startsWith(targetType) || false;
-}
-
-function getFilteredWords() {
-  const key = (search.value || "").toLowerCase().trim();
-  const selectedFromDropdown = category.value;
-
-  return vocabularyData.filter((word) => {
-    // Filter level
-    if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
-
-    // Tentukan effective type: prioritas dari sidebar (selectedType), fallback ke dropdown
-    const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-
-    // Filter type menggunakan matchType yang sudah dimodifikasi
-    if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
-
-    // Search keyword
-    const text = [
-      word.kanji || "",
-      word.kana || "",
-      word.romaji || "",
-      word.meaning || ""
-    ].join("").toLowerCase();
-
-    return !key || text.includes(key);
-  });
-}
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
@@ -182,9 +174,6 @@ function getFilteredWords() {
     `;
   }
 
-  // ================================================
-  // FITUR BARU: Poster Ungkapan Umum (PERSEGI PANJANG LEBAR KE SAMPING, 2 PER BARIS)
-  // ================================================
   function renderExpressionPoster() {
     grid.innerHTML = "";
 
@@ -290,7 +279,7 @@ function getFilteredWords() {
 
   function finishTest() {
     stopTestTimer();
-    const total = testState.questions.length;
+    const total = testState.questions.length || 0;
     const correct = testState.correctCount;
     const percentage = total ? Math.round((correct / total) * 100) : 0;
     const status = percentage >= 75 ? "LULUS ✅" : "TIDAK LULUS ❌";
@@ -473,6 +462,7 @@ function getFilteredWords() {
     return shuffle(source).slice(0, maxItems);
   }
 
+  // === FUNGSI MODAL (openModal & closeModal) – didefinisikan sebelum listener ===
   function openModal(word) {
     if (!word) return;
     modalSubtitle.style.display = "block";
@@ -504,18 +494,25 @@ function getFilteredWords() {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  // Existing modal close button & backdrop (biar tetap ada)
+  function closeModal() {
+    stopTestTimer();
+    kanjiModal.classList.remove("active");
+    kanjiModal.setAttribute("aria-hidden", "true");
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+
+  // === SEMUA LISTENER MODAL CLOSING (setelah function closeModal didefinisikan) ===
   modalClose.addEventListener("click", closeModal);
   modalBackdrop.addEventListener("click", closeModal);
 
-// <<< LISTENER BARU: Robust close modal dengan klik/tap di luar content (fix mobile/Safari) >>>
+  // Robust close: tap/klik di luar content modal (fix mobile/Safari)
   kanjiModal.addEventListener("click", (e) => {
     if (!e.target.closest(".kanji-modal-content")) {
-    closeModal();
+      closeModal();
     }
   });
 
-// Listener ESC (yang udah ada — nutup modal + sidebar, jangan dihapus!)
+  // ESC: nutup modal + sidebar (hanya satu listener, duplikat dihapus)
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();
@@ -523,10 +520,151 @@ function getFilteredWords() {
     }
   });
 
+  // === SIDEBAR SCROLL FREEZE (versi final yang sudah work di Safari) ===
+  let originalOverflow = '';
+  let originalPosition = '';
+  let originalTop = '';
+  let originalWidth = '';
+  let savedScrollPosition = 0;
+
+  hamburger.addEventListener("click", () => {
+    const isActive = sidebar.classList.toggle("active");
+    overlay.classList.toggle("active", isActive);
+    hamburger.setAttribute("aria-expanded", isActive);
+
+    if (isActive) {
+      savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+      originalOverflow = document.body.style.overflow || '';
+      originalPosition = document.body.style.position || '';
+      originalTop = document.body.style.top || '';
+      originalWidth = document.body.style.width || '';
+
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollPosition}px`;
+      document.body.style.width = '100%';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      closeSidebar();
+    }
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+
+  function closeSidebar() {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+
+    document.body.style.overflow = originalOverflow;
+    document.body.style.position = originalPosition;
+    document.body.style.top = originalTop;
+    document.body.style.width = originalWidth;
+
+    window.scrollTo(0, savedScrollPosition);
+    document.documentElement.style.overflow = '';
+  }
+
+  // === AUDIO & LAINNYA ===
+  grid.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+      return;
+    }
+  });
+
+  recommendationRow.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".rec-audio-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+    }
+  });
+
+  expandedCard.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".play-audio-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+    }
+  });
+
+  // === SIDEBAR BUTTONS ===
+  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewMode = "vocab";
+      selectedLevel = button.dataset.level || "all";
+      selectedType = button.dataset.type || "all";
+      if (selectedType !== "all") category.value = selectedType;
+      search.value = "";
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".letter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewMode = `letters:${button.dataset.script}`;
+      search.value = "";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".pattern-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const level = button.dataset.level;
+      if (["N3", "N2", "N1"].includes(level)) {
+        openInfoModal("Mohon maaf, materi pola kalimat level ini sedang dalam proses pengembangan. Silakan kembali lagi nanti ✨");
+        closeSidebar();
+        return;
+      }
+
+      viewMode = `patterns:${level}`;
+      search.value = "";
+      category.value = "all";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".test-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const level = button.dataset.level;
+      const kind = button.dataset.kind;
+
+      if (["N3", "N2", "N1"].includes(level)) {
+        openInfoModal("Mohon maaf, fitur test level ini masih dalam proses pengembangan. Silakan kembali lagi nanti ✨");
+        closeSidebar();
+        return;
+      }
+
+      startTest(level, kind);
+      closeSidebar();
+    });
+  });
+
+  document.getElementById("logo")?.addEventListener("click", () => {
+    selectedLevel = "all";
+    selectedType = "all";
+    category.value = "all";
+    search.value = "";
+    viewMode = "vocab";
+    render();
+  });
+
+  // === RENDER & INPUT LISTENERS ===
   function render() {
     grid.innerHTML = "";
 
-    // DETEKSI FITUR BARU: UNGKAPAN UMUM
     const isExpressionView = 
       viewMode === "vocab" && 
       (category.value === "ekspresi" || 
@@ -619,162 +757,6 @@ function getFilteredWords() {
   search.addEventListener("input", () => {
     viewMode = "vocab";
     render();
-  });
-
-// Variabel buat simpan kondisi asli
-let originalOverflow = '';
-let originalPosition = '';
-let originalTop = '';
-let originalWidth = '';
-let savedScrollPosition = 0; // Buat simpan posisi scroll
-
-hamburger.addEventListener("click", () => {
-  const isActive = sidebar.classList.toggle("active");
-  overlay.classList.toggle("active", isActive);
-  hamburger.setAttribute("aria-expanded", isActive);
-
-  if (isActive) {
-    // Simpan posisi scroll saat ini
-    savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Simpan style asli (biar bisa restore 100%)
-    originalOverflow = document.body.style.overflow || '';
-    originalPosition = document.body.style.position || '';
-    originalTop = document.body.style.top || '';
-    originalWidth = document.body.style.width || '';
-
-    // Kunci total: freeze scroll + posisi
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${savedScrollPosition}px`;
-    document.body.style.width = '100%';
-
-    // Tambahan untuk html (biar ekstra aman di semua browser)
-    document.documentElement.style.overflow = 'hidden';
-  } else {
-    // Tutup sidebar
-    closeSidebar();
-  }
-});
-
-overlay.addEventListener("click", closeSidebar);
-
-function closeSidebar() {
-  sidebar.classList.remove("active");
-  overlay.classList.remove("active");
-  hamburger.setAttribute("aria-expanded", "false");
-
-  // Kembalikan semua style ke semula
-  document.body.style.overflow = originalOverflow;
-  document.body.style.position = originalPosition;
-  document.body.style.top = originalTop;
-  document.body.style.width = originalWidth;
-
-  // Restore posisi scroll (biar nggak lompat)
-  window.scrollTo(0, savedScrollPosition);
-
-  // Reset html juga
-  document.documentElement.style.overflow = '';
-}  
-  
-  grid.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-      return;
-    }
-  });
-
-  recommendationRow.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".rec-audio-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-    }
-  });
-
-  expandedCard.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-    }
-  });
-
-  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      viewMode = "vocab";
-      selectedLevel = button.dataset.level || "all";
-      selectedType = button.dataset.type || "all";
-      if (selectedType !== "all") category.value = selectedType;
-      search.value = "";
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".letter-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      viewMode = `letters:${button.dataset.script}`;
-      search.value = "";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".pattern-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level;
-      if (["N3", "N2", "N1"].includes(level)) {
-        openInfoModal("Mohon maaf, materi pola kalimat level ini sedang dalam proses pengembangan. Silakan kembali lagi nanti ✨");
-        closeSidebar();
-        return;
-      }
-
-      viewMode = `patterns:${level}`;
-      search.value = "";
-      category.value = "all";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".test-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level;
-      const kind = button.dataset.kind;
-
-      if (["N3", "N2", "N1"].includes(level)) {
-        openInfoModal("Mohon maaf, fitur test level ini masih dalam proses pengembangan. Silakan kembali lagi nanti ✨");
-        closeSidebar();
-        return;
-      }
-
-      startTest(level, kind);
-      closeSidebar();
-    });
-  });
-
-  document.getElementById("logo")?.addEventListener("click", () => {
-    selectedLevel = "all";
-    selectedType = "all";
-    category.value = "all";
-    search.value = "";
-    viewMode = "vocab";
-    render();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-      closeSidebar();
-    }
   });
 
   render();

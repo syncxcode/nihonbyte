@@ -105,43 +105,59 @@ input,
   gap: 1rem;
 }
 
-.card {
-  background: transparent;
-  padding: 0;
-  text-align: left;
-  cursor: pointer;
+/* Grid container utama – force jumlah columns responsif */
+#main, #grid {  /* Target both just in case */
+  display: grid;
+  gap: 24px;                    /* Lebih lega antar card */
+  padding: 20px;
+  grid-template-columns: repeat(2, 1fr);  /* Mobile: 2 card per baris */
 }
 
-/* Card utama – solid hitam + height fixed */
+@media (min-width: 640px) {
+  #main, #grid {
+    grid-template-columns: repeat(3, 1fr);  /* Tablet: 3 card */
+    gap: 28px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #main, #grid {
+    grid-template-columns: repeat(5, 1fr);  /* Desktop: exactly 5 card per baris */
+    gap: 32px;
+    padding: 32px;
+  }
+}
+
+/* Card utama – solid hitam + height optimal */
 .card-image {
-  height: 190px;
+  height: 210px;                         /* Naik sedikit biar teks lega (dari 190px asli) */
   background-color: #000000;
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);  /* Shadow lebih soft */
 }
 
-/* Expanded card (saat klik) */
+/* Expanded card (saat klik/detail) */
 .card-image.expanded {
-  height: 280px;
+  height: 300px;                         /* Adjust ikut height baru */
 }
 
 @media (min-width: 768px) {
   .card-image.expanded {
-    height: 350px;
+    height: 380px;
   }
 }
 
-/* Overlay utama – glassy effect */
+/* Overlay glassy – premium black */
 .card-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;     /* Kanji di atas, detail di bawah */
-  padding: 20px 16px 16px;             /* Padding atas lebih besar biar kanji tidak nempel top */
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+  justify-content: space-between;        /* Kanji atas, detail bawah */
+  padding: 24px 20px 20px;               /* Lebih banyak ruang atas untuk kanji */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.35));
   color: #ffffff;
 }
 
@@ -149,82 +165,76 @@ input,
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);  /* Glossy subtle */
+  backdrop-filter: blur(6px);            /* Kembali ke 6px seperti asli – teks lebih tajam */
+  -webkit-backdrop-filter: blur(6px);
 }
 
-/* Kanji – besar, center horizontally, sedikit ke atas */
+/* Kanji – dominan di atas */
 .card-overlay .kanji {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 38px;                       /* Custom kamu */
+  line-height: 1.1;
+  font-weight: 700;
   text-align: center;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-  margin: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+  margin: 0 0 8px;
 }
 
-/* Section detail bawah (kana, romaji, meaning) */
-.card-overlay .kana,
-.card-overlay .romaji,
-.card-overlay .meaning {
-  margin: 4px 0 0;
-  text-align: left;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Kana agak besar, romaji kecil italic, meaning normal */
+/* Detail bawah – rapi & readable */
 .card-overlay .kana {
-  font-size: 20px;
-  opacity: 0.95;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin: 4px 0 0;
 }
 
 .card-overlay .romaji {
   font-size: 14px;
+  opacity: 0.95;
   font-style: italic;
-  opacity: 0.85;
+  text-align: left;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  margin: 2px 0 0;
 }
 
 .card-overlay .meaning {
-  font-size: 16px;
-  opacity: 0.9;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.4;
+  text-align: left;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin: 6px 0 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-/* Play button – pindah ke pojok KANAN BAWAH */
+/* Play button – kanan bawah, premium */
 .play-audio-btn {
   position: absolute;
-  bottom: 12px;           /* Ubah dari top jadi bottom */
-  right: 12px;            /* Tetap kanan */
+  bottom: 16px;
+  right: 16px;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   color: white;
-  font-size: 22px;
+  font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   backdrop-filter: blur(6px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
 }
 
 .play-audio-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.12);
 }
-
-.kana { font-size: 16px; font-weight: 500; }
-.kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
-.romaji { font-size: 14px; opacity: 0.95; }
-.meaning { font-size: 15px; font-weight: 700; }
-
 
 .letter-poster {
   grid-column: 1 / -1;

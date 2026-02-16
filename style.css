@@ -44,6 +44,7 @@ body::before {
 }
 
 .controls {
+  position: relative;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -1093,10 +1094,10 @@ html, body {
 ========================================= */
 #filterDropdown {
   display: none;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 8px;
+  position: fixed;     /* ubah dari absolute ke fixed */
+  top: 90px;           /* sesuaikan dengan tinggi topbar Anda (~70-80px + padding) */
+  right: 16px;         /* jarak dari kanan layar */
+  margin-top: 0;
   min-width: 340px;
   max-height: 80vh;
   overflow-y: auto;
@@ -1105,6 +1106,16 @@ html, body {
   border-radius: 20px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   z-index: 1000;
+}
+
+@media (max-width: 767px) {
+  #filterDropdown {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    min-width: calc(100% - 32px);
+    max-width: 400px;
+  }
 }
 
 #filterDropdown.show {

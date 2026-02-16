@@ -1089,3 +1089,37 @@ html, body {
     transform: scale(1.03) !important;
   }
 }
+
+/* ============================================= */
+/* Hilangkan semua efek interaktif di expanded card (modal) */
+/* ============================================= */
+#kanjiModal .card-image.expanded,
+#kanjiModal .card-image.expanded *,
+#kanjiModal .card-overlay,
+#kanjiModal .card-overlay * {
+  cursor: default !important;        /* No icon pointer */
+  pointer-events: none !important;   /* Matikan hover/tap effect total */
+  transition: none !important;       /* No animasi gerak */
+}
+
+#kanjiModal .card-image.expanded:hover {
+  transform: none !important;        /* No scale saat hover */
+  box-shadow: none !important;       /* No shadow tambahan */
+}
+
+/* Kembalikan interaksi untuk play button (biar audio tetap bisa diklik) */
+#kanjiModal .play-audio-btn {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Bonus: Buat backdrop lebih jelas bisa di-tap untuk close */
+.kanji-modal-backdrop {
+  cursor: pointer;
+}
+
+/* Hilangkan highlight/ripple pas tap di mobile (Android & iOS) */
+#kanjiModal .card-image.expanded {
+  -webkit-tap-highlight-color: transparent;  /* Chrome/Android/Safari */
+  tap-highlight-color: transparent;
+}

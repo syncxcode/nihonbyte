@@ -1223,3 +1223,125 @@ html, body {
 .nested-dropdown .submenu button:hover {
   background: #e0e7ff !important;
 }
+
+/* =========================================
+   PERBAIKAN POSITIONING DROPDOWN (WAJIB)
+========================================= */
+.controls {
+  position: relative !important; /* Pastikan dropdown absolute relatif ke controls */
+}
+
+/* =========================================
+   NESTED FILTER DROPDOWN - COMPACT & CONTEXT-MENU STYLE
+========================================= */
+#filterDropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  min-width: 260px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+#filterDropdown.show {
+  display: block;
+}
+
+/* Item utama & has-submenu */
+.nested-dropdown .dropdown-item,
+.nested-dropdown .has-submenu > .menu-label {
+  padding: 10px 20px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background: transparent;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.nested-dropdown .dropdown-item:hover,
+.nested-dropdown .has-submenu:hover > .menu-label {
+  background: #e0e7ff !important;
+}
+
+.nested-dropdown .dropdown-item.active,
+.nested-dropdown .has-submenu.active > .menu-label {
+  background: #7c3aed !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+.nested-dropdown .arrow {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: 10px;
+}
+
+/* Sub-menu (flyout) */
+.nested-dropdown .has-submenu:hover > .submenu {
+  display: block;
+}
+
+.nested-dropdown .submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  min-width: 180px;
+  padding: 8px 0;
+  z-index: 1001;
+}
+
+.nested-dropdown .submenu button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: transparent;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.nested-dropdown .submenu button:hover {
+  background: #e0e7ff !important;
+}
+
+/* Mobile adjustment */
+@media (max-width: 767px) {
+  #filterDropdown {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    min-width: calc(100% - 32px);
+    max-width: 400px;
+  }
+
+  .nested-dropdown .submenu {
+    position: static;
+    left: auto;
+    top: auto;
+    box-shadow: none;
+    border-top: 1px solid #e5e7eb;
+    border-radius: 0;
+  }
+}

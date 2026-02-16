@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const grid = document.getElementById("grid");
-  const category = document.getElementById("category");
   const search = document.getElementById("search");
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
@@ -15,9 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
+  const filterBtn = document.getElementById("filterBtn");
+  const filterDropdown = document.getElementById("filterDropdown");
+  const levelGroup = document.getElementById("levelGroup");
+
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
+
+  const typesWithLevel = ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"];
 
   const testState = {
     active: false,
@@ -134,13 +139,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
-    const selectedFromDropdown = category.value;
 
     return vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
 
-      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
+      if (selectedType !== "all" && !matchType(word.type, selectedType)) return false;
 
       const text = [
         word.kanji || "",
@@ -169,9 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // ================================================
-  // FITUR BARU: Poster Ungkapan Umum (PERSEGI PANJANG LEBAR KE SAMPING, 2 PER BARIS)
-  // ================================================
   function renderExpressionPoster() {
     grid.innerHTML = "";
 
@@ -491,25 +491,85 @@ document.addEventListener("DOMContentLoaded", () => {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  function 
-
-closeModal() {
+  function closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
     kanjiModal.setAttribute("aria-hidden", "true");
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
+  function updateLevelVisibility() {
+    if (typesWithLevel.includes(selectedType)) {
+      levelGroup.style.display = "block";
+    } else {
+      levelGroup.style.display = "none";
+      selectedLevel = "all";
+    }
+    updateDropdownActive();
+  }
+
+  function updateDropdownActive() {
+    filterDropdown.querySelectorAll(".dropdown-item").forEach(item => item.classList.remove("active"));
+
+    const typeItem = filterDropdown.querySelector(`[data-type="${selectedType}"]`) || 
+                     filterDropdown.querySelector(`[data-type="all"]`);
+    if (typeItem) typeItem.classList.add("active");
+
+    const levelItem = filterDropdown.querySelector(`[data-level="${selectedLevel}"]`);
+    if (levelItem) levelItem.classList.add("active");
+  }
+
+  // Toggle dropdown
+  filterBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isShown = filterDropdown.classList.toggle("show");
+    filterBtn.setAttribute("aria-expanded", isShown);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!filterBtn.contains(e.target) && !filterDropdown.contains(e.target)) {
+      filterDropdown.classList.remove("show");
+      filterBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // Handle dropdown item click
+  filterDropdown.addEventListener("click", (e) => {
+    const item = e.target.closest(".dropdown-item");
+    if (!item) return;
+
+    if (item.dataset.type !== undefined) {
+      selectedType = item.dataset.type || "all";
+      updateLevelVisibility();
+    }
+    if (item.dataset.level !== undefined) {
+      selectedLevel = item.dataset.level || "all";
+    }
+
+    filterDropdown.classList.remove("show");
+    filterBtn.setAttribute("aria-expanded", "false");
+    render();
+  });
+
+  // Sidebar sync
+  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewMode = "vocab";
+      selectedLevel = button.dataset.level || "all";
+      selectedType = button.dataset.type || "all";
+      search.value = "";
+      updateLevelVisibility();
+      render();
+      closeSidebar();
+    });
+  });
+
   function render() {
     grid.innerHTML = "";
 
-    // DETEKSI FITUR BARU: UNGKAPAN UMUM
     const isExpressionView = 
       viewMode === "vocab" && 
-      (category.value === "ekspresi" || 
-       selectedType === "ekspresi" || 
-       selectedType === "expression" || 
-       selectedType === "ungkapan umum");
+      (selectedType === "ekspresi" || selectedType === "expression" || selectedType === "ungkapan umum");
 
     if (isExpressionView) {
       renderExpressionPoster();
@@ -587,12 +647,6 @@ closeModal() {
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
   }
 
-  category.addEventListener("change", () => {
-    viewMode = "vocab";
-    selectedType = "all";
-    render();
-  });
-
   search.addEventListener("input", () => {
     viewMode = "vocab";
     render();
@@ -636,18 +690,6 @@ closeModal() {
     }
   });
 
-  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      viewMode = "vocab";
-      selectedLevel = button.dataset.level || "all";
-      selectedType = button.dataset.type || "all";
-      if (selectedType !== "all") category.value = selectedType;
-      search.value = "";
-      render();
-      closeSidebar();
-    });
-  });
-
   document.querySelectorAll(".letter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = `letters:${button.dataset.script}`;
@@ -667,9 +709,8 @@ closeModal() {
         return;
       }
 
-      viewMode = `patterns:${level}`;
+      viewMode =اجر `patterns:${level}`;
       search.value = "";
-      category.value = "all";
       closeModal();
       render();
       closeSidebar();
@@ -695,9 +736,9 @@ closeModal() {
   document.getElementById("logo")?.addEventListener("click", () => {
     selectedLevel = "all";
     selectedType = "all";
-    category.value = "all";
     search.value = "";
     viewMode = "vocab";
+    updateLevelVisibility();
     render();
   });
 
@@ -705,8 +746,11 @@ closeModal() {
     if (event.key === "Escape") {
       closeModal();
       closeSidebar();
+      filterDropdown.classList.remove("show");
+      filterBtn.setAttribute("aria-expanded", "false");
     }
   });
 
+  updateLevelVisibility();
   render();
 });

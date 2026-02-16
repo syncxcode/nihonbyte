@@ -932,3 +932,102 @@ html, body {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* =========================================
+   TOPBAR & CONTROLS (Pindah ke kanan atas + optimasi search)
+========================================= */
+.topbar {
+  grid-template-columns: 48px 1fr auto; /* Logo di tengah, controls di kanan */
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  max-width: 520px;
+}
+
+#search {
+  flex: 1;
+  min-width: 0; /* Biar search bar bisa mengecil dengan baik */
+}
+
+.filter-btn {
+  white-space: nowrap;
+  font-weight: 700;
+  padding: 0.62rem 1.2rem;
+}
+
+/* Result info tetap di bawah */
+#resultInfo {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Mobile: controls pindah ke bawah logo */
+@media (max-width: 767px) {
+  .topbar {
+    grid-template-columns: 48px 1fr;
+  }
+  .controls {
+    grid-column: 1 / -1;
+    margin-top: 12px;
+  }
+}
+
+/* =========================================
+   CUSTOM FILTER DROPDOWN (mirip gambar contoh)
+========================================= */
+#filterBtn {
+  position: relative;
+}
+
+#filterDropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  min-width: 320px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#filterDropdown.show {
+  display: block;
+}
+
+.dropdown-header {
+  font-weight: 700;
+  color: #1f2937;
+  padding: 12px 16px 6px;
+  font-size: 0.95rem;
+  background: #f3f4f6;
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.dropdown-item.active {
+  background: #e0e7ff;
+  font-weight: 600;
+}

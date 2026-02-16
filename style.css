@@ -25,10 +25,10 @@ body::before {
   width: 100%;
   box-sizing: border-box;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  background: #ffe4e8 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
 .branding h1 {
@@ -92,9 +92,19 @@ input,
 .hamburger span {
   display: block;
   height: 4px;
-  background: black;
+  background: #444 !important;
   margin: 7px 0;
   border-radius: 2px;
+}
+
+.topbar select,
+.topbar input {
+  background: rgba(255, 255, 255, 0.92) !important;   /* sedikit lebih opaque agar mudah dibaca */
+  color: #333 !important;
+}
+
+.topbar #resultInfo {
+  color: #5d4037 !important;   /* coklat gelap lembut agar kontras di pink */
 }
 
 /* =========================================
@@ -1010,4 +1020,61 @@ html, body {
 /* Padding konten utama agar tidak tertutup header */
 #grid {
   padding-top: 150px !important;   /* naikkan sedikit karena sekarang 2 baris (biasanya 140-160px pas) */
+}
+
+.card-image,
+.card-overlay,
+.card-overlay * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  cursor: pointer !important;   /* paksa selalu tangan pointer saat hover card */
+}
+
+/* Efek hover: scale sedikit + shine moving (mirip efek glossy/shine pada logo title.PNG) */
+.card-image {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.card-image:hover {
+  transform: scale(1.05) !important;                /* membesar sedikit */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;   /* glow lebih kuat */
+}
+
+/* Shine moving effect (garis putih mengkilap melintas saat hover, mirip efek glossy pada logo) */
+.card-image::after {
+  content: '' !important;
+  position: absolute !important;
+  top: -100% !important;
+  left: -100% !important;
+  width: 50% !important;
+  height: 200% !important;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 60%,
+    transparent 100%
+  ) !important;
+  transform: rotate(30deg) !important;
+  transition: all 0.6s ease !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.card-image:hover::after {
+  opacity: 1 !important;
+  top: 100% !important;
+  left: 100% !important;
+}
+
+/* Mobile: efek tetap halus, tidak terlalu berat */
+@media (max-width: 767px) {
+  .card-image:hover {
+    transform: scale(1.03) !important;   /* lebih kecil di HP agar tidak terlalu "loncat" */
+  }
 }

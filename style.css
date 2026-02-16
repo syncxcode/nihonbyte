@@ -1125,3 +1125,58 @@ html, body {
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
 }
+
+/* ============================================= */
+/* Perbesar logo .branding img tanpa narik header lain */
+/* Retain hover scale effect yang sudah ada */
+/* ============================================= */
+.branding {
+  grid-column: 2;                  /* Tetap di column 2 (samping hamburger) */
+  grid-row: 1;                     /* Tetap di row 1 */
+  justify-self: start !important;  /* Sejajar kiri di cell */
+  align-self: center !important;   /* Vertikal center tanpa stretch row height */
+  padding-left: 15px !important;   /* Jarak dari hamburger (adjust biar balance) */
+}
+
+.branding img {
+  height: 90px !important;         /* Besarkan dari 54px jadi 90px (sesuaikan: coba 80–110px) */
+  width: auto !important;          /* Proporsional (atau fixed kalau mau bulat sempurna) */
+  max-width: none !important;      /* Override limit kalau ada */
+  border-radius: 50% !important;   /* Pastikan bulat sempurna */
+  object-fit: cover !important;    /* Gambar fill bagus tanpa distort/stretch */
+  cursor: pointer !important;      /* Retain cursor pointer lu */
+  transition: transform 0.3s ease !important; /* Smooth transition (sedikit lebih halus dari 0.2s) */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; /* Bonus: shadow biar lebih premium & pop */
+  display: block !important;
+}
+
+.branding img:hover {
+  transform: scale(1.08) !important; /* Enhance.hover scale lu (dari 1.05 jadi 1.08, lebih noticeable) */
+}
+
+/* Pastikan header grid nggak stretch height karena logo besar */
+header {  /* atau selector header lu, misal #header / .header-container / .top-bar */
+  grid-template-rows: minmax(90px, auto) !important; /* Min-height adjust ke logo baru (dari ~60px jadi 90px) */
+  align-items: center !important;
+  padding: 10px 20px !important;   /* Adjust padding biar space cukup di kiri/kanan */
+}
+
+/* Responsif: Kecilkan logo & header di mobile (lebar <768px) */
+@media (max-width: 768px) {
+  .branding {
+    padding-left: 10px !important; /* Kurangi jarak di HP */
+  }
+  .branding img {
+    height: 65px !important;       /* Kecil dari 90px jadi 65px (masih lebih besar dari original 54px) */
+  }
+  header {
+    grid-template-rows: minmax(75px, auto) !important; /* Header lebih ramping di mobile */
+  }
+}
+
+/* Edge case: Kalau di screen sangat kecil, prevent overlap */
+@media (max-width: 480px) {
+  .branding img {
+    height: 55px !important;       /* Kecil lagi di HP mini */
+  }
+}

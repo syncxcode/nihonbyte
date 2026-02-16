@@ -1089,3 +1089,13 @@ html, body {
     transform: scale(1.03) !important;
   }
 }
+
+/* Disable scroll pada body saat sidebar terbuka */
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Opsional: juga untuk html agar lebih aman di beberapa browser */
+html.no-scroll {
+  overflow: hidden;
+}

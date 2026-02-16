@@ -182,98 +182,78 @@ input,
 }
 
 /* =========================================
-   FIX MODAL: CENTER TOTAL (ANTI MEPER)
+   FIX MODAL: TOTAL CENTER (ANTI MEPER)
 ========================================= */
 
-/* 1. Backdrop Modal (Layar Penuh) */
+/* 1. Backdrop (Layar Hitam) */
 #kanjiModal {
-  display: none; /* Sembunyi default */
+  display: none; 
   position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
+  inset: 0 !important; /* Kunci atas, bawah, kiri, kanan di 0 */
   width: 100vw !important;
   height: 100vh !important;
   z-index: 99999 !important;
   background: rgba(0, 0, 0, 0.85) !important;
   
-  /* Flexbox untuk menengahkan */
+  /* Hilangkan semua padding yang mungkin dorong konten */
+  padding: 0 !important;
+  margin: 0 !important;
+
+  /* Paksa Flex Center */
+  display: none; 
   align-items: center !important;
   justify-content: center !important;
-  
-  /* Cegah scroll di luar modal */
-  overflow: hidden !important;
-  box-sizing: border-box !important;
 }
 
-/* Munculkan lewat class active */
 #kanjiModal.active {
   display: flex !important;
 }
 
-/* 2. Kontainer Modal (Si Hitam yang di Tengah) */
+/* 2. Kontainer Hitam (Harus di Tengah) */
 .kanji-modal-content {
   position: relative !important;
-  /* Kunci Lebar */
-  width: 90% !important; 
-  max-width: 480px !important;
+  /* Jangan pakai margin auto kalau flexbox sudah jalan */
+  margin: 0 !important; 
   
-  /* Kunci Tengah Manual (Cadangan Flexbox) */
-  margin: 0 auto !important; 
-  
+  width: 90% !important;
+  max-width: 450px !important;
   background: #000000 !important;
   border-radius: 28px !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   
-  /* Anti Meper: Pastikan konten tidak meluber keluar */
-  overflow: hidden !important; 
+  /* Kunci lebar agar tidak meledak ke kanan */
   box-sizing: border-box !important;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8) !important;
+  overflow: hidden !important;
 }
 
-/* 3. Area Kartu Ter-expand */
+/* 3. Kartu Expanded di Dalam */
 .card-image.expanded {
   width: 100% !important;
+  max-width: 100% !important;
   height: auto !important;
   min-height: 250px !important;
+  padding: 30px !important;
+  box-sizing: border-box !important; /* WAJIB: biar padding gak nambah lebar */
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 30px 15px !important;
-  box-sizing: border-box !important; 
   background: transparent !important;
 }
 
-/* Teks di dalam Expanded Card agar Putih & Center */
-.expanded-card .kanji {
-  font-size: clamp(60px, 15vw, 90px) !important;
-  color: #fff !important;
-  margin-bottom: 10px !important;
-  text-align: center !important;
-}
-
-.expanded-card .kana,
-.expanded-card .romaji,
-.expanded-card .meaning {
-  color: #fff !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-
-/* 4. Rekomendasi Row (Scroll Horizontal Aman) */
+/* 4. Rekomendasi (Pastikan tidak mendorong container) */
 #recommendationRow {
   display: flex !important;
-  flex-direction: row !important;
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
   width: 100% !important;
   padding: 15px !important;
   gap: 12px !important;
-  box-sizing: border-box !important;
+  box-sizing: border-box !important; /* Cegah meledak ke kanan */
   background: #000 !important;
 }
 
-/* Sembunyikan scrollbar */
+/* Sembunyikan Scrollbar */
 #recommendationRow::-webkit-scrollbar { display: none; }
 
 #recommendationRow .card {
@@ -281,8 +261,15 @@ input,
   background: rgba(255, 255, 255, 0.1) !important;
   border-radius: 12px !important;
   padding: 10px !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
   text-align: center !important;
+}
+
+/* Pastikan semua teks di modal warna putih */
+.expanded-card .kanji, 
+.expanded-card .kana, 
+.expanded-card .romaji, 
+.expanded-card .meaning {
+  color: #fff !important;
 }
 
 .letter-poster {

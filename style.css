@@ -1227,6 +1227,11 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   margin: 0 auto 10px auto;
 }
 
+.support-poster a {
+  display: inline-block;
+  margin-top: 15px;   
+}
+
 .support-btn {
   display: inline-block;
   margin-top: 30px;

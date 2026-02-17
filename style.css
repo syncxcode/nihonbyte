@@ -1325,11 +1325,9 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 }
 
-/* FORCE LETTER GRID DESKTOP + MOBILE */
 .letter-poster .letter-row {
   display: grid !important;
-  grid-template-columns: 80px repeat(5, 1fr) !important;
-  gap: 10px !important;
-  min-width: 0 !important;
+  grid-template-columns: minmax(80px, 80px) repeat(5, minmax(60px, 1fr)) !important;
+  gap: 8px !important;
 }
 

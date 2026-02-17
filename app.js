@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const grid = document.getElementById("grid");
   const category = document.getElementById("category");
   const search = document.getElementById("search");
@@ -7,14 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
-
   const kanjiModal = document.getElementById("kanjiModal");
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalClose = document.getElementById("modalClose");
   const expandedCard = document.getElementById("expandedCard");
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
-  
+
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
@@ -120,47 +118,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
-
     if (targetType === "verb-irregular") {
       return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
     }
-
     if (targetType === "noun" || targetType.startsWith("noun-")) {
       return wordType === targetType;
     }
-
     if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
       return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
     }
-
     return wordType?.startsWith(targetType) || false;
   }
 
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
     const selectedFromDropdown = category.value;
-
     return vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
-
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
-
       const text = [
         word.kanji || "",
         word.kana || "",
         word.romaji || "",
         word.meaning || ""
       ].join("").toLowerCase();
-
       return !key || text.includes(key);
     });
   }
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
-
     return `
       <div class="card-image ${expandedClass}">
         <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
@@ -176,34 +164,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderExpressionPoster() {
     grid.innerHTML = "";
-
-    const expressions = vocabularyData.filter(w => 
+    const expressions = vocabularyData.filter(w =>
       w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
     );
-
     if (!expressions.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
       resultInfo.textContent = "0 ungkapan ditemukan";
       return;
     }
-
     const container = document.createElement("div");
     container.className = "expression-wide-grid";
-
     expressions.forEach((word) => {
       const card = document.createElement("div");
       card.className = "expression-wide-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
-
       try {
         card.dataset.word = JSON.stringify(word);
       } catch (err) {
         console.warn("Gagal stringify ungkapan:", word);
         return;
       }
-
       card.innerHTML = `
         <div class="wide-kanji">${word.kanji || "—"}</div>
         <div class="wide-kana">${word.kana || "—"}</div>
@@ -211,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="wide-meaning">${word.meaning || "—"}</div>
         <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
       `;
-
       card.addEventListener("click", (e) => {
         if (e.target.closest(".wide-play-btn")) return;
         try {
@@ -219,12 +200,10 @@ document.addEventListener("DOMContentLoaded", () => {
           openModal(storedWord);
         } catch (err) {}
       });
-
       card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         speakWord(card.querySelector(".wide-play-btn").dataset.text);
       });
-
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
@@ -233,10 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
           } catch {}
         }
       });
-
       container.appendChild(card);
     });
-
     grid.appendChild(container);
     resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
   }
@@ -261,15 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function startQuestionTimer(seconds) {
     stopTestTimer();
     testState.timeLeft = seconds;
-
     const timerElement = document.getElementById("testTimer");
     if (timerElement) timerElement.textContent = `${testState.timeLeft}s`;
-
     testState.timerId = setInterval(() => {
       testState.timeLeft -= 1;
       const currentTimerElement = document.getElementById("testTimer");
       if (currentTimerElement) currentTimerElement.textContent = `${testState.timeLeft}s`;
-
       if (testState.timeLeft <= 0) {
         stopTestTimer();
         moveToNextQuestion();
@@ -283,9 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const correct = testState.correctCount;
     const percentage = total ? Math.round((correct / total) * 100) : 0;
     const status = percentage >= 75 ? "LULUS ✅" : "TIDAK LULUS ❌";
-
     openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> • <strong>${percentage}%</strong><br>${status}`);
-
     testState.active = false;
     viewMode = "vocab";
     render();
@@ -293,15 +265,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function moveToNextQuestion() {
     if (!testState.active) return;
-
     testState.currentIndex += 1;
     testState.answered = false;
-
     if (testState.currentIndex >= testState.questions.length) {
       finishTest();
       return;
     }
-
     renderCurrentTestQuestion();
   }
 
@@ -310,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const question = testState.questions[testState.currentIndex];
     const options = shuffle(question.options);
     const isKanji = testState.type === "kanji";
-
     const board = document.createElement("div");
     board.className = "test-board";
     board.innerHTML = `
@@ -324,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="test-option-grid"></div>
       <button class="action-btn finish-test-btn" type="button">Selesai Test</button>
     `;
-
     const optionGrid = board.querySelector(".test-option-grid");
     options.forEach((opt) => {
       const btn = document.createElement("button");
@@ -333,29 +300,22 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.dataset.correct = opt.correct ? "true" : "false";
       optionGrid.appendChild(btn);
     });
-
     grid.appendChild(board);
     startQuestionTimer(30);
-
     optionGrid.addEventListener("click", (event) => {
       const btn = event.target.closest(".test-option-btn");
       if (!btn || testState.answered) return;
-
       testState.answered = true;
       stopTestTimer();
-
       const correct = btn.dataset.correct === "true";
       if (correct) testState.correctCount += 1;
-
       Array.from(optionGrid.children).forEach((optBtn) => {
         optBtn.disabled = true;
         if (optBtn.dataset.correct === "true") optBtn.classList.add("correct");
         else optBtn.classList.add("wrong");
       });
-
       setTimeout(moveToNextQuestion, 1500);
     });
-
     board.querySelector(".finish-test-btn").addEventListener("click", finishTest);
   }
 
@@ -367,14 +327,12 @@ document.addEventListener("DOMContentLoaded", () => {
     testState.correctCount = 0;
     testState.currentIndex = 0;
     testState.answered = false;
-
     let sourceData;
     if (kind === "kanji") {
       sourceData = vocabularyData.filter((word) => word.level === level);
     } else if (kind === "bunpou") {
       sourceData = patternData[level] || [];
     }
-
     if (!sourceData || !sourceData.length) {
       openInfoModal("Tidak ada data untuk test ini.");
       testState.active = false;
@@ -382,13 +340,11 @@ document.addEventListener("DOMContentLoaded", () => {
       render();
       return;
     }
-
     const questions = shuffle(sourceData).slice(0, 10).map((item) => {
       const correctOption = { ...item, correct: true };
       const wrongOptions = shuffle(sourceData.filter((w) => (w.kanji !== item.kanji || w.pattern !== item.pattern))).slice(0, 3).map((w) => ({ ...w, correct: false }));
       return { ...item, options: shuffle([correctOption, ...wrongOptions]) };
     });
-
     testState.questions = questions;
     renderCurrentTestQuestion();
   }
@@ -397,34 +353,27 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.innerHTML = "";
     const data = letterSets[script];
     if (!data) return;
-
     const poster = document.createElement("article");
     poster.className = "letter-poster";
     poster.innerHTML = `<h2>${data.title}</h2><div class="letter-poster-body"></div>`;
-
     data.sections.forEach((section) => {
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
-
       section.rows.forEach((row) => {
         const rowElem = document.createElement("div");
         rowElem.className = "letter-row";
         rowElem.style.setProperty("--cols", row.length);
-
         row.forEach((cell) => {
           const cellElem = document.createElement("div");
           cellElem.className = cell ? "letter-cell" : "letter-label";
           cellElem.textContent = cell || "";
           rowElem.appendChild(cellElem);
         });
-
         secElem.appendChild(rowElem);
       });
-
       poster.querySelector(".letter-poster-body").appendChild(secElem);
     });
-
     grid.appendChild(poster);
     resultInfo.textContent = "";
   }
@@ -437,7 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
       resultInfo.textContent = "0 pola ditemukan";
       return;
     }
-
     patterns.forEach((pattern) => {
       const card = document.createElement("article");
       card.className = "pattern-card";
@@ -449,7 +397,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       grid.appendChild(card);
     });
-
     resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
   }
 
@@ -458,7 +405,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
     const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
     const source = sameType.length >= maxItems ? sameType : fallback;
-
     return shuffle(source).slice(0, maxItems);
   }
 
@@ -468,7 +414,6 @@ document.addEventListener("DOMContentLoaded", () => {
     recommendationRow.style.display = "flex";
     expandedCard.innerHTML = cardImageTemplate(word, true);
     recommendationRow.innerHTML = "";
-
     getRecommendations(word).forEach((item) => {
       const recBtn = document.createElement("article");
       recBtn.className = "recommendation-item";
@@ -488,7 +433,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       recommendationRow.appendChild(recBtn);
     });
-
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
   }
@@ -500,6 +444,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
+  // Modal closing listeners
   modalClose.addEventListener("click", closeModal);
   modalBackdrop.addEventListener("click", closeModal);
 
@@ -516,6 +461,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Sidebar scroll freeze
   let originalOverflow = '';
   let originalPosition = '';
   let originalTop = '';
@@ -526,15 +472,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const isActive = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", isActive);
     hamburger.setAttribute("aria-expanded", isActive);
-
     if (isActive) {
       savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
       originalOverflow = document.body.style.overflow || '';
       originalPosition = document.body.style.position || '';
       originalTop = document.body.style.top || '';
       originalWidth = document.body.style.width || '';
-
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${savedScrollPosition}px`;
@@ -551,16 +494,15 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
-
     document.body.style.overflow = originalOverflow;
     document.body.style.position = originalPosition;
     document.body.style.top = originalTop;
     document.body.style.width = originalWidth;
-
     window.scrollTo(0, savedScrollPosition);
     document.documentElement.style.overflow = '';
   }
 
+  // Audio handlers
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {
@@ -589,6 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Sidebar filter buttons
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = "vocab";
@@ -619,7 +562,6 @@ document.addEventListener("DOMContentLoaded", () => {
         closeSidebar();
         return;
       }
-
       viewMode = `patterns:${level}`;
       search.value = "";
       category.value = "all";
@@ -633,13 +575,11 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => {
       const level = button.dataset.level;
       const kind = button.dataset.kind;
-
       if (["N3", "N2", "N1"].includes(level)) {
         openInfoModal("Mohon maaf, fitur test level ini masih dalam proses pengembangan. Silakan kembali lagi nanti ✨");
         closeSidebar();
         return;
       }
-
       startTest(level, kind);
       closeSidebar();
     });
@@ -654,45 +594,61 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
+  // Dukung Pengembang - listener (dipindah ke sini, sebelum render)
+  document.getElementById("supportBtn").addEventListener("click", () => {
+    const supportMessage = `
+      <div class="support-poster">
+        <h3>Mendukung Nihonbyte Berarti Mendukung Akses Belajar yang Lebih Luas</h3>
+        <p>Nihonbyte lahir dari keinginan sederhana: membuat belajar bahasa Jepang jadi mudah, gratis, dan menyenangkan bagi siapa saja — tanpa batasan biaya atau akses internet.</p>
+        <p>Dukungan Anda membantu menjaga semangat ini tetap berjalan dan berkembang:</p>
+        <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto 30px auto; text-align: left; font-size: 17px;">
+          <li>• Menambah ribuan kosakata & pola baru</li>
+          <li>• Mengembangkan fitur interaktif yang lebih baik</li>
+          <li>• Memastikan aplikasi tetap 100% gratis untuk semua pembelajar</li>
+        </ul>
+        <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus membangun alat belajar yang lebih baik untuk komunitas.</p>
+        <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+        <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
+          Dukung Nihonbyte
+        </a>
+      </div>
+    `;
+    openInfoModal(supportMessage);
+    closeSidebar(); // Tutup sidebar otomatis
+  });
+
+  // Fungsi render utama
   function render() {
     grid.innerHTML = "";
-
-    const isExpressionView = 
-      viewMode === "vocab" && 
-      (category.value === "ekspresi" || 
-       selectedType === "ekspresi" || 
-       selectedType === "expression" || 
+    const isExpressionView =
+      viewMode === "vocab" &&
+      (category.value === "ekspresi" ||
+       selectedType === "ekspresi" ||
+       selectedType === "expression" ||
        selectedType === "ungkapan umum");
-
     if (isExpressionView) {
       renderExpressionPoster();
       return;
     }
-
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
     }
-
     if (viewMode.startsWith("patterns:")) {
       renderPatternPoster(viewMode.split(":")[1]);
       return;
     }
-
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
       return;
     }
-
     const words = getFilteredWords();
-
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
       resultInfo.textContent = "0 kata ditemukan";
       return;
     }
-
     const fragment = document.createDocumentFragment();
     words.forEach((word) => {
       const cardButton = document.createElement("article");
@@ -700,16 +656,13 @@ document.addEventListener("DOMContentLoaded", () => {
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
       cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
-
       try {
         cardButton.dataset.word = JSON.stringify(word);
       } catch (err) {
         console.warn("Gagal menyimpan data word:", word);
         return;
       }
-
       cardButton.innerHTML = cardImageTemplate(word);
-
       cardButton.addEventListener("click", (e) => {
         if (e.target.closest(".play-audio-btn")) return;
         try {
@@ -719,7 +672,6 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("Gagal membaca data kartu:", err);
         }
       });
-
       cardButton.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -731,10 +683,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       });
-
       fragment.appendChild(cardButton);
     });
-
     grid.appendChild(fragment);
     const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
     resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
@@ -743,29 +693,14 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", () => {
     viewMode = "vocab";
     selectedType = "all";
-
-// Dukung Pengembang - klik buka poster indah (Varian 2)
-document.getElementById("supportBtn").addEventListener("click", () => {
-  const supportMessage = `
-    <div class="support-poster">
-      <h3>Mendukung Nihonbyte Berarti Mendukung Akses Belajar yang Lebih Luas</h3>
-      <p>Nihonbyte lahir dari keinginan sederhana: membuat belajar bahasa Jepang jadi mudah, gratis, dan menyenangkan bagi siapa saja — tanpa batasan biaya atau akses internet.</p>
-      <p>Dukungan Anda membantu menjaga semangat ini tetap berjalan dan berkembang:</p>
-      <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto 30px auto; text-align: left; font-size: 17px;">
-        <li>• Menambah ribuan kosakata & pola baru</li>
-        <li>• Mengembangkan fitur interaktif yang lebih baik</li>
-        <li>• Memastikan aplikasi tetap 100% gratis untuk semua pembelajar</li>
-      </ul>
-      <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus membangun alat belajar yang lebih baik untuk komunitas.</p>
-      <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
-      <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
-        Dukung Nihonbyte
-      </a>
-    </div>
-  `;
-  openInfoModal(supportMessage);
-  closeSidebar(); // Tutup sidebar otomatis setelah klik (opsional, bisa dihapus kalau mau sidebar tetap terbuka)
-});
     render();
   });
 
+  search.addEventListener("input", () => {
+    viewMode = "vocab";
+    render();
+  });
+
+  // Render awal
+  render();
+});

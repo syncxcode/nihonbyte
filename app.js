@@ -589,32 +589,40 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // Dukung Pengembang - listener (dipindah ke posisi aman sebelum render akhir)
+  // Dukung Pengembang - listener (mirip klik "Ungkapan Umum")
   document.getElementById("supportBtn").addEventListener("click", () => {
-    const supportMessage = `
-      <div class="support-poster">
-        <h3>Mendukung Nihonbyte Berarti Mendukung Akses Belajar yang Lebih Luas</h3>
-        <p>Nihonbyte lahir dari keinginan sederhana: membuat belajar bahasa Jepang jadi mudah, gratis, dan menyenangkan bagi siapa saja — tanpa batasan biaya atau akses internet.</p>
-        <p>Dukungan Anda membantu menjaga semangat ini tetap berjalan dan berkembang:</p>
-        <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto 30px auto; text-align: left; font-size: 17px;">
-          <li>• Menambah ribuan kosakata & pola baru</li>
-          <li>• Mengembangkan fitur interaktif yang lebih baik</li>
-          <li>• Memastikan aplikasi tetap 100% gratis untuk semua pembelajar</li>
-        </ul>
-        <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus membangun alat belajar yang lebih baik untuk komunitas.</p>
-        <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
-        <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
-          Dukung Nihonbyte
-        </a>
-      </div>
-    `;
-    openInfoModal(supportMessage);
-    closeSidebar(); // Tutup sidebar otomatis setelah klik
+    viewMode = "dukung-pengembang";  // Mode baru
+    search.value = "";
+    category.value = "all";
+    render();
+    closeSidebar();
   });
 
   // Fungsi render utama
   function render() {
     grid.innerHTML = "";
+
+    // Kondisi khusus untuk dukungan pengembang (full poster seperti ungkapan umum)
+    if (viewMode === "dukung-pengembang") {
+      grid.innerHTML = `
+        <div class="support-full-poster">
+          <div class="poster-overlay">
+            <h2>Dukung Pengembang</h2>
+            <p>Nihonbyte dibuat dengan semangat berbagi ilmu bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
+            <p>Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan bisa menjangkau lebih banyak orang di masa depan — tanpa iklan, tanpa batasan akses.</p>
+            <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
+            <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+            <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
+              Klik Disini
+            </a>
+          </div>
+        </div>
+      `;
+      resultInfo.textContent = "Terima kasih atas dukungan Anda!";
+      return;
+    }
+
+    // Logic render normal lainnya (ungkapan umum, letters, patterns, test, vocab)
     const isExpressionView =
       viewMode === "vocab" &&
       (category.value === "ekspresi" ||

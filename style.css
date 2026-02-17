@@ -1218,6 +1218,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 .support-poster h2 {
   font-size: clamp(3rem, 3.5vw, 3.8rem);
   margin-bottom: 23px;
+  margin-top: -15px;
 }
 
 .support-poster p {

@@ -1248,3 +1248,26 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     margin-top: 20px;
   }
 }
+
+.support-poster {
+  width: 92%;
+  max-width: 1400px;   /* Desktop jadi lebih lebar */
+  margin: 40px auto;
+}
+
+/* Desktop gede banget */
+@media (min-width: 1400px) {
+  .support-poster {
+    max-width: 1600px;
+  }
+}
+
+/* Mobile tetap aman */
+@media (max-width: 768px) {
+  .support-poster {
+    width: 94%;
+    margin: 20px auto;
+    padding: 40px 20px !important;
+  }
+}
+

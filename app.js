@@ -614,7 +614,7 @@ grid.innerHTML = `
 
       <p>
         Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
-        bisa menjangkau lebih banyak orang di masa depan — tanpa iklan, tanpa batasan akses.
+        bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.
       </p>
 
       <p>

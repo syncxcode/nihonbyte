@@ -1325,9 +1325,41 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 }
 
-.letter-poster .letter-row {
-  display: grid !important;
-  grid-template-columns: minmax(80px, 80px) repeat(5, minmax(60px, 1fr)) !important;
-  gap: 8px !important;
-}
+/* =============================================
+   OPTIMASI POSTER HIRAGANA & KATAKANA DESKTOP
+   ============================================= */
+@media (min-width: 1024px) {
+  .letter-poster {
+    max-width: 920px;           /* batasi lebar maksimal biar tetap proporsional */
+    margin: 2rem auto;          /* center otomatis */
+    padding: 1.5rem 2rem;       /* padding luar sedikit lebih besar biar elegan */
+  }
 
+  .letter-poster-body {
+    gap: 12px;
+    justify-items: center;
+  }
+
+  .letter-row {
+    grid-template-columns: 56px repeat(calc(var(--cols, 5) - 1), minmax(72px, 82px)) !important;
+    gap: 8px;
+    max-width: fit-content;
+    margin: 0 auto;
+  }
+
+  .letter-cell,
+  .letter-label {
+    min-height: 68px;
+    font-size: 1.45rem;         /* huruf lebih besar & nyaman dibaca */
+    border-radius: 14px;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.08); /* border tipis lebih halus */
+  }
+
+  /* Bonus: bikin cell selalu kotak sempurna */
+  .letter-cell {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1324,3 +1324,11 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 
 }
+
+.letter-poster .letter-row {
+  display: grid !important;
+  grid-template-columns: 80px repeat(5, 1fr) !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+}
+

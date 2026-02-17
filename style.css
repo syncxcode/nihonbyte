@@ -1326,38 +1326,42 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 /* =============================================
-   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v3
-   (Respect --cols dari JS, cell kotak sempurna, tidak ada lagi grid rusak)
+   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v4
+   (Jarak header lebih rapat + semua improvement sebelumnya)
    ============================================= */
 @media (min-width: 1024px) {
+  /* KUNCI: kurangi padding-top grid biar poster naik lebih dekat ke header */
+  #grid {
+    padding-top: 82px !important;
+  }
+
   .letter-poster {
     max-width: 960px !important;
-    margin: 2.5rem auto !important;
-    padding: 2.8rem 2.4rem !important;
+    margin: 18px auto 2.8rem auto !important;   /* margin-top super kecil */
+    padding: 2.5rem 2.4rem 3rem !important;
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.97) !important;
+    background: rgba(255, 255, 255, 0.975) !important;
     box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25);
   }
 
   .letter-poster-body {
-    gap: 32px !important;           /* jarak antar Gojūon / Dakuon / Yōon */
+    gap: 32px !important;
   }
 
   .letter-row {
-    gap: 16px !important;           /* border jelas terpisah, tidak nempel */
+    gap: 16px !important;
     grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important;
-    justify-content: center;        /* baris pendek (Yōon) otomatis center */
+    justify-content: center;
   }
 
   .letter-label,
   .letter-cell {
-    height: 92px !important;        /* cell selalu kotak sempurna */
+    height: 92px !important;
     font-size: 1.68rem !important;
     border-radius: 16px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
   }
 
   .letter-label {
@@ -1368,12 +1372,12 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
   .letter-cell {
     background: #ffffff !important;
-    color: #111827;
+    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .letter-cell:hover {
-    transform: scale(1.07) translateY(-4px);
+    transform: scale(1.06) translateY(-4px);
     box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
   }
 }

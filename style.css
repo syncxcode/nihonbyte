@@ -1385,3 +1385,30 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 
 }
+
+/* Semua elemen meaning di berbagai jenis card */
+.card-overlay .meaning,
+.pattern-meaning,
+.expression-wide-card .wide-meaning {
+  white-space: nowrap;           /* larang wrap ke baris baru */
+  overflow: hidden;              /* sembunyikan bagian yang melebihi lebar */
+  text-overflow: ellipsis;       /* tambahkan ... di akhir jika terpotong */
+  max-width: 100%;               /* batasi sesuai lebar card */
+  display: block;                /* pastikan perilaku block agar ellipsis bekerja */
+  line-height: 1.4;              /* tetap nyaman dibaca meski satu baris */
+}
+
+/* Optional: Jika ingin memberi sedikit ruang bernapas di atas/bawah */
+.card-overlay .meaning,
+.pattern-meaning,
+.expression-wide-card .wide-meaning {
+  margin: 8px 0 4px 0;           /* sesuaikan jarak antar elemen */
+  padding: 0 4px;                /* sedikit padding horizontal agar tidak terlalu menempel tepi */
+}
+
+/* Pastikan card induk tetap mengontrol overflow (jangan sampai teks keluar card) */
+.card-overlay,
+.pattern-card,
+.expression-wide-card {
+  overflow: hidden;              /* ini sudah ada di kebanyakan card, tapi pastikan */
+}

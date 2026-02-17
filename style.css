@@ -1181,84 +1181,59 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 }
 
-/* Dukung Pengembang - poster horizontal besar & clean */
-.support-full-poster {
-  width: 100% !important;
-  min-height: 70vh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(251, 113, 133, 0.15), rgba(232, 121, 249, 0.15), rgba(129, 140, 248, 0.15));
-  border-radius: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Overlay utama poster */
-.support-poster {
-  background: linear-gradient(135deg, #fb7185, #e879f9, #818cf8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 28px;
-  padding: 4rem 3rem;
-  max-width: 90%;
-  width: 90%;
-  box-shadow: 0 25px 60px rgba(79, 70, 229, 0.4);
-  color: #ffffff;
+/* Tombol Dukung Pengembang - versi estetik baru */
+#supportBtn {
+  width: 100%;
+  padding: 18px 20px;
+  margin-top: 25px;                    /* Jarak lebih lega dari menu atas */
+  background: linear-gradient(135deg, #ff6b81, #ff9ff3, #a29bfe);  /* Pink-purple gradient Jepang yang lembut */
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(255, 107, 129, 0.4);  /* Shadow pink lembut */
+  transition: all 0.4s ease;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
 }
 
-/* Judul */
-.support-poster h2 {
-  margin: 0 0 1.5rem;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  letter-spacing: 1px;
+/* Efek hover + glow */
+#supportBtn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(255, 107, 129, 0.6);
+  background: linear-gradient(135deg, #ff4757, #ff9ff3, #7f8cff);
 }
 
-/* Teks paragraf */
-.support-poster p {
-  margin: 0 auto 2rem;
-  max-width: 720px;
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  line-height: 1.8;
-  font-weight: 400;
-  opacity: 0.95;
+/* Efek ripple/inner glow saat klik */
+#supportBtn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3);
 }
 
-/* Tombol Klik Disini */
-.support-link-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 1rem 3rem;
-  background: rgba(255, 255, 255, 0.95);
-  color: #7c3aed;
-  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 999px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-  transition: all 0.35s ease;
-  pointer-events: auto !important; /* Pastikan tombol clickable */
-  z-index: 10;
+/* Icon hati yang berdenyut (opsional animasi) */
+#supportBtn::before {
+  content: "❤️ ";
+  font-size: 18px;
+  animation: heartbeat 2s infinite;
 }
 
-.support-link-btn:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-  background: #fff;
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.3); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.2); }
+  80% { transform: scale(1); }
+  100% { transform: scale(1); }
 }
 
-/* Paksa grid full-width saat mode dukungan */
-#grid.support-horizontal {
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  width: 100% !important;
+/* Responsif mobile */
+@media (max-width: 768px) {
+  #supportBtn {
+    padding: 16px 18px;
+    font-size: 15px;
+    margin-top: 20px;
+  }
 }

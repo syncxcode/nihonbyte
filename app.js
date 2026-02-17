@@ -603,65 +603,44 @@ function renderSupportPoster() {
   grid.classList.add("support-mode");
 
 grid.innerHTML = `
-  <section class="support-poster" style="
-    width:100%;
-    min-height:60vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:60px 20px;
-    box-sizing:border-box;
-    background: linear-gradient(135deg, rgba(255,107,129,0.85), rgba(162,155,254,0.85));
-    border-radius:24px;
-    margin:40px auto;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    backdrop-filter: blur(10px);
-    color:white;
-  ">
-    <h2 style="margin-bottom:20px;">
-      Dukung Pengembang
-    </h2>
+    <section class="support-poster">
 
-    <p style="line-height:1.8; max-width:750px;">
-      Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
-      dan terbuka untuk semua pembelajar.<br><br>
+      <h2>Dukung Pengembang</h2>
 
-      Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
-      bisa menjangkau lebih banyak orang di masa depan — tanpa iklan, tanpa batasan akses.<br><br>
+      <p>
+        Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
+        dan terbuka untuk semua pembelajar.
+      </p>
 
-      Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah 
-      materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.<br><br>
+      <p>
+        Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
+        bisa menjangkau lebih banyak orang di masa depan — tanpa iklan, tanpa batasan akses.
+      </p>
 
-      Terima kasih telah menjadi bagian dari perjalanan ini.
-    </p>
+      <p>
+        Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, 
+        memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.
+      </p>
 
-    <a 
-      href="https://sociabuzz.com/syncxcode/tribe" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      style="
-        margin-top:30px;
-        padding:14px 28px;
-        border-radius:999px;
-        background:white;
-        color:#ff4d6d;
-        font-weight:bold;
-        text-decoration:none;
-        box-shadow:0 8px 25px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-        display:inline-block;
-      "
-    >
-      Klik Disini
-    </a>
+      <p>
+        Terima kasih telah menjadi bagian dari perjalanan ini.
+      </p>
 
-  </section>
-`;
+      <a 
+        href="https://sociabuzz.com/syncxcode/tribe"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="support-btn"
+      >
+        Klik Disini
+      </a>
+
+    </section>
+  `;
 
   resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
 }
+  
   function render() {
 
     // RESET SUPPORT MODE tiap render

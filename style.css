@@ -1183,10 +1183,13 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 /* Mode dukungan pengembang - paksa poster jadi HORIZONTAL BESAR full-width */
 #grid.support-mode {
-  display: block !important;             /* Hilangkan grid layout */
+  display: block !important;
   width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0 auto !important;
+
+  /* Jarak aman dari header 3 baris */
+  padding-top: 220px !important;
+  padding-bottom: 60px !important;
 }
 
 /* Tombol Dukung Pengembang - versi estetik baru */

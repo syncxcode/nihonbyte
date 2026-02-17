@@ -1326,63 +1326,54 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 /* =============================================
-   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v2
-   (Gap lebih lega, cell kotak sempurna, border tidak nempel)
+   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v3
+   (Respect --cols dari JS, cell kotak sempurna, tidak ada lagi grid rusak)
    ============================================= */
 @media (min-width: 1024px) {
   .letter-poster {
     max-width: 960px !important;
     margin: 2.5rem auto !important;
-    padding: 2.6rem 2.2rem !important;
-    border-radius: 26px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 25px 55px -15px rgba(0, 0, 0, 0.22);
+    padding: 2.8rem 2.4rem !important;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.97) !important;
+    box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25);
   }
 
   .letter-poster-body {
-    gap: 28px !important;           /* jarak antar section (Gojūon, Dakuon, Yōon) */
+    gap: 32px !important;           /* jarak antar Gojūon / Dakuon / Yōon */
   }
 
   .letter-row {
-    gap: 14px !important;           /* ← KUNCI: dari 6px jadi 14px biar border jelas terpisah */
-    grid-template-columns: 66px repeat(5, minmax(82px, 90px)) !important;
-    max-width: fit-content;
-    margin: 0 auto;
-  }
-
-  /* Untuk row Dakuon / Handakuon / Yōon yang kolomnya lebih sedikit */
-  .letter-row:has(:nth-child(5)) {
-    grid-template-columns: 66px repeat(3, minmax(82px, 90px)) !important;
+    gap: 16px !important;           /* border jelas terpisah, tidak nempel */
+    grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important;
+    justify-content: center;        /* baris pendek (Yōon) otomatis center */
   }
 
   .letter-label,
   .letter-cell {
-    min-height: 84px !important;
-    font-size: 1.62rem !important;
-    border-radius: 18px !important;
+    height: 92px !important;        /* cell selalu kotak sempurna */
+    font-size: 1.68rem !important;
+    border-radius: 16px !important;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .letter-cell {
-    aspect-ratio: 1 / 1;            /* cell selalu kotak sempurna */
-    background: #ffffff;
-    box-shadow: 
-      0 6px 16px -4px rgba(0, 0, 0, 0.12),
-      inset 0 3px 8px rgba(255, 255, 255, 0.85);
-    border: 3px solid rgba(255, 255, 255, 0.95);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .letter-cell:hover {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 12px 28px -6px rgba(236, 72, 153, 0.35);
+    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
   }
 
   .letter-label {
-    font-size: 1.05rem !important;
-    background: rgba(17, 24, 39, 0.09);
+    font-size: 1.12rem !important;
+    background: rgba(17, 24, 39, 0.09) !important;
     font-weight: 700;
+  }
+
+  .letter-cell {
+    background: #ffffff !important;
+    color: #111827;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .letter-cell:hover {
+    transform: scale(1.07) translateY(-4px);
+    box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
   }
 }

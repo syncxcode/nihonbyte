@@ -444,16 +444,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
-  // Modal closing listeners
   modalClose.addEventListener("click", closeModal);
   modalBackdrop.addEventListener("click", closeModal);
-
   kanjiModal.addEventListener("click", (e) => {
     if (!e.target.closest(".kanji-modal-content")) {
       closeModal();
     }
   });
-
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();
@@ -461,7 +458,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Sidebar scroll freeze
   let originalOverflow = '';
   let originalPosition = '';
   let originalTop = '';
@@ -502,7 +498,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.overflow = '';
   }
 
-  // Audio handlers
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {
@@ -531,7 +526,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Sidebar filter buttons
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = "vocab";
@@ -594,7 +588,7 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // Dukung Pengembang - listener (dipindah ke sini, sebelum render)
+  // Dukung Pengembang - listener (dipindah ke posisi aman sebelum render akhir)
   document.getElementById("supportBtn").addEventListener("click", () => {
     const supportMessage = `
       <div class="support-poster">
@@ -614,7 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
     openInfoModal(supportMessage);
-    closeSidebar(); // Tutup sidebar otomatis
+    closeSidebar(); // Tutup sidebar otomatis setelah klik
   });
 
   // Fungsi render utama
@@ -701,6 +695,6 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // Render awal
+  // Render awal aplikasi
   render();
 });

@@ -1189,7 +1189,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 .support-poster {
-  height: calc(100vh - 140px);   /* Full screen minus header */
+  min-height: calc(100vh - 140px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1307,3 +1307,30 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     margin-top: 20px;
   }
 }
+
+@media (max-width: 768px) {
+
+  #grid.support-mode {
+    padding-top: 120px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .support-poster {
+    min-height: auto;       /* matikan full-height */
+    padding: 40px 20px;     /* kecilin padding */
+    border-radius: 20px;
+  }
+
+  .support-poster h2 {
+    font-size: 2rem;
+    margin-top: 0;
+  }
+
+  .support-poster p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+}
+

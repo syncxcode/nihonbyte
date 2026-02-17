@@ -620,11 +620,11 @@ grid.innerHTML = `
     backdrop-filter: blur(10px);
     color:white;
   ">
-    <h2 style="font-size:2.2rem; margin-bottom:20px;">
+    <h2 style="margin-bottom:20px;">
       Dukung Pengembang
     </h2>
 
-    <p style="font-size:1.1rem; line-height:1.8; max-width:750px;">
+    <p style="line-height:1.8; max-width:750px;">
       Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
       dan terbuka untuk semua pembelajar.<br><br>
 

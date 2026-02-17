@@ -525,7 +525,7 @@ html, body {
   left: 0;
   width: 260px;
   height: 100vh;
-  background: url('./assets/bg.webp') center/cover no-repeat;
+  background: linear-gradient(180deg, #9f2f56, #5c1129) !important;
   will-change: transform;
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;
@@ -536,17 +536,6 @@ html, body {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: auto;
-}
-
-#sidebar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* overlay gelap asli sidebar */
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  z-index: -1;
-  pointer-events: none;
 }
 
 #sidebar.active {

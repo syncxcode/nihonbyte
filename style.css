@@ -1229,7 +1229,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .support-poster a {
   display: inline-block;
-  margin-top: 15px;   
+  margin-top: 10px;   
 }
 
 .support-btn {

@@ -1332,7 +1332,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 @media (min-width: 1024px) {
   /* KUNCI: kurangi padding-top grid biar poster naik lebih dekat ke header */
   #grid {
-    padding-top: 82px !important;
+    padding-top: 100px !important;
   }
 
   .letter-poster {

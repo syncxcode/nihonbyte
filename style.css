@@ -1188,7 +1188,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   margin: 0 auto !important;
 
   /* Jarak aman dari header 3 baris */
-  padding-top: 140px !important;
+  padding-top: 90px !important;
   padding-bottom: 60px !important;
 }
 

@@ -589,9 +589,9 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // Dukung Pengembang - listener (mirip klik "Ungkapan Umum")
+  // Dukung Pengembang - listener
   document.getElementById("supportBtn").addEventListener("click", () => {
-    viewMode = "dukung-pengembang";  // Mode baru
+    viewMode = "dukung-pengembang";
     search.value = "";
     category.value = "all";
     render();
@@ -602,7 +602,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
-    // Kondisi khusus untuk dukungan pengembang (full poster seperti ungkapan umum)
+    // Mode dukungan pengembang - tampilan poster horizontal besar
     if (viewMode === "dukung-pengembang") {
       grid.innerHTML = `
         <div class="support-full-poster">
@@ -622,7 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Logic render normal lainnya (ungkapan umum, letters, patterns, test, vocab)
+    // Mode ungkapan umum
     const isExpressionView =
       viewMode === "vocab" &&
       (category.value === "ekspresi" ||
@@ -633,25 +633,34 @@ document.addEventListener("DOMContentLoaded", () => {
       renderExpressionPoster();
       return;
     }
+
+    // Mode hiragana/katakana
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
     }
+
+    // Mode pola kalimat
     if (viewMode.startsWith("patterns:")) {
       renderPatternPoster(viewMode.split(":")[1]);
       return;
     }
+
+    // Mode test
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
       return;
     }
+
+    // Mode vocab normal
     const words = getFilteredWords();
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
       resultInfo.textContent = "0 kata ditemukan";
       return;
     }
+
     const fragment = document.createDocumentFragment();
     words.forEach((word) => {
       const cardButton = document.createElement("article");

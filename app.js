@@ -616,7 +616,6 @@ grid.innerHTML = `
     background: linear-gradient(135deg, rgba(255,107,129,0.85), rgba(162,155,254,0.85));
     border-radius:24px;
     margin:40px auto;
-    max-width:1000px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     backdrop-filter: blur(10px);
     color:white;

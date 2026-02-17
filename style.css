@@ -1,1182 +1,718 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-}
-
-body {
-  background: none;
-  font-family: 'Ubuntu', sans-serif;
-  color: #1f2937;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("./assets/bg.webp") center / cover no-repeat;
-  z-index: -1;
-}
-
-.topbar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 50;
-  background: #ffe4e8 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-}
-
-.branding h1 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.branding p {
-  margin: 2px 0 0;
-  font-size: 0.9rem;
-  color: #4b5563;
-}
-
-.controls {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
-}
-
-#resultInfo {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 0.9rem;
-  color: #374151;
-}
-
-select,
-input,
-.action-btn,
-.menu-btn {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.62rem 0.95rem;
-  font-size: 14px;
-  font-family: Ubuntu, sans-serif;
-  border-radius: 999px;
-  border: none;
-}
-
-select,
-input,
-.action-btn {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
-}
-
-.action-btn {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.hamburger {
-  align-self: center;
-  width: 40px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 0;
-}
-
-.hamburger span {
-  display: block;
-  height: 4px;
-  background: #444 !important;
-  margin: 7px 0;
-  border-radius: 2px;
-}
-
-.topbar select,
-.topbar input {
-  background: rgba(255, 255, 255, 0.92) !important;   /* sedikit lebih opaque agar mudah dibaca */
-  color: #333 !important;
-}
-
-.topbar #resultInfo {
-  color: #5d4037 !important;   /* coklat gelap lembut agar kontras di pink */
-}
-
-/* =========================================
-   GRID UTAMA (ANTI OFFSIDE & RESPONSIVE)
-========================================= */
-#grid {
-  padding-top: 140px !important;
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 15px !important;
-  padding: 15px !important;
-  width: 100% !important;
-  max-width: 100vw !important;
-  box-sizing: border-box !important;
-  margin: 0 auto !important;
-}
-
-@media (min-width: 640px) {
-  #grid { grid-template-columns: repeat(3, 1fr) !important; }
-}
-
-@media (min-width: 1024px) {
-  #grid {
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 25px !important;
-    padding: 30px !important;
-    max-width: 1300px !important;
-  }
-}
-
-/* =========================================
-   KANJI CARD (HALAMAN AWAL)
-========================================= */
-.card-image {
-  height: 220px !important;
-  background-color: #000000 !important;
-  position: relative;
-  border-radius: 20px !important;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-sizing: border-box !important;
-}
-
-.card-overlay {
-  position: absolute !important;
-  inset: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 15px !important;
-  text-align: center !important;
-  color: #ffffff !important;
-}
-
-.card-overlay .kanji {
-  font-size: clamp(22px, 4vw, 32px) !important;
-  margin-bottom: 8px !important;
-  white-space: nowrap !important;
-  color: #ffffff !important;
-}
-
-.card-overlay .kana, .card-overlay .romaji, .card-overlay .meaning {
-  color: #ffffff !important;
-  margin: 1px 0 !important;
-}
-
-/* PLAY BUTTON (BULAT PUTIH) */
-.play-audio-btn {
-  position: absolute !important;
-  bottom: 12px !important;
-  right: 12px !important;
-  width: 38px !important;
-  height: 38px !important;
-  background-color: #ffffff !important;
-  border-radius: 50% !important;
-  color: #000000 !important;
-  border: none !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
-  z-index: 5;
-}
-
-/* =========================================
-   MODAL CENTER FIX + HORIZONTAL SCROLL FIX
-========================================= */
-
-/* 1. BACKDROP */
-#kanjiModal {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  z-index: 99999;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  padding: 24px; /* biar gak nempel tepi */
-  box-sizing: border-box;
-}
-
-#kanjiModal.active {
-  display: flex;
-}
-
-/* 2. MODAL CONTAINER */
-.kanji-modal-content {
-  width: 100%;
-  max-width: 480px;
-  max-height: 90vh;
-
-  background: #000;
-  border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.15);
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden; /* penting untuk border radius */
-  box-sizing: border-box;
-}
-
-/* 3. EXPANDED AREA */
-.card-image.expanded {
-  width: 100%;
-  padding: 32px;
-  min-height: 260px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-}
-
-/* 4. RECOMMENDATION ROW (SCROLL FIX) */
-#recommendationRow {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 16px;
-
-  padding: 20px;
-  width: 100%;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-
-  box-sizing: border-box;
-}
-
-/* Scrollbar tipis (desktop) */
-#recommendationRow::-webkit-scrollbar {
-  height: 6px;
-}
-
-#recommendationRow::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.25);
-  border-radius: 10px;
-}
-
-/* Card supaya gak shrink */
-#recommendationRow .card {
-  flex: 0 0 auto;
-  min-width: 130px;
-}
-
-/* 5. GLOBAL ANTI OVERFLOW */
-#kanjiModal * {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* 6. TEXT COLOR */
-.expanded-card .kanji,
-.expanded-card .kana,
-.expanded-card .romaji,
-.expanded-card .meaning {
-  color: #fff;
-}
-
-/* Optional: cegah horizontal page shift */
-html, body {
-  overflow-x: hidden;
-}
-
-
-.letter-poster {
-  grid-column: 1 / -1;
-  background: rgba(255, 255, 255, 0.78);
-  border-radius: 18px;
-  padding: 1rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.letter-poster h2 {
-  margin: 0 0 0.8rem;
-  text-align: center;
-  color: #1f2937;
-}
-
-.letter-poster-body {
-  display: grid;
-  gap: 16px;
-  overflow-x: auto;
-}
-
-.letter-section {
-  display: grid;
-  gap: 8px;
-}
-
-.letter-section h3 {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #374151;
-}
-
-.letter-row {
-  display: grid;
-  grid-template-columns: 44px repeat(calc(var(--cols, 12) - 1), minmax(44px, 1fr));
-  gap: 6px;
-  min-width: 340px;
-}
-
-.letter-label,
-.letter-cell {
-  min-height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 10px;
-}
-
-.pattern-card {
-  position: relative;
-  border-radius: 16px;
-  padding: 14px 14px 42px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 22px rgba(17, 24, 39, 0.18);
-  min-height: 150px;
-  display: grid;
-  gap: 8px;
-}
-
-.pattern-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #111827;
-}
-
-.pattern-example {
-  font-size: 1.02rem;
-  line-height: 1.45;
-  color: #1f2937;
-}
-
-.pattern-meaning {
-  font-size: 0.9rem;
-  color: #4b5563;
-}
-
-.pattern-audio-btn {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  border: none;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.info-poster {
-  border-radius: 16px;
-  background: linear-gradient(135deg, #111827, #374151);
-  color: #fff;
-  padding: 2rem 1.2rem;
-  text-align: center;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-.letter-label {
-  font-weight: 700;
-  color: #1f2937;
-  background: rgba(17, 24, 39, 0.12);
-}
-
-.letter-cell {
-  font-size: 1.25rem;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.86);
-  color: #111827;
-  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.08);
-}
-
-.empty-state {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 2rem 1rem;
-  color: #374151;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 14px;
-}
-
-.kanji-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1100;
-  display: none;
-}
-
-.kanji-modal.active {
-  display: block;
-}
-
-.kanji-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.62);
-  backdrop-filter: blur(4px);
-}
-
-.kanji-modal-content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(92vw, 760px);
-  padding: 1rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: rgba(0, 0, 0, 0.08);
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-.expanded-card .card-image.expanded img {
-  height: 280px;
-}
-
-.kanji-modal-content h4 {
-  margin: 14px 4px 8px;
-  color: #374151;
-}
-
-.recommendation-row {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 6px 2px 2px;
-}
-
-.recommendation-item {
-  position: relative;
-  cursor: pointer;
-  min-width: 92px;
-  padding: 10px 10px 34px;
-  border-radius: 12px;
-  background: #f3f4f6;
-  display: grid;
-  justify-items: center;
-}
-
-.rec-kanji {
-  font-size: 28px;
-  line-height: 1.1;
-}
-
-.rec-kana {
-  font-size: 12px;
-  color: #4b5563;
-}
-
-.rec-audio-btn {
-  position: absolute;
-  right: 8px;
-  bottom: 6px;
-  border: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 999px;
-  background: #ffffff;
-  cursor: pointer;
-  font-size: 11px;
-}
-
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 260px;
-  height: 100vh;
-  background: url('./assets/bg.webp') center/cover no-repeat;
-  will-change: transform;
-  transform: translateX(-100%);
-  transition: transform 0.35s ease-in-out;
-  z-index: 1000;
-  padding: 2rem 1.5rem;
-  color: #ffffff;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  overflow-y: auto;
-}
-
-#sidebar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* overlay gelap asli sidebar */
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  z-index: -1;
-  pointer-events: none;
-}
-
-#sidebar.active {
-  transform: translateX(0);
-}
-
-#sidebar h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); /* tajam di background cerah */
-}
-
-.sidebar-tree {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.sidebar-tree details {
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 8px 10px;
-}
-
-.sidebar-tree summary {
-  cursor: pointer;
-  font-weight: 600;
-  list-style: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.sidebar-tree summary::-webkit-details-marker {
-  display: none;
-}
-
-.subfolder-list {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-  padding-left: 8px; /* indent halus agar lebih rapi */
-}
-
-.sidebar-actions {
-  display: grid;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-#sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-/* MENU BTN: hilangkan blur (penyebab kabur), tetap pertahankan efek hover asli */
-.menu-btn {
-  text-align: left;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.15);
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  transition: background 0.2s ease, transform 0.2s ease;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.menu-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateX(4px);
-}
-
-/* OVERLAY: hanya redupkan KONTEN KANAN (tidak menutupi sidebar) */
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px); /* blur asli tetap ada */
-  -webkit-backdrop-filter: blur(3px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s ease-in-out;
-  z-index: 999;
-  pointer-events: none;
-}
-
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  left: 260px;               /* Geser ke kanan = lebar sidebar */
-  width: calc(100vw - 260px); /* Hanya tutupi area kanan */
-}
-
-/* Scrollbar tetap elegan */
-#sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-#sidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
-}
-
-@media (min-width: 768px) {
-  .topbar {
-    grid-template-columns: 48px 1fr auto;
-    align-items: start;
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const resultInfo = document.getElementById("resultInfo");
+  const kanjiModal = document.getElementById("kanjiModal");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalClose = document.getElementById("modalClose");
+  const expandedCard = document.getElementById("expandedCard");
+  const recommendationRow = document.getElementById("recommendationRow");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+
+  let selectedLevel = "all";
+  let selectedType = "all";
+  let viewMode = "vocab";
+
+  const testState = {
+    active: false,
+    type: "",
+    level: "",
+    questions: [],
+    currentIndex: 0,
+    correctCount: 0,
+    timeLeft: 0,
+    timerId: null,
+    answered: false,
+  };
+
+  const letterSets = {
+    hiragana: {
+      title: "Poster Hiragana",
+      sections: [
+        {
+          subtitle: "Gojūon",
+          rows: [
+            ["A", "あ", "か", "さ", "た", "な", "は", "ま", "や", "ら", "わ", "ん"],
+            ["I", "い", "き", "し", "ち", "に", "ひ", "み", "", "り", "", ""],
+            ["U", "う", "く", "す", "つ", "ぬ", "ふ", "む", "ゆ", "る", "", ""],
+            ["E", "え", "け", "せ", "て", "ね", "へ", "め", "", "れ", "", ""],
+            ["O", "お", "こ", "そ", "と", "の", "ほ", "も", "よ", "ろ", "を", ""],
+          ],
+        },
+        {
+          subtitle: "Dakuon & Handakuon",
+          rows: [
+            ["A", "が", "ざ", "だ", "ば", "ぱ"],
+            ["I", "ぎ", "じ", "ぢ", "び", "ぴ"],
+            ["U", "ぐ", "ず", "づ", "ぶ", "ぷ"],
+            ["E", "げ", "ぜ", "で", "べ", "ぺ"],
+            ["O", "ご", "ぞ", "ど", "ぼ", "ぽ"],
+          ],
+        },
+        {
+          subtitle: "Yōon",
+          rows: [
+            ["YA", "きゃ", "しゃ", "ちゃ", "にゃ", "ひゃ", "みゃ", "りゃ", "ぎゃ", "じゃ", "びゃ", "ぴゃ"],
+            ["YU", "きゅ", "しゅ", "ちゅ", "にゅ", "ひゅ", "みゅ", "りゅ", "ぎゅ", "じゅ", "びゅ", "ぴゅ"],
+            ["YO", "きょ", "しょ", "ちょ", "にょ", "ひょ", "みょ", "りょ", "ぎょ", "じょ", "びょ", "ぴょ"],
+          ],
+        },
+      ],
+    },
+    katakana: {
+      title: "Poster Katakana",
+      sections: [
+        {
+          subtitle: "Gojūon",
+          rows: [
+            ["A", "ア", "カ", "サ", "タ", "ナ", "ハ", "マ", "ヤ", "ラ", "ワ", "ン"],
+            ["I", "イ", "キ", "シ", "チ", "ニ", "ヒ", "ミ", "", "リ", "", ""],
+            ["U", "ウ", "ク", "ス", "ツ", "ヌ", "フ", "ム", "ユ", "ル", "", ""],
+            ["E", "エ", "ケ", "セ", "テ", "ネ", "ヘ", "メ", "", "レ", "", ""],
+            ["O", "オ", "コ", "ソ", "ト", "ノ", "ホ", "モ", "ヨ", "ロ", "ヲ", ""],
+          ],
+        },
+        {
+          subtitle: "Dakuon & Handakuon",
+          rows: [
+            ["A", "ガ", "ザ", "ダ", "バ", "パ"],
+            ["I", "ギ", "ジ", "ヂ", "ビ", "ピ"],
+            ["U", "グ", "ズ", "ヅ", "ブ", "プ"],
+            ["E", "ゲ", "ゼ", "デ", "ベ", "ペ"],
+            ["O", "ゴ", "ゾ", "ド", "ボ", "ポ"],
+          ],
+        },
+        {
+          subtitle: "Yōon",
+          rows: [
+            ["YA", "キャ", "シャ", "チャ", "ニャ", "ヒャ", "ミャ", "リャ", "ギャ", "ジャ", "ビャ", "ピャ"],
+            ["YU", "キュ", "シュ", "チュ", "ニュ", "ヒュ", "ミュ", "リュ", "ギュ", "ジュ", "ビュ", "ピュ"],
+            ["YO", "キョ", "ショ", "チョ", "ニョ", "ヒョ", "ミョ", "リョ", "ギョ", "ジョ", "ビョ", "ピョ"],
+          ],
+        },
+      ],
+    },
+  };
+
+  function speakWord(text) {
+    if (!window.speechSynthesis || !text) return;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ja-JP";
+    utterance.rate = 0.95;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
   }
 
-  .controls {
-    grid-column: 2 / 4;
-    grid-template-columns: minmax(220px, 280px) minmax(220px, 380px) max-content;
-    align-items: center;
+  function openInfoModal(message) {
+    expandedCard.innerHTML = `<div class="info-poster">${message}</div>`;
+    modalSubtitle.style.display = "none";
+    recommendationRow.style.display = "none";
+    recommendationRow.innerHTML = "";
+    kanjiModal.classList.add("active");
+    kanjiModal.setAttribute("aria-hidden", "false");
   }
 
-  #resultInfo {
-    grid-column: 2 / 4;
+  function matchType(wordType, targetType) {
+    if (targetType === "all") return true;
+    if (targetType === "verb-irregular") {
+      return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
+    }
+    if (targetType === "noun" || targetType.startsWith("noun-")) {
+      return wordType === targetType;
+    }
+    if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
+      return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
+    }
+    return wordType?.startsWith(targetType) || false;
   }
-  
-  #grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Lebih lebar di desktop */
+
+  function getFilteredWords() {
+    const key = (search.value || "").toLowerCase().trim();
+    const selectedFromDropdown = category.value;
+    return vocabularyData.filter((word) => {
+      if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
+      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
+      const text = [
+        word.kanji || "",
+        word.kana || "",
+        word.romaji || "",
+        word.meaning || ""
+      ].join("").toLowerCase();
+      return !key || text.includes(key);
+    });
   }
-  
-  #sidebar {
-    width: 280px; /* Sedikit lebih lebar di desktop */
+
+  function cardImageTemplate(word, expanded = false) {
+    const expandedClass = expanded ? "expanded" : "";
+    return `
+      <div class="card-image ${expandedClass}">
+        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
+        <div class="card-overlay">
+          <div class="kanji">${word.kanji || "—"}</div>
+          <div class="kana">${word.kana || "—"}</div>
+          <div class="romaji">${word.romaji || ""}</div>
+          <div class="meaning">${word.meaning || "—"}</div>
+        </div>
+      </div>
+    `;
   }
-  
-  .kanji-modal-content {
-    width: min(80vw, 900px); /* Modal lebih besar di desktop */
+
+  function renderExpressionPoster() {
+    grid.innerHTML = "";
+    const expressions = vocabularyData.filter(w =>
+      w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
+    );
+    if (!expressions.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
+      resultInfo.textContent = "0 ungkapan ditemukan";
+      return;
+    }
+    const container = document.createElement("div");
+    container.className = "expression-wide-grid";
+    expressions.forEach((word) => {
+      const card = document.createElement("div");
+      card.className = "expression-wide-card";
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
+      try {
+        card.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal stringify ungkapan:", word);
+        return;
+      }
+      card.innerHTML = `
+        <div class="wide-kanji">${word.kanji || "—"}</div>
+        <div class="wide-kana">${word.kana || "—"}</div>
+        <div class="wide-romaji">${word.romaji || ""}</div>
+        <div class="wide-meaning">${word.meaning || "—"}</div>
+        <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
+      `;
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".wide-play-btn")) return;
+        try {
+          const storedWord = JSON.parse(card.dataset.word);
+          openModal(storedWord);
+        } catch (err) {}
+      });
+      card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        speakWord(card.querySelector(".wide-play-btn").dataset.text);
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          try {
+            openModal(JSON.parse(card.dataset.word));
+          } catch {}
+        }
+      });
+      container.appendChild(card);
+    });
+    grid.appendChild(container);
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
   }
-  
-  .expanded-card .card-image.expanded img {
-    height: 350px; /* Gambar expand lebih tinggi di desktop */
+
+  function shuffle(array) {
+    if (!Array.isArray(array)) return [];
+    const copy = [...array];
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
   }
-  
-  .recommendation-item {
-    min-width: 120px; /* Rekomendasi lebih besar di desktop */
+
+  function stopTestTimer() {
+    if (testState.timerId) {
+      clearInterval(testState.timerId);
+      testState.timerId = null;
+    }
   }
-  
-  .rec-kanji {
-    font-size: 36px;
+
+  function startQuestionTimer(seconds) {
+    stopTestTimer();
+    testState.timeLeft = seconds;
+    const timerElement = document.getElementById("testTimer");
+    if (timerElement) timerElement.textContent = `${testState.timeLeft}s`;
+    testState.timerId = setInterval(() => {
+      testState.timeLeft -= 1;
+      const currentTimerElement = document.getElementById("testTimer");
+      if (currentTimerElement) currentTimerElement.textContent = `${testState.timeLeft}s`;
+      if (testState.timeLeft <= 0) {
+        stopTestTimer();
+        moveToNextQuestion();
+      }
+    }, 1000);
   }
-  
-  .rec-kana {
-    font-size: 14px;
+
+  function finishTest() {
+    stopTestTimer();
+    const total = testState.questions.length || 0;
+    const correct = testState.correctCount;
+    const percentage = total ? Math.round((correct / total) * 100) : 0;
+    const status = percentage >= 75 ? "LULUS ✅" : "TIDAK LULUS ❌";
+    openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> • <strong>${percentage}%</strong><br>${status}`);
+    testState.active = false;
+    viewMode = "vocab";
+    render();
   }
-  
-  .rec-audio-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+
+  function moveToNextQuestion() {
+    if (!testState.active) return;
+    testState.currentIndex += 1;
+    testState.answered = false;
+    if (testState.currentIndex >= testState.questions.length) {
+      finishTest();
+      return;
+    }
+    renderCurrentTestQuestion();
   }
-  
-  /* Ukuran lebih besar untuk expanded card di desktop */
-  .expanded-card .kana { font-size: 26px; }
-  .expanded-card .kanji { font-size: 80px; }
-  .expanded-card .romaji { font-size: 22px; }
-  .expanded-card .meaning { font-size: 24px; }
-}
 
-
-.test-tree > details {
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 6px 8px;
-}
-
-.nested-subfolder-list .menu-btn {
-  font-size: 13px;
-}
-
-.test-board {
-  grid-column: 1 / -1;
-  background: rgba(255,255,255,0.9);
-  border-radius: 18px;
-  padding: 1rem;
-  box-shadow: 0 16px 30px rgba(17,24,39,0.2);
-  display: grid;
-  gap: 12px;
-}
-
-.test-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.test-progress,
-.test-timer {
-  margin: 0;
-  color: #1f2937;
-  font-weight: 600;
-}
-
-.test-question-card {
-  border-radius: 16px;
-  min-height: 180px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.08);
-  padding: 1rem;
-}
-
-.test-question-card h2 {
-  margin: 0;
-  font-size: clamp(2rem, 7vw, 4rem);
-  text-align: center;
-  color: #111827;
-  word-break: break-word;
-}
-
-.test-option-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-}
-
-.test-option-btn {
-  border: none;
-  border-radius: 12px;
-  background: #f8fafc;
-  box-shadow: 0 3px 10px rgba(17, 24, 39, 0.12);
-  padding: 0.85rem;
-  font-size: 1.1rem;
-  font-family: Ubuntu, sans-serif;
-  cursor: pointer;
-}
-
-.test-option-btn.correct {
-  background: #bbf7d0;
-}
-
-.test-option-btn.wrong {
-  background: #fecaca;
-}
-
-.finish-test-btn {
-  justify-self: end;
-  width: auto;
-}
-
-/* Ukuran default untuk card normal */
-.kana { font-size: 16px; font-weight: 500; }
-.kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
-.romaji { font-size: 14px; opacity: 0.95; }
-.meaning { font-size: 15px; font-weight: 700; }
-
-/* Ukuran lebih besar untuk expanded card */
-.expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } /* Lebih besar, responsif */
-.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
-.expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
-.expanded-card .meaning { font-size: clamp(18px, 4vw, 22px); }
-
-/* Logo Title */
-.branding img {
-  height: 54px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.branding img:hover {
-  transform: scale(1.05);
-}
-
-/* Card text center sempurna */
-.card-overlay {
-  text-align: center;
-  align-content: center;
-  justify-items: center;
-}
-
-/* Custom Dropdown */
-.category-selector {
-  position: relative;
-}
-
-#categoryBtn {
-  min-width: 220px;
-}
-
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  padding: 12px 0;
-  min-width: 280px;
-  z-index: 100;
-  margin-top: 8px;
-}
-
-.dropdown-menu.show {
-  display: block;
-}
-
-.dropdown-group {
-  padding: 8px 0;
-}
-
-.dropdown-header {
-  font-weight: 700;
-  color: #1f2937;
-  padding: 8px 16px 4px;
-  font-size: 0.95rem;
-}
-
-.dropdown-item,
-.dropdown-menu button {
-  width: 100%;
-  text-align: left;
-  padding: 10px 16px;
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.dropdown-item:hover,
-.dropdown-menu button:hover {
-  background: #f3f4f6;
-}
-
-/* =========================
-   FIX PARENT GRID
-========================= */
-#grid {
-  padding: 1rem;
-  display: grid;
-  /* Kolom default untuk vocab (tetap biarkan) */
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
-  gap: 1rem;
-}
-
-/* =========================
-   KUNCI UTAMA: POSTER GRID
-========================= */
-.expression-wide-grid {
-  /* Paksa container ini mengambil seluruh lebar layar (breakout dari 170px) */
-  grid-column: 1 / -1 !important; 
-  
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
-  gap: 40px !important;
-  
-  width: 100% !important;
-  max-width: 1100px !important; /* Batasi lebar agar cantik */
-  margin: 40px auto !important;  /* PUSATKAN GRID DI TENGAH HALAMAN */
-  padding: 0 20px !important;
-  box-sizing: border-box !important;
-}
-
-/* =========================
-   CARD STYLE (Pasti Tengah)
-========================= */
-.expression-wide-card {
-  background: #fdf4f4 !important;
-  border-radius: 24px !important;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
-  
-  min-height: 220px !important;
-  padding: 30px !important;
-  
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important; /* Tengah Vertikal */
-  align-items: center !important;     /* Tengah Horizontal */
-  text-align: center !important;
-  
-  position: relative !important;
-  box-sizing: border-box !important;
-}
-
-/* =========================
-   TEXT FIX (Anti Vertikal)
-========================= */
-.wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
-  writing-mode: horizontal-tb !important; /* Paksa horizontal */
-  display: block !important;
-  width: 100% !important;
-  margin: 0 auto !important;
-}
-
-.wide-kanji {
-  font-size: 3rem !important;
-  font-weight: bold !important;
-  margin-bottom: 10px !important;
-}
-
-.wide-kana { font-size: 1.6rem !important; margin-bottom: 5px !important; }
-.wide-romaji { font-size: 1.1rem !important; color: #555 !important; font-style: italic !important; }
-.wide-meaning { font-size: 1.2rem !important; margin-top: 5px !important; }
-
-/* Tombol Play */
-.wide-play-btn {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  z-index: 2;
-  border: none;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.92);
-  color: #ffffff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.wide-play-btn:hover {
-  transform: scale(1.1) !important;
-}
-
-/* Responsif untuk Layar Kecil / HP */
-@media (max-width: 900px) {
-  .expression-wide-grid {
-    grid-template-columns: 1fr !important;
+  function renderCurrentTestQuestion() {
+    grid.innerHTML = "";
+    const question = testState.questions[testState.currentIndex];
+    const options = shuffle(question.options);
+    const isKanji = testState.type === "kanji";
+    const board = document.createElement("div");
+    board.className = "test-board";
+    board.innerHTML = `
+      <header class="test-header">
+        <p class="test-progress">Soal ${testState.currentIndex + 1}/${testState.questions.length}</p>
+        <p class="test-timer" id="testTimer">30s</p>
+      </header>
+      <div class="test-question-card">
+        <h2>${isKanji ? question.kanji : question.pattern}</h2>
+      </div>
+      <div class="test-option-grid"></div>
+      <button class="action-btn finish-test-btn" type="button">Selesai Test</button>
+    `;
+    const optionGrid = board.querySelector(".test-option-grid");
+    options.forEach((opt) => {
+      const btn = document.createElement("button");
+      btn.className = "test-option-btn";
+      btn.textContent = isKanji ? opt.meaning : opt.meaning;
+      btn.dataset.correct = opt.correct ? "true" : "false";
+      optionGrid.appendChild(btn);
+    });
+    grid.appendChild(board);
+    startQuestionTimer(30);
+    optionGrid.addEventListener("click", (event) => {
+      const btn = event.target.closest(".test-option-btn");
+      if (!btn || testState.answered) return;
+      testState.answered = true;
+      stopTestTimer();
+      const correct = btn.dataset.correct === "true";
+      if (correct) testState.correctCount += 1;
+      Array.from(optionGrid.children).forEach((optBtn) => {
+        optBtn.disabled = true;
+        if (optBtn.dataset.correct === "true") optBtn.classList.add("correct");
+        else optBtn.classList.add("wrong");
+      });
+      setTimeout(moveToNextQuestion, 1500);
+    });
+    board.querySelector(".finish-test-btn").addEventListener("click", finishTest);
   }
-}
 
-/* HEADER FIXED + LAYOUT BARU: hamburger + logo di kiri (samping), controls di kanan, resultInfo di bawah controls (kanan) */
-.topbar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 50;
-  padding: 12px 16px !important;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
-
-  /* Grid 3 kolom + 2 baris (biar resultInfo di bawah tanpa header jadi terlalu tinggi) */
-  display: grid !important;
-  grid-template-columns: auto auto 1fr !important;   /* kolom1: hamburger, kolom2: logo, kolom3: controls + resultInfo */
-  grid-template-rows: auto auto !important;          /* baris1: hamburger/logo/controls, baris2: resultInfo */
-  gap: 8px 16px !important;                          /* jarak vertikal/horizontal kecil agar ramping */
-  align-items: center !important;
-}
-
-/* Hamburger di kiri atas */
-#hamburger {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-/* Logo tepat di samping hamburger (kiri, sejajar horizontal) */
-.branding {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start !important;
-}
-.branding img {
-  height: 48px !important;   /* ukuran logo konsisten, tidak acak-acakan */
-}
-
-/* Dropdown + search di pojok kanan atas */
-.controls {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: end !important;
-  display: grid !important;
-  grid-template-columns: minmax(160px, 240px) 1fr !important;   /* dropdown tetap lebar, search ambil sisa */
-  gap: 12px !important;
-  align-items: center;
-}
-
-/* Result info tepat di bawah dropdown/search (align kanan, tidak numpuk) */
-#resultInfo {
-  grid-column: 3;
-  grid-row: 2;
-  justify-self: end !important;
-  margin: 0 !important;
-  font-size: 0.85rem;
-  color: #374151;
-}
-
-/* Mobile: lebih ramping, logo sedikit lebih kecil */
-@media (max-width: 767px) {
-  .topbar {
-    padding: 10px 12px !important;
-    gap: 6px 12px !important;
+  function startTest(level, kind) {
+    viewMode = `test:${kind}:${level}`;
+    testState.active = true;
+    testState.type = kind;
+    testState.level = level;
+    testState.correctCount = 0;
+    testState.currentIndex = 0;
+    testState.answered = false;
+    let sourceData;
+    if (kind === "kanji") {
+      sourceData = vocabularyData.filter((word) => word.level === level);
+    } else if (kind === "bunpou") {
+      sourceData = patternData[level] || [];
+    }
+    if (!sourceData || !sourceData.length) {
+      openInfoModal("Tidak ada data untuk test ini.");
+      testState.active = false;
+      viewMode = "vocab";
+      render();
+      return;
+    }
+    const questions = shuffle(sourceData).slice(0, 10).map((item) => {
+      const correctOption = { ...item, correct: true };
+      const wrongOptions = shuffle(sourceData.filter((w) => (w.kanji !== item.kanji || w.pattern !== item.pattern))).slice(0, 3).map((w) => ({ ...w, correct: false }));
+      return { ...item, options: shuffle([correctOption, ...wrongOptions]) };
+    });
+    testState.questions = questions;
+    renderCurrentTestQuestion();
   }
-  .branding img {
-    height: 42px !important;
+
+  function renderLetterPoster(script) {
+    grid.innerHTML = "";
+    const data = letterSets[script];
+    if (!data) return;
+    const poster = document.createElement("article");
+    poster.className = "letter-poster";
+    poster.innerHTML = `<h2>${data.title}</h2><div class="letter-poster-body"></div>`;
+    data.sections.forEach((section) => {
+      const secElem = document.createElement("div");
+      secElem.className = "letter-section";
+      secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
+      section.rows.forEach((row) => {
+        const rowElem = document.createElement("div");
+        rowElem.className = "letter-row";
+        rowElem.style.setProperty("--cols", row.length);
+        row.forEach((cell) => {
+          const cellElem = document.createElement("div");
+          cellElem.className = cell ? "letter-cell" : "letter-label";
+          cellElem.textContent = cell || "";
+          rowElem.appendChild(cellElem);
+        });
+        secElem.appendChild(rowElem);
+      });
+      poster.querySelector(".letter-poster-body").appendChild(secElem);
+    });
+    grid.appendChild(poster);
+    resultInfo.textContent = "";
   }
-  .controls {
-    grid-template-columns: minmax(120px, 180px) 1fr !important;
-    gap: 8px !important;
+
+  function renderPatternPoster(level) {
+    grid.innerHTML = "";
+    const patterns = patternData[level] || [];
+    if (!patterns.length) {
+      grid.innerHTML = '<div class="empty-state">Tidak ada pola kalimat untuk level ini.</div>';
+      resultInfo.textContent = "0 pola ditemukan";
+      return;
+    }
+    patterns.forEach((pattern) => {
+      const card = document.createElement("article");
+      card.className = "pattern-card";
+      card.innerHTML = `
+        <div class="pattern-title">${pattern.pattern}</div>
+        <div class="pattern-example">${pattern.example}</div>
+        <div class="pattern-meaning">${pattern.meaning}</div>
+        <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
+      `;
+      grid.appendChild(card);
+    });
+    resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
   }
-}
 
-/* Padding konten utama agar tidak tertutup header */
-#grid {
-  padding-top: 150px !important;   /* naikkan sedikit karena sekarang 2 baris (biasanya 140-160px pas) */
-}
-
-.card-image,
-.card-overlay,
-.card-overlay * {
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  cursor: pointer !important;   /* paksa selalu tangan pointer saat hover card */
-}
-
-/* TANPA EFEK BERSINAR/SHINE MOVING */
-.card-image,
-.card-overlay,
-.card-overlay * {
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  cursor: pointer !important;   /* selalu tangan pointer saat hover card */
-}
-
-/* Efek hover hanya scale sedikit + shadow lebih dalam (mirip kesan "mengambang" pada logo title.PNG) */
-.card-image {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.card-image:hover {
-  transform: scale(1.05) !important;                /* membesar halus */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;   /* glow shadow lebih kuat */
-}
-
-/* Mobile: efek lebih ringan agar tidak terlalu "loncat" */
-@media (max-width: 767px) {
-  .card-image:hover {
-    transform: scale(1.03) !important;
+  function getRecommendations(word) {
+    const maxItems = 10;
+    const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
+    const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
+    const source = sameType.length >= maxItems ? sameType : fallback;
+    return shuffle(source).slice(0, maxItems);
   }
-}
 
-/* ============================================= */
-/* Hilangkan efek interaktif di expanded card (modal) - VERSI FIXED */
-/* Hanya matikan di overlay teks (bukan seluruh card-image) */
-/* Play button tetap interaktif karena sibling, bukan child overlay */
-/* ============================================= */
-#kanjiModal .card-overlay,
-#kanjiModal .card-overlay * {
-  cursor: default !important;        /* No pointer di teks */
-  pointer-events: none !important;   /* Matikan hover/tap di teks only */
-  transition: none !important;       /* No animasi di teks */
-}
-
-#kanjiModal .card-image.expanded:hover {
-  transform: none !important;        /* No scale saat hover */
-  box-shadow: none !important;       /* No shadow tambahan */
-  transition: none !important;       /* No gerak saat hover */
-}
-
-/* Pastikan play button tetap fully interaktif (audio jalan normal) */
-#kanjiModal .play-audio-btn {
-  pointer-events: auto !important;   /* Bisa diklik/tap */
-  cursor: pointer !important;        /* Icon pointer pas hover */
-  transition: none !important;       /* Optional: biar konsisten no animasi */
-}
-
-/* Bonus: backdrop lebih jelas bisa di-tap */
-.kanji-modal-backdrop {
-  cursor: pointer;
-}
-
-/* Hilangkan ripple/highlight pas tap di mobile (seluruh expanded card) */
-#kanjiModal .card-image.expanded {
-  -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
-}
-
-/* ============================================= */
-/* Perbesar logo .branding img tanpa narik header lain */
-/* Retain hover scale effect yang sudah ada */
-/* ============================================= */
-.branding {
-  grid-column: 2;                  /* Tetap di column 2 (samping hamburger) */
-  grid-row: 1;                     /* Tetap di row 1 */
-  justify-self: start !important;  /* Sejajar kiri di cell */
-  align-self: center !important;   /* Vertikal center tanpa stretch row height */
-  padding-left: 15px !important;   /* Jarak dari hamburger (adjust biar balance) */
-}
-
-.branding img {
-  height: 65px !important;         /* Besarkan dari 54px jadi 90px (sesuaikan: coba 80–110px) */
-  width: auto !important;          /* Proporsional (atau fixed kalau mau bulat sempurna) */
-  max-width: none !important;      /* Override limit kalau ada */
-  border-radius: 50% !important;   /* Pastikan bulat sempurna */
-  object-fit: cover !important;    /* Gambar fill bagus tanpa distort/stretch */
-  cursor: pointer !important;      /* Retain cursor pointer lu */
-  transition: transform 0.3s ease !important; /* Smooth transition (sedikit lebih halus dari 0.2s) */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; /* Bonus: shadow biar lebih premium & pop */
-  display: block !important;
-}
-
-.branding img:hover {
-  transform: scale(1.08) !important; /* Enhance.hover scale lu (dari 1.05 jadi 1.08, lebih noticeable) */
-}
-
-/* Pastikan header grid nggak stretch height karena logo besar */
-header {  /* atau selector header lu, misal #header / .header-container / .top-bar */
-  grid-template-rows: minmax(90px, auto) !important; /* Min-height adjust ke logo baru (dari ~60px jadi 90px) */
-  align-items: center !important;
-  padding: 10px 20px !important;   /* Adjust padding biar space cukup di kiri/kanan */
-}
-
-/* Responsif: Kecilkan logo & header di mobile (lebar <768px) */
-@media (max-width: 768px) {
-  .branding {
-    padding-left: 10px !important; /* Kurangi jarak di HP */
+  function openModal(word) {
+    if (!word) return;
+    modalSubtitle.style.display = "block";
+    recommendationRow.style.display = "flex";
+    expandedCard.innerHTML = cardImageTemplate(word, true);
+    recommendationRow.innerHTML = "";
+    getRecommendations(word).forEach((item) => {
+      const recBtn = document.createElement("article");
+      recBtn.className = "recommendation-item";
+      recBtn.setAttribute("role", "button");
+      recBtn.setAttribute("tabindex", "0");
+      recBtn.innerHTML = `
+        <span class="rec-kanji">${item.kanji || "—"}</span>
+        <span class="rec-kana">${item.kana || "—"}</span>
+        <button class="rec-audio-btn" type="button" data-text="${item.kana || ""}" aria-label="Putar audio ${item.kanji || item.kana || ''}">▶</button>
+      `;
+      recBtn.addEventListener("click", () => openModal(item));
+      recBtn.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openModal(item);
+        }
+      });
+      recommendationRow.appendChild(recBtn);
+    });
+    kanjiModal.classList.add("active");
+    kanjiModal.setAttribute("aria-hidden", "false");
   }
-  .branding img {
-    height: 65px !important;       /* Kecil dari 90px jadi 65px (masih lebih besar dari original 54px) */
-  }
-  header {
-    grid-template-rows: minmax(75px, auto) !important; /* Header lebih ramping di mobile */
-  }
-}
 
-/* Edge case: Kalau di screen sangat kecil, prevent overlap */
-@media (max-width: 480px) {
-  .branding img {
-    height: 55px !important;       /* Kecil lagi di HP mini */
+  function closeModal() {
+    stopTestTimer();
+    kanjiModal.classList.remove("active");
+    kanjiModal.setAttribute("aria-hidden", "true");
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
-}
+
+  modalClose.addEventListener("click", closeModal);
+  modalBackdrop.addEventListener("click", closeModal);
+  kanjiModal.addEventListener("click", (e) => {
+    if (!e.target.closest(".kanji-modal-content")) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+      closeSidebar();
+    }
+  });
+
+  let originalOverflow = '';
+  let originalPosition = '';
+  let originalTop = '';
+  let originalWidth = '';
+  let savedScrollPosition = 0;
+
+  hamburger.addEventListener("click", () => {
+    const isActive = sidebar.classList.toggle("active");
+    overlay.classList.toggle("active", isActive);
+    hamburger.setAttribute("aria-expanded", isActive);
+    if (isActive) {
+      savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      originalOverflow = document.body.style.overflow || '';
+      originalPosition = document.body.style.position || '';
+      originalTop = document.body.style.top || '';
+      originalWidth = document.body.style.width || '';
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollPosition}px`;
+      document.body.style.width = '100%';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      closeSidebar();
+    }
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+
+  function closeSidebar() {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = originalOverflow;
+    document.body.style.position = originalPosition;
+    document.body.style.top = originalTop;
+    document.body.style.width = originalWidth;
+    window.scrollTo(0, savedScrollPosition);
+    document.documentElement.style.overflow = '';
+  }
+
+  grid.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+      return;
+    }
+  });
+
+  recommendationRow.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".rec-audio-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+    }
+  });
+
+  expandedCard.addEventListener("click", (event) => {
+    const audioButton = event.target.closest(".play-audio-btn");
+    if (audioButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      speakWord(audioButton.dataset.text || "");
+    }
+  });
+
+  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewMode = "vocab";
+      selectedLevel = button.dataset.level || "all";
+      selectedType = button.dataset.type || "all";
+      if (selectedType !== "all") category.value = selectedType;
+      search.value = "";
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".letter-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      viewMode = `letters:${button.dataset.script}`;
+      search.value = "";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".pattern-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const level = button.dataset.level;
+      if (["N3", "N2", "N1"].includes(level)) {
+        openInfoModal("Mohon maaf, materi pola kalimat level ini sedang dalam proses pengembangan. Silakan kembali lagi nanti ✨");
+        closeSidebar();
+        return;
+      }
+      viewMode = `patterns:${level}`;
+      search.value = "";
+      category.value = "all";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".test-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const level = button.dataset.level;
+      const kind = button.dataset.kind;
+      if (["N3", "N2", "N1"].includes(level)) {
+        openInfoModal("Mohon maaf, fitur test level ini masih dalam proses pengembangan. Silakan kembali lagi nanti ✨");
+        closeSidebar();
+        return;
+      }
+      startTest(level, kind);
+      closeSidebar();
+    });
+  });
+
+  document.getElementById("logo")?.addEventListener("click", () => {
+    selectedLevel = "all";
+    selectedType = "all";
+    category.value = "all";
+    search.value = "";
+    viewMode = "vocab";
+    render();
+  });
+
+  // Dukung Pengembang - listener
+  document.getElementById("supportBtn").addEventListener("click", () => {
+    viewMode = "dukung-pengembang";
+    search.value = "";
+    category.value = "all";
+    render();
+    closeSidebar();
+  });
+
+  // Fungsi render utama
+  function render() {
+    grid.innerHTML = "";
+
+    // Mode dukungan pengembang - poster full horizontal
+    if (viewMode === "dukung-pengembang") {
+      grid.innerHTML = `
+        <div class="support-full-poster">
+          <div class="poster-overlay">
+            <h2>Dukung Pengembang</h2>
+            <p>Nihonbyte dibuat dengan semangat berbagi ilmu bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
+            <p>Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan bisa menjangkau lebih banyak orang di masa depan — tanpa iklan, tanpa batasan akses.</p>
+            <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
+            <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+            <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
+              Klik Disini
+            </a>
+          </div>
+        </div>
+      `;
+      resultInfo.textContent = "Terima kasih atas dukungan Anda!";
+      return;
+    }
+
+    // Mode ungkapan umum
+    const isExpressionView =
+      viewMode === "vocab" &&
+      (category.value === "ekspresi" ||
+       selectedType === "ekspresi" ||
+       selectedType === "expression" ||
+       selectedType === "ungkapan umum");
+    if (isExpressionView) {
+      renderExpressionPoster();
+      return;
+    }
+
+    // Mode huruf (hiragana/katakana)
+    if (viewMode.startsWith("letters:")) {
+      renderLetterPoster(viewMode.split(":")[1]);
+      return;
+    }
+
+    // Mode pola kalimat
+    if (viewMode.startsWith("patterns:")) {
+      renderPatternPoster(viewMode.split(":")[1]);
+      return;
+    }
+
+    // Mode test
+    if (viewMode.startsWith("test:")) {
+      if (!testState.active) return;
+      renderCurrentTestQuestion();
+      return;
+    }
+
+    // Mode vocab normal
+    const words = getFilteredWords();
+    if (!words.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
+      resultInfo.textContent = "0 kata ditemukan";
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    words.forEach((word) => {
+      const cardButton = document.createElement("article");
+      cardButton.className = "card";
+      cardButton.setAttribute("role", "button");
+      cardButton.setAttribute("tabindex", "0");
+      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
+      try {
+        cardButton.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal menyimpan data word:", word);
+        return;
+      }
+      cardButton.innerHTML = cardImageTemplate(word);
+      cardButton.addEventListener("click", (e) => {
+        if (e.target.closest(".play-audio-btn")) return;
+        try {
+          const storedWord = JSON.parse(cardButton.dataset.word);
+          openModal(storedWord);
+        } catch (err) {
+          console.error("Gagal membaca data kartu:", err);
+        }
+      });
+      cardButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          try {
+            const storedWord = JSON.parse(cardButton.dataset.word);
+            openModal(storedWord);
+          } catch (err) {
+            console.error("Gagal membaca data kartu (keyboard):", err);
+          }
+        }
+      });
+      fragment.appendChild(cardButton);
+    });
+    grid.appendChild(fragment);
+    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
+    resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
+  }
+
+  category.addEventListener("change", () => {
+    viewMode = "vocab";
+    selectedType = "all";
+    render();
+  });
+
+  search.addEventListener("input", () => {
+    viewMode = "vocab";
+    render();
+  });
+
+  // Render awal aplikasi
+  render();
+});

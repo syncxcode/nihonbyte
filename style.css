@@ -200,7 +200,7 @@ input,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #000000
   border: 1px solid rgba(0,0,0,0.08);
   color: #ec4899;                       /* pink subtle */
   box-shadow: 0 3px 10px rgba(0,0,0,0.12);
@@ -315,7 +315,8 @@ input,
 .expanded-card .kana,
 .expanded-card .romaji,
 .expanded-card .meaning {
-  color: #fff;
+  color: #111827 !important;               /* hitam pekat / sangat gelap - sama seperti card utama */
+  text-shadow: none !important;            /* hilangkan shadow jika sebelumnya ada (karena bg putih) */
 }
 
 /* Optional: cegah horizontal page shift */

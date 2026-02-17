@@ -1224,7 +1224,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   font-size: clamp(1.3rem, 1.2vw, 1.6rem);
   line-height: 1.5;
   max-width: 900px;
-  margin: 0 auto 10px auto;
+  margin: 0 auto 14px auto;
 }
 
 .support-btn {

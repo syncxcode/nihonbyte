@@ -1184,15 +1184,22 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 /* Mode dukungan pengembang - paksa poster jadi HORIZONTAL BESAR full-width */
 #grid.support-mode {
   display: block !important;
-  padding-top: 160px !important;
-  padding-bottom: 80px !important;
+  padding-top: 120px !important;
+  padding-bottom: 0 !important;
 }
 
 .support-poster {
+  height: calc(100vh - 140px);   /* Full screen minus header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   width: 90%;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 80px 80px;
+
+  padding: 40px 60px;
   border-radius: 28px;
 
   background: linear-gradient(
@@ -1237,7 +1244,6 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 .support-btn:hover {
   transform: translateY(-3px);
 }
-
 
 /* Tombol Dukung Pengembang - versi estetik baru */
 #supportBtn {

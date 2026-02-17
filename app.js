@@ -591,7 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dukung Pengembang - listener
   document.getElementById("supportBtn").addEventListener("click", () => {
-    viewMode = "dukung-pengembang";
+    viewMode = "support";
     search.value = "";
     category.value = "all";
     render();
@@ -613,11 +613,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function render() {
     grid.innerHTML = "";
 
-    if (viewMode === "dukung-pengembang") {
+    // Mode dukungan pengembang
+    if (viewMode === "support") {
       renderSupportPoster();
       return;
     }
 
+    // Mode ungkapan umum
     const isExpressionView =
       viewMode === "vocab" &&
       (category.value === "ekspresi" ||
@@ -629,22 +631,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Mode huruf (hiragana/katakana)
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
     }
 
+    // Mode pola kalimat
     if (viewMode.startsWith("patterns:")) {
       renderPatternPoster(viewMode.split(":")[1]);
       return;
     }
 
+    // Mode test
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
       return;
     }
 
+    // Mode vocab normal
     const words = getFilteredWords();
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';

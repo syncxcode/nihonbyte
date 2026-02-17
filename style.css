@@ -339,9 +339,8 @@ html, body {
 
 .letter-row {
   display: grid;
-  grid-template-columns: 44px repeat(calc(var(--cols, 12) - 1), minmax(44px, 1fr));
-  gap: 6px;
-  min-width: 340px;
+  grid-template-columns: 80px repeat(calc(var(--cols) - 1), 1fr);
+  gap: 10px;
 }
 
 .letter-label,

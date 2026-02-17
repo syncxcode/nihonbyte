@@ -451,6 +451,7 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();

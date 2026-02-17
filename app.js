@@ -743,15 +743,29 @@ document.addEventListener("DOMContentLoaded", () => {
   category.addEventListener("change", () => {
     viewMode = "vocab";
     selectedType = "all";
-    render();
-  });
 
-  search.addEventListener("input", () => {
-    viewMode = "vocab";
-    render();
-  });
-
-  render();
+// Dukung Pengembang - klik buka poster indah (Varian 2)
+document.getElementById("supportBtn").addEventListener("click", () => {
+  const supportMessage = `
+    <div class="support-poster">
+      <h3>Mendukung Nihonbyte Berarti Mendukung Akses Belajar yang Lebih Luas</h3>
+      <p>Nihonbyte lahir dari keinginan sederhana: membuat belajar bahasa Jepang jadi mudah, gratis, dan menyenangkan bagi siapa saja — tanpa batasan biaya atau akses internet.</p>
+      <p>Dukungan Anda membantu menjaga semangat ini tetap berjalan dan berkembang:</p>
+      <ul style="list-style: none; padding: 0; max-width: 500px; margin: 0 auto 30px auto; text-align: left; font-size: 17px;">
+        <li>• Menambah ribuan kosakata & pola baru</li>
+        <li>• Mengembangkan fitur interaktif yang lebih baik</li>
+        <li>• Memastikan aplikasi tetap 100% gratis untuk semua pembelajar</li>
+      </ul>
+      <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus membangun alat belajar yang lebih baik untuk komunitas.</p>
+      <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+      <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener" class="support-link">
+        Dukung Nihonbyte
+      </a>
+    </div>
+  `;
+  openInfoModal(supportMessage);
+  closeSidebar(); // Tutup sidebar otomatis setelah klik (opsional, bisa dihapus kalau mau sidebar tetap terbuka)
 });
-
+    render();
+  });
 

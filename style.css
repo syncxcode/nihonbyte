@@ -1381,3 +1381,79 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
   }
 }
+
+/* =============================================
+   HEADER COMPACT - Dropdown "Semua" & Search Bar
+   Optimal untuk Desktop + Mobile (v1)
+   ============================================= */
+
+.topbar .controls {
+  gap: 10px !important;
+}
+
+/* Desktop besar (≥1024px) - paling compact & elegan */
+@media (min-width: 1024px) {
+  .topbar .controls {
+    grid-template-columns: minmax(142px, 158px) minmax(198px, 265px) max-content !important;
+    gap: 12px !important;
+  }
+  
+  #category,
+  #search {
+    padding: 10px 14px !important;
+    font-size: 0.94rem !important;
+    height: 42px !important;
+  }
+  
+  /* Search placeholder tetap readable meski lebih pendek */
+  #search {
+    max-width: 265px !important;
+  }
+}
+
+/* Desktop medium (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .topbar .controls {
+    grid-template-columns: minmax(132px, 148px) minmax(185px, 245px) max-content !important;
+    gap: 10px !important;
+  }
+  
+  #category, #search {
+    padding: 9px 13px !important;
+    font-size: 0.93rem !important;
+    height: 40px !important;
+  }
+}
+
+/* Mobile & tablet kecil (≤767px) - tetap nyaman disentuh */
+@media (max-width: 767px) {
+  .topbar .controls {
+    grid-template-columns: minmax(108px, 135px) 1fr !important;
+    gap: 7px !important;
+  }
+  
+  #category, #search {
+    padding: 10px 12px !important;
+    font-size: 0.92rem !important;
+    height: 42px !important;
+  }
+  
+  /* Biar search tidak terlalu sempit di HP kecil */
+  #search {
+    min-width: 170px !important;
+  }
+}
+
+/* Bonus polish: border-radius & shadow lebih halus */
+.topbar select,
+.topbar input {
+  border-radius: 9999px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  transition: all 0.2s ease !important;
+}
+
+.topbar input:focus,
+.topbar select:focus {
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.25) !important;
+  transform: translateY(-1px);
+}

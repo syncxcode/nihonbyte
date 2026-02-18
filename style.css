@@ -18,7 +18,7 @@ body::before {
   z-index: -1;
 }
 
-/* ====================== HEADER BARU (SESUAI REQUEST TERAKHIR) ====================== */
+/* ====================== HEADER BARU (SESUAI GAMBAR TERAKHIR) ====================== */
 .topbar {
   position: fixed !important;
   top: 0;
@@ -72,7 +72,7 @@ body::before {
   transform: scale(1.05);
 }
 
-/* Icon Search di kanan (bulat besar seperti gambar 2) */
+/* Icon Search bulat besar di kanan */
 #mobileSearchBtn {
   width: 42px;
   height: 42px;
@@ -88,7 +88,7 @@ body::before {
   flex-shrink: 0;
 }
 
-/* Saat search-open: tampilkan dropdown + search bar di kanan */
+/* Saat diklik, sembunyikan icon & tampilkan controls */
 .topbar.search-open #mobileSearchBtn {
   display: none !important;
 }
@@ -101,9 +101,9 @@ body::before {
   gap: 8px;
 }
 
-/* Controls (dropdown + search bar) */
+/* Dropdown + Search bar */
 .controls {
-  display: none !important;           /* default disembunyikan */
+  display: none !important;   /* default disembunyikan */
   align-items: center !important;
   gap: 8px !important;
 }
@@ -198,7 +198,6 @@ input,
   color: #5d4037 !important;
 }
 
-/* GRID UTAMA */
 #grid {
   padding-top: 150px !important;
   display: grid !important;
@@ -1015,7 +1014,6 @@ html, body {
   }
 }
 
-/* Dukung Pengembang & support poster */
 #grid.support-mode {
   display: block !important;
   padding-top: 120px !important;

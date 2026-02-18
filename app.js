@@ -818,7 +818,9 @@ grid.innerHTML = `
   // Render awal aplikasi
   render();
 });
-
+// ===================== FIX NULL ELEMENT (karena header baru) =====================
+const search = document.getElementById('search') || { value: '', addEventListener: () => {} };
+const category = document.getElementById('category') || { value: 'all', addEventListener: () => {} };
 // ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
 if (document.documentElement.classList.contains('ios-device')) {
   console.log('🔧 Force close sidebar on iOS initial load');
@@ -942,3 +944,10 @@ searchBtn.addEventListener("click", () => {
 });
 
 console.log("✅ Search Modal Compact siap (mulai dari nol)");
+// ===================== FORCE INITIAL RENDER =====================
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ Force initial render");
+  if (typeof render === "function") {
+    render();
+  }
+});

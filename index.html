@@ -10,169 +10,177 @@
 </head>
 <body>
 
-<div id="overlay"></div>
+  <!-- Overlay untuk sidebar -->
+  <div id="overlay"></div>
 
-<aside id="sidebar" aria-label="Menu samping">
-  <h3>Menu</h3>
-  <div class="sidebar-tree">
+  <!-- SIDEBAR (tetap sama 100%) -->
+  <aside id="sidebar" aria-label="Menu samping">
+    <h3>Menu</h3>
+    <div class="sidebar-tree">
+      <!-- HURUF -->
+      <details>
+        <summary>🔤 HURUF</summary>
+        <div class="subfolder-list">
+          <button class="menu-btn letter-btn" data-script="hiragana">📄 Hiragana</button>
+          <button class="menu-btn letter-btn" data-script="katakana">📄 Katakana</button>
+        </div>
+      </details>
+      <!-- BENTUK KATA KERJA -->
+      <details>
+        <summary>🗣️ BENTUK KATA KERJA</summary>
+        <div class="subfolder-list"></div>
+      </details>
+      <!-- BENTUK KATA SIFAT -->
+      <details>
+        <summary>📝 BENTUK KATA SIFAT</summary>
+        <div class="subfolder-list"></div>
+      </details>
+      <!-- POLA KALIMAT -->
+      <details>
+        <summary>📖 POLA KALIMAT</summary>
+        <div class="subfolder-list">
+          <button class="menu-btn pattern-btn" data-level="N5">N5</button>
+          <button class="menu-btn pattern-btn" data-level="N4">N4</button>
+        </div>
+      </details>
+      <!-- UNGKAPAN UMUM -->
+      <details>
+        <summary>💬 UNGKAPAN UMUM</summary>
+        <div class="subfolder-list">
+          <button class="menu-btn sidebar-filter-btn" data-type="ekspresi" data-level="all">Ungkapan Umum</button>
+        </div>
+      </details>
+      <!-- KOTOBA -->
+      <details>
+        <summary>📚 KOTOBA</summary>
+        <div class="subfolder-list">
+          <button class="menu-btn sidebar-filter-btn" data-type="noun" data-level="all">KOSAKATA</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-body" data-level="all">KOSAKATA ANGGOTA TUBUH</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-number" data-level="all">KOSAKATA ANGKA</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-month" data-level="all">KOSAKATA BULAN</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-weather" data-level="all">KOSAKATA CUACA/MUSIM</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-time" data-level="all">KOSAKATA JAM/WAKTU</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-medical" data-level="all">KOSAKATA MEDIS</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-vehicle" data-level="all">KOSAKATA KENDARAAN</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-animal" data-level="all">KOSAKATA NAMA BINATANG</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-family" data-level="all">KOSAKATA NAMA KELUARGA</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-kitchen" data-level="all">KOSAKATA DAPUR</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-counter" data-level="all">KOSAKATA SATUAN BILANGAN</button>
+          <button class="menu-btn sidebar-filter-btn" data-type="noun-place" data-level="all">KOSAKATA TEMPAT/BANGUNAN</button>
+        </div>
+      </details>
+      <!-- LATIHAN -->
+      <details>
+        <summary>🧪 LATIHAN</summary>
+        <div class="subfolder-list">
+          <details>
+            <summary>漢字</summary>
+            <div class="subfolder-list nested-subfolder-list">
+              <button class="menu-btn test-btn" data-level="N5" data-kind="kanji">N5</button>
+              <button class="menu-btn test-btn" data-level="N4" data-kind="kanji">N4</button>
+            </div>
+          </details>
+          <details>
+            <summary>文法</summary>
+            <div class="subfolder-list nested-subfolder-list">
+              <button class="menu-btn test-btn" data-level="N5" data-kind="bunpou">N5</button>
+              <button class="menu-btn test-btn" data-level="N4" data-kind="bunpou">N4</button>
+            </div>
+          </details>
+          <details>
+            <summary>語彙</summary>
+            <div class="subfolder-list nested-subfolder-list">
+              <button class="menu-btn maintenance-btn">N5</button>
+              <button class="menu-btn maintenance-btn">N4</button>
+            </div>
+          </details>
+          <details>
+            <summary>読解</summary>
+            <div class="subfolder-list nested-subfolder-list">
+              <button class="menu-btn maintenance-btn">N5</button>
+              <button class="menu-btn maintenance-btn">N4</button>
+            </div>
+          </details>
+          <details>
+            <summary>聴解</summary>
+            <div class="subfolder-list nested-subfolder-list">
+              <button class="menu-btn maintenance-btn">N5</button>
+              <button class="menu-btn maintenance-btn">N4</button>
+            </div>
+          </details>
+        </div>
+      </details>
+      <!-- DUKUNG PENGEMBANG -->
+      <button class="support-btn" id="supportBtn">
+        ❤️ DUKUNG PENGEMBANG
+      </button>
+    </div>
+  </aside>
 
-    <!-- HURUF -->
-    <details>
-      <summary>🔤 HURUF</summary>
-      <div class="subfolder-list">
-        <button class="menu-btn letter-btn" data-script="hiragana">📄 Hiragana</button>
-        <button class="menu-btn letter-btn" data-script="katakana">📄 Katakana</button>
+  <!-- HEADER BARU - UJUNG KE UJUNG -->
+  <header class="topbar">
+    <!-- KIRI UJUNG -->
+    <div class="header-left">
+      <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="branding">
+        <img id="logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
       </div>
-    </details>
+    </div>
 
-    <!-- BENTUK KATA KERJA -->
-    <details>
-      <summary>🗣️ BENTUK KATA KERJA</summary>
-      <div class="subfolder-list">
-        <!-- kosong -->
-      </div>
-    </details>
-
-    <!-- BENTUK KATA SIFAT -->
-    <details>
-      <summary>📝 BENTUK KATA SIFAT</summary>
-      <div class="subfolder-list">
-        <!-- kosong -->
-      </div>
-    </details>
-
-    <!-- POLA KALIMAT -->
-    <details>
-      <summary>📖 POLA KALIMAT</summary>
-      <div class="subfolder-list">
-        <button class="menu-btn pattern-btn" data-level="N5">N5</button>
-        <button class="menu-btn pattern-btn" data-level="N4">N4</button>
-      </div>
-    </details>
-
-    <!-- UNGKAPAN UMUM -->
-    <details>
-      <summary>💬 UNGKAPAN UMUM</summary>
-      <div class="subfolder-list">
-        <button class="menu-btn sidebar-filter-btn" data-type="ekspresi" data-level="all">Ungkapan Umum</button>
-      </div>
-    </details>
-
-    <!-- KOTOBA (BARU) -->
-    <details>
-      <summary>📚 KOTOBA</summary>
-      <div class="subfolder-list">
-        <button class="menu-btn sidebar-filter-btn" data-type="noun" data-level="all">KOSAKATA</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-body" data-level="all">KOSAKATA ANGGOTA TUBUH</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-number" data-level="all">KOSAKATA ANGKA</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-month" data-level="all">KOSAKATA BULAN</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-weather" data-level="all">KOSAKATA CUACA/MUSIM</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-time" data-level="all">KOSAKATA JAM/WAKTU</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-medical" data-level="all">KOSAKATA MEDIS</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-vehicle" data-level="all">KOSAKATA KENDARAAN</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-animal" data-level="all">KOSAKATA NAMA BINATANG</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-family" data-level="all">KOSAKATA NAMA KELUARGA</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-kitchen" data-level="all">KOSAKATA DAPUR</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-counter" data-level="all">KOSAKATA SATUAN BILANGAN</button>
-        <button class="menu-btn sidebar-filter-btn" data-type="noun-place" data-level="all">KOSAKATA TEMPAT/BANGUNAN</button>
-      </div>
-    </details>
-
-    <!-- LATIHAN -->
-    <details>
-      <summary>🧪 LATIHAN</summary>
-      <div class="subfolder-list">
-        <details>
-          <summary>漢字</summary>
-          <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn test-btn" data-level="N5" data-kind="kanji">N5</button>
-            <button class="menu-btn test-btn" data-level="N4" data-kind="kanji">N4</button>
-          </div>
-        </details>
-        <details>
-          <summary>文法</summary>
-          <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn test-btn" data-level="N5" data-kind="bunpou">N5</button>
-            <button class="menu-btn test-btn" data-level="N4" data-kind="bunpou">N4</button>
-          </div>
-        </details>
-        <details>
-          <summary>語彙</summary>
-          <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn maintenance-btn">N5</button>
-            <button class="menu-btn maintenance-btn">N4</button>
-          </div>
-        </details>
-        <details>
-          <summary>読解</summary>
-          <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn maintenance-btn">N5</button>
-            <button class="menu-btn maintenance-btn">N4</button>
-          </div>
-        </details>
-        <details>
-          <summary>聴解</summary>
-          <div class="subfolder-list nested-subfolder-list">
-            <button class="menu-btn maintenance-btn">N5</button>
-            <button class="menu-btn maintenance-btn">N4</button>
-          </div>
-        </details>
-      </div>
-    </details>
-
-    <!-- DUKUNG PENGEMBANG - paling bawah sidebar -->
-    <button class="support-btn" id="supportBtn">
-      ❤️ DUKUNG PENGEMBANG
+    <!-- KANAN UJUNG -->
+    <button id="searchBtn" class="search-btn" aria-label="Buka pencarian lanjutan">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
     </button>
+  </header>
 
-  </div>
-</aside>
-
-<header class="topbar">
-  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- LOGO (klik = reset filter) -->
-  <div class="branding">
-    <img id="logo" src="./assets/favicon.webp" alt="日本の世界" title="Klik untuk reset filter">
-  </div>
-
-  <div class="controls">
-    <select id="category" aria-label="Filter kategori">
-      <option value="all">Semua</option>
-      
-      <optgroup label="KATA KERJA">
-        <option value="verb-godan">KATA KERJA GODAN</option>
-        <option value="verb-ru">KATA KERJA ICHIDAN</option>
-        <option value="verb-irregular">KATA KERJA SURU</option>
-      </optgroup>
-      
-      <optgroup label="KATA SIFAT">
-        <option value="adj-i">KATA SIFAT い</option>
-        <option value="adj-na">KATA SIFAT な</option>
-      </optgroup>
-    </select>
-
-    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
-  </div>
-
+  <!-- Result Info (dipindah ke bawah header supaya header tetap clean) -->
   <p id="resultInfo" class="result-info"></p>
-</header>
 
-<main id="grid"></main>
+  <!-- MAIN GRID -->
+  <main id="grid"></main>
 
-<section id="kanjiModal" class="kanji-modal" aria-hidden="true">
-  <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
-  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
-    <button id="modalClose" class="modal-close" aria-label="Tutup detail">✕</button>
-    <article id="expandedCard" class="expanded-card"></article>
-    <h4 id="modalSubtitle">Rekomendasi terkait</h4>
-    <div id="recommendationRow" class="recommendation-row"></div>
-  </div>
-</section>
+  <!-- KANJI MODAL (tetap sama) -->
+  <section id="kanjiModal" class="kanji-modal" aria-hidden="true">
+    <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
+    <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
+      <button id="modalClose" class="modal-close" aria-label="Tutup detail">✕</button>
+      <article id="expandedCard" class="expanded-card"></article>
+      <h4 id="modalSubtitle">Rekomendasi terkait</h4>
+      <div id="recommendationRow" class="recommendation-row"></div>
+    </div>
+  </section>
 
-<script src="./data.js"></script>
-<script src="./app.js"></script>
+  <!-- SEARCH MODAL COMPACT POSTER (baru) -->
+  <section id="searchModal" class="search-modal">
+    <div class="search-modal-backdrop" id="searchBackdrop"></div>
+    
+    <div class="search-modal-content">
+      <button id="searchModalClose" class="modal-close">✕</button>
+
+      <!-- Search Bar -->
+      <input id="modalSearchInput" type="text" class="modal-search-input" 
+             placeholder="Cari kanji, kana, romaji, atau arti...">
+
+      <!-- Kategori Grammar -->
+      <div class="section">
+        <h3>Pilih Kategori Grammar</h3>
+        <div id="grammarButtons" class="grammar-buttons-grid"></div>
+      </div>
+
+      <!-- Level (shared di bawah) -->
+      <div class="section">
+        <h3>Pilih Level JLPT</h3>
+        <div id="levelButtons" class="level-buttons-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
 </body>
 </html>

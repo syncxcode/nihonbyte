@@ -1382,25 +1382,53 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 }
 
-/* ===================== iOS SAFE MODE (ANTI CRASH) - Hanya berlaku di iOS ===================== */
+/* =========================================
+   🍎 iOS PERFORMANCE OPTIMIZER (SAFE MODE)
+   Tidak mengubah Android/Desktop
+========================================= */
+
+.ios-device body::before {
+  /* Hindari fixed GPU layer */
+  position: absolute !important;
+}
+
+.ios-device * {
+  /* Matikan blur berat di iOS */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 .ios-device #overlay {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  background: rgba(0, 0, 0, 0.78) !important;   /* solid gelap biar tetap cantik */
 }
 
-.ios-device #sidebar {
-  height: 100dvh !important;                    /* dynamic viewport, lebih stabil di iOS */
-  will-change: auto !important;                 /* matikan GPU heavy */
-  backface-visibility: visible;
-  -webkit-backface-visibility: visible;
+.ios-device .letter-poster,
+.ios-device .support-poster {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-.ios-device #sidebar.active {
-  transform: translateX(0) !important;
+/* Hindari transform GPU stacking crash */
+.ios-device .card-image:hover {
+  transform: scale(1.02) !important;
 }
 
-/* Smooth scroll iOS */
-.ios-device body {
-  -webkit-overflow-scrolling: touch;
+/* Modal fix */
+.ios-device .kanji-modal-content {
+  transform: none !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  margin: auto !important;
+}
+
+/* Scroll performance */
+.ios-device #recommendationRow {
+  -webkit-overflow-scrolling: auto !important;
+}
+
+/* Hindari repaint berat */
+.ios-device .card-image {
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3) !important;
 }

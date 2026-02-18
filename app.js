@@ -12,72 +12,87 @@ document.addEventListener("DOMContentLoaded", () => {
   const expandedCard = document.getElementById("expandedCard");
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
+  
+  // ==================== NEW FILTER MODAL (FIXED - ID MATCH) ====================
+const searchBtn = document.getElementById("searchBtn");        // ← ini yang penting, match dengan HTML
+const filterModal = document.getElementById("filterModal");
+const filterBackdrop = document.getElementById("filterBackdrop");
+const filterModalClose = document.getElementById("filterModalClose");
+const modalSearchInput = document.getElementById("modalSearchInput");
+const applyFilterBtn = document.getElementById("applyFilterBtn");
+const resetFilterBtn = document.getElementById("resetFilterBtn");
 
-  const filterModal = document.getElementById("filterModal");
-  const filterBackdrop = document.getElementById("filterBackdrop");
-  const filterModalClose = document.getElementById("filterModalClose");
-  const searchIconBtn = document.getElementById("searchIconBtn");
-  const modalSearchInput = document.getElementById("modalSearchInput");
-  const applyFilterBtn = document.getElementById("applyFilterBtn");
-  const resetFilterBtn = document.getElementById("resetFilterBtn");
+// SAFE GUARD - biar tidak crash lagi meski ada yang kurang
+if (searchBtn && filterModal) {
 
-// Open modal
-searchIconBtn.addEventListener("click", () => {
-  filterModal.classList.add("active");
-  filterModal.setAttribute("aria-hidden", "false");
-  modalSearchInput.focus();
-  modalSearchInput.value = search.value; // sync dengan search global
-});
+  searchBtn.addEventListener("click", () => {
+    filterModal.classList.add("active");
+    filterModal.setAttribute("aria-hidden", "false");
+    if (modalSearchInput) modalSearchInput.focus();
+  });
 
-// Close modal
-function closeFilterModal() {
-  filterModal.classList.remove("active");
-  filterModal.setAttribute("aria-hidden", "true");
+  function closeFilterModal() {
+    if (filterModal) {
+      filterModal.classList.remove("active");
+      filterModal.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
+  if (filterBackdrop) filterBackdrop.addEventListener("click", closeFilterModal);
+
+  // Level buttons
+  document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Category buttons
+  document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Apply
+  if (applyFilterBtn) {
+    applyFilterBtn.addEventListener("click", () => {
+      const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
+      const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
+
+      selectedLevel = activeLevel;
+      selectedType = activeType;
+      viewMode = "vocab";
+
+      if (modalSearchInput) {
+        search.value = modalSearchInput.value.trim();   // tetap pakai search global (yang tersembunyi)
+      }
+
+      closeFilterModal();
+      render();
+    });
+  }
+
+  // Reset
+  if (resetFilterBtn) {
+    resetFilterBtn.addEventListener("click", () => {
+      selectedLevel = "all";
+      selectedType = "all";
+      if (search) search.value = "";
+      if (modalSearchInput) modalSearchInput.value = "";
+
+      document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('[data-level="all"]').classList.add("active");
+
+      closeFilterModal();
+      render();
+    });
+  }
 }
-filterModalClose.addEventListener("click", closeFilterModal);
-filterBackdrop.addEventListener("click", closeFilterModal);
-
-// Level & Category buttons
-document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
-
-document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
-
-// Terapkan Filter
-applyFilterBtn.addEventListener("click", () => {
-  const activeLevel = document.querySelector("#levelGrid .level-btn.active").dataset.level;
-  const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
-
-  selectedLevel = activeLevel;
-  selectedType = activeType;
-  viewMode = "vocab";
-  search.value = modalSearchInput.value.trim(); // sync search
-
-  closeFilterModal();
-  render();
-});
-
-// Reset
-resetFilterBtn.addEventListener("click", () => {
-  selectedLevel = "all";
-  selectedType = "all";
-  search.value = "";
-  modalSearchInput.value = "";
-  document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-  document.querySelector('[data-level="all"]').classList.add("active");
-  closeFilterModal();
-  render();
-});
-
+  
 // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||

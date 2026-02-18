@@ -13,28 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
-  // === MOBILE SEARCH ICON + EXPAND ===
-  const topbar = document.getElementById('topbar') || document.querySelector('.topbar');
-  const mobileSearchBtn = document.getElementById('mobileSearchBtn');
-  const searchInput = document.getElementById('search');
-
-  // Toggle search open
-  mobileSearchBtn.addEventListener('click', () => {
-    topbar.classList.toggle('search-open');
-    if (topbar.classList.contains('search-open')) {
-      setTimeout(() => searchInput.focus(), 50);   // auto focus
-    }
-  });
-
-  // Close saat klik di luar
-  document.addEventListener('click', (e) => {
-    if (topbar.classList.contains('search-open') && 
-        !topbar.contains(e.target) && 
-        e.target !== mobileSearchBtn) {
-      topbar.classList.remove('search-open');
-    }
-  });
-
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
@@ -515,7 +493,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ================== FIX iOS SIDEBAR + HEADER (bagian yang diubah) ==================
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+      closeSidebar();
+    }
+  });
+
+  // ================== SIDEBAR FIX FINAL (ANDROID + iOS) ==================
   let savedScrollY = 0;
 
   function openSidebar() {
@@ -524,11 +509,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.add("active");
     overlay.classList.add("active");
     hamburger.setAttribute("aria-expanded", "true");
+    document.body.classList.add("sidebar-open");
     
-    // Lock scroll paling stabil di iOS Safari (fix header rusak)
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
-    document.body.style.overscrollBehaviorY = "none";
     document.body.style.position = "fixed";
     document.body.style.top = `-${savedScrollY}px`;
     document.body.style.width = "100%";
@@ -538,11 +522,10 @@ document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("sidebar-open");
     
-    // Restore semua
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
-    document.body.style.overscrollBehaviorY = "";
     document.body.style.position = "";
     document.body.style.top = "";
     document.body.style.width = "";
@@ -559,16 +542,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   overlay.addEventListener("click", closeSidebar);
-  // Extra fix khusus iOS (overlay langsung responsif saat disentuh)
   overlay.addEventListener("touchend", (e) => {
     if (e.target === overlay) closeSidebar();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-      closeSidebar();
-    }
   });
 
   grid.addEventListener("click", (event) => {

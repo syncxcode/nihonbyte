@@ -18,7 +18,7 @@ body::before {
   z-index: -1;
 }
 
-/* ====================== HEADER FIX (HANYA BAGIAN INI YANG DIUBAH) ====================== */
+/* ====================== HEADER BARU (SESUAI REQUEST TERAKHIR) ====================== */
 .topbar {
   position: fixed !important;
   top: 0;
@@ -72,19 +72,40 @@ body::before {
   transform: scale(1.05);
 }
 
-.right-header {
+/* Icon Search di kanan (bulat besar seperti gambar 2) */
+#mobileSearchBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: none;
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  flex: 1 !important;
-  justify-content: flex-end !important;
+  justify-content: center !important;
+  font-size: 22px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.25) !important;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-.controls {
+/* Saat search-open: tampilkan dropdown + search bar di kanan */
+.topbar.search-open #mobileSearchBtn {
+  display: none !important;
+}
+
+.topbar.search-open .controls {
   display: flex !important;
-  gap: 8px !important;
+  flex: 1;
+  max-width: none;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Controls (dropdown + search bar) */
+.controls {
+  display: none !important;           /* default disembunyikan */
   align-items: center !important;
-  max-width: 520px !important;
+  gap: 8px !important;
 }
 
 select,
@@ -135,12 +156,6 @@ input {
   color: #4b5563;
 }
 
-.controls {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
-}
-
 #resultInfo {
   grid-column: 1 / -1;
   margin: 0;
@@ -173,23 +188,6 @@ input,
   font-weight: 700;
 }
 
-.hamburger {
-  align-self: center;
-  width: 40px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 0;
-}
-
-.hamburger span {
-  display: block;
-  height: 4px;
-  background: #444 !important;
-  margin: 7px 0;
-  border-radius: 2px;
-}
-
 .topbar select,
 .topbar input {
   background: rgba(255, 255, 255, 0.92) !important;
@@ -200,6 +198,7 @@ input,
   color: #5d4037 !important;
 }
 
+/* GRID UTAMA */
 #grid {
   padding-top: 150px !important;
   display: grid !important;
@@ -1004,179 +1003,19 @@ html, body {
   }
 }
 
-.topbar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 50;
-  padding: 12px 16px !important;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
-
-  display: grid !important;
-  grid-template-columns: auto auto 1fr !important;
-  grid-template-rows: auto auto !important;
-  gap: 8px 16px !important;
-  align-items: center !important;
-}
-
-#hamburger {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.branding {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start !important;
-}
-
-.branding img {
-  height: 48px !important;
-}
-
-.controls {
-  grid-column: 3;
-  grid-row: 1;
-  justify-self: end !important;
-  display: grid !important;
-  grid-template-columns: minmax(160px, 240px) 1fr !important;
-  gap: 12px !important;
-  align-items: center;
-}
-
-#resultInfo {
-  grid-column: 3;
-  grid-row: 2;
-  justify-self: end !important;
-  margin: 0 !important;
-  font-size: 0.85rem;
-  color: #374151;
-}
-
 @media (max-width: 767px) {
   .topbar {
     padding: 10px 12px !important;
-    gap: 6px 12px !important;
   }
   .branding img {
-    height: 42px !important;
+    height: 48px !important;
   }
-  .controls {
-    grid-template-columns: minmax(120px, 180px) 1fr !important;
-    gap: 8px !important;
-  }
-}
-
-#grid {
-  padding-top: 150px !important;
-}
-
-.card-image,
-.card-overlay,
-.card-overlay * {
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  cursor: pointer !important;
-}
-
-.card-image {
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.card-image:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
-}
-
-@media (max-width: 767px) {
-  .card-image:hover {
-    transform: scale(1.03) !important;
+  #grid {
+    padding-top: 140px !important;
   }
 }
 
-#kanjiModal .card-overlay,
-#kanjiModal .card-overlay * {
-  cursor: default !important;
-  pointer-events: none !important;
-  transition: none !important;
-}
-
-#kanjiModal .card-image.expanded:hover {
-  transform: none !important;
-  box-shadow: none !important;
-  transition: none !important;
-}
-
-#kanjiModal .play-audio-btn {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  transition: none !important;
-}
-
-.kanji-modal-backdrop {
-  cursor: pointer;
-}
-
-#kanjiModal .card-image.expanded {
-  -webkit-tap-highlight-color: transparent;
-  tap-highlight-color: transparent;
-}
-
-.branding {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: start !important;
-  align-self: center !important;
-  padding-left: 15px !important;
-}
-
-.branding img {
-  height: 65px !important;
-  width: auto !important;
-  max-width: none !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
-  cursor: pointer !important;
-  transition: transform 0.3s ease !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-  display: block !important;
-}
-
-.branding img:hover {
-  transform: scale(1.08) !important;
-}
-
-header {
-  grid-template-rows: minmax(90px, auto) !important;
-  align-items: center !important;
-  padding: 10px 20px !important;
-}
-
-@media (max-width: 768px) {
-  .branding {
-    padding-left: 10px !important;
-  }
-  .branding img {
-    height: 65px !important;
-  }
-  header {
-    grid-template-rows: minmax(75px, auto) !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .branding img {
-    height: 55px !important;
-  }
-}
-
+/* Dukung Pengembang & support poster */
 #grid.support-mode {
   display: block !important;
   padding-top: 120px !important;

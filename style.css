@@ -1488,17 +1488,17 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   stroke: #ff4d6d;              /* hover jadi pink cantik sesuai tema NihonByte */
 }
 
-/* ====================== MODAL FILTER FINAL - LEBAR & CLEAN ====================== */
+/* ====================== MODAL FILTER FINAL - LEBAR + 1 BARIS ====================== */
 .filter-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.92);
+  background: rgba(0,0,0,0.92);
   z-index: 99999;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  overflow: hidden;                    /* cegah scroll body */
+  overflow: hidden;
 }
 
 .filter-modal.active {
@@ -1507,8 +1507,8 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-content {
   width: 100%;
-  max-width: 540px;                    /* LEBIH LEBAR */
-  max-height: 92vh;
+  max-width: 650px;                    /* LEBIH LEBAR */
+  max-height: 94vh;
   background: #fff;
   border-radius: 28px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.5);
@@ -1519,52 +1519,69 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-header {
   background: #ffcddb;
-  padding: 20px 24px;
+  padding: 18px 24px;
   text-align: center;
+  position: relative;
   flex-shrink: 0;
 }
 
 .filter-modal-header h3 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   color: #1f2937;
 }
 
+/* TOMBOL X POJOK KANAN ATAS */
+#filterModalClose {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  color: #e11d48;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* SEARCH BAR */
 .modal-search-input {
   width: 92%;
-  margin: 24px auto 20px;
+  margin: 22px auto 20px;
   padding: 16px 20px;
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   border: 2px solid #ffcddb;
   border-radius: 999px;
   outline: none;
 }
 
-.filter-section {
-  padding: 0 24px 20px;
-  flex-shrink: 0;
-}
-
-.filter-section h4 {
-  margin: 0 0 12px 4px;
-  color: #374151;
-  font-weight: 600;
-}
-
-.level-grid, .category-grid {
+/* LEVEL - PAKSA 1 BARIS */
+.level-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  grid-template-columns: repeat(6, 1fr);   /* 1 BARIS PENUH */
+  gap: 8px;
+  padding: 0 12px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
   gap: 12px;
 }
 
 .level-btn, .cat-btn {
-  padding: 15px 12px;
+  padding: 14px 8px;
   border: 2px solid #e5e7eb;
   border-radius: 16px;
   background: #fff;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
+  font-size: 0.95rem;
 }
 
 .level-btn.active,
@@ -1573,37 +1590,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   border-color: #ff4d6d;
 }
 
-/* HILANGKAN SCROLLBAR DI MODAL */
-.filter-modal-content {
-  overflow-y: auto;
-  scrollbar-width: none;               /* Firefox */
-}
+/* NO SCROLLBAR */
 .filter-modal-content::-webkit-scrollbar {
-  display: none;                       /* Chrome, Safari, Edge */
-}
-
-/* BUTTON AREA */
-.filter-actions {
-  padding: 10px 24px 24px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.apply-filter-btn {
-  background: #ff4d6d;
-  color: white;
-  padding: 16px;
-  border: none;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.reset-filter-btn {
-  background: transparent;
-  color: #6b7280;
-  padding: 14px;
-  border: none;
+  display: none;
 }

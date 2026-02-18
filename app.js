@@ -921,10 +921,6 @@ grid.innerHTML = `
     render();
   });
 
-  // Render awal aplikasi
-  render();
-});
-
 // ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
 if (document.documentElement.classList.contains('ios-device')) {
   console.log('🔧 Force close sidebar on iOS initial load');
@@ -934,6 +930,29 @@ if (document.documentElement.classList.contains('ios-device')) {
   hamburger.setAttribute("aria-expanded", "false");
   
   // Reset scroll lock
+  
+// ==================== FORCE AUTO CLOSE SIDEBAR (SOLUSI FINAL) ====================
+function forceCloseSidebar() {
+  setTimeout(() => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = originalOverflow;
+    document.body.style.position = originalPosition;
+    document.body.style.top = originalTop;
+    document.body.style.width = originalWidth;
+    window.scrollTo(0, savedScrollPosition);
+    document.documentElement.style.overflow = '';
+    console.log("✅ Sidebar FORCE CLOSED");
+  }, 10);
+}
+
+// Override semua closeSidebar yang lama
+window.closeSidebar = forceCloseSidebar;   // ini yang penting
+  
+  // Render awal aplikasi
+  render();
+});
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.overflow = '';

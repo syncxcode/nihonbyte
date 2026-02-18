@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  // ==================== ELEMENT DOM ====================
   const grid = document.getElementById("grid");
-  const category = document.getElementById("category");
-  const search = document.getElementById("search");
   const hamburger = document.getElementById("hamburger");
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
@@ -13,36 +13,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
-// ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
+  // SAFE ELEMENT (karena search & category sudah dihapus dari header baru)
+  const safeCategory = { value: 'all', addEventListener: () => {} };
+  const safeSearch = { value: '', addEventListener: () => {} };
+
+  // ==================== IOS OPTIMIZER ====================
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||
            (navigator.platform === 'MacIntel' && 'ontouchend' in document);
   }
 
-if (isIOS()) {
-  document.documentElement.classList.add('ios-device');
-  console.log('🛡️ NihonByte iOS Safe Mode AKTIF');
+  if (isIOS()) {
+    document.documentElement.classList.add('ios-device');
+    console.log('🛡️ NihonByte iOS Safe Mode AKTIF');
+    const style = document.createElement("style");
+    style.innerHTML = `* { animation: none !important; transition: none !important; }`;
+    document.head.appendChild(style);
+    document.body.style.webkitOverflowScrolling = "touch";
+  }
 
-  // 🔥 Disable heavy animation
-  const style = document.createElement("style");
-  style.innerHTML = `
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
-  `;
-  document.head.appendChild(style);
-
-  // 🔥 Hindari body fixed crash
-  document.body.style.webkitOverflowScrolling = "touch";
-
-  // 🔥 Batasi repaint besar saat resize
-  window.addEventListener("resize", () => {
-    document.body.style.height = window.innerHeight + "px";
-  });
-}
-
-  
+  // ==================== GLOBAL VARIABLE ====================
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
@@ -67,7 +57,6 @@ if (isIOS()) {
           subtitle: "Gojūon",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-
             ["A",  "あ", "い", "う", "え", "お"],
             ["KA", "か", "き", "く", "け", "こ"],
             ["SA", "さ", "し", "す", "せ", "そ"],
@@ -79,25 +68,23 @@ if (isIOS()) {
             ["RA", "ら", "り", "る", "れ", "ろ"],
             ["WA", "わ", "",   "",   "",   "を"],
             ["N",  "ん", "",   "",   "",   ""],
-          ],
+          ]
         },
         {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-
             ["GA", "が", "ぎ", "ぐ", "げ", "ご"],
             ["ZA", "ざ", "じ", "ず", "ぜ", "ぞ"],
             ["DA", "だ", "ぢ", "づ", "で", "ど"],
             ["BA", "ば", "び", "ぶ", "べ", "ぼ"],
             ["PA", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
-          ],
+          ]
         },
         {
           subtitle: "Yōon",
           rows: [
             ["", "YA", "YU", "YO"],
-
             ["K", "きゃ", "きゅ", "きょ"],
             ["S", "しゃ", "しゅ", "しょ"],
             ["T", "ちゃ", "ちゅ", "ちょ"],
@@ -109,11 +96,10 @@ if (isIOS()) {
             ["J", "じゃ", "じゅ", "じょ"],
             ["B", "びゃ", "びゅ", "びょ"],
             ["P", "ぴゃ", "ぴゅ", "ぴょ"],
-          ],
-        },
-      ],
+          ]
+        }
+      ]
     },
-
     katakana: {
       title: "Poster Katakana",
       sections: [
@@ -121,7 +107,6 @@ if (isIOS()) {
           subtitle: "Gojūon",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-
             ["A",  "ア", "イ", "ウ", "エ", "オ"],
             ["KA", "カ", "キ", "ク", "ケ", "コ"],
             ["SA", "サ", "シ", "ス", "セ", "ソ"],
@@ -133,25 +118,23 @@ if (isIOS()) {
             ["RA", "ラ", "リ", "ル", "レ", "ロ"],
             ["WA", "ワ", "",   "",   "",   "ヲ"],
             ["N",  "ン", "",   "",   "",   ""],
-          ],
+          ]
         },
         {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-
             ["GA", "ガ", "ギ", "グ", "ゲ", "ゴ"],
             ["ZA", "ザ", "ジ", "ズ", "ゼ", "ゾ"],
             ["DA", "ダ", "ヂ", "ヅ", "デ", "ド"],
             ["BA", "バ", "ビ", "ブ", "ベ", "ボ"],
             ["PA", "パ", "ピ", "プ", "ペ", "ポ"],
-          ],
+          ]
         },
         {
           subtitle: "Yōon",
           rows: [
             ["", "YA", "YU", "YO"],
-
             ["K", "キャ", "キュ", "キョ"],
             ["S", "シャ", "シュ", "ショ"],
             ["T", "チャ", "チュ", "チョ"],
@@ -163,12 +146,19 @@ if (isIOS()) {
             ["J", "ジャ", "ジュ", "ジョ"],
             ["B", "ビャ", "ビュ", "ビョ"],
             ["P", "ピャ", "ピュ", "ピョ"],
-          ],
-        },
-      ],
-    },
+          ]
+        }
+      ]
+    }
   };
 
+  let originalOverflow = '';
+  let originalPosition = '';
+  let originalTop = '';
+  let originalWidth = '';
+  let savedScrollPosition = 0;
+
+  // ==================== FUNCTION SPEAK WORD ====================
   function speakWord(text) {
     if (!window.speechSynthesis || !text) return;
     const utterance = new SpeechSynthesisUtterance(text);
@@ -178,6 +168,7 @@ if (isIOS()) {
     window.speechSynthesis.speak(utterance);
   }
 
+  // ==================== OPEN INFO MODAL ====================
   function openInfoModal(message) {
     expandedCard.innerHTML = `<div class="info-poster">${message}</div>`;
     modalSubtitle.style.display = "none";
@@ -187,42 +178,38 @@ if (isIOS()) {
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
+  // ==================== MATCH TYPE ====================
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
     if (targetType === "verb-irregular") {
       return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
     }
-    if (targetType === "noun" || targetType.startsWith("noun-")) {
-      return wordType === targetType;
-    }
+    if (targetType === "noun" || targetType.startsWith("noun-")) return wordType === targetType;
     if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
       return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
     }
     return wordType?.startsWith(targetType) || false;
   }
 
+  // ==================== GET FILTERED WORDS ====================
   function getFilteredWords() {
-    const key = (search.value || "").toLowerCase().trim();
-    const selectedFromDropdown = category.value;
+    const key = (safeSearch.value || "").toLowerCase().trim();
+    const selectedFromDropdown = safeCategory.value;
     return vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
-      const text = [
-        word.kanji || "",
-        word.kana || "",
-        word.romaji || "",
-        word.meaning || ""
-      ].join("").toLowerCase();
+      const text = [word.kanji || "", word.kana || "", word.romaji || "", word.meaning || ""].join("").toLowerCase();
       return !key || text.includes(key);
     });
   }
 
+  // ==================== CARD IMAGE TEMPLATE ====================
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
     return `
       <div class="card-image ${expandedClass}">
-        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
+        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio">▶</button>
         <div class="card-overlay">
           <div class="kanji">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
@@ -233,11 +220,10 @@ if (isIOS()) {
     `;
   }
 
+  // ==================== RENDER EXPRESSION POSTER ====================
   function renderExpressionPoster() {
     grid.innerHTML = "";
-    const expressions = vocabularyData.filter(w =>
-      w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
-    );
+    const expressions = vocabularyData.filter(w => w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum");
     if (!expressions.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
       resultInfo.textContent = "0 ungkapan ditemukan";
@@ -248,49 +234,30 @@ if (isIOS()) {
     expressions.forEach((word) => {
       const card = document.createElement("div");
       card.className = "expression-wide-card";
-      card.setAttribute("role", "button");
-      card.setAttribute("tabindex", "0");
-      card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
-      try {
-        card.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal stringify ungkapan:", word);
-        return;
-      }
+      card.dataset.word = JSON.stringify(word);
       card.innerHTML = `
         <div class="wide-kanji">${word.kanji || "—"}</div>
         <div class="wide-kana">${word.kana || "—"}</div>
         <div class="wide-romaji">${word.romaji || ""}</div>
         <div class="wide-meaning">${word.meaning || "—"}</div>
-        <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
+        <button class="wide-play-btn" data-text="${word.kana || word.kanji || ''}">▶</button>
       `;
       card.addEventListener("click", (e) => {
         if (e.target.closest(".wide-play-btn")) return;
-        try {
-          const storedWord = JSON.parse(card.dataset.word);
-          openModal(storedWord);
-        } catch (err) {}
+        openModal(JSON.parse(card.dataset.word));
       });
       card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
-        speakWord(card.querySelector(".wide-play-btn").dataset.text);
-      });
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          try {
-            openModal(JSON.parse(card.dataset.word));
-          } catch {}
-        }
+        speakWord(e.target.dataset.text);
       });
       container.appendChild(card);
     });
     grid.appendChild(container);
-    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
+    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan`;
   }
 
+  // ==================== SHUFFLE ====================
   function shuffle(array) {
-    if (!Array.isArray(array)) return [];
     const copy = [...array];
     for (let i = copy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -299,6 +266,7 @@ if (isIOS()) {
     return copy;
   }
 
+  // ==================== STOP TEST TIMER ====================
   function stopTestTimer() {
     if (testState.timerId) {
       clearInterval(testState.timerId);
@@ -306,6 +274,7 @@ if (isIOS()) {
     }
   }
 
+  // ==================== START QUESTION TIMER ====================
   function startQuestionTimer(seconds) {
     stopTestTimer();
     testState.timeLeft = seconds;
@@ -322,6 +291,7 @@ if (isIOS()) {
     }, 1000);
   }
 
+  // ==================== FINISH TEST ====================
   function finishTest() {
     stopTestTimer();
     const total = testState.questions.length || 0;
@@ -334,6 +304,7 @@ if (isIOS()) {
     render();
   }
 
+  // ==================== MOVE TO NEXT QUESTION ====================
   function moveToNextQuestion() {
     if (!testState.active) return;
     testState.currentIndex += 1;
@@ -345,6 +316,7 @@ if (isIOS()) {
     renderCurrentTestQuestion();
   }
 
+  // ==================== RENDER CURRENT TEST QUESTION ====================
   function renderCurrentTestQuestion() {
     grid.innerHTML = "";
     const question = testState.questions[testState.currentIndex];
@@ -390,6 +362,7 @@ if (isIOS()) {
     board.querySelector(".finish-test-btn").addEventListener("click", finishTest);
   }
 
+  // ==================== START TEST ====================
   function startTest(level, kind) {
     viewMode = `test:${kind}:${level}`;
     testState.active = true;
@@ -420,6 +393,7 @@ if (isIOS()) {
     renderCurrentTestQuestion();
   }
 
+  // ==================== RENDER LETTER POSTER ====================
   function renderLetterPoster(script) {
     grid.innerHTML = "";
     const data = letterSets[script];
@@ -449,6 +423,7 @@ if (isIOS()) {
     resultInfo.textContent = "";
   }
 
+  // ==================== RENDER PATTERN POSTER ====================
   function renderPatternPoster(level) {
     grid.innerHTML = "";
     const patterns = patternData[level] || [];
@@ -464,13 +439,14 @@ if (isIOS()) {
         <div class="pattern-title">${pattern.pattern}</div>
         <div class="pattern-example">${pattern.example}</div>
         <div class="pattern-meaning">${pattern.meaning}</div>
-        <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
+        <button class="pattern-audio-btn" type="button" data-text="${pattern.example}">▶</button>
       `;
       grid.appendChild(card);
     });
     resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
   }
 
+  // ==================== GET RECOMMENDATIONS ====================
   function getRecommendations(word) {
     const maxItems = 10;
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
@@ -479,6 +455,7 @@ if (isIOS()) {
     return shuffle(source).slice(0, maxItems);
   }
 
+  // ==================== OPEN MODAL ====================
   function openModal(word) {
     if (!word) return;
     modalSubtitle.style.display = "block";
@@ -493,21 +470,16 @@ if (isIOS()) {
       recBtn.innerHTML = `
         <span class="rec-kanji">${item.kanji || "—"}</span>
         <span class="rec-kana">${item.kana || "—"}</span>
-        <button class="rec-audio-btn" type="button" data-text="${item.kana || ""}" aria-label="Putar audio ${item.kanji || item.kana || ''}">▶</button>
+        <button class="rec-audio-btn" type="button" data-text="${item.kana || ""}">▶</button>
       `;
       recBtn.addEventListener("click", () => openModal(item));
-      recBtn.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openModal(item);
-        }
-      });
       recommendationRow.appendChild(recBtn);
     });
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
   }
 
+  // ==================== CLOSE MODAL ====================
   function closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
@@ -515,27 +487,81 @@ if (isIOS()) {
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
-  modalClose.addEventListener("click", closeModal);
-  modalBackdrop.addEventListener("click", closeModal);
-  kanjiModal.addEventListener("click", (e) => {
-    if (!e.target.closest(".kanji-modal-content")) {
-      closeModal();
+  // ==================== RENDER SUPPORT POSTER ====================
+  function renderSupportPoster() {
+    grid.classList.add("support-mode");
+    grid.innerHTML = `
+      <section class="support-poster">
+        <h2>Dukung Pengembang</h2>
+        <p>Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
+        <p>Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.</p>
+        <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
+        <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+        <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn">Klik Disini</a>
+      </section>
+    `;
+    resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
+  }
+
+  // ==================== RENDER UTAMA ====================
+  function render() {
+    grid.classList.remove("support-mode");
+    grid.innerHTML = "";
+
+    if (viewMode === "support") {
+      renderSupportPoster();
+      return;
     }
-  });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-      closeSidebar();
+    const isExpressionView = viewMode === "vocab" &&
+      (safeCategory.value === "ekspresi" || selectedType === "ekspresi" ||
+       selectedType === "expression" || selectedType === "ungkapan umum");
+
+    if (isExpressionView) {
+      renderExpressionPoster();
+      return;
     }
-  });
 
-  let originalOverflow = '';
-  let originalPosition = '';
-  let originalTop = '';
-  let originalWidth = '';
-  let savedScrollPosition = 0;
+    if (viewMode.startsWith("letters:")) {
+      renderLetterPoster(viewMode.split(":")[1]);
+      return;
+    }
 
+    if (viewMode.startsWith("patterns:")) {
+      renderPatternPoster(viewMode.split(":")[1]);
+      return;
+    }
+
+    if (viewMode.startsWith("test:")) {
+      if (!testState.active) return;
+      renderCurrentTestQuestion();
+      return;
+    }
+
+    const words = getFilteredWords();
+    if (!words.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi ini.</div>';
+      resultInfo.textContent = "0 kata ditemukan";
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    words.forEach((word) => {
+      const cardButton = document.createElement("article");
+      cardButton.className = "card";
+      cardButton.dataset.word = JSON.stringify(word);
+      cardButton.innerHTML = cardImageTemplate(word);
+      cardButton.addEventListener("click", (e) => {
+        if (e.target.closest(".play-audio-btn")) return;
+        openModal(JSON.parse(cardButton.dataset.word));
+      });
+      fragment.appendChild(cardButton);
+    });
+    grid.appendChild(fragment);
+    resultInfo.textContent = `${words.length} kata ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
+  }
+
+  // ==================== SIDEBAR EVENT ====================
   hamburger.addEventListener("click", () => {
     const isActive = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", isActive);
@@ -556,8 +582,6 @@ if (isIOS()) {
     }
   });
 
-  overlay.addEventListener("click", closeSidebar);
-
   function closeSidebar() {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
@@ -570,384 +594,131 @@ if (isIOS()) {
     document.documentElement.style.overflow = '';
   }
 
-  grid.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-      return;
-    }
-  });
-
-  recommendationRow.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".rec-audio-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-    }
-  });
-
-  expandedCard.addEventListener("click", (event) => {
-    const audioButton = event.target.closest(".play-audio-btn");
-    if (audioButton) {
-      event.preventDefault();
-      event.stopPropagation();
-      speakWord(audioButton.dataset.text || "");
-    }
-  });
-
-  document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      viewMode = "vocab";
-      selectedLevel = button.dataset.level || "all";
-      selectedType = button.dataset.type || "all";
-      if (selectedType !== "all") category.value = selectedType;
-      search.value = "";
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".letter-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      viewMode = `letters:${button.dataset.script}`;
-      search.value = "";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".pattern-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level;
-      if (["N3", "N2", "N1"].includes(level)) {
-        openInfoModal("Mohon maaf, materi pola kalimat level ini sedang dalam proses pengembangan. Silakan kembali lagi nanti ✨");
-        closeSidebar();
-        return;
-      }
-      viewMode = `patterns:${level}`;
-      search.value = "";
-      category.value = "all";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".test-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level;
-      const kind = button.dataset.kind;
-      if (["N3", "N2", "N1"].includes(level)) {
-        openInfoModal("Mohon maaf, fitur test level ini masih dalam proses pengembangan. Silakan kembali lagi nanti ✨");
-        closeSidebar();
-        return;
-      }
-      startTest(level, kind);
-      closeSidebar();
-    });
-  });
+  overlay.addEventListener("click", closeSidebar);
 
   document.getElementById("logo")?.addEventListener("click", () => {
     selectedLevel = "all";
     selectedType = "all";
-    category.value = "all";
-    search.value = "";
     viewMode = "vocab";
     render();
   });
 
-  // Dukung Pengembang - listener
   document.getElementById("supportBtn").addEventListener("click", () => {
     viewMode = "support";
-    search.value = "";
-    category.value = "all";
     render();
     closeSidebar();
   });
 
-function renderSupportPoster() {
-  // Aktifkan mode khusus support (biar keluar dari grid layout)
-  grid.classList.add("support-mode");
+  // ==================== SEARCH MODAL ====================
+  const searchBtn = document.getElementById('searchBtn');
+  const searchModal = document.getElementById('searchModal');
+  const searchBackdrop = document.getElementById('searchBackdrop');
+  const searchModalClose = document.getElementById('searchModalClose');
+  const modalSearchInput = document.getElementById('modalSearchInput');
+  const grammarButtons = document.getElementById('grammarButtons');
+  const levelButtons = document.getElementById('levelButtons');
 
-grid.innerHTML = `
-    <section class="support-poster">
+  let currentSelectedType = null;
 
-      <h2>Dukung Pengembang</h2>
+  const grammarList = [
+    { name: "KATA KERJA GODAN",   type: "verb-godan" },
+    { name: "KATA KERJA ICHIDAN", type: "verb-ru" },
+    { name: "KATA KERJA SURU",    type: "verb-irregular" },
+    { name: "KATA SIFAT い",      type: "adj-i" },
+    { name: "KATA SIFAT な",      type: "adj-na" }
+  ];
 
-      <p>
-        Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
-        dan terbuka untuk semua pembelajar.
-      </p>
+  const levels = ["N5", "N4", "N3", "N2", "N1"];
 
-      <p>
-        Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
-        bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.
-      </p>
-
-      <p>
-        Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, 
-        memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.
-      </p>
-
-      <p>
-        Terima kasih telah menjadi bagian dari perjalanan ini.
-      </p>
-
-      <a 
-        href="https://sociabuzz.com/syncxcode/tribe"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="support-btn"
-      >
-        Klik Disini
-      </a>
-
-    </section>
-  `;
-
-  resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
-}
-  
-  function render() {
-
-    // RESET SUPPORT MODE tiap render
-    grid.classList.remove("support-mode");
-    grid.innerHTML = "";
-
-    // Mode dukungan pengembang
-    if (viewMode === "support") {
-      renderSupportPoster();
-      return;
-    }
-
-    // Mode ungkapan umum
-    const isExpressionView =
-      viewMode === "vocab" &&
-      (category.value === "ekspresi" ||
-       selectedType === "ekspresi" ||
-       selectedType === "expression" ||
-       selectedType === "ungkapan umum");
-    if (isExpressionView) {
-      renderExpressionPoster();
-      return;
-    }
-
-    // Mode huruf (hiragana/katakana)
-    if (viewMode.startsWith("letters:")) {
-      renderLetterPoster(viewMode.split(":")[1]);
-      return;
-    }
-
-    // Mode pola kalimat
-    if (viewMode.startsWith("patterns:")) {
-      renderPatternPoster(viewMode.split(":")[1]);
-      return;
-    }
-
-    // Mode test
-    if (viewMode.startsWith("test:")) {
-      if (!testState.active) return;
-      renderCurrentTestQuestion();
-      return;
-    }
-
-    // Mode vocab normal
-    const words = getFilteredWords();
-    if (!words.length) {
-      grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
-      resultInfo.textContent = "0 kata ditemukan";
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-    words.forEach((word) => {
-      const cardButton = document.createElement("article");
-      cardButton.className = "card";
-      cardButton.setAttribute("role", "button");
-      cardButton.setAttribute("tabindex", "0");
-      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
-      try {
-        cardButton.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal menyimpan data word:", word);
-        return;
-      }
-      cardButton.innerHTML = cardImageTemplate(word);
-      cardButton.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return;
-        try {
-          const storedWord = JSON.parse(cardButton.dataset.word);
-          openModal(storedWord);
-        } catch (err) {
-          console.error("Gagal membaca data kartu:", err);
-        }
+  function createGrammarButtons() {
+    grammarButtons.innerHTML = "";
+    grammarList.forEach(item => {
+      const btn = document.createElement("button");
+      btn.className = "grammar-btn";
+      btn.textContent = item.name;
+      btn.addEventListener("click", () => {
+        document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentSelectedType = item.type;
       });
-      cardButton.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          try {
-            const storedWord = JSON.parse(cardButton.dataset.word);
-            openModal(storedWord);
-          } catch (err) {
-            console.error("Gagal membaca data kartu (keyboard):", err);
-          }
-        }
-      });
-      fragment.appendChild(cardButton);
+      grammarButtons.appendChild(btn);
     });
-    grid.appendChild(fragment);
-    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
-    resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
   }
 
-  category.addEventListener("change", () => {
-    viewMode = "vocab";
-    selectedType = "all";
-    render();
-  });
-
-  search.addEventListener("input", () => {
-    viewMode = "vocab";
-    render();
-  });
-
-  // Render awal aplikasi
-  render();
-});
-// ===================== FIX NULL ELEMENT (karena header baru) =====================
-const search = document.getElementById('search') || { value: '', addEventListener: () => {} };
-const category = document.getElementById('category') || { value: 'all', addEventListener: () => {} };
-// ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
-if (document.documentElement.classList.contains('ios-device')) {
-  console.log('🔧 Force close sidebar on iOS initial load');
-  
-  sidebar.classList.remove("active");
-  overlay.classList.remove("active");
-  hamburger.setAttribute("aria-expanded", "false");
-  
-  // Reset scroll lock
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-}
-
-                          // ===================== SEARCH MODAL COMPACT - START FROM ZERO =====================
-const searchBtn = document.getElementById('searchBtn');
-const searchModal = document.getElementById('searchModal');
-const searchBackdrop = document.getElementById('searchBackdrop');
-const searchModalClose = document.getElementById('searchModalClose');
-const modalSearchInput = document.getElementById('modalSearchInput');
-const grammarButtons = document.getElementById('grammarButtons');
-const levelButtons = document.getElementById('levelButtons');
-
-let currentSelectedType = null;   // untuk tracking kategori yang dipilih
-
-const grammarList = [
-  { name: "KATA KERJA GODAN",   type: "verb-godan" },
-  { name: "KATA KERJA ICHIDAN", type: "verb-ru" },
-  { name: "KATA KERJA SURU",    type: "verb-irregular" },
-  { name: "KATA SIFAT い",      type: "adj-i" },
-  { name: "KATA SIFAT な",      type: "adj-na" }
-];
-
-const levels = ["N5", "N4", "N3", "N2", "N1"];
-
-// Buat button kategori
-function createGrammarButtons() {
-  grammarButtons.innerHTML = "";
-  grammarList.forEach(item => {
-    const btn = document.createElement("button");
-    btn.className = "grammar-btn";
-    btn.textContent = item.name;
-    btn.addEventListener("click", () => {
-      // Highlight hanya satu
-      document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentSelectedType = item.type;
+  function createLevelButtons() {
+    levelButtons.innerHTML = "";
+    levels.forEach(lvl => {
+      const btn = document.createElement("button");
+      btn.className = "level-btn";
+      btn.textContent = lvl;
+      btn.addEventListener("click", () => {
+        if (!currentSelectedType) {
+          alert("Pilih kategori grammar dulu ya!");
+          return;
+        }
+        selectedType = currentSelectedType;
+        selectedLevel = lvl;
+        safeSearch.value = "";
+        if (modalSearchInput) modalSearchInput.value = "";
+        render();
+        const count = getFilteredWords().length;
+        if (resultInfo) {
+          const catName = grammarList.find(g => g.type === currentSelectedType).name;
+          resultInfo.textContent = `${count} ${catName} ${lvl} ditemukan`;
+        }
+        closeSearchModal();
+      });
+      levelButtons.appendChild(btn);
     });
-    grammarButtons.appendChild(btn);
-  });
-}
+  }
 
-// Buat button level (shared)
-function createLevelButtons() {
-  levelButtons.innerHTML = "";
-  levels.forEach(lvl => {
-    const btn = document.createElement("button");
-    btn.className = "level-btn";
-    btn.textContent = lvl;
-    btn.addEventListener("click", () => {
-      if (!currentSelectedType) {
-        alert("Pilih kategori grammar dulu ya!");
-        return;
+  function openSearchModal() {
+    searchModal.classList.add("active");
+    if (modalSearchInput) modalSearchInput.focus();
+    currentSelectedType = null;
+    document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
+  }
+
+  function closeSearchModal() {
+    searchModal.classList.remove("active");
+  }
+
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      if (!grammarButtons.hasChildNodes()) {
+        createGrammarButtons();
+        createLevelButtons();
       }
-      
-      // Apply filter
-      selectedType = currentSelectedType;
-      selectedLevel = lvl;
-      if (search) search.value = "";
-      if (modalSearchInput) modalSearchInput.value = "";
+      openSearchModal();
+    });
+  }
 
+  if (searchModalClose) searchModalClose.addEventListener("click", closeSearchModal);
+  if (searchBackdrop) searchBackdrop.addEventListener("click", closeSearchModal);
+
+  if (modalSearchInput) {
+    modalSearchInput.addEventListener("input", () => {
+      safeSearch.value = modalSearchInput.value;
       render();
-
-      const count = getFilteredWords().length;
-      if (resultInfo) {
-        const catName = grammarList.find(g => g.type === currentSelectedType).name;
-        resultInfo.textContent = `${count} ${catName} ${lvl} ditemukan`;
-      }
-
-      closeSearchModal();
     });
-    levelButtons.appendChild(btn);
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && searchModal && searchModal.classList.contains("active")) {
+      closeSearchModal();
+    }
   });
-}
 
-// Open & Close
-function openSearchModal() {
-  searchModal.classList.add("active");
-  modalSearchInput.focus();
-  currentSelectedType = null;
-  // Reset highlight
-  document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
-}
+  // ==================== FORCE CLOSE iOS & RENDER AWAL ====================
+  if (document.documentElement.classList.contains('ios-device')) {
+    console.log('🔧 Force close sidebar on iOS initial load');
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    if (hamburger) hamburger.setAttribute("aria-expanded", "false");
+  }
 
-function closeSearchModal() {
-  searchModal.classList.remove("active");
-}
-
-// Event listeners
-searchBtn.addEventListener("click", openSearchModal);
-searchModalClose.addEventListener("click", closeSearchModal);
-searchBackdrop.addEventListener("click", closeSearchModal);
-
-modalSearchInput.addEventListener("input", () => {
-  if (search) search.value = modalSearchInput.value;
+  console.log("✅ Force initial render - Kanji card siap");
   render();
 });
 
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape" && searchModal.classList.contains("active")) closeSearchModal();
-});
-
-// Init saat pertama kali buka modal
-searchBtn.addEventListener("click", () => {
-  if (!grammarButtons.hasChildNodes()) {
-    createGrammarButtons();
-    createLevelButtons();
-  }
-  openSearchModal();
-});
-
-console.log("✅ Search Modal Compact siap (mulai dari nol)");
-// ===================== FORCE INITIAL RENDER =====================
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("✅ Force initial render");
-  if (typeof render === "function") {
-    render();
-  }
-});
+console.log("✅ FULL app.js sudah ditulis ulang lengkap - siap dipakai");

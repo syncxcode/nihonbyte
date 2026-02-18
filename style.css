@@ -1383,98 +1383,81 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 /* =============================================
-   MOBILE HEADER v4 FINAL - Icon Search Kanan + Full Width Expand
+   MOBILE HEADER v5 FINAL - Logo Kiri + Hamburger Visible + Search Kanan
    ============================================= */
 
 @media (max-width: 767px) {
-  /* Topbar jadi flex biar icon search bisa di paling kanan */
   .topbar {
     display: flex !important;
-    align-items: center;
-    justify-content: space-between !important;
+    align-items: center !important;
     padding: 12px 16px !important;
-    gap: 12px;
+    gap: 14px !important;
+    background: #fce7f3 !important;
   }
 
-  /* Kiri: Hamburger + Logo tetap rapi */
-  .hamburger,
-  .branding {
-    display: flex;
-    align-items: center;
+  /* Kiri: Hamburger + Logo rapat */
+  .hamburger {
+    color: #1f2937 !important;     /* warna hitam gelap biar kelihatan */
+    font-size: 28px !important;    /* lebih besar & jelas */
+    padding: 6px 10px;
+    margin-right: 4px !important;
+    z-index: 10;
   }
 
-  /* Icon search selalu paling kanan */
+  .branding,
+  .branding img {
+    height: 42px !important;
+  }
+
+  /* Push search icon ke paling kanan */
   .mobile-search-btn {
     margin-left: auto !important;
-    display: flex !important;
-    width: 44px;
-    height: 44px;
-    background: #ffffff;
+    width: 46px !important;
+    height: 46px !important;
+    background: #ffffff !important;
     border: none;
-    border-radius: 50%;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    border-radius: 50% !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.14) !important;
+    display: flex !important;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
   }
 
   .mobile-search-btn:active {
     transform: scale(0.92);
   }
 
-  /* Sembunyikan controls & result normal di mobile */
+  /* Sembunyikan yang tidak perlu di closed state */
   .controls,
   #resultInfo {
     display: none !important;
   }
 }
 
-/* EXPANDED STATE - Full width dari kiri ke kanan (tidak mepet kanan) */
+/* Expanded Search (tetap full width kiri-kanan) */
 .topbar.search-open {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
 }
 
 .topbar.search-open .controls {
   display: flex !important;
   flex-direction: row !important;
   gap: 12px !important;
-  padding: 16px 16px 12px !important;   /* padding kiri & kanan 16px biar tidak mepet */
+  padding: 16px !important;
   position: absolute;
   top: 100%;
   left: 0;
   width: 100% !important;
   background: #ffffff;
   border-bottom: 1px solid #f3e8ff;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   z-index: 49;
 }
 
-.topbar.search-open #category {
-  flex: 0 0 138px !important;   /* dropdown tetap proporsional */
-  min-width: 0;
-}
-
-.topbar.search-open #search {
-  flex: 1 1 auto !important;    /* search ambil sisa ruang → full fill */
-  min-width: 0;
-  font-size: 1.05rem;
-  padding: 14px 18px;
-}
+.topbar.search-open #category { flex: 0 0 138px !important; }
+.topbar.search-open #search   { flex: 1 !important; }
 
 .topbar.search-open #resultInfo {
   display: block !important;
   padding: 0 16px 12px;
   font-size: 0.85rem;
-  color: #6b7280;
-}
-
-/* Desktop tetap seperti biasa (tidak berubah) */
-@media (min-width: 768px) {
-  .mobile-search-btn,
-  .topbar.search-open .controls {
-    display: none !important;
-  }
-  .controls { 
-    display: grid !important; 
-  }
 }

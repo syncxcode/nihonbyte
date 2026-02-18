@@ -13,18 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-  // ==================== MODAL FILTER FINAL - SUPER CLEAN ====================
-  const searchBtn = document.getElementById("searchBtn");
-  const filterModal = document.getElementById("filterModal");
-  const filterBackdrop = document.getElementById("filterBackdrop");
-  const filterModalClose = document.getElementById("filterModalClose");
-  const modalSearchInput = document.getElementById("modalSearchInput");
-  const applyFilterBtn = document.getElementById("applyFilterBtn");
-  const resetFilterBtn = document.getElementById("resetFilterBtn");
+// ==================== MODAL FILTER FINAL - BACKDROP BISA KLIK + ESTETIS ======================
+const searchBtn = document.getElementById("searchBtn");
+const filterModal = document.getElementById("filterModal");
+const filterBackdrop = document.getElementById("filterBackdrop");
+const filterModalClose = document.getElementById("filterModalClose");
+const modalSearchInput = document.getElementById("modalSearchInput");
+const applyFilterBtn = document.getElementById("applyFilterBtn");
+const resetFilterBtn = document.getElementById("resetFilterBtn");
 
 if (searchBtn && filterModal) {
   let bodyScrollY = 0;
 
+  // === OPEN MODAL ===
   searchBtn.addEventListener("click", () => {
     bodyScrollY = window.scrollY;
     document.body.style.overflow = "hidden";
@@ -37,6 +38,7 @@ if (searchBtn && filterModal) {
     if (modalSearchInput) modalSearchInput.focus();
   });
 
+  // === FUNCTION CLOSE ===
   function closeFilterModal() {
     filterModal.classList.remove("active");
     filterModal.setAttribute("aria-hidden", "true");
@@ -48,8 +50,9 @@ if (searchBtn && filterModal) {
     window.scrollTo(0, bodyScrollY);
   }
 
-  filterBackdrop.addEventListener("click", closeFilterModal);
-  filterModalClose.addEventListener("click", closeFilterModal);
+  // === BACKDROP + CLOSE BUTTON (INI YANG PENTING) ===
+  if (filterBackdrop) filterBackdrop.addEventListener("click", closeFilterModal);
+  if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
 
   // Level buttons
   document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
@@ -67,7 +70,7 @@ if (searchBtn && filterModal) {
     });
   });
 
-  // Apply
+  // Apply Filter
   if (applyFilterBtn) {
     applyFilterBtn.addEventListener("click", () => {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";

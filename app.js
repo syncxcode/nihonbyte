@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-// ==================== NEW FILTER MODAL (FINAL FIXED) ====================
+// ==================== MODAL FILTER FINAL (LEBAR + NO SCROLL) ====================
 const searchBtn = document.getElementById("searchBtn");
 const filterModal = document.getElementById("filterModal");
 const filterBackdrop = document.getElementById("filterBackdrop");
@@ -23,11 +23,23 @@ const applyFilterBtn = document.getElementById("applyFilterBtn");
 const resetFilterBtn = document.getElementById("resetFilterBtn");
 
 if (searchBtn && filterModal) {
-  let originalBodyOverflow = '';
+  let originalBodyStyle = {};
 
   searchBtn.addEventListener("click", () => {
-    originalBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';           // LOCK SCROLL
+    // SAVE ORIGINAL STYLE
+    originalBodyStyle = {
+      overflow: document.body.style.overflow,
+      position: document.body.style.position,
+      width: document.body.style.width,
+      top: document.body.style.top
+    };
+
+    // LOCK SCROLL BODY + HTML (paling kuat)
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.top = `-${window.scrollY}px`;
 
     filterModal.classList.add("active");
     filterModal.setAttribute("aria-hidden", "false");
@@ -37,14 +49,20 @@ if (searchBtn && filterModal) {
   function closeFilterModal() {
     filterModal.classList.remove("active");
     filterModal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = originalBodyOverflow; // RESTORE SCROLL
+
+    // RESTORE SCROLL
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = originalBodyStyle.overflow || '';
+    document.body.style.position = originalBodyStyle.position || '';
+    document.body.style.width = originalBodyStyle.width || '';
+    document.body.style.top = originalBodyStyle.top || '';
+    window.scrollTo(0, parseInt(originalBodyStyle.top || 0) * -1);
   }
 
-  // Klik backdrop = close
   filterBackdrop.addEventListener("click", closeFilterModal);
   filterModalClose.addEventListener("click", closeFilterModal);
 
-  // Level & Kategori button (tetap sama)
+  // Level & Category (tetap sama)
   document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
@@ -59,7 +77,6 @@ if (searchBtn && filterModal) {
     });
   });
 
-  // Apply & Reset (tetap sama seperti sebelumnya)
   if (applyFilterBtn) {
     applyFilterBtn.addEventListener("click", () => {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
@@ -68,7 +85,6 @@ if (searchBtn && filterModal) {
       selectedLevel = activeLevel;
       selectedType = activeType;
       viewMode = "vocab";
-
       if (modalSearchInput) search.value = modalSearchInput.value.trim();
 
       closeFilterModal();
@@ -76,6 +92,22 @@ if (searchBtn && filterModal) {
     });
   }
 
+  if (resetFilterBtn) {
+    resetFilterBtn.addEventListener("click", () => {
+      selectedLevel = "all";
+      selectedType = "all";
+      if (search) search.value = "";
+      if (modalSearchInput) modalSearchInput.value = "";
+
+      document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('[data-level="all"]').classList.add("active");
+
+      closeFilterModal();
+      render();
+    });
+  }
+}
+  
   if (resetFilterBtn) {
     resetFilterBtn.addEventListener("click", () => {
       selectedLevel = "all";

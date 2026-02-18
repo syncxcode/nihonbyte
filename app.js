@@ -800,3 +800,31 @@ grid.innerHTML = `
   // Render awal aplikasi
   render();
 });
+
+// ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SAFARI IOS =====
+if (document.documentElement.classList.contains('ios-device')) {
+  console.log('🔧 NihonByte iOS: Force close sidebar on initial load');
+
+  // Pastikan tertutup 100%
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  hamburger.setAttribute("aria-expanded", "false");
+
+  // Reset scroll lock (jaga-jaga)
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+  
+  // Extra safety untuk Safari (disable transition sebentar)
+  const originalTransitionSidebar = sidebar.style.transition;
+  const originalTransitionOverlay = overlay.style.transition;
+  
+  sidebar.style.transition = 'none';
+  overlay.style.transition = 'none';
+  
+  setTimeout(() => {
+    sidebar.style.transition = originalTransitionSidebar;
+    overlay.style.transition = originalTransitionOverlay;
+  }, 150);
+}

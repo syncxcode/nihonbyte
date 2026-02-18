@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-// ==================== MODAL FILTER FINAL - BACKDROP BISA KLIK + ESTETIS ======================
+// ==================== MODAL FILTER FINAL - TOGGLE + BACKDROP FIX ======================
 const searchBtn = document.getElementById("searchBtn");
 const filterModal = document.getElementById("filterModal");
 const filterBackdrop = document.getElementById("filterBackdrop");
@@ -25,7 +25,6 @@ const resetFilterBtn = document.getElementById("resetFilterBtn");
 if (searchBtn && filterModal) {
   let bodyScrollY = 0;
 
-  // === OPEN MODAL ===
   searchBtn.addEventListener("click", () => {
     bodyScrollY = window.scrollY;
     document.body.style.overflow = "hidden";
@@ -38,7 +37,6 @@ if (searchBtn && filterModal) {
     if (modalSearchInput) modalSearchInput.focus();
   });
 
-  // === FUNCTION CLOSE ===
   function closeFilterModal() {
     filterModal.classList.remove("active");
     filterModal.setAttribute("aria-hidden", "true");
@@ -50,19 +48,37 @@ if (searchBtn && filterModal) {
     window.scrollTo(0, bodyScrollY);
   }
 
-  // === BACKDROP + CLOSE BUTTON (INI YANG PENTING) ===
+  // BACKDROP + CLOSE BUTTON (VERSI PALING KUAT)
   if (filterBackdrop) filterBackdrop.addEventListener("click", closeFilterModal);
   if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
 
-  // Level buttons
-  document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
+  // ==================== TOGGLE LEVEL (klik lagi = lepas) ====================
+  const levelBtns = document.querySelectorAll("#levelGrid .level-btn");
+
+  levelBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+      const isAll = btn.dataset.level === "all";
+
+      if (isAll) {
+        // Klik Semua Level → matikan semua level spesifik
+        levelBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      } else {
+        // Klik level spesifik (N5, N4, dst)
+        if (btn.classList.contains("active")) {
+          // Klik lagi = lepas pilihan → kembali ke Semua Level
+          btn.classList.remove("active");
+          document.querySelector('[data-level="all"]').classList.add("active");
+        } else {
+          // Pilih level ini, matikan yang lain
+          levelBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
+      }
     });
   });
 
-  // Category buttons
+  // Category tetap seperti biasa (tidak perlu toggle)
   document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
@@ -70,7 +86,7 @@ if (searchBtn && filterModal) {
     });
   });
 
-  // Apply Filter
+  // Apply
   if (applyFilterBtn) {
     applyFilterBtn.addEventListener("click", () => {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
@@ -95,8 +111,7 @@ if (searchBtn && filterModal) {
       if (modalSearchInput) modalSearchInput.value = "";
 
       document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-      const allBtn = document.querySelector('[data-level="all"]');
-      if (allBtn) allBtn.classList.add("active");
+      document.querySelector('[data-level="all"]').classList.add("active");
 
       closeFilterModal();
       render();

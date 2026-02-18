@@ -43,7 +43,7 @@ if (isIOS()) {
 }
 
   
-  let selectedLevel = "all";
+  let selectedLevel = "";
   let selectedType = "all";
   let viewMode = "vocab";
 
@@ -202,21 +202,29 @@ if (isIOS()) {
   }
 
   function getFilteredWords() {
-    const key = (search.value || "").toLowerCase().trim();
-    const selectedFromDropdown = category.value;
-    return vocabularyData.filter((word) => {
-      if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
-      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
-      const text = [
-        word.kanji || "",
-        word.kana || "",
-        word.romaji || "",
-        word.meaning || ""
-      ].join("").toLowerCase();
-      return !key || text.includes(key);
-    });
-  }
+  const key = (search.value || tempSearch || "").toLowerCase().trim();
+
+  return vocabularyData.filter((word) => {
+    // Hanya izinkan tipe yang diizinkan di popup (5 kategori + all)
+    const allowedTypes = ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"];
+    if (selectedType !== "all" && !allowedTypes.includes(selectedType)) return false;
+    if (!matchType(word.type, selectedType)) return false;
+
+    if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
+
+    if (key) {
+      const targets = [
+        word.kanji?.toLowerCase() || "",
+        word.kana?.toLowerCase() || "",
+        word.romaji?.toLowerCase() || "",
+        ...(word.meaning || []).map(m => m.toLowerCase())
+      ].join(" ");
+      if (!targets.includes(key)) return false;
+    }
+
+    return true;
+  });
+}
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
@@ -833,3 +841,67 @@ if (document.documentElement.classList.contains('ios-device')) {
   document.body.style.overflow = '';
   document.documentElement.style.overflow = '';
 }
+
+// Buka modal search
+document.getElementById("searchTrigger").addEventListener("click", () => {
+  document.getElementById("searchFilterModal").classList.add("active");
+  document.getElementById("searchFilterModal").setAttribute("aria-hidden", "false");
+
+  // Pre-fill dari filter saat ini
+  document.getElementById("modalSearch").value = search.value;
+  document.getElementById("modalLevel").value = selectedLevel;
+
+  // Highlight kategori yang sedang aktif
+  document.querySelectorAll(".category-tile").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.type === selectedType);
+  });
+});
+
+// Tutup modal
+document.getElementById("searchModalClose").addEventListener("click", closeSearchModal);
+document.getElementById("searchBackdrop").addEventListener("click", closeSearchModal);
+
+function closeSearchModal() {
+  document.getElementById("searchFilterModal").classList.remove("active");
+  document.getElementById("searchFilterModal").setAttribute("aria-hidden", "true");
+}
+
+// Pilih kategori (toggle active)
+document.querySelectorAll(".category-tile").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".category-tile").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    tempType = btn.dataset.type;
+  });
+});
+
+// Terapkan filter
+document.getElementById("applyFilter").addEventListener("click", () => {
+  tempSearch = document.getElementById("modalSearch").value.trim();
+  tempLevel = document.getElementById("modalLevel").value;
+
+  // Update state global
+  search.value = tempSearch;
+  selectedLevel = tempLevel;
+  selectedType = tempType;
+
+  // Reset ke mode vocab normal
+  viewMode = "vocab";
+
+  // Update dropdown lama (untuk kompatibilitas)
+  category.value = tempType === "all" ? "all" : tempType;
+
+  render();
+  closeSearchModal();
+});
+
+// Logo reset tetap sama
+document.getElementById("logo").addEventListener("click", () => {
+  selectedLevel = "all";
+  selectedType = "all";
+  category.value = "all";
+  search.value = "";
+  tempSearch = tempLevel = tempType = "all";
+  viewMode = "vocab";
+  render();
+});

@@ -13,6 +13,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
+// === MOBILE SEARCH ICON + EXPAND ===
+  const topbar = document.getElementById('topbar') || document.querySelector('.topbar');
+  const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+  const searchInput = document.getElementById('search');
+
+// Toggle search open
+  mobileSearchBtn.addEventListener('click', () => {
+    topbar.classList.toggle('search-open');
+    if (topbar.classList.contains('search-open')) {
+      setTimeout(() => searchInput.focus(), 50);   // auto focus
+    }
+  });
+
+// Close saat klik di luar (optional, biar lebih user-friendly)
+document.addEventListener('click', (e) => {
+    if (topbar.classList.contains('search-open') && 
+        !topbar.contains(e.target) && 
+        e.target !== mobileSearchBtn) {
+      topbar.classList.remove('search-open');
+    }
+  });
+
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";

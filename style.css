@@ -1451,3 +1451,146 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 .ios-device #grid {
   contain: layout style paint;
 }
+
+/* HEADER FACEBOOK STYLE */
+/* SEARCH ICON BUTTON - FACEBOOK STYLE + SVG */
+.search-icon-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #1f2937;               /* warna stroke SVG otomatis ikut ini */
+}
+
+.search-icon-btn:hover {
+  background: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.search-icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* SVG styling */
+.search-svg {
+  transition: stroke 0.2s ease;
+}
+
+.search-icon-btn:hover .search-svg {
+  stroke: #ff4d6d;              /* hover jadi pink cantik sesuai tema NihonByte */
+}
+
+/* MODAL POSTER BESAR (2x expression card) */
+.filter-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.filter-modal.active {
+  display: flex;
+}
+
+.filter-modal-content {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.filter-modal-header {
+  background: #ffcddb;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.filter-modal-header h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 1.35rem;
+}
+
+.modal-search-input {
+  width: 90%;
+  margin: 20px auto;
+  display: block;
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #ffcddb;
+  border-radius: 999px;
+  outline: none;
+}
+
+.filter-section {
+  padding: 0 24px 20px;
+}
+
+.filter-section h4 {
+  margin: 0 0 12px 4px;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.level-grid, .category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.level-btn, .cat-btn {
+  padding: 14px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.level-btn.active,
+.cat-btn.active {
+  background: #ffcddb;
+  border-color: #ff4d6d;
+  color: #1f2937;
+}
+
+.apply-filter-btn {
+  background: #ff4d6d;
+  color: white;
+  width: 100%;
+  margin: 10px 24px 0;
+  padding: 16px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.reset-filter-btn {
+  background: transparent;
+  color: #6b7280;
+  width: 100%;
+  margin: 8px 24px 0;
+  padding: 14px;
+  border: none;
+  font-size: 1rem;
+}

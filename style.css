@@ -1659,3 +1659,46 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 }
 
+/* =========================================
+   FIX POSISI SEARCH KE UJUNG KANAN (MOBILE)
+========================================= */
+
+@media (max-width: 768px) {
+  .topbar {
+    /* Ubah ke Flexbox agar pengaturan jarak lebih fleksibel */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    
+    /* Jarak antara Hamburger (garis tiga) dengan Logo */
+    gap: 15px !important; 
+  }
+
+  /* 1. Hamburger tetap di kiri */
+  .hamburger {
+    flex-shrink: 0; /* Mencegah ikon gepeng */
+  }
+
+  /* 2. Logo tetap di kiri (setelah hamburger) */
+  .branding {
+    flex-shrink: 0;
+    margin-right: 0 !important;
+  }
+
+  /* 3. Search Icon (Controls) DIDORONG ke Kanan Mentok */
+  .controls {
+    /* "margin-left: auto" adalah kuncinya! */
+    /* Ini akan memakan semua ruang kosong di tengah dan mendorong Search ke kanan */
+    margin-left: auto !important; 
+    
+    display: flex !important;
+    justify-content: flex-end !important;
+    
+    /* Pastikan lebarnya tidak maksa full, tapi menyesuaikan isi (ikon search) */
+    width: auto !important; 
+    
+    /* Reset properti Grid lama agar tidak bentrok */
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}

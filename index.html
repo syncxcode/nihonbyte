@@ -133,31 +133,18 @@
     <span></span><span></span><span></span>
   </button>
 
-  <!-- LOGO (klik = reset filter) -->
+  <!-- LOGO -->
   <div class="branding">
-    <img id="logo" src="./assets/favicon.webp" alt="日本の世界" title="Klik untuk reset filter">
+    <img id="logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
   </div>
 
-  <div class="controls">
-    <select id="category" aria-label="Filter kategori">
-      <option value="all">Semua</option>
-      
-      <optgroup label="KATA KERJA">
-        <option value="verb-godan">KATA KERJA GODAN</option>
-        <option value="verb-ru">KATA KERJA ICHIDAN</option>
-        <option value="verb-irregular">KATA KERJA SURU</option>
-      </optgroup>
-      
-      <optgroup label="KATA SIFAT">
-        <option value="adj-i">KATA SIFAT い</option>
-        <option value="adj-na">KATA SIFAT な</option>
-      </optgroup>
-    </select>
-
-    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
-  </div>
-
-  <p id="resultInfo" class="result-info"></p>
+  <!-- SEARCH ICON (SVG PROFESSIONAL) -->
+  <button id="searchIconBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
+    <svg xmlns="http://www.w3.org/2000/svg" class="search-svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
 </header>
 
 <main id="grid"></main>

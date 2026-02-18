@@ -13,33 +13,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-// ==================== MODAL FILTER FINAL (LEBAR + NO SCROLL) ====================
-const searchBtn = document.getElementById("searchBtn");
-const filterModal = document.getElementById("filterModal");
-const filterBackdrop = document.getElementById("filterBackdrop");
-const filterModalClose = document.getElementById("filterModalClose");
-const modalSearchInput = document.getElementById("modalSearchInput");
-const applyFilterBtn = document.getElementById("applyFilterBtn");
-const resetFilterBtn = document.getElementById("resetFilterBtn");
+  // ==================== MODAL FILTER FINAL - SUPER CLEAN ====================
+  const searchBtn = document.getElementById("searchBtn");
+  const filterModal = document.getElementById("filterModal");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
 
 if (searchBtn && filterModal) {
-  let originalBodyStyle = {};
+  let bodyScrollY = 0;
 
   searchBtn.addEventListener("click", () => {
-    // SAVE ORIGINAL STYLE
-    originalBodyStyle = {
-      overflow: document.body.style.overflow,
-      position: document.body.style.position,
-      width: document.body.style.width,
-      top: document.body.style.top
-    };
-
-    // LOCK SCROLL BODY + HTML (paling kuat)
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-    document.body.style.top = `-${window.scrollY}px`;
+    bodyScrollY = window.scrollY;
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    document.body.style.top = `-${bodyScrollY}px`;
 
     filterModal.classList.add("active");
     filterModal.setAttribute("aria-hidden", "false");
@@ -50,19 +41,17 @@ if (searchBtn && filterModal) {
     filterModal.classList.remove("active");
     filterModal.setAttribute("aria-hidden", "true");
 
-    // RESTORE SCROLL
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = originalBodyStyle.overflow || '';
-    document.body.style.position = originalBodyStyle.position || '';
-    document.body.style.width = originalBodyStyle.width || '';
-    document.body.style.top = originalBodyStyle.top || '';
-    window.scrollTo(0, parseInt(originalBodyStyle.top || 0) * -1);
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.width = "";
+    document.body.style.top = "";
+    window.scrollTo(0, bodyScrollY);
   }
 
   filterBackdrop.addEventListener("click", closeFilterModal);
   filterModalClose.addEventListener("click", closeFilterModal);
 
-  // Level & Category (tetap sama)
+  // Level buttons
   document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
@@ -70,6 +59,7 @@ if (searchBtn && filterModal) {
     });
   });
 
+  // Category buttons
   document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
@@ -77,6 +67,7 @@ if (searchBtn && filterModal) {
     });
   });
 
+  // Apply
   if (applyFilterBtn) {
     applyFilterBtn.addEventListener("click", () => {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
@@ -92,6 +83,7 @@ if (searchBtn && filterModal) {
     });
   }
 
+  // Reset
   if (resetFilterBtn) {
     resetFilterBtn.addEventListener("click", () => {
       selectedLevel = "all";
@@ -100,23 +92,8 @@ if (searchBtn && filterModal) {
       if (modalSearchInput) modalSearchInput.value = "";
 
       document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('[data-level="all"]').classList.add("active");
-
-      closeFilterModal();
-      render();
-    });
-  }
-}
-  
-  if (resetFilterBtn) {
-    resetFilterBtn.addEventListener("click", () => {
-      selectedLevel = "all";
-      selectedType = "all";
-      if (search) search.value = "";
-      if (modalSearchInput) modalSearchInput.value = "";
-
-      document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('[data-level="all"]').classList.add("active");
+      const allBtn = document.querySelector('[data-level="all"]');
+      if (allBtn) allBtn.classList.add("active");
 
       closeFilterModal();
       render();

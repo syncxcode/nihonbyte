@@ -1382,33 +1382,25 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 }
 
-/* ===================== IOS OPTIMIZER - FIX AUTO-OPEN (Versi 2.0) ===================== */
-.ios-device #sidebar {
-  height: 100dvh !important;                    /* dynamic viewport */
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.ios-device #sidebar.active {
-  transform: translate3d(0, 0, 0) !important;   /* hanya saat active */
-  -webkit-transform: translate3d(0, 0, 0) !important;
-}
-
+/* ===================== iOS SAFE MODE (ANTI CRASH) - Hanya berlaku di iOS ===================== */
 .ios-device #overlay {
-  backdrop-filter: blur(1.5px) !important;
-  -webkit-backdrop-filter: blur(1.5px) !important;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  contain: layout paint;
-  isolation: isolate;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.78) !important;   /* solid gelap biar tetap cantik */
 }
 
-.ios-device #overlay.active,
+.ios-device #sidebar {
+  height: 100dvh !important;                    /* dynamic viewport, lebih stabil di iOS */
+  will-change: auto !important;                 /* matikan GPU heavy */
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+}
+
 .ios-device #sidebar.active {
-  will-change: transform, opacity;
+  transform: translateX(0) !important;
 }
 
+/* Smooth scroll iOS */
 .ios-device body {
   -webkit-overflow-scrolling: touch;
 }

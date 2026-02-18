@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-  // ==================== NEW FILTER MODAL (FIXED - ID MATCH) ====================
-const searchBtn = document.getElementById("searchBtn");        // ← ini yang penting, match dengan HTML
+// ==================== NEW FILTER MODAL (FINAL FIXED) ====================
+const searchBtn = document.getElementById("searchBtn");
 const filterModal = document.getElementById("filterModal");
 const filterBackdrop = document.getElementById("filterBackdrop");
 const filterModalClose = document.getElementById("filterModalClose");
@@ -22,26 +22,29 @@ const modalSearchInput = document.getElementById("modalSearchInput");
 const applyFilterBtn = document.getElementById("applyFilterBtn");
 const resetFilterBtn = document.getElementById("resetFilterBtn");
 
-// SAFE GUARD - biar tidak crash lagi meski ada yang kurang
 if (searchBtn && filterModal) {
+  let originalBodyOverflow = '';
 
   searchBtn.addEventListener("click", () => {
+    originalBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';           // LOCK SCROLL
+
     filterModal.classList.add("active");
     filterModal.setAttribute("aria-hidden", "false");
     if (modalSearchInput) modalSearchInput.focus();
   });
 
   function closeFilterModal() {
-    if (filterModal) {
-      filterModal.classList.remove("active");
-      filterModal.setAttribute("aria-hidden", "true");
-    }
+    filterModal.classList.remove("active");
+    filterModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = originalBodyOverflow; // RESTORE SCROLL
   }
 
-  if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
-  if (filterBackdrop) filterBackdrop.addEventListener("click", closeFilterModal);
+  // Klik backdrop = close
+  filterBackdrop.addEventListener("click", closeFilterModal);
+  filterModalClose.addEventListener("click", closeFilterModal);
 
-  // Level buttons
+  // Level & Kategori button (tetap sama)
   document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
@@ -49,7 +52,6 @@ if (searchBtn && filterModal) {
     });
   });
 
-  // Category buttons
   document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
@@ -57,7 +59,7 @@ if (searchBtn && filterModal) {
     });
   });
 
-  // Apply
+  // Apply & Reset (tetap sama seperti sebelumnya)
   if (applyFilterBtn) {
     applyFilterBtn.addEventListener("click", () => {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
@@ -67,16 +69,13 @@ if (searchBtn && filterModal) {
       selectedType = activeType;
       viewMode = "vocab";
 
-      if (modalSearchInput) {
-        search.value = modalSearchInput.value.trim();   // tetap pakai search global (yang tersembunyi)
-      }
+      if (modalSearchInput) search.value = modalSearchInput.value.trim();
 
       closeFilterModal();
       render();
     });
   }
 
-  // Reset
   if (resetFilterBtn) {
     resetFilterBtn.addEventListener("click", () => {
       selectedLevel = "all";

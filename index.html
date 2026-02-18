@@ -129,21 +129,33 @@
 </aside>
 
 <header class="topbar">
-  <div class="left-group">
-    <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="branding">
-      <img id="logo" src="./assets/favicon.webp" alt="日本の世界" title="Klik untuk reset filter">
-    </div>
+  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- LOGO (klik = reset filter) -->
+  <div class="branding">
+    <img id="logo" src="./assets/favicon.webp" alt="日本の世界" title="Klik untuk reset filter">
   </div>
 
-  <button id="searchTrigger" class="search-icon-btn" aria-label="Buka pencarian dan filter">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-  </button>
+  <div class="controls">
+    <select id="category" aria-label="Filter kategori">
+      <option value="all">Semua</option>
+      
+      <optgroup label="KATA KERJA">
+        <option value="verb-godan">KATA KERJA GODAN</option>
+        <option value="verb-ru">KATA KERJA ICHIDAN</option>
+        <option value="verb-irregular">KATA KERJA SURU</option>
+      </optgroup>
+      
+      <optgroup label="KATA SIFAT">
+        <option value="adj-i">KATA SIFAT い</option>
+        <option value="adj-na">KATA SIFAT な</option>
+      </optgroup>
+    </select>
+
+    <input id="search" placeholder="Cari kanji / kana / arti" aria-label="Cari kata">
+  </div>
 
   <p id="resultInfo" class="result-info"></p>
 </header>
@@ -157,45 +169,6 @@
     <article id="expandedCard" class="expanded-card"></article>
     <h4 id="modalSubtitle">Rekomendasi terkait</h4>
     <div id="recommendationRow" class="recommendation-row"></div>
-  </div>
-</section>
-
-<section id="searchFilterModal" class="search-modal" aria-hidden="true">
-  <div class="search-modal-backdrop" id="searchBackdrop"></div>
-  <div class="search-modal-content">
-    <div class="search-modal-header">
-      <h3>Cari & Filter Kata</h3>
-      <button id="searchModalClose" class="modal-close" aria-label="Tutup">✕</button>
-    </div>
-
-    <div class="search-modal-body">
-      <input id="modalSearch" type="text" placeholder="Cari kanji / kana / arti..." aria-label="Pencarian">
-
-      <div class="filter-group">
-        <label>Level JLPT</label>
-        <select id="modalLevel">
-          <option value="all">Semua Level</option>
-          <option value="N5">N5</option>
-          <option value="N4">N4</option>
-          <option value="N3">N3</option>
-          <option value="N2">N2</option>
-          <option value="N1">N1</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label>Kategori Kata</label>
-        <div class="category-tiles">
-          <button class="category-tile" data-type="verb-godan">Kata Kerja Godan</button>
-          <button class="category-tile" data-type="verb-ru">Kata Kerja Ichidan</button>
-          <button class="category-tile" data-type="verb-irregular">Kata Kerja Suru</button>
-          <button class="category-tile" data-type="adj-i">Kata Sifat い</button>
-          <button class="category-tile" data-type="adj-na">Kata Sifat な</button>
-        </div>
-      </div>
-
-      <button id="applyFilter" class="apply-btn">Terapkan Filter</button>
-    </div>
   </div>
 </section>
 

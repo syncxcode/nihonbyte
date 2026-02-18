@@ -1326,106 +1326,60 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 /* =============================================
-   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v4
-   (Jarak header lebih rapat + semua improvement sebelumnya)
-   ============================================= */
-@media (min-width: 1024px) {
-  /* KUNCI: kurangi padding-top grid biar poster naik lebih dekat ke header */
-  #grid {
-    padding-top: 120px !important;
-  }
-
-  .letter-poster {
-    max-width: 960px !important;
-    margin: 18px auto 2.8rem auto !important;   /* margin-top super kecil */
-    padding: 2.5rem 2.4rem 3rem !important;
-    border-radius: 28px;
-    background: rgba(255, 255, 255, 0.975) !important;
-    box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25);
-  }
-
-  .letter-poster-body {
-    gap: 32px !important;
-  }
-
-  .letter-row {
-    gap: 16px !important;
-    grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important;
-    justify-content: center;
-  }
-
-  .letter-label,
-  .letter-cell {
-    height: 92px !important;
-    font-size: 1.68rem !important;
-    border-radius: 16px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .letter-label {
-    font-size: 1.12rem !important;
-    background: rgba(17, 24, 39, 0.09) !important;
-    font-weight: 700;
-  }
-
-  .letter-cell {
-    background: #ffffff !important;
-    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .letter-cell:hover {
-    transform: scale(1.06) translateY(-4px);
-    box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
-  }
-}
-
-/* =============================================
-   MOBILE HEADER v6 FINAL - Logo Kiri + Hamburger Jelas + Search Kanan + Stabil iOS
+   MOBILE HEADER v7 FINAL - Logo Kiri + Hamburger Jelas + Search Kanan
    ============================================= */
 
 @media (max-width: 767px) {
   .topbar {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;   /* paksa mulai dari kiri */
+    justify-content: flex-start !important;
     gap: 12px !important;
     padding: 12px 16px !important;
     background: #fce7f3 !important;
+    position: relative !important;
+    z-index: 100;
   }
 
-  /* Hamburger - dibikin jelas & besar */
+  /* Hamburger - paling kiri & jelas */
+  #hamburger,
   .hamburger {
-    font-size: 31px !important;
-    color: #111827 !important;
+    font-size: 32px !important;
+    color: #1f2937 !important;
     padding: 4px 8px 4px 0 !important;
-    line-height: 1;
-  }
-
-  /* Logo - tetap di kiri samping hamburger */
-  .branding,
-  .branding img {
-    height: 44px !important;
     flex-shrink: 0 !important;
+    z-index: 101;
   }
 
-  /* Icon search - dipaksa paling kanan */
+  /* Logo - langsung samping hamburger */
+  .branding {
+    flex-shrink: 0 !important;
+    order: 1;
+  }
+
+  .branding img {
+    height: 46px !important;
+    width: auto !important;
+  }
+
+  /* Search icon - paling kanan */
   .mobile-search-btn {
     margin-left: auto !important;
+    order: 3;
     width: 46px !important;
     height: 46px !important;
-    background: #ffffff !important;
+    background: #fff !important;
     border-radius: 50% !important;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.12) !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15) !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0 !important;
+    z-index: 101;
   }
 }
 
-/* Expanded search tetap full width & ringan (kurangi risiko crash) */
+/* Expanded search tetap full width */
 .topbar.search-open .controls {
   display: flex !important;
   gap: 12px !important;
@@ -1436,29 +1390,5 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   left: 0;
   background: #ffffff;
   border-bottom: 1px solid #f3e8ff;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);   /* shadow lebih ringan */
-  z-index: 50;
-}
-
-.topbar.search-open #category { flex: 0 0 135px !important; }
-.topbar.search-open #search   { flex: 1 !important; font-size: 1.05rem; }
-.topbar.search-open #resultInfo { padding: 0 16px 12px; }
-
-/* iOS WebKit Crash Prevention (saat hamburger dibuka) */
-#sidebar {
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  transform: translate3d(0, 0, 0) !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  will-change: transform;
-}
-
-body {
-  -webkit-overflow-scrolling: touch;
-}
-
-body.sidebar-active {   /* atau ganti jadi .active kalau JS pakai class "active" */
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }

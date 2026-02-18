@@ -159,6 +159,50 @@
   </div>
 </section>
 
+<!-- MODAL FILTER POSTER BESAR -->
+<section id="filterModal" class="filter-modal" aria-hidden="true">
+  <div class="filter-modal-backdrop" id="filterBackdrop"></div>
+  <div class="filter-modal-content">
+    <div class="filter-modal-header">
+      <h3>🔍 Cari & Filter Cepat</h3>
+      <button id="filterModalClose" class="modal-close" aria-label="Tutup">✕</button>
+    </div>
+
+    <input type="text" id="modalSearchInput" class="modal-search-input"
+           placeholder="Cari kanji / kana / romaji / arti...">
+
+    <!-- LEVEL -->
+    <div class="filter-section">
+      <h4>Level JLPT</h4>
+      <div class="level-grid" id="levelGrid">
+        <button class="level-btn active" data-level="all">Semua Level</button>
+        <button class="level-btn" data-level="N5">N5</button>
+        <button class="level-btn" data-level="N4">N4</button>
+        <button class="level-btn" data-level="N3">N3</button>
+        <button class="level-btn" data-level="N2">N2</button>
+        <button class="level-btn" data-level="N1">N1</button>
+      </div>
+    </div>
+
+    <!-- KATEGORI KHUSUS -->
+    <div class="filter-section">
+      <h4>Kategori Khusus</h4>
+      <div class="category-grid" id="categoryGrid">
+        <button class="cat-btn" data-type="verb-godan">KATA KERJA GODAN</button>
+        <button class="cat-btn" data-type="verb-ru">KATA KERJA ICHIDAN</button>
+        <button class="cat-btn" data-type="verb-irregular">KATA KERJA SURU</button>
+        <button class="cat-btn" data-type="adj-i">KATA SIFAT い</button>
+        <button class="cat-btn" data-type="adj-na">KATA SIFAT な</button>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button id="applyFilterBtn" class="apply-filter-btn">Tampilkan Hasil</button>
+      <button id="resetFilterBtn" class="reset-filter-btn">Reset Semua</button>
+    </div>
+  </div>
+</section>
+  
 <script src="./data.js"></script>
 <script src="./app.js"></script>
 </body>

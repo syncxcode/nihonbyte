@@ -833,3 +833,112 @@ if (document.documentElement.classList.contains('ios-device')) {
   document.body.style.overflow = '';
   document.documentElement.style.overflow = '';
 }
+
+                          // ===================== SEARCH MODAL COMPACT - START FROM ZERO =====================
+const searchBtn = document.getElementById('searchBtn');
+const searchModal = document.getElementById('searchModal');
+const searchBackdrop = document.getElementById('searchBackdrop');
+const searchModalClose = document.getElementById('searchModalClose');
+const modalSearchInput = document.getElementById('modalSearchInput');
+const grammarButtons = document.getElementById('grammarButtons');
+const levelButtons = document.getElementById('levelButtons');
+
+let currentSelectedType = null;   // untuk tracking kategori yang dipilih
+
+const grammarList = [
+  { name: "KATA KERJA GODAN",   type: "verb-godan" },
+  { name: "KATA KERJA ICHIDAN", type: "verb-ru" },
+  { name: "KATA KERJA SURU",    type: "verb-irregular" },
+  { name: "KATA SIFAT い",      type: "adj-i" },
+  { name: "KATA SIFAT な",      type: "adj-na" }
+];
+
+const levels = ["N5", "N4", "N3", "N2", "N1"];
+
+// Buat button kategori
+function createGrammarButtons() {
+  grammarButtons.innerHTML = "";
+  grammarList.forEach(item => {
+    const btn = document.createElement("button");
+    btn.className = "grammar-btn";
+    btn.textContent = item.name;
+    btn.addEventListener("click", () => {
+      // Highlight hanya satu
+      document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentSelectedType = item.type;
+    });
+    grammarButtons.appendChild(btn);
+  });
+}
+
+// Buat button level (shared)
+function createLevelButtons() {
+  levelButtons.innerHTML = "";
+  levels.forEach(lvl => {
+    const btn = document.createElement("button");
+    btn.className = "level-btn";
+    btn.textContent = lvl;
+    btn.addEventListener("click", () => {
+      if (!currentSelectedType) {
+        alert("Pilih kategori grammar dulu ya!");
+        return;
+      }
+      
+      // Apply filter
+      selectedType = currentSelectedType;
+      selectedLevel = lvl;
+      if (search) search.value = "";
+      if (modalSearchInput) modalSearchInput.value = "";
+
+      render();
+
+      const count = getFilteredWords().length;
+      if (resultInfo) {
+        const catName = grammarList.find(g => g.type === currentSelectedType).name;
+        resultInfo.textContent = `${count} ${catName} ${lvl} ditemukan`;
+      }
+
+      closeSearchModal();
+    });
+    levelButtons.appendChild(btn);
+  });
+}
+
+// Open & Close
+function openSearchModal() {
+  searchModal.classList.add("active");
+  modalSearchInput.focus();
+  currentSelectedType = null;
+  // Reset highlight
+  document.querySelectorAll('.grammar-btn').forEach(b => b.classList.remove('active'));
+}
+
+function closeSearchModal() {
+  searchModal.classList.remove("active");
+}
+
+// Event listeners
+searchBtn.addEventListener("click", openSearchModal);
+searchModalClose.addEventListener("click", closeSearchModal);
+searchBackdrop.addEventListener("click", closeSearchModal);
+
+modalSearchInput.addEventListener("input", () => {
+  if (search) search.value = modalSearchInput.value;
+  render();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && searchModal.classList.contains("active")) closeSearchModal();
+});
+
+// Init saat pertama kali buka modal
+searchBtn.addEventListener("click", () => {
+  if (!grammarButtons.hasChildNodes()) {
+    createGrammarButtons();
+    createLevelButtons();
+  }
+  openSearchModal();
+});
+
+console.log("✅ Search Modal Compact siap (mulai dari nol)");

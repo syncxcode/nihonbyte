@@ -1643,3 +1643,19 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   color: #ff4d6d;
   background: #fff9fa;
 }
+
+/* =========================================
+   FIX JARAK HEADER DI HP (MOBILE GAP FIX)
+   Tempel di paling bawah style.css
+========================================= */
+
+@media (max-width: 768px) {
+  #grid {
+    /* Kita kurangi drastis dari 150px ke 90px */
+    padding-top: 90px !important; 
+    
+    /* Opsional: Kurangi gap antar kartu di HP biar lebih padat */
+    gap: 10px !important;
+  }
+}
+

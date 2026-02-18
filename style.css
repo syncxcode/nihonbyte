@@ -1488,7 +1488,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   stroke: #ff4d6d;              /* hover jadi pink cantik sesuai tema NihonByte */
 }
 
-/* ====================== MODAL FILTER FINAL - LEBAR + 1 BARIS ====================== */
+/* ====================== MODAL FILTER FINAL - LEBAR & ESTETIS ====================== */
 .filter-modal {
   position: fixed;
   inset: 0;
@@ -1507,11 +1507,11 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-content {
   width: 100%;
-  max-width: 650px;                    /* LEBIH LEBAR */
+  max-width: 720px;                    /* LEBIH LEBAR & ELEGANT DI DESKTOP */
   max-height: 94vh;
   background: #fff;
   border-radius: 28px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1519,7 +1519,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-header {
   background: #ffcddb;
-  padding: 18px 24px;
+  padding: 20px 26px;
   text-align: center;
   position: relative;
   flex-shrink: 0;
@@ -1527,70 +1527,114 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-header h3 {
   margin: 0;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   color: #1f2937;
 }
 
-/* TOMBOL X POJOK KANAN ATAS */
+/* TOMBOL X POJOK KANAN */
 #filterModalClose {
   position: absolute;
-  top: 16px;
-  right: 20px;
-  width: 38px;
-  height: 38px;
+  top: 18px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
   background: #fff;
   border: none;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 26px;
   color: #e11d48;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   cursor: pointer;
   z-index: 10;
 }
 
-/* SEARCH BAR */
+/* SEARCH */
 .modal-search-input {
   width: 92%;
-  margin: 22px auto 20px;
-  padding: 16px 20px;
-  font-size: 1.1rem;
+  margin: 24px auto 22px;
+  padding: 17px 22px;
+  font-size: 1.12rem;
   border: 2px solid #ffcddb;
   border-radius: 999px;
   outline: none;
 }
 
-/* LEVEL - PAKSA 1 BARIS */
+/* HEADING DENGAN SPACE */
+.filter-section h4 {
+  margin: 8px 0 16px 10px;
+  color: #374151;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* LEVEL JLPT - 1 BARIS FULL */
 .level-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);   /* 1 BARIS PENUH */
-  gap: 8px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
   padding: 0 12px;
 }
 
+/* KATEGORI */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   gap: 12px;
+  padding: 0 12px;
 }
 
 .level-btn, .cat-btn {
-  padding: 14px 8px;
+  padding: 15px 10px;
   border: 2px solid #e5e7eb;
   border-radius: 16px;
   background: #fff;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  font-size: 0.95rem;
+  transition: all 0.2s;
 }
 
 .level-btn.active,
 .cat-btn.active {
   background: #ffcddb;
   border-color: #ff4d6d;
+  color: #1f2937;
 }
 
-/* NO SCROLLBAR */
-.filter-modal-content::-webkit-scrollbar {
-  display: none;
+/* BUTTON AREA - ESTETIS */
+.filter-actions {
+  padding: 20px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.apply-filter-btn {
+  width: 100%;
+  background: #ff4d6d;
+  color: white;
+  padding: 17px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(255,77,109,0.4);
+  cursor: pointer;
+}
+
+.reset-filter-btn {
+  background: transparent;
+  color: #6b7280;
+  padding: 12px 24px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.reset-filter-btn:hover {
+  color: #374151;
 }

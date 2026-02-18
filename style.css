@@ -1383,63 +1383,82 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 /* =============================================
-   MOBILE SEARCH ICON + EXPAND (Facebook Style)
+   MOBILE HEADER v4 FINAL - Icon Search Kanan + Full Width Expand
    ============================================= */
 
-.mobile-search-btn {
-  width: 48px;
-  height: 48px;
-  background: rgba(255,255,255,0.85);
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.mobile-search-btn:active {
-  transform: scale(0.92);
-  background: #fce7f3;
-}
-
-/* Hide controls & resultInfo by default di mobile */
 @media (max-width: 767px) {
-  .controls {
-    display: none !important;
-    opacity: 0;
+  /* Topbar jadi flex biar icon search bisa di paling kanan */
+  .topbar {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between !important;
+    padding: 12px 16px !important;
+    gap: 12px;
   }
-  
+
+  /* Kiri: Hamburger + Logo tetap rapi */
+  .hamburger,
+  .branding {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Icon search selalu paling kanan */
+  .mobile-search-btn {
+    margin-left: auto !important;
+    display: flex !important;
+    width: 44px;
+    height: 44px;
+    background: #ffffff;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-search-btn:active {
+    transform: scale(0.92);
+  }
+
+  /* Sembunyikan controls & result normal di mobile */
+  .controls,
   #resultInfo {
     display: none !important;
   }
-  
-  .mobile-search-btn {
-    display: flex !important;
-  }
 }
 
-/* Saat search mode aktif di mobile */
+/* EXPANDED STATE - Full width dari kiri ke kanan (tidak mepet kanan) */
 .topbar.search-open {
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.18);
 }
 
 .topbar.search-open .controls {
-  display: grid !important;
-  grid-template-columns: 1fr !important;   /* full width */
-  gap: 12px;
-  opacity: 1;
-  padding: 14px 16px 10px;
-  background: #fff;
-  border-bottom: 1px solid #f3e8ff;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px !important;
+  padding: 16px 16px 12px !important;   /* padding kiri & kanan 16px biar tidak mepet */
   position: absolute;
   top: 100%;
   left: 0;
-  width: 100%;
+  width: 100% !important;
+  background: #ffffff;
+  border-bottom: 1px solid #f3e8ff;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   z-index: 49;
+}
+
+.topbar.search-open #category {
+  flex: 0 0 138px !important;   /* dropdown tetap proporsional */
+  min-width: 0;
+}
+
+.topbar.search-open #search {
+  flex: 1 1 auto !important;    /* search ambil sisa ruang → full fill */
+  min-width: 0;
+  font-size: 1.05rem;
+  padding: 14px 18px;
 }
 
 .topbar.search-open #resultInfo {
@@ -1449,33 +1468,13 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   color: #6b7280;
 }
 
-/* Search input lebih besar & nyaman di mobile */
-.topbar.search-open #search {
-  font-size: 1.05rem;
-  padding: 14px 18px;
-  border-radius: 9999px;
-}
-
-/* Close button (opsional, kalau mau tambah manual di JS) */
-.mobile-close-search {
-  position: absolute;
-  right: 16px;
-  top: 18px;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  color: #6b7280;
-  cursor: pointer;
-}
-
-/* Desktop tetap normal */
+/* Desktop tetap seperti biasa (tidak berubah) */
 @media (min-width: 768px) {
   .mobile-search-btn,
   .topbar.search-open .controls {
     display: none !important;
   }
-  
-  .controls {
-    display: grid !important;
+  .controls { 
+    display: grid !important; 
   }
 }

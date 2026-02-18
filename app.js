@@ -921,12 +921,7 @@ grid.innerHTML = `
     render();
   });
 
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-}
-// ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
+  // ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
 if (document.documentElement.classList.contains('ios-device')) {
   console.log('🔧 Force close sidebar on iOS initial load');
   
@@ -935,6 +930,11 @@ if (document.documentElement.classList.contains('ios-device')) {
   hamburger.setAttribute("aria-expanded", "false");
   
   // Reset scroll lock
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}
   
 // ==================== FORCE AUTO CLOSE SIDEBAR (SOLUSI FINAL) ====================
 function forceCloseSidebar() {

@@ -12,7 +12,98 @@ document.addEventListener("DOMContentLoaded", () => {
   const expandedCard = document.getElementById("expandedCard");
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
+  // ===================== SEARCH MODAL LOGIC =====================
+const searchBtn = document.getElementById('searchBtn');
+const searchModal = document.getElementById('searchModal');
+const searchBackdrop = document.getElementById('searchBackdrop');
+const searchModalClose = document.getElementById('searchModalClose');
+const modalSearchInput = document.getElementById('modalSearchInput');
+const categoryGrid = document.getElementById('categoryGrid');
 
+const grammarCategories = [
+  { name: "KATA KERJA GODAN",   type: "verb-godan" },
+  { name: "KATA KERJA ICHIDAN", type: "verb-ru" },
+  { name: "KATA KERJA SURU",    type: "verb-irregular" },
+  { name: "KATA SIFAT い",      type: "adj-i" },
+  { name: "KATA SIFAT な",      type: "adj-na" }
+];
+
+const levels = ["N5", "N4", "N3", "N2", "N1"];
+
+// Generate kategori + level buttons
+function generateCategoryGrid() {
+  categoryGrid.innerHTML = "";
+  grammarCategories.forEach(cat => {
+    const card = document.createElement("div");
+    card.className = "grammar-card";
+    card.innerHTML = `
+      <h4>${cat.name}</h4>
+      <div class="level-buttons"></div>
+    `;
+    const btnContainer = card.querySelector(".level-buttons");
+    
+    levels.forEach(lvl => {
+      const btn = document.createElement("button");
+      btn.className = "level-btn";
+      btn.textContent = lvl;
+      btn.addEventListener("click", () => {
+        // Filter & tampilkan hasil
+        selectedType = cat.type;
+        selectedLevel = lvl;
+        search.value = "";                    // kosongkan search global
+        modalSearchInput.value = "";
+        render();                             // tampilkan di halaman utama
+        
+        // Update resultInfo jadi lebih spesifik
+        const count = getFilteredWords().length;
+        resultInfo.textContent = `${count} ${cat.name} ${lvl} ditemukan`;
+        
+        closeSearchModal();
+      });
+      btnContainer.appendChild(btn);
+    });
+    
+    categoryGrid.appendChild(card);
+  });
+}
+
+// Open & Close Modal
+function openSearchModal() {
+  searchModal.classList.add("active");
+  searchModal.setAttribute("aria-hidden", "false");
+  modalSearchInput.focus();
+  generateCategoryGrid();   // generate sekali saja saat buka
+}
+
+function closeSearchModal() {
+  searchModal.classList.remove("active");
+  searchModal.setAttribute("aria-hidden", "true");
+}
+
+// Event Listeners
+searchBtn.addEventListener("click", openSearchModal);
+searchModalClose.addEventListener("click", closeSearchModal);
+searchBackdrop.addEventListener("click", closeSearchModal);
+
+// Search input di modal → live filter global
+modalSearchInput.addEventListener("input", () => {
+  search.value = modalSearchInput.value;   // sync dengan search global
+  render();
+  // Opsional: auto close kalau sudah ketik banyak
+  // if (modalSearchInput.value.length > 3) closeSearchModal();
+});
+
+// Enter di search modal → close & tampilkan hasil
+modalSearchInput.addEventListener("keydown", e => {
+  if (e.key === "Enter") closeSearchModal();
+});
+
+// Escape key
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && searchModal.classList.contains("active")) {
+    closeSearchModal();
+  }
+});
 // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||

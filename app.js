@@ -500,51 +500,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ================== SIDEBAR FIX FINAL (ANDROID + iOS) ==================
-  let savedScrollY = 0;
+  let originalOverflow = '';
+  let originalPosition = '';
+  let originalTop = '';
+  let originalWidth = '';
+  let savedScrollPosition = 0;
 
-  function openSidebar() {
-    savedScrollY = window.scrollY || document.documentElement.scrollTop;
-    
-    sidebar.classList.add("active");
-    overlay.classList.add("active");
-    hamburger.setAttribute("aria-expanded", "true");
-    document.body.classList.add("sidebar-open");
-    
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${savedScrollY}px`;
-    document.body.style.width = "100%";
-  }
+  hamburger.addEventListener("click", () => {
+    const isActive = sidebar.classList.toggle("active");
+    overlay.classList.toggle("active", isActive);
+    hamburger.setAttribute("aria-expanded", isActive);
+    if (isActive) {
+      savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      originalOverflow = document.body.style.overflow || '';
+      originalPosition = document.body.style.position || '';
+      originalTop = document.body.style.top || '';
+      originalWidth = document.body.style.width || '';
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollPosition}px`;
+      document.body.style.width = '100%';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      closeSidebar();
+    }
+  });
+
+  overlay.addEventListener("click", closeSidebar);
 
   function closeSidebar() {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("sidebar-open");
-    
-    document.documentElement.style.overflow = "";
-    document.body.style.overflow = "";
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    
-    window.scrollTo(0, savedScrollY);
+    document.body.style.overflow = originalOverflow;
+    document.body.style.position = originalPosition;
+    document.body.style.top = originalTop;
+    document.body.style.width = originalWidth;
+    window.scrollTo(0, savedScrollPosition);
+    document.documentElement.style.overflow = '';
   }
-
-  hamburger.addEventListener("click", () => {
-    if (sidebar.classList.contains("active")) {
-      closeSidebar();
-    } else {
-      openSidebar();
-    }
-  });
-
-  overlay.addEventListener("click", closeSidebar);
-  overlay.addEventListener("touchend", (e) => {
-    if (e.target === overlay) closeSidebar();
-  });
 
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
@@ -645,58 +639,62 @@ document.addEventListener("DOMContentLoaded", () => {
     closeSidebar();
   });
 
-  function renderSupportPoster() {
-    grid.classList.add("support-mode");
+function renderSupportPoster() {
+  // Aktifkan mode khusus support (biar keluar dari grid layout)
+  grid.classList.add("support-mode");
 
-    grid.innerHTML = `
-      <section class="support-poster">
+grid.innerHTML = `
+    <section class="support-poster">
 
-        <h2>Dukung Pengembang</h2>
+      <h2>Dukung Pengembang</h2>
 
-        <p>
-          Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
-          dan terbuka untuk semua pembelajar.
-        </p>
+      <p>
+        Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
+        dan terbuka untuk semua pembelajar.
+      </p>
 
-        <p>
-          Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
-          bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.
-        </p>
+      <p>
+        Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
+        bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.
+      </p>
 
-        <p>
-          Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, 
-          memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.
-        </p>
+      <p>
+        Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, 
+        memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.
+      </p>
 
-        <p>
-          Terima kasih telah menjadi bagian dari perjalanan ini.
-        </p>
+      <p>
+        Terima kasih telah menjadi bagian dari perjalanan ini.
+      </p>
 
-        <a 
-          href="https://sociabuzz.com/syncxcode/tribe"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="support-btn"
-        >
-          Klik Disini
-        </a>
+      <a 
+        href="https://sociabuzz.com/syncxcode/tribe"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="support-btn"
+      >
+        Klik Disini
+      </a>
 
-      </section>
-    `;
+    </section>
+  `;
 
-    resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
-  }
+  resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
+}
   
   function render() {
 
+    // RESET SUPPORT MODE tiap render
     grid.classList.remove("support-mode");
     grid.innerHTML = "";
 
+    // Mode dukungan pengembang
     if (viewMode === "support") {
       renderSupportPoster();
       return;
     }
 
+    // Mode ungkapan umum
     const isExpressionView =
       viewMode === "vocab" &&
       (category.value === "ekspresi" ||
@@ -708,22 +706,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Mode huruf (hiragana/katakana)
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
     }
 
+    // Mode pola kalimat
     if (viewMode.startsWith("patterns:")) {
       renderPatternPoster(viewMode.split(":")[1]);
       return;
     }
 
+    // Mode test
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
       return;
     }
 
+    // Mode vocab normal
     const words = getFilteredWords();
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
@@ -783,5 +785,6 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
+  // Render awal aplikasi
   render();
 });

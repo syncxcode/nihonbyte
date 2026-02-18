@@ -800,29 +800,6 @@ grid.innerHTML = `
   render();
 });
 
-/* ===================== iOS SAFE MODE (ANTI CRASH) - Hanya berlaku di iOS ===================== */
-.ios-device #overlay {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background: rgba(0, 0, 0, 0.78) !important;   /* solid gelap biar tetap cantik */
-}
-
-.ios-device #sidebar {
-  height: 100dvh !important;                    /* dynamic viewport, lebih stabil di iOS */
-  will-change: auto !important;                 /* matikan GPU heavy */
-  backface-visibility: visible;
-  -webkit-backface-visibility: visible;
-}
-
-.ios-device #sidebar.active {
-  transform: translateX(0) !important;
-}
-
-/* Smooth scroll iOS */
-.ios-device body {
-  -webkit-overflow-scrolling: touch;
-}
-
 // ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
 if (document.documentElement.classList.contains('ios-device')) {
   console.log('🔧 Force close sidebar on iOS initial load');

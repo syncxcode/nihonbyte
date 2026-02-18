@@ -13,16 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
-  // ===== IOS OPTIMIZER - TAMBAHKAN DI ATAS SEMUA CODE =====
-    function isIOS() {
-      return /iPad|iPhone|iPod/.test(navigator.platform) ||
-        (navigator.platform === 'MacIntel' && 'ontouchend' in document) ||
-        /iOS|Macintosh/.test(navigator.userAgent); // extra safe untuk iOS 18+
-    }
+// ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
+  function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.platform) ||
+           (navigator.platform === 'MacIntel' && 'ontouchend' in document);
+  }
 
   if (isIOS()) {
     document.documentElement.classList.add('ios-device');
-    console.log('🚀 NihonByte iOS optimizer aktif');
+    console.log('🛡️ NihonByte iOS Safe Mode AKTIF (blur dimatikan di iOS)');
   }
   
   let selectedLevel = "all";
@@ -801,30 +800,25 @@ grid.innerHTML = `
   render();
 });
 
-// ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SAFARI IOS =====
-if (document.documentElement.classList.contains('ios-device')) {
-  console.log('🔧 NihonByte iOS: Force close sidebar on initial load');
+/* ===================== iOS SAFE MODE (ANTI CRASH) - Hanya berlaku di iOS ===================== */
+.ios-device #overlay {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(0, 0, 0, 0.78) !important;   /* solid gelap biar tetap cantik */
+}
 
-  // Pastikan tertutup 100%
-  sidebar.classList.remove("active");
-  overlay.classList.remove("active");
-  hamburger.setAttribute("aria-expanded", "false");
+.ios-device #sidebar {
+  height: 100dvh !important;                    /* dynamic viewport, lebih stabil di iOS */
+  will-change: auto !important;                 /* matikan GPU heavy */
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+}
 
-  // Reset scroll lock (jaga-jaga)
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-  
-  // Extra safety untuk Safari (disable transition sebentar)
-  const originalTransitionSidebar = sidebar.style.transition;
-  const originalTransitionOverlay = overlay.style.transition;
-  
-  sidebar.style.transition = 'none';
-  overlay.style.transition = 'none';
-  
-  setTimeout(() => {
-    sidebar.style.transition = originalTransitionSidebar;
-    overlay.style.transition = originalTransitionOverlay;
-  }, 150);
+.ios-device #sidebar.active {
+  transform: translateX(0) !important;
+}
+
+/* Smooth scroll iOS */
+.ios-device body {
+  -webkit-overflow-scrolling: touch;
 }

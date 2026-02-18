@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
+  // ===== IOS OPTIMIZER - TAMBAHKAN DI ATAS SEMUA CODE =====
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.platform) ||
+        (navigator.platform === 'MacIntel' && 'ontouchend' in document) ||
+        /iOS|Macintosh/.test(navigator.userAgent); // extra safe untuk iOS 18+
+    }
+
+  if (isIOS()) {
+    document.documentElement.classList.add('ios-device');
+    console.log('🚀 NihonByte iOS optimizer aktif');
+  }
+  
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";

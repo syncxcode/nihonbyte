@@ -1488,17 +1488,17 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   stroke: #ff4d6d;              /* hover jadi pink cantik sesuai tema NihonByte */
 }
 
-/* ====================== MODAL FILTER - FIXED 2026 ====================== */
+/* ====================== MODAL FILTER FINAL - LEBAR & CLEAN ====================== */
 .filter-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.88);
+  background: rgba(0, 0, 0, 0.92);
   z-index: 99999;
   display: none;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  overflow: hidden;                 /* cegah body scroll */
+  overflow: hidden;                    /* cegah scroll body */
 }
 
 .filter-modal.active {
@@ -1507,11 +1507,11 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 .filter-modal-content {
   width: 100%;
-  max-width: 480px;                 /* tidak terlalu lebar di HP */
-  max-height: 92vh;                 /* tidak overflow ke bawah */
+  max-width: 540px;                    /* LEBIH LEBAR */
+  max-height: 92vh;
   background: #fff;
   border-radius: 28px;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1521,69 +1521,74 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   background: #ffcddb;
   padding: 20px 24px;
   text-align: center;
-  position: relative;
   flex-shrink: 0;
 }
 
 .filter-modal-header h3 {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   color: #1f2937;
 }
 
 .modal-search-input {
   width: 92%;
-  margin: 20px auto;
+  margin: 24px auto 20px;
   padding: 16px 20px;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   border: 2px solid #ffcddb;
   border-radius: 999px;
   outline: none;
-  box-sizing: border-box;
 }
 
 .filter-section {
-  padding: 0 24px 24px;
+  padding: 0 24px 20px;
   flex-shrink: 0;
 }
 
 .filter-section h4 {
-  margin: 0 0 14px 4px;
+  margin: 0 0 12px 4px;
   color: #374151;
-  font-size: 1rem;
   font-weight: 600;
 }
 
 .level-grid, .category-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  gap: 12px;
 }
 
 .level-btn, .cat-btn {
-  padding: 14px 10px;
+  padding: 15px 12px;
   border: 2px solid #e5e7eb;
   border-radius: 16px;
   background: #fff;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
 .level-btn.active,
 .cat-btn.active {
   background: #ffcddb;
   border-color: #ff4d6d;
-  color: #1f2937;
 }
 
+/* HILANGKAN SCROLLBAR DI MODAL */
+.filter-modal-content {
+  overflow-y: auto;
+  scrollbar-width: none;               /* Firefox */
+}
+.filter-modal-content::-webkit-scrollbar {
+  display: none;                       /* Chrome, Safari, Edge */
+}
+
+/* BUTTON AREA */
 .filter-actions {
-  padding: 0 24px 24px;
+  padding: 10px 24px 24px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .apply-filter-btn {
@@ -1594,7 +1599,6 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   border-radius: 999px;
   font-size: 1.1rem;
   font-weight: 700;
-  cursor: pointer;
 }
 
 .reset-filter-btn {
@@ -1602,11 +1606,4 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   color: #6b7280;
   padding: 14px;
   border: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Biar bisa scroll kalau terlalu panjang (N5 sampai N1 + kategori) */
-.filter-modal-content {
-  overflow-y: auto;
 }

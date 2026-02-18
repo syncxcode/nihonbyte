@@ -1490,105 +1490,61 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   margin: 0;
 }
 
-/* Modal Search + Filter */
+/* POPUP CARD BESAR 2X UKURAN CARD EKSPRESI */
 .search-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  padding: 20px !important;
 }
 
-.search-modal.active {
-  display: flex;
+.search-modal.active .search-modal-content {
+  max-width: 620px !important;     /* Ini yang bikin 2x lebih besar */
+  background: #ffcddb !important;
+  border: 6px solid white;
+  border-radius: 32px !important;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45) !important;
+  padding: 0;
+  overflow: hidden;
 }
 
-.search-modal-content {
-  background: #fff;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  max-height: 85vh;
-  overflow-y: auto;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-}
-
+/* Header popup biar cantik */
 .search-modal-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffcddb;
-  border-radius: 20px 20px 0 0;
-}
-
-.search-modal-body {
-  padding: 20px;
-}
-
-#modalSearch {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #ddd;
-  border-radius: 999px;
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-
-.filter-group {
-  margin-bottom: 24px;
-}
-
-.filter-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #374151;
-}
-
-#modalLevel {
-  width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
-}
-
-.category-tiles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.category-tile {
-  flex: 1 1 45%;
-  padding: 14px 12px;
-  background: #f3f4f6;
-  border: 2px solid transparent;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.category-tile.active {
-  background: #ffcddb;
-  border-color: #ff4d6d;
-  color: #991b4b;
-}
-
-.apply-btn {
-  width: 100%;
-  padding: 16px;
-  background: #ff4d6d;
+  background: #5c1129 !important;
   color: white;
-  border: none;
-  border-radius: 999px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
+  padding: 20px 24px !important;
+  border-radius: 32px 32px 0 0 !important;
+}
+
+/* Search bar besar di dalam card */
+#modalSearch {
+  border-radius: 9999px !important;
+  padding: 18px 24px !important;
+  font-size: 1.15rem !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+  margin: 24px 24px 0 24px !important;
+}
+
+/* Kategori jadi kartu besar (bukan tombol biasa) */
+.category-tile {
+  padding: 22px 12px !important;
+  font-size: 1.05rem !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  transition: all 0.3s ease !important;
+}
+
+.category-tile:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25) !important;
+}
+
+/* Level jadi pill bulat besar */
+.level-btn {
+  padding: 16px 32px !important;
+  border-radius: 9999px !important;
+  font-size: 1.1rem !important;
+  font-weight: bold !important;
+  min-width: 80px !important;
+}
+
+.level-btn:hover {
+  transform: scale(1.1) !important;
 }

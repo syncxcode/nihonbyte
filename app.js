@@ -13,6 +13,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
 
+  const filterModal = document.getElementById("filterModal");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const searchIconBtn = document.getElementById("searchIconBtn");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
+
+// Open modal
+searchIconBtn.addEventListener("click", () => {
+  filterModal.classList.add("active");
+  filterModal.setAttribute("aria-hidden", "false");
+  modalSearchInput.focus();
+  modalSearchInput.value = search.value; // sync dengan search global
+});
+
+// Close modal
+function closeFilterModal() {
+  filterModal.classList.remove("active");
+  filterModal.setAttribute("aria-hidden", "true");
+}
+filterModalClose.addEventListener("click", closeFilterModal);
+filterBackdrop.addEventListener("click", closeFilterModal);
+
+// Level & Category buttons
+document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+
+document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+  });
+});
+
+// Terapkan Filter
+applyFilterBtn.addEventListener("click", () => {
+  const activeLevel = document.querySelector("#levelGrid .level-btn.active").dataset.level;
+  const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
+
+  selectedLevel = activeLevel;
+  selectedType = activeType;
+  viewMode = "vocab";
+  search.value = modalSearchInput.value.trim(); // sync search
+
+  closeFilterModal();
+  render();
+});
+
+// Reset
+resetFilterBtn.addEventListener("click", () => {
+  selectedLevel = "all";
+  selectedType = "all";
+  search.value = "";
+  modalSearchInput.value = "";
+  document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+  document.querySelector('[data-level="all"]').classList.add("active");
+  closeFilterModal();
+  render();
+});
+
 // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||

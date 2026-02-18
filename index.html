@@ -160,7 +160,24 @@
     <div id="recommendationRow" class="recommendation-row"></div>
   </div>
 </section>
-
+<!-- SEARCH MODAL BESAR (2x card style) -->
+<section id="searchModal" class="search-modal" aria-hidden="true">
+  <div class="search-modal-backdrop" id="searchBackdrop"></div>
+  
+  <div class="search-modal-content">
+    <button id="searchModalClose" class="modal-close" aria-label="Tutup pencarian">✕</button>
+    
+    <!-- Search Bar besar -->
+    <input id="modalSearchInput" type="text" class="modal-search-input" 
+           placeholder="Cari kanji / kana / romaji / arti..." autocomplete="off">
+    
+    <!-- Kategori Grammar -->
+    <div class="grammar-categories">
+      <h3>Pilih Kategori Grammar</h3>
+      <div id="categoryGrid" class="category-grid"></div>
+    </div>
+  </div>
+</section>
 <script src="./data.js"></script>
 <script src="./app.js"></script>
 </body>

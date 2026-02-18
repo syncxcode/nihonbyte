@@ -1412,3 +1412,18 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 .ios-device body {
   -webkit-overflow-scrolling: touch;
 }
+
+// ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
+if (document.documentElement.classList.contains('ios-device')) {
+  console.log('🔧 Force close sidebar on iOS initial load');
+  
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  hamburger.setAttribute("aria-expanded", "false");
+  
+  // Reset scroll lock
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+}

@@ -15,7 +15,6 @@
 <aside id="sidebar" aria-label="Menu samping">
   <h3>Menu</h3>
   <div class="sidebar-tree">
-
     <!-- HURUF -->
     <details>
       <summary>🔤 HURUF</summary>
@@ -28,17 +27,13 @@
     <!-- BENTUK KATA KERJA -->
     <details>
       <summary>🗣️ BENTUK KATA KERJA</summary>
-      <div class="subfolder-list">
-        <!-- kosong -->
-      </div>
+      <div class="subfolder-list"><!-- kosong --></div>
     </details>
 
     <!-- BENTUK KATA SIFAT -->
     <details>
       <summary>📝 BENTUK KATA SIFAT</summary>
-      <div class="subfolder-list">
-        <!-- kosong -->
-      </div>
+      <div class="subfolder-list"><!-- kosong --></div>
     </details>
 
     <!-- POLA KALIMAT -->
@@ -58,7 +53,7 @@
       </div>
     </details>
 
-    <!-- KOTOBA (BARU) -->
+    <!-- KOTOBA -->
     <details>
       <summary>📚 KOTOBA</summary>
       <div class="subfolder-list">
@@ -120,25 +115,21 @@
       </div>
     </details>
 
-    <!-- DUKUNG PENGEMBANG - paling bawah sidebar -->
-    <button class="support-btn" id="supportBtn">
-      ❤️ DUKUNG PENGEMBANG
-    </button>
-
+    <button class="support-btn" id="supportBtn">❤️ DUKUNG PENGEMBANG</button>
   </div>
 </aside>
 
+<!-- HEADER BARU (Facebook style + SVG search) -->
 <header class="topbar">
   <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
-  <!-- LOGO -->
   <div class="branding">
     <img id="logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
   </div>
 
-  <!-- ICON SEARCH SVG (ini yang bikin jadi vector cantik, bukan emoji) -->
+  <!-- SEARCH ICON SVG (ini yang bikin jadi vector cantik, bukan emoji lagi) -->
   <button id="searchBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="11" cy="11" r="8"></circle>
@@ -146,9 +137,10 @@
     </svg>
   </button>
 </header>
-  
+
 <main id="grid"></main>
 
+<!-- KANJI MODAL (lama) -->
 <section id="kanjiModal" class="kanji-modal" aria-hidden="true">
   <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
   <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
@@ -159,7 +151,7 @@
   </div>
 </section>
 
-<!-- MODAL FILTER (Facebook Style - Popup Besar) -->
+<!-- MODAL FILTER BARU (popup besar) -->
 <section id="filterModal" class="filter-modal" aria-hidden="true">
   <div class="filter-modal-backdrop" id="filterBackdrop"></div>
   <div class="filter-modal-content">
@@ -168,10 +160,8 @@
       <button id="filterModalClose" class="modal-close" aria-label="Tutup">✕</button>
     </div>
 
-    <input type="text" id="modalSearchInput" class="modal-search-input"
-           placeholder="Cari kanji / kana / romaji / arti...">
+    <input type="text" id="modalSearchInput" class="modal-search-input" placeholder="Cari kanji / kana / romaji / arti...">
 
-    <!-- LEVEL -->
     <div class="filter-section">
       <h4>Level JLPT</h4>
       <div class="level-grid" id="levelGrid">
@@ -184,7 +174,6 @@
       </div>
     </div>
 
-    <!-- KATEGORI KHUSUS -->
     <div class="filter-section">
       <h4>Kategori Khusus</h4>
       <div class="category-grid" id="categoryGrid">
@@ -202,7 +191,7 @@
     </div>
   </div>
 </section>
-  
+
 <script src="./data.js"></script>
 <script src="./app.js"></script>
 </body>

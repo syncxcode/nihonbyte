@@ -964,6 +964,17 @@ function forceCloseSidebar() {
     console.log("✅ Sidebar FORCE CLOSED");
   }, 10);
 }
+
+// ==================== ZERO DELAY - LANGSUNG GESER KE KIRI (NO SETTIMEOUT) ====================
+sidebar.addEventListener('click', function(e) {
+  // Kalau klik item menu (button / link)
+  if (e.target.closest('button') || 
+      e.target.closest('a') || 
+      e.target.closest('[role="button"]')) {
+    
+    closeSidebar();   // ← LANGSUNG, NO DELAY, NO TIMEOUT
+  }
+}, { capture: true });   // ← ini yang bikin "langsung banget"
   
   // Render awal aplikasi
   render();

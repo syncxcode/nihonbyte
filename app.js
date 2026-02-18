@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
           word.kanji?.toLowerCase() || "",
           word.kana?.toLowerCase() || "",
           word.romaji?.toLowerCase() || "",
-          ...(word.meaning || []).map(m => m.toLowerCase())
+          ...(Array.isArray(word.meaning) ? word.meaning.map(m => m.toLowerCase()) : [ (word.meaning || '').toLowerCase() ])
         ].join(" ");
         if (!targets.includes(key)) return false;
       }
@@ -500,8 +500,21 @@ if (document.documentElement.classList.contains('ios-device')) {
   document.documentElement.style.overflow = '';
 }
 
-// --- Rekonstruksi bagian truncated dari asli ---
+// --- Rekonstruksi bagian truncated dari asli dengan fix meaning ---
 function cardImageTemplate(word) {
+  // Fix: Handle meaning kalau bukan array
+  let meaningText = '';
+  if (Array.isArray(word.meaning)) {
+    meaningText = word.meaning.join(', ');
+  } else if (typeof word.meaning === 'string') {
+    meaningText = word.meaning;
+  } else if (word.meaning) {
+    console.warn('Meaning bukan array atau string:', word.meaning, 'untuk word:', word);
+    meaningText = String(word.meaning); // Fallback
+  } else {
+    meaningText = ''; // Empty kalau null/undefined
+  }
+
   // Asumsi dari konteks asli: Generate HTML untuk kartu
   return `
     <div class="card-image">
@@ -509,7 +522,7 @@ function cardImageTemplate(word) {
         <h2 class="kanji">${word.kanji || word.kana}</h2>
         <p class="kana">${word.kana}</p>
         <p class="romaji">${word.romaji}</p>
-        <p class="meaning">${word.meaning.join(', ')}</p>
+        <p class="meaning">${meaningText}</p>
       </div>
       <button class="play-audio-btn" aria-label="Putar audio">
         ▶️

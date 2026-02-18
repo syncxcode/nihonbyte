@@ -1381,3 +1381,41 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
   }
 }
+
+/* ===================== IOS OPTIMIZER ===================== */
+.ios-device #overlay {
+  /* Blur tetap hidup, tapi lebih ringan (kurangi GPU load drastis) */
+  backdrop-filter: blur(1.5px) !important;
+  -webkit-backdrop-filter: blur(1.5px) !important;
+  
+  /* Force GPU + isolate layer supaya tidak crash */
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  contain: layout paint;           /* isolasi rendering */
+  isolation: isolate;              /* penting untuk backdrop-filter */
+}
+
+.ios-device #sidebar {
+  /* Ganti vh → dvh (iOS 15+ dynamic viewport, hindari toolbar glitch) */
+  height: 100dvh !important;
+  
+  /* Force hardware acceleration tanpa hapus will-change */
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  
+  /* Kurangi layer promotion agresif */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Saat active, pastikan tidak ada reflow berlebih */
+.ios-device #overlay.active,
+.ios-device #sidebar.active {
+  will-change: transform, opacity; /* tetap, tapi scoped */
+}
+
+/* Scroll lock improvement (keep logic position:fixed kamu) */
+.ios-device body {
+  -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+}

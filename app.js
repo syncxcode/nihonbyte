@@ -19,10 +19,29 @@ document.addEventListener("DOMContentLoaded", () => {
            (navigator.platform === 'MacIntel' && 'ontouchend' in document);
   }
 
-  if (isIOS()) {
-    document.documentElement.classList.add('ios-device');
-    console.log('🛡️ NihonByte iOS Safe Mode AKTIF (blur dimatikan di iOS)');
-  }
+if (isIOS()) {
+  document.documentElement.classList.add('ios-device');
+  console.log('🛡️ NihonByte iOS Safe Mode AKTIF');
+
+  // 🔥 Disable heavy animation
+  const style = document.createElement("style");
+  style.innerHTML = `
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // 🔥 Hindari body fixed crash
+  document.body.style.webkitOverflowScrolling = "touch";
+
+  // 🔥 Batasi repaint besar saat resize
+  window.addEventListener("resize", () => {
+    document.body.style.height = window.innerHeight + "px";
+  });
+}
+
   
   let selectedLevel = "all";
   let selectedType = "all";

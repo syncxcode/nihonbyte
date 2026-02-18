@@ -663,17 +663,30 @@ if (isIOS()) {
 
   overlay.addEventListener("click", closeSidebar);
 
-  function closeSidebar() {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-    hamburger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = originalOverflow;
-    document.body.style.position = originalPosition;
-    document.body.style.top = originalTop;
-    document.body.style.width = originalWidth;
+function closeSidebar() {
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+  hamburger.setAttribute("aria-expanded", "false");
+
+  // Reset scroll lock
+  document.body.style.overflow = originalOverflow || '';
+  document.body.style.position = originalPosition || '';
+  document.body.style.top = originalTop || '';
+  document.body.style.width = originalWidth || '';
+  document.documentElement.style.overflow = '';
+
+  if (typeof savedScrollPosition === 'number') {
     window.scrollTo(0, savedScrollPosition);
-    document.documentElement.style.overflow = '';
   }
+
+  // 🔥 SAFETY DELAY untuk iOS & mobile repaint
+  setTimeout(() => {
+    document.body.style.position = '';
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    console.log('✅ Sidebar safely closed (with iOS safety)');
+  }, 80);
+}
 
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
@@ -951,9 +964,6 @@ function forceCloseSidebar() {
     console.log("✅ Sidebar FORCE CLOSED");
   }, 10);
 }
-
-// Override semua closeSidebar yang lama
-window.closeSidebar = forceCloseSidebar;   // ini yang penting
   
   // Render awal aplikasi
   render();

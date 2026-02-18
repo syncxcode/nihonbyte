@@ -1431,15 +1431,9 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 /* Hindari repaint berat */
 .ios-device .card-image {
   box-shadow: 0 6px 18px rgba(0,0,0,0.3) !important;
-}
-
-/* =========================================
-   🍎 iOS SCROLL PERFORMANCE BOOST
-========================================= */
-
-.ios-device .card-image {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
   border-radius: 14px !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Hindari repaint berulang */

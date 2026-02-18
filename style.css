@@ -1381,3 +1381,101 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
   }
 }
+
+/* =============================================
+   MOBILE SEARCH ICON + EXPAND (Facebook Style)
+   ============================================= */
+
+.mobile-search-btn {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.mobile-search-btn:active {
+  transform: scale(0.92);
+  background: #fce7f3;
+}
+
+/* Hide controls & resultInfo by default di mobile */
+@media (max-width: 767px) {
+  .controls {
+    display: none !important;
+    opacity: 0;
+  }
+  
+  #resultInfo {
+    display: none !important;
+  }
+  
+  .mobile-search-btn {
+    display: flex !important;
+  }
+}
+
+/* Saat search mode aktif di mobile */
+.topbar.search-open {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.topbar.search-open .controls {
+  display: grid !important;
+  grid-template-columns: 1fr !important;   /* full width */
+  gap: 12px;
+  opacity: 1;
+  padding: 14px 16px 10px;
+  background: #fff;
+  border-bottom: 1px solid #f3e8ff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 49;
+}
+
+.topbar.search-open #resultInfo {
+  display: block !important;
+  padding: 0 16px 12px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Search input lebih besar & nyaman di mobile */
+.topbar.search-open #search {
+  font-size: 1.05rem;
+  padding: 14px 18px;
+  border-radius: 9999px;
+}
+
+/* Close button (opsional, kalau mau tambah manual di JS) */
+.mobile-close-search {
+  position: absolute;
+  right: 16px;
+  top: 18px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+/* Desktop tetap normal */
+@media (min-width: 768px) {
+  .mobile-search-btn,
+  .topbar.search-open .controls {
+    display: none !important;
+  }
+  
+  .controls {
+    display: grid !important;
+  }
+}

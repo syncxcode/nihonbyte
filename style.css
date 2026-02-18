@@ -1382,40 +1382,33 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   }
 }
 
-/* ===================== IOS OPTIMIZER ===================== */
-.ios-device #overlay {
-  /* Blur tetap hidup, tapi lebih ringan (kurangi GPU load drastis) */
-  backdrop-filter: blur(1.5px) !important;
-  -webkit-backdrop-filter: blur(1.5px) !important;
-  
-  /* Force GPU + isolate layer supaya tidak crash */
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  contain: layout paint;           /* isolasi rendering */
-  isolation: isolate;              /* penting untuk backdrop-filter */
-}
-
+/* ===================== IOS OPTIMIZER - FIX AUTO-OPEN (Versi 2.0) ===================== */
 .ios-device #sidebar {
-  /* Ganti vh → dvh (iOS 15+ dynamic viewport, hindari toolbar glitch) */
-  height: 100dvh !important;
-  
-  /* Force hardware acceleration tanpa hapus will-change */
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  
-  /* Kurangi layer promotion agresif */
+  height: 100dvh !important;                    /* dynamic viewport */
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
 
-/* Saat active, pastikan tidak ada reflow berlebih */
-.ios-device #overlay.active,
 .ios-device #sidebar.active {
-  will-change: transform, opacity; /* tetap, tapi scoped */
+  transform: translate3d(0, 0, 0) !important;   /* hanya saat active */
+  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
-/* Scroll lock improvement (keep logic position:fixed kamu) */
+.ios-device #overlay {
+  backdrop-filter: blur(1.5px) !important;
+  -webkit-backdrop-filter: blur(1.5px) !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  contain: layout paint;
+  isolation: isolate;
+}
+
+.ios-device #overlay.active,
+.ios-device #sidebar.active {
+  will-change: transform, opacity;
+}
+
 .ios-device body {
-  -webkit-overflow-scrolling: touch; /* smooth scroll iOS */
+  -webkit-overflow-scrolling: touch;
 }

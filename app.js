@@ -913,6 +913,7 @@ grid.innerHTML = `
     viewMode = "vocab";
     selectedType = "all";
     render();
+    closeSidebar();
   });
 
   search.addEventListener("input", () => {

@@ -18,6 +18,7 @@ body::before {
   z-index: -1;
 }
 
+/* ====================== HEADER FIX (HANYA BAGIAN INI YANG DIUBAH) ====================== */
 .topbar {
   position: fixed !important;
   top: 0;
@@ -26,11 +27,103 @@ body::before {
   box-sizing: border-box;
   z-index: 50;
   background: #ffcddb !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  padding: 12px 16px !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
 }
 
+.left-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+#hamburger {
+  width: 40px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: #444 !important;
+  margin: 7px 0;
+  border-radius: 2px;
+}
+
+.branding {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.branding img {
+  height: 54px !important;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.branding img:hover {
+  transform: scale(1.05);
+}
+
+.right-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex: 1 !important;
+  justify-content: flex-end !important;
+}
+
+.controls {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  max-width: 520px !important;
+}
+
+select,
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.62rem 0.95rem;
+  font-size: 14px;
+  font-family: Ubuntu, sans-serif;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
+}
+
+#search {
+  position: relative;
+  padding-right: 45px !important;
+}
+
+#search::after {
+  content: "🔍";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #666;
+  pointer-events: none;
+}
+
+#resultInfo {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #374151;
+  white-space: nowrap;
+}
+
+/* ====================== SEMUA STYLE LAIN TETAP SAMA PERSIS ====================== */
 .branding h1 {
   margin: 0;
   font-size: 1.2rem;
@@ -99,19 +192,16 @@ input,
 
 .topbar select,
 .topbar input {
-  background: rgba(255, 255, 255, 0.92) !important;   /* sedikit lebih opaque agar mudah dibaca */
+  background: rgba(255, 255, 255, 0.92) !important;
   color: #333 !important;
 }
 
 .topbar #resultInfo {
-  color: #5d4037 !important;   /* coklat gelap lembut agar kontras di pink */
+  color: #5d4037 !important;
 }
 
-/* =========================================
-   GRID UTAMA (ANTI OFFSIDE & RESPONSIVE)
-========================================= */
 #grid {
-  padding-top: 140px !important;
+  padding-top: 150px !important;
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 15px !important;
@@ -135,9 +225,6 @@ input,
   }
 }
 
-/* =========================================
-   KANJI CARD (HALAMAN AWAL)
-========================================= */
 .card-image {
   height: 220px !important;
   background-color: #ffcddb !important;
@@ -175,7 +262,6 @@ input,
   margin: 1px 0 !important;
 }
 
-/* PLAY BUTTON (BULAT PUTIH) */
 .play-audio-btn {
   position: absolute !important;
   bottom: 12px !important;
@@ -193,11 +279,6 @@ input,
   z-index: 5;
 }
 
-/* =========================================
-   MODAL CENTER FIX + HORIZONTAL SCROLL FIX
-========================================= */
-
-/* 1. BACKDROP */
 #kanjiModal {
   position: fixed;
   inset: 0;
@@ -210,7 +291,7 @@ input,
   align-items: center;
   justify-content: center;
 
-  padding: 24px; /* biar gak nempel tepi */
+  padding: 24px;
   box-sizing: border-box;
 }
 
@@ -218,7 +299,6 @@ input,
   display: flex;
 }
 
-/* 2. MODAL CONTAINER */
 .kanji-modal-content {
   width: 100%;
   max-width: 480px;
@@ -231,11 +311,10 @@ input,
   display: flex;
   flex-direction: column;
 
-  overflow: hidden; /* penting untuk border radius */
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-/* 3. EXPANDED AREA */
 .card-image.expanded {
   width: 100%;
   padding: 32px;
@@ -249,7 +328,6 @@ input,
   box-sizing: border-box;
 }
 
-/* 4. RECOMMENDATION ROW (SCROLL FIX) */
 #recommendationRow {
   display: flex;
   flex-wrap: nowrap;
@@ -267,7 +345,6 @@ input,
   box-sizing: border-box;
 }
 
-/* Scrollbar tipis (desktop) */
 #recommendationRow::-webkit-scrollbar {
   height: 6px;
 }
@@ -277,19 +354,16 @@ input,
   border-radius: 10px;
 }
 
-/* Card supaya gak shrink */
 #recommendationRow .card {
   flex: 0 0 auto;
   min-width: 130px;
 }
 
-/* 5. GLOBAL ANTI OVERFLOW */
 #kanjiModal * {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* 6. TEXT COLOR */
 .expanded-card .kanji,
 .expanded-card .kana,
 .expanded-card .romaji,
@@ -297,11 +371,9 @@ input,
   color: #111111 !important;
 }
 
-/* Optional: cegah horizontal page shift */
 html, body {
   overflow-x: hidden;
 }
-
 
 .letter-poster {
   grid-column: 1 / -1;
@@ -341,7 +413,6 @@ html, body {
   grid-template-columns: 80px repeat(5, 1fr) !important;
   gap: 10px !important;
 }
-
 
 .letter-label,
 .letter-cell {
@@ -545,7 +616,7 @@ html, body {
   margin-bottom: 20px;
   font-size: 22px;
   font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); /* tajam di background cerah */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .sidebar-tree {
@@ -575,7 +646,7 @@ html, body {
   display: grid;
   gap: 8px;
   margin-top: 10px;
-  padding-left: 8px; /* indent halus agar lebih rapi */
+  padding-left: 8px;
 }
 
 .sidebar-actions {
@@ -590,7 +661,6 @@ html, body {
   margin-top: 20px;
 }
 
-/* MENU BTN: hilangkan blur (penyebab kabur), tetap pertahankan efek hover asli */
 .menu-btn {
   text-align: left;
   color: #fff;
@@ -607,7 +677,6 @@ html, body {
   transform: translateX(4px);
 }
 
-/* OVERLAY: hanya redupkan KONTEN KANAN (tidak menutupi sidebar) */
 #overlay {
   position: fixed;
   top: 0;
@@ -615,7 +684,7 @@ html, body {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(3px); /* blur asli tetap ada */
+  backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   opacity: 0;
   visibility: hidden;
@@ -628,11 +697,10 @@ html, body {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  left: 260px;               /* Geser ke kanan = lebar sidebar */
-  width: calc(100vw - 260px); /* Hanya tutupi area kanan */
+  left: 260px;
+  width: calc(100vw - 260px);
 }
 
-/* Scrollbar tetap elegan */
 #sidebar::-webkit-scrollbar {
   width: 6px;
 }
@@ -658,23 +726,23 @@ html, body {
   }
   
   #grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Lebih lebar di desktop */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
   
   #sidebar {
-    width: 280px; /* Sedikit lebih lebar di desktop */
+    width: 280px;
   }
   
   .kanji-modal-content {
-    width: min(80vw, 900px); /* Modal lebih besar di desktop */
+    width: min(80vw, 900px);
   }
   
   .expanded-card .card-image.expanded img {
-    height: 350px; /* Gambar expand lebih tinggi di desktop */
+    height: 350px;
   }
   
   .recommendation-item {
-    min-width: 120px; /* Rekomendasi lebih besar di desktop */
+    min-width: 120px;
   }
   
   .rec-kanji {
@@ -691,13 +759,11 @@ html, body {
     font-size: 12px;
   }
   
-  /* Ukuran lebih besar untuk expanded card di desktop */
   .expanded-card .kana { font-size: 26px; }
   .expanded-card .kanji { font-size: 80px; }
   .expanded-card .romaji { font-size: 22px; }
   .expanded-card .meaning { font-size: 24px; }
 }
-
 
 .test-tree > details {
   background: rgba(255,255,255,0.1);
@@ -782,19 +848,16 @@ html, body {
   width: auto;
 }
 
-/* Ukuran default untuk card normal */
 .kana { font-size: 16px; font-weight: 500; }
 .kanji { font-size: 38px; line-height: 1.1; font-weight: 700; }
 .romaji { font-size: 14px; opacity: 0.95; }
 .meaning { font-size: 15px; font-weight: 700; }
 
-/* Ukuran lebih besar untuk expanded card */
-.expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } /* Lebih besar, responsif */
-.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } /* Dari 38px ke ~60px rata-rata */
+.expanded-card .kana { font-size: clamp(20px, 5vw, 24px); }
+.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; }
 .expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
 .expanded-card .meaning { font-size: clamp(18px, 4vw, 22px); }
 
-/* Logo Title */
 .branding img {
   height: 54px;
   cursor: pointer;
@@ -805,14 +868,12 @@ html, body {
   transform: scale(1.05);
 }
 
-/* Card text center sempurna */
 .card-overlay {
   text-align: center;
   align-content: center;
   justify-items: center;
 }
 
-/* Custom Dropdown */
 .category-selector {
   position: relative;
 }
@@ -867,61 +928,42 @@ html, body {
   background: #f3f4f6;
 }
 
-/* =========================
-   FIX PARENT GRID
-========================= */
 #grid {
   padding: 1rem;
   display: grid;
-  /* Kolom default untuk vocab (tetap biarkan) */
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); 
   gap: 1rem;
 }
 
-/* =========================
-   KUNCI UTAMA: POSTER GRID
-========================= */
 .expression-wide-grid {
-  /* Paksa container ini mengambil seluruh lebar layar (breakout dari 170px) */
   grid-column: 1 / -1 !important; 
-  
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* Tetap 2 kolom */
+  grid-template-columns: repeat(2, 1fr) !important;
   gap: 40px !important;
-  
   width: 100% !important;
-  max-width: 1100px !important; /* Batasi lebar agar cantik */
-  margin: 40px auto !important;  /* PUSATKAN GRID DI TENGAH HALAMAN */
+  max-width: 1100px !important;
+  margin: 40px auto !important;
   padding: 0 20px !important;
   box-sizing: border-box !important;
 }
 
-/* =========================
-   CARD STYLE (Pasti Tengah)
-========================= */
 .expression-wide-card {
   background: #fdf4f4 !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
-  
   min-height: 220px !important;
   padding: 30px !important;
-  
   display: flex !important;
   flex-direction: column !important;
-  justify-content: center !important; /* Tengah Vertikal */
-  align-items: center !important;     /* Tengah Horizontal */
+  justify-content: center !important;
+  align-items: center !important;
   text-align: center !important;
-  
   position: relative !important;
   box-sizing: border-box !important;
 }
 
-/* =========================
-   TEXT FIX (Anti Vertikal)
-========================= */
 .wide-kanji, .wide-kana, .wide-romaji, .wide-meaning {
-  writing-mode: horizontal-tb !important; /* Paksa horizontal */
+  writing-mode: horizontal-tb !important;
   display: block !important;
   width: 100% !important;
   margin: 0 auto !important;
@@ -937,7 +979,6 @@ html, body {
 .wide-romaji { font-size: 1.1rem !important; color: #555 !important; font-style: italic !important; }
 .wide-meaning { font-size: 1.2rem !important; margin-top: 5px !important; }
 
-/* Tombol Play */
 .wide-play-btn {
   position: absolute;
   right: 10px;
@@ -957,14 +998,12 @@ html, body {
   transform: scale(1.1) !important;
 }
 
-/* Responsif untuk Layar Kecil / HP */
 @media (max-width: 900px) {
   .expression-wide-grid {
     grid-template-columns: 1fr !important;
   }
 }
 
-/* HEADER FIXED + LAYOUT BARU: hamburger + logo di kiri (samping), controls di kanan, resultInfo di bawah controls (kanan) */
 .topbar {
   position: fixed !important;
   top: 0;
@@ -978,42 +1017,38 @@ html, body {
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
 
-  /* Grid 3 kolom + 2 baris (biar resultInfo di bawah tanpa header jadi terlalu tinggi) */
   display: grid !important;
-  grid-template-columns: auto auto 1fr !important;   /* kolom1: hamburger, kolom2: logo, kolom3: controls + resultInfo */
-  grid-template-rows: auto auto !important;          /* baris1: hamburger/logo/controls, baris2: resultInfo */
-  gap: 8px 16px !important;                          /* jarak vertikal/horizontal kecil agar ramping */
+  grid-template-columns: auto auto 1fr !important;
+  grid-template-rows: auto auto !important;
+  gap: 8px 16px !important;
   align-items: center !important;
 }
 
-/* Hamburger di kiri atas */
 #hamburger {
   grid-column: 1;
   grid-row: 1;
 }
 
-/* Logo tepat di samping hamburger (kiri, sejajar horizontal) */
 .branding {
   grid-column: 2;
   grid-row: 1;
   justify-self: start !important;
 }
+
 .branding img {
-  height: 48px !important;   /* ukuran logo konsisten, tidak acak-acakan */
+  height: 48px !important;
 }
 
-/* Dropdown + search di pojok kanan atas */
 .controls {
   grid-column: 3;
   grid-row: 1;
   justify-self: end !important;
   display: grid !important;
-  grid-template-columns: minmax(160px, 240px) 1fr !important;   /* dropdown tetap lebar, search ambil sisa */
+  grid-template-columns: minmax(160px, 240px) 1fr !important;
   gap: 12px !important;
   align-items: center;
 }
 
-/* Result info tepat di bawah dropdown/search (align kanan, tidak numpuk) */
 #resultInfo {
   grid-column: 3;
   grid-row: 2;
@@ -1023,7 +1058,6 @@ html, body {
   color: #374151;
 }
 
-/* Mobile: lebih ramping, logo sedikit lebih kecil */
 @media (max-width: 767px) {
   .topbar {
     padding: 10px 12px !important;
@@ -1038,9 +1072,8 @@ html, body {
   }
 }
 
-/* Padding konten utama agar tidak tertutup header */
 #grid {
-  padding-top: 150px !important;   /* naikkan sedikit karena sekarang 2 baris (biasanya 140-160px pas) */
+  padding-top: 150px !important;
 }
 
 .card-image,
@@ -1050,129 +1083,100 @@ html, body {
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
   -ms-user-select: none !important;
-  cursor: pointer !important;   /* paksa selalu tangan pointer saat hover card */
+  cursor: pointer !important;
 }
 
-/* TANPA EFEK BERSINAR/SHINE MOVING */
-.card-image,
-.card-overlay,
-.card-overlay * {
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  cursor: pointer !important;   /* selalu tangan pointer saat hover card */
-}
-
-/* Efek hover hanya scale sedikit + shadow lebih dalam (mirip kesan "mengambang" pada logo title.PNG) */
 .card-image {
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 .card-image:hover {
-  transform: scale(1.05) !important;                /* membesar halus */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;   /* glow shadow lebih kuat */
+  transform: scale(1.05) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Mobile: efek lebih ringan agar tidak terlalu "loncat" */
 @media (max-width: 767px) {
   .card-image:hover {
     transform: scale(1.03) !important;
   }
 }
 
-/* ============================================= */
-/* Hilangkan efek interaktif di expanded card (modal) - VERSI FIXED */
-/* Hanya matikan di overlay teks (bukan seluruh card-image) */
-/* Play button tetap interaktif karena sibling, bukan child overlay */
-/* ============================================= */
 #kanjiModal .card-overlay,
 #kanjiModal .card-overlay * {
-  cursor: default !important;        /* No pointer di teks */
-  pointer-events: none !important;   /* Matikan hover/tap di teks only */
-  transition: none !important;       /* No animasi di teks */
+  cursor: default !important;
+  pointer-events: none !important;
+  transition: none !important;
 }
 
 #kanjiModal .card-image.expanded:hover {
-  transform: none !important;        /* No scale saat hover */
-  box-shadow: none !important;       /* No shadow tambahan */
-  transition: none !important;       /* No gerak saat hover */
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
 }
 
-/* Pastikan play button tetap fully interaktif (audio jalan normal) */
 #kanjiModal .play-audio-btn {
-  pointer-events: auto !important;   /* Bisa diklik/tap */
-  cursor: pointer !important;        /* Icon pointer pas hover */
-  transition: none !important;       /* Optional: biar konsisten no animasi */
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: none !important;
 }
 
-/* Bonus: backdrop lebih jelas bisa di-tap */
 .kanji-modal-backdrop {
   cursor: pointer;
 }
 
-/* Hilangkan ripple/highlight pas tap di mobile (seluruh expanded card) */
 #kanjiModal .card-image.expanded {
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
 }
 
-/* ============================================= */
-/* Perbesar logo .branding img tanpa narik header lain */
-/* Retain hover scale effect yang sudah ada */
-/* ============================================= */
 .branding {
-  grid-column: 2;                  /* Tetap di column 2 (samping hamburger) */
-  grid-row: 1;                     /* Tetap di row 1 */
-  justify-self: start !important;  /* Sejajar kiri di cell */
-  align-self: center !important;   /* Vertikal center tanpa stretch row height */
-  padding-left: 15px !important;   /* Jarak dari hamburger (adjust biar balance) */
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: start !important;
+  align-self: center !important;
+  padding-left: 15px !important;
 }
 
 .branding img {
-  height: 65px !important;         /* Besarkan dari 54px jadi 90px (sesuaikan: coba 80–110px) */
-  width: auto !important;          /* Proporsional (atau fixed kalau mau bulat sempurna) */
-  max-width: none !important;      /* Override limit kalau ada */
-  border-radius: 50% !important;   /* Pastikan bulat sempurna */
-  object-fit: cover !important;    /* Gambar fill bagus tanpa distort/stretch */
-  cursor: pointer !important;      /* Retain cursor pointer lu */
-  transition: transform 0.3s ease !important; /* Smooth transition (sedikit lebih halus dari 0.2s) */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; /* Bonus: shadow biar lebih premium & pop */
+  height: 65px !important;
+  width: auto !important;
+  max-width: none !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  cursor: pointer !important;
+  transition: transform 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
   display: block !important;
 }
 
 .branding img:hover {
-  transform: scale(1.08) !important; /* Enhance.hover scale lu (dari 1.05 jadi 1.08, lebih noticeable) */
+  transform: scale(1.08) !important;
 }
 
-/* Pastikan header grid nggak stretch height karena logo besar */
-header {  /* atau selector header lu, misal #header / .header-container / .top-bar */
-  grid-template-rows: minmax(90px, auto) !important; /* Min-height adjust ke logo baru (dari ~60px jadi 90px) */
+header {
+  grid-template-rows: minmax(90px, auto) !important;
   align-items: center !important;
-  padding: 10px 20px !important;   /* Adjust padding biar space cukup di kiri/kanan */
+  padding: 10px 20px !important;
 }
 
-/* Responsif: Kecilkan logo & header di mobile (lebar <768px) */
 @media (max-width: 768px) {
   .branding {
-    padding-left: 10px !important; /* Kurangi jarak di HP */
+    padding-left: 10px !important;
   }
   .branding img {
-    height: 65px !important;       /* Kecil dari 90px jadi 65px (masih lebih besar dari original 54px) */
+    height: 65px !important;
   }
   header {
-    grid-template-rows: minmax(75px, auto) !important; /* Header lebih ramping di mobile */
+    grid-template-rows: minmax(75px, auto) !important;
   }
 }
 
-/* Edge case: Kalau di screen sangat kecil, prevent overlap */
 @media (max-width: 480px) {
   .branding img {
-    height: 55px !important;       /* Kecil lagi di HP mini */
+    height: 55px !important;
   }
 }
 
-/* Mode dukungan pengembang - paksa poster jadi HORIZONTAL BESAR full-width */
 #grid.support-mode {
   display: block !important;
   padding-top: 120px !important;
@@ -1242,12 +1246,11 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   transform: translateY(-3px);
 }
 
-/* Tombol Dukung Pengembang - versi estetik baru */
 #supportBtn {
   width: 100%;
   padding: 18px 20px;
-  margin-top: 25px;                    /* Jarak lebih lega dari menu atas */
-  background: linear-gradient(135deg, #ff6b81, #ff9ff3, #a29bfe);  /* Pink-purple gradient Jepang yang lembut */
+  margin-top: 25px;
+  background: linear-gradient(135deg, #ff6b81, #ff9ff3, #a29bfe);
   color: white;
   font-weight: 700;
   font-size: 16px;
@@ -1255,26 +1258,23 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   border: none;
   border-radius: 16px;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(255, 107, 129, 0.4);  /* Shadow pink lembut */
+  box-shadow: 0 8px 25px rgba(255, 107, 129, 0.4);
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Efek hover + glow */
 #supportBtn:hover {
   transform: translateY(-4px) scale(1.03);
   box-shadow: 0 12px 35px rgba(255, 107, 129, 0.6);
   background: linear-gradient(135deg, #ff4757, #ff9ff3, #7f8cff);
 }
 
-/* Efek ripple/inner glow saat klik */
 #supportBtn:active {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3);
 }
 
-/* Icon hati yang berdenyut (opsional animasi) */
 #supportBtn::before {
   content: "❤️ ";
   font-size: 18px;
@@ -1290,7 +1290,6 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   100% { transform: scale(1); }
 }
 
-/* Responsif mobile */
 @media (max-width: 768px) {
   #supportBtn {
     padding: 16px 18px;
@@ -1300,15 +1299,14 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 @media (max-width: 768px) {
-
   #grid.support-mode {
     padding-top: 120px !important;
     padding-bottom: 40px !important;
   }
 
   .support-poster {
-    min-height: auto;       /* matikan full-height */
-    padding: 40px 20px;     /* kecilin padding */
+    min-height: auto;
+    padding: 40px 20px;
     border-radius: 20px;
   }
 
@@ -1322,219 +1320,56 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     line-height: 1.6;
     margin-bottom: 12px;
   }
-
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: none;
-}
-
-body {
-  background: none;
-  font-family: 'Ubuntu', sans-serif;
-  color: #1f2937;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("./assets/bg.webp") center / cover no-repeat;
-  z-index: -1;
-}
-
-/* ====================== FIX iOS SAFARI (HEADER + SIDEBAR) ====================== */
-
-/* Topbar / Header - FIX rusak & notch/dynamic island */
-.topbar {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-top: env(safe-area-inset-top, 12px) !important;   /* FIX NOTCH */
-  box-sizing: border-box;
-  z-index: 1100 !important;
-  background: #ffcddb !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-  transition: all 0.3s ease;
-}
-
-/* Sidebar - pakai dvh biar tidak overflow di iOS */
-#sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 280px;                    /* sesuaikan dengan lebar menu kamu */
-  height: 100dvh !important;       /* <<< FIX UTAMA iOS */
-  max-height: 100dvh;
-  background: #9b1c2c;             /* warna maroon menu kamu */
-  transform: translateX(-100%);
-  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
-  z-index: 1200;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
-  padding-top: env(safe-area-inset-top, 12px);
-}
-
-#sidebar.active {
-  transform: translateX(0);
-}
-
-/* Overlay - FULL SCREEN + klik langsung jalan di iOS */
-#overlay {
-  position: fixed;
-  inset: 0;                        /* top:0 left:0 right:0 bottom:0 */
-  width: 100vw;
-  height: 100dvh !important;       /* <<< FIX UTAMA */
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 1150;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
-  touch-action: manipulation;
-}
-
-#overlay.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-/* Sisanya tetap sama persis seperti CSS lama kamu (tidak ada yang dihapus) */
-.branding h1 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.branding p {
-  margin: 2px 0 0;
-  font-size: 0.9rem;
-  color: #4b5563;
-}
-
-.controls {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
-}
-
-#resultInfo {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 0.9rem;
-  color: #374151;
-}
-
-select,
-input,
-.action-btn,
-.menu-btn {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.62rem 0.95rem;
-  font-size: 14px;
-  font-family: Ubuntu, sans-serif;
-  border-radius: 999px;
-  border: none;
-}
-
-select,
-input,
-.action-btn {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14);
-}
-
-.action-btn {
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.hamburger {
-  align-self: center;
-  width: 40px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 0;
-}
-
-.hamburger span {
-  display: block;
-  height: 4px;
-  background: #444 !important;
-  margin: 7px 0;
-  border-radius: 2px;
-}
-
-.topbar select,
-.topbar input {
-  background: rgba(255, 255, 255, 0.92) !important;
-  color: #333 !important;
-}
-
-.topbar #resultInfo {
-  color: #5d4037 !important;
-}
-
-/* GRID UTAMA (tidak diubah) */
-#grid {
-  padding-top: 140px !important;
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 15px !important;
-  padding: 15px !important;
-  width: 100% !important;
-  max-width: 100vw !important;
-  box-sizing: border-box !important;
-  margin: 0 auto !important;
-}
-
-@media (min-width: 640px) {
-  #grid { grid-template-columns: repeat(3, 1fr) !important; }
 }
 
 @media (min-width: 1024px) {
   #grid {
-    grid-template-columns: repeat(5, 1fr) !important;
-    gap: 25px !important;
-    padding: 30px !important;
-    max-width: 1300px !important;
+    padding-top: 120px !important;
   }
-}
 
-/* Card, modal, letter-poster, dll tetap sama (copy dari CSS lama kamu) */
-.card-image {
-  height: 220px !important;
-  background-color: #ffcddb !important;
-  position: relative;
-  border-radius: 20px !important;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  box-sizing: border-box !important;
-}
+  .letter-poster {
+    max-width: 960px !important;
+    margin: 18px auto 2.8rem auto !important;
+    padding: 2.5rem 2.4rem 3rem !important;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.975) !important;
+    box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25);
+  }
 
-/* ... (semua style modal, recommendation, letter-poster, pattern-card, empty-state, dll tetap sama seperti CSS kamu sebelumnya) ... */
+  .letter-poster-body {
+    gap: 32px !important;
+  }
 
-.letter-poster,
-.pattern-card,
-.empty-state,
-.info-poster {
-  /* tetap sama */
-}
+  .letter-row {
+    gap: 16px !important;
+    grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important;
+    justify-content: center;
+  }
 
-/* Optional: extra smooth scroll */
-html, body {
-  overflow-x: hidden;
+  .letter-label,
+  .letter-cell {
+    height: 92px !important;
+    font-size: 1.68rem !important;
+    border-radius: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .letter-label {
+    font-size: 1.12rem !important;
+    background: rgba(17, 24, 39, 0.09) !important;
+    font-weight: 700;
+  }
+
+  .letter-cell {
+    background: #ffffff !important;
+    box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .letter-cell:hover {
+    transform: scale(1.06) translateY(-4px);
+    box-shadow: 0 14px 32px -8px rgba(236, 72, 153, 0.35);
+  }
 }

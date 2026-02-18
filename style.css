@@ -1432,3 +1432,28 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 .ios-device .card-image {
   box-shadow: 0 6px 18px rgba(0,0,0,0.3) !important;
 }
+
+/* =========================================
+   🍎 iOS SCROLL PERFORMANCE BOOST
+========================================= */
+
+.ios-device .card-image {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+  border-radius: 14px !important;
+}
+
+/* Hindari repaint berulang */
+.ios-device .card-image,
+.ios-device .card-overlay {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Matikan hover animation di iOS */
+.ios-device .card-image:hover {
+  transform: none !important;
+}
+
+.ios-device #grid {
+  contain: layout style paint;
+}

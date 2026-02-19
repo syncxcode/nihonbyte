@@ -66,40 +66,41 @@ function renderQuiz(type) {
     const item = currentQuizData[quizIndex];
     const timeLimit = type === 'kanji' ? 5 : (type === 'bunpou' ? 30 : 10); 
     timeLeft = timeLimit;
-
-    // Buat Pilihan Jawaban Otomatis (1 benar, 3 salah)
     const options = generateOptions(item, type);
 
-    grid.classList.add("support-mode"); // Biar background tetap konsisten
     grid.innerHTML = `
-        <div class="quiz-wrapper" style="max-width: 500px; margin: 0 auto; text-align: center; padding: 20px;">
-            <div class="quiz-header" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
-                <span style="font-weight: bold;">Soal ${quizIndex + 1}/${currentQuizData.length}</span>
-                <span id="quiz-timer" style="color: #ff4d6d; font-weight: bold; font-size: 1.2rem;">${timeLeft}s</span>
+        <div class="quiz-container-pro" style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 100;">
+            
+            <div class="quiz-status-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.85); padding: 10px 20px; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <div style="font-weight: bold; color: #333;">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
+                <div style="font-size: 1.2rem; font-weight: 800; color: #ff4d6d;" id="quiz-timer">${timeLeft}s</div>
+                <button id="finishBtnManual" style="background: #ff4d6d; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;">Selesaikan Test</button>
             </div>
             
-            <div class="quiz-card-main" style="background: rgba(255,255,255,0.9); padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px;">
-                <h1 style="font-size: 5rem; color: #1f2937; margin: 0;">${type === 'goi' ? item.meaning : item.kanji}</h1>
-                ${type === 'kanji' ? '<p style="color: #6b7280;">Bacaan Hiragana-nya?</p>' : ''}
+            <div class="quiz-card-main" style="width: 100%; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 20px; text-align: center;">
+                <h1 style="font-size: clamp(3rem, 10vw, 6rem); color: #1f2937; margin: 0;">${type === 'goi' ? item.meaning : item.kanji}</h1>
             </div>
 
-            <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%;">
                 ${options.map(opt => `
-                    <button onclick="checkAnswer('${opt}')" class="opt-btn" style="padding: 15px; border: none; border-radius: 12px; background: white; cursor: pointer; font-size: 1.1rem; font-weight: 500; transition: 0.2s;">
+                    <button class="quiz-opt-btn" data-answer="${opt}" style="padding: 20px; border: 2px solid transparent; border-radius: 15px; background: white; cursor: pointer; font-size: 1.2rem; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                         ${opt}
                     </button>
                 `).join('')}
             </div>
-
-            <button onclick="confirmEndQuiz()" style="margin-top: 30px; background: none; border: 1px solid #ff4d6d; color: #ff4d6d; padding: 8px 20px; border-radius: 20px; cursor: pointer;">
-                SELESAIKAN TEST
-            </button>
         </div>
     `;
 
+    // Pasang Event Listener Manual (Lebih aman daripada onclick di string)
+    document.querySelectorAll(".quiz-opt-btn").forEach(btn => {
+        btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
+    });
+
+    document.getElementById("finishBtnManual").addEventListener("click", confirmEndQuiz);
+
     startTimer(type);
 }
-
+      
 // 3. Fungsi Timer
 function startTimer(type) {
     clearInterval(timer);
@@ -119,14 +120,27 @@ function startTimer(type) {
 function checkAnswer(selected) {
     clearInterval(timer);
     const item = currentQuizData[quizIndex];
-    const correct = (viewMode.includes('goi')) ? item.kana : item.kana; 
     
+    // Cek jawaban
     if (selected === item.kana) {
         score++;
     }
-    nextQuestion();
-}
 
+    // Feedback visual dikit sebelum pindah (Opsional tapi bagus buat UX)
+    const btn = document.querySelector(`[data-answer="${selected}"]`);
+    if (btn) {
+        btn.style.background = selected === item.kana ? "#4ade80" : "#fb7185";
+        btn.style.color = "white";
+    }
+
+    setTimeout(() => {
+        quizIndex++;
+        const parts = viewMode.split(':');
+        const type = parts[2];
+        renderQuiz(type);
+    }, 300); // Delay 0.3 detik biar kerasa transisinya
+}
+      
 function nextQuestion() {
     quizIndex++;
     // Mengambil tipe materi (kanji/goi/bunpou) dari format dev:mode:type:level
@@ -958,6 +972,20 @@ function confirmEndQuiz() {
   });
 
   document.getElementById("logo")?.addEventListener("click", () => {
+    // PROTEKSI MODE TEST: User gak boleh kabur lewat logo
+    if (isTesting) {
+      const messages = [
+        "<h3>諦めないで (Jangan Menyerah)! 💪</h3><p>Latihan ini adalah langkahmu menuju kesuksesan. Selesaikan dulu ujiannya!!</p>",
+        "<h3>ちょっと待って! (Tunggu Sebentar!) ✋</h3><p>Sayang banget skornya kalau ditinggal sekarang. Sedikit lagi kamu akan menguasai materi ini!</p>",
+        "<h3>Fokus, Bosku! 🔥</h3><p>Selesaikan apa yang sudah kamu mulai. Perjalanan seribu mil dimulai dengan satu langkah (dan tidak berhenti di tengah jalan).</p>"
+      ];
+      
+      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      openInfoModal(`<div style="text-align: center; padding: 10px;">${randomMsg}</div>`);
+      return;
+    }
+
+    // LOGIC NORMAL: Jika tidak sedang test
     selectedLevel = "all";
     selectedType = "all";
     if (category) category.value = "all";
@@ -965,7 +993,7 @@ function confirmEndQuiz() {
     viewMode = "vocab";
     render();
   });
-
+  
   document.getElementById("supportBtn")?.addEventListener("click", () => {
     viewMode = "support";
     if (search) search.value = "";

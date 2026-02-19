@@ -282,18 +282,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
+    
     if (targetType === "verb-irregular") {
       return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
     }
+    
     if (targetType === "noun" || targetType.startsWith("noun-")) {
+      // --- START LOGIKA GABUNGAN ---
+      
+      // 1. Gabungan Angka & Satuan
+      if (targetType === "noun-number-counter") {
+        return wordType === "noun-number" || wordType === "noun-counter";
+      }
+
+      // 2. Gabungan Rumah, Dapur, & Keluarga
+      if (targetType === "noun-house-family") {
+        return wordType === "noun-house" || 
+               wordType === "noun-kitchen" || 
+               wordType === "noun-family";
+      }
+
+      // 3. Gabungan Tubuh & Medis (Kesehatan)
+      if (targetType === "noun-body-medical") {
+        return wordType === "noun-body" || wordType === "noun-medical";
+      }
+
+      // 4. Gabungan Waktu, Bulan, & Cuaca
+      if (targetType === "noun-time-weather") {
+        return wordType === "noun-time" || 
+               wordType === "noun-month" || 
+               wordType === "noun-weather";
+      }
+
+      // --- END LOGIKA GABUNGAN ---
+
+      // Jika tidak cocok dengan gabungan di atas, 
+      // cek apakah tipe datanya persis sama (untuk kategori tunggal)
       return wordType === targetType;
     }
+    
     if (targetType === "ekspresi" || targetType === "expression" || targetType === "ungkapan umum") {
       return ["expression", "ekspresi", "ungkapan umum"].includes(wordType);
     }
+    
     return wordType?.startsWith(targetType) || false;
   }
-
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
     const selectedFromDropdown = category ? category.value : "all";

@@ -1693,3 +1693,49 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     position: relative;
   }
 }
+
+/* =========================================
+   FIX HEADER LAYOUT DESKTOP (FLEXBOX)
+   Hamburger + Logo di Kiri, Search di Kanan
+========================================= */
+
+@media (min-width: 769px) {
+  .topbar {
+    /* Ubah dari Grid menjadi Flexbox agar sama seperti mobile */
+    display: flex !important;
+    align-items: center !important;
+    gap: 24px !important; /* Mengatur jarak antara Hamburger dan Logo */
+    padding: 12px 30px !important; /* Memberi ruang (padding) kiri-kanan agar tidak terlalu mepet layar */
+    
+    /* Matikan grid lama agar tidak bentrok */
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+  }
+
+  /* Pastikan bentuk Hamburger & Logo tetap utuh (tidak tertekan) */
+  #hamburger, 
+  .branding {
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    padding-left: 0 !important; 
+  }
+
+  /* Ini kuncinya: Dorong tombol search ke pojok kanan */
+  #searchBtn {
+    margin-left: auto !important;
+    position: relative !important;
+    z-index: 100 !important;
+  }
+  
+  /* Jika tombol search ada di dalam div .controls, kita dorong div-nya ke kanan juga */
+  .controls {
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Sembunyikan resultInfo dari header desktop agar sejajar sempurna (opsional) */
+  #resultInfo {
+    display: none !important;
+  }
+}

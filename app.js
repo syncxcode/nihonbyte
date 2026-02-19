@@ -129,10 +129,12 @@ function checkAnswer(selected) {
 
 function nextQuestion() {
     quizIndex++;
-    const type = viewMode.split(':')[1]; // Mengambil tipe dari viewmode
+    // Mengambil tipe materi (kanji/goi/bunpou) dari format dev:mode:type:level
+    const parts = viewMode.split(':');
+    const type = parts[2]; // Ini akan mengambil 'kanji', 'goi', atau 'bunpou'
     renderQuiz(type);
 }
-
+      
 // 5. Generate Pilihan Acak
 function generateOptions(correctItem, type) {
     let wrongPool = vocabularyData

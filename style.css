@@ -1739,3 +1739,19 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     display: none !important;
   }
 }
+
+/* =========================================
+   FIX TOMBOL DUKUNG PENGEMBANG (TIDAK STICKY)
+   Memberi "tahanan" di bawah agar bisa di-scroll mentok dengan nyaman
+========================================= */
+
+#sidebar {
+  /* Memberikan bantalan (tahanan) kosong di paling bawah sidebar */
+  padding-bottom: 50px !important; 
+} 
+  /* Memberi jarak ekstra khusus di bawah tombol agar tidak mepet layar */
+  margin-bottom: 30px !important; 
+
+  /* Supaya aman tidak bentrok dengan elemen lain */
+  z-index: 1 !important; 
+}

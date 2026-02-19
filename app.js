@@ -763,15 +763,17 @@ document.addEventListener("DOMContentLoaded", () => {
   button.addEventListener("click", () => {
     const level = button.dataset.level;
 
+    // Jika user klik N3, N2, atau N1 di menu Pola Kalimat
     if (["N3", "N2", "N1"].includes(level)) {
-      // Simpan mode view agar saat render ulang tidak hilang
-      viewMode = `dev:${level}`; 
-      render(); // Panggil fungsi render utama
+      // Formatnya: dev : mode : tipe_materi : level
+      // Kita pakai mode 'pattern' agar fungsinya nulis "Pola Kalimat"
+      viewMode = `dev:pattern:Pola Kalimat:${level}`; 
+      render();
       closeSidebar();
       return;
     }
 
-    // N5 & N4 tetap normal
+    // Jika N5 atau N4 (Normal)
     viewMode = `patterns:${level}`;
     render();
     closeSidebar();
@@ -811,23 +813,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
   button.addEventListener("click", () => {
-    const type = button.dataset.type;
-    const level = button.dataset.level;
+    const type = button.dataset.type; // kanji, bunpou, dll
+    const level = button.dataset.level; // N5, N4, dll
 
-    // Cek jika level N3, N2, N1 (Karena kita baru cicil N5 & N4)
     if (["N3", "N2", "N1"].includes(level)) {
-      viewMode = `dev:${type}-${level}`; // Masuk ke mode development
+      // Simpan format dev:mode:type:level
+      viewMode = `dev:exercise:${type}:${level}`; 
       render();
       closeSidebar();
       return;
     }
 
-    // Kalau N5 atau N4, panggil fungsi latihanmu
-    startExercise(type, level); // Ganti dengan nama fungsi latihanmu
+    // Jalankan fungsi startExercise normal untuk N5/N4
+    startExercise(type, level);
     closeSidebar();
   });
 });
-
+  
   function renderSupportPoster() {
     grid.classList.add("support-mode");
     grid.innerHTML = `
@@ -843,19 +845,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if(resultInfo) resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
   }
 
-  function renderUnderDevelopment(level) {
-  // Reset grid dan hapus mode support jika ada
+  function renderUnderDevelopment(mode, type, level) {
   grid.classList.remove("support-mode");
   grid.innerHTML = "";
 
+  // Menentukan judul berdasarkan mode
+  const titlePrefix = mode === "exercise" ? "Latihan" : "Pola Kalimat";
+  
   const container = document.createElement("div");
-  container.className = "empty-state"; // Gunakan class yang sudah ada agar stylenya konsisten
+  container.className = "empty-state";
   container.style.padding = "40px 20px";
   container.style.marginTop = "20px";
 
   container.innerHTML = `
     <div style="text-align: center;">
-      <h2 style="color: #ff4d6d; margin-bottom: 20px;">🚧 Pola Kalimat ${level} 🚧</h2>
+      <h2 style="color: #ff4d6d; margin-bottom: 20px;">🚧 ${titlePrefix} ${type}-${level} 🚧</h2>
       <p style="font-size: 1.2rem; font-weight: 600; color: #1f2937; margin-bottom: 10px;">
         Kategori yang anda pilih, masih dalam proses Pengembangan, silahkan kembali lagi nanti.
       </p>
@@ -869,7 +873,7 @@ document.addEventListener("DOMContentLoaded", () => {
   `;
 
   grid.appendChild(container);
-  if (resultInfo) resultInfo.textContent = `Pola Kalimat ${level} (Coming Soon)`;
+  if (resultInfo) resultInfo.textContent = `${titlePrefix} ${type}-${level} (Coming Soon)`;
 }
   
   // ==========================================
@@ -893,10 +897,13 @@ document.addEventListener("DOMContentLoaded", () => {
        selectedType === "ungkapan umum");
     
     if (viewMode.startsWith("dev:")) {
-      const level = viewMode.split(":")[1];
-      renderUnderDevelopment(level);
-      return;
-    }
+    const parts = viewMode.split(":"); 
+    // parts[1] = mode (exercise/pattern)
+    // parts[2] = type (kanji/bunpou)
+    // parts[3] = level (N3/N2/N1)
+    renderUnderDevelopment(parts[1], parts[2], parts[3]);
+    return;
+  }
     
     if (isExpressionView) {
       renderExpressionPoster();

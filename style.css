@@ -529,7 +529,12 @@ html, body {
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;
   z-index: 1000;
-  padding: 2rem 1.5rem;
+  
+  /* --- KUNCI FIX SCROLL MENTOK --- */
+  padding: 2rem 1.5rem 120px 1.5rem; /* Atas 2rem, Kiri-Kanan 1.5rem, Bawah 120px (Biar super lega) */
+  box-sizing: border-box !important; /* Paksa padding masuk ke dalam ukuran 100vh */
+  /* ------------------------------- */
+
   color: #ffffff;
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
   border-top-right-radius: 20px;

@@ -56,7 +56,7 @@ function startExercise(type, level) {
     renderQuiz(type);
 }
 
-// 2. Fungsi Render Tampilan Soal (Horizontal Dewasa Edition)
+// 1. Render Tampilan Kuis (Waktu Diperpanjang)
 function renderQuiz(type) {
     if (quizIndex >= currentQuizData.length) {
         endQuiz();
@@ -64,19 +64,31 @@ function renderQuiz(type) {
     }
 
     const item = currentQuizData[quizIndex];
-    const timeLimit = type === 'kanji' ? 5 : (type === 'bunpou' ? 30 : 10); 
+    // Waktu disesuaikan biar ramah pemula: Kanji/Goi 15s, Bunpou 45s
+    const timeLimit = (type === 'bunpou') ? 45 : 15; 
     timeLeft = timeLimit;
     const options = generateOptions(item, type);
 
-    // KUNCI 1: Tambahkan kelas support-mode agar #grid berhenti jadi grid-kolom 
-    // (menggunakan css bawaanmu yang bikin elemen jadi block/full-width)
-    grid.classList.add("support-mode"); 
+    grid.className = ""; 
+    grid.classList.add("quiz-active-mode");
 
-    // Render area kuis
     grid.innerHTML = `
-        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; padding: 20px;">
+        <style>
+            body { overflow: hidden !important; } 
+            #grid.quiz-active-mode {
+                display: flex !important; align-items: center !important; justify-content: center !important;
+                padding-top: 70px !important; padding-bottom: 20px !important; min-height: 100vh !important;
+                box-sizing: border-box !important;
+            }
+            @media (max-height: 650px) {
+                body { overflow: auto !important; }
+                #grid.quiz-active-mode { align-items: flex-start !important; padding-top: 90px !important; }
+            }
+        </style>
+
+        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 15px; padding: 15px; margin-top: -20px;">
             
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); padding: 12px 24px; border-radius: 999px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; box-sizing: border-box;">
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.95); padding: 12px 24px; border-radius: 999px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; box-sizing: border-box;">
                 <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
                     Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
                 </div>
@@ -85,8 +97,8 @@ function renderQuiz(type) {
                 </div>
             </div>
             
-            <div style="background: rgba(240, 244, 248, 0.95); backdrop-filter: blur(10px); padding: 60px 20px; border-radius: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); width: 100%; box-sizing: border-box; display: flex; justify-content: center; align-items: center; min-height: 250px;">
-                <h1 style="font-size: clamp(3.5rem, 8vw, 6rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
+            <div style="background: rgba(240, 244, 248, 0.95); backdrop-filter: blur(10px); padding: 40px 20px; border-radius: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); display: flex; justify-content: center; align-items: center; min-height: 220px;">
+                <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
                     ${type === 'goi' ? item.meaning : item.kanji}
                 </h1>
             </div>
@@ -99,35 +111,26 @@ function renderQuiz(type) {
                 `).join('')}
             </div>
 
-            <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 10px;">
-                <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+            <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 5px;">
+                <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
                     Selesaikan Test
                 </button>
             </div>
         </div>
     `;
 
-    // Pasang Event Listener
+    // Pasang Event Listener pakai parameter 'type' biar nggak error parsing viewMode
     document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
         btn.addEventListener("click", () => {
-            // Visual feedback singkat pas diklik
-            btn.style.background = "#e2e8f0";
-            checkAnswer(btn.dataset.answer);
+            checkAnswer(btn.dataset.answer, type);
         });
-        
-        // Efek Hover pakai JS (Karena class ini nggak ada di CSS)
-        btn.addEventListener("mouseover", () => btn.style.borderColor = "#94a3b8");
-        btn.addEventListener("mouseout", () => btn.style.borderColor = "#cbd5e1");
     });
 
     document.getElementById("finishBtnManual").addEventListener("click", confirmEndQuiz);
-    document.getElementById("finishBtnManual").addEventListener("mouseover", function() { this.style.color = "#0f172a"; this.style.borderColor = "#94a3b8"; });
-    document.getElementById("finishBtnManual").addEventListener("mouseout", function() { this.style.color = "#64748b"; this.style.borderColor = "#cbd5e1"; });
-
     startTimer(type);
 }
-      
-// 3. Fungsi Timer
+
+// 2. Mesin Timer (Auto Next kalau waktu habis)
 function startTimer(type) {
     clearInterval(timer);
     timer = setInterval(() => {
@@ -137,95 +140,63 @@ function startTimer(type) {
 
         if (timeLeft <= 0) {
             clearInterval(timer);
-            nextQuestion(); // Otomatis lanjut jika waktu habis (dianggap salah)
+            // Waktu habis = Otomatis tunjukkan jawaban dan lanjut
+            showCorrectAnswerAndNext(type);
         }
     }, 1000);
 }
 
-// 4. Fungsi Cek Jawaban
-function checkAnswer(selected) {
-    clearInterval(timer);
+// 3. Mesin Pengecek Jawaban (Dengan Visual Feedback)
+function checkAnswer(selected, type) {
+    clearInterval(timer); // Stop timer pas user ngeklik
     const item = currentQuizData[quizIndex];
+    const correctKana = item.kana;
     
-    // Cek jawaban
-    if (selected === item.kana) {
+    if (selected === correctKana) {
         score++;
     }
 
-    // Feedback visual dikit sebelum pindah (Opsional tapi bagus buat UX)
-    const btn = document.querySelector(`[data-answer="${selected}"]`);
-    if (btn) {
-        btn.style.background = selected === item.kana ? "#4ade80" : "#fb7185";
-        btn.style.color = "white";
-    }
+    // Visual Feedback: Matikan semua tombol, warnai yang benar & yang dipilih
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
+        btn.disabled = true; // Biar user gak klik berkali-kali
+        btn.style.cursor = "default";
+        
+        if (btn.dataset.answer === correctKana) {
+            btn.style.background = "#4ade80"; // Hijau kalau benar
+            btn.style.color = "white";
+            btn.style.borderColor = "#22c55e";
+        } else if (btn.dataset.answer === selected && selected !== correctKana) {
+            btn.style.background = "#fb7185"; // Merah kalau user salah tebak
+            btn.style.color = "white";
+            btn.style.borderColor = "#e11d48";
+        }
+    });
+
+    // Jeda 1 detik biar user lihat hasilnya, lalu lanjut soal
+    setTimeout(() => {
+        quizIndex++;
+        renderQuiz(type);
+    }, 1000);
+}
+
+// 4. Helper: Kalau waktu habis, tunjukkan yang benar
+function showCorrectAnswerAndNext(type) {
+    const item = currentQuizData[quizIndex];
+    const correctKana = item.kana;
+    
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.answer === correctKana) {
+            btn.style.background = "#facc15"; // Kuning peringatan kalau kehabisan waktu
+            btn.style.color = "#854d0e";
+            btn.style.borderColor = "#eab308";
+        }
+    });
 
     setTimeout(() => {
         quizIndex++;
-        const parts = viewMode.split(':');
-        const type = parts[2];
         renderQuiz(type);
-    }, 300); // Delay 0.3 detik biar kerasa transisinya
-}
-      
-function nextQuestion() {
-    quizIndex++;
-    // Mengambil tipe materi (kanji/goi/bunpou) dari format dev:mode:type:level
-    const parts = viewMode.split(':');
-    const type = parts[2]; // Ini akan mengambil 'kanji', 'goi', atau 'bunpou'
-    renderQuiz(type);
-}
-      
-// 5. Generate Pilihan Acak
-function generateOptions(correctItem, type) {
-    let wrongPool = vocabularyData
-        .filter(d => d.kana !== correctItem.kana && d.level === correctItem.level)
-        .map(d => d.kana);
-    
-    let shuffledWrong = wrongPool.sort(() => 0.5 - Math.random()).slice(0, 3);
-    return [...shuffledWrong, correctItem.kana].sort(() => 0.5 - Math.random());
-}
-
-    function endQuiz() {
-    isTesting = false;
-    clearInterval(timer);
-    
-    const totalSoal = currentQuizData.length;
-    const jlptScore = Math.round((score / totalSoal) * 60); // Skala 60 poin
-    
-    let gradeMsg = "";
-    if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
-    else if (jlptScore >= 35) gradeMsg = "Bagus! Terus tingkatkan.";
-    else gradeMsg = "Jangan menyerah, belajar lagi yuk!";
-
-    const message = `
-        <div style="text-align: center; padding: 20px;">
-            <h2 style="color: #ff4d6d;">Test Selesai!</h2>
-            <div style="font-size: 4rem; font-weight: bold; margin: 20px 0;">${jlptScore}/60</div>
-            <p style="font-size: 1.1rem;">${gradeMsg}</p>
-            <p>Benar: ${score} | Total Soal: ${totalSoal}</p>
-            <button onclick="location.reload()" style="margin-top: 20px; background: #ff4d6d; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-weight: bold;">
-                KEMBALI KE MENU
-            </button>
-        </div>
-    `;
-    openInfoModal(message);
-}
-
-// Fungsi proteksi keluar
-function confirmEndQuiz() {
-    if(confirm("Apakah kamu yakin ingin mengakhiri test? Skor saat ini akan langsung dihitung.")) {
-        endQuiz();
-    }
-}
-
-      if (isTesting) {
-    const motivasi = [
-        "Selesaikan apa yang kamu mulai!",
-        "Nyerah sekarang? Ingat impianmu ke Jepang!",
-        "Sedikit lagi! Jangan biarkan usahamu sia-sia. 🔥"
-    ];
-    alert(motivasi[Math.floor(Math.random() * motivasi.length)]);
-    return;
+    }, 1200); // Tahan dikit biar sadar waktunya habis
 }
       
     searchBtn.addEventListener("click", () => {

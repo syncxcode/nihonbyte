@@ -30,12 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let timeLeft = 0;
     if (searchBtn && filterModal) {
       let bodyScrollY = 0;
-  // 1. Fungsi Memulai Test
+      
+  // ==========================================
+// 1. Fungsi Memulai Test
+// ==========================================
 function startExercise(type, level) {
-    // Ambil data yang sesuai dari data.js
     let filteredData = vocabularyData.filter(d => d.level === level);
     
-    // Jika untuk Kanji, pastikan ada kanjinya
     if (type === 'kanji') {
         filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
     }
@@ -49,14 +50,15 @@ function startExercise(type, level) {
     quizIndex = 0;
     score = 0;
     
-    // Acak dan ambil soal (30 untuk kanji/goi, 20 untuk bunpou)
     const maxQuestions = (type === 'kanji' || type === 'goi') ? 30 : 20;
     currentQuizData = filteredData.sort(() => Math.random() - 0.5).slice(0, maxQuestions);
 
     renderQuiz(type);
 }
 
-// 1. Render Tampilan Kuis (Waktu Diperpanjang)
+// ==========================================
+// 2. Render Tampilan Kuis (Waktu Diperpanjang)
+// ==========================================
 function renderQuiz(type) {
     if (quizIndex >= currentQuizData.length) {
         endQuiz();
@@ -119,7 +121,6 @@ function renderQuiz(type) {
         </div>
     `;
 
-    // Pasang Event Listener pakai parameter 'type' biar nggak error parsing viewMode
     document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
         btn.addEventListener("click", () => {
             checkAnswer(btn.dataset.answer, type);
@@ -130,7 +131,9 @@ function renderQuiz(type) {
     startTimer(type);
 }
 
-// 2. Mesin Timer (Auto Next kalau waktu habis)
+// ==========================================
+// 3. Mesin Timer (Auto Next kalau waktu habis)
+// ==========================================
 function startTimer(type) {
     clearInterval(timer);
     timer = setInterval(() => {
@@ -140,15 +143,16 @@ function startTimer(type) {
 
         if (timeLeft <= 0) {
             clearInterval(timer);
-            // Waktu habis = Otomatis tunjukkan jawaban dan lanjut
             showCorrectAnswerAndNext(type);
         }
     }, 1000);
 }
 
-// 3. Mesin Pengecek Jawaban (Dengan Visual Feedback)
+// ==========================================
+// 4. Mesin Pengecek Jawaban
+// ==========================================
 function checkAnswer(selected, type) {
-    clearInterval(timer); // Stop timer pas user ngeklik
+    clearInterval(timer); 
     const item = currentQuizData[quizIndex];
     const correctKana = item.kana;
     
@@ -156,30 +160,30 @@ function checkAnswer(selected, type) {
         score++;
     }
 
-    // Visual Feedback: Matikan semua tombol, warnai yang benar & yang dipilih
     document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
-        btn.disabled = true; // Biar user gak klik berkali-kali
+        btn.disabled = true; 
         btn.style.cursor = "default";
         
         if (btn.dataset.answer === correctKana) {
-            btn.style.background = "#4ade80"; // Hijau kalau benar
+            btn.style.background = "#4ade80"; 
             btn.style.color = "white";
             btn.style.borderColor = "#22c55e";
         } else if (btn.dataset.answer === selected && selected !== correctKana) {
-            btn.style.background = "#fb7185"; // Merah kalau user salah tebak
+            btn.style.background = "#fb7185"; 
             btn.style.color = "white";
             btn.style.borderColor = "#e11d48";
         }
     });
 
-    // Jeda 1 detik biar user lihat hasilnya, lalu lanjut soal
     setTimeout(() => {
         quizIndex++;
         renderQuiz(type);
     }, 1000);
 }
 
-// 4. Helper: Kalau waktu habis, tunjukkan yang benar
+// ==========================================
+// 5. Helper: Waktu Habis
+// ==========================================
 function showCorrectAnswerAndNext(type) {
     const item = currentQuizData[quizIndex];
     const correctKana = item.kana;
@@ -187,7 +191,7 @@ function showCorrectAnswerAndNext(type) {
     document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
         btn.disabled = true;
         if (btn.dataset.answer === correctKana) {
-            btn.style.background = "#facc15"; // Kuning peringatan kalau kehabisan waktu
+            btn.style.background = "#facc15"; 
             btn.style.color = "#854d0e";
             btn.style.borderColor = "#eab308";
         }
@@ -196,7 +200,74 @@ function showCorrectAnswerAndNext(type) {
     setTimeout(() => {
         quizIndex++;
         renderQuiz(type);
-    }, 1200); // Tahan dikit biar sadar waktunya habis
+    }, 1200); 
+}
+
+// ==========================================
+// 6. Mesin Pengecoh Pintar (Anti Error / generateOptions)
+// ==========================================
+function generateOptions(correctItem, type) {
+    let basePool = vocabularyData.filter(d => d.kana !== correctItem.kana && d.level === correctItem.level);
+
+    let smartPool = basePool.filter(d => {
+        const isSuru = (item) => (item.kana && item.kana.endsWith('する')) || (item.kanji && item.kanji.endsWith('する'));
+        if (isSuru(correctItem)) return isSuru(d);
+
+        if (correctItem.type && d.type) {
+            const baseTypeTarget = correctItem.type.split('-')[0];
+            const baseTypeD = d.type.split('-')[0];
+            return baseTypeTarget === baseTypeD;
+        }
+        return true;
+    }).map(d => d.kana);
+
+    if (smartPool.length < 3) {
+        let backupPool = basePool.map(d => d.kana).filter(k => !smartPool.includes(k));
+        smartPool = smartPool.concat(backupPool.sort(() => 0.5 - Math.random()).slice(0, 3 - smartPool.length));
+    }
+
+    let shuffledWrong = smartPool.sort(() => 0.5 - Math.random()).slice(0, 3);
+    return [...shuffledWrong, correctItem.kana].sort(() => 0.5 - Math.random());
+}
+
+// ==========================================
+// 7. Fungsi Akhiri Kuis (Hanya Tampilkan Nilai)
+// ==========================================
+function endQuiz() {
+    isTesting = false;
+    clearInterval(timer);
+    document.body.style.overflow = ""; // Lepas segel scroll
+    
+    const totalSoal = currentQuizData.length;
+    const jlptScore = Math.round((score / totalSoal) * 60); 
+    
+    let gradeMsg = "";
+    if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
+    else if (jlptScore >= 35) gradeMsg = "Bagus! Terus tingkatkan.";
+    else gradeMsg = "Jangan menyerah, belajar lagi yuk!";
+
+    const message = `
+        <div style="text-align: center; padding: 15px;">
+            <h2 style="color: #ff4d6d; margin-bottom: 5px;">Test Selesai!</h2>
+            <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #1f2937; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
+            <p style="font-size: 1.15rem; font-weight: 600; color: #374151;">${gradeMsg}</p>
+            <p style="color: #6b7280; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #10b981;">${score}</strong> | Total Soal: ${totalSoal}</p>
+            
+            <button onclick="location.reload()" style="margin-top: 25px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%; transition: transform 0.2s;">
+                KEMBALI KE MENU
+            </button>
+        </div>
+    `;
+    openInfoModal(message);
+}
+
+// ==========================================
+// 8. Proteksi Tombol Selesaikan Manual
+// ==========================================
+function confirmEndQuiz() {
+    if(confirm("Yakin ingin mengakhiri test sekarang? Skor saat ini akan langsung dihitung.")) {
+        endQuiz();
+    }
 }
       
     searchBtn.addEventListener("click", () => {

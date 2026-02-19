@@ -762,20 +762,36 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".pattern-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const level = button.dataset.level;
-      if (["N3", "N2", "N1"].includes(level)) {
-        openInfoModal("Mohon maaf, materi pola kalimat level ini sedang dalam proses pengembangan. Silakan kembali lagi nanti ✨");
-        closeSidebar();
-        return;
-      }
-      viewMode = `patterns:${level}`;
-      if (search) search.value = "";
-      if (category) category.value = "all";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
 
+    // Cek apakah level termasuk yang sedang dikembangkan
+      if (["N3", "N2", "N1"].includes(level)) {
+        const message = `
+        <div style="text-align: center;">
+          <h3 style="margin-bottom: 10px;">🚧 Under Development 🚧</h3>
+          <p style="font-size: 1.1rem; margin-bottom: 5px;">
+            Kategori yang anda pilih, masih dalam proses Pengembangan, silahkan kembali lagi nanti.
+          </p>
+          <p style="font-style: italic; color: #666; margin-bottom: 15px;">
+            The category you selected is still under development, please come back later.
+          </p>
+          <p style="font-size: 1.3rem; font-weight: bold; color: #ff4d6d;">
+            選択されたカテゴリーは現在開発中です。後ほどもう一度ご確認ください。
+          </p>
+        </div>
+      `;
+      
+      openInfoModal(message); 
+      closeSidebar();
+      return;
+    }
+
+    // Jalankan render normal untuk N5 dan N4
+    viewMode = `patterns:${level}`;
+    render();
+    closeSidebar();
+  });
+});
+  
   document.querySelectorAll(".test-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const level = button.dataset.level;

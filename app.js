@@ -809,6 +809,25 @@ document.addEventListener("DOMContentLoaded", () => {
     closeSidebar();
   });
 
+  document.querySelectorAll(".exercise-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    const type = button.dataset.type;
+    const level = button.dataset.level;
+
+    // Cek jika level N3, N2, N1 (Karena kita baru cicil N5 & N4)
+    if (["N3", "N2", "N1"].includes(level)) {
+      viewMode = `dev:${type}-${level}`; // Masuk ke mode development
+      render();
+      closeSidebar();
+      return;
+    }
+
+    // Kalau N5 atau N4, panggil fungsi latihanmu
+    startExercise(type, level); // Ganti dengan nama fungsi latihanmu
+    closeSidebar();
+  });
+});
+
   function renderSupportPoster() {
     grid.classList.add("support-mode");
     grid.innerHTML = `

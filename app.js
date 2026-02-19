@@ -13,141 +13,135 @@ document.addEventListener("DOMContentLoaded", () => {
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
   
-// ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
-const searchBtn = document.getElementById("searchBtn");
-const filterModal = document.getElementById("filterModal");
-const filterBackdrop = document.getElementById("filterBackdrop");
-const filterModalClose = document.getElementById("filterModalClose");
-const modalSearchInput = document.getElementById("modalSearchInput");
-const applyFilterBtn = document.getElementById("applyFilterBtn");
-const resetFilterBtn = document.getElementById("resetFilterBtn");
+  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
+  const searchBtn = document.getElementById("searchBtn");
+  const filterModal = document.getElementById("filterModal");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
 
-if (searchBtn && filterModal) {
-  let bodyScrollY = 0;
+  if (searchBtn && filterModal) {
+    let bodyScrollY = 0;
 
-  searchBtn.addEventListener("click", () => {
-    bodyScrollY = window.scrollY;
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.width = "100%";
-    document.body.style.top = `-${bodyScrollY}px`;
+    searchBtn.addEventListener("click", () => {
+      bodyScrollY = window.scrollY;
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.top = `-${bodyScrollY}px`;
 
-    filterModal.classList.add("active");
-    filterModal.setAttribute("aria-hidden", "false");
-    if (modalSearchInput) modalSearchInput.focus();
-  });
+      filterModal.classList.add("active");
+      filterModal.setAttribute("aria-hidden", "false");
+      if (modalSearchInput) modalSearchInput.focus();
+    });
 
-  function closeFilterModal() {
-    filterModal.classList.remove("active");
-    filterModal.setAttribute("aria-hidden", "true");
+    function closeFilterModal() {
+      filterModal.classList.remove("active");
+      filterModal.setAttribute("aria-hidden", "true");
 
-    document.body.style.overflow = "";
-    document.body.style.position = "";
-    document.body.style.width = "";
-    document.body.style.top = "";
-    window.scrollTo(0, bodyScrollY);
-  }
-
-  // ==================== BACKDROP FIX (ROBUST) ====================
-  // Klik di mana saja di modal, tapi kalau di luar content → close
-  filterModal.addEventListener("click", (e) => {
-    if (e.target === filterModal || e.target === filterBackdrop) {
-      closeFilterModal();
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      document.body.style.top = "";
+      window.scrollTo(0, bodyScrollY);
     }
-  });
 
-  // Tombol X tetap bisa close
-  if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
-
-  // ==================== TOGGLE LEVEL (klik lagi = lepas) ====================
-  document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const isAll = btn.dataset.level === "all";
-      if (isAll) {
-        document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-      } else {
-        if (btn.classList.contains("active")) {
-          btn.classList.remove("active");
-          document.querySelector('[data-level="all"]').classList.add("active");
-        } else {
-          document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-        }
+    // ==================== BACKDROP FIX (ROBUST) ====================
+    filterModal.addEventListener("click", (e) => {
+      if (e.target === filterModal || e.target === filterBackdrop) {
+        closeFilterModal();
       }
     });
-  });
 
-  // Category buttons
-  document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
+    if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
+
+    // ==================== TOGGLE LEVEL (klik lagi = lepas) ====================
+    document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const isAll = btn.dataset.level === "all";
+        if (isAll) {
+          document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        } else {
+          if (btn.classList.contains("active")) {
+            btn.classList.remove("active");
+            document.querySelector('[data-level="all"]').classList.add("active");
+          } else {
+            document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+          }
+        }
+      });
     });
-  });
 
-  // Apply & Reset tetap sama
-  if (applyFilterBtn) {
-    applyFilterBtn.addEventListener("click", () => {
-      const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
-      const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
-
-      selectedLevel = activeLevel;
-      selectedType = activeType;
-      viewMode = "vocab";
-      if (modalSearchInput) search.value = modalSearchInput.value.trim();
-
-      closeFilterModal();
-      render();
+    // Category buttons
+    document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
     });
+
+    // Apply & Reset
+    if (applyFilterBtn) {
+      applyFilterBtn.addEventListener("click", () => {
+        const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
+        const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
+
+        selectedLevel = activeLevel;
+        selectedType = activeType;
+        viewMode = "vocab";
+        if (modalSearchInput) search.value = modalSearchInput.value.trim();
+
+        closeFilterModal();
+        render();
+      });
+    }
+
+    if (resetFilterBtn) {
+      resetFilterBtn.addEventListener("click", () => {
+        selectedLevel = "all";
+        selectedType = "all";
+        if (search) search.value = "";
+        if (modalSearchInput) modalSearchInput.value = "";
+
+        document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+        document.querySelector('[data-level="all"]').classList.add("active");
+
+        closeFilterModal();
+        render();
+      });
+    }
   }
-
-  if (resetFilterBtn) {
-    resetFilterBtn.addEventListener("click", () => {
-      selectedLevel = "all";
-      selectedType = "all";
-      if (search) search.value = "";
-      if (modalSearchInput) modalSearchInput.value = "";
-
-      document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('[data-level="all"]').classList.add("active");
-
-      closeFilterModal();
-      render();
-    });
-  }
-}
   
-// ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
+  // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||
            (navigator.platform === 'MacIntel' && 'ontouchend' in document);
   }
 
-if (isIOS()) {
-  document.documentElement.classList.add('ios-device');
-  console.log('🛡️ NihonByte iOS Safe Mode AKTIF');
+  if (isIOS()) {
+    document.documentElement.classList.add('ios-device');
+    console.log('🛡️ NihonByte iOS Safe Mode AKTIF');
 
-  // 🔥 Disable heavy animation
-  const style = document.createElement("style");
-  style.innerHTML = `
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
-  `;
-  document.head.appendChild(style);
+    const style = document.createElement("style");
+    style.innerHTML = `
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+    `;
+    document.head.appendChild(style);
 
-  // 🔥 Hindari body fixed crash
-  document.body.style.webkitOverflowScrolling = "touch";
+    document.body.style.webkitOverflowScrolling = "touch";
 
-  // 🔥 Batasi repaint besar saat resize
-  window.addEventListener("resize", () => {
-    document.body.style.height = window.innerHeight + "px";
-  });
-}
+    window.addEventListener("resize", () => {
+      document.body.style.height = window.innerHeight + "px";
+    });
+  }
 
-  
   let selectedLevel = "all";
   let selectedType = "all";
   let viewMode = "vocab";
@@ -172,7 +166,6 @@ if (isIOS()) {
           subtitle: "Gojūon",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-
             ["A",  "あ", "い", "う", "え", "お"],
             ["KA", "か", "き", "く", "け", "こ"],
             ["SA", "さ", "し", "す", "せ", "そ"],
@@ -190,7 +183,6 @@ if (isIOS()) {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-
             ["GA", "が", "ぎ", "ぐ", "げ", "ご"],
             ["ZA", "ざ", "じ", "ず", "ぜ", "ぞ"],
             ["DA", "だ", "ぢ", "づ", "で", "ど"],
@@ -202,7 +194,6 @@ if (isIOS()) {
           subtitle: "Yōon",
           rows: [
             ["", "YA", "YU", "YO"],
-
             ["K", "きゃ", "きゅ", "きょ"],
             ["S", "しゃ", "しゅ", "しょ"],
             ["T", "ちゃ", "ちゅ", "ちょ"],
@@ -226,7 +217,6 @@ if (isIOS()) {
           subtitle: "Gojūon",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-
             ["A",  "ア", "イ", "ウ", "エ", "オ"],
             ["KA", "カ", "キ", "ク", "ケ", "コ"],
             ["SA", "サ", "シ", "ス", "セ", "ソ"],
@@ -244,7 +234,6 @@ if (isIOS()) {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-
             ["GA", "ガ", "ギ", "グ", "ゲ", "ゴ"],
             ["ZA", "ザ", "ジ", "ズ", "ゼ", "ゾ"],
             ["DA", "ダ", "ヂ", "ヅ", "デ", "ド"],
@@ -256,7 +245,6 @@ if (isIOS()) {
           subtitle: "Yōon",
           rows: [
             ["", "YA", "YU", "YO"],
-
             ["K", "キャ", "キュ", "キョ"],
             ["S", "シャ", "シュ", "ショ"],
             ["T", "チャ", "チュ", "チョ"],
@@ -308,7 +296,9 @@ if (isIOS()) {
 
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
-    const selectedFromDropdown = category.value;
+    const selectedFromDropdown = category ? category.value : "all";
+    if (typeof vocabularyData === "undefined") return []; // Safety check
+    
     return vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
@@ -340,12 +330,14 @@ if (isIOS()) {
 
   function renderExpressionPoster() {
     grid.innerHTML = "";
+    if (typeof vocabularyData === "undefined") return;
+    
     const expressions = vocabularyData.filter(w =>
       w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
     );
     if (!expressions.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
-      resultInfo.textContent = "0 ungkapan ditemukan";
+      if(resultInfo) resultInfo.textContent = "0 ungkapan ditemukan";
       return;
     }
     const container = document.createElement("div");
@@ -383,15 +375,13 @@ if (isIOS()) {
       card.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          try {
-            openModal(JSON.parse(card.dataset.word));
-          } catch {}
+          try { openModal(JSON.parse(card.dataset.word)); } catch {}
         }
       });
       container.appendChild(card);
     });
     grid.appendChild(container);
-    resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
+    if(resultInfo) resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
   }
 
   function shuffle(array) {
@@ -505,9 +495,9 @@ if (isIOS()) {
     testState.answered = false;
     let sourceData;
     if (kind === "kanji") {
-      sourceData = vocabularyData.filter((word) => word.level === level);
+      sourceData = typeof vocabularyData !== "undefined" ? vocabularyData.filter((word) => word.level === level) : [];
     } else if (kind === "bunpou") {
-      sourceData = patternData[level] || [];
+      sourceData = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     }
     if (!sourceData || !sourceData.length) {
       openInfoModal("Tidak ada data untuk test ini.");
@@ -551,15 +541,15 @@ if (isIOS()) {
       poster.querySelector(".letter-poster-body").appendChild(secElem);
     });
     grid.appendChild(poster);
-    resultInfo.textContent = "";
+    if(resultInfo) resultInfo.textContent = "";
   }
 
   function renderPatternPoster(level) {
     grid.innerHTML = "";
-    const patterns = patternData[level] || [];
+    const patterns = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     if (!patterns.length) {
       grid.innerHTML = '<div class="empty-state">Tidak ada pola kalimat untuk level ini.</div>';
-      resultInfo.textContent = "0 pola ditemukan";
+      if(resultInfo) resultInfo.textContent = "0 pola ditemukan";
       return;
     }
     patterns.forEach((pattern) => {
@@ -573,10 +563,11 @@ if (isIOS()) {
       `;
       grid.appendChild(card);
     });
-    resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
+    if(resultInfo) resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
   }
 
   function getRecommendations(word) {
+    if (typeof vocabularyData === "undefined") return [];
     const maxItems = 10;
     const sameType = vocabularyData.filter((w) => w.type === word.type && w.kanji !== word.kanji && w.level === word.level);
     const fallback = vocabularyData.filter((w) => w.kanji !== word.kanji && w.level === word.level);
@@ -663,30 +654,27 @@ if (isIOS()) {
 
   overlay.addEventListener("click", closeSidebar);
 
-function closeSidebar() {
-  sidebar.classList.remove("active");
-  overlay.classList.remove("active");
-  hamburger.setAttribute("aria-expanded", "false");
+  function closeSidebar() {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
 
-  // Reset scroll lock
-  document.body.style.overflow = originalOverflow || '';
-  document.body.style.position = originalPosition || '';
-  document.body.style.top = originalTop || '';
-  document.body.style.width = originalWidth || '';
-  document.documentElement.style.overflow = '';
-
-  if (typeof savedScrollPosition === 'number') {
-    window.scrollTo(0, savedScrollPosition);
-  }
-
-  // 🔥 SAFETY DELAY untuk iOS & mobile repaint
-  setTimeout(() => {
-    document.body.style.position = '';
-    document.body.style.overflow = '';
+    document.body.style.overflow = originalOverflow || '';
+    document.body.style.position = originalPosition || '';
+    document.body.style.top = originalTop || '';
+    document.body.style.width = originalWidth || '';
     document.documentElement.style.overflow = '';
-    console.log('✅ Sidebar safely closed (with iOS safety)');
-  }, 80);
-}
+
+    if (typeof savedScrollPosition === 'number') {
+      window.scrollTo(0, savedScrollPosition);
+    }
+
+    setTimeout(() => {
+      document.body.style.position = '';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }, 80);
+  }
 
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
@@ -721,8 +709,8 @@ function closeSidebar() {
       viewMode = "vocab";
       selectedLevel = button.dataset.level || "all";
       selectedType = button.dataset.type || "all";
-      if (selectedType !== "all") category.value = selectedType;
-      search.value = "";
+      if (selectedType !== "all" && category) category.value = selectedType;
+      if (search) search.value = "";
       render();
       closeSidebar();
     });
@@ -731,7 +719,7 @@ function closeSidebar() {
   document.querySelectorAll(".letter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       viewMode = `letters:${button.dataset.script}`;
-      search.value = "";
+      if (search) search.value = "";
       closeModal();
       render();
       closeSidebar();
@@ -747,8 +735,8 @@ function closeSidebar() {
         return;
       }
       viewMode = `patterns:${level}`;
-      search.value = "";
-      category.value = "all";
+      if (search) search.value = "";
+      if (category) category.value = "all";
       closeModal();
       render();
       closeSidebar();
@@ -772,216 +760,81 @@ function closeSidebar() {
   document.getElementById("logo")?.addEventListener("click", () => {
     selectedLevel = "all";
     selectedType = "all";
-    category.value = "all";
-    search.value = "";
+    if (category) category.value = "all";
+    if (search) search.value = "";
     viewMode = "vocab";
     render();
   });
 
-  // Dukung Pengembang - listener
-  document.getElementById("supportBtn").addEventListener("click", () => {
+  document.getElementById("supportBtn")?.addEventListener("click", () => {
     viewMode = "support";
-    search.value = "";
-    category.value = "all";
+    if (search) search.value = "";
+    if (category) category.value = "all";
     render();
     closeSidebar();
   });
 
-function renderSupportPoster() {
-  // Aktifkan mode khusus support (biar keluar dari grid layout)
-  grid.classList.add("support-mode");
-
-grid.innerHTML = `
-    <section class="support-poster">
-
-      <h2>Dukung Pengembang</h2>
-
-      <p>
-        Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis 
-        dan terbuka untuk semua pembelajar.
-      </p>
-
-      <p>
-        Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan 
-        bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.
-      </p>
-
-      <p>
-        Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, 
-        memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.
-      </p>
-
-      <p>
-        Terima kasih telah menjadi bagian dari perjalanan ini.
-      </p>
-
-      <a 
-        href="https://sociabuzz.com/syncxcode/tribe"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="support-btn"
-      >
-        Klik Disini
-      </a>
-
-    </section>
-  `;
-
-  resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
-}
+  function renderSupportPoster() {
+    grid.classList.add("support-mode");
+    grid.innerHTML = `
+      <section class="support-poster">
+        <h2>Dukung Pengembang</h2>
+        <p>Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
+        <p>Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.</p>
+        <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
+        <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+        <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn">Klik Disini</a>
+      </section>
+    `;
+    if(resultInfo) resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
+  }
   
+  // ==========================================
+  // INI ADALAH FUNGSI RENDER() YANG BENAR
+  // (Sudah mencakup semua logika dari awal sampai akhir)
+  // ==========================================
   function render() {
-
-    // RESET SUPPORT MODE tiap render
     grid.classList.remove("support-mode");
     grid.innerHTML = "";
 
-    // Mode dukungan pengembang
     if (viewMode === "support") {
       renderSupportPoster();
       return;
     }
 
-    // Mode ungkapan umum
     const isExpressionView =
       viewMode === "vocab" &&
-      (category.value === "ekspresi" ||
+      (category?.value === "ekspresi" ||
        selectedType === "ekspresi" ||
        selectedType === "expression" ||
        selectedType === "ungkapan umum");
+       
     if (isExpressionView) {
       renderExpressionPoster();
       return;
     }
 
-    // Mode huruf (hiragana/katakana)
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
     }
 
-    // Mode pola kalimat
     if (viewMode.startsWith("patterns:")) {
       renderPatternPoster(viewMode.split(":")[1]);
       return;
     }
 
-    // Mode test
     if (viewMode.startsWith("test:")) {
       if (!testState.active) return;
       renderCurrentTestQuestion();
       return;
     }
 
-    // Mode vocab normal
+    // ==== BAGIAN INI YANG SEBELUMNYA KESASAR KE BAWAH FILE ====
     const words = getFilteredWords();
-    if (!words.length) {
-      grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
-      resultInfo.textContent = "0 kata ditemukan";
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-    words.forEach((word) => {
-      const cardButton = document.createElement("article");
-      cardButton.className = "card";
-      cardButton.setAttribute("role", "button");
-      cardButton.setAttribute("tabindex", "0");
-      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
-      try {
-        cardButton.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal menyimpan data word:", word);
-        return;
-      }
-      cardButton.innerHTML = cardImageTemplate(word);
-      cardButton.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return;
-        try {
-          const storedWord = JSON.parse(cardButton.dataset.word);
-          openModal(storedWord);
-        } catch (err) {
-          console.error("Gagal membaca data kartu:", err);
-        }
-      });
-      cardButton.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          try {
-            const storedWord = JSON.parse(cardButton.dataset.word);
-            openModal(storedWord);
-          } catch (err) {
-            console.error("Gagal membaca data kartu (keyboard):", err);
-          }
-        }
-      });
-      fragment.appendChild(cardButton);
-    });
-    grid.appendChild(fragment);
-    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
-    resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
-  }
-
-  category.addEventListener("change", () => {
-    viewMode = "vocab";
-    selectedType = "all";
-    render();
-    closeSidebar();
-  });
-
-  search.addEventListener("input", () => {
-    viewMode = "vocab";
-    render();
-  });
-
-  // ===== FORCE CLOSE SIDEBAR SAAT LOAD DI SEMUA iOS =====
-if (document.documentElement.classList.contains('ios-device')) {
-  console.log('🔧 Force close sidebar on iOS initial load');
-  
-  sidebar.classList.remove("active");
-  overlay.classList.remove("active");
-  hamburger.setAttribute("aria-expanded", "false");
-  
-  // Reset scroll lock
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.overflow = '';
-  document.documentElement.style.overflow = '';
-}
-  
-// ==================== FORCE AUTO CLOSE SIDEBAR (SOLUSI FINAL) ====================
-function forceCloseSidebar() {
-  setTimeout(() => {
-    sidebar.classList.remove("active");
-    overlay.classList.remove("active");
-    hamburger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = originalOverflow;
-    document.body.style.position = originalPosition;
-    document.body.style.top = originalTop;
-    document.body.style.width = originalWidth;
-    window.scrollTo(0, savedScrollPosition);
-    document.documentElement.style.overflow = '';
-    console.log("✅ Sidebar FORCE CLOSED");
-  }, 10);
-}
-
-// ==================== ZERO DELAY - LANGSUNG GESER KE KIRI (NO SETTIMEOUT) ====================
-sidebar.addEventListener('click', function(e) {
-  // Kalau klik item menu (button / link)
-  if (e.target.closest('button') || 
-      e.target.closest('a') || 
-      e.target.closest('[role="button"]')) {
     
-    closeSidebar();   // ← LANGSUNG, NO DELAY, NO TIMEOUT
-  }
-}, { capture: true });   // ← ini yang bikin "langsung banget"
-
-// Mode vocab normal
-    const words = getFilteredWords();
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
-      
-      // ✅ Tambahkan if (resultInfo) agar aman dari error
       if (resultInfo) {
         resultInfo.textContent = "0 kata ditemukan";
       }
@@ -995,13 +848,16 @@ sidebar.addEventListener('click', function(e) {
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
       cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
+      
       try {
         cardButton.dataset.word = JSON.stringify(word);
       } catch (err) {
         console.warn("Gagal menyimpan data word:", word);
         return;
       }
+      
       cardButton.innerHTML = cardImageTemplate(word);
+      
       cardButton.addEventListener("click", (e) => {
         if (e.target.closest(".play-audio-btn")) return;
         try {
@@ -1011,6 +867,7 @@ sidebar.addEventListener('click', function(e) {
           console.error("Gagal membaca data kartu:", err);
         }
       });
+      
       cardButton.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -1022,18 +879,53 @@ sidebar.addEventListener('click', function(e) {
           }
         }
       });
+      
       fragment.appendChild(cardButton);
     });
+    
     grid.appendChild(fragment);
     
     const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
-    
-    // ✅ Tambahkan if (resultInfo) di sini juga
     if (resultInfo) {
       resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
     }
+  } // <-- Akhir dari fungsi render()
+
+  if (category) {
+    category.addEventListener("change", () => {
+      viewMode = "vocab";
+      selectedType = "all";
+      render();
+      closeSidebar();
+    });
   }
-                          
-  // Render awal aplikasi
+
+  if (search) {
+    search.addEventListener("input", () => {
+      viewMode = "vocab";
+      render();
+    });
+  }
+
+  if (document.documentElement.classList.contains('ios-device')) {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+    if(hamburger) hamburger.setAttribute("aria-expanded", "false");
+    
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  }
+  
+  sidebar.addEventListener('click', function(e) {
+    if (e.target.closest('button') || 
+        e.target.closest('a') || 
+        e.target.closest('[role="button"]')) {
+      closeSidebar();
+    }
+  }, { capture: true });
+
+  // Panggil render saat pertama kali dimuat
   render();
 });

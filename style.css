@@ -1739,3 +1739,23 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     display: none !important;
   }
 }
+
+.sub-details {
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border-left: 2px solid #ff4d6d; /* Garis tipis biar kelihatan sub-menu */
+}
+
+.sub-details summary {
+  padding: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  list-style: none; /* Hilangkan arrow bawaan browser jika mau */
+}
+
+.level-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+}

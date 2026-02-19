@@ -68,31 +68,43 @@ function renderQuiz(type) {
     timeLeft = timeLimit;
     const options = generateOptions(item, type);
 
+    // Render area kuis dengan layout horizontal
     grid.innerHTML = `
-        <div class="quiz-container-pro" style="width: 100%; max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 100;">
+        <div class="quiz-container-v2" style="width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; position: relative; z-index: 1000;">
             
-            <div class="quiz-status-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.85); padding: 10px 20px; border-radius: 50px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <div style="font-weight: bold; color: #333;">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
-                <div style="font-size: 1.2rem; font-weight: 800; color: #ff4d6d;" id="quiz-timer">${timeLeft}s</div>
-                <button id="finishBtnManual" style="background: #ff4d6d; color: white; border: none; padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;">Selesaikan Test</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); padding: 8px 20px; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <div style="font-weight: bold; color: #4b5563;">
+                    Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
+                </div>
+                <div style="color: #374151;">
+                    Sisa waktu: <span id="quiz-timer" style="color: #ff4d6d; font-weight: 800;">${timeLeft}s</span>
+                </div>
             </div>
             
-            <div class="quiz-card-main" style="width: 100%; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 20px; text-align: center;">
-                <h1 style="font-size: clamp(3rem, 10vw, 6rem); color: #1f2937; margin: 0;">${type === 'goi' ? item.meaning : item.kanji}</h1>
+            <div style="background: rgba(255,255,255,0.8); backdrop-filter: blur(5px); padding: 40px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                <h1 style="font-size: clamp(3rem, 8vw, 5.5rem); color: #111827; margin: 0; letter-spacing: -2px;">
+                    ${type === 'goi' ? item.meaning : item.kanji}
+                </h1>
             </div>
 
-            <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%;">
+            <div class="options-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; width: 100%;">
                 ${options.map(opt => `
-                    <button class="quiz-opt-btn" data-answer="${opt}" style="padding: 20px; border: 2px solid transparent; border-radius: 15px; background: white; cursor: pointer; font-size: 1.2rem; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <button class="quiz-opt-btn-v2" data-answer="${opt}" style="padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; font-size: 1.1rem; font-weight: 500; transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
                         ${opt}
                     </button>
                 `).join('')}
             </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
+                <button id="finishBtnManual" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s;">
+                    Selesaikan Test
+                </button>
+            </div>
         </div>
     `;
 
-    // Pasang Event Listener Manual (Lebih aman daripada onclick di string)
-    document.querySelectorAll(".quiz-opt-btn").forEach(btn => {
+    // Event Listener Klik Jawaban
+    document.querySelectorAll(".quiz-opt-btn-v2").forEach(btn => {
         btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
     });
 
@@ -843,6 +855,15 @@ function confirmEndQuiz() {
   let savedScrollPosition = 0;
 
   hamburger.addEventListener("click", () => {
+    if (isTesting) {
+      openInfoModal(`
+        <div style="text-align: center; padding: 10px;">
+          <h3 style="color: #ff4d6d; margin-bottom: 10px;">Ujian Sedang Berlangsung! 🚧</h3>
+          <p style="font-size: 1.1rem;">Selesaikan test terlebih dahulu sebelum membuka menu lain. Fokus, Bosku! 🔥</p>
+        </div>
+      `);
+      return; // Stop di sini, sidebar tidak akan terbuka!
+    }
     const isActive = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", isActive);
     hamburger.setAttribute("aria-expanded", isActive);

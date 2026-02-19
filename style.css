@@ -1739,24 +1739,3 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     display: none !important;
   }
 }
-
-/* =========================================
-   FIX TOMBOL DUKUNG PENGEMBANG (STICKY BOTTOM)
-   Agar tidak tenggelam saat folder dibuka
-========================================= */
-
-#sidebar {
-  /* Memberikan ruang kosong ekstra di paling bawah sidebar 
-     agar folder terakhir tidak tertutup oleh tombol saat di-scroll mentok */
-  padding-bottom: 80px !important; 
-}
-
-#supportBtn {
-  position: sticky !important;
-  bottom: 20px !important; /* Tombol akan diam mengambang 20px dari bawah layar */
-  z-index: 100 !important; /* Memastikan tombol tidak tertimpa oleh teks menu lain */
-  
-  /* Menambahkan bayangan halus di atas tombol agar terlihat memisahkan diri 
-     dari menu yang lewat menggulung di belakangnya */
-  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.15), 0 8px 25px rgba(255, 107, 129, 0.4) !important;
-}

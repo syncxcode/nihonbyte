@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // 1. Fungsi Memulai Test
 function startExercise(type, level) {
     // Ambil data yang sesuai dari data.js
-    let filteredData = allData.filter(d => d.level === level);
+    let filteredData = vocabularyData.filter(d => d.level === level);
     
     // Jika untuk Kanji, pastikan ada kanjinya
     if (type === 'kanji') {
@@ -135,7 +135,7 @@ function nextQuestion() {
 
 // 5. Generate Pilihan Acak
 function generateOptions(correctItem, type) {
-    let wrongPool = allData
+    let wrongPool = vocabularyData
         .filter(d => d.kana !== correctItem.kana && d.level === correctItem.level)
         .map(d => d.kana);
     

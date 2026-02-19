@@ -975,7 +975,65 @@ sidebar.addEventListener('click', function(e) {
     closeSidebar();   // ← LANGSUNG, NO DELAY, NO TIMEOUT
   }
 }, { capture: true });   // ← ini yang bikin "langsung banget"
-  
+
+// Mode vocab normal
+    const words = getFilteredWords();
+    if (!words.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
+      
+      // ✅ Tambahkan if (resultInfo) agar aman dari error
+      if (resultInfo) {
+        resultInfo.textContent = "0 kata ditemukan";
+      }
+      return;
+    }
+
+    const fragment = document.createDocumentFragment();
+    words.forEach((word) => {
+      const cardButton = document.createElement("article");
+      cardButton.className = "card";
+      cardButton.setAttribute("role", "button");
+      cardButton.setAttribute("tabindex", "0");
+      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
+      try {
+        cardButton.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal menyimpan data word:", word);
+        return;
+      }
+      cardButton.innerHTML = cardImageTemplate(word);
+      cardButton.addEventListener("click", (e) => {
+        if (e.target.closest(".play-audio-btn")) return;
+        try {
+          const storedWord = JSON.parse(cardButton.dataset.word);
+          openModal(storedWord);
+        } catch (err) {
+          console.error("Gagal membaca data kartu:", err);
+        }
+      });
+      cardButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          try {
+            const storedWord = JSON.parse(cardButton.dataset.word);
+            openModal(storedWord);
+          } catch (err) {
+            console.error("Gagal membaca data kartu (keyboard):", err);
+          }
+        }
+      });
+      fragment.appendChild(cardButton);
+    });
+    grid.appendChild(fragment);
+    
+    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
+    
+    // ✅ Tambahkan if (resultInfo) di sini juga
+    if (resultInfo) {
+      resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
+    }
+  }
+                          
   // Render awal aplikasi
   render();
 });

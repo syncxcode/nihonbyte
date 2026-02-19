@@ -760,32 +760,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.querySelectorAll(".pattern-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level;
+  button.addEventListener("click", () => {
+    const level = button.dataset.level;
 
-    // Cek apakah level termasuk yang sedang dikembangkan
-      if (["N3", "N2", "N1"].includes(level)) {
-        const message = `
-        <div style="text-align: center;">
-          <h3 style="margin-bottom: 10px;">🚧 Under Development 🚧</h3>
-          <p style="font-size: 1.1rem; margin-bottom: 5px;">
-            Kategori yang anda pilih, masih dalam proses Pengembangan, silahkan kembali lagi nanti.
-          </p>
-          <p style="font-style: italic; color: #666; margin-bottom: 15px;">
-            The category you selected is still under development, please come back later.
-          </p>
-          <p style="font-size: 1.3rem; font-weight: bold; color: #ff4d6d;">
-            選択されたカテゴリーは現在開発中です。後ほどもう一度ご確認ください。
-          </p>
-        </div>
-      `;
-      
-      openInfoModal(message); 
+    if (["N3", "N2", "N1"].includes(level)) {
+      // Simpan mode view agar saat render ulang tidak hilang
+      viewMode = `dev:${level}`; 
+      render(); // Panggil fungsi render utama
       closeSidebar();
       return;
     }
 
-    // Jalankan render normal untuk N5 dan N4
+    // N5 & N4 tetap normal
     viewMode = `patterns:${level}`;
     render();
     closeSidebar();
@@ -837,6 +823,35 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     if(resultInfo) resultInfo.textContent = "Terima kasih atas dukungan Anda ✨";
   }
+
+  function renderUnderDevelopment(level) {
+  // Reset grid dan hapus mode support jika ada
+  grid.classList.remove("support-mode");
+  grid.innerHTML = "";
+
+  const container = document.createElement("div");
+  container.className = "empty-state"; // Gunakan class yang sudah ada agar stylenya konsisten
+  container.style.padding = "40px 20px";
+  container.style.marginTop = "20px";
+
+  container.innerHTML = `
+    <div style="text-align: center;">
+      <h2 style="color: #ff4d6d; margin-bottom: 20px;">🚧 Pola Kalimat ${level} 🚧</h2>
+      <p style="font-size: 1.2rem; font-weight: 600; color: #1f2937; margin-bottom: 10px;">
+        Kategori yang anda pilih, masih dalam proses Pengembangan, silahkan kembali lagi nanti.
+      </p>
+      <p style="font-style: italic; color: #4b5563; margin-bottom: 25px;">
+        The category you selected is still under development, please come back later.
+      </p>
+      <p style="font-size: 1.4rem; font-weight: 800; color: #ff4d6d; line-height: 1.6;">
+        選択されたカテゴリーは現在開発中です。<br>後ほどもう一度ご確認ください。
+      </p>
+    </div>
+  `;
+
+  grid.appendChild(container);
+  if (resultInfo) resultInfo.textContent = `Pola Kalimat ${level} (Coming Soon)`;
+}
   
   // ==========================================
   // INI ADALAH FUNGSI RENDER() YANG BENAR
@@ -857,7 +872,13 @@ document.addEventListener("DOMContentLoaded", () => {
        selectedType === "ekspresi" ||
        selectedType === "expression" ||
        selectedType === "ungkapan umum");
-       
+    
+    if (viewMode.startsWith("dev:")) {
+      const level = viewMode.split(":")[1];
+      renderUnderDevelopment(level);
+      return;
+    }
+    
     if (isExpressionView) {
       renderExpressionPoster();
       return;

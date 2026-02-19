@@ -21,10 +21,171 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalSearchInput = document.getElementById("modalSearchInput");
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
+ 
+  let isTesting = false;
+  let currentQuizData = [];
+  let quizIndex = 0;
+  let score = 0;
+  let timer;
+  let timeLeft = 0;
+    if (searchBtn && filterModal) {
+      let bodyScrollY = 0;
+  // 1. Fungsi Memulai Test
+function startExercise(type, level) {
+    // Ambil data yang sesuai dari data.js
+    let filteredData = allData.filter(d => d.level === level);
+    
+    // Jika untuk Kanji, pastikan ada kanjinya
+    if (type === 'kanji') {
+        filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
+    }
 
-  if (searchBtn && filterModal) {
-    let bodyScrollY = 0;
+    if (filteredData.length < 5) {
+        alert("Data belum cukup untuk memulai latihan di level ini.");
+        return;
+    }
 
+    isTesting = true;
+    quizIndex = 0;
+    score = 0;
+    
+    // Acak dan ambil soal (30 untuk kanji/goi, 20 untuk bunpou)
+    const maxQuestions = (type === 'kanji' || type === 'goi') ? 30 : 20;
+    currentQuizData = filteredData.sort(() => Math.random() - 0.5).slice(0, maxQuestions);
+
+    renderQuiz(type);
+}
+
+// 2. Fungsi Render Tampilan Soal
+function renderQuiz(type) {
+    if (quizIndex >= currentQuizData.length) {
+        endQuiz();
+        return;
+    }
+
+    const item = currentQuizData[quizIndex];
+    const timeLimit = type === 'kanji' ? 5 : (type === 'bunpou' ? 30 : 10); 
+    timeLeft = timeLimit;
+
+    // Buat Pilihan Jawaban Otomatis (1 benar, 3 salah)
+    const options = generateOptions(item, type);
+
+    grid.classList.add("support-mode"); // Biar background tetap konsisten
+    grid.innerHTML = `
+        <div class="quiz-wrapper" style="max-width: 500px; margin: 0 auto; text-align: center; padding: 20px;">
+            <div class="quiz-header" style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                <span style="font-weight: bold;">Soal ${quizIndex + 1}/${currentQuizData.length}</span>
+                <span id="quiz-timer" style="color: #ff4d6d; font-weight: bold; font-size: 1.2rem;">${timeLeft}s</span>
+            </div>
+            
+            <div class="quiz-card-main" style="background: rgba(255,255,255,0.9); padding: 40px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px;">
+                <h1 style="font-size: 5rem; color: #1f2937; margin: 0;">${type === 'goi' ? item.meaning : item.kanji}</h1>
+                ${type === 'kanji' ? '<p style="color: #6b7280;">Bacaan Hiragana-nya?</p>' : ''}
+            </div>
+
+            <div class="options-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                ${options.map(opt => `
+                    <button onclick="checkAnswer('${opt}')" class="opt-btn" style="padding: 15px; border: none; border-radius: 12px; background: white; cursor: pointer; font-size: 1.1rem; font-weight: 500; transition: 0.2s;">
+                        ${opt}
+                    </button>
+                `).join('')}
+            </div>
+
+            <button onclick="confirmEndQuiz()" style="margin-top: 30px; background: none; border: 1px solid #ff4d6d; color: #ff4d6d; padding: 8px 20px; border-radius: 20px; cursor: pointer;">
+                SELESAIKAN TEST
+            </button>
+        </div>
+    `;
+
+    startTimer(type);
+}
+
+// 3. Fungsi Timer
+function startTimer(type) {
+    clearInterval(timer);
+    timer = setInterval(() => {
+        timeLeft--;
+        const timerDisplay = document.getElementById("quiz-timer");
+        if (timerDisplay) timerDisplay.textContent = `${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            nextQuestion(); // Otomatis lanjut jika waktu habis (dianggap salah)
+        }
+    }, 1000);
+}
+
+// 4. Fungsi Cek Jawaban
+function checkAnswer(selected) {
+    clearInterval(timer);
+    const item = currentQuizData[quizIndex];
+    const correct = (viewMode.includes('goi')) ? item.kana : item.kana; 
+    
+    if (selected === item.kana) {
+        score++;
+    }
+    nextQuestion();
+}
+
+function nextQuestion() {
+    quizIndex++;
+    const type = viewMode.split(':')[1]; // Mengambil tipe dari viewmode
+    renderQuiz(type);
+}
+
+// 5. Generate Pilihan Acak
+function generateOptions(correctItem, type) {
+    let wrongPool = allData
+        .filter(d => d.kana !== correctItem.kana && d.level === correctItem.level)
+        .map(d => d.kana);
+    
+    let shuffledWrong = wrongPool.sort(() => 0.5 - Math.random()).slice(0, 3);
+    return [...shuffledWrong, correctItem.kana].sort(() => 0.5 - Math.random());
+}
+
+    function endQuiz() {
+    isTesting = false;
+    clearInterval(timer);
+    
+    const totalSoal = currentQuizData.length;
+    const jlptScore = Math.round((score / totalSoal) * 60); // Skala 60 poin
+    
+    let gradeMsg = "";
+    if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
+    else if (jlptScore >= 35) gradeMsg = "Bagus! Terus tingkatkan.";
+    else gradeMsg = "Jangan menyerah, belajar lagi yuk!";
+
+    const message = `
+        <div style="text-align: center; padding: 20px;">
+            <h2 style="color: #ff4d6d;">Test Selesai!</h2>
+            <div style="font-size: 4rem; font-weight: bold; margin: 20px 0;">${jlptScore}/60</div>
+            <p style="font-size: 1.1rem;">${gradeMsg}</p>
+            <p>Benar: ${score} | Total Soal: ${totalSoal}</p>
+            <button onclick="location.reload()" style="margin-top: 20px; background: #ff4d6d; color: white; border: none; padding: 12px 30px; border-radius: 25px; cursor: pointer; font-weight: bold;">
+                KEMBALI KE MENU
+            </button>
+        </div>
+    `;
+    openInfoModal(message);
+}
+
+// Fungsi proteksi keluar
+function confirmEndQuiz() {
+    if(confirm("Apakah kamu yakin ingin mengakhiri test? Skor saat ini akan langsung dihitung.")) {
+        endQuiz();
+    }
+}
+
+      if (isTesting) {
+    const motivasi = [
+        "Selesaikan apa yang kamu mulai!",
+        "Nyerah sekarang? Ingat impianmu ke Jepang!",
+        "Sedikit lagi! Jangan biarkan usahamu sia-sia. 🔥"
+    ];
+    alert(motivasi[Math.floor(Math.random() * motivasi.length)]);
+    return;
+}
+      
     searchBtn.addEventListener("click", () => {
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";

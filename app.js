@@ -56,7 +56,7 @@ function startExercise(type, level) {
     renderQuiz(type);
 }
 
-// 2. Fungsi Render Tampilan Soal
+// 2. Fungsi Render Tampilan Soal (Horizontal Dewasa Edition)
 function renderQuiz(type) {
     if (quizIndex >= currentQuizData.length) {
         endQuiz();
@@ -68,47 +68,61 @@ function renderQuiz(type) {
     timeLeft = timeLimit;
     const options = generateOptions(item, type);
 
-    // Render area kuis dengan layout horizontal
+    // KUNCI 1: Tambahkan kelas support-mode agar #grid berhenti jadi grid-kolom 
+    // (menggunakan css bawaanmu yang bikin elemen jadi block/full-width)
+    grid.classList.add("support-mode"); 
+
+    // Render area kuis
     grid.innerHTML = `
-        <div class="quiz-container-v2" style="width: 100%; max-width: 1000px; margin: 0 auto; padding: 10px; position: relative; z-index: 1000;">
+        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; padding: 20px;">
             
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); padding: 8px 20px; border-radius: 8px; margin-bottom: 10px; font-size: 0.9rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <div style="font-weight: bold; color: #4b5563;">
+            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.9); padding: 12px 24px; border-radius: 999px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; box-sizing: border-box;">
+                <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
                     Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
                 </div>
-                <div style="color: #374151;">
-                    Sisa waktu: <span id="quiz-timer" style="color: #ff4d6d; font-weight: 800;">${timeLeft}s</span>
+                <div style="color: #374151; font-weight: 600; font-size: 0.95rem;">
+                    Sisa waktu: <span id="quiz-timer" style="color: #ff4d6d; font-weight: 800; font-size: 1.2rem; margin-left: 5px;">${timeLeft}s</span>
                 </div>
             </div>
             
-            <div style="background: rgba(255,255,255,0.8); backdrop-filter: blur(5px); padding: 40px; border-radius: 12px; text-align: center; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
-                <h1 style="font-size: clamp(3rem, 8vw, 5.5rem); color: #111827; margin: 0; letter-spacing: -2px;">
+            <div style="background: rgba(240, 244, 248, 0.95); backdrop-filter: blur(10px); padding: 60px 20px; border-radius: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); width: 100%; box-sizing: border-box; display: flex; justify-content: center; align-items: center; min-height: 250px;">
+                <h1 style="font-size: clamp(3.5rem, 8vw, 6rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
                     ${type === 'goi' ? item.meaning : item.kanji}
                 </h1>
             </div>
 
-            <div class="options-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; width: 100%;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; width: 100%;">
                 ${options.map(opt => `
-                    <button class="quiz-opt-btn-v2" data-answer="${opt}" style="padding: 15px; border: 1px solid #e5e7eb; border-radius: 8px; background: white; cursor: pointer; font-size: 1.1rem; font-weight: 500; transition: all 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.02);">
+                    <button class="quiz-opt-btn-pro" data-answer="${opt}" style="padding: 16px; border: 1px solid #cbd5e1; border-radius: 12px; background: white; color: #334155; cursor: pointer; font-size: 1.15rem; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
                         ${opt}
                     </button>
                 `).join('')}
             </div>
 
-            <div style="display: flex; justify-content: flex-end; margin-top: 15px;">
-                <button id="finishBtnManual" style="background: white; color: #374151; border: 1px solid #d1d5db; padding: 6px 15px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.2s;">
+            <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 10px;">
+                <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                     Selesaikan Test
                 </button>
             </div>
         </div>
     `;
 
-    // Event Listener Klik Jawaban
-    document.querySelectorAll(".quiz-opt-btn-v2").forEach(btn => {
-        btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
+    // Pasang Event Listener
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Visual feedback singkat pas diklik
+            btn.style.background = "#e2e8f0";
+            checkAnswer(btn.dataset.answer);
+        });
+        
+        // Efek Hover pakai JS (Karena class ini nggak ada di CSS)
+        btn.addEventListener("mouseover", () => btn.style.borderColor = "#94a3b8");
+        btn.addEventListener("mouseout", () => btn.style.borderColor = "#cbd5e1");
     });
 
     document.getElementById("finishBtnManual").addEventListener("click", confirmEndQuiz);
+    document.getElementById("finishBtnManual").addEventListener("mouseover", function() { this.style.color = "#0f172a"; this.style.borderColor = "#94a3b8"; });
+    document.getElementById("finishBtnManual").addEventListener("mouseout", function() { this.style.color = "#64748b"; this.style.borderColor = "#cbd5e1"; });
 
     startTimer(type);
 }

@@ -57,7 +57,7 @@ function startExercise(type, level) {
 }
 
 // ==========================================
-// 2. Render Tampilan Kuis (Waktu Diperpanjang)
+// 2. Render Tampilan Kuis (Fix Jarak Atas)
 // ==========================================
 function renderQuiz(type) {
     if (quizIndex >= currentQuizData.length) {
@@ -79,16 +79,18 @@ function renderQuiz(type) {
             body { overflow: hidden !important; } 
             #grid.quiz-active-mode {
                 display: flex !important; align-items: center !important; justify-content: center !important;
-                padding-top: 70px !important; padding-bottom: 20px !important; min-height: 100vh !important;
+                /* KUNCI 1: Naikkan dari 70px jadi 120px biar lega */
+                padding-top: 120px !important; 
+                padding-bottom: 20px !important; min-height: 100vh !important;
                 box-sizing: border-box !important;
             }
             @media (max-height: 650px) {
                 body { overflow: auto !important; }
-                #grid.quiz-active-mode { align-items: flex-start !important; padding-top: 90px !important; }
+                #grid.quiz-active-mode { align-items: flex-start !important; padding-top: 130px !important; }
             }
         </style>
 
-        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 15px; padding: 15px; margin-top: -20px;">
+        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 15px; padding: 15px; margin-top: 0;">
             
             <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.95); padding: 12px 24px; border-radius: 999px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; box-sizing: border-box;">
                 <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
@@ -231,7 +233,7 @@ function generateOptions(correctItem, type) {
 }
 
 // ==========================================
-// 7. Fungsi Akhiri Kuis (Hanya Tampilkan Nilai)
+// 7. Fungsi Akhiri Kuis (Fix Warna Text Nilai)
 // ==========================================
 function endQuiz() {
     isTesting = false;
@@ -249,9 +251,9 @@ function endQuiz() {
     const message = `
         <div style="text-align: center; padding: 15px;">
             <h2 style="color: #ff4d6d; margin-bottom: 5px;">Test Selesai!</h2>
-            <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #1f2937; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
-            <p style="font-size: 1.15rem; font-weight: 600; color: #374151;">${gradeMsg}</p>
-            <p style="color: #6b7280; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #10b981;">${score}</strong> | Total Soal: ${totalSoal}</p>
+            <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
+            <p style="font-size: 1.15rem; font-weight: 600; color: #f3f4f6;">${gradeMsg}</p>
+            <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
             
             <button onclick="location.reload()" style="margin-top: 25px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%; transition: transform 0.2s;">
                 KEMBALI KE MENU
@@ -260,7 +262,7 @@ function endQuiz() {
     `;
     openInfoModal(message);
 }
-
+      
 // ==========================================
 // 8. Proteksi Tombol Selesaikan Manual
 // ==========================================

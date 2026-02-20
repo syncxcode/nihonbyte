@@ -177,7 +177,7 @@ const vocabularyData = [
   { level: "N3", type: "adj-na", kanji: "頑固", kana: "がんこ", romaji: "ganko", meaning: "keras kepala" },
   { level: "N3", type: "adj-na", kanji: "素直", kana: "すなお", romaji: "sunao", meaning: "patuh / polos" },
   { level: "N3", type: "adj-na", kanji: "勝ち気", kana: "かちき", romaji: "kachiki", meaning: "tidak mau kalah" },
-  { level: "N3", type: "adj-na", kanji: "神経質", kana: "しんけいしつ", romaji: "shinkeishitsu", meaning: "sensitif / khawatir berlebihan" }
+  { level: "N3", type: "adj-na", kanji: "神経質", kana: "しんけいしつ", romaji: "shinkeishitsu", meaning: "sensitif / khawatir berlebihan" },
 
     // --- VERB SURU (KATA KERJA GOLONGAN 3 / SURU) ---
   { level: "N3", type: "verb-suru", kanji: "作業する", kana: "さぎょうする", romaji: "sagyou suru", meaning: "bekerja" },
@@ -527,7 +527,7 @@ const vocabularyData = [
   { level: "N5", type: "verb-godan", kanji: "行く", kana: "いく", romaji: "iku", meaning: "pergi" },
   { level: "N4", type: "verb-godan", kanji: "去る", kana: "さる", romaji: "saru", meaning: "pergi, meninggalkan" },
   { level: "N4", type: "verb-godan", kanji: "沈む", kana: "しずむ", romaji: "shizumu", meaning: "tenggelam" },
-  { level: "N4", type: "verb-godan", kanji: "育つ", kana: "そだつ", romaji: "sodatsu", meaning: "Tumbuh" }
+  { level: "N4", type: "verb-godan", kanji: "育つ", kana: "そだつ", romaji: "sodatsu", meaning: "Tumbuh" },
 
   { level: "N5", type: "noun-place", kanji: "場所", kana: "ばしょ", romaji: "basho", meaning: "tempat" },
   { level: "N5", type: "noun-place", kanji: "建物/ビル", kana: "たてもの/びる", romaji: "tatemono/biru", meaning: "bangunan" },
@@ -587,7 +587,7 @@ const vocabularyData = [
   { level: "N5", type: "noun-place", kanji: "喫茶店", kana: "きっさてん", romaji: "kissaten", meaning: "kedai kopi" },
   { level: "N4", type: "noun-place", kanji: "温泉", kana: "おんせん", romaji: "onsen", meaning: "pemandian air panas" },
   { level: "N3", type: "noun-place", kanji: "風呂屋", kana: "ふろや", romaji: "furoya", meaning: "wc umum" },
-  { level: "N3", type: "noun-place", kanji: "露天風呂", kana: "ろてんぶろ", romaji: "rotenburo", meaning: "pemandian di alam terbuka" }
+  { level: "N3", type: "noun-place", kanji: "露天風呂", kana: "ろてんぶろ", romaji: "rotenburo", meaning: "pemandian di alam terbuka" },
   // --- KOSAKATA KATA TANYA (question) ---
   { level: "N5", type: "question", kanji: "何分", kana: "なんぷん", romaji: "nan-pun", meaning: "berapa menit?" },
   { level: "N5", type: "question", kanji: "何曜日", kana: "なんようび", romaji: "nanyoubi", meaning: "hari apa?" },

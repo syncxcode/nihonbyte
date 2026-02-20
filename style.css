@@ -1771,9 +1771,9 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.4); /* Transparan putih */
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -1783,14 +1783,15 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   cursor: pointer;
   z-index: 20;
   transition: all 0.2s ease;
-  font-size: 18px;
+  color: #ff4d6d; /* 🚀 KUNCI: Warna awal icon (Pink Gelap) */
 }
 
 .download-card-btn:hover {
   background: #ff4d6d;
-  color: white;
-  transform: scale(1.1) rotate(5deg);
+  color: #ffffff; /* 🚀 KUNCI: Warna icon jadi putih pas disorot */
+  transform: scale(1.1) translateY(-2px); /* Naik dikit biar elegan */
   border-color: transparent;
+  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.4);
 }
 
 /* 1. Header & Navbar */

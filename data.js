@@ -588,6 +588,7 @@ const vocabularyData = [
   { level: "N4", type: "noun-place", kanji: "温泉", kana: "おんせん", romaji: "onsen", meaning: "pemandian air panas" },
   { level: "N3", type: "noun-place", kanji: "風呂屋", kana: "ふろや", romaji: "furoya", meaning: "wc umum" },
   { level: "N3", type: "noun-place", kanji: "露天風呂", kana: "ろてんぶろ", romaji: "rotenburo", meaning: "pemandian di alam terbuka" },
+  const vocabularyData = [
   // --- KOSAKATA KATA TANYA (question) ---
   { level: "N5", type: "question", kanji: "何分", kana: "なんぷん", romaji: "nan-pun", meaning: "berapa menit?" },
   { level: "N5", type: "question", kanji: "何曜日", kana: "なんようび", romaji: "nanyoubi", meaning: "hari apa?" },
@@ -596,57 +597,60 @@ const vocabularyData = [
   { level: "N5", type: "question", kanji: "何秒", kana: "なんびょう", romaji: "nan-byoo", meaning: "berapa detik?" },
   { level: "N5", type: "question", kanji: "何時", kana: "なんじ", romaji: "nan-ji", meaning: "jam berapa?" },
 
-  // --- KOSAKATA ANGKA & SATUAN (noun-number-counter) ---
-  // Menit
-  { level: "N5", type: "noun-number-counter", kanji: "1分", kana: "いっぷん", romaji: "ip-pun", meaning: "1 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "2分", kana: "にふん", romaji: "nifun", meaning: "2 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "3分", kana: "さんぷん", romaji: "san-pun", meaning: "3 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "4分", kana: "よんぷん", romaji: "yon-pun", meaning: "4 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "5分", kana: "ごふん", romaji: "gofun", meaning: "5 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "6分", kana: "ろっぷん", romaji: "rop-pun", meaning: "6 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "7分", kana: "ななふん", romaji: "nanafun", meaning: "7 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "8分", kana: "はっぷん", romaji: "hap-pun", meaning: "8 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "9分", kana: "きゅうふん", romaji: "kyuu-fun", meaning: "9 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "10分", kana: "じっぷん", romaji: "jip-pun", meaning: "10 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "20分", kana: "にじっぷん", romaji: "ni-jip-pun", meaning: "20 menit" },
-  { level: "N5", type: "noun-number-counter", kanji: "30分", kana: "さんじっぷん", romaji: "san-jip-pun", meaning: "30 menit" },
-  // Tanggal
-  { level: "N5", type: "noun-number-counter", kanji: "一日", kana: "ついたち", romaji: "tsuitachi", meaning: "tanggal 1" },
-  { level: "N5", type: "noun-number-counter", kanji: "二日", kana: "ふつか", romaji: "futsuka", meaning: "tanggal 2" },
-  { level: "N5", type: "noun-number-counter", kanji: "三日", kana: "みっか", romaji: "mikka", meaning: "tanggal 3" },
-  { level: "N5", type: "noun-number-counter", kanji: "四日", kana: "よっか", romaji: "yokka", meaning: "tanggal 4" },
-  { level: "N5", type: "noun-number-counter", kanji: "五日", kana: "いつか", romaji: "itsuka", meaning: "tanggal 5" },
-  { level: "N5", type: "noun-number-counter", kanji: "六日", kana: "むいか", romaji: "muika", meaning: "tanggal 6" },
-  { level: "N5", type: "noun-number-counter", kanji: "七日", kana: "なのか", romaji: "nanoka", meaning: "tanggal 7" },
-  { level: "N5", type: "noun-number-counter", kanji: "八日", kana: "ようか", romaji: "youka", meaning: "tanggal 8" },
-  { level: "N5", type: "noun-number-counter", kanji: "九日", kana: "ここのか", romaji: "kokonoka", meaning: "tanggal 9" },
-  { level: "N5", type: "noun-number-counter", kanji: "十日", kana: "とおか", romaji: "tooka", meaning: "tanggal 10" },
-  { level: "N5", type: "noun-number-counter", kanji: "二十日", kana: "はつか", romaji: "hatsuka", meaning: "tanggal 20" },
-  // Jam & Detik
-  { level: "N5", type: "noun-number-counter", kanji: "1時", kana: "いちじ", romaji: "ichi-ji", meaning: "pukul 1" },
-  { level: "N5", type: "noun-number-counter", kanji: "1秒", kana: "いちびょう", romaji: "ichi-byoo", meaning: "1 detik" },
+  // --- KOSAKATA ANGKA & SATUAN (Pecah Jadi noun-counter / noun-number) ---
+  // Menit (Counter)
+  { level: "N5", type: "noun-counter", kanji: "1分", kana: "いっぷん", romaji: "ip-pun", meaning: "1 menit" },
+  { level: "N5", type: "noun-counter", kanji: "2分", kana: "にふん", romaji: "nifun", meaning: "2 menit" },
+  { level: "N5", type: "noun-counter", kanji: "3分", kana: "さんぷん", romaji: "san-pun", meaning: "3 menit" },
+  { level: "N5", type: "noun-counter", kanji: "4分", kana: "よんぷん", romaji: "yon-pun", meaning: "4 menit" },
+  { level: "N5", type: "noun-counter", kanji: "5分", kana: "ごふん", romaji: "gofun", meaning: "5 menit" },
+  { level: "N5", type: "noun-counter", kanji: "6分", kana: "ろっぷん", romaji: "rop-pun", meaning: "6 menit" },
+  { level: "N5", type: "noun-counter", kanji: "7分", kana: "ななふん", romaji: "nanafun", meaning: "7 menit" },
+  { level: "N5", type: "noun-counter", kanji: "8分", kana: "はっぷん", romaji: "hap-pun", meaning: "8 menit" },
+  { level: "N5", type: "noun-counter", kanji: "9分", kana: "きゅうふん", romaji: "kyuu-fun", meaning: "9 menit" },
+  { level: "N5", type: "noun-counter", kanji: "10分", kana: "じっぷん", romaji: "jip-pun", meaning: "10 menit" },
+  { level: "N5", type: "noun-counter", kanji: "20分", kana: "にじっぷん", romaji: "ni-jip-pun", meaning: "20 menit" },
+  { level: "N5", type: "noun-counter", kanji: "30分", kana: "san-jup-pun", romaji: "san-jip-pun", meaning: "30 menit" },
+  // Tanggal (Counter Hari)
+  { level: "N5", type: "noun-counter", kanji: "一日", kana: "ついたち", romaji: "tsuitachi", meaning: "tanggal 1" },
+  { level: "N5", type: "noun-counter", kanji: "二日", kana: "ふつか", romaji: "futsuka", meaning: "tanggal 2" },
+  { level: "N5", type: "noun-counter", kanji: "三日", kana: "みっか", romaji: "mikka", meaning: "tanggal 3" },
+  { level: "N5", type: "noun-counter", kanji: "四日", kana: "よっか", romaji: "yokka", meaning: "tanggal 4" },
+  { level: "N5", type: "noun-counter", kanji: "五日", kana: "いつか", romaji: "itsuka", meaning: "tanggal 5" },
+  { level: "N5", type: "noun-counter", kanji: "六日", kana: "むいか", romaji: "muika", meaning: "tanggal 6" },
+  { level: "N5", type: "noun-counter", kanji: "七日", kana: "なのか", romaji: "nanoka", meaning: "tanggal 7" },
+  { level: "N5", type: "noun-counter", kanji: "八日", kana: "ようか", romaji: "youka", meaning: "tanggal 8" },
+  { level: "N5", type: "noun-counter", kanji: "九日", kana: "ここのか", romaji: "kokonoka", meaning: "tanggal 9" },
+  { level: "N5", type: "noun-counter", kanji: "十日", kana: "とおか", romaji: "tooka", meaning: "tanggal 10" },
+  { level: "N5", type: "noun-counter", kanji: "二十日", kana: "はつか", romaji: "hatsuka", meaning: "tanggal 20" },
+  // Satuan Jam & Detik
+  { level: "N5", type: "noun-counter", kanji: "1時", kana: "いちじ", romaji: "ichi-ji", meaning: "pukul 1" },
+  { level: "N5", type: "noun-counter", kanji: "1秒", kana: "いちびょう", romaji: "ichi-byoo", meaning: "1 detik" },
 
-  // --- KOSAKATA WAKTU & CUACA (noun-time-weather) ---
-  { level: "N5", type: "noun-time-weather", kanji: "月曜日", kana: "げつようび", romaji: "getsuyoubi", meaning: "senin" },
-  { level: "N5", type: "noun-time-weather", kanji: "火曜日", kana: "かようび", romaji: "kayoubi", meaning: "selasa" },
-  { level: "N5", type: "noun-time-weather", kanji: "水曜日", kana: "すいようび", romaji: "suiyoubi", meaning: "rabu" },
-  { level: "N5", type: "noun-time-weather", kanji: "木曜日", kana: "もくようび", romaji: "mokuyoubi", meaning: "kamis" },
-  { level: "N5", type: "noun-time-weather", kanji: "金曜日", kana: "きんようび", romaji: "kinyoubi", meaning: "jumat" },
-  { level: "N5", type: "noun-time-weather", kanji: "土曜日", kana: "どようび", romaji: "doyoubi", meaning: "sabtu" },
-  { level: "N5", type: "noun-time-weather", kanji: "日曜日", kana: "にちようび", romaji: "nichiyoubi", meaning: "minggu" },
-  { level: "N5", type: "noun-time-weather", kanji: "一月", kana: "いちがつ", romaji: "ichigatsu", meaning: "januari" },
-  { level: "N5", type: "noun-time-weather", kanji: "二月", kana: "にがつ", romaji: "nigatsu", meaning: "februari" },
-  { level: "N5", type: "noun-time-weather", kanji: "天気", kana: "てんき", romaji: "tenki", meaning: "cuaca" },
-  { level: "N5", type: "noun-time-weather", kanji: "季節", kana: "きせつ", romaji: "kisetsu", meaning: "musim" },
-  { level: "N5", type: "noun-time-weather", kanji: "春", kana: "はる", romaji: "haru", meaning: "musim semi" },
-  { level: "N5", type: "noun-time-weather", kanji: "夏", kana: "なつ", romaji: "natsu", meaning: "musim panas" },
-  { level: "N5", type: "noun-time-weather", kanji: "秋", kana: "あき", romaji: "aki", meaning: "musim gugur" },
-  { level: "N5", type: "noun-time-weather", kanji: "冬", kana: "ふゆ", romaji: "fuyu", meaning: "musim dingin" },
-  { level: "N5", type: "noun-time-weather", kanji: "雨", kana: "あめ", romaji: "ame", meaning: "hujan" },
-  { level: "N5", type: "noun-time-weather", kanji: "雪", kana: "ゆき", romaji: "yuki", meaning: "salju" },
-  { level: "N5", type: "noun-time-weather", kanji: "雲", kana: "くも", romaji: "kumo", meaning: "awan" },
-  { level: "N5", type: "noun-time-weather", kanji: "晴れ", kana: "はれ", romaji: "hare", meaning: "cerah" },
-  { level: "N5", type: "noun-time-weather", kanji: "曇り", kana: "くもり", romaji: "kumori", meaning: "mendung" }
+  // --- KOSAKATA WAKTU, BULAN & CUACA (Pecah Jadi noun-time / noun-month / noun-weather) ---
+  // Hari & Musim (Time)
+  { level: "N5", type: "noun-time", kanji: "月曜日", kana: "げつようび", romaji: "getsuyoubi", meaning: "senin" },
+  { level: "N5", type: "noun-time", kanji: "火曜日", kana: "かようび", romaji: "kayoubi", meaning: "selasa" },
+  { level: "N5", type: "noun-time", kanji: "水曜日", kana: "すいようび", romaji: "suiyoubi", meaning: "rabu" },
+  { level: "N5", type: "noun-time", kanji: "木曜日", kana: "もくようび", romaji: "mokuyoubi", meaning: "kamis" },
+  { level: "N5", type: "noun-time", kanji: "金曜日", kana: "きんようび", romaji: "kinyoubi", meaning: "jumat" },
+  { level: "N5", type: "noun-time", kanji: "土曜日", kana: "どようび", romaji: "doyoubi", meaning: "sabtu" },
+  { level: "N5", type: "noun-time", kanji: "日曜日", kana: "にちようび", romaji: "nichiyoubi", meaning: "minggu" },
+  { level: "N5", type: "noun-time", kanji: "季節", kana: "きせつ", romaji: "kisetsu", meaning: "musim" },
+  { level: "N5", type: "noun-time", kanji: "春", kana: "はる", romaji: "haru", meaning: "musim semi" },
+  { level: "N5", type: "noun-time", kanji: "夏", kana: "なつ", romaji: "natsu", meaning: "musim panas" },
+  { level: "N5", type: "noun-time", kanji: "秋", kana: "あき", romaji: "aki", meaning: "musim gugur" },
+  { level: "N5", type: "noun-time", kanji: "冬", kana: "ふゆ", romaji: "fuyu", meaning: "musim dingin" },
+  // Bulan (Month)
+  { level: "N5", type: "noun-month", kanji: "一月", kana: "いちがつ", romaji: "ichigatsu", meaning: "januari" },
+  { level: "N5", type: "noun-month", kanji: "二月", kana: "にがつ", romaji: "nigatsu", meaning: "februari" },
+  // Kondisi Cuaca (Weather)
+  { level: "N5", type: "noun-weather", kanji: "天気", kana: "てんき", romaji: "tenki", meaning: "cuaca" },
+  { level: "N5", type: "noun-weather", kanji: "雨", kana: "あめ", romaji: "ame", meaning: "hujan" },
+  { level: "N5", type: "noun-weather", kanji: "雪", kana: "ゆき", romaji: "yuki", meaning: "salju" },
+  { level: "N5", type: "noun-weather", kanji: "雲", kana: "くも", romaji: "kumo", meaning: "awan" },
+  { level: "N5", type: "noun-weather", kanji: "晴れ", kana: "はれ", romaji: "hare", meaning: "cerah" },
+  { level: "N5", type: "noun-weather", kanji: "曇り", kana: "くもり", romaji: "kumori", meaning: "mendung" }
 ];
 
 const patternData = {

@@ -162,13 +162,14 @@ input,
 }
 
 .card-overlay .kanji {
-  font-size: clamp(22px, 4vw, 32px) !important;
-  margin-bottom: 8px !important;
+  font-size: clamp(36px, 6vw, 52px) !important; /* 🚀 KUNCI 1: Ukuran diperbesar drastis */
+  margin-top: -15px !important; /* 🚀 KUNCI 2: Tarik sedikit ke atas biar gak terlalu tengah */
+  margin-bottom: 12px !important; /* Kasih jarak napas ke huruf kana di bawahnya */
   white-space: nowrap !important;
   color: #111111 !important;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
-  font-weight: 800;
-}  
+  font-weight: 900 !important; /* Bikin Kanjinya makin tebal & tegas */
+}
 
 .card-overlay .kana, .card-overlay .romaji, .card-overlay .meaning {
   color: #111111 !important;

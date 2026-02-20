@@ -605,7 +605,7 @@ function confirmEndQuiz() {
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
-    // Kita pakai ID unik berdasarkan kanji/kana agar html2canvas tahu mana yang mau dipotret
+    // Bikin ID unik biar html2canvas tau mana yang mau difoto
     const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
     
     return `
@@ -620,9 +620,7 @@ function confirmEndQuiz() {
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>
           
-          <div class="watermark-logo" style="display:none; position:absolute; bottom:10px; right:15px; opacity:0.8; font-size:14px; font-weight:bold; color:#ff4d6d; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
-            🇯🇵 NihonByte
-          </div>
+          <img class="watermark-logo" src="./assets/logo.png" alt="NihonByte Logo" style="position:absolute; bottom:12px; right:15px; width:45px; height:auto; opacity:0; pointer-events:none; z-index:5; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));">
         </div>
       </div>
     `;

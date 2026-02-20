@@ -1104,19 +1104,20 @@ function confirmEndQuiz() {
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
     button.addEventListener("click", () => {
-      const type = button.dataset.type; // kanji, bunpou, goi, choukai, dokkai
+      const type = button.dataset.type; // kanji, bunpou, goi, coukai, dokkai
       const level = button.dataset.level; // N5, N4, dll
 
-      // KUNCI FIX: Kalau levelnya N3-N1 ATAU tipenya Choukai / Dokkai, lempar ke mode Dev!
-      if (["N3", "N2", "N1"].includes(level) || type === "choukai" || type === "dokkai") {
-        // Simpan format dev:mode:type:level
+      // LOGIC FINAL:
+      // 1. Jika level N3, N2, N1 (Apapun jenis latihannya) -> DEV
+      // 2. Jika jenis latihannya Choukai (coukai) atau Dokkai (Apapun levelnya) -> DEV
+      if (["N3", "N2", "N1"].includes(level) || type === "choukai" || type === "coukai" || type === "dokkai") {
         viewMode = `dev:exercise:${type}:${level}`; 
         render();
         closeSidebar();
         return;
       }
 
-      // Jalankan fungsi startExercise normal hanya untuk Kanji, Goi, dan Bunpou (N5 & N4)
+      // Sisanya (Kanji, Goi, Bunpou untuk N5 & N4) baru boleh jalan kuisnya
       startExercise(type, level);
       closeSidebar();
     });

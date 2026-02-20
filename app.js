@@ -612,7 +612,7 @@ function confirmEndQuiz() {
       <div class="card-image ${expandedClass}" id="${cardId}">
         <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio">▶</button>
         
-        <button class="download-card-btn" type="button" onclick="downloadAsImage('${cardId}')" title="Download Flashcard">📸</button>
+        <button class="download-card-btn" type="button" onclick="downloadAsImage(event, '${cardId}')" title="Download Flashcard">📸</button>
         
         <div class="card-overlay">
           <div class="kanji">${word.kanji || "—"}</div>
@@ -1332,7 +1332,9 @@ function confirmEndQuiz() {
     }
   }, { capture: true });
 
-  window.downloadAsImage = function(cardId) {
+  window.downloadAsImage = function(event, cardId) {
+  event.stopPropagation(); // <--- INI MANTRA ANTI NEMBUSNYA!
+
   const element = document.getElementById(cardId);
   if (!element) return;
 
@@ -1345,10 +1347,9 @@ function confirmEndQuiz() {
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 
-  // 2. MANTRA ANTI HANG HP: Kasih jeda 150ms biar HP napas dulu sebelum jepret
   setTimeout(() => {
     html2canvas(element, {
-      backgroundColor: "#ffd1da", // Kasih background solid sesuai warna kartumu
+      backgroundColor: null, 
       scale: 2,           
       useCORS: true,
       allowTaint: true,   
@@ -1369,7 +1370,7 @@ function confirmEndQuiz() {
       if (audioBtn) audioBtn.style.visibility = 'visible';
       if (dlBtn) dlBtn.style.visibility = 'visible';
     });
-  }, 150); // <--- Jeda 150 milidetik
+  }, 150); 
 };
   
   // Panggil render saat pertama kali dimuat

@@ -28,8 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let score = 0;
   let timer;
   let timeLeft = 0;
-    if (searchBtn && filterModal) {
-      let bodyScrollY = 0;
+  let bodyScrollY = 0;
+      
+  // ==========================================
+  // 1. Fungsi Memulai Test
       
   // ==========================================
 // 1. Fungsi Memulai Test

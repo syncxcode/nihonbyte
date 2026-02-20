@@ -1352,14 +1352,23 @@ function confirmEndQuiz() {
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 
+  // 🚀 KALKULASI RESOLUSI FHD DINAMIS (ANTI BURIK CLUB!)
+  const rect = element.getBoundingClientRect();
+  const targetWidth = 1080; // Target kita: Lebar foto 1080px (FHD / IG Story Ready)
+  let dynamicScale = targetWidth / rect.width;
+
+  // Safety Limit biar RAM HP kentang gak meledak!
+  // Mentok di scale 4, minimal di scale 2.5 biar tetep tajam.
+  if (dynamicScale > 4) dynamicScale = 4;
+  if (dynamicScale < 2.5) dynamicScale = 2.5;
+
   setTimeout(() => {
     html2canvas(element, {
       backgroundColor: null, // Tetap transparan
-      scale: 2,           
+      scale: dynamicScale,   // <--- MANTRA BARU: Pakai kalkulasi skala di atas!
       useCORS: true,
       allowTaint: true,   
       logging: false,
-      // 🚀 MANTRA BARU: Pangkas paksa ujungnya pas lagi difoto!
       onclone: function (clonedDoc) {
         const clonedCard = clonedDoc.getElementById(cardId);
         
@@ -1367,7 +1376,7 @@ function confirmEndQuiz() {
         clonedCard.style.borderRadius = "16px"; 
         clonedCard.style.overflow = "hidden";   
 
-        // Bikin elemen induk (pembungkusnya) jadi transparan total biar gak bocor
+        // Bikin elemen induk jadi transparan total biar gak bocor kotak-kotak putihnya
         if (clonedCard.parentElement) {
             clonedCard.parentElement.style.background = "transparent";
             clonedCard.parentElement.style.backgroundColor = "transparent";

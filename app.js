@@ -1340,16 +1340,17 @@ function confirmEndQuiz() {
   const audioBtn = element.querySelector('.play-audio-btn');
   const dlBtn = element.querySelector('.download-card-btn');
 
-  // 1. Persiapan sebelum difoto (Munculkan logo asli, sembunyikan UI)
-  if (watermark) watermark.style.opacity = '0.9'; // Munculkan logo
+  // 1. Persiapan sebelum difoto
+  if (watermark) watermark.style.opacity = '0.9'; 
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 
-  // 2. Potret dengan Lensa Super HD+++++
+  // 2. Potret dengan Setting Aman Anti-Hang
   html2canvas(element, {
     backgroundColor: null,
-    scale: 4, // <--- INI KUNCI ANTI BURIK! (Ubah ke 5 kalau hp user dewa semua wkwk)
+    scale: 2,           // <--- Turunin jadi 2. Ini udah HD & jernih kok!
     useCORS: true,
+    allowTaint: true,   // <--- MANTRA AJAIB: Biar logo.png lokal gak bikin stuck!
     logging: false
   }).then(canvas => {
     const link = document.createElement('a');
@@ -1358,11 +1359,12 @@ function confirmEndQuiz() {
     link.click();
 
     // 3. Kembalikan ke tampilan semula
-    if (watermark) watermark.style.opacity = '0'; // Sembunyikan logo lagi
+    if (watermark) watermark.style.opacity = '0'; 
     if (audioBtn) audioBtn.style.visibility = 'visible';
     if (dlBtn) dlBtn.style.visibility = 'visible';
   }).catch(err => {
     console.error("Gagal mendownload gambar:", err);
+    // Kembalikan ke semula kalau error
     if (watermark) watermark.style.opacity = '0';
     if (audioBtn) audioBtn.style.visibility = 'visible';
     if (dlBtn) dlBtn.style.visibility = 'visible';

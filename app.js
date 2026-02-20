@@ -605,7 +605,6 @@ function confirmEndQuiz() {
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
-    // Bikin ID unik biar html2canvas tau mana yang mau difoto
     const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
     
     return `
@@ -614,13 +613,13 @@ function confirmEndQuiz() {
         
         <button class="download-card-btn" type="button" onclick="downloadAsImage(event, '${cardId}')" title="Download Flashcard">📸</button>
         
-        <div class="card-overlay">
+        <div class="card-overlay" style="position: relative; z-index: 2;">
           <div class="kanji">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>
           
-          <img class="watermark-logo" src="./assets/logo.png" alt="NihonByte Logo" style="position:absolute; bottom:12px; right:15px; width:45px; height:auto; opacity:0; pointer-events:none; z-index:5; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));">
+          <img class="watermark-logo" src="./assets/logo.png" alt="NihonByte Logo" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:70%; height:auto; opacity:0; pointer-events:none; z-index:-1;">
         </div>
       </div>
     `;
@@ -1343,7 +1342,7 @@ function confirmEndQuiz() {
   const dlBtn = element.querySelector('.download-card-btn');
 
   // 1. Persiapan sebelum difoto
-  if (watermark) watermark.style.opacity = '0.9'; 
+  if (watermark) watermark.style.opacity = '0.15'; 
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 

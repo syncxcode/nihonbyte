@@ -1345,30 +1345,31 @@ function confirmEndQuiz() {
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 
-  // 2. Potret dengan Setting Aman Anti-Hang
-  html2canvas(element, {
-    backgroundColor: null,
-    scale: 2,           // <--- Turunin jadi 2. Ini udah HD & jernih kok!
-    useCORS: true,
-    allowTaint: true,   // <--- MANTRA AJAIB: Biar logo.png lokal gak bikin stuck!
-    logging: false
-  }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = `NihonByte-${cardId}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+  // 2. MANTRA ANTI HANG HP: Kasih jeda 150ms biar HP napas dulu sebelum jepret
+  setTimeout(() => {
+    html2canvas(element, {
+      backgroundColor: "#ffd1da", // Kasih background solid sesuai warna kartumu
+      scale: 2,           
+      useCORS: true,
+      allowTaint: true,   
+      logging: false
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = `NihonByte-${cardId}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
 
-    // 3. Kembalikan ke tampilan semula
-    if (watermark) watermark.style.opacity = '0'; 
-    if (audioBtn) audioBtn.style.visibility = 'visible';
-    if (dlBtn) dlBtn.style.visibility = 'visible';
-  }).catch(err => {
-    console.error("Gagal mendownload gambar:", err);
-    // Kembalikan ke semula kalau error
-    if (watermark) watermark.style.opacity = '0';
-    if (audioBtn) audioBtn.style.visibility = 'visible';
-    if (dlBtn) dlBtn.style.visibility = 'visible';
-  });
+      // 3. Kembalikan ke tampilan semula
+      if (watermark) watermark.style.opacity = '0'; 
+      if (audioBtn) audioBtn.style.visibility = 'visible';
+      if (dlBtn) dlBtn.style.visibility = 'visible';
+    }).catch(err => {
+      console.error("Gagal mendownload gambar:", err);
+      if (watermark) watermark.style.opacity = '0';
+      if (audioBtn) audioBtn.style.visibility = 'visible';
+      if (dlBtn) dlBtn.style.visibility = 'visible';
+    });
+  }, 150); // <--- Jeda 150 milidetik
 };
   
   // Panggil render saat pertama kali dimuat

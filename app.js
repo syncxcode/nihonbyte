@@ -948,6 +948,14 @@ function confirmEndQuiz() {
     overlay.classList.remove("active");
     hamburger.setAttribute("aria-expanded", "false");
 
+    // ==================================================
+    // KUNCI AUTO-CLOSE: Tutup semua subfolder (<details>)
+    // ==================================================
+    document.querySelectorAll("#sidebar details").forEach(detail => {
+      detail.removeAttribute("open");
+    });
+    // ==================================================
+
     document.body.style.overflow = originalOverflow || '';
     document.body.style.position = originalPosition || '';
     document.body.style.top = originalTop || '';
@@ -964,7 +972,6 @@ function confirmEndQuiz() {
       document.documentElement.style.overflow = '';
     }, 80);
   }
-
   grid.addEventListener("click", (event) => {
     const audioButton = event.target.closest(".play-audio-btn, .pattern-audio-btn, .rec-audio-btn, .wide-play-btn");
     if (audioButton) {

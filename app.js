@@ -1082,23 +1082,24 @@ function confirmEndQuiz() {
   });
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    const type = button.dataset.type; // kanji, bunpou, dll
-    const level = button.dataset.level; // N5, N4, dll
+    button.addEventListener("click", () => {
+      const type = button.dataset.type; // kanji, bunpou, goi, choukai, dokkai
+      const level = button.dataset.level; // N5, N4, dll
 
-    if (["N3", "N2", "N1"].includes(level)) {
-      // Simpan format dev:mode:type:level
-      viewMode = `dev:exercise:${type}:${level}`; 
-      render();
+      // KUNCI FIX: Kalau levelnya N3-N1 ATAU tipenya Choukai / Dokkai, lempar ke mode Dev!
+      if (["N3", "N2", "N1"].includes(level) || type === "choukai" || type === "dokkai") {
+        // Simpan format dev:mode:type:level
+        viewMode = `dev:exercise:${type}:${level}`; 
+        render();
+        closeSidebar();
+        return;
+      }
+
+      // Jalankan fungsi startExercise normal hanya untuk Kanji, Goi, dan Bunpou (N5 & N4)
+      startExercise(type, level);
       closeSidebar();
-      return;
-    }
-
-    // Jalankan fungsi startExercise normal untuk N5/N4
-    startExercise(type, level);
-    closeSidebar();
+    });
   });
-});
   
   function renderSupportPoster() {
     grid.classList.add("support-mode");

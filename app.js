@@ -1340,15 +1340,15 @@ function confirmEndQuiz() {
   const audioBtn = element.querySelector('.play-audio-btn');
   const dlBtn = element.querySelector('.download-card-btn');
 
-  // 1. Persiapan: Munculkan watermark, sembunyikan tombol UI
-  if (watermark) watermark.style.display = 'block';
+  // 1. Persiapan sebelum difoto (Munculkan logo asli, sembunyikan UI)
+  if (watermark) watermark.style.opacity = '0.9'; // Munculkan logo
   if (audioBtn) audioBtn.style.visibility = 'hidden';
   if (dlBtn) dlBtn.style.visibility = 'hidden';
 
-  // 2. Potret menggunakan html2canvas
+  // 2. Potret dengan Lensa Super HD+++++
   html2canvas(element, {
     backgroundColor: null,
-    scale: 2, // Biar jernih/HD
+    scale: 4, // <--- INI KUNCI ANTI BURIK! (Ubah ke 5 kalau hp user dewa semua wkwk)
     useCORS: true,
     logging: false
   }).then(canvas => {
@@ -1357,14 +1357,13 @@ function confirmEndQuiz() {
     link.href = canvas.toDataURL("image/png");
     link.click();
 
-    // 3. Kembalikan tampilan semula
-    if (watermark) watermark.style.display = 'none';
+    // 3. Kembalikan ke tampilan semula
+    if (watermark) watermark.style.opacity = '0'; // Sembunyikan logo lagi
     if (audioBtn) audioBtn.style.visibility = 'visible';
     if (dlBtn) dlBtn.style.visibility = 'visible';
   }).catch(err => {
     console.error("Gagal mendownload gambar:", err);
-    // Pastikan tombol balik kalau error
-    if (watermark) watermark.style.display = 'none';
+    if (watermark) watermark.style.opacity = '0';
     if (audioBtn) audioBtn.style.visibility = 'visible';
     if (dlBtn) dlBtn.style.visibility = 'visible';
   });

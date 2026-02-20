@@ -1333,7 +1333,7 @@ function confirmEndQuiz() {
   }, { capture: true });
 
   window.downloadAsImage = function(event, cardId) {
-  event.stopPropagation(); // <--- INI MANTRA ANTI NEMBUSNYA!
+  event.stopPropagation(); // Mencegah modal pop-up ikut kebuka
 
   const element = document.getElementById(cardId);
   if (!element) return;
@@ -1349,11 +1349,25 @@ function confirmEndQuiz() {
 
   setTimeout(() => {
     html2canvas(element, {
-      backgroundColor: null, 
+      backgroundColor: null, // Tetap transparan
       scale: 2,           
       useCORS: true,
       allowTaint: true,   
-      logging: false
+      logging: false,
+      // 🚀 MANTRA BARU: Pangkas paksa ujungnya pas lagi difoto!
+      onclone: function (clonedDoc) {
+        const clonedCard = clonedDoc.getElementById(cardId);
+        
+        // Paksa lengkungan dan potong area luar
+        clonedCard.style.borderRadius = "16px"; 
+        clonedCard.style.overflow = "hidden";   
+
+        // Bikin elemen induk (pembungkusnya) jadi transparan total biar gak bocor
+        if (clonedCard.parentElement) {
+            clonedCard.parentElement.style.background = "transparent";
+            clonedCard.parentElement.style.backgroundColor = "transparent";
+        }
+      }
     }).then(canvas => {
       const link = document.createElement('a');
       link.download = `NihonByte-${cardId}.png`;

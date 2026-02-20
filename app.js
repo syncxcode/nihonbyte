@@ -1334,6 +1334,44 @@ function confirmEndQuiz() {
     }
   }, { capture: true });
 
+  window.downloadAsImage = function(cardId) {
+  const element = document.getElementById(cardId);
+  if (!element) return;
+
+  const watermark = element.querySelector('.watermark-logo');
+  const audioBtn = element.querySelector('.play-audio-btn');
+  const dlBtn = element.querySelector('.download-card-btn');
+
+  // 1. Persiapan: Munculkan watermark, sembunyikan tombol UI
+  if (watermark) watermark.style.display = 'block';
+  if (audioBtn) audioBtn.style.visibility = 'hidden';
+  if (dlBtn) dlBtn.style.visibility = 'hidden';
+
+  // 2. Potret menggunakan html2canvas
+  html2canvas(element, {
+    backgroundColor: null,
+    scale: 2, // Biar jernih/HD
+    useCORS: true,
+    logging: false
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `NihonByte-${cardId}.png`;
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+
+    // 3. Kembalikan tampilan semula
+    if (watermark) watermark.style.display = 'none';
+    if (audioBtn) audioBtn.style.visibility = 'visible';
+    if (dlBtn) dlBtn.style.visibility = 'visible';
+  }).catch(err => {
+    console.error("Gagal mendownload gambar:", err);
+    // Pastikan tombol balik kalau error
+    if (watermark) watermark.style.display = 'none';
+    if (audioBtn) audioBtn.style.visibility = 'visible';
+    if (dlBtn) dlBtn.style.visibility = 'visible';
+  });
+};
+  
   // Panggil render saat pertama kali dimuat
   render();
 });

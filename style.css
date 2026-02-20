@@ -1791,3 +1791,26 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   transform: scale(1.1) rotate(5deg);
   border-color: transparent;
 }
+
+/* 1. Header & Navbar */
+header, .navbar, .header-container {
+    background-color: #ffd1da !important;
+    color: #4a4a4a; /* Ganti teks ke abu tua agar kontrasnya pas */
+}
+
+/* 2. Card Background */
+.card, .card-image {
+    background-color: #ffd1da !important;
+    border: 1px solid #ffb7c5; /* Border sedikit lebih gelap biar tegas */
+}
+
+/* 3. Modal Header (Pop-up Cari & Filter) */
+.filter-modal-content h2, .modal-header {
+    background-color: #ffd1da !important;
+}
+
+/* 4. Watermark Logo di Flashcard (Opsional) */
+/* Biar warna logo NihonByte pas di-download senada */
+.watermark-logo {
+    color: #ff8fa3 !important; 
+}

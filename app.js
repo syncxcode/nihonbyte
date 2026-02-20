@@ -605,19 +605,29 @@ function confirmEndQuiz() {
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
+    // Kita pakai ID unik berdasarkan kanji/kana agar html2canvas tahu mana yang mau dipotret
+    const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
+    
     return `
-      <div class="card-image ${expandedClass}">
-        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio ${word.kanji || word.kana || ''}">▶</button>
+      <div class="card-image ${expandedClass}" id="${cardId}">
+        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio">▶</button>
+        
+        <button class="download-card-btn" type="button" onclick="downloadAsImage('${cardId}')" title="Download Flashcard">📸</button>
+        
         <div class="card-overlay">
           <div class="kanji">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>
+          
+          <div class="watermark-logo" style="display:none; position:absolute; bottom:10px; right:15px; opacity:0.8; font-size:14px; font-weight:bold; color:#ff4d6d; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+            🇯🇵 NihonByte
+          </div>
         </div>
       </div>
     `;
   }
-
+  
   function renderExpressionPoster() {
     grid.innerHTML = "";
     if (typeof vocabularyData === "undefined") return;

@@ -654,4 +654,3 @@ const patternData = {
     { pattern: "～時～分", example: "1時15分 (Ichi-ji juu-go-fun)", meaning: "Menunjukkan satuan jam dan menit secara spesifik" }
   ]
 };
-];

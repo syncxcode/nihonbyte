@@ -335,12 +335,17 @@ function confirmEndQuiz() {
     if (applyFilterBtn) {
       applyFilterBtn.addEventListener("click", () => {
         const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
-        const activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "all";
+        let activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "verb-adj-only";
+
+        // KUNCI GLOBAL SEARCH POP-UP: Buka gembok jadi "all" kalau user cuma ngetik tapi gak milih kategori
+        if (modalSearchInput && modalSearchInput.value.trim() !== "" && !document.querySelector("#categoryGrid .cat-btn.active")) {
+          activeType = "all";
+        }
 
         selectedLevel = activeLevel;
         selectedType = activeType;
         viewMode = "vocab";
-        if (modalSearchInput) search.value = modalSearchInput.value.trim();
+        if (search && modalSearchInput) search.value = modalSearchInput.value.trim();
 
         closeFilterModal();
         render();
@@ -350,18 +355,17 @@ function confirmEndQuiz() {
     if (resetFilterBtn) {
       resetFilterBtn.addEventListener("click", () => {
         selectedLevel = "all";
-        selectedType = "all";
+        selectedType = "verb-adj-only"; // Balik ke default halaman awal
         if (search) search.value = "";
         if (modalSearchInput) modalSearchInput.value = "";
 
         document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-        document.querySelector('[data-level="all"]').classList.add("active");
+        document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
 
         closeFilterModal();
         render();
       });
     }
-  }
   
   // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
@@ -390,7 +394,7 @@ function confirmEndQuiz() {
   }
 
   let selectedLevel = "all";
-  let selectedType = "all";
+  let selectedType = "verb-adj-only";
   let viewMode = "vocab";
 
   const testState = {
@@ -529,6 +533,10 @@ function confirmEndQuiz() {
 
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
+    
+    if (targetType === "verb-adj-only") {
+      return wordType?.startsWith("verb") || wordType?.startsWith("adj") || wordType === "suru";
+    }
     
     if (targetType === "verb-irregular") {
       return wordType?.startsWith("verb-irregular") || wordType?.startsWith("verb-suru") || wordType === "suru";
@@ -1073,10 +1081,14 @@ function confirmEndQuiz() {
 
     // LOGIC NORMAL: Jika tidak sedang test
     selectedLevel = "all";
-    selectedType = "all";
-    if (category) category.value = "all";
+    selectedType = "verb-adj-only"; // <--- INI KUNCINYA, UBAH JADI VERB-ADJ-ONLY
+    if (typeof category !== 'undefined' && category) category.value = "all";
     if (search) search.value = "";
     viewMode = "vocab";
+
+    // Hapus warna aktif di tombol sidebar (kalau abis buka dari sidebar)
+    document.querySelectorAll(".sidebar-filter-btn").forEach(btn => btn.classList.remove("active"));
+
     render();
   });
   
@@ -1275,12 +1287,21 @@ function confirmEndQuiz() {
   }
 
   if (search) {
-    search.addEventListener("input", () => {
-      viewMode = "vocab";
+    search.addEventListener("input", (e) => {
+      const query = e.target.value.trim();
+      
+      // Buka gembok: Kalau user ngetik pencarian dan posisi lagi di halaman default
+      if (query !== "" && selectedType === "verb-adj-only") {
+        selectedType = "all";
+      } 
+      // Kunci lagi: Kalau pencarian dihapus bersih & gak ada kategori yg lagi aktif
+      else if (query === "" && !document.querySelector("#categoryGrid .cat-btn.active") && !document.querySelector(".sidebar-filter-btn.active")) {
+        selectedType = "verb-adj-only";
+      }
+      
       render();
     });
   }
-
   if (document.documentElement.classList.contains('ios-device')) {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");

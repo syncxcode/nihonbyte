@@ -588,7 +588,6 @@ const vocabularyData = [
   { level: "N4", type: "noun-place", kanji: "温泉", kana: "おんせん", romaji: "onsen", meaning: "pemandian air panas" },
   { level: "N3", type: "noun-place", kanji: "風呂屋", kana: "ふろや", romaji: "furoya", meaning: "wc umum" },
   { level: "N3", type: "noun-place", kanji: "露天風呂", kana: "ろてんぶろ", romaji: "rotenburo", meaning: "pemandian di alam terbuka" },
-  const vocabularyData = [
   // --- KOSAKATA KATA TANYA (question) ---
   { level: "N5", type: "question", kanji: "何分", kana: "なんぷん", romaji: "nan-pun", meaning: "berapa menit?" },
   { level: "N5", type: "question", kanji: "何曜日", kana: "なんようび", romaji: "nanyoubi", meaning: "hari apa?" },

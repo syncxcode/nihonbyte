@@ -1799,11 +1799,17 @@ header, .navbar, .header-container {
 }
 
 /* 2. Card Background */
-.card, .card-image {
-    background-color: #ffd1da !important;
-    border: 1px solid #ffb7c5; /* Border sedikit lebih gelap biar tegas */
+.card {
+    background-color: transparent !important; /* KUNCI ANTI DAGING LEBIH: Bikin transparan! */
+    border: none !important;
+    border-radius: 20px !important; 
+    overflow: hidden !important; /* Paksa potong ujungnya */
 }
 
+.card-image {
+    background-color: #ffd1da !important;
+    border: 1px solid #ffb7c5 !important; 
+}
 /* 3. Modal Header (Pop-up Cari & Filter) */
 .filter-modal-content h2, .modal-header {
     background-color: #ffd1da !important;

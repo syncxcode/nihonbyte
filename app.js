@@ -959,6 +959,7 @@ function confirmEndQuiz() {
   }
 
   function renderPatternPoster(level) {
+    grid.classList.add("pattern-grid-layout");
     grid.innerHTML = "";
     const patterns = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     if (!patterns.length) {
@@ -1331,7 +1332,7 @@ function confirmEndQuiz() {
   // ==========================================
   function render() {
     if (!isTesting) unlockQuizScroll();
-    grid.classList.remove("support-mode");
+    grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.innerHTML = "";
 
     if (viewMode === "support") {

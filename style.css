@@ -250,38 +250,50 @@ input,
   box-sizing: border-box;
 }
 
-/* 4. RECOMMENDATION ROW (SCROLL FIX) */
-#recommendationRow {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 16px;
+/* =========================================
+   4. RECOMMENDATION ROW (HORIZONTAL SCROLL FIX)
+========================================= */
+#recommendationRow,
+.recommendation-row {
+  display: flex !important;
+  flex-wrap: nowrap !important; /* 🚀 Maksa item berbaris ke samping */
+  gap: 16px !important;
 
-  padding: 20px;
-  width: 100%;
+  padding: 20px !important;
+  width: 100% !important;
 
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
 
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch; /* Biar scroll di HP licin */
 
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
-/* Scrollbar tipis (desktop) */
-#recommendationRow::-webkit-scrollbar {
-  height: 6px;
+/* Scrollbar tipis estetik (desktop) */
+#recommendationRow::-webkit-scrollbar,
+.recommendation-row::-webkit-scrollbar {
+  height: 8px; /* Ditebelin dikit dari 6px biar lebih gampang di-klik/drag */
 }
 
-#recommendationRow::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.25);
+#recommendationRow::-webkit-scrollbar-thumb,
+.recommendation-row::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 109, 0.4); /* 🚀 Warna pink khas NihonByte */
   border-radius: 10px;
 }
 
-/* Card supaya gak shrink */
-#recommendationRow .card {
-  flex: 0 0 auto;
-  min-width: 130px;
+#recommendationRow::-webkit-scrollbar-thumb:hover,
+.recommendation-row::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 77, 109, 0.7); /* Pink lebih menyala saat di-hover */
+}
+
+/* Card supaya gak shrink (gepeng) */
+#recommendationRow .card,
+.recommendation-row .recommendation-item {
+  flex: 0 0 auto !important; /* 🚀 Kunci anti-gepeng */
+  min-width: 130px !important; 
+  margin: 0 !important;
 }
 
 /* 5. GLOBAL ANTI OVERFLOW */

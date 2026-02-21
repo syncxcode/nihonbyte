@@ -1450,7 +1450,7 @@ function confirmEndQuiz() {
       cardButton.innerHTML = cardImageTemplate(word);
       
       cardButton.addEventListener("click", (e) => {
-        if (e.target.closest(".play-audio-btn")) return;
+        if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn")) return;
         try {
           const storedWord = JSON.parse(cardButton.dataset.word);
           openModal(storedWord);

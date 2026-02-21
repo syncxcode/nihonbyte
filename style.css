@@ -1864,35 +1864,36 @@ header, .navbar, .header-container {
 
 @media (max-width: 768px) {
   #resultInfo {
-    /* 1. POSISI SEJAJAR DENGAN ICON SEARCH */
+    /* POSISI ABSOLUT KE KANAN ATAS */
     position: absolute !important;
-    right: 58px !important; /* Jarak pas di sebelah kiri tombol search */
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    right: 65px !important; /* Sesuaikan angka ini agar tidak menabrak search icon */
+    top: 14px !important; /* Kita gunakan jarak fix dari atas alih-alih 50% untuk kepastian */
     
-    /* 2. BENTUK KAPSUL PUTIH (PERSIS DESKTOP) */
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border-radius: 999px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
-    
-    /* 3. UKURAN & POSISI TEKS DI DALAM KAPSUL */
+    /* PAKSA BENTUK KAPSUL */
+    display: flex !important; /* Ini kunci utama agar kapsul punya dimensi */
+    align-items: center !important;
+    justify-content: center !important;
     height: 32px !important;
-    padding: 0 12px !important;
-    display: inline-flex !important;
-    align-items: center !important; /* Menengahkan teks di dalam kapsul */
+    padding: 0 16px !important;
     
-    /* 4. GAYA TEKS & ANTI-OFFSIDE */
-    color: #374151 !important;
-    font-size: 12px !important;
+    /* WARNA & GAYA (PERSIS DESKTOP) */
+    background: #ffffff !important;
+    color: #1f2937 !important;
+    border-radius: 999px !important; /* Membuat ujung melingkar */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
+    
+    /* PENGATURAN TEKS */
+    font-size: 13px !important;
     font-weight: 700 !important;
-    max-width: calc(100vw - 140px) !important; /* Biar gak nabrak logo */
+    max-width: calc(100vw - 160px) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     
-    /* 5. ANTI-LONCAT */
+    /* LAIN-LAIN */
     margin: 0 !important;
-    transition: none !important;
+    transform: none !important;
+    z-index: 99 !important; /* Pastikan dia berada di atas elemen lain */
   }
   
   .download-card-btn {

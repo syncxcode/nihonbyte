@@ -517,12 +517,13 @@ function confirmEndQuiz() {
 
   function speakWord(text) {
     if (!window.speechSynthesis || !text) return;
-    const utterance = new SpeechSynthesisUtterance(text);
+    const textJepangAja = text.split('(')[0].trim();
+    const utterance = new SpeechSynthesisUtterance(textJepangAja);
     utterance.lang = "ja-JP";
     utterance.rate = 0.95;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
-  }
+}
 
   function openInfoModal(message) {
     expandedCard.innerHTML = `<div class="info-poster">${message}</div>`;

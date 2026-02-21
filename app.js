@@ -914,6 +914,7 @@ function confirmEndQuiz() {
     kanjiModal.classList.remove("active");
     kanjiModal.setAttribute("aria-hidden", "true");
     if (window.speechSynthesis) window.speechSynthesis.cancel();
+    ocument.body.style.overflow = "auto";
   }
 
   modalClose.addEventListener("click", closeModal);

@@ -1090,7 +1090,7 @@ html, body {
 
 /* Padding konten utama agar tidak tertutup header */
 #grid {
-  padding-top: 150px !important;   /* naikkan sedikit karena sekarang 2 baris (biasanya 140-160px pas) */
+  adding-top: 28px !important;   /* rapatkan card ke topbar */
 }
 
 .card-image,
@@ -1377,7 +1377,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 @media (min-width: 1024px) {
   #grid {
-    padding-top: 120px !important;
+    padding-top: 28px !important;
   }
 
   .letter-poster {
@@ -1778,12 +1778,6 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     display: flex !important;
     align-items: center !important;
   }
-
-  /* Sembunyikan resultInfo dari header desktop agar sejajar sempurna (opsional) */
-  #resultInfo {
-    display: none !important;
-  }
-}
 
 .sub-details {
   margin-left: 10px;

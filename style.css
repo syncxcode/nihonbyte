@@ -1869,7 +1869,10 @@ header, .navbar, .header-container {
    ATURAN KHUSUS MOBILE (MAKS 768PX)
 ========================================= */
 @media (max-width: 768px) {
-  
+  #grid {
+    padding-top: 70px !important; 
+    gap: 10px !important;
+  }
   /* --- LAYOUT HEADER MOBILE --- */
   .topbar {
     display: flex !important;
@@ -1889,33 +1892,36 @@ header, .navbar, .header-container {
     align-items: center !important;
   }
 
-  /* --- FIX KAPSUL RESULT INFO MOBILE --- */
   #resultInfo {
     position: absolute !important;
-    right: 58px !important; 
-    top: 50% !important; 
+    left: auto !important; 
+    right: 65px !important; 
+    top: 50% !important;
     transform: translateY(-50%) !important; 
-    display: inline-flex !important; 
+    
+    display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 32px !important;
-    padding: 0 12px !important;
     background: #ffffff !important;
     color: #1f2937 !important;
-    border-radius: 999px !important; 
+    border-radius: 999px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+    
+    height: 32px !important;
+    padding: 0 12px !important;
     font-size: 12px !important;
     font-weight: 700 !important;
-    max-width: calc(100vw - 140px) !important;
+    max-width: calc(100vw - 160px) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+    
     margin: 0 !important;
-    transition: none !important; 
+    transition: none !important;
+    animation: none !important; 
     z-index: 99 !important;
   }
 
-  /* --- FITUR BARU LAINNYA --- */
   .download-card-btn {
     top: 10px !important;
     right: 10px !important;

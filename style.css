@@ -48,13 +48,6 @@ body::before {
   gap: 10px;
 }
 
-#resultInfo {
-  grid-column: 1 / -1;
-  margin: 0;
-  font-size: 0.9rem;
-  color: #374151;
-}
-
 select,
 input,
 .action-btn,
@@ -101,10 +94,6 @@ input,
 .topbar input {
   background: rgba(255, 255, 255, 0.92) !important;   /* sedikit lebih opaque agar mudah dibaca */
   color: #333 !important;
-}
-
-.topbar #resultInfo {
-  color: #5d4037 !important;   /* coklat gelap lembut agar kontras di pink */
 }
 
 /* =========================================
@@ -703,10 +692,6 @@ html, body {
     align-items: center;
   }
 
-  #resultInfo {
-    grid-column: 2 / 4;
-  }
-  
   #grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Lebih lebar di desktop */
   }
@@ -1068,16 +1053,6 @@ html, body {
   grid-template-columns: minmax(160px, 240px) 1fr !important;   /* dropdown tetap lebar, search ambil sisa */
   gap: 12px !important;
   align-items: center;
-}
-
-/* Result info tepat di bawah dropdown/search (align kanan, tidak numpuk) */
-#resultInfo {
-  grid-column: 3;
-  grid-row: 2;
-  justify-self: end !important;
-  margin: 0 !important;
-  font-size: 0.85rem;
-  color: #374151;
 }
 
 /* Mobile: lebih ramping, logo sedikit lebih kecil */
@@ -1896,33 +1871,7 @@ header, .navbar, .header-container {
     font-size: 0.78rem;
     padding: 5px 10px;
   }
-}
-
-
-/* Final mobile parity: download button + topbar result order */
-.download-card-btn {
-  top: 10px !important;
-  right: 10px !important;
-  left: auto !important;
-  border-radius: 50% !important;
-}
   
-/* Pola kalimat: desktop/tablet 2 kolom + teks panjang tidak wrap */
-#grid.pattern-grid-layout {
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 18px !important;
-}
-
-#grid.pattern-grid-layout .pattern-title,
-#grid.pattern-grid-layout .pattern-example,
-#grid.pattern-grid-layout .pattern-meaning {
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-
-@media (max-width: 768px) {
-  /* --- FITUR BARU (TETAP DIPERTAHANKAN) --- */
   .download-card-btn {
     top: 10px !important;
     right: 10px !important;
@@ -1939,10 +1888,18 @@ header, .navbar, .header-container {
     -webkit-appearance: none !important;
   }
 
-  /* Pola kalimat mobile: 1 kolom */
+
   #grid.pattern-grid-layout {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+
+  #grid.pattern-grid-layout .pattern-title,
+  #grid.pattern-grid-layout .pattern-example,
+  #grid.pattern-grid-layout .pattern-meaning {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   /* --- LAYOUT HEADER MOBILE --- */
@@ -1962,35 +1919,5 @@ header, .navbar, .header-container {
     margin-right: 0 !important;
     display: flex !important; 
     align-items: center !important;
-  }
-
-  /* --- FIX RESULT INFO (KAPSUL PUTIH) --- */
-  #resultInfo {
-    /* Paksa melayang di sebelah kiri icon search */
-    position: absolute !important;
-    right: 60px !important; /* Sesuaikan angka ini jika jaraknya terlalu jauh/dekat dari search */
-    top: 50% !important;
-    transform: translateY(-50%) !important; /* Menengahkan posisi vertikal di header */
-    
-    /* Gaya Visual Kapsul Putih */
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    border-radius: 20px !important;
-    font-size: 12px !important; 
-    font-weight: 600 !important;
-
-    /* Pembatasan Teks */
-    max-width: calc(100vw - 180px) !important; 
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    
-    /* Pengaturan Tata Letak Internal Kapsul */
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 30px !important; /* Disesuaikan agar tidak terlalu tinggi di mobile */
-    padding: 0 12px !important;
-    margin: 0 !important;
   }
 }

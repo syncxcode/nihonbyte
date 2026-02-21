@@ -1906,6 +1906,20 @@ header, .navbar, .header-container {
   left: auto !important;
   border-radius: 50% !important;
 }
+  
+/* Pola kalimat: desktop/tablet 2 kolom + teks panjang tidak wrap */
+#grid.pattern-grid-layout {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+
+#grid.pattern-grid-layout .pattern-title,
+#grid.pattern-grid-layout .pattern-example,
+#grid.pattern-grid-layout .pattern-meaning {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
 
 @media (max-width: 768px) {
   .download-card-btn {
@@ -1924,6 +1938,12 @@ header, .navbar, .header-container {
     -webkit-appearance: none !important;
   }
 
+  /* Pola kalimat mobile: 1 kolom */
+  #grid.pattern-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
   .topbar {
     display: flex !important;
     align-items: center !important;
@@ -1934,23 +1954,28 @@ header, .navbar, .header-container {
   .branding { order: 2; }
 
   #resultInfo {
+    order: 3 !important;
     position: static !important;
     order: 3;
     transform: none !important;
     top: auto !important;
     right: auto !important;
     margin-left: auto !important;
-    margin-right: 10px !important;
-    max-width: calc(100vw - 250px);
-    white-space: nowrap;
+    margin-right: 6px !important;
+    max-width: calc(100vw - 220px) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     display: inline-flex !important;
     align-items: center;
     height: 38px;
     padding: 0 12px;
   }
 
-  #searchBtn {
-    order: 4;
+   #searchBtn {
+    order: 4 !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
+}
+}

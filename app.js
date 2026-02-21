@@ -1028,6 +1028,7 @@ function confirmEndQuiz() {
 
   function renderPatternPoster(level) {
     grid.classList.add("pattern-grid-layout");
+    grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     grid.innerHTML = "";
     const patterns = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     if (!patterns.length) {
@@ -1044,9 +1045,41 @@ function confirmEndQuiz() {
         <div class="pattern-meaning">${pattern.meaning}</div>
         <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
       `;
+      [".pattern-title", ".pattern-example", ".pattern-meaning"].forEach((selector) => {
+        const el = card.querySelector(selector);
+        if (!el) return;
+        el.style.whiteSpace = "nowrap";
+        el.style.overflow = "hidden";
+        el.style.textOverflow = "ellipsis";
+      });
       grid.appendChild(card);
     });
    if(resultInfo) resultInfo.textContent = formatResultInfo(patterns.length, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
+  }
+
+  function syncMobileTopbarLayout() {
+    const topbar = document.querySelector(".topbar");
+    const isMobile = window.innerWidth <= 768;
+    if (!topbar || !resultInfo) return;
+
+    if (isMobile) {
+      topbar.style.setProperty("display", "flex", "important");
+      topbar.style.setProperty("align-items", "center", "important");
+      resultInfo.style.setProperty("order", "3", "important");
+      resultInfo.style.setProperty("position", "static", "important");
+      resultInfo.style.setProperty("margin-left", "auto", "important");
+      resultInfo.style.setProperty("margin-right", "6px", "important");
+      resultInfo.style.setProperty("max-width", "calc(100vw - 220px)", "important");
+      resultInfo.style.setProperty("white-space", "nowrap", "important");
+      resultInfo.style.setProperty("overflow", "hidden", "important");
+      resultInfo.style.setProperty("text-overflow", "ellipsis", "important");
+      searchBtn?.style.setProperty("order", "4", "important");
+    } else {
+      topbar.style.removeProperty("display");
+      topbar.style.removeProperty("align-items");
+      ["order", "position", "margin-left", "margin-right", "max-width", "white-space", "overflow", "text-overflow"].forEach((prop) => resultInfo.style.removeProperty(prop));
+      searchBtn?.style.removeProperty("order");
+    }
   }
 
   function getRecommendations(word) {
@@ -1400,7 +1433,9 @@ function confirmEndQuiz() {
   // ==========================================
   function render() {
     if (!isTesting) unlockQuizScroll();
+    syncMobileTopbarLayout();
     grid.classList.remove("support-mode", "pattern-grid-layout");
+    grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";
 
     if (viewMode === "support") {
@@ -1531,6 +1566,12 @@ function confirmEndQuiz() {
       render();
     });
   }
+  window.addEventListener("resize", () => {
+    syncMobileTopbarLayout();
+    if (viewMode.startsWith("patterns:")) {
+      grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
+    }
+  });
   if (document.documentElement.classList.contains('ios-device')) {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");

@@ -948,6 +948,7 @@ function confirmEndQuiz() {
       });
       recommendationRow.appendChild(recBtn);
     });
+    lockPageScrollForKanjiModal();
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
   }
@@ -956,8 +957,8 @@ function confirmEndQuiz() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
     kanjiModal.setAttribute("aria-hidden", "true");
+    unlockPageScrollForKanjiModal();
     if (window.speechSynthesis) window.speechSynthesis.cancel();
-    ocument.body.style.overflow = "auto";
   }
 
   modalClose.addEventListener("click", closeModal);
@@ -1033,6 +1034,10 @@ function confirmEndQuiz() {
 
     if (typeof savedScrollPosition === 'number') {
       window.scrollTo(0, savedScrollPosition);
+    }
+
+    if (!kanjiModal.classList.contains("active")) {
+      kanjiModalScrollLocked = false;
     }
 
     setTimeout(() => {

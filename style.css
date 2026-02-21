@@ -903,29 +903,34 @@ select, input, .action-btn {
     gap: 10px !important;
   }
 
-  /* --- Layout Header & Hamburger --- */
+ /* --- Layout Header & Hamburger --- */
   .topbar {
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
-    position: fixed !important; /* 🚀 KUNCI HEADER FREEZE */
+    position: fixed !important; 
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
+    min-height: 72px !important; /* 🚀 FIX 1: Memperlebar header ke bawah agar logo tidak gantung */
+    padding: 0 16px !important; /* 🚀 FIX 2: Memberi jarak lega di kiri-kanan */
     box-sizing: border-box !important;
     z-index: 999 !important;
   }
 
   #hamburger { order: 1 !important; margin: 0 !important; flex-shrink: 0 !important; }
   .branding { order: 2 !important; margin: 0 !important; flex-shrink: 0 !important; }
+  .branding img { height: 50px !important; } /* 🚀 FIX 3: Ukuran logo disesuaikan agar pas di dalam header mobile */
 
   /* --- Pengunci Tombol Search --- */
   #searchBtn {
     position: absolute !important;
     right: 12px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    margin: 0 !important;
+    top: 0 !important;         /* 🚀 TRIK ANTI LONCAT: Pakai top 0 & bottom 0 */
+    bottom: 0 !important;      
+    margin: auto 0 !important; /* 🚀 Menengahkan vertikal TANPA efek transform yang bikin glitch */
+    height: 46px !important;
+    transform: none !important;/* 🚀 Matikan transform penyebab kutu loncat */
     z-index: 100 !important;
   }
 
@@ -934,8 +939,11 @@ select, input, .action-btn {
     position: absolute !important;
     left: auto !important; 
     right: 68px !important; 
-    top: 50% !important;
-    transform: translateY(-50%) !important; 
+    top: 0 !important;         /* 🚀 TRIK ANTI LONCAT */
+    bottom: 0 !important;      
+    margin: auto 0 !important; /* 🚀 Menengahkan vertikal TANPA efek transform */
+    height: 32px !important;
+    transform: none !important;/* 🚀 Matikan transform penyebab kutu loncat */
     
     display: inline-flex !important;
     align-items: center !important;
@@ -945,7 +953,6 @@ select, input, .action-btn {
     border-radius: 999px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
     
-    height: 32px !important;
     padding: 0 12px !important;
     font-size: 12px !important;
     font-weight: 700 !important;
@@ -954,12 +961,11 @@ select, input, .action-btn {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     
-    margin: 0 !important;
     transition: none !important;
     animation: none !important; 
     z-index: 99 !important;
   }
-
+  
   /* --- Overrides Tombol Download untuk Mobile --- */
   .download-card-btn {
     top: 10px !important;

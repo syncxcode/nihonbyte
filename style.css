@@ -140,7 +140,7 @@ input,
 ========================================= */
 .card-image {
   height: 220px !important;
-  background-color: #FFA1C5 !important;
+  background-color: rgba(255, 161, 197, 0.9) !important;
   position: relative;
   border-radius: 20px !important;
   overflow: hidden;
@@ -368,7 +368,7 @@ html, body {
   position: relative;
   border-radius: 20px;
   padding: 16px 16px 48px;
-  background: linear-gradient(160deg, rgba(255, 161, 197, 0.95), rgba(255, 186, 214, 0.95));
+  background: linear-gradient(160deg, rgba(255, 161, 197, 0.9), rgba(255, 186, 214, 0.9));
   border: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 12px 24px rgba(190, 24, 93, 0.24);
   min-height: 172px;
@@ -950,7 +950,7 @@ html, body {
    CARD STYLE (Pasti Tengah)
 ========================= */
 .expression-wide-card {
-  background: #FFA1C5 !important;
+  background: rgba(255, 161, 197, 0.9) !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
@@ -1842,12 +1842,12 @@ header, .navbar, .header-container {
 }
 
 .card-image {
-    background-color: #FFA1C5 !important;
+    background-color: rgba(255, 161, 197, 0.9) !important;
     border: 1px solid #ff8fba !important; 
 }
 /* 3. Modal Header (Pop-up Cari & Filter) */
 .filter-modal-content h2, .modal-header {
-    background-color: #FFA1C5 !important;
+    background-color: rgba(255, 161, 197, 0.9) !important;
 }
 
 /* 4. Watermark Logo di Flashcard (Opsional) */
@@ -1888,6 +1888,56 @@ header, .navbar, .header-container {
     max-width: calc(100vw - 92px);
     font-size: 0.78rem;
     padding: 5px 10px;
+  }
+}
+
+  /* Final mobile parity: download button + topbar result order */
+.download-card-btn {
+  top: 10px !important;
+  right: 10px !important;
+  left: auto !important;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 768px) {
+  .download-card-btn {
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  .topbar {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  #hamburger { order: 1; }
+  .branding { order: 2; }
+
+  #resultInfo {
+    position: static !important;
+    order: 3;
+    transform: none !important;
+    top: auto !important;
+    right: auto !important;
+    margin-left: auto !important;
+    margin-right: 6px !important;
+    max-width: calc(100vw - 190px);
+    white-space: nowrap;
+  }
+
+  #searchBtn {
+    order: 4;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 

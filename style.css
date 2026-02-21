@@ -331,6 +331,10 @@ select, input, .action-btn {
   box-sizing: border-box;
 }
 
+#modalClose {
+  display: none !important;
+}
+
 #kanjiModal .card-overlay,
 #kanjiModal .card-overlay * {
   cursor: default !important;        

@@ -29,11 +29,61 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer;
   let timeLeft = 0;
   let bodyScrollY = 0;
+  @@ -7,139 +7,233 @@ document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("overlay");
+  const resultInfo = document.getElementById("resultInfo");
+  const kanjiModal = document.getElementById("kanjiModal");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalClose = document.getElementById("modalClose");
+  const expandedCard = document.getElementById("expandedCard");
+  const recommendationRow = document.getElementById("recommendationRow");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+  
+  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
+  const searchBtn = document.getElementById("searchBtn");
+  const filterModal = document.getElementById("filterModal");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
+ 
+  let isTesting = false;
+  let currentQuizData = [];
+  let quizIndex = 0;
+  let score = 0;
+  let timer;
+  let timeLeft = 0;
+  let bodyScrollY = 0;
+  let quizOriginalBodyOverflow = "";
+  let quizOriginalHtmlOverflow = "";
+  let quizOriginalBodyHeight = "";
+  let quizOriginalHtmlHeight = "";
+  let isQuizScrollLocked = false;
+
+  function lockQuizScroll() {
+    if (isQuizScrollLocked) return;
+    quizOriginalBodyOverflow = document.body.style.overflow || "";
+    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
+    quizOriginalBodyHeight = document.body.style.height || "";
+    quizOriginalHtmlHeight = document.documentElement.style.height || "";
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.height = "100dvh";
+    document.documentElement.style.height = "100dvh";
+    isQuizScrollLocked = true;
+  }
+
+  function unlockQuizScroll() {
+    if (!isQuizScrollLocked) return;
+    document.body.style.overflow = quizOriginalBodyOverflow;
+    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
+    document.body.style.height = quizOriginalBodyHeight;
+    document.documentElement.style.height = quizOriginalHtmlHeight;
+    isQuizScrollLocked = false;
+  }
       
-  // ==========================================
-  // 1. Fungsi Memulai Test
-      
-  // ==========================================
+// ==========================================
 // 1. Fungsi Memulai Test
 // ==========================================
 function startExercise(type, level) {
@@ -49,6 +99,7 @@ function startExercise(type, level) {
     }
 
     isTesting = true;
+    lockQuizScroll();
     quizIndex = 0;
     score = 0;
     
@@ -78,7 +129,7 @@ function renderQuiz(type) {
 
     grid.innerHTML = `
         <style>
-            body { overflow: hidden !important; }
+            html, body { overflow: hidden !important; height: 100dvh !important; }
             #grid.quiz-active-mode {
                 display: flex !important;
                 align-items: flex-start !important;
@@ -87,6 +138,7 @@ function renderQuiz(type) {
                 padding-bottom: 10px !important;
                 min-height: calc(100dvh - 86px) !important;
                 box-sizing: border-box !important;
+                overflow: hidden !important;
             }
             .quiz-wrapper-pro {
                 width: 100%;
@@ -135,7 +187,7 @@ function renderQuiz(type) {
                 margin-top: 0;
             }
             @media (max-width: 1024px) {
-                body { overflow: auto !important; }
+                html, body { overflow: auto !important; height: auto !important; }
                 #grid.quiz-active-mode {
                     justify-content: flex-start !important;
                     padding-top: 84px !important;
@@ -306,7 +358,8 @@ function endQuiz() {
     isTesting = false;
     clearInterval(timer);
     document.body.style.overflow = ""; // Lepas segel scroll
-    
+    unlockQuizScroll();
+  
     const totalSoal = currentQuizData.length;
     const jlptScore = Math.round((score / totalSoal) * 60); 
     
@@ -1303,6 +1356,7 @@ function confirmEndQuiz() {
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
   function render() {
+    if (!isTesting) unlockQuizScroll();
     grid.classList.remove("support-mode");
     grid.innerHTML = "";
 

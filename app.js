@@ -532,6 +532,7 @@ function confirmEndQuiz() {
     recommendationRow.innerHTML = "";
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
   }
 
   function matchType(wordType, targetType) {

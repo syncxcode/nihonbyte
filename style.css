@@ -1864,22 +1864,35 @@ header, .navbar, .header-container {
 
 @media (max-width: 768px) {
   #resultInfo {
-    /* 1. Posisi sejajar di kiri tombol search */
-    right: 60px !important; 
-    top: 50% !important; 
-    transform: translateY(-50%) !important; 
+    /* 1. POSISI SEJAJAR DENGAN ICON SEARCH */
+    position: absolute !important;
+    right: 58px !important; /* Jarak pas di sebelah kiri tombol search */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     
-    /* 2. Visual Kapsul Putih */
-    background: #ffffff !important; 
+    /* 2. BENTUK KAPSUL PUTIH (PERSIS DESKTOP) */
+    background-color: rgba(255, 255, 255, 0.95) !important;
     border-radius: 999px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
     
-    /* 3. Ukuran & Batasan */
-    max-width: calc(100vw - 160px) !important;
+    /* 3. UKURAN & POSISI TEKS DI DALAM KAPSUL */
+    height: 32px !important;
+    padding: 0 12px !important;
+    display: inline-flex !important;
+    align-items: center !important; /* Menengahkan teks di dalam kapsul */
+    
+    /* 4. GAYA TEKS & ANTI-OFFSIDE */
+    color: #374151 !important;
     font-size: 12px !important;
-    padding: 4px 12px !important;
+    font-weight: 700 !important;
+    max-width: calc(100vw - 140px) !important; /* Biar gak nabrak logo */
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     
-    /* 4. Anti-Loncat (Matikan transisi bawaan) */
-    transition: none !important; 
+    /* 5. ANTI-LONCAT */
+    margin: 0 !important;
+    transition: none !important;
   }
   
   .download-card-btn {

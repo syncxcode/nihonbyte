@@ -822,426 +822,342 @@ const patternData = {
     { pattern: "～時半", example: "9時半 (Ku-ji-han)", meaning: "Menunjukkan waktu setengah atau lewat 30 menit" },
     { pattern: "～時～分", example: "1時15分 (Ichi-ji juu-go-fun)", meaning: "Menunjukkan satuan jam dan menit secara spesifik" }
   ],
+  
   N4: [
-  { 
-    level: "N4", type: "grammar", kanji: "〜し〜し", kana: "〜し〜し", romaji: "~shi ~shi", 
-    meaning: "Menyebutkan alasan / hal yang sama", 
-    formula: "Bentuk Biasa (Futsukei) + し", 
-    example: "ラーメンはかんたんにできるし、安いし、おいしい。(Ramen wa kantan ni dekirushi, yasuishi, oishii) - Ramen gampang dibuat, murah dan enak." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜て/〜で", kana: "〜て/〜で", romaji: "~te / ~de", 
-    meaning: "Penyebab atau alasan (karena...)", 
-    formula: "Kata Kerja (Te) / Kata Benda+で", 
-    example: "しゅくだいをわすれて、先生にしかられた。(Shukudai o wasurete, sensei ni shikarareta) - Karena lupa PR, dimarahi sensei." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜んです", kana: "〜んです", romaji: "~n desu", 
-    meaning: "Penjelasan / Alasan (menekankan kalimat)", 
-    formula: "Bentuk Biasa + んです", 
-    example: "A: どうしたんですか。B: 頭がいたいんです。(A: Doushitan desu ka. B: Atama ga itain desu) - Ada apa? Kepalaku sakit." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "それで", kana: "それで", romaji: "sore de", 
-    meaning: "Dan / Karenanya / Oleh sebab itu", 
-    formula: "Kalimat 1. それで + Kalimat 2", 
-    example: "ここはコーヒーが100円です。それで、人気があるんです。(Koko wa koohii ga hyaku-en desu. Sorede, ninki ga arun desu) - Disini kopinya 100 yen. Karenanya populer." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ので", kana: "〜ので", romaji: "~node", 
-    meaning: "Karena (alasan objektif/halus)", 
-    formula: "Bentuk Biasa + ので", 
-    example: "用事があるので、お先にしつれいします。(Youji ga aru node, osaki ni shitsurei shimasu) - Karena ada keperluan, maaf ya aku duluan." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てあげる", kana: "〜てあげる", romaji: "~te ageru", 
-    meaning: "Melakukan sesuatu untuk orang lain", 
-    formula: "Kata Kerja (Te) + あげる", 
-    example: "ルームメートに、料理を作ってあげました。(Ruumumeeto ni, ryouri o tsukutte agemashita) - Aku memasakkan makanan untuk teman sekamar." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てくれる", kana: "〜てくれる", romaji: "~te kureru", 
-    meaning: "Seseorang melakukan sesuatu untuk saya", 
-    formula: "Kata Kerja (Te) + くれる", 
-    example: "わかい人が、にもつを持ってくれました。(Wakai hito ga, nimotsu o motte kuremashita) - Pemuda memberikan bantuan dengan membawa barangku." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てもらう", kana: "〜てもらう", romaji: "~te morau", 
-    meaning: "Menerima perlakuan/bantuan dari orang lain", 
-    formula: "Kata Kerja (Te) + もらう", 
-    example: "田中さんに、ノートを貸してもらった。(Tanaka-san ni, nooto o kashite moratta) - Tanaka meminjamkan buku catatan untukku." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てくれませんか", kana: "〜てくれませんか", romaji: "~te kuremasen ka", 
-    meaning: "Bisakah...? / Maukah...?", 
-    formula: "Kata Kerja (Te) + くれませんか / いただけませんか", 
-    example: "もっと勉強したいので、教えていただけませんか。(Motto benkyou shitai node, oshiete itadakemasen ka) - Karena ingin belajar lagi, bisakah mengajarkan aku?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "可能形", kana: "かのうけい", romaji: "kanoukei", 
-    meaning: "Bentuk Bisa (Potential-form)", 
-    formula: "Godan: ~e-ba / Ru: ~rareru", 
-    example: "飲める、食べられる、できる、来られる (Nomeru, taberareru, dekiru, korareru) - Bisa minum, bisa makan, bisa melakukan, bisa datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "命令形", kana: "めいれいけい", romaji: "meireikei", 
-    meaning: "Bentuk Menyuruh (Imperative-form)", 
-    formula: "Godan: ~e / Ru: ~ro", 
-    example: "飲め、食べろ、しろ、来い (Nome, tabero, shiro, koi) - Minumlah, makanlah, lakukanlah, datanglah." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "禁止形", kana: "きんしけい", romaji: "kinshikei", 
-    meaning: "Bentuk Melarang (Prohibitive-form)", 
-    formula: "Kata Kerja (Kamus) + な", 
-    example: "飲むな、食べるな、するな、来るな (Nomu na, taberu na, suru na, kuru na) - Jangan minum, jangan makan, jangan lakukan, jangan datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "仮定形", kana: "かていけい", romaji: "kateikei", 
-    meaning: "Bentuk Jika / Syarat (Conditional-form)", 
-    formula: "Kata Kerja + ば", 
-    example: "飲めば、食べれば、すれば、来れば (Nomeba, tabereba, sureba, koreba) - Jika minum, jika makan, jika melakukan, jika datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "意向形", kana: "いこうけい", romaji: "ikoukei", 
-    meaning: "Bentuk Maksud / Ajakan (Volitional-form)", 
-    formula: "Godan: ~ou / Ru: ~you", 
-    example: "飲もう、食べよう、しよう、来よう (Nomou, tabeyou, shiyou, koyou) - Ayo/akan minum, makan, lakukan, datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "受身形", kana: "うけみけい", romaji: "ukemikei", 
-    meaning: "Bentuk Pasif (Di-...)", 
-    formula: "Godan: ~areru / Ru: ~rareru", 
-    example: "飲まれる、食べられる、される、来られる (Nomareru, taberareru, sareru, korareru) - Diminum, dimakan, dilakukan, didatangi." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "使役形", kana: "しえきけい", romaji: "shiekikei", 
-    meaning: "Bentuk Kausatif (Membuat/Menyuruh...)", 
-    formula: "Godan: ~aseru / Ru: ~saseru", 
-    example: "飲ませる、食べさせる、させる、来させる (Nomaseru, tabesaseru, saseru, kosaseru) - Meminumkan, menyuapkan, membiarkan melakukan, menyuruh datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "使役受身形", kana: "しえきうけみけい", romaji: "shieki ukemikei", 
-    meaning: "Bentuk Kausatif-Pasif (Dipaksa untuk...)", 
-    formula: "Kata Kerja Kausatif + Pasif", 
-    example: "飲まされる、食べさせられる、させられる、来させられる (Nomasareru, tabesaserareru, saserareru, kosaserareru) - Dipaksa minum, dipaksa makan, dipaksa melakukan, dipaksa datang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜見える / 〜聞こえる", kana: "〜みえる / 〜きこえる", romaji: "~mieru / ~kikoeru", 
-    meaning: "Terlihat / Terdengar (Otomatis)", 
-    formula: "Kata Benda + が + 見える/聞こえる", 
-    example: "部屋から、テレビの音が聞こえます。(Heya kara, terebi no oto ga kikoemasu) - Dari kamar terdengar suara televisi." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "自動詞 / 他動詞", kana: "じどうし / たどうし", romaji: "jidoushi / tadoushi", 
-    meaning: "Intransitif (Otomatis) / Transitif (Objek)", 
-    formula: "KBが+Otomatis / KBを+Objek", 
-    example: "パソコンがこわれました。/ パソコンをこわしました。(Pasokon ga kowaremashita. / Pasokon o kowashimashita) - PC-nya rusak. / Aku merusak PC." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てある", kana: "〜てある", romaji: "~te aru", 
-    meaning: "Kondisi setelah melakukan sesuatu secara sengaja", 
-    formula: "Kata Kerja (Te) Transitif + ある", 
-    example: "予定はカレンダーに書いてあります。(Yotei wa karendaa ni kaite arimasu) - Rencananya tertulis (sengaja ditulis) di kalendar." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てしまう", kana: "〜てしまう", romaji: "~te shimau", 
-    meaning: "Selesai sepenuhnya / Penyesalan / Kecewa", 
-    formula: "Kata Kerja (Te) + しまう", 
-    example: "昨日買ったジュースは飲んでしまいました。(Kinou katta juusu wa nonde shimaimashita) - Jus yang dibeli kemarin telah habis diminum." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ている (Kondisi)", kana: "〜ている", romaji: "~te iru", 
-    meaning: "Kondisi yang masih tersisa / berefek", 
-    formula: "Kata Kerja (Te) Intransitif + いる", 
-    example: "かぎがかかっています。(Kagi ga kakatte imasu) - Pintunya terkunci (dan masih terkunci)." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜と言う", kana: "〜という", romaji: "~to iu", 
-    meaning: "Seseorang berkata...", 
-    formula: "Bentuk Biasa + と言う/と言っていた", 
-    example: "鈴木さんは、明日休むと言っていました。(Suzuki-san wa, ashita yasumu to itte imashita) - Suzuki telah berkata bahwa besok libur." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜たところ", kana: "〜たところ", romaji: "~ta tokoro", 
-    meaning: "Barusan saja selesai", 
-    formula: "Kata Kerja (Ta) + ところ", 
-    example: "たった今、食べたところです。(Tatta ima, tabeta tokoro desu) - Barusan (baru aja) makan." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "まだ〜ている", kana: "まだ〜ている", romaji: "mada ~te iru", 
-    meaning: "Masih...", 
-    formula: "まだ + Kata Kerja (Te) + いる", 
-    example: "まだ雨が降っています。(Mada ame ga futte imasu) - Masih hujan." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ばかり", kana: "〜ばかり", romaji: "~bakari", 
-    meaning: "Baru saja (menurut perasaan pembicara)", 
-    formula: "Kata Kerja (Ta) + ばかり", 
-    example: "先月、新しい会社に入ったばかりでしょう？ (Sengetsu, atarashii kaisha ni haitta bakari deshou?) - Bulan lalu, baru saja masuk perusahaan baru, kan?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ほうがいい", kana: "〜ほうがいい", romaji: "~hou ga ii", 
-    meaning: "Lebih baik / Sebaiknya (Saran)", 
-    formula: "Kata Kerja (Ta / Nai) + ほうがいい", 
-    example: "今日は、おふろに入らないほうがいいですよ。(Kyou wa, ofuro ni hairanai hou ga ii desu yo) - Hari ini lebih baik tidak mandi." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜なくてもいい", kana: "〜なくてもいい", romaji: "~nakute mo ii", 
-    meaning: "Tidak... juga tidak apa-apa (Tidak harus)", 
-    formula: "Kata Kerja (Nai - hilangkan i) + くてもいい", 
-    example: "今、しなくてもいいですよ。明日でもいいです。(Ima, shinakute mo ii desu yo. Ashita demo ii desu) - Sekarang tidak melakukannya juga tidak apa-apa. Bisa besok." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "こ/そ/あ/ど", kana: "こ/そ/あ/ど", romaji: "ko/so/a/do", 
-    meaning: "Merujuk hal yang tidak terlihat pembicara/pendengar", 
-    formula: "この/その/あの/どの + KB", 
-    example: "ねえ、この話、知ってる？ 山田さんがけっこん！(Nee, kono hanashi, shitteru? Yamada-san ga kekkon!) - Hei, tahu cerita ini? Yamada menikah!" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜という意味", kana: "〜といういみ", romaji: "~to iu imi", 
-    meaning: "Artinya adalah... / Memiliki arti...", 
-    formula: "Kata/Kalimat + という意味", 
-    example: "この漢字は、くつをぬげという意味です。(Kono kanji wa, kutsu o nuge to iu imi desu) - Kanji ini berarti lepaskan sepatu." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ないで", kana: "〜ないで", romaji: "~nai de", 
-    meaning: "Tanpa (melakukan hal A, tapi melakukan hal B)", 
-    formula: "Kata Kerja (Nai) + で", 
-    example: "昨日、寝ないで勉強したんです。(Kinou, nenai de benkyou shitan desu) - Tadi malam, belajar tanpa tidur." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜やすい / 〜にくい", kana: "〜やすい / 〜にくい", romaji: "~yasui / ~nikui", 
-    meaning: "Gampang untuk... / Susah untuk...", 
-    formula: "Kata Kerja (Masu - hilangkan masu) + やすい/にくい", 
-    example: "字が小さくて、読みにくいです。(Ji ga chiisakute, yominikui desu) - Hurufnya kecil dan susah dibaca." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜あとで", kana: "〜あとで", romaji: "~ato de", 
-    meaning: "Setelah...", 
-    formula: "Kata Kerja (Ta) / KB+の + あとで", 
-    example: "仕事のあとで、ごはんを食べに行きます。(Shigoto no ato de, gohan o tabe ni ikimasu) - Setelah bekerja, pergi makan." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜までに", kana: "〜までに", romaji: "~made ni", 
-    meaning: "Sebelum... (Batas waktu / Deadline)", 
-    formula: "Kata Benda (Waktu) / Kata Kerja (Kamus) + までに", 
-    example: "あさってまでにレポートを出してください。(Asatte made ni repooto o dashite kudasai) - Sebelum 2 hari kedepan, kumpulkan laporannya." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ながら", kana: "〜ながら", romaji: "~nagara", 
-    meaning: "Sambil...", 
-    formula: "Kata Kerja (Masu - hilangkan masu) + ながら", 
-    example: "テレビを見ながら、ごはんを食べます。(Terebi o minagara, gohan o tabemasu) - Makan, sambil menonton TV." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜すぎる", kana: "〜すぎる", romaji: "~sugiru", 
-    meaning: "Terlalu... (Sesuatu yang berlebihan)", 
-    formula: "KK(Masu) / KS-i(tanpa i) / KS-na + すぎる", 
-    example: "このズボンは長すぎます。(Kono zubon wa nagasugimasu) - Celana panjang ini terlalu panjang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "しか〜ない", kana: "しか〜ない", romaji: "shika ~nai", 
-    meaning: "Hanya... (Selalu diikuti bentuk negatif)", 
-    formula: "Kata Benda + しか + Kata Kerja (Nai)", 
-    example: "ひとつしかありません。(Hitotsu shika arimasen) - Hanya punya satu." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜で (Batas)", kana: "〜で", romaji: "~de", 
-    meaning: "Dengan / Dalam batas waktu-harga-jumlah", 
-    formula: "Kata Benda (Kuantitas/Uang) + で", 
-    example: "10万円で買える車はありますか。(Juu-man en de kaeru kuruma wa arimasu ka) - Mobil yang bisa dibeli dengan 100 ribu yen apakah ada?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜とか", kana: "〜とか", romaji: "~toka", 
-    meaning: "...atau... (Bahasa lisan untuk mendaftar contoh)", 
-    formula: "A とか B とか", 
-    example: "このイベントでは、カラオケとかゲームとかをします。(Kono ibento dewa, karaoke toka geemu toka o shimasu) - Di event ini akan diadakan game dan karaoke." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜でも", kana: "〜でも", romaji: "~demo", 
-    meaning: "...atau lainnya / sesuatu seperti...", 
-    formula: "Kata Benda + でも", 
-    example: "のどがかわきましたね。お茶でも飲みませんか。(Nodo ga kawakimashita ne. Ocha demo nomimasen ka) - Aku haus. Bagaimana jika minum teh atau lainnya?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜のは / 〜のが", kana: "〜のは / 〜のが", romaji: "~no wa / ~no ga", 
-    meaning: "Menjadikan Kata Kerja sebagai Kata Benda", 
-    formula: "Kata Kerja (Kamus) + の", 
-    example: "ゲームをするのは、おもしろいです。(Geemu o suru no wa, omoshiroi desu) - Bermain game itu menyenangkan." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜と (Syarat)", kana: "〜と", romaji: "~to", 
-    meaning: "Jika... maka (hasil alami/pasti terjadi)", 
-    formula: "Kata Kerja (Kamus) + と", 
-    example: "おさけを飲むと、顔が赤くなるんです。(Osake o nomu to, kao ga akakunaru n desu) - Jika minum sake, muka menjadi merah." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ば", kana: "〜ば", romaji: "~ba", 
-    meaning: "Jika... (Syarat/Dugaan)", 
-    formula: "Kata Kerja (Bentuk-Ba)", 
-    example: "この薬を飲めば、なおります。(Kono kusuri o nomeba, naorimasu) - Jika minum obat ini, maka akan sembuh." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜たら", kana: "〜たら", romaji: "~tara", 
-    meaning: "Jika / Ketika / Setelah...", 
-    formula: "Kata Kerja (Ta) + ら", 
-    example: "テストが悪かったら、どうしよう。(Tesuto ga warukattara, doushiyou) - Jika tesnya jelek, bagaimana?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜なら", kana: "〜なら", romaji: "~nara", 
-    meaning: "Jika... (Memberikan saran/info dari topik)", 
-    formula: "Kata Benda / Bentuk Biasa + なら", 
-    example: "大阪に行くなら、たこやきを食べてください。(Osaka ni iku nara, takoyaki o tabete kudasai) - Jika (mau) pergi ke Osaka, makanlah Takoyaki." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜のに", kana: "〜のに", romaji: "~noni", 
-    meaning: "Padahal / Meskipun (Ada rasa kecewa/kaget)", 
-    formula: "Bentuk Biasa + のに (KB/KS-na pakai 'na')", 
-    example: "勉強したのに、テスト0点でした。(Benkyou shita noni, tesuto zero-ten deshita) - Padahal sudah belajar, tapi tesnya dapat 0." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ても / 〜でも", kana: "〜ても / 〜でも", romaji: "~te mo / ~de mo", 
-    meaning: "Sekalipun / Walaupun...", 
-    formula: "Kata Kerja (Te) + も", 
-    example: "雨が降っても、行きましょう。(Ame ga futte mo, ikimashou) - Meskipun hujan, mari kita pergi." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜場合は", kana: "〜ばあいは", romaji: "~baai wa", 
-    meaning: "Pada saat... / Dalam kasus...", 
-    formula: "Bentuk Biasa + 場合は", 
-    example: "間に合わない場合は、れんらくしてください。(Maniawanai baai wa, renraku shite kudasai) - Jika tidak tepat waktu, tolong hubungi aku." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ようだ / 〜みたいだ", kana: "〜ようだ / 〜みたいだ", romaji: "~you da / ~mitai da", 
-    meaning: "Sepertinya (Membayangkan / Berdasarkan pengamatan)", 
-    formula: "Bentuk Biasa + ようだ / みたいだ", 
-    example: "せきも出るし、かぜをひいたようです。(Seki mo deru shi, kaze o hiita you desu) - Batuk juga, sepertinya aku masuk angin." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜でしょう", kana: "〜でしょう", romaji: "~deshou", 
-    meaning: "Mungkin... / ...kan? (Memastikan/Dugaan Kuat)", 
-    formula: "Bentuk Biasa + でしょう", 
-    example: "明日は、午後から雨が降るでしょう。(Ashita wa, gogo kara ame ga furu deshou) - Besok siang mungkin akan hujan, kan?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜と思う", kana: "〜とおもう", romaji: "~to omou", 
-    meaning: "Aku pikir / Menurutku...", 
-    formula: "Bentuk Biasa + と思います", 
-    example: "それはかなりむずかしいと思います。(Sore wa kanari muzukashii to omoimasu) - Aku pikir itu cukup sulit." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜はず", kana: "〜はず", romaji: "~hazu", 
-    meaning: "Seharusnya / Pasti...", 
-    formula: "Bentuk Biasa + はず", 
-    example: "月よう日だから、開いているはずです。(Getsuyoubi dakara, aite iru hazu desu) - Karena hari Senin, pasti (tokonya) buka." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜なさい", kana: "〜なさい", romaji: "~nasai", 
-    meaning: "-lah (Perintah dari atasan ke bawahan/orang tua ke anak)", 
-    formula: "Kata Kerja (Masu - hilangkan masu) + なさい", 
-    example: "もう一度、よく聞きなさい。(Mou ichido, yoku kikinasai) - Sekali lagi, dengarkanlah baik-baik." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜(よ)うと思う", kana: "〜(よ)うとおもう", romaji: "~(yo)u to omou", 
-    meaning: "Aku bermaksud/berniat untuk...", 
-    formula: "Kata Kerja (Volitional) + と思っています", 
-    example: "夏休みは、海に行こうと思っています。(Natsuyasumi wa, umi ni ikou to omotte imasu) - Liburan musim panas, aku berniat pergi ke laut." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てみる", kana: "〜てみる", romaji: "~te miru", 
-    meaning: "Mencoba melakukan sesuatu", 
-    formula: "Kata Kerja (Te) + みる", 
-    example: "この服、着てみてもいいですか。(Kono fuku, kite mite mo ii desu ka) - Baju ini, bolehkah aku coba pakai?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ておく", kana: "〜ておく", romaji: "~te oku", 
-    meaning: "Melakukan sesuatu sebagai persiapan", 
-    formula: "Kata Kerja (Te) + おく", 
-    example: "出かける前に、子どもに夜ごはんを作っておいた。(Dekakeru mae ni, kodomo ni yorugohan o tsukutte oita) - Sebelum keluar, aku menyiapkan makan malam untuk anak-anak." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ように (Tujuan)", kana: "〜ように", romaji: "~you ni", 
-    meaning: "Agar / Supaya (Bukan kemauan sendiri/Bentuk Bisa)", 
-    formula: "Kata Kerja (Kamus / Nai) + ように", 
-    example: "みんなに聞こえるように、話してください。(Minna ni kikoeru you ni, hanashite kudasai) - Bicaralah agar bisa didengar semua orang." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ために", kana: "〜ために", romaji: "~tame ni", 
-    meaning: "Untuk / Demi (Tujuan dengan kemauan kuat)", 
-    formula: "Kata Kerja (Kamus) / KB+の + ために", 
-    example: "もっとはやく走るために、毎日練習しています。(Motto hayaku hashiru tame ni, mainichi renshuu shite imasu) - Untuk berlari lebih cepat, aku berlatih setiap hari." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜のに (Tujuan)", kana: "〜のに", romaji: "~noni", 
-    meaning: "Untuk kegunaan / Diperlukan waktu-biaya untuk...", 
-    formula: "Kata Kerja (Kamus) + のに", 
-    example: "車をとめるのに、時間がかかりました。(Kuruma o tomeru no ni, jikan ga kakarimashita) - Butuh waktu untuk memarkir mobil." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ようになる", kana: "〜ようになる", romaji: "~you ni naru", 
-    meaning: "Menjadi bisa... (Perubahan keadaan/kemampuan)", 
-    formula: "Kata Kerja (Bisa / Kamus) + ようになる", 
-    example: "英語が話せるようになりましたか。(Eigo ga hanaseru you ni narimashita ka) - Apakah kamu sudah bisa berbicara bahasa Inggris?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ことになる", kana: "〜ことになる", romaji: "~koto ni naru", 
-    meaning: "Telah diputuskan bahwa...", 
-    formula: "Kata Kerja (Kamus / Nai) + ことになる", 
-    example: "父が入院することになりました。(Chichi ga nyuuin suru koto ni narimashita) - Telah diputuskan ayah masuk rumah sakit." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜がする", kana: "〜がする", romaji: "~ga suru", 
-    meaning: "Dapat merasakan / mendengar / mencium bau", 
-    formula: "KB (Suara/Bau/Rasa) + がする", 
-    example: "にぎやかな声がしますね。(Nigiyakana koe ga shimasu ne) - Terdengar suara keramaian ya." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ようにする", kana: "〜ようにする", romaji: "~you ni suru", 
-    meaning: "Mengusahakan / Berusaha untuk...", 
-    formula: "Kata Kerja (Kamus / Nai) + ようにする", 
-    example: "毎日運動して、何でも食べるようにしています。(Mainichi undou shite, nandemo taberu you ni shite imasu) - Aku berusaha olahraga setiap hari dan makan apa saja." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ことにする", kana: "〜ことにする", romaji: "~koto ni suru", 
-    meaning: "Memutuskan untuk... (Oleh diri sendiri)", 
-    formula: "Kata Kerja (Kamus / Nai) + ことにする", 
-    example: "今年は国に帰らないことにしました。(Kotoshi wa kuni ni kaeranai koto ni shimashita) - Aku memutuskan untuk tidak pulang ke negaraku tahun ini." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜てくる", kana: "〜てくる", romaji: "~te kuru", 
-    meaning: "Pergi dan akan kembali / Mulai terjadi...", 
-    formula: "Kata Kerja (Te) + くる", 
-    example: "ちょっと、コンビニに行ってきます。(Chotto, konbini ni itte kimasu) - Aku pergi ke minimarket sebentar (lalu kembali)." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "疑問詞 + 〜か", kana: "ぎもんし + 〜か", romaji: "gimonshi + ~ka", 
-    meaning: "Kalimat tanya yang disisipkan (Apakah...)", 
-    formula: "Kata Tanya + Bentuk Biasa + か", 
-    example: "今、何時かわかりますか？ (Ima, nanji ka wakarimasu ka) - Apakah kamu tahu sekarang jam berapa?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜かどうか", kana: "〜かどうか", romaji: "~ka dou ka", 
-    meaning: "Apakah ... atau tidak", 
-    formula: "Bentuk Biasa + かどうか", 
-    example: "おいしいかどうか、食べないとわからない。(Oishii ka dou ka, tabenai to wakaranai) - Enak atau tidak, jika tidak dimakan tidak akan tahu." 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜さ (Nominalizer)", kana: "〜さ", romaji: "~sa", 
-    meaning: "Tingkat / Ukuran (Mengubah Kata Sifat jadi Kata Benda)", 
-    formula: "Kata Sifat-i (hilangkan i) / KS-na + さ", 
-    example: "富士山の高さを知っていますか。(Fujisan no takasa o shitte imasu ka) - Apakah kamu tahu ketinggian Gunung Fuji?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "尊敬語 / 謙譲語", kana: "そんけいご / けんじょうご", romaji: "sonkeigo / kenjougo", 
-    meaning: "Bahasa Hormat (Keigo) / Bahasa Merendah", 
-    formula: "Sistem Keigo Khusus", 
-    example: "部長、ランチはめしあがりましたか。(Buchou, ranchi wa meshiagarimashita ka) - Manajer, apakah Anda sudah makan siang?" 
-  },
-  { 
-    level: "N4", type: "grammar", kanji: "〜ていただけませんか", kana: "〜ていただけませんか", romaji: "~te itadakemasen ka", 
-    meaning: "Sudikah Anda memberikan izin kepada saya untuk...", 
-    formula: "Kata Kerja (Kausatif-Te) + いただけませんか", 
-    example: "明日会社を休ませていただけませんか。(Ashita kaisha o yasumasete itadakemasen ka) - Besok, sudikah Anda mengizinkan saya libur kerja?" 
-  }
+    { 
+      pattern: "〜し〜し", 
+      example: "ラーメンはかんたんにできるし、安いし、おいしい。 (Ramen gampang dibuat, murah dan enak)", 
+      meaning: "Mengungkapkan beberapa alasan sekaligus atau menyebutkan hal/sifat yang setara." 
+    },
+    { 
+      pattern: "〜て / 〜で", 
+      example: "しゅくだいをわすれて、先生にしかられた。 (Karena lupa PR, dimarahi sensei)", 
+      meaning: "Menunjukkan penyebab atau alasan dari suatu kejadian." 
+    },
+    { 
+      pattern: "〜んです", 
+      example: "A: どうしたんですか。 B: 頭がいたいんです。 (A: Ada apa? B: Kepalaku sakit)", 
+      meaning: "Memberikan penjelasan, alasan, atau penekanan pada suatu kondisi." 
+    },
+    { 
+      pattern: "それで", 
+      example: "ここはコーヒーが100円です。それで、人気があるんです。 (Disini kopinya 100 yen. Karenanya populer)", 
+      meaning: "Menyatakan sebab-akibat (Dan / karenanya / oleh sebab itu)." 
+    },
+    { 
+      pattern: "〜ので", 
+      example: "用事があるので、お先にしつれいします。 (Karena ada keperluan, maaf ya aku duluan)", 
+      meaning: "Menyatakan alasan secara objektif dan lebih halus dari 'kara'." 
+    },
+    { 
+      pattern: "〜てあげる", 
+      example: "ルームメートに、料理を作ってあげました。 (Aku memasakkan makanan untuk teman sekamar)", 
+      meaning: "Melakukan suatu tindakan atau kebaikan untuk orang lain." 
+    },
+    { 
+      pattern: "〜てくれる", 
+      example: "わかい人が、にもつを持ってくれました。 (Pemuda memberikan bantuan dengan membawa barangku)", 
+      meaning: "Seseorang melakukan sesuatu/kebaikan untuk pembicara atau keluarga pembicara." 
+    },
+    { 
+      pattern: "〜てもらう", 
+      example: "田中さんに、ノートを貸してもらった。 (Tanaka meminjamkan buku catatan untukku)", 
+      meaning: "Menerima suatu perlakuan, bantuan, atau kebaikan dari orang lain." 
+    },
+    { 
+      pattern: "〜てくれませんか / 〜てくださいませんか", 
+      example: "もっと勉強したいので、教えていただけませんか。 (Karena ingin belajar lagi, bisakah mengajarkan aku?)", 
+      meaning: "Meminta tolong dengan sopan (Bisakah Anda...? / Maukah Anda...?)." 
+    },
+    { 
+      pattern: "可能形 (Bentuk Potensial)", 
+      example: "この水は飲める。 (Air ini bisa diminum)", 
+      meaning: "Menyatakan kesanggupan, kemampuan, atau kemungkinan (Bisa / Dapat)." 
+    },
+    { 
+      pattern: "命令形 (Bentuk Perintah)", 
+      example: "早くしろ！ (Cepat lakukan!)", 
+      meaning: "Memberikan perintah secara tegas dan kasar." 
+    },
+    { 
+      pattern: "禁止形 (Bentuk Melarang)", 
+      example: "ここでタバコを吸うな！ (Jangan merokok di sini!)", 
+      meaning: "Melarang seseorang melakukan sesuatu dengan tegas (Jangan...!)." 
+    },
+    { 
+      pattern: "仮定形 (〜ば)", 
+      example: "この薬を飲めば、なおります。 (Jika minum obat ini, maka akan sembuh)", 
+      meaning: "Menyatakan syarat atau pengandaian (Jika... maka...)." 
+    },
+    { 
+      pattern: "意向形 (Bentuk Maksud)", 
+      example: "夏休みは、海に行こう。 (Liburan musim panas, ayo ke laut)", 
+      meaning: "Menyatakan ajakan, niat, atau kemauan diri sendiri (Ayo / Mari / Aku akan...)." 
+    },
+    { 
+      pattern: "受身形 (Bentuk Pasif)", 
+      example: "先生にほめられました。 (Aku dipuji oleh guru)", 
+      meaning: "Menyatakan kalimat pasif (Di- / Ter-), sering kali mengandung nuansa kerugian/kekecewaan." 
+    },
+    { 
+      pattern: "使役形 (Bentuk Kausatif)", 
+      example: "母は子どもに野菜を食べさせます。 (Ibu membuat/menyuruh anaknya makan sayur)", 
+      meaning: "Menyuruh, membiarkan, atau membuat orang lain melakukan sesuatu." 
+    },
+    { 
+      pattern: "使役受身形 (Bentuk Kausatif-Pasif)", 
+      example: "母に野菜を食べさせられました。 (Aku dipaksa makan sayur oleh ibu)", 
+      meaning: "Terpaksa atau dipaksa melakukan sesuatu oleh orang lain." 
+    },
+    { 
+      pattern: "〜見える / 〜聞こえる", 
+      example: "部屋から、テレビの音が聞こえます。 (Dari kamar terdengar suara televisi)", 
+      meaning: "Kemampuan melihat/mendengar secara alami tanpa niat (Terlihat / Terdengar)." 
+    },
+    { 
+      pattern: "〜てある", 
+      example: "予定はカレンダーに書いてあります。 (Rencananya tertulis di kalendar)", 
+      meaning: "Menunjukkan kondisi/keadaan benda setelah seseorang sengaja melakukan sesuatu terhadapnya." 
+    },
+    { 
+      pattern: "〜てしまう", 
+      example: "昨日買ったジュースは飲んでしまいました。 (Jus yang dibeli kemarin telah habis diminum)", 
+      meaning: "Menyatakan suatu tindakan telah selesai sepenuhnya, atau mengekspresikan penyesalan/kekecewaan." 
+    },
+    { 
+      pattern: "〜ている (Kondisi)", 
+      example: "かぎがかかっています。 (Pintunya terkunci)", 
+      meaning: "Menunjukkan keadaan, hasil dari suatu tindakan yang masih berlanjut sampai sekarang." 
+    },
+    { 
+      pattern: "〜と言う", 
+      example: "鈴木さんは、明日休むと言っていました。 (Suzuki telah berkata bahwa besok libur)", 
+      meaning: "Mengutip perkataan orang lain (Seseorang berkata bahwa...)." 
+    },
+    { 
+      pattern: "〜たところ", 
+      example: "たった今、食べたところです。 (Barusan saja makan)", 
+      meaning: "Menyatakan suatu tindakan baru saja selesai dilakukan sesaat yang lalu." 
+    },
+    { 
+      pattern: "まだ 〜ている", 
+      example: "まだ雨が降っています。 (Masih hujan)", 
+      meaning: "Menyatakan suatu keadaan atau kejadian masih sedang berlangsung (Masih...)." 
+    },
+    { 
+      pattern: "〜たばかり", 
+      example: "先月、新しい会社に入ったばかりでしょう？ (Bulan lalu, baru saja masuk perusahaan baru, kan?)", 
+      meaning: "Merasa bahwa suatu tindakan baru saja terjadi (menurut perasaan pembicara)." 
+    },
+    { 
+      pattern: "〜たほうがいい / 〜ないほうがいい", 
+      example: "今日は、おふろに入らないほうがいいですよ。 (Hari ini lebih baik tidak mandi)", 
+      meaning: "Memberikan saran atau nasihat (Lebih baik... / Sebaiknya tidak...)." 
+    },
+    { 
+      pattern: "〜なくてもいい", 
+      example: "今、しなくてもいいですよ。 (Sekarang tidak melakukannya juga tidak apa-apa)", 
+      meaning: "Menyatakan ketiadaan kewajiban (Tidak perlu / Tidak harus...)." 
+    },
+    { 
+      pattern: "〜という意味", 
+      example: "この漢字は、くつをぬげという意味です。 (Kanji ini berarti lepaskan sepatu)", 
+      meaning: "Menjelaskan arti atau makna dari suatu kata/simbol." 
+    },
+    { 
+      pattern: "〜ないで", 
+      example: "昨日、寝ないで勉強したんです。 (Tadi malam, belajar tanpa tidur)", 
+      meaning: "Menyatakan melakukan suatu tindakan tanpa melakukan tindakan lain (Tanpa...)." 
+    },
+    { 
+      pattern: "〜やすい / 〜にくい", 
+      example: "字が小さくて、読みにくいです。 (Hurufnya kecil dan susah dibaca)", 
+      meaning: "Menyatakan tingkat kesulitan suatu tindakan (Mudah untuk... / Sulit untuk...)." 
+    },
+    { 
+      pattern: "〜あとで", 
+      example: "仕事のあとで、ごはんを食べに行きます。 (Setelah bekerja, pergi makan)", 
+      meaning: "Menyatakan urutan kejadian (Setelah...)." 
+    },
+    { 
+      pattern: "〜までに", 
+      example: "あさってまでにレポートを出してください。 (Sebelum 2 hari kedepan, kumpulkan laporannya)", 
+      meaning: "Menyatakan batas waktu paling lambat / deadline (Selambat-lambatnya sebelum...)." 
+    },
+    { 
+      pattern: "〜ながら", 
+      example: "テレビを見ながら、ごはんを食べます。 (Makan sambil menonton TV)", 
+      meaning: "Melakukan dua kegiatan dalam satu waktu (Sambil...)." 
+    },
+    { 
+      pattern: "〜すぎる", 
+      example: "このズボンは長すぎます。 (Celana panjang ini terlalu panjang)", 
+      meaning: "Menyatakan keadaan yang berlebihan atau melampaui batas wajar (Terlalu...)." 
+    },
+    { 
+      pattern: "〜しか 〜ない", 
+      example: "ひとつしかありません。 (Hanya punya satu)", 
+      meaning: "Menyatakan batasan dengan kuat, selalu diikuti kalimat negatif (Hanya... / Tidak ada selain...)." 
+    },
+    { 
+      pattern: "〜で (Batas)", 
+      example: "10万円で買える車はありますか。 (Mobil yang bisa dibeli dengan batas 100 ribu yen apakah ada?)", 
+      meaning: "Menunjukkan batasan waktu, harga, atau kuantitas (Dalam batas / Seharga...)." 
+    },
+    { 
+      pattern: "〜とか", 
+      example: "カラオケとかゲームとかをします。 (Akan diadakan hal seperti game dan karaoke)", 
+      meaning: "Memberikan beberapa contoh dari sekumpulan hal (seperti... atau...)." 
+    },
+    { 
+      pattern: "〜でも", 
+      example: "のどがかわきましたね。お茶でも飲みませんか。 (Aku haus. Bagaimana jika minum teh atau sesuatu yang lain?)", 
+      meaning: "Menawarkan atau menyarankan suatu hal sebagai salah satu pilihan (...atau sejenisnya)." 
+    },
+    { 
+      pattern: "〜のは / 〜のが", 
+      example: "ゲームをするのは、おもしろいです。 (Bermain game itu menyenangkan)", 
+      meaning: "Menominalkan (mengubah menjadi kata benda) suatu kalimat/kata kerja." 
+    },
+    { 
+      pattern: "〜と (Syarat Alami)", 
+      example: "おさけを飲むと、顔が赤くなるんです。 (Jika minum sake, maka muka akan merah)", 
+      meaning: "Menyatakan syarat yang hasilnya otomatis atau alami terjadi (Jika A, maka pasti B)." 
+    },
+    { 
+      pattern: "〜たら", 
+      example: "テストが悪かったら、どうしよう。 (Jika tesnya jelek, bagaimana?)", 
+      meaning: "Pengandaian bebas atau menyatakan kejadian berurutan (Jika / Kalau / Setelah)." 
+    },
+    { 
+      pattern: "〜なら", 
+      example: "大阪に行くなら、たこやきを食べてください。 (Jika pergi ke Osaka, makanlah Takoyaki)", 
+      meaning: "Memberikan saran atau pendapat berdasarkan topik/informasi yang sedang dibicarakan." 
+    },
+    { 
+      pattern: "〜のに", 
+      example: "勉強したのに、テスト0点でした。 (Padahal sudah belajar, dapat nilai 0)", 
+      meaning: "Menyatakan pertentangan yang menimbulkan rasa kaget, kecewa, atau tidak puas (Padahal...)." 
+    },
+    { 
+      pattern: "〜ても", 
+      example: "雨が降っても、行きましょう。 (Meskipun hujan, mari kita pergi)", 
+      meaning: "Menyatakan syarat yang berlawanan dengan hasil (Sekalipun / Walaupun...)." 
+    },
+    { 
+      pattern: "〜場合は", 
+      example: "間に合わない場合は、れんらくしてください。 (Pada saat tidak tepat waktu, hubungi aku)", 
+      meaning: "Menyatakan kemungkinan suatu kejadian atau situasi darurat (Dalam kasus / Pada saat...)." 
+    },
+    { 
+      pattern: "〜ようだ / 〜みたいだ", 
+      example: "せきも出るし、かぜをひいたようです。 (Batuk juga, sepertinya masuk angin)", 
+      meaning: "Menyatakan dugaan subjektif berdasarkan pengamatan atau kesan pembicara (Sepertinya...)." 
+    },
+    { 
+      pattern: "〜そうだ (Kabar/Rumor)", 
+      example: "田中さんは、中国語が話せるそうです。 (Tanaka katanya bisa bicara bahasa cina)", 
+      meaning: "Menyampaikan informasi yang didengar dari pihak/sumber lain (Katanya / Kudengar...)." 
+    },
+    { 
+      pattern: "〜そうだ (Rupa/Kesan)", 
+      example: "このスープ、からそうですね。 (Sup ini sepertinya pedas)", 
+      meaning: "Menyatakan kesan atau tebakan langsung secara visual (Kelihatannya / Sepertinya...)." 
+    },
+    { 
+      pattern: "〜でしょう / 〜だろう", 
+      example: "明日は、午後から雨が降るでしょう。 (Besok dari siang akan hujan, kan?)", 
+      meaning: "Menyatakan dugaan, perkiraan, atau meminta persetujuan lawan bicara (...kan? / Mungkin...)." 
+    },
+    { 
+      pattern: "〜と思う", 
+      example: "それはかなりむずかしいと思います。 (Aku pikir itu cukup sulit)", 
+      meaning: "Menyatakan opini, pendapat, atau pemikiran pembicara (Menurutku / Aku pikir...)." 
+    },
+    { 
+      pattern: "〜はず", 
+      example: "月よう日だから、開いているはずです。 (Karena senin, pasti buka)", 
+      meaning: "Menyatakan keyakinan kuat berdasarkan alasan yang logis (Seharusnya / Pasti...)." 
+    },
+    { 
+      pattern: "〜なさい", 
+      example: "もう一度、よく聞きなさい。 (Sekali lagi, dengarkanlah baik-baik)", 
+      meaning: "Kalimat perintah halus namun tegas (biasanya dari atasan ke bawahan atau orang tua ke anak)." 
+    },
+    { 
+      pattern: "〜ようと思う", 
+      example: "夏休みは、海に行こうと思っています。 (Liburan musim panas, aku berniat akan ke laut)", 
+      meaning: "Menyatakan niat, maksud, atau rencana yang sedang dipikirkan (Aku bermaksud...)." 
+    },
+    { 
+      pattern: "〜予定です / 〜つもりです", 
+      example: "来年、日本に行くつもりです。 (Tahun depan berencana pergi ke Jepang)", 
+      meaning: "Menyatakan rencana atau niat yang sudah diputuskan sebelumnya." 
+    },
+    { 
+      pattern: "〜てみる", 
+      example: "この服、着てみてもいいですか。 (Baju ini, bolehkah mencoba memakainya?)", 
+      meaning: "Mencoba melakukan sesuatu untuk mengetahui hasilnya." 
+    },
+    { 
+      pattern: "〜ておく", 
+      example: "出かける前に、子どもに夜ごはんを作っておいた。 (Sebelum keluar, membuat makan malam untuk anak-anak sebagai persiapan)", 
+      meaning: "Melakukan suatu tindakan sebagai persiapan untuk masa depan." 
+    },
+    { 
+      pattern: "〜ように (Tujuan)", 
+      example: "みんなに聞こえるように、話してください。 (Agar terdengar oleh semuanya, bicaralah)", 
+      meaning: "Menyatakan tujuan atau harapan (Agar / Supaya), biasanya dipakai dengan kata kerja bentuk potensial/negatif." 
+    },
+    { 
+      pattern: "〜ために", 
+      example: "もっとはやく走るために、毎日練習しています。 (Agar larinya lebih cepat, setiap hari latihan)", 
+      meaning: "Menyatakan tujuan yang kuat dengan kemauan sendiri (Untuk / Demi...)." 
+    },
+    { 
+      pattern: "〜ようになる", 
+      example: "英語が話せるようになりました。 (Sudah bisa bicara bahasa Inggris)", 
+      meaning: "Menyatakan perubahan keadaan dari tidak bisa menjadi bisa, atau sebaliknya." 
+    },
+    { 
+      pattern: "〜ことになる", 
+      example: "父が入院することになりました。 (Diputuskan bahwa ayah masuk Rumah Sakit)", 
+      meaning: "Menyatakan suatu keputusan atau aturan yang ditetapkan bukan oleh diri sendiri." 
+    },
+    { 
+      pattern: "〜がする", 
+      example: "にぎやかな声がしますね。 (Terdengar suara keramaian ya)", 
+      meaning: "Dapat merasakan sesuatu melalui indra penciuman, pendengaran, atau perasaan (Terdengar / Tercium)." 
+    },
+    { 
+      pattern: "〜ようにする", 
+      example: "毎日運動して、何でも食べるようにしています。 (Setiap hari berusaha olahraga dan makan apa saja)", 
+      meaning: "Menyatakan usaha atau kebiasaan yang sengaja dilakukan secara terus-menerus (Mengusahakan / Berusaha untuk...)." 
+    },
+    { 
+      pattern: "〜ことにする", 
+      example: "今年は国に帰らないことにしました。 (Tahun ini aku putuskan tidak akan pulang)", 
+      meaning: "Menyatakan keputusan yang dibuat oleh diri sendiri secara sadar (Memutuskan untuk...)." 
+    },
+    { 
+      pattern: "〜てくる", 
+      example: "ちょっと、コンビニに行ってきます。 (Aku akan pergi ke minimarket sebentar lalu balik lagi)", 
+      meaning: "Melakukan sesuatu (atau pergi) kemudian akan kembali lagi." 
+    },
+    { 
+      pattern: "〜かどうか", 
+      example: "おいしいかどうか、食べないとわからない。 (Enak atau tidak, jika tidak dicoba makan tidak akan tahu)", 
+      meaning: "Menyisipkan keraguan atau pertanyaan ke dalam kalimat (Apakah ... atau tidak)." 
+    },
+    { 
+      pattern: "〜さ", 
+      example: "富士山の高さを知っていますか。 (Apakah kamu tahu ketinggian gunung Fuji?)", 
+      meaning: "Mengubah kata sifat menjadi kata benda untuk menunjukkan ukuran atau tingkat (Ketinggian / Kepanasan / dll)." 
+    },
+    { 
+      pattern: "尊敬語 / 謙譲語 (Keigo)", 
+      example: "部長、ランチはめしあがりましたか。 (Manajer, sudah makan siang?)", 
+      meaning: "Bentuk bahasa sopan/hormat (Sonkeigo untuk meninggikan lawan bicara, Kenjougo untuk merendahkan diri)." 
+    }
   ]
 };

@@ -736,7 +736,7 @@ html, body {
   
   /* Ukuran lebih besar untuk expanded card di desktop */
   .expanded-card .kana { font-size: 26px; }
-  .expanded-card .kanji { font-size: 108px; line-height: 0.95; }
+  .expanded-card .kanji { font-size: 132px; line-height: 0.88; font-weight: 900; }
   .expanded-card .romaji { font-size: 22px; }
   .expanded-card .meaning { font-size: 24px; }
 }
@@ -837,7 +837,7 @@ html, body {
 
 /* Ukuran lebih besar untuk expanded card */
 .expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } 
-.expanded-card .kanji { font-size: clamp(92px, 12vw, 130px); line-height: 0.92; font-weight: 900; } 
+.expanded-card .kanji { font-size: clamp(116px, 15vw, 172px); line-height: 0.86; font-weight: 900; letter-spacing: 1px; } 
 .expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
 .expanded-card .meaning { 
     font-size: clamp(18px, 4vw, 22px); 
@@ -1861,3 +1861,39 @@ header, .navbar, .header-container {
 .watermark-logo {
     color: #ff8fa3 !important; 
 }
+
+/* Result summary badge on topbar */
+.topbar {
+  position: relative !important;
+}
+
+#resultInfo {
+  position: absolute !important;
+  right: 86px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #374151 !important;
+  font-size: 0.9rem;
+  font-weight: 700;
+  max-width: 58vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 768px) {
+  #resultInfo {
+    right: 70px;
+    top: 72px;
+    transform: none;
+    max-width: calc(100vw - 92px);
+    font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+}
+

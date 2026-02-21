@@ -1581,7 +1581,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   margin: 24px auto 22px;
   padding: 17px 22px;
   font-size: 1.12rem;
-  border: 2px solid #ffb7c5
+  border: 2px solid #ffb7c5;
   border-radius: 999px;
   outline: none;
 }
@@ -1726,20 +1726,21 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
    Hamburger + Logo di Kiri, Search di Kanan
 ========================================= */
 
+/* =========================================
+   FIX HEADER LAYOUT DESKTOP (FLEXBOX)
+   Hamburger + Logo di Kiri, Search di Kanan
+========================================= */
+
 @media (min-width: 769px) {
   .topbar {
-    /* Ubah dari Grid menjadi Flexbox agar sama seperti mobile */
     display: flex !important;
     align-items: center !important;
-    gap: 24px !important; /* Mengatur jarak antara Hamburger dan Logo */
-    padding: 12px 30px !important; /* Memberi ruang (padding) kiri-kanan agar tidak terlalu mepet layar */
-    
-    /* Matikan grid lama agar tidak bentrok */
+    gap: 24px !important; 
+    padding: 12px 30px !important; 
     grid-template-columns: none !important;
     grid-template-rows: none !important;
   }
 
-  /* Pastikan bentuk Hamburger & Logo tetap utuh (tidak tertekan) */
   #hamburger, 
   .branding {
     flex-shrink: 0 !important;
@@ -1747,24 +1748,23 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
     padding-left: 0 !important; 
   }
 
-  /* Ini kuncinya: Dorong tombol search ke pojok kanan */
   #searchBtn {
     margin-left: auto !important;
     position: relative !important;
     z-index: 100 !important;
   }
   
-  /* Jika tombol search ada di dalam div .controls, kita dorong div-nya ke kanan juga */
   .controls {
     margin-left: auto !important;
     display: flex !important;
     align-items: center !important;
   }
+} /* 🚀🚀🚀 INI DIA PENYELAMATNYA! (KURUNG TUTUP YANG KEMARIN HILANG) 🚀🚀🚀 */
 
 .sub-details {
   margin-left: 10px;
   margin-bottom: 5px;
-  border-left: 2px solid #ff4d6d; /* Garis tipis biar kelihatan sub-menu */
+  border-left: 2px solid #ff4d6d; 
 }
 
 .sub-details summary {
@@ -1772,7 +1772,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   cursor: pointer;
   font-weight: bold;
   font-size: 0.9em;
-  list-style: none; /* Hilangkan arrow bawaan browser jika mau */
+  list-style: none; 
 }
 
 .level-list {
@@ -1786,7 +1786,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(255, 255, 255, 0.4); /* Transparan putih */
+  background: rgba(255, 255, 255, 0.4); 
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
@@ -1798,13 +1798,13 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   cursor: pointer;
   z-index: 20;
   transition: all 0.2s ease;
-  color: #ff4d6d; /* 🚀 KUNCI: Warna awal icon (Pink Gelap) */
+  color: #ff4d6d; 
 }
 
 .download-card-btn:hover {
   background: #ff4d6d;
-  color: #ffffff; /* 🚀 KUNCI: Warna icon jadi putih pas disorot */
-  transform: scale(1.1) translateY(-2px); /* Naik dikit biar elegan */
+  color: #ffffff; 
+  transform: scale(1.1) translateY(-2px); 
   border-color: transparent;
   box-shadow: 0 4px 10px rgba(255, 77, 109, 0.4);
 }
@@ -1812,33 +1812,35 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 /* 1. Header & Navbar */
 header, .navbar, .header-container {
     background-color: #FFA1C5 !important;
-    color: #4a4a4a; /* Ganti teks ke abu tua agar kontrasnya pas */
+    color: #4a4a4a; 
 }
 
 /* 2. Card Background */
 .card {
-    background-color: transparent !important; /* KUNCI ANTI DAGING LEBIH: Bikin transparan! */
+    background-color: transparent !important; 
     border: none !important;
     border-radius: 20px !important; 
-    overflow: hidden !important; /* Paksa potong ujungnya */
+    overflow: hidden !important; 
 }
 
 .card-image {
     background-color: rgba(255, 161, 197, 0.9) !important;
     border: 1px solid #ff8fba !important; 
 }
+
 /* 3. Modal Header (Pop-up Cari & Filter) */
 .filter-modal-content h2, .modal-header {
     background-color: rgba(255, 161, 197, 0.9) !important;
 }
 
 /* 4. Watermark Logo di Flashcard (Opsional) */
-/* Biar warna logo NihonByte pas di-download senada */
 .watermark-logo {
     color: #ff8fa3 !important; 
 }
 
-/* Result summary badge on topbar */
+/* =========================================
+   RESULT SUMMARY BADGE (DESKTOP / GLOBAL)
+========================================= */
 .topbar {
   position: relative !important;
 }
@@ -1851,7 +1853,7 @@ header, .navbar, .header-container {
   margin: 0;
   padding: 6px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   color: #374151 !important;
   font-size: 0.9rem;
   font-weight: 700;
@@ -1860,42 +1862,60 @@ header, .navbar, .header-container {
   overflow: hidden;
   text-overflow: ellipsis;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 99 !important;
 }
 
+/* =========================================
+   ATURAN KHUSUS MOBILE (MAKS 768PX)
+========================================= */
 @media (max-width: 768px) {
+  
+  /* --- LAYOUT HEADER MOBILE --- */
+  .topbar {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    position: relative !important;
+  }
+
+  #hamburger { order: 1 !important; margin: 0 !important; }
+  .branding { order: 2 !important; margin: 0 !important; }
+
+  #searchBtn {
+    order: 4 !important;
+    margin-left: auto !important; 
+    margin-right: 0 !important;
+    display: flex !important; 
+    align-items: center !important;
+  }
+
+  /* --- FIX KAPSUL RESULT INFO MOBILE --- */
   #resultInfo {
-    /* POSISI ABSOLUT KE KANAN ATAS */
     position: absolute !important;
-    right: 65px !important; /* Sesuaikan angka ini agar tidak menabrak search icon */
-    top: 14px !important; /* Kita gunakan jarak fix dari atas alih-alih 50% untuk kepastian */
-    
-    /* PAKSA BENTUK KAPSUL */
-    display: flex !important; /* Ini kunci utama agar kapsul punya dimensi */
+    right: 58px !important; 
+    top: 50% !important; 
+    transform: translateY(-50%) !important; 
+    display: inline-flex !important; 
     align-items: center !important;
     justify-content: center !important;
     height: 32px !important;
-    padding: 0 16px !important;
-    
-    /* WARNA & GAYA (PERSIS DESKTOP) */
+    padding: 0 12px !important;
     background: #ffffff !important;
     color: #1f2937 !important;
-    border-radius: 999px !important; /* Membuat ujung melingkar */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15) !important;
-    
-    /* PENGATURAN TEKS */
-    font-size: 13px !important;
+    border-radius: 999px !important; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+    font-size: 12px !important;
     font-weight: 700 !important;
-    max-width: calc(100vw - 160px) !important;
+    max-width: calc(100vw - 140px) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    
-    /* LAIN-LAIN */
     margin: 0 !important;
-    transform: none !important;
-    z-index: 99 !important; /* Pastikan dia berada di atas elemen lain */
+    transition: none !important; 
+    z-index: 99 !important;
   }
-  
+
+  /* --- FITUR BARU LAINNYA --- */
   .download-card-btn {
     top: 10px !important;
     right: 10px !important;
@@ -1912,10 +1932,9 @@ header, .navbar, .header-container {
     -webkit-appearance: none !important;
   }
 
-
   #grid.pattern-grid-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 18px !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 
   #grid.pattern-grid-layout .pattern-title,
@@ -1924,24 +1943,5 @@ header, .navbar, .header-container {
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-  }
-
-  /* --- LAYOUT HEADER MOBILE --- */
-  .topbar {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    position: relative !important; /* Kunci agar absolute di bawah tidak keluar jalur */
-  }
-
-  #hamburger { order: 1 !important; margin: 0 !important; }
-  .branding { order: 2 !important; margin: 0 !important; }
-
-  #searchBtn {
-    order: 4 !important;
-    margin-left: auto !important; /* Mendorong tombol search mentok ke kanan */
-    margin-right: 0 !important;
-    display: flex !important; 
-    align-items: center !important;
   }
 }

@@ -373,13 +373,20 @@ html, body {
   box-shadow: 0 12px 24px rgba(190, 24, 93, 0.24);
   min-height: 172px;
   display: grid;
- gap: 10px;
+  gap: 10px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pattern-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 28px rgba(190, 24, 93, 0.3);
+}
+
+.pattern-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: 0.2px;
 }
 
 .pattern-title {
@@ -414,6 +421,7 @@ html, body {
   cursor: pointer;
   font-weight: 800;
 }
+
 
 .pattern-grid-layout {
   grid-column: 1 / -1 !important;
@@ -1891,7 +1899,8 @@ header, .navbar, .header-container {
   }
 }
 
-  /* Final mobile parity: download button + topbar result order */
+
+/* Final mobile parity: download button + topbar result order */
 .download-card-btn {
   top: 10px !important;
   right: 10px !important;
@@ -1947,4 +1956,3 @@ header, .navbar, .header-container {
     margin-right: 0 !important;
   }
 }
-

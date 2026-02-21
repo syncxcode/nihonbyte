@@ -1935,6 +1935,10 @@ header, .navbar, .header-container {
     margin-right: 10px !important;
     max-width: calc(100vw - 250px);
     white-space: nowrap;
+    display: inline-flex !important;
+    align-items: center;
+    height: 38px;
+    padding: 0 12px;
   }
 
   #searchBtn {

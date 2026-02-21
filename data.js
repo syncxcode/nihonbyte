@@ -781,7 +781,7 @@ const vocabularyData = [
   { level: "N5", type: "noun-counter", kanji: "二人", kana: "ふたり", romaji: "futari", meaning: "2 Orang" },
   { level: "N5", type: "noun-counter", kanji: "三人", kana: "さんにん", romaji: "sannin", meaning: "3 Orang" },
   { level: "N5", type: "noun-counter", kanji: "四人", kana: "よにん", romaji: "yonin", meaning: "4 Orang" },
-  { level: "N5", type: "noun-counter", kanji: "何人", kana: "なんにん", romaji: "nannin", meaning: "Berapa Orang?" },
+  { level: "N5", type: "question", kanji: "何人", kana: "なんにん", romaji: "nannin", meaning: "Berapa Orang?" },
 ];
 
 const patternData = {

@@ -897,6 +897,32 @@ function confirmEndQuiz() {
     return shuffle(source).slice(0, maxItems);
   }
 
+  let kanjiModalScrollY = 0;
+  let kanjiModalScrollLocked = false;
+
+  function lockPageScrollForKanjiModal() {
+    if (kanjiModalScrollLocked) return;
+    kanjiModalScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    document.body.style.top = `-${kanjiModalScrollY}px`;
+    document.documentElement.style.overflow = "hidden";
+    kanjiModalScrollLocked = true;
+  }
+
+  function unlockPageScrollForKanjiModal() {
+    if (!kanjiModalScrollLocked) return;
+    if (sidebar && sidebar.classList.contains("active")) return;
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.width = "";
+    document.body.style.top = "";
+    document.documentElement.style.overflow = "";
+    window.scrollTo(0, kanjiModalScrollY);
+    kanjiModalScrollLocked = false;
+  }
+
   function openModal(word) {
     if (!word) return;
     modalSubtitle.style.display = "block";

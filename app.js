@@ -532,7 +532,24 @@ function confirmEndQuiz() {
     recommendationRow.innerHTML = "";
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
+    
+    bodyScrollY = window.scrollY; 
+    document.body.style.position = "fixed";
+    document.body.style.width = "100%";
+    document.body.style.top = `-${bodyScrollY}px`;
     document.body.style.overflow = "hidden";
+  }
+  function closeModal() {
+    stopTestTimer();
+    kanjiModal.classList.remove("active");
+    kanjiModal.setAttribute("aria-hidden", "true");
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+
+    document.body.style.position = "";
+    document.body.style.width = "";
+    document.body.style.top = "";
+    document.body.style.overflow = "";
+    window.scrollTo(0, bodyScrollY);
   }
 
   function matchType(wordType, targetType) {

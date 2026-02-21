@@ -21,32 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalSearchInput = document.getElementById("modalSearchInput");
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
- 
-  let isTesting = false;
-  let currentQuizData = [];
-  let quizIndex = 0;
-  let score = 0;
-  let timer;
-  let timeLeft = 0;
-  let bodyScrollY = 0;
-  const overlay = document.getElementById("overlay");
-  const resultInfo = document.getElementById("resultInfo");
-  const kanjiModal = document.getElementById("kanjiModal");
-  const modalBackdrop = document.getElementById("modalBackdrop");
-  const modalClose = document.getElementById("modalClose");
-  const expandedCard = document.getElementById("expandedCard");
-  const recommendationRow = document.getElementById("recommendationRow");
-  const modalSubtitle = document.getElementById("modalSubtitle");
-  
-  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
-  const searchBtn = document.getElementById("searchBtn");
-  const filterModal = document.getElementById("filterModal");
-  const filterBackdrop = document.getElementById("filterBackdrop");
-  const filterModalClose = document.getElementById("filterModalClose");
-  const modalSearchInput = document.getElementById("modalSearchInput");
-  const applyFilterBtn = document.getElementById("applyFilterBtn");
-  const resetFilterBtn = document.getElementById("resetFilterBtn");
- 
+
   let isTesting = false;
   let currentQuizData = [];
   let quizIndex = 0;

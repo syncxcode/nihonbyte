@@ -491,6 +491,50 @@ function confirmEndQuiz() {
   let selectedType = "verb-adj-only";
   let viewMode = "vocab";
 
+  const typeLabelMap = {
+    "verb-godan": "Kata Kerja Godan",
+    "verb-ru": "Kata Kerja Ichidan",
+    "verb-irregular": "Kata Kerja Suru",
+    "adj-i": "Kata Sifat I",
+    "adj-na": "Kata Sifat Na",
+    "noun-time-weather": "Kosakata Waktu & Cuaca",
+    "noun-number-counter": "Kosakata Angka & Satuan",
+    "noun-house-family": "Kosakata Rumah & Keluarga",
+    "noun-body-medical": "Kosakata Tubuh & Kesehatan",
+    "noun-work": "Kosakata Dunia Kerja Umum",
+    "noun-vehicle": "Kosakata Kendaraan",
+    "noun-caregiving": "Kosakata Keperawatan",
+    "noun-animal": "Kosakata Nama Binatang",
+    "noun-factory": "Kosakata Pabrik & Manufaktur",
+    "noun-agriculture": "Kosakata Pertanian",
+    "noun-profession": "Kosakata Profesi",
+    "noun-restaurant": "Kosakata Restoran",
+    "noun-school": "Kosakata Sekolah",
+    "noun-place": "Kosakata Tempat & Bangunan",
+    "question": "Kosakata Kata Tanya",
+    "adv": "Kosakata Keterangan",
+    "noun": "Kosakata",
+    "ekspresi": "Ungkapan Umum",
+    "expression": "Ungkapan Umum",
+    "ungkapan umum": "Ungkapan Umum",
+    "verb-adj-only": "Kosakata Utama"
+  };
+
+  function shouldShowLevelInResult(typeKey) {
+    return ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"].includes(typeKey);
+  }
+
+  function formatResultInfo(totalCount) {
+    const dropdownType = category ? category.value : "all";
+    const effectiveType = selectedType === "all" ? dropdownType : selectedType;
+    const baseLabel = typeLabelMap[effectiveType] || "Kosakata";
+
+    if (shouldShowLevelInResult(effectiveType) && selectedLevel !== "all") {
+      return `${totalCount}. ${baseLabel}-${selectedLevel}`;
+    }
+    return `${totalCount}. ${baseLabel}`;
+  }
+  
   const testState = {
     active: false,
     type: "",
@@ -1383,7 +1427,7 @@ function confirmEndQuiz() {
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
       if (resultInfo) {
-        resultInfo.textContent = "0 kata ditemukan";
+        resultInfo.textContent = "0. Tidak ada hasil";
       }
       return;
     }
@@ -1432,9 +1476,9 @@ function confirmEndQuiz() {
     
     grid.appendChild(fragment);
     
-    const levelText = selectedLevel === "all" ? "Semua level" : selectedLevel;
+    
     if (resultInfo) {
-      resultInfo.textContent = `${words.length} kata ditampilkan • ${levelText}`;
+      resultInfo.textContent = formatResultInfo(words.length);
     }
   } // <-- Akhir dari fungsi render()
 

@@ -1922,6 +1922,7 @@ header, .navbar, .header-container {
 }
 
 @media (max-width: 768px) {
+  /* --- FITUR BARU (TETAP DIPERTAHANKAN) --- */
   .download-card-btn {
     top: 10px !important;
     right: 10px !important;
@@ -1944,32 +1945,42 @@ header, .navbar, .header-container {
     gap: 12px !important;
   }
 
+  /* --- LAYOUT HEADER MOBILE --- */
   .topbar {
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
+    position: relative !important; /* Kunci agar absolute di bawah tidak keluar jalur */
   }
 
-  #hamburger { order: 1; }
-  .branding { order: 2; }
+  #hamburger { order: 1 !important; margin: 0 !important; }
+  .branding { order: 2 !important; margin: 0 !important; }
 
- #resultInfo {
-    /* Pengaturan Posisi & Urutan (Flexbox) */
-    order: 3 !important;
-    position: static !important;
-    transform: none !important;
-    margin-left: auto !important; /* Ini yang mendorong elemen ke ujung kanan */
-    margin-right: 6px !important; /* Jarak antara kapsul dan icon search */
+  #searchBtn {
+    order: 4 !important;
+    margin-left: auto !important; /* Mendorong tombol search mentok ke kanan */
+    margin-right: 0 !important;
+    display: flex !important; 
+    align-items: center !important;
+  }
+
+  /* --- FIX RESULT INFO (KAPSUL PUTIH) --- */
+  #resultInfo {
+    /* Paksa melayang di sebelah kiri icon search */
+    position: absolute !important;
+    right: 60px !important; /* Sesuaikan angka ini jika jaraknya terlalu jauh/dekat dari search */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* Menengahkan posisi vertikal di header */
     
-    /* Gaya Visual Kapsul Putih (Tambahan agar mirip desktop) */
+    /* Gaya Visual Kapsul Putih */
     background-color: #ffffff !important;
     color: #333333 !important;
     border-radius: 20px !important;
-    font-size: 12px !important; /* Disesuaikan untuk layar HP */
+    font-size: 12px !important; 
     font-weight: 600 !important;
 
-    /* Pembatasan Teks (Mencegah teks terlalu panjang) */
-    max-width: calc(100vw - 180px) !important; /* Sedikit disesuaikan agar tidak terlalu sesak */
+    /* Pembatasan Teks */
+    max-width: calc(100vw - 180px) !important; 
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -1978,15 +1989,8 @@ header, .navbar, .header-container {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    height: 38px !important;
+    height: 30px !important; /* Disesuaikan agar tidak terlalu tinggi di mobile */
     padding: 0 12px !important;
+    margin: 0 !important;
   }
-
-  #searchBtn {
-    /* Pengaturan Urutan Icon Search */
-    order: 4 !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    display: flex !important; /* Memastikan icon search sejajar */
-    align-items: center !important;
-  }
+}

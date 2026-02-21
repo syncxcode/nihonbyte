@@ -25,7 +25,7 @@ body::before {
   width: 100%;
   box-sizing: border-box;
   z-index: 50;
-  background: #ffb7c5 !important;
+  background: #FFA1C5 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
@@ -140,7 +140,7 @@ input,
 ========================================= */
 .card-image {
   height: 220px !important;
-  background-color: #ffb7c5 !important;
+  background-color: #FFA1C5 !important;
   position: relative;
   border-radius: 20px !important;
   overflow: hidden;
@@ -225,7 +225,7 @@ input,
   max-width: 480px;
   max-height: 90vh;
 
-  background: #ffb7c5 !important;
+  background: #FFA1C5 !important;
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.15);
 
@@ -366,44 +366,69 @@ html, body {
 
 .pattern-card {
   position: relative;
-  border-radius: 16px;
-  padding: 14px 14px 42px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 22px rgba(17, 24, 39, 0.18);
-  min-height: 150px;
+  border-radius: 20px;
+  padding: 16px 16px 48px;
+  background: linear-gradient(160deg, rgba(255, 161, 197, 0.95), rgba(255, 186, 214, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 24px rgba(190, 24, 93, 0.24);
+  min-height: 172px;
   display: grid;
-  gap: 8px;
+ gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pattern-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px rgba(190, 24, 93, 0.3);
 }
 
 .pattern-title {
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: #111827;
+  letter-spacing: 0.2px;
 }
 
 .pattern-example {
-  font-size: 1.02rem;
-  line-height: 1.45;
+  font-size: 1.04rem;
+  line-height: 1.55;
   color: #1f2937;
 }
 
 .pattern-meaning {
-  font-size: 0.9rem;
-  color: #4b5563;
+  font-size: 0.95rem;
+  color: #374151;
+  font-weight: 500;
 }
 
 .pattern-audio-btn {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 12px;
+  bottom: 12px;
   border: none;
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.22);
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 800;
+}
+
+.pattern-grid-layout {
+  grid-column: 1 / -1 !important;
+  width: min(1200px, 100%) !important;
+  margin: 10px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 18px !important;
+}
+
+@media (max-width: 768px) {
+  .pattern-grid-layout {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
 }
 
 .info-poster {
@@ -465,7 +490,7 @@ html, body {
   width: min(92vw, 760px);
   padding: 1rem;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.96);
+  background: #FFA1C5 !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -711,7 +736,7 @@ html, body {
   
   /* Ukuran lebih besar untuk expanded card di desktop */
   .expanded-card .kana { font-size: 26px; }
-  .expanded-card .kanji { font-size: 80px; }
+  .expanded-card .kanji { font-size: 108px; line-height: 0.95; }
   .expanded-card .romaji { font-size: 22px; }
   .expanded-card .meaning { font-size: 24px; }
 }
@@ -812,7 +837,7 @@ html, body {
 
 /* Ukuran lebih besar untuk expanded card */
 .expanded-card .kana { font-size: clamp(20px, 5vw, 24px); } 
-.expanded-card .kanji { font-size: clamp(80px, 10vw, 72px); line-height: 1; } 
+.expanded-card .kanji { font-size: clamp(92px, 12vw, 130px); line-height: 0.92; font-weight: 900; } 
 .expanded-card .romaji { font-size: clamp(18px, 4vw, 20px); }
 .expanded-card .meaning { 
     font-size: clamp(18px, 4vw, 22px); 
@@ -925,7 +950,7 @@ html, body {
    CARD STYLE (Pasti Tengah)
 ========================= */
 .expression-wide-card {
-  background: #fdf4f4 !important;
+  background: #FFA1C5 !important;
   border-radius: 24px !important;
   box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
   
@@ -998,7 +1023,7 @@ html, body {
   box-sizing: border-box;
   z-index: 50;
   padding: 12px 16px !important;
-  background: rgba(255, 255, 255, 0.78);
+  background: #FFA1C5 !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);

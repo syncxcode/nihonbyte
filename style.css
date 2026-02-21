@@ -1835,7 +1835,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 /* 1. Header & Navbar */
 header, .navbar, .header-container {
-    background-color: #ffb7c5 !important;
+    background-color: #FFA1C5 !important;
     color: #4a4a4a; /* Ganti teks ke abu tua agar kontrasnya pas */
 }
 
@@ -1848,12 +1848,12 @@ header, .navbar, .header-container {
 }
 
 .card-image {
-    background-color: #ffb7c5 !important;
-    border: 1px solid #ffb7c5 !important; 
+    background-color: #FFA1C5 !important;
+    border: 1px solid #ff8fba !important; 
 }
 /* 3. Modal Header (Pop-up Cari & Filter) */
 .filter-modal-content h2, .modal-header {
-    background-color: ##ffb7c5 !important;
+    background-color: #FFA1C5 !important;
 }
 
 /* 4. Watermark Logo di Flashcard (Opsional) */

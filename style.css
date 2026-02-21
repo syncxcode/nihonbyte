@@ -153,7 +153,7 @@ select, input, .action-btn {
    2. GRID UTAMA & LAYOUT KARTU
 ========================================= */
 #grid {
-  padding-top: 140px !important;
+  padding-top: 90px !important;
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 15px !important;
@@ -881,7 +881,7 @@ select, input, .action-btn {
 }
 
 @media (min-width: 1024px) {
-  #grid { padding-top: 140px !important; }
+  #grid { padding-top: 90px !important; }
   .letter-poster { max-width: 960px !important; margin: 18px auto 2.8rem auto !important; padding: 2.5rem 2.4rem 3rem !important; border-radius: 28px; background: rgba(255, 255, 255, 0.975) !important; box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25); }
   .letter-poster-body { gap: 32px !important; }
   .letter-row { gap: 16px !important; grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important; justify-content: center; }

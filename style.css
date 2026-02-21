@@ -1911,6 +1911,9 @@ header, .navbar, .header-container {
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
     backdrop-filter: blur(4px) !important;
     -webkit-backdrop-filter: blur(4px) !important;
+    color: #ff4d6d !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
   }
 
   .topbar {
@@ -1929,8 +1932,8 @@ header, .navbar, .header-container {
     top: auto !important;
     right: auto !important;
     margin-left: auto !important;
-    margin-right: 6px !important;
-    max-width: calc(100vw - 190px);
+    margin-right: 10px !important;
+    max-width: calc(100vw - 250px);
     white-space: nowrap;
   }
 

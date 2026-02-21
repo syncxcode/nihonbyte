@@ -538,22 +538,25 @@ function confirmEndQuiz() {
     "ekspresi": "Ungkapan Umum",
     "expression": "Ungkapan Umum",
     "ungkapan umum": "Ungkapan Umum",
-    "verb-adj-only": "Kosakata Utama"
+    "verb-adj-only": "Kosakata Utama",
+    "pattern": "Pola Kalimat"
   };
 
   function shouldShowLevelInResult(typeKey) {
     return ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"].includes(typeKey);
   }
 
-  function formatResultInfo(totalCount) {
+  function formatResultInfo(totalCount, options = {}) {
+    const { typeOverride = null, levelOverride = null, includeLevel = false } = options;
     const dropdownType = category ? category.value : "all";
-    const effectiveType = selectedType === "all" ? dropdownType : selectedType;
+    const effectiveType = typeOverride || (selectedType === "all" ? dropdownType : selectedType);
     const baseLabel = typeLabelMap[effectiveType] || "Kosakata";
-
-    if (shouldShowLevelInResult(effectiveType) && selectedLevel !== "all") {
-      return `${totalCount}. ${baseLabel}-${selectedLevel}`;
+    const levelValue = levelOverride || selectedLevel;
+    
+    if ((includeLevel || shouldShowLevelInResult(effectiveType)) && levelValue !== "all") {
+      return `${totalCount} (${baseLabel}) - ${levelValue}`;
     }
-    return `${totalCount}. ${baseLabel}`;
+    return `${totalCount} (${baseLabel})`;
   }
   
   const testState = {
@@ -816,7 +819,7 @@ function confirmEndQuiz() {
     );
     if (!expressions.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
-      if(resultInfo) resultInfo.textContent = "0 ungkapan ditemukan";
+      if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "expression" });
       return;
     }
     const container = document.createElement("div");
@@ -860,7 +863,7 @@ function confirmEndQuiz() {
       container.appendChild(card);
     });
     grid.appendChild(container);
-    if(resultInfo) resultInfo.textContent = `${expressions.length} ungkapan ditampilkan • ${selectedLevel === "all" ? "Semua level" : selectedLevel}`;
+    if(resultInfo) resultInfo.textContent = formatResultInfo(expressions.length, { typeOverride: "expression" });
   }
 
   function shuffle(array) {
@@ -1029,7 +1032,7 @@ function confirmEndQuiz() {
     const patterns = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     if (!patterns.length) {
       grid.innerHTML = '<div class="empty-state">Tidak ada pola kalimat untuk level ini.</div>';
-      if(resultInfo) resultInfo.textContent = "0 pola ditemukan";
+      if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
       return;
     }
     patterns.forEach((pattern) => {
@@ -1043,7 +1046,7 @@ function confirmEndQuiz() {
       `;
       grid.appendChild(card);
     });
-    if(resultInfo) resultInfo.textContent = `${patterns.length} pola ditampilkan • ${level}`;
+   if(resultInfo) resultInfo.textContent = formatResultInfo(patterns.length, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
   }
 
   function getRecommendations(word) {
@@ -1448,7 +1451,7 @@ function confirmEndQuiz() {
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
       if (resultInfo) {
-        resultInfo.textContent = "0. Tidak ada hasil";
+        resultInfo.textContent = formatResultInfo(0);
       }
       return;
     }

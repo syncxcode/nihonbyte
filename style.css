@@ -380,6 +380,20 @@ select, input, .action-btn {
   text-transform: capitalize !important; 
 }
 
+#kanjiModal .kanji-modal-content {
+  padding: 16px !important;
+}
+
+#kanjiModal #expandedCard {
+  margin: 0 0 8px !important;
+}
+
+#kanjiModal #expandedCard .card-image.expanded {
+  border-radius: 18px !important;
+  border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22) !important;
+}
+
 /* Modal Filter */
 .filter-modal {
   position: fixed;

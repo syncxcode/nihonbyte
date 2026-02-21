@@ -78,23 +78,88 @@ function renderQuiz(type) {
 
     grid.innerHTML = `
         <style>
-            body { overflow: hidden !important; } 
+            body { overflow: hidden !important; }
             #grid.quiz-active-mode {
-                display: flex !important; align-items: center !important; justify-content: center !important;
-                /* KUNCI 1: Naikkan dari 70px jadi 120px biar lega */
-                padding-top: 120px !important; 
-                padding-bottom: 20px !important; min-height: 100vh !important;
+                display: flex !important;
+                align-items: flex-start !important;
+                justify-content: center !important;
+                padding-top: 86px !important;
+                padding-bottom: 10px !important;
+                min-height: calc(100dvh - 86px) !important;
                 box-sizing: border-box !important;
             }
-            @media (max-height: 650px) {
+            .quiz-wrapper-pro {
+                width: 100%;
+                max-width: 980px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                padding: 10px 16px 6px;
+                margin: 0;
+            }
+            .quiz-head-pro {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: rgba(255,255,255,0.95);
+                padding: 10px 18px;
+                border-radius: 999px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+                width: 100%;
+                box-sizing: border-box;
+                gap: 12px;
+            }
+            .quiz-qcard-pro {
+                background: rgba(240, 244, 248, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 28px 16px;
+                border-radius: 16px;
+                text-align: center;
+                border: 1px solid #e2e8f0;
+                box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: clamp(190px, 33dvh, 320px);
+            }
+            .quiz-options-pro {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(180px, 1fr));
+                gap: 10px;
+                width: 100%;
+            }
+            .quiz-finish-pro {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                margin-top: 0;
+            }
+            @media (max-width: 1024px) {
                 body { overflow: auto !important; }
-                #grid.quiz-active-mode { align-items: flex-start !important; padding-top: 130px !important; }
+                #grid.quiz-active-mode {
+                    justify-content: flex-start !important;
+                    padding-top: 84px !important;
+                    min-height: auto !important;
+                }
+                .quiz-wrapper-pro {
+                    max-width: 100%;
+                    gap: 10px;
+                    padding: 8px 12px 12px;
+                }
+                .quiz-head-pro { padding: 10px 14px; }
+                .quiz-qcard-pro { min-height: clamp(160px, 28dvh, 240px); padding: 20px 14px; }
+                .quiz-options-pro { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+            }
+            @media (max-width: 640px) {
+                .quiz-head-pro { flex-direction: row; font-size: 0.92rem; }
+                .quiz-options-pro { grid-template-columns: 1fr 1fr; gap: 8px; }
+                .quiz-qcard-pro h1 { font-size: clamp(2.4rem, 12vw, 3.5rem) !important; }
             }
         </style>
 
-        <div class="quiz-wrapper-pro" style="width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 15px; padding: 15px; margin-top: 0;">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.95); padding: 12px 24px; border-radius: 999px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; box-sizing: border-box;">
+        <div class="quiz-wrapper-pro">
+
+            <div class="quiz-head-pro">
                 <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
                     Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
                 </div>
@@ -103,21 +168,21 @@ function renderQuiz(type) {
                 </div>
             </div>
             
-            <div style="background: rgba(240, 244, 248, 0.95); backdrop-filter: blur(10px); padding: 40px 20px; border-radius: 16px; text-align: center; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.02); display: flex; justify-content: center; align-items: center; min-height: 220px;">
+            <div class="quiz-qcard-pro">
                 <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
                     ${type === 'goi' ? item.meaning : item.kanji}
                 </h1>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; width: 100%;">
+            <div class="quiz-options-pro">
                 ${options.map(opt => `
                     <button class="quiz-opt-btn-pro" data-answer="${opt}" style="padding: 16px; border: 1px solid #cbd5e1; border-radius: 12px; background: white; color: #334155; cursor: pointer; font-size: 1.15rem; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
                         ${opt}
                     </button>
                 `).join('')}
             </div>
-
-            <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 5px;">
+            
+            <div class="quiz-finish-pro">
                 <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
                     Selesaikan Test
                 </button>

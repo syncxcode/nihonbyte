@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let timer;
   let timeLeft = 0;
   let bodyScrollY = 0;
-  @@ -7,139 +7,233 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("overlay");
   const resultInfo = document.getElementById("resultInfo");
   const kanjiModal = document.getElementById("kanjiModal");

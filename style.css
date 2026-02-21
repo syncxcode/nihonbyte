@@ -896,58 +896,51 @@ select, input, .action-btn {
    8. ATURAN KHUSUS MOBILE (MAKS 768PX)
 ========================================= */
 @media (max-width: 768px) {
-  
-  /* --- Layout Jarak & Grid Utama --- */
   #grid {
-    padding-top: 70px !important; 
+    padding-top: 95px !important; 
     gap: 10px !important;
   }
 
- /* --- Layout Header & Hamburger --- */
-  .topbar {
+ .topbar {
     display: flex !important;
     align-items: center !important;
-    gap: 10px !important;
     position: fixed !important; 
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
-    min-height: 72px !important; /* 🚀 FIX 1: Memperlebar header ke bawah agar logo tidak gantung */
-    padding: 0 16px !important; /* 🚀 FIX 2: Memberi jarak lega di kiri-kanan */
+    min-height: 72px !important;
+    padding: 0 16px !important;
     box-sizing: border-box !important;
     z-index: 999 !important;
   }
 
-  #hamburger { order: 1 !important; margin: 0 !important; flex-shrink: 0 !important; }
-  .branding { order: 2 !important; margin: 0 !important; flex-shrink: 0 !important; }
-  .branding img { height: 50px !important; } /* 🚀 FIX 3: Ukuran logo disesuaikan agar pas di dalam header mobile */
-
-  /* --- Pengunci Tombol Search --- */
-  #searchBtn {
-    position: absolute !important;
-    right: 12px !important;
-    top: 0 !important;         /* 🚀 TRIK ANTI LONCAT: Pakai top 0 & bottom 0 */
-    bottom: 0 !important;      
-    margin: auto 0 !important; /* 🚀 Menengahkan vertikal TANPA efek transform yang bikin glitch */
-    height: 46px !important;
-    transform: none !important;/* 🚀 Matikan transform penyebab kutu loncat */
-    z-index: 100 !important;
+  /* Urutan 1: Hamburger */
+  #hamburger { 
+    order: 1 !important; 
+    margin: 0 !important; 
+    flex-shrink: 0 !important; 
   }
 
-  /* --- Pengunci Kapsul Result (Anti-Loncat) --- */
+  /* Urutan 2: Logo */
+  .branding { 
+    order: 2 !important; 
+    margin: 0 0 0 10px !important; /* Memberi jarak sedikit dari hamburger */
+    flex-shrink: 0 !important; 
+  }
+  .branding img { height: 50px !important; }
+
+  /* Urutan 3: KAPSUL (ANTI LONCAT) */
   #resultInfo {
-    position: absolute !important;
-    left: auto !important; 
-    right: 68px !important; 
-    top: 0 !important;         /* 🚀 TRIK ANTI LONCAT */
-    bottom: 0 !important;      
-    margin: auto 0 !important; /* 🚀 Menengahkan vertikal TANPA efek transform */
-    height: 32px !important;
-    transform: none !important;/* 🚀 Matikan transform penyebab kutu loncat */
+    order: 3 !important;
+    position: static !important; /* 🚀 MATIKAN ABSOLUTE, KEMBALI KE KODRAT */
+    margin-left: auto !important; /* 🚀 Trik sakti: Dorong kapsul mentok ke kanan */
+    margin-right: 12px !important; /* Jarak aman antara kapsul dan tombol search */
     
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
+    height: 32px !important;
+    
     background: #ffffff !important;
     color: #1f2937 !important;
     border-radius: 999px !important;
@@ -961,9 +954,20 @@ select, input, .action-btn {
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     
+    transform: none !important;
     transition: none !important;
     animation: none !important; 
-    z-index: 99 !important;
+  }
+
+  /* Urutan 4: TOMBOL SEARCH */
+  #searchBtn {
+    order: 4 !important;
+    position: static !important; /* 🚀 MATIKAN ABSOLUTE */
+    margin: 0 !important;
+    height: 46px !important;
+    transform: none !important;
+    flex-shrink: 0 !important; /* Jangan biarkan tombol search gepeng */
+    z-index: 100 !important;
   }
   
   /* --- Overrides Tombol Download untuk Mobile --- */

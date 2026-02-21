@@ -25,7 +25,7 @@ body::before {
   width: 100%;
   box-sizing: border-box;
   z-index: 50;
-  background: #ffcddb !important;
+  background: #ffb7c5 !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
@@ -140,7 +140,7 @@ input,
 ========================================= */
 .card-image {
   height: 220px !important;
-  background-color: #ffcddb !important;
+  background-color: #ffb7c5 !important;
   position: relative;
   border-radius: 20px !important;
   overflow: hidden;
@@ -225,7 +225,7 @@ input,
   max-width: 480px;
   max-height: 90vh;
 
-  background: #ffcddb !important;
+  background: #ffb7c5 !important;
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.15);
 
@@ -409,7 +409,7 @@ html, body {
 .info-poster {
   border-radius: 16px;
   background: linear-gradient(135deg, #111827, #374151);
-  color: #fff;
+  color: f;
   padding: 2rem 1.2rem;
   text-align: center;
   font-size: 1.1rem;
@@ -1350,12 +1350,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 }
 
-/* =============================================
-   POSTER HIRAGANA & KATAKANA - DESKTOP FIX v4
-   (Jarak header lebih rapat + semua improvement sebelumnya)
-   ============================================= */
 @media (min-width: 1024px) {
-  /* KUNCI: kurangi padding-top grid biar poster naik lebih dekat ke header */
   #grid {
     padding-top: 120px !important;
   }
@@ -1543,7 +1538,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 }
 
 .filter-modal-header {
-  background: #ffcddb;
+  background: #ffb7c5;
   padding: 20px 26px;
   text-align: center;
   position: relative;
@@ -1579,7 +1574,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
   margin: 24px auto 22px;
   padding: 17px 22px;
   font-size: 1.12rem;
-  border: 2px solid #ffcddb;
+  border: 2px solid #ffb7c5
   border-radius: 999px;
   outline: none;
 }
@@ -1815,7 +1810,7 @@ header {  /* atau selector header lu, misal #header / .header-container / .top-b
 
 /* 1. Header & Navbar */
 header, .navbar, .header-container {
-    background-color: #ffdbdb !important;
+    background-color: #ffb7c5 !important;
     color: #4a4a4a; /* Ganti teks ke abu tua agar kontrasnya pas */
 }
 
@@ -1828,12 +1823,12 @@ header, .navbar, .header-container {
 }
 
 .card-image {
-    background-color: #ffdbdb !important;
+    background-color: #ffb7c5 !important;
     border: 1px solid #ffb7c5 !important; 
 }
 /* 3. Modal Header (Pop-up Cari & Filter) */
 .filter-modal-content h2, .modal-header {
-    background-color: ##ffdbdb !important;
+    background-color: ##ffb7c5 !important;
 }
 
 /* 4. Watermark Logo di Flashcard (Opsional) */

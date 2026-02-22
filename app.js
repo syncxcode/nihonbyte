@@ -661,33 +661,107 @@ function confirmEndQuiz() {
 
     const sectionLabel = current.kind.toUpperCase();
     const answered = simulationState.answers[simulationState.index];
+    
+    // 🔥 DETEKSI TIPE SOAL (Dokkai / Star / Choukai / Default)
+    const qType = current.type || "default";
 
-    grid.innerHTML = `
+    // --- 1. RENDER HEADER (Sama untuk semua tipe) ---
+    let html = `
       <section class="jlpt-sim-shell">
         <header class="jlpt-sim-header">
           <h2>Japanese-Language Proficiency Test (CBT)</h2>
           <p class="jlpt-sim-subtitle">Level ${simulationState.level} • ${sectionLabel}</p>
           <div class="jlpt-sim-meta">
             <span>Question ${simulationState.index + 1}/${simulationState.questions.length}</span>
-            <span>Time Left: <strong id="simulationTimer">${formatDuration(simulationState.timeLeft)}</strong></span>
+            <span>Time Left: <strong id="simulationTimer" style="color:#e11d48;">${formatDuration(simulationState.timeLeft)}</strong></span>
           </div>
         </header>
+    `;
 
+    // --- 2. RENDER KONTEN BERDASARKAN TIPE ---
+    
+    // TIPE A: DOKKAI (Membaca / Layar Terbelah)
+    if (qType === "dokkai") {
+      html += `
+        <div class="jlpt-dokkai-wrapper">
+          <div class="jlpt-dokkai-text">${current.passage || "Teks bacaan tidak tersedia."}</div>
+          <div class="jlpt-dokkai-question-area">
+            <article class="jlpt-sim-question-box" style="margin:0;">
+              <p class="jlpt-sim-instruction">${current.instruction || 'Berdasarkan teks di samping, pilih jawaban yang tepat.'}</p>
+              <p class="jlpt-sim-question">${current.prompt}</p>
+            </article>
+            <div class="jlpt-sim-options">
+              ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    } 
+    
+    // TIPE B: STAR (Menyusun Bintang)
+    else if (qType === "star") {
+      // Mengubah tanda baca bawaan jadi elemen HTML cantik
+      let styledPrompt = current.prompt
+        .replace(/★/g, '<span class="jlpt-star-icon">★</span>')
+        .replace(/___/g, '<span class="jlpt-star-slot"></span>')
+        .replace(/＿/g, '<span class="jlpt-star-slot"></span>');
+
+      html += `
         <article class="jlpt-sim-question-box">
-          <p class="jlpt-sim-instruction">Pilih satu jawaban yang paling tepat.</p>
-          <p class="jlpt-sim-question">${current.prompt}</p>
+          <p class="jlpt-sim-instruction">${current.instruction || 'Pilih kata yang paling tepat untuk mengisi posisi bintang (★).'}</p>
+          <div class="jlpt-star-wrapper">
+            <div class="jlpt-star-sentence">${styledPrompt}</div>
+          </div>
         </article>
-
         <div class="jlpt-sim-options">
           ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
         </div>
+      `;
+    } 
+    
+    // TIPE C: CHOUKAI (Audio Listening)
+    else if (qType === "choukai") {
+      html += `
+        <article class="jlpt-sim-question-box">
+          <p class="jlpt-sim-instruction">${current.instruction || 'Dengarkan audio berikut dan pilih jawaban yang paling tepat.'}</p>
+          <div class="jlpt-audio-wrapper">
+            <audio controls controlsList="nodownload">
+              <source src="${current.audioSrc || ''}" type="audio/mpeg">
+              Browser Anda tidak mendukung pemutar audio.
+            </audio>
+          </div>
+          <p class="jlpt-sim-question">${current.prompt}</p>
+        </article>
+        <div class="jlpt-sim-options">
+          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
+        </div>
+      `;
+    } 
+    
+    // TIPE D: DEFAULT (Soal Biasa)
+    else {
+      html += `
+        <article class="jlpt-sim-question-box">
+          <p class="jlpt-sim-instruction">${current.instruction || 'Pilih satu jawaban yang paling tepat.'}</p>
+          <p class="jlpt-sim-question">${current.prompt}</p>
+        </article>
+        <div class="jlpt-sim-options">
+          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
+        </div>
+      `;
+    }
 
+    // --- 3. RENDER FOOTER & TUTUP TAG ---
+    html += `
         <div class="jlpt-sim-actions">
-          <button id="finishSimulationBtn" class="action-btn" type="button">Selesaikan Test</button>
+          <button id="finishSimulationBtn" class="action-btn" type="button" style="background:#e2e8f0; color:#475569; padding:10px 24px; border-radius:999px; font-weight:bold;">Selesaikan Test</button>
         </div>
       </section>
     `;
 
+    grid.innerHTML = html;
+
+    // --- 4. LOGIKA KLIK JAWABAN (Tetap sama) ---
     const optionButtons = Array.from(grid.querySelectorAll(".jlpt-sim-opt"));
     optionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -695,6 +769,7 @@ function confirmEndQuiz() {
         const selected = Number(btn.dataset.index);
         const isCorrect = selected === current.answer;
         simulationState.answers[simulationState.index] = selected;
+        
         if (isCorrect) simulationState.score += 1;
 
         optionButtons.forEach((ob, idx) => {

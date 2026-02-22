@@ -1049,7 +1049,7 @@ body.jlpt-simulation-active #grid {
   margin: 0 auto !important;
   min-height: 100dvh !important;
   width: 100% !important;
-  max-width: 800px !important; /* Dibatasi agar tidak terlalu lebar di PC */
+  max-width: 1000px !important; /* 👈 DIPERBESAR dari 800px ke 1000px agar poster lebih lebar */
   padding: 16px !important;
   display: flex !important;
   align-items: center !important;
@@ -1064,25 +1064,60 @@ body.jlpt-simulation-active #grid {
   backdrop-filter: blur(10px);
   border-radius: 16px;
   border: 1px solid #d1d5db;
-  padding: 30px;
+  padding: 35px; /* 👈 Padding dalam poster sedikit diperbesar biar lega */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
   box-sizing: border-box;
 }
 
-.jlpt-sim-header h2 { margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .04em; color: #1e293b; }
-.jlpt-sim-subtitle { margin: 4px 0 0; font-size: .95rem; color: #475569; font-weight: 700; }
-.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #1f2937; margin-top: 6px; }
-.jlpt-sim-meta span { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: .85rem; }
+/* 🚀 HEADER PINK & JARAK TEKS (Sesuai Panah Merah) */
+.jlpt-sim-header {
+  background: #FFA1C5; /* Background Pink */
+  padding: 24px; /* 👈 Jarak batas atas/kiri pink ke teks dalam (Panah 1) */
+  border-radius: 12px;
+}
 
-.jlpt-sim-question-box { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
-.jlpt-sim-instruction { margin: 0 0 10px; font-size: .9rem; color: #64748b; font-weight: 700; }
+.jlpt-sim-header h2 { 
+  margin: 0 0 12px 0; /* 👈 Jarak bawah Judul ke Subtitle N5 (Panah 2) */
+  font-size: 1.25rem; 
+  text-transform: uppercase; 
+  letter-spacing: .04em; 
+  color: #1e293b; 
+}
+
+.jlpt-sim-subtitle { 
+  margin: 0 0 18px 0; /* 👈 Jarak bawah Subtitle ke Kotak Question/Timer (Panah 3) */
+  font-size: 1.05rem; 
+  color: #374151; 
+  font-weight: 700; 
+}
+
+.jlpt-sim-meta { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 12px; 
+  font-weight: 700; 
+  color: #1f2937; 
+  margin: 0; 
+}
+
+.jlpt-sim-meta span { 
+  background: #f8fafc; 
+  border: 1px solid #cbd5e1; 
+  border-radius: 8px; 
+  padding: 8px 14px; 
+  font-size: .9rem; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.jlpt-sim-question-box { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 24px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
+.jlpt-sim-instruction { margin: 0 0 12px; font-size: .95rem; color: #64748b; font-weight: 700; }
 .jlpt-sim-question { margin: 0; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; color: #0f172a; }
 
-.jlpt-sim-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.jlpt-sim-opt { text-align: left; border: 2px solid #e2e8f0; border-radius: 10px; padding: 14px; font-size: 1.05rem; font-weight: 600; background: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease; }
+.jlpt-sim-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.jlpt-sim-opt { text-align: left; border: 2px solid #e2e8f0; border-radius: 10px; padding: 16px; font-size: 1.1rem; font-weight: 600; background: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease; }
 .jlpt-sim-opt:hover { background: #f8fafc; border-color: #cbd5e1; }
 .jlpt-sim-opt .opt-index { display: inline-flex; min-width: 26px; font-weight: 800; color: #475569; }
 .jlpt-sim-opt.correct { background: #22c55e; color: #fff; border-color: #16a34a; }
@@ -1091,20 +1126,24 @@ body.jlpt-simulation-active #grid {
 .jlpt-sim-opt.wrong .opt-index { color: #fff; }
 
 .jlpt-sim-actions { display: flex; justify-content: flex-end; margin-top: 10px; }
-.jlpt-sim-actions .action-btn { width: auto; background: #e2e8f0; color: #475569; padding: 10px 24px; }
+.jlpt-sim-actions .action-btn { width: auto; background: #e2e8f0; color: #475569; padding: 12px 28px; font-size: 1rem; border-radius: 999px; font-weight: 700; border: none; cursor: pointer; transition: background 0.2s;}
 .jlpt-sim-actions .action-btn:hover { background: #cbd5e1; }
 
 /* 🚀 Optimasi Khusus HP untuk Simulasi JLPT */
 @media (max-width: 768px) {
   .jlpt-sim-shell {
     padding: 20px 16px;
-    gap: 14px;
+    gap: 16px;
     border-radius: 14px;
   }
-  .jlpt-sim-header h2 { font-size: 1rem; }
+  .jlpt-sim-header {
+    padding: 16px; /* Jarak pink disesuaikan untuk HP */
+  }
+  .jlpt-sim-header h2 { font-size: 1.05rem; margin-bottom: 8px; }
+  .jlpt-sim-subtitle { margin-bottom: 12px; font-size: 0.95rem; }
   .jlpt-sim-question-box { padding: 16px; }
   .jlpt-sim-options { 
-    grid-template-columns: 1fr 1fr; /* Tetap 2 kolom di HP agar mirip aslinya */
+    grid-template-columns: 1fr 1fr; /* Tetap 2 kolom di HP */
     gap: 10px; 
   }
   .jlpt-sim-opt {

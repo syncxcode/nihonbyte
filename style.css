@@ -1031,24 +1031,6 @@ select, input, .action-btn {
   .branding img { height: 55px !important; }
 }
 
-.simulation-menu {
-  display: grid;
-  gap: 8px;
-}
-.simulation-menu label {
-  font-size: 0.8rem;
-  color: #f1f5f9;
-}
-.simulation-level-select {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.45);
-  background: rgba(255,255,255,0.2);
-  color: white;
-  padding: 7px 10px;
-}
-.simulation-level-select option { color: #111827; }
-
 body.jlpt-simulation-active {
   background: #f8fafc;
 }
@@ -1063,19 +1045,23 @@ body.jlpt-simulation-active #grid {
 }
 .jlpt-sim-shell {
   background: #fff;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 14px 40px rgba(15,23,42,.12);
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
   display: grid;
   gap: 14px;
 }
-.jlpt-sim-header h2 { margin: 0; font-size: 1.05rem; }
-.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #334155; }
-.jlpt-sim-meta span { background: #eef2ff; border-radius: 999px; padding: 4px 10px; font-size: .82rem; }
-.jlpt-sim-question-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
-.jlpt-sim-question { margin: 0; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 700; color: #0f172a; }
+.jlpt-sim-header h2 { margin: 0; font-size: 1.06rem; text-transform: uppercase; letter-spacing: .04em; }
+.jlpt-sim-subtitle { margin: 2px 0 0; font-size: .92rem; color: #475569; font-weight: 700; }
+.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #1f2937; }
+.jlpt-sim-meta span { background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; padding: 5px 10px; font-size: .82rem; }
+.jlpt-sim-question-box { background: #fff; border: 1px solid #d1d5db; border-radius: 8px; padding: 16px; }
+.jlpt-sim-instruction { margin: 0 0 8px; font-size: .86rem; color: #64748b; font-weight: 700; }
+.jlpt-sim-question { margin: 0; font-size: clamp(1.1rem, 3vw, 1.55rem); font-weight: 700; color: #0f172a; }
 .jlpt-sim-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
-.jlpt-sim-opt { text-align: left; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; font-size: 1rem; font-weight: 600; background: white; cursor: pointer; }
+.jlpt-sim-opt { text-align: left; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 1rem; font-weight: 600; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.jlpt-sim-opt .opt-index { display: inline-flex; min-width: 24px; font-weight: 800; color: #334155; }
 .jlpt-sim-opt.correct { background: #22c55e; color: #fff; border-color: #16a34a; }
 .jlpt-sim-opt.wrong { background: #f87171; color: #fff; border-color: #ef4444; }
 .jlpt-sim-actions { display: flex; justify-content: flex-end; }

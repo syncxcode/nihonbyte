@@ -636,20 +636,25 @@ function confirmEndQuiz() {
     return `${mm}:${ss}`;
   }
 
-  function buildSimulationQuestions(level, config = {}) {
+function buildSimulationQuestions(level, config = {}) {
     const allData = window.jlptSimulationData || {};
     const levelData = allData[level];
     if (!levelData) return [];
 
-    const defaultCounts = { kanji: 20, bunpou: 20, goi: 20 };
-    const sectionCounts = config.sectionCounts || defaultCounts;
-    const pick = (arr, kind, count) => shuffle(arr || []).slice(0, count).map((q) => ({ ...q, kind }));
+    const sectionCounts = config.sectionCounts || {};
+    let questions = [];
 
-    return shuffle([
-      ...pick(levelData.kanji, "kanji", sectionCounts.kanji || 0),
-      ...pick(levelData.bunpou, "bunpou", sectionCounts.bunpou || 0),
-      ...pick(levelData.goi, "goi", sectionCounts.goi || 0),
-    ]);
+    // 🔥 LOGIKA BARU: Loop otomatis untuk mengambil semua jenis soal (termasuk choukai)
+    for (const kind in sectionCounts) {
+      const count = sectionCounts[kind];
+      if (levelData[kind]) {
+        // Ambil soal sebanyak yang diminta, atau seadanya kalau datanya kurang
+        const picked = shuffle([...levelData[kind]]).slice(0, count).map((q) => ({ ...q, kind }));
+        questions.push(...picked);
+      }
+    }
+    
+    return shuffle(questions);
   }
 
   function renderSimulationQuestion() {
@@ -848,9 +853,9 @@ function confirmEndQuiz() {
 
     const config = (window.jlptSimulationConfig || {})[level];
     const questions = buildSimulationQuestions(level, config);
-    const expectedQuestionCount = Object.values(config?.sectionCounts || {}).reduce((sum, value) => sum + value, 0);
 
-    if (!config || questions.length < expectedQuestionCount) {
+    // 🔥 KUNCI PERBAIKAN: Selama questions ada isinya (minimal 1 soal), jangan di-blok!
+    if (!config || questions.length === 0) {
       openInfoModal("Database simulasi untuk level ini belum siap.");
       return;
     }
@@ -870,7 +875,7 @@ function confirmEndQuiz() {
     renderSimulationQuestion();
     startSimulationTimer();
   }
-
+  
   const letterSets = {
     hiragana: {
       title: "Poster Hiragana",

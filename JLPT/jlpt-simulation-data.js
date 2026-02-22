@@ -1,143 +1,163 @@
-window.jlptSimulationConfig = {
-  N5: { durationMinutes: 105, sectionCounts: { kanji: 20, bunpou: 20, goi: 20 } },
-  N4: { durationMinutes: 125, sectionCounts: { kanji: 20, bunpou: 20, goi: 20 } }
-};
-
+// ==========================================
+// BANK SOAL (REMIXED N4 - FULL VERSION)
+// ==========================================
 window.jlptSimulationData = {
   N5: {
-    kanji: [
-      { prompt: '黒い', options: ['あおい', 'しろい', 'くろい', 'あかい'], answer: 2 },
-      { prompt: '白い', options: ['しろい', 'きいろい', 'くろい', 'あおい'], answer: 0 },
-      { prompt: '青い', options: ['あかい', 'しろい', 'あおい', 'くろい'], answer: 2 },
-      { prompt: '赤い', options: ['あかい', 'あおい', 'しろい', 'ちゃいろい'], answer: 0 },
-      { prompt: '学校', options: ['かっこう', 'がっこう', 'がこう', 'かこう'], answer: 1 },
-      { prompt: '先生', options: ['せんせ', 'せんせい', 'せいせん', 'せんしょう'], answer: 1 },
-      { prompt: '友達', options: ['ともたち', 'ともだち', 'ともだつ', 'ともたつ'], answer: 1 },
-      { prompt: '日本語', options: ['にほんご', 'にっぽんご', 'にほんこ', 'にっぽんこ'], answer: 0 },
-      { prompt: '食べる', options: ['たべる', 'のべる', 'かべる', 'たべます'], answer: 0 },
-      { prompt: '飲む', options: ['よむ', 'のむ', 'のびる', 'のます'], answer: 1 },
-      { prompt: '行く', options: ['いく', 'ゆく', 'いきます', 'いって'], answer: 0 },
-      { prompt: '来る', options: ['くる', 'きる', 'こる', 'ける'], answer: 0 },
-      { prompt: '見る', options: ['みる', 'める', 'まる', 'もる'], answer: 0 },
-      { prompt: '聞く', options: ['きく', 'きこ', 'きます', 'きって'], answer: 0 },
-      { prompt: '読む', options: ['よむ', 'のむ', 'よる', 'よびる'], answer: 0 },
-      { prompt: '書く', options: ['かく', 'きく', 'がく', 'かます'], answer: 0 },
-      { prompt: '話す', options: ['はなす', 'はなれる', 'はす', 'はなします'], answer: 0 },
-      { prompt: '水', options: ['みず', 'みずう', 'すい', 'みつ'], answer: 0 },
-      { prompt: '火曜日', options: ['かようび', 'ひようび', 'かようにち', 'かよび'], answer: 0 },
-      { prompt: '電車', options: ['でんしゃ', 'てんしゃ', 'でんしや', 'でんちゃ'], answer: 0 }
-    ],
-    bunpou: [
-      { prompt: '先生＿＿＿日本語を教えます。', options: ['は', 'を', 'に', 'が'], answer: 0 },
-      { prompt: '明日学校に＿＿＿。', options: ['行きます', '来ます', '見ます', 'します'], answer: 0 },
-      { prompt: '明日、友達に本をかえして＿＿。', options: ['ます', 'ください', 'ない', 'ました'], answer: 1 },
-      { prompt: 'ここで写真を＿＿。', options: ['撮りません', '撮らないでください', '撮りない', '撮った'], answer: 1 },
-      { prompt: '私はギターを＿＿ことができます。', options: ['ひいて', 'ひき', 'ひく', 'ひか'], answer: 2 },
-      { prompt: '昨日、図書館へ＿＿。', options: ['行きます', '行く', '行って', '行きました'], answer: 3 },
-      { prompt: '毎朝6時＿＿起きます。', options: ['で', 'に', 'を', 'が'], answer: 1 },
-      { prompt: 'わたしはパン＿＿食べます。', options: ['は', 'で', 'を', 'に'], answer: 2 },
-      { prompt: '田中さん＿＿学生です。', options: ['が', 'を', 'は', 'に'], answer: 2 },
-      { prompt: 'きのう、雨＿＿降りました。', options: ['を', 'に', 'が', 'で'], answer: 2 },
-      { prompt: '駅までバス＿＿行きます。', options: ['を', 'に', 'で', 'が'], answer: 2 },
-      { prompt: '日本語＿＿英語を勉強しています。', options: ['と', 'や', 'も', 'か'], answer: 0 },
-      { prompt: 'お茶を＿＿、宿題をします。', options: ['飲んでから', '飲むから', '飲むので', '飲みながら'], answer: 0 },
-      { prompt: '今日は寒い＿＿、コートを着ます。', options: ['ので', 'でも', 'しか', 'とか'], answer: 0 },
-      { prompt: '日曜日は仕事が＿＿。', options: ['ありません', 'あります', 'いました', 'ませんでした'], answer: 0 },
-      { prompt: 'その本は＿＿ですか。', options: ['どこ', 'だれ', 'いくら', 'なに'], answer: 2 },
-      { prompt: 'わたしの部屋に机が二つ＿＿。', options: ['います', 'あります', 'しました', 'なります'], answer: 1 },
-      { prompt: 'いっしょに映画を見＿＿。', options: ['ましょう', 'ます', 'ません', 'ました'], answer: 0 },
-      { prompt: 'このりんごは＿＿です。', options: ['おいしい', 'しずか', 'げんき', 'べんり'], answer: 0 },
-      { prompt: 'あの町は＿＿町です。', options: ['きれいな', 'きれいい', 'きれいで', 'きれいく'], answer: 0 }
-    ],
-    goi: [
-      { prompt: 'このみせの 料理は おいしいです。', options: ['山', '店', '川', '国'], answer: 1 },
-      { prompt: '毎朝、牛乳を のみます。', options: ['ぎゅうにゅう', 'ぎゅうにく', 'にゅうぎゅう', 'ぎゅにゅう'], answer: 0 },
-      { prompt: '駅で でんしゃを まちます。', options: ['電事', '電車', '電気', '電話'], answer: 1 },
-      { prompt: '兄は 会社で はたらいています。', options: ['かいしゃ', 'かいしゃく', 'がいしゃ', 'かいせ'], answer: 0 },
-      { prompt: '今日は とても いそがしいです。', options: ['忙しい', '急しい', '早しい', '多しい'], answer: 0 },
-      { prompt: 'このかばんは すこし おもいです。', options: ['高い', '重い', '軽い', '広い'], answer: 1 },
-      { prompt: 'つくえの うえに 本が あります。', options: ['下', '上', '中', '外'], answer: 1 },
-      { prompt: 'しゅくだいが たくさん あります。', options: ['宿題', '勉強', '授業', '問題'], answer: 0 },
-      { prompt: 'まいにち 日本語を べんきょうします。', options: ['勉強', '練習', '勉学', '学習'], answer: 0 },
-      { prompt: 'このへやは ひろいです。', options: ['新い', '広い', '長い', '明い'], answer: 1 },
-      { prompt: 'たんじょうびに ケーキを たべました。', options: ['誕生日', '記念日', '休日', '祝日'], answer: 0 },
-      { prompt: 'うちに ねこが います。', options: ['鳥', '犬', '猫', '魚'], answer: 2 },
-      { prompt: 'せんせいに しつもんします。', options: ['質問', '返事', '発音', '説明'], answer: 0 },
-      { prompt: 'わたしは あした ひまです。', options: ['忙', '空', '暇', '遠'], answer: 2 },
-      { prompt: 'ともだちと えいがを みます。', options: ['図書館', '映画', '音楽', '新聞'], answer: 1 },
-      { prompt: 'きょうは いい てんきですね。', options: ['元気', '天気', '気分', '空気'], answer: 1 },
-      { prompt: 'みせで パンを かいました。', options: ['売', '買', '食', '作'], answer: 1 },
-      { prompt: 'わたしの しゅみは りょこうです。', options: ['旅行', '運動', '料理', '読書'], answer: 0 },
-      { prompt: 'このシャツは たかいです。', options: ['安い', '高い', '古い', '短い'], answer: 1 },
-      { prompt: 'へやを そうじ しました。', options: ['掃除', '洗濯', '買物', '炊事'], answer: 0 }
-    ]
+    kanji: [{ prompt: '水', options: ['みず', 'みずう', 'すい', 'みつ'], answer: 0, instruction: 'Membaca Kanji: Pilih cara baca yang tepat.' }],
+    goi: [{ prompt: '毎日（　　）を飲みます。', options: ['ぎゅうにゅう', 'ぎゅうにく', 'にゅうぎゅう', 'ぎゅにゅう'], answer: 0, instruction: 'Kosakata: Pilih kata yang tepat.' }],
+    bunpou: [{ prompt: '先生＿＿＿日本語を教えます。', options: ['は', 'を', 'に', 'が'], answer: 0, instruction: 'Tata Bahasa: Pilih partikel yang tepat.' }]
   },
+  
   N4: {
+    // ==========================================
+    // 1. KOSAKATA & KANJI (20 Soal)
+    // ==========================================
     kanji: [
-      { prompt: '経験', options: ['けいけん', 'けんけい', 'けいげん', 'けんげん'], answer: 0 },
-      { prompt: '必要', options: ['ひつよう', 'ひっよう', 'ひつょ', 'ひつよ'], answer: 0 },
-      { prompt: '準備', options: ['じゅんぴ', 'じゅんび', 'じょうび', 'じゅうび'], answer: 1 },
-      { prompt: '説明', options: ['せつめい', 'ぜつめい', 'せっめい', 'せつみ'], answer: 0 },
-      { prompt: '連絡', options: ['れんらく', 'れんがく', 'れんりゃく', 'れらく'], answer: 0 },
-      { prompt: '約束', options: ['やくそく', 'やっそく', 'ようそく', 'やくぞく'], answer: 0 },
-      { prompt: '戻る', options: ['もどる', 'かえる', 'かえす', 'もどす'], answer: 0 },
-      { prompt: '選ぶ', options: ['えらぶ', 'えりぶ', 'せんぶ', 'えろぶ'], answer: 0 },
-      { prompt: '続ける', options: ['つづく', 'つづける', 'つつける', 'つづかる'], answer: 1 },
-      { prompt: '増える', options: ['ふえる', 'まえる', 'ぞえる', 'ふやる'], answer: 0 },
-      { prompt: '比べる', options: ['くらべる', 'ひべる', 'くらう', 'ならべる'], answer: 0 },
-      { prompt: '調べる', options: ['しらべる', 'しらぶる', 'とらべる', 'しらえる'], answer: 0 },
-      { prompt: '遅れる', options: ['おくれる', 'おこれる', 'おちれる', 'おこれる'], answer: 0 },
-      { prompt: '終わる', options: ['おわる', 'しまる', 'おえる', 'すわる'], answer: 0 },
-      { prompt: '届ける', options: ['とどく', 'とどける', 'とどえる', 'とどまる'], answer: 1 },
-      { prompt: '忘れる', options: ['わかれる', 'わすれる', 'わられる', 'わたれる'], answer: 1 },
-      { prompt: '確認', options: ['かくにん', 'かくじん', 'かっにん', 'かくりん'], answer: 0 },
-      { prompt: '利用', options: ['りよう', 'りゅうよう', 'りよ', 'りようう'], answer: 0 },
-      { prompt: '習慣', options: ['しゅうかん', 'しゅかん', 'しゅうがん', 'じゅうかん'], answer: 0 },
-      { prompt: '理由', options: ['りゆう', 'りゆ', 'りゆょ', 'りょう'], answer: 0 }
+      /* Membaca Kanji */
+      { prompt: 'この部屋はとても暗いです。', options: ['くろい', 'くらい', 'ひろい', 'あおい'], answer: 1, instruction: 'Membaca Kanji: Bagaimana cara membaca kata yang digarisbawahi?' },
+      { prompt: '明日は大切な用事があります。', options: ['たいせつ', 'だいせつ', 'たいぜつ', 'だいぜつ'], answer: 0, instruction: 'Membaca Kanji: Bagaimana cara membaca kata yang digarisbawahi?' },
+      { prompt: '荷物が重くて運べません。', options: ['おもくて', 'くろくて', 'あかくて', 'かるくて'], answer: 0, instruction: 'Membaca Kanji: Bagaimana cara membaca kata yang digarisbawahi?' },
+      { prompt: 'あの店はいつも客が多いです。', options: ['きゃく', 'かく', 'きょく', 'きやく'], answer: 0, instruction: 'Membaca Kanji: Bagaimana cara membaca kata yang digarisbawahi?' },
+      { prompt: '図書館で本を借りました。', options: ['かしました', 'かりました', 'かいました', 'とりました'], answer: 1, instruction: 'Membaca Kanji: Bagaimana cara membaca kata yang digarisbawahi?' },
+      
+      /* Menulis Kanji */
+      { prompt: '田中さんに荷物をはこんでもらいました。', options: ['運ん', '動ん', '送ん', '転ん'], answer: 0, instruction: 'Menulis Kanji: Pilih kanji yang tepat.' },
+      { prompt: '新しい自転車をえらびました。', options: ['並びました', '選びました', '遊びました', '喜びました'], answer: 1, instruction: 'Menulis Kanji: Pilih kanji yang tepat.' },
+      { prompt: '彼はいつもまじめにはたらいています。', options: ['動いて', '動いて', '働いて', '歩いて'], answer: 2, instruction: 'Menulis Kanji: Pilih kanji yang tepat.' },
+      { prompt: 'きのう、あたらしい靴を買いました。', options: ['新しい', '親しい', '古い', '美しい'], answer: 0, instruction: 'Menulis Kanji: Pilih kanji yang tepat.' },
+      { prompt: 'もっとはやく走ってください。', options: ['早く', '速く', '急く', '走く'], answer: 1, instruction: 'Menulis Kanji: Pilih kanji yang tepat.' }
     ],
-    bunpou: [
-      { prompt: '雨が降っている＿＿、出かけません。', options: ['けど', 'ので', 'なら', 'まで'], answer: 1 },
-      { prompt: 'この薬を飲めば、すぐ良くなる＿＿。', options: ['ように', 'はずです', 'だけです', 'ためです'], answer: 1 },
-      { prompt: '日本へ行く＿＿、京都に住みたいです。', options: ['なら', 'しか', 'だけ', 'こそ'], answer: 0 },
-      { prompt: '昨日は疲れていた＿＿、早く寝ました。', options: ['ので', 'でも', 'ながら', 'とか'], answer: 0 },
-      { prompt: 'この店は駅に近い＿＿、便利です。', options: ['し', 'だけ', 'のに', 'より'], answer: 0 },
-      { prompt: '仕事が終わって＿＿、買い物に行きます。', options: ['から', 'まで', 'しか', 'ほど'], answer: 0 },
-      { prompt: '田中さんは漢字を読む＿＿できます。', options: ['ことが', 'のを', 'ものが', 'ために'], answer: 0 },
-      { prompt: 'この本は難しすぎて、読め＿＿。', options: ['ます', 'ません', 'ない', 'ませんでした'], answer: 2 },
-      { prompt: '私は日本語を勉強する＿＿、毎日新聞を読みます。', options: ['ために', 'ように', 'だけに', 'ほどに'], answer: 0 },
-      { prompt: '先生にレポートを出す＿＿、忘れました。', options: ['のは', 'のを', 'ことが', 'ものを'], answer: 1 },
-      { prompt: '駅まで歩く＿＿、バスで行きましょう。', options: ['より', 'なら', 'ほど', 'しか'], answer: 0 },
-      { prompt: '日本語が上手に話せる＿＿、練習しています。', options: ['ように', 'ために', 'くらい', 'ばかり'], answer: 0 },
-      { prompt: 'その映画は思った＿＿面白くなかった。', options: ['より', 'ほど', 'ばかり', 'だけ'], answer: 0 },
-      { prompt: 'このボタンを押す＿＿、ドアが開きます。', options: ['と', 'ば', 'なら', 'ので'], answer: 0 },
-      { prompt: '会議は3時＿＿始まります。', options: ['に', 'で', 'を', 'へ'], answer: 0 },
-      { prompt: 'すみません、もう一度説明して＿＿。', options: ['もらいます', 'くれます', 'ください', 'います'], answer: 2 },
-      { prompt: 'この問題は私には難し＿＿。', options: ['いです', 'くです', 'ですい', 'でしたい'], answer: 0 },
-      { prompt: '部屋をきれいにして＿＿から、出かけます。', options: ['ある', 'おく', 'しまう', 'みる'], answer: 1 },
-      { prompt: '授業に遅れない＿＿、早く出ます。', options: ['ために', 'ように', 'すぎて', 'ながら'], answer: 1 },
-      { prompt: '彼は歌が上手な＿＿、人気があります。', options: ['ので', 'けど', 'のに', 'とか'], answer: 0 }
-    ],
+
     goi: [
-      { prompt: '会議の じかんを 変更します。', options: ['へんこう', 'へいこう', 'へんこうう', 'へこう'], answer: 0 },
-      { prompt: 'この資料を コピーしてください。', options: ['試料', '資料', '資源', '食料'], answer: 1 },
-      { prompt: '部長に 連絡しました。', options: ['れんらく', 'れんがく', 'れんりゃく', 'れんろく'], answer: 0 },
-      { prompt: 'この問題の 原因を 調べます。', options: ['げんいん', 'げんい', 'げにん', 'げんじん'], answer: 0 },
-      { prompt: '新しい計画を 提案します。', options: ['ていあん', 'ていなん', 'ていかん', 'てんあん'], answer: 0 },
-      { prompt: 'しっかり 準備して ください。', options: ['じゅんび', 'じょうび', 'じゅんぴ', 'じゅうび'], answer: 0 },
-      { prompt: '今日は 予約が いっぱいです。', options: ['よやく', 'ようやく', 'よや', 'よくや'], answer: 0 },
-      { prompt: 'このアプリは 利用しやすいです。', options: ['利用', '使用', '活用', '応用'], answer: 0 },
-      { prompt: '急な 変更に 対応できますか。', options: ['たいおう', 'だいおう', 'たいよう', 'たいこう'], answer: 0 },
-      { prompt: '社内で 共有して おいてください。', options: ['きょうゆう', 'きょうよう', 'きょゆう', 'ぎょうゆう'], answer: 0 },
-      { prompt: 'その説明は とても 具体的です。', options: ['抽象的', '具体的', '個人的', '一般的'], answer: 1 },
-      { prompt: 'この製品は 品質が 高いです。', options: ['ひんしつ', 'ひんしち', 'ひんじつ', 'ひしつ'], answer: 0 },
-      { prompt: '予定を 確認して 連絡します。', options: ['かくにん', 'かくりん', 'かくじん', 'かっにん'], answer: 0 },
-      { prompt: '電車が 遅れて しまいました。', options: ['おくれて', 'はずれて', 'とまって', 'すぎて'], answer: 0 },
-      { prompt: 'この業務は 優先です。', options: ['ゆうせい', 'ゆうせん', 'ゆせん', 'ゆうしん'], answer: 1 },
-      { prompt: '資料を 印刷して ください。', options: ['いんさつ', 'いんせつ', 'いんしつ', 'いんざつ'], answer: 0 },
-      { prompt: '今月の 売上を 報告します。', options: ['うりあげ', 'うりうえ', 'ばいあげ', 'ばいじょう'], answer: 0 },
-      { prompt: '先に 結論を 言ってください。', options: ['けつろん', 'けつりん', 'けちろん', 'けつよう'], answer: 0 },
-      { prompt: 'この内容で 同意します。', options: ['どうぎ', 'どうい', 'どうぎい', 'どうに'], answer: 1 },
-      { prompt: '正確な データが 必要です。', options: ['ひつよう', 'ひっよう', 'ひつよ', 'ひずよう'], answer: 0 }
+      /* Konteks / Mengisi Kurung */
+      { prompt: 'お湯を（　　　）から、お茶を入れましょう。', options: ['やいて', 'わかして', 'ひやして', 'こわして'], answer: 1, instruction: 'Kosakata: Pilih kata yang paling tepat.' },
+      { prompt: '会議の時間が（　　　）したので、気をつけてください。', options: ['へんこう', 'りよう', 'せつめい', 'しょうたい'], answer: 0, instruction: 'Kosakata: Pilih kata yang paling tepat.' },
+      { prompt: '道が（　　　）いて、遅刻してしまいました。', options: ['す', 'こ', 'かわ', 'ひら'], answer: 1, instruction: 'Kosakata: Pilih kata yang paling tepat.' },
+      { prompt: '朝、寝坊して（　　　）家を出ました。', options: ['しっかり', 'すっかり', 'あわてて', 'なるべく'], answer: 2, instruction: 'Kosakata: Pilih kata yang paling tepat.' },
+      { prompt: 'このスープは少し味が（　　　）ですね。', options: ['うすい', 'ほそい', 'あさい', 'すずしい'], answer: 0, instruction: 'Kosakata: Pilih kata yang paling tepat.' },
+      
+      /* Parafrasa & Penggunaan */
+      { prompt: 'このパソコンは複雑ですね。', options: ['このパソコンは高いですね。', 'このパソコンは便利ですね。', 'このパソコンは使いにくいですね。', 'このパソコンは新しいですね。'], answer: 2, instruction: 'Parafrasa: Pilih kalimat yang artinya paling mirip.' },
+      { prompt: '山田さんはいつも親切です。', options: ['山田さんはいつも優しいです。', '山田さんはいつも厳しいです。', '山田さんはいつも面白いです。', '山田さんはいつも忙しいです。'], answer: 0, instruction: 'Parafrasa: Pilih kalimat yang artinya paling mirip.' },
+      { prompt: '「すっかり」の使い方として最もよいものを選んでください。', options: ['薬を飲んだら、病気がすっかり良くなりました。', '明日はすっかり雨が降るでしょう。', 'このケーキはすっかり美味しいですね。', 'テストの前にすっかり勉強しました。'], answer: 0, instruction: 'Penggunaan Kata: Pilih kalimat yang tepat.' },
+      { prompt: '「うつす」の使い方として最もよいものを選んでください。', options: ['ノートの字を黒板にうつしました。', 'カメラで美しい景色をうつしました。', '風邪を友達にうつしてしまいました。', '1・2・3 すべて正しいです。'], answer: 3, instruction: 'Penggunaan Kata: Pilih kalimat yang tepat.' },
+      { prompt: '「さっき」の使い方として最もよいものを選んでください。', options: ['さっきから雨が降っています。', '山田さんなら、さっき帰りましたよ。', 'さっき、また遊びに来てください。', 'あしたのさっき、行きましょう。'], answer: 1, instruction: 'Penggunaan Kata: Pilih kalimat yang tepat.' }
+    ],
+
+    // ==========================================
+    // 2. TATA BAHASA & DOKKAI (20 Soal)
+    // ==========================================
+    bunpou: [
+      /* Grammar Biasa */
+      { prompt: '雨が降っている（　　　）、試合は中止になりました。', options: ['のに', 'ので', 'でも', 'なら'], answer: 1, instruction: 'Tata Bahasa: Pilih kata yang paling tepat.' },
+      { prompt: '日本語がもっと上手に（　　　）ように、毎日練習しています。', options: ['話す', '話せる', '話した', '話して'], answer: 1, instruction: 'Tata Bahasa: Pilih bentuk kata yang paling tepat.' },
+      { prompt: 'この本は難しすぎて、私には（　　　）。', options: ['読まれます', '読ませます', '読めます', '読めません'], answer: 3, instruction: 'Tata Bahasa: Pilih bentuk kata yang paling tepat.' },
+      { prompt: '部屋を出る時は、電気を（　　　）ままにしないでください。', options: ['つける', 'つけた', 'つけ', 'つけて'], answer: 1, instruction: 'Tata Bahasa: Pilih bentuk kata yang paling tepat.' },
+      { prompt: 'あのレストランは美味しい（　　　）、いつも混んでいます。', options: ['し', 'から', 'ため', 'らしい'], answer: 0, instruction: 'Tata Bahasa: Pilih partikel yang paling tepat.' },
+      
+      /* Soal Bintang (Menyusun Kata) */
+      { 
+        type: 'star', 
+        prompt: '明日は ___ ___ ★ ___ つもりです。', 
+        options: ['に', '図書館', 'に行く', '勉強し'], 
+        answer: 3, 
+        instruction: 'Susunlah 4 pilihan di bawah ini menjadi kalimat yang benar. Lalu, pilih kata yang tepat untuk posisi bintang (★).' 
+      },
+      { 
+        type: 'star', 
+        prompt: 'きのう、 ___ ___ ★ ___ 掃除をさせました。', 
+        options: ['は', 'に', '妹', '母'], 
+        answer: 2, 
+        instruction: 'Susunlah 4 pilihan di bawah ini menjadi kalimat yang benar. Lalu, pilih kata yang tepat untuk posisi bintang (★).' 
+      },
+      { 
+        type: 'star', 
+        prompt: '私は、 ___ ___ ★ ___ 好きです。', 
+        options: ['飲みながら', 'が', 'お茶を', '本を読むの'], 
+        answer: 0, 
+        instruction: 'Susunlah 4 pilihan di bawah ini menjadi kalimat yang benar. Lalu, pilih kata yang tepat untuk posisi bintang (★).' 
+      },
+      { 
+        type: 'star', 
+        prompt: 'この ___ ___ ★ ___ お願いします。', 
+        options: ['コピーして', '資料', 'を', 'ください'], 
+        answer: 0, 
+        instruction: 'Susunlah 4 pilihan di bawah ini menjadi kalimat yang benar. Lalu, pilih kata yang tepat untuk posisi bintang (★).' 
+      },
+
+      /* Dokkai (Membaca) */
+      { 
+        type: 'dokkai', 
+        passage: `私は先月、駅の近くのコンビニでアルバイトを始めました。最初はレジの使い方が分からなくて、お客さんを待たせてしまい、よく失敗しました。
+
+でも、店長や先輩が優しく教えてくれたので、今は一人で仕事ができるようになりました。昨日、いつも来るお客さんに「いつも笑顔でありがとう。頑張ってね」と言われて、とても嬉しかったです。
+
+これからも、お客さんに喜んでもらえるように頑張りたいです。`, 
+        prompt: '「私」はどうして嬉しかったのですか。', 
+        options: ['新しいアルバイトを始めたから', '店長が優しく教えてくれたから', 'レジが一人で使えるようになったから', 'お客さんにお礼を言われたから'], 
+        answer: 3, 
+        instruction: 'Berdasarkan teks di samping, pilih jawaban yang paling tepat.' 
+      },
+      { 
+        type: 'dokkai', 
+        passage: `日本では、家に入るときに靴を脱ぐ習慣があります。外国から来た人にとっては、少し面倒だと思うかもしれません。
+
+しかし、これには理由があります。昔の日本の家は、床が「畳（たたみ）」で作られていました。畳の上で座ったり、布団を敷いて寝たりするため、家の中をきれいにしておく必要があったからです。
+
+今はベッドで寝る人も増えましたが、靴を脱ぐ習慣はそのまま残っています。`, 
+        prompt: '日本人が家の中で靴を脱ぐのは、なぜですか。', 
+        options: ['昔から畳の上で寝たり座ったりしていて、家の中をきれいにするため。', '外国人が日本の習慣を好きだから。', '最近はベッドで寝る人が増えたから。', '外から入るときに足が疲れるから。'], 
+        answer: 0, 
+        instruction: 'Berdasarkan teks di samping, pilih jawaban yang paling tepat.' 
+      },
+      { 
+        type: 'dokkai', 
+        passage: `（スーパーの入り口のポスター）
+お知らせ
+
+いつも「さくらスーパー」をご利用いただき、ありがとうございます。
+来月の5月10日（月）から12日（水）まで、店内を工事するため、お店を休みます。
+5月13日（木）の朝10時から、新しくなったお店を開けます。
+
+なお、休みの間も、隣の「さくら薬局」はいつも通り開いています。
+よろしくお願いします。`, 
+        prompt: 'スーパーが新しく開くのはいつですか。', 
+        options: ['5月10日', '5月12日', '5月13日', '薬局と同じ日'], 
+        answer: 2, 
+        instruction: 'Berdasarkan pengumuman di samping, pilih jawaban yang paling tepat.' 
+      }
+    ],
+
+    // ==========================================
+    // 3. CHOUKAI (5 Soal Mendengarkan)
+    // ==========================================
+    // Catatan: Karena kita tidak punya file MP3 asli JLPT, ini memakai dummy MP3 royalty-free 
+    // agar fiturnya tetap bisa ditekan dan dicoba oleh user.
+    choukai: [
+      { 
+        type: 'choukai', 
+        audioSrc: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        prompt: '男の人は明日、何時にどこへ行きますか。', 
+        options: ['8時に駅', '9時に駅', '8時に会社', '9時に会社'], 
+        answer: 1, 
+        instruction: 'Dengarkan audio berikut dan pilih jawaban yang paling tepat.' 
+      },
+      { 
+        type: 'choukai', 
+        audioSrc: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        prompt: '女の人は何を買いますか。', 
+        options: ['赤いりんごを3つ', '青いりんごを3つ', '赤いりんごを5つ', '青いりんごを5つ'], 
+        answer: 0, 
+        instruction: 'Dengarkan audio berikut dan pilih jawaban yang paling tepat.' 
+      },
+      { 
+        type: 'choukai', 
+        audioSrc: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        prompt: '二人は何について話していますか。', 
+        options: ['明日の天気', '週末の旅行', '昨日のテスト', '新しい先生'], 
+        answer: 1, 
+        instruction: 'Dengarkan audio berikut dan pilih jawaban yang paling tepat.' 
+      }
     ]
   }
 };

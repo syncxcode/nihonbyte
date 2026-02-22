@@ -732,9 +732,10 @@ select, input, .action-btn {
 }
 
 .pattern-card:hover { transform: translateY(-3px); box-shadow: 0 16px 28px rgba(190, 24, 93, 0.3); }
-.pattern-title { font-size: 1.45rem; font-weight: 800; color: #111827; letter-spacing: 0.2px; }
-.pattern-example { font-size: 1.04rem; line-height: 1.55; color: #1f2937; }
-.pattern-meaning { font-size: 0.95rem; color: #374151; font-weight: 500; }
+.pattern-title { font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; color: #111827; letter-spacing: 0.2px; }
+.pattern-example-jp { font-size: 1.08rem; line-height: 1.55; color: #1f2937; }
+.pattern-example-id { font-size: 0.95rem; line-height: 1.5; color: #374151; font-style: italic; margin-top: -4px; }
+.pattern-meaning { margin-top: auto; font-size: 0.95rem; color: #374151; font-weight: 600; padding-right: 36px; }
 .pattern-audio-btn {
   position: absolute; right: 12px; bottom: 12px; border: none; width: 36px; height: 36px; border-radius: 999px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 10px rgba(17, 24, 39, 0.22); cursor: pointer; font-weight: 800;
 }
@@ -1015,14 +1016,6 @@ select, input, .action-btn {
     gap: 12px !important;
   }
 
-  #grid.pattern-grid-layout .pattern-title,
-  #grid.pattern-grid-layout .pattern-example,
-  #grid.pattern-grid-layout .pattern-meaning {
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
-
   /* --- Support Mode / Poster --- */
   .branding { padding-left: 10px !important; }
   .branding img { height: 65px !important; }
@@ -1037,3 +1030,66 @@ select, input, .action-btn {
 @media (max-width: 480px) {
   .branding img { height: 55px !important; }
 }
+
+.simulation-menu {
+  display: grid;
+  gap: 8px;
+}
+.simulation-menu label {
+  font-size: 0.8rem;
+  color: #f1f5f9;
+}
+.simulation-level-select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.2);
+  color: white;
+  padding: 7px 10px;
+}
+.simulation-level-select option { color: #111827; }
+
+body.jlpt-simulation-active {
+  background: #f8fafc;
+}
+.hidden-for-simulation {
+  display: none !important;
+}
+body.jlpt-simulation-active #grid {
+  margin-top: 0 !important;
+  min-height: 100dvh;
+  width: min(980px, 100%);
+  padding: 16px;
+}
+.jlpt-sim-shell {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 14px 40px rgba(15,23,42,.12);
+  display: grid;
+  gap: 14px;
+}
+.jlpt-sim-header h2 { margin: 0; font-size: 1.05rem; }
+.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #334155; }
+.jlpt-sim-meta span { background: #eef2ff; border-radius: 999px; padding: 4px 10px; font-size: .82rem; }
+.jlpt-sim-question-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+.jlpt-sim-question { margin: 0; font-size: clamp(1.1rem, 3vw, 1.6rem); font-weight: 700; color: #0f172a; }
+.jlpt-sim-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.jlpt-sim-opt { text-align: left; border: 1px solid #cbd5e1; border-radius: 12px; padding: 12px; font-size: 1rem; font-weight: 600; background: white; cursor: pointer; }
+.jlpt-sim-opt.correct { background: #22c55e; color: #fff; border-color: #16a34a; }
+.jlpt-sim-opt.wrong { background: #f87171; color: #fff; border-color: #ef4444; }
+.jlpt-sim-actions { display: flex; justify-content: flex-end; }
+
+.jlpt-history-wrap { grid-column: 1 / -1; display: grid; place-items: center; }
+.jlpt-certificate {
+  width: min(760px, 100%);
+  border: 10px solid #d4af37;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  background: linear-gradient(180deg, #fffdf2, #fff);
+  box-shadow: 0 15px 40px rgba(15,23,42,.16);
+}
+.jlpt-certificate h2 { margin: 0 0 4px; }
+.jlpt-certificate h3 { margin: 0 0 18px; color: #92400e; }
+.jlpt-certificate .cert-name { font-size: 1.35rem; font-weight: 700; }

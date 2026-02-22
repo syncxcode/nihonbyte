@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const expandedCard = document.getElementById("expandedCard");
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
-
+  
   const topbar = document.querySelector(".topbar");
   
   // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
@@ -95,165 +95,9 @@ document.addEventListener("DOMContentLoaded", () => {
 // 1. Fungsi Memulai Test
 // ==========================================
 function startExercise(type, level) {
-    
-document.addEventListener("DOMContentLoaded", () => {
-document.addEventListener("DOMContentLoaded", () => {
-  const grid = document.getElementById("grid");
-  const grid = document.getElementById("grid");
-  const category = document.getElementById("category");
-  const category = document.getElementById("category");
-  const search = document.getElementById("search");
-  const search = document.getElementById("search");
-  const hamburger = document.getElementById("hamburger");
-  const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("overlay");
-  const overlay = document.getElementById("overlay");
-  const resultInfo = document.getElementById("resultInfo");
-  const resultInfo = document.getElementById("resultInfo");
-  const kanjiModal = document.getElementById("kanjiModal");
-  const kanjiModal = document.getElementById("kanjiModal");
-  const modalBackdrop = document.getElementById("modalBackdrop");
-  const modalBackdrop = document.getElementById("modalBackdrop");
-  const modalClose = document.getElementById("modalClose");
-  const modalClose = document.getElementById("modalClose");
-  const expandedCard = document.getElementById("expandedCard");
-  const expandedCard = document.getElementById("expandedCard");
-  const recommendationRow = document.getElementById("recommendationRow");
-  const recommendationRow = document.getElementById("recommendationRow");
-  const modalSubtitle = document.getElementById("modalSubtitle");
-  const modalSubtitle = document.getElementById("modalSubtitle");
-  const topbar = document.querySelector(".topbar");
-  
-  
-  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
-  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
-  const searchBtn = document.getElementById("searchBtn");
-  const searchBtn = document.getElementById("searchBtn");
-  const filterModal = document.getElementById("filterModal");
-  const filterModal = document.getElementById("filterModal");
-  const filterBackdrop = document.getElementById("filterBackdrop");
-  const filterBackdrop = document.getElementById("filterBackdrop");
-  const filterModalClose = document.getElementById("filterModalClose");
-  const filterModalClose = document.getElementById("filterModalClose");
-  const modalSearchInput = document.getElementById("modalSearchInput");
-  const modalSearchInput = document.getElementById("modalSearchInput");
-  const applyFilterBtn = document.getElementById("applyFilterBtn");
-  const applyFilterBtn = document.getElementById("applyFilterBtn");
-  const resetFilterBtn = document.getElementById("resetFilterBtn");
-  const resetFilterBtn = document.getElementById("resetFilterBtn");
-
-
-  function enforceMobileTopbarOrder() {
-  function enforceMobileTopbarOrder() {
-    const topbar = document.querySelector(".topbar");
-    const topbar = document.querySelector(".topbar");
-    if (!topbar || !resultInfo || !searchBtn) return;
-    if (!topbar || !resultInfo || !searchBtn) return;
-
-
-    if (window.innerWidth <= 768) {
-    if (window.innerWidth <= 768) {
-      topbar.insertBefore(resultInfo, searchBtn);
-      topbar.insertBefore(resultInfo, searchBtn);
-      topbar.appendChild(searchBtn);
-      topbar.appendChild(searchBtn);
-      resultInfo.style.position = "static";
-      resultInfo.style.position = "static";
-      resultInfo.style.transform = "none";
-      resultInfo.style.transform = "none";
-      resultInfo.style.marginLeft = "auto";
-      resultInfo.style.marginLeft = "auto";
-      resultInfo.style.marginRight = "6px";
-      resultInfo.style.marginRight = "6px";
-      searchBtn.style.marginLeft = "0";
-      searchBtn.style.marginLeft = "0";
-    } else {
-    } else {
-      resultInfo.style.position = "";
-      resultInfo.style.position = "";
-      resultInfo.style.transform = "";
-      resultInfo.style.transform = "";
-@@ -55,72 +56,88 @@ document.addEventListener("DOMContentLoaded", () => {
-  let quizOriginalBodyHeight = "";
-  let quizOriginalBodyHeight = "";
-  let quizOriginalHtmlHeight = "";
-  let quizOriginalHtmlHeight = "";
-  let isQuizScrollLocked = false;
-  let isQuizScrollLocked = false;
-
-
-  function lockQuizScroll() {
-  function lockQuizScroll() {
-    if (isQuizScrollLocked) return;
-    if (isQuizScrollLocked) return;
-    quizOriginalBodyOverflow = document.body.style.overflow || "";
-    quizOriginalBodyOverflow = document.body.style.overflow || "";
-    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
-    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
-    quizOriginalBodyHeight = document.body.style.height || "";
-    quizOriginalBodyHeight = document.body.style.height || "";
-    quizOriginalHtmlHeight = document.documentElement.style.height || "";
-    quizOriginalHtmlHeight = document.documentElement.style.height || "";
-    document.body.style.overflow = "hidden";
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.height = "100dvh";
-    document.body.style.height = "100dvh";
-    document.documentElement.style.height = "100dvh";
-    document.documentElement.style.height = "100dvh";
-    isQuizScrollLocked = true;
-    isQuizScrollLocked = true;
-  }
-  }
-
-
-  function unlockQuizScroll() {
-  function unlockQuizScroll() {
-    if (!isQuizScrollLocked) return;
-    if (!isQuizScrollLocked) return;
-    document.body.style.overflow = quizOriginalBodyOverflow;
-    document.body.style.overflow = quizOriginalBodyOverflow;
-    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
-    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
-    document.body.style.height = quizOriginalBodyHeight;
-    document.body.style.height = quizOriginalBodyHeight;
-    document.documentElement.style.height = quizOriginalHtmlHeight;
-    document.documentElement.style.height = quizOriginalHtmlHeight;
-    isQuizScrollLocked = false;
-    isQuizScrollLocked = false;
-  }
-  }
-  function getLatihanVocabularySource() {
-    return Array.isArray(window.latihanVocabularyData) ? window.latihanVocabularyData : vocabularyData;
-  }
-
-  function getLatihanPatternSource(level) {
-    if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) {
-      return window.latihanPatternData[level];
-    }
-    return (typeof patternData !== 'undefined' ? (patternData[level] || []) : []);
-  }
-
-      
-      
-// ==========================================
-// ==========================================
-// 1. Fungsi Memulai Test
-// 1. Fungsi Memulai Test
-// ==========================================
-// ==========================================
-function startExercise(type, level) {
-function startExercise(type, level) {
-    let filteredData = vocabularyData.filter(d => d.level === level);
     let filteredData = [];
-    
 
-    if (type === 'kanji') {
     if (type === 'bunpou') {
-        filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
         filteredData = getLatihanPatternSource(level);
     } else {
         filteredData = getLatihanVocabularySource().filter(d => d.level === level);
@@ -505,6 +349,7 @@ function generateOptions(correctItem, type) {
 
     const latihanVocabulary = getLatihanVocabularySource();
     let basePool = latihanVocabulary.filter(d => d.kana !== correctItem.kana && d.level === correctItem.level);
+
     let smartPool = basePool.filter(d => {
         const isSuru = (item) => (item.kana && item.kana.endsWith('する')) || (item.kanji && item.kanji.endsWith('する'));
         if (isSuru(correctItem)) return isSuru(d);
@@ -950,7 +795,7 @@ function confirmEndQuiz() {
     renderSimulationQuestion();
     startSimulationTimer();
   }
-  
+
   const letterSets = {
     hiragana: {
       title: "Poster Hiragana",
@@ -1427,7 +1272,6 @@ function confirmEndQuiz() {
         <div class="pattern-title">${pattern.pattern}</div>
         <div class="pattern-example-jp">${jpExample}</div>
         <div class="pattern-example-id">${idTranslation}</div>
-        <div class="pattern-example">${pattern.example}</div>
         <div class="pattern-meaning">${pattern.meaning}</div>
         <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
       `;
@@ -1740,9 +1584,12 @@ function confirmEndQuiz() {
     closeSidebar();
   });
 
-  startSimulationBtn?.addEventListener("click", () => {
-    const level = simulationLevelSelect?.value || "N5";
-    startSimulation(level);
+  document.querySelectorAll(".simulation-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const level = button.dataset.level || "N5";
+      startSimulation(level);
+      closeSidebar();
+    });
   });
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
@@ -1818,9 +1665,7 @@ function confirmEndQuiz() {
   // ==========================================
   function render() {
     if (!isTesting) unlockQuizScroll();
-    if (!viewMode.startsWith("simulation:")) toggleSimulationLayout(false);
     syncMobileTopbarLayout();
-    if (!viewMode.startsWith("simulation:")) toggleSimulationLayout(false);
     grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";

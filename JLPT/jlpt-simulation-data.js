@@ -1,11 +1,21 @@
 // ==========================================
-// KONFIGURASI SIMULASI JLPT ASLI (WAKTU & JUMLAH SOAL REAL)
+// KONFIGURASI SIMULASI JLPT ASLI (MULTI-SESI & WAKTU REAL)
 // ==========================================
 window.jlptSimulationConfig = {
-  // N5: Total 90 Menit. Target ~80-90 soal
-  N5: { totalMinutes: 90, sectionCounts: { kanji: 15, goi: 20, bunpou: 25, choukai: 20 } },
-  // N4: Total 115 Menit. Target ~90-100 soal
-  N4: { totalMinutes: 115, sectionCounts: { kanji: 15, goi: 20, bunpou: 35, choukai: 25 } }
+  N5: {
+    sections: [
+      { id: 'kosakata', title: 'Pengetahuan Bahasa (Kosakata)', durationMinutes: 20, keys: ['kanji', 'goi'] },
+      { id: 'tatabahasa_membaca', title: 'Pengetahuan Bahasa (Tata Bahasa)・Membaca', durationMinutes: 40, keys: ['bunpou'] },
+      { id: 'mendengarkan', title: 'Mendengarkan', durationMinutes: 30, keys: ['choukai'] }
+    ]
+  },
+  N4: {
+    sections: [
+      { id: 'kosakata', title: 'Pengetahuan Bahasa (Kosakata)', durationMinutes: 25, keys: ['kanji', 'goi'] },
+      { id: 'tatabahasa_membaca', title: 'Pengetahuan Bahasa (Tata Bahasa)・Membaca', durationMinutes: 55, keys: ['bunpou'] },
+      { id: 'mendengarkan', title: 'Mendengarkan', durationMinutes: 35, keys: ['choukai'] }
+    ]
+  }
 };
 
 // ==========================================

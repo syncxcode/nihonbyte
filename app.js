@@ -413,7 +413,6 @@ function confirmEndQuiz() {
 }
       
     searchBtn.addEventListener("click", () => {
-      if (simulationState.active) return;
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -596,344 +595,6 @@ function confirmEndQuiz() {
     timerId: null,
     answered: false,
   };
-
-  // ==========================================
-  // STATE SIMULASI MULTI-SESI & UI ADVANCED
-  // ==========================================
-  const simulationState = {
-    active: false,
-    level: "",
-    sections: [],
-    currentSectionIndex: 0,
-    timeLeft: 0,
-    timerId: null,
-    questions: [],
-    index: 0,
-    totalScore: 0,
-    totalQuestions: 0,
-    answers: [],
-  };
-
-  function saveSimulationHistory(entry) {
-    const key = "jlptSimulationHistory";
-    const history = JSON.parse(localStorage.getItem(key) || "[]");
-    history.unshift(entry);
-    localStorage.setItem(key, JSON.stringify(history.slice(0, 30)));
-  }
-
-  function stopSimulationTimer() {
-    if (simulationState.timerId) {
-      clearInterval(simulationState.timerId);
-      simulationState.timerId = null;
-    }
-  }
-
-  function toggleSimulationLayout(isActive) {
-    document.body.classList.toggle("jlpt-simulation-active", isActive);
-    if (topbar) topbar.classList.toggle("hidden-for-simulation", isActive);
-    if (sidebar) sidebar.classList.toggle("hidden-for-simulation", isActive);
-    if (overlay) overlay.classList.remove("active");
-  }
-
-  function formatDuration(sec) {
-    const mm = String(Math.floor(sec / 60)).padStart(2, "0");
-    const ss = String(sec % 60).padStart(2, "0");
-    return `${mm}:${ss}`;
-  }
-
-  // Render Soal dengan Deteksi UI (Dokkai / Star / Choukai)
-  function renderSimulationQuestion() {
-    const currentSection = simulationState.sections[simulationState.currentSectionIndex];
-    const current = simulationState.questions[simulationState.index];
-
-    if (!current) {
-      finishSection();
-      return;
-    }
-
-    const answered = simulationState.answers[simulationState.index];
-    const qType = current.type || "default";
-
-    // 1. Header
-    let html = `
-      <section class="jlpt-sim-shell">
-        <header class="jlpt-sim-header">
-          <h2>JAPANESE-LANGUAGE PROFICIENCY TEST (CBT)</h2>
-          <p class="jlpt-sim-subtitle">Level ${simulationState.level} • ${currentSection.title}</p>
-          <div class="jlpt-sim-meta">
-            <span>Question ${simulationState.index + 1}/${simulationState.questions.length}</span>
-            <span>Time Left: <strong id="simulationTimer" style="color:#e11d48;">${formatDuration(simulationState.timeLeft)}</strong></span>
-          </div>
-        </header>
-    `;
-
-    // 2. Konten berdasarkan Tipe Soal
-    if (qType === "dokkai") {
-      html += `
-        <div class="jlpt-dokkai-wrapper">
-          <div class="jlpt-dokkai-text">${current.passage || ""}</div>
-          <div class="jlpt-dokkai-question-area">
-            <article class="jlpt-sim-question-box" style="margin:0;">
-              <p class="jlpt-sim-instruction">${current.instruction || 'Pilih jawaban yang tepat.'}</p>
-              <p class="jlpt-sim-question">${current.prompt}</p>
-            </article>
-            <div class="jlpt-sim-options">
-              ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
-            </div>
-          </div>
-        </div>
-      `;
-    } else if (qType === "star") {
-      let styledPrompt = current.prompt
-        .replace(/★/g, '<span class="jlpt-star-icon">★</span>')
-        .replace(/___/g, '<span class="jlpt-star-slot"></span>')
-        .replace(/＿/g, '<span class="jlpt-star-slot"></span>');
-      html += `
-        <article class="jlpt-sim-question-box">
-          <p class="jlpt-sim-instruction">${current.instruction || 'Pilih kata untuk posisi bintang (★).'}</p>
-          <div class="jlpt-star-wrapper"><div class="jlpt-star-sentence">${styledPrompt}</div></div>
-        </article>
-        <div class="jlpt-sim-options">
-          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
-        </div>
-      `;
-    } else if (qType === "choukai") {
-      html += `
-        <article class="jlpt-sim-question-box">
-          <p class="jlpt-sim-instruction">${current.instruction || 'Dengarkan audio berikut.'}</p>
-          <div class="jlpt-audio-wrapper">
-            <audio controls controlsList="nodownload"><source src="${current.audioSrc || ''}" type="audio/mpeg"></audio>
-          </div>
-          <p class="jlpt-sim-question">${current.prompt}</p>
-        </article>
-        <div class="jlpt-sim-options">
-          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
-        </div>
-      `;
-    } else {
-      html += `
-        <article class="jlpt-sim-question-box">
-          <p class="jlpt-sim-instruction">${current.instruction || 'Pilih satu jawaban yang paling tepat.'}</p>
-          <p class="jlpt-sim-question">${current.prompt}</p>
-        </article>
-        <div class="jlpt-sim-options">
-          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
-        </div>
-      `;
-    }
-
-    // 3. Footer
-    html += `
-        <div class="jlpt-sim-actions">
-          <button id="finishSectionBtn" class="action-btn" type="button" style="background:#ff4d6d; color:white; padding:12px 28px; border-radius:999px; font-weight:bold;">Kumpulkan Sesi Ini</button>
-        </div>
-      </section>
-    `;
-
-    grid.innerHTML = html;
-
-    const optionButtons = Array.from(grid.querySelectorAll(".jlpt-sim-opt"));
-    optionButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        if (simulationState.answers[simulationState.index] !== undefined) return;
-        const selected = Number(btn.dataset.index);
-        const isCorrect = selected === current.answer;
-        simulationState.answers[simulationState.index] = selected;
-        if (isCorrect) simulationState.totalScore += 1;
-
-        optionButtons.forEach((ob, idx) => {
-          ob.disabled = true;
-          if (idx === current.answer) ob.classList.add("correct");
-          else if (idx === selected) ob.classList.add("wrong");
-        });
-
-        setTimeout(() => {
-          simulationState.index += 1;
-          renderSimulationQuestion();
-        }, 700);
-      });
-    });
-
-    if (answered !== undefined) {
-      optionButtons.forEach((ob) => ob.disabled = true);
-    }
-
-    document.getElementById("finishSectionBtn")?.addEventListener("click", () => {
-      if(confirm("Yakin ingin mengakhiri sesi ini? Sisa waktu akan hangus.")) finishSection();
-    });
-  }
-
-  function startSimulationTimer() {
-    stopSimulationTimer();
-    simulationState.timerId = setInterval(() => {
-      simulationState.timeLeft -= 1;
-      const timerEl = document.getElementById("simulationTimer");
-      if (timerEl) timerEl.textContent = formatDuration(Math.max(0, simulationState.timeLeft));
-      if (simulationState.timeLeft <= 0) {
-        stopSimulationTimer();
-        finishSection(); 
-      }
-    }, 1000);
-  }
-
-  function startSection() {
-    const currentSection = simulationState.sections[simulationState.currentSectionIndex];
-    const allData = window.jlptSimulationData || {};
-    const levelData = allData[simulationState.level] || {};
-    
-    let sectionQuestions = [];
-    currentSection.keys.forEach(key => {
-      if (levelData[key]) {
-        sectionQuestions.push(...levelData[key].map(q => ({ ...q, kind: key })));
-      }
-    });
-
-    sectionQuestions = shuffle(sectionQuestions);
-
-    simulationState.questions = sectionQuestions;
-    simulationState.index = 0;
-    simulationState.answers = [];
-    simulationState.timeLeft = currentSection.durationMinutes * 60;
-    simulationState.totalQuestions += sectionQuestions.length;
-
-    if (sectionQuestions.length === 0) {
-      finishSection();
-      return;
-    }
-
-    renderSimulationQuestion();
-    startSimulationTimer();
-  }
-
-  function finishSection() {
-    stopSimulationTimer();
-    simulationState.currentSectionIndex += 1;
-
-    if (simulationState.currentSectionIndex < simulationState.sections.length) {
-      renderTransitionScreen();
-    } else {
-      finishSimulation();
-    }
-  }
-
-  function renderTransitionScreen() {
-    const nextSection = simulationState.sections[simulationState.currentSectionIndex];
-    grid.innerHTML = `
-      <section class="jlpt-sim-shell" style="text-align: center; padding: 60px 20px;">
-        <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #1e293b;">Sesi Selesai! ⏳</h2>
-        <p style="font-size: 1.1rem; color: #475569; margin-bottom: 30px;">Tarik napas dulu, lalu bersiap untuk sesi selanjutnya:</p>
-        
-        <div style="background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 16px; padding: 25px; margin-bottom: 30px; display: inline-block; width: 100%; max-width: 400px;">
-          <h3 style="margin: 0 0 10px; color: #ff4d6d; font-size: 1.25rem;">${nextSection.title}</h3>
-          <p style="margin: 0; font-weight: 700; color: #334155; font-size: 1.1rem;">⏳ Alokasi Waktu: ${nextSection.durationMinutes} Menit</p>
-        </div>
-        
-        <div>
-          <button id="startNextSectionBtn" style="background: #ff4d6d; color: white; border: none; padding: 16px 36px; border-radius: 999px; cursor: pointer; font-size: 1.1rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%; max-width: 300px; transition: transform 0.2s;">
-            Mulai Sesi Selanjutnya
-          </button>
-        </div>
-      </section>
-    `;
-    document.getElementById("startNextSectionBtn").addEventListener("click", startSection);
-  }
-
-  // 🔥 FIX SERTIFIKAT UI: Anti Transparan, Judul Diganti, Inline Style Aman!
-  function renderSimulationHistory(entry) {
-    const scorePct = Math.round((entry.correct / entry.total) * 100);
-    viewMode = "simulation:history";
-    toggleSimulationLayout(false);
-    simulationState.active = false;
-    
-    grid.innerHTML = `
-      <section style="width: 100%; display: flex; justify-content: center; align-items: center; min-height: 80vh; padding: 20px; box-sizing: border-box;">
-        <article style="background: #ffffff; padding: 40px; border-radius: 24px; box-shadow: 0 15px 50px rgba(0,0,0,0.15); border: 8px solid #FFA1C5; text-align: center; width: 100%; max-width: 500px; position: relative;">
-          
-          <div style="font-size: 3rem; margin-bottom: 10px;">🏆</div>
-          <h2 style="margin: 0 0 5px; color: #1f2937; font-size: 1.4rem;">Japanese-Language Proficiency Test</h2>
-          <h3 style="margin: 0 0 25px; color: #ff4d6d; font-size: 1.6rem; font-weight: 900;">Simulation Result</h3>
-          
-          <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; text-align: left; margin-bottom: 25px;">
-            <p style="margin: 5px 0; font-size: 1.1rem;"><strong>Level:</strong> ${entry.level}</p>
-            <p style="margin: 5px 0; font-size: 1.1rem;"><strong>Tanggal:</strong> ${entry.date}</p>
-            <p style="margin: 5px 0; font-size: 1.1rem;"><strong>Skor Total:</strong> ${entry.correct} / ${entry.total} (${scorePct}%)</p>
-          </div>
-          
-          <div style="font-size: 1.6rem; font-weight: 900; color: ${scorePct >= 50 ? '#16a34a' : '#ef4444'}; background: ${scorePct >= 50 ? '#dcfce7' : '#fee2e2'}; padding: 15px; border-radius: 12px; margin-bottom: 25px;">
-            Status: ${scorePct >= 50 ? "LULUS (PASS)" : "BELUM LULUS"}
-          </div>
-
-          <button onclick="location.reload()" style="background: #1f2937; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.1rem; font-weight: bold; width: 100%; transition: background 0.2s;">
-            Kembali ke Menu Utama
-          </button>
-        </article>
-      </section>
-    `;
-    if (resultInfo) resultInfo.textContent = `${entry.correct}/${entry.total} (SIMULASI JLPT) - ${entry.level}`;
-  }
-
-  function finishSimulation() {
-    if (!simulationState.active) return;
-    stopSimulationTimer();
-    const result = {
-      level: simulationState.level,
-      total: simulationState.totalQuestions,
-      correct: simulationState.totalScore,
-      date: new Date().toLocaleString("id-ID"),
-    };
-    saveSimulationHistory(result);
-    renderSimulationHistory(result);
-  }
-
-  function startSimulation(level) {
-    if (["N3", "N2", "N1"].includes(level)) {
-      viewMode = `dev:simulation:Simulasi JLPT:${level}`;
-      render();
-      return;
-    }
-
-    const config = (window.jlptSimulationConfig || {})[level];
-    
-    // Validasi Keberadaan Data untuk Level Ini
-    const allData = window.jlptSimulationData || {};
-    const hasData = allData[level] && (allData[level].kanji || allData[level].goi || allData[level].bunpou);
-
-    if (!config || !config.sections || !hasData) {
-      openInfoModal("Database simulasi untuk level ini belum siap.");
-      return;
-    }
-
-    simulationState.active = true;
-    simulationState.level = level;
-    simulationState.sections = config.sections;
-    simulationState.currentSectionIndex = 0;
-    simulationState.totalScore = 0;
-    simulationState.totalQuestions = 0;
-
-    viewMode = "simulation:active";
-    toggleSimulationLayout(true);
-    closeSidebar();
-
-    // Layar Pembuka Ujian JLPT Asli
-    grid.innerHTML = `
-      <section class="jlpt-sim-shell" style="text-align: center; padding: 50px 20px;">
-        <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #1e293b;">Ujian JLPT ${level} Akan Dimulai</h2>
-        <p style="font-size: 1.1rem; color: #475569; margin-bottom: 30px; line-height: 1.6;">Ujian ini terdiri dari <strong>${config.sections.length} Sesi</strong> yang harus dikerjakan secara berurutan.</p>
-        
-        <div style="background: #fff0f2; border: 2px solid #ffb7c5; border-radius: 16px; padding: 20px; margin-bottom: 30px; display: inline-block; text-align: left;">
-          <h3 style="margin: 0 0 10px; color: #ff4d6d; font-size: 1.2rem; text-align: center;">Sesi 1: ${config.sections[0].title}</h3>
-          <p style="margin: 0; font-weight: bold; color: #334155; text-align: center; font-size:1.1rem;">⏳ Waktu Mengerjakan: ${config.sections[0].durationMinutes} Menit</p>
-        </div>
-        
-        <div>
-          <button id="startFirstSectionBtn" style="background: #ff4d6d; color: white; border: none; padding: 16px 40px; border-radius: 999px; cursor: pointer; font-size: 1.15rem; font-weight: bold; box-shadow: 0 6px 20px rgba(255, 77, 109, 0.4);">
-            Mulai Ujian Sekarang
-          </button>
-        </div>
-      </section>
-    `;
-    document.getElementById("startFirstSectionBtn").addEventListener("click", startSection);
-  }
   
   const letterSets = {
     hiragana: {
@@ -1540,7 +1201,7 @@ function confirmEndQuiz() {
   let savedScrollPosition = 0;
 
   hamburger.addEventListener("click", () => {
-    if (isTesting || simulationState.active) {
+    if (isTesting) {
       openInfoModal(`
         <div style="text-align: center; padding: 10px;">
           <h3 style="color: #ff4d6d; margin-bottom: 10px;">Ujian Sedang Berlangsung! 🚧</h3>
@@ -1690,7 +1351,7 @@ function confirmEndQuiz() {
 
   document.getElementById("logo")?.addEventListener("click", () => {
     // PROTEKSI MODE TEST: User gak boleh kabur lewat logo
-    if (isTesting || simulationState.active) {
+    if (isTesting) {
       const messages = [
         "<h3>諦めないで (Jangan Menyerah)! 💪</h3><p>Latihan ini adalah langkahmu menuju kesuksesan. Selesaikan dulu ujiannya!!</p>",
         "<h3>ちょっと待って! (Tunggu Sebentar!) ✋</h3><p>Sayang banget skornya kalau ditinggal sekarang. Sedikit lagi kamu akan menguasai materi ini!</p>",
@@ -1721,14 +1382,6 @@ function confirmEndQuiz() {
     if (category) category.value = "all";
     render();
     closeSidebar();
-  });
-
-  document.querySelectorAll(".simulation-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      const level = button.dataset.level || "N5";
-      startSimulation(level);
-      closeSidebar();
-    });
   });
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
@@ -1772,7 +1425,7 @@ function confirmEndQuiz() {
   grid.innerHTML = "";
 
   // Menentukan judul berdasarkan mode
-  const titlePrefix = mode === "exercise" ? "Latihan" : mode === "simulation" ? "Simulasi JLPT" : "Pola Kalimat";
+  const titlePrefix = mode === "exercise" ? "Latihan" : "Pola Kalimat";
   
   const container = document.createElement("div");
   container.className = "empty-state";
@@ -1820,14 +1473,6 @@ function confirmEndQuiz() {
        selectedType === "ekspresi" ||
        selectedType === "expression" ||
        selectedType === "ungkapan umum");
-
-    if (viewMode.startsWith("simulation:")) {
-      if (viewMode === "simulation:active") {
-        toggleSimulationLayout(true);
-        renderSimulationQuestion();
-      }
-      return;
-    }
     
     if (viewMode.startsWith("dev:")) {
     const parts = viewMode.split(":"); 

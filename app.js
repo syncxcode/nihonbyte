@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const expandedCard = document.getElementById("expandedCard");
   const recommendationRow = document.getElementById("recommendationRow");
   const modalSubtitle = document.getElementById("modalSubtitle");
+
+  const topbar = document.querySelector(".topbar");
+  const startSimulationBtn = document.getElementById("startSimulationBtn");
+  const simulationLevelSelect = document.getElementById("simulationLevelSelect");
   
   // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
   const searchBtn = document.getElementById("searchBtn");
@@ -98,7 +102,7 @@ function startExercise(type, level) {
     quizIndex = 0;
     score = 0;
     
-    const maxQuestions = (type === 'kanji' || type === 'goi') ? 30 : 20;
+    const maxQuestions = 20;
     currentQuizData = filteredData.sort(() => Math.random() - 0.5).slice(0, maxQuestions);
 
     renderQuiz(type);
@@ -388,6 +392,7 @@ function confirmEndQuiz() {
 }
       
     searchBtn.addEventListener("click", () => {
+      if (simulationState.active) return;
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -571,6 +576,198 @@ function confirmEndQuiz() {
     answered: false,
   };
 
+  const simulationState = {
+    active: false,
+    level: "",
+    durationSeconds: 0,
+    timeLeft: 0,
+    timerId: null,
+    questions: [],
+    index: 0,
+    score: 0,
+    answers: [],
+  };
+
+  function saveSimulationHistory(entry) {
+    const key = "jlptSimulationHistory";
+    const history = JSON.parse(localStorage.getItem(key) || "[]");
+    history.unshift(entry);
+    localStorage.setItem(key, JSON.stringify(history.slice(0, 30)));
+  }
+
+  function stopSimulationTimer() {
+    if (simulationState.timerId) {
+      clearInterval(simulationState.timerId);
+      simulationState.timerId = null;
+    }
+  }
+
+  function toggleSimulationLayout(isActive) {
+    document.body.classList.toggle("jlpt-simulation-active", isActive);
+    if (topbar) topbar.classList.toggle("hidden-for-simulation", isActive);
+    if (sidebar) sidebar.classList.toggle("hidden-for-simulation", isActive);
+    if (overlay) overlay.classList.remove("active");
+  }
+
+  function formatDuration(sec) {
+    const mm = String(Math.floor(sec / 60)).padStart(2, "0");
+    const ss = String(sec % 60).padStart(2, "0");
+    return `${mm}:${ss}`;
+  }
+
+  function buildSimulationQuestions(level) {
+    const allData = window.jlptSimulationData || {};
+    const levelData = allData[level];
+    if (!levelData) return [];
+    const pick = (arr, kind) => shuffle(arr || []).slice(0, 20).map((q) => ({ ...q, kind }));
+    return shuffle([
+      ...pick(levelData.kanji, "kanji"),
+      ...pick(levelData.bunpou, "bunpou"),
+      ...pick(levelData.goi, "goi"),
+    ]);
+  }
+
+  function renderSimulationQuestion() {
+    const current = simulationState.questions[simulationState.index];
+    if (!current) {
+      finishSimulation();
+      return;
+    }
+
+    const sectionLabel = current.kind.toUpperCase();
+    const answered = simulationState.answers[simulationState.index];
+
+    grid.innerHTML = `
+      <section class="jlpt-sim-shell">
+        <header class="jlpt-sim-header">
+          <h2>JLPT ${simulationState.level} SIMULATION</h2>
+          <div class="jlpt-sim-meta">
+            <span>Soal ${simulationState.index + 1}/${simulationState.questions.length}</span>
+            <span>${sectionLabel}</span>
+            <span id="simulationTimer">${formatDuration(simulationState.timeLeft)}</span>
+          </div>
+        </header>
+
+        <article class="jlpt-sim-question-box">
+          <p class="jlpt-sim-question">${current.prompt}</p>
+        </article>
+
+        <div class="jlpt-sim-options">
+          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}">${opt}</button>`).join("")}
+        </div>
+
+        <div class="jlpt-sim-actions">
+          <button id="finishSimulationBtn" class="action-btn" type="button">Selesaikan Test</button>
+        </div>
+      </section>
+    `;
+
+    const optionButtons = Array.from(grid.querySelectorAll(".jlpt-sim-opt"));
+    optionButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (simulationState.answers[simulationState.index] !== undefined) return;
+        const selected = Number(btn.dataset.index);
+        const isCorrect = selected === current.answer;
+        simulationState.answers[simulationState.index] = selected;
+        if (isCorrect) simulationState.score += 1;
+
+        optionButtons.forEach((ob, idx) => {
+          ob.disabled = true;
+          if (idx === current.answer) ob.classList.add("correct");
+          else if (idx === selected) ob.classList.add("wrong");
+        });
+
+        setTimeout(() => {
+          simulationState.index += 1;
+          renderSimulationQuestion();
+        }, 700);
+      });
+    });
+
+    if (answered !== undefined) {
+      optionButtons.forEach((ob) => ob.disabled = true);
+    }
+
+    document.getElementById("finishSimulationBtn")?.addEventListener("click", finishSimulation);
+  }
+
+  function startSimulationTimer() {
+    stopSimulationTimer();
+    simulationState.timerId = setInterval(() => {
+      simulationState.timeLeft -= 1;
+      const timerEl = document.getElementById("simulationTimer");
+      if (timerEl) timerEl.textContent = formatDuration(Math.max(0, simulationState.timeLeft));
+      if (simulationState.timeLeft <= 0) {
+        stopSimulationTimer();
+        finishSimulation();
+      }
+    }, 1000);
+  }
+
+  function renderSimulationHistory(entry) {
+    const scorePct = Math.round((entry.correct / entry.total) * 100);
+    viewMode = "simulation:history";
+    toggleSimulationLayout(false);
+    simulationState.active = false;
+    grid.innerHTML = `
+      <section class="jlpt-history-wrap">
+        <article class="jlpt-certificate">
+          <h2>Japanese-Language Proficiency Test</h2>
+          <h3>Simulation Result Certificate</h3>
+          <p class="cert-name">NihonByte User</p>
+          <p>Level: <strong>${entry.level}</strong></p>
+          <p>Tanggal: <strong>${entry.date}</strong></p>
+          <p>Skor: <strong>${entry.correct}/${entry.total}</strong> (${scorePct}%)</p>
+          <p>Status: <strong>${scorePct >= 70 ? "PASS" : "REVIEW NEEDED"}</strong></p>
+        </article>
+      </section>
+    `;
+    if (resultInfo) resultInfo.textContent = `${entry.correct}/${entry.total} (SIMULASI JLPT) - ${entry.level}`;
+  }
+
+  function finishSimulation() {
+    if (!simulationState.active) return;
+    stopSimulationTimer();
+    const result = {
+      level: simulationState.level,
+      total: simulationState.questions.length,
+      correct: simulationState.score,
+      date: new Date().toLocaleString("id-ID"),
+    };
+    saveSimulationHistory(result);
+    renderSimulationHistory(result);
+  }
+
+  function startSimulation(level) {
+    if (["N3", "N2", "N1"].includes(level)) {
+      viewMode = `dev:simulation:Simulasi JLPT:${level}`;
+      render();
+      return;
+    }
+
+    const config = (window.jlptSimulationConfig || {})[level];
+    const questions = buildSimulationQuestions(level);
+    if (!config || questions.length < 60) {
+      openInfoModal("Database simulasi untuk level ini belum siap.");
+      return;
+    }
+
+    simulationState.active = true;
+    simulationState.level = level;
+    simulationState.durationSeconds = config.durationMinutes * 60;
+    simulationState.timeLeft = simulationState.durationSeconds;
+    simulationState.questions = questions;
+    simulationState.index = 0;
+    simulationState.score = 0;
+    simulationState.answers = [];
+
+    viewMode = "simulation:active";
+    toggleSimulationLayout(true);
+    closeSidebar();
+    renderSimulationQuestion();
+    startSimulationTimer();
+  }
+  
   const letterSets = {
     hiragana: {
       title: "Poster Hiragana",
@@ -1039,19 +1236,19 @@ function confirmEndQuiz() {
     patterns.forEach((pattern) => {
       const card = document.createElement("article");
       card.className = "pattern-card";
+      const fullExample = pattern.example || "";
+      const splitMatch = fullExample.match(/^(.*?)(?:\s*\((.*?)\))?$/);
+      const jpExample = (splitMatch?.[1] || "").trim();
+      const idTranslation = (splitMatch?.[2] || "").trim();
       card.innerHTML = `
         <div class="pattern-title">${pattern.pattern}</div>
+        <div class="pattern-example-jp">${jpExample}</div>
+        <div class="pattern-example-id">${idTranslation}</div>
         <div class="pattern-example">${pattern.example}</div>
         <div class="pattern-meaning">${pattern.meaning}</div>
         <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
       `;
-      [".pattern-title", ".pattern-example", ".pattern-meaning"].forEach((selector) => {
-        const el = card.querySelector(selector);
-        if (!el) return;
-        el.style.whiteSpace = "nowrap";
-        el.style.overflow = "hidden";
-        el.style.textOverflow = "ellipsis";
-      });
+      
       grid.appendChild(card);
     });
    if(resultInfo) resultInfo.textContent = formatResultInfo(patterns.length, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
@@ -1177,7 +1374,7 @@ function confirmEndQuiz() {
   let savedScrollPosition = 0;
 
   hamburger.addEventListener("click", () => {
-    if (isTesting) {
+    if (isTesting || simulationState.active) {
       openInfoModal(`
         <div style="text-align: center; padding: 10px;">
           <h3 style="color: #ff4d6d; margin-bottom: 10px;">Ujian Sedang Berlangsung! 🚧</h3>
@@ -1327,7 +1524,7 @@ function confirmEndQuiz() {
 
   document.getElementById("logo")?.addEventListener("click", () => {
     // PROTEKSI MODE TEST: User gak boleh kabur lewat logo
-    if (isTesting) {
+    if (isTesting || simulationState.active) {
       const messages = [
         "<h3>諦めないで (Jangan Menyerah)! 💪</h3><p>Latihan ini adalah langkahmu menuju kesuksesan. Selesaikan dulu ujiannya!!</p>",
         "<h3>ちょっと待って! (Tunggu Sebentar!) ✋</h3><p>Sayang banget skornya kalau ditinggal sekarang. Sedikit lagi kamu akan menguasai materi ini!</p>",
@@ -1358,6 +1555,11 @@ function confirmEndQuiz() {
     if (category) category.value = "all";
     render();
     closeSidebar();
+  });
+
+  startSimulationBtn?.addEventListener("click", () => {
+    const level = simulationLevelSelect?.value || "N5";
+    startSimulation(level);
   });
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
@@ -1401,7 +1603,7 @@ function confirmEndQuiz() {
   grid.innerHTML = "";
 
   // Menentukan judul berdasarkan mode
-  const titlePrefix = mode === "exercise" ? "Latihan" : "Pola Kalimat";
+  const titlePrefix = mode === "exercise" ? "Latihan" : mode === "simulation" ? "Simulasi JLPT" : "Pola Kalimat";
   
   const container = document.createElement("div");
   container.className = "empty-state";
@@ -1433,6 +1635,7 @@ function confirmEndQuiz() {
   // ==========================================
   function render() {
     if (!isTesting) unlockQuizScroll();
+    if (!viewMode.startsWith("simulation:")) toggleSimulationLayout(false);
     syncMobileTopbarLayout();
     grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
@@ -1449,6 +1652,14 @@ function confirmEndQuiz() {
        selectedType === "ekspresi" ||
        selectedType === "expression" ||
        selectedType === "ungkapan umum");
+
+    if (viewMode.startsWith("simulation:")) {
+      if (viewMode === "simulation:active") {
+        toggleSimulationLayout(true);
+        renderSimulationQuestion();
+      }
+      return;
+    }
     
     if (viewMode.startsWith("dev:")) {
     const parts = viewMode.split(":"); 

@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalSubtitle = document.getElementById("modalSubtitle");
 
   const topbar = document.querySelector(".topbar");
-  const startSimulationBtn = document.getElementById("startSimulationBtn");
-  const simulationLevelSelect = document.getElementById("simulationLevelSelect");
   
   // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
   const searchBtn = document.getElementById("searchBtn");
@@ -81,15 +79,187 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.style.height = quizOriginalHtmlHeight;
     isQuizScrollLocked = false;
   }
+
+  function getLatihanVocabularySource() {
+    return Array.isArray(window.latihanVocabularyData) ? window.latihanVocabularyData : vocabularyData;
+  }
+
+  function getLatihanPatternSource(level) {
+    if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) {
+      return window.latihanPatternData[level];
+    }
+    return (typeof patternData !== 'undefined' ? (patternData[level] || []) : []);
+  }
       
 // ==========================================
 // 1. Fungsi Memulai Test
 // ==========================================
 function startExercise(type, level) {
-    let filteredData = vocabularyData.filter(d => d.level === level);
     
+document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("grid");
+  const grid = document.getElementById("grid");
+  const category = document.getElementById("category");
+  const category = document.getElementById("category");
+  const search = document.getElementById("search");
+  const search = document.getElementById("search");
+  const hamburger = document.getElementById("hamburger");
+  const hamburger = document.getElementById("hamburger");
+  const sidebar = document.getElementById("sidebar");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+  const overlay = document.getElementById("overlay");
+  const resultInfo = document.getElementById("resultInfo");
+  const resultInfo = document.getElementById("resultInfo");
+  const kanjiModal = document.getElementById("kanjiModal");
+  const kanjiModal = document.getElementById("kanjiModal");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalClose = document.getElementById("modalClose");
+  const modalClose = document.getElementById("modalClose");
+  const expandedCard = document.getElementById("expandedCard");
+  const expandedCard = document.getElementById("expandedCard");
+  const recommendationRow = document.getElementById("recommendationRow");
+  const recommendationRow = document.getElementById("recommendationRow");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+  const modalSubtitle = document.getElementById("modalSubtitle");
+  const topbar = document.querySelector(".topbar");
+  
+  
+  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
+  // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
+  const searchBtn = document.getElementById("searchBtn");
+  const searchBtn = document.getElementById("searchBtn");
+  const filterModal = document.getElementById("filterModal");
+  const filterModal = document.getElementById("filterModal");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterBackdrop = document.getElementById("filterBackdrop");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const filterModalClose = document.getElementById("filterModalClose");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const modalSearchInput = document.getElementById("modalSearchInput");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const applyFilterBtn = document.getElementById("applyFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
+  const resetFilterBtn = document.getElementById("resetFilterBtn");
+
+
+  function enforceMobileTopbarOrder() {
+  function enforceMobileTopbarOrder() {
+    const topbar = document.querySelector(".topbar");
+    const topbar = document.querySelector(".topbar");
+    if (!topbar || !resultInfo || !searchBtn) return;
+    if (!topbar || !resultInfo || !searchBtn) return;
+
+
+    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 768) {
+      topbar.insertBefore(resultInfo, searchBtn);
+      topbar.insertBefore(resultInfo, searchBtn);
+      topbar.appendChild(searchBtn);
+      topbar.appendChild(searchBtn);
+      resultInfo.style.position = "static";
+      resultInfo.style.position = "static";
+      resultInfo.style.transform = "none";
+      resultInfo.style.transform = "none";
+      resultInfo.style.marginLeft = "auto";
+      resultInfo.style.marginLeft = "auto";
+      resultInfo.style.marginRight = "6px";
+      resultInfo.style.marginRight = "6px";
+      searchBtn.style.marginLeft = "0";
+      searchBtn.style.marginLeft = "0";
+    } else {
+    } else {
+      resultInfo.style.position = "";
+      resultInfo.style.position = "";
+      resultInfo.style.transform = "";
+      resultInfo.style.transform = "";
+@@ -55,72 +56,88 @@ document.addEventListener("DOMContentLoaded", () => {
+  let quizOriginalBodyHeight = "";
+  let quizOriginalBodyHeight = "";
+  let quizOriginalHtmlHeight = "";
+  let quizOriginalHtmlHeight = "";
+  let isQuizScrollLocked = false;
+  let isQuizScrollLocked = false;
+
+
+  function lockQuizScroll() {
+  function lockQuizScroll() {
+    if (isQuizScrollLocked) return;
+    if (isQuizScrollLocked) return;
+    quizOriginalBodyOverflow = document.body.style.overflow || "";
+    quizOriginalBodyOverflow = document.body.style.overflow || "";
+    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
+    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
+    quizOriginalBodyHeight = document.body.style.height || "";
+    quizOriginalBodyHeight = document.body.style.height || "";
+    quizOriginalHtmlHeight = document.documentElement.style.height || "";
+    quizOriginalHtmlHeight = document.documentElement.style.height || "";
+    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.height = "100dvh";
+    document.body.style.height = "100dvh";
+    document.documentElement.style.height = "100dvh";
+    document.documentElement.style.height = "100dvh";
+    isQuizScrollLocked = true;
+    isQuizScrollLocked = true;
+  }
+  }
+
+
+  function unlockQuizScroll() {
+  function unlockQuizScroll() {
+    if (!isQuizScrollLocked) return;
+    if (!isQuizScrollLocked) return;
+    document.body.style.overflow = quizOriginalBodyOverflow;
+    document.body.style.overflow = quizOriginalBodyOverflow;
+    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
+    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
+    document.body.style.height = quizOriginalBodyHeight;
+    document.body.style.height = quizOriginalBodyHeight;
+    document.documentElement.style.height = quizOriginalHtmlHeight;
+    document.documentElement.style.height = quizOriginalHtmlHeight;
+    isQuizScrollLocked = false;
+    isQuizScrollLocked = false;
+  }
+  }
+  function getLatihanVocabularySource() {
+    return Array.isArray(window.latihanVocabularyData) ? window.latihanVocabularyData : vocabularyData;
+  }
+
+  function getLatihanPatternSource(level) {
+    if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) {
+      return window.latihanPatternData[level];
+    }
+    return (typeof patternData !== 'undefined' ? (patternData[level] || []) : []);
+  }
+
+      
+      
+// ==========================================
+// ==========================================
+// 1. Fungsi Memulai Test
+// 1. Fungsi Memulai Test
+// ==========================================
+// ==========================================
+function startExercise(type, level) {
+function startExercise(type, level) {
+    let filteredData = vocabularyData.filter(d => d.level === level);
+    let filteredData = [];
+    
+
     if (type === 'kanji') {
+    if (type === 'bunpou') {
         filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
+        filteredData = getLatihanPatternSource(level);
+    } else {
+        filteredData = getLatihanVocabularySource().filter(d => d.level === level);
+        if (type === 'kanji') {
+            filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
+        }
     }
 
     if (filteredData.length < 5) {
@@ -327,8 +497,14 @@ function showCorrectAnswerAndNext(type) {
 // 6. Mesin Pengecoh Pintar (Anti Error / generateOptions)
 // ==========================================
 function generateOptions(correctItem, type) {
-    let basePool = vocabularyData.filter(d => d.kana !== correctItem.kana && d.level === correctItem.level);
+    if (type === 'bunpou') {
+        const source = currentQuizData.length ? currentQuizData : getLatihanPatternSource(correctItem.level);
+        const wrong = shuffle(source.filter(d => d.meaning !== correctItem.meaning)).slice(0, 3).map(d => d.meaning);
+        return shuffle([correctItem.meaning, ...wrong]);
+    }
 
+    const latihanVocabulary = getLatihanVocabularySource();
+    let basePool = latihanVocabulary.filter(d => d.kana !== correctItem.kana && d.level === correctItem.level);
     let smartPool = basePool.filter(d => {
         const isSuru = (item) => (item.kana && item.kana.endsWith('する')) || (item.kanji && item.kanji.endsWith('する'));
         if (isSuru(correctItem)) return isSuru(d);
@@ -615,15 +791,19 @@ function confirmEndQuiz() {
     return `${mm}:${ss}`;
   }
 
-  function buildSimulationQuestions(level) {
+  function buildSimulationQuestions(level, config = {}) {
     const allData = window.jlptSimulationData || {};
     const levelData = allData[level];
     if (!levelData) return [];
-    const pick = (arr, kind) => shuffle(arr || []).slice(0, 20).map((q) => ({ ...q, kind }));
+
+    const defaultCounts = { kanji: 20, bunpou: 20, goi: 20 };
+    const sectionCounts = config.sectionCounts || defaultCounts;
+    const pick = (arr, kind, count) => shuffle(arr || []).slice(0, count).map((q) => ({ ...q, kind }));
+
     return shuffle([
-      ...pick(levelData.kanji, "kanji"),
-      ...pick(levelData.bunpou, "bunpou"),
-      ...pick(levelData.goi, "goi"),
+      ...pick(levelData.kanji, "kanji", sectionCounts.kanji || 0),
+      ...pick(levelData.bunpou, "bunpou", sectionCounts.bunpou || 0),
+      ...pick(levelData.goi, "goi", sectionCounts.goi || 0),
     ]);
   }
 
@@ -640,20 +820,21 @@ function confirmEndQuiz() {
     grid.innerHTML = `
       <section class="jlpt-sim-shell">
         <header class="jlpt-sim-header">
-          <h2>JLPT ${simulationState.level} SIMULATION</h2>
+          <h2>Japanese-Language Proficiency Test (CBT)</h2>
+          <p class="jlpt-sim-subtitle">Level ${simulationState.level} • ${sectionLabel}</p>
           <div class="jlpt-sim-meta">
-            <span>Soal ${simulationState.index + 1}/${simulationState.questions.length}</span>
-            <span>${sectionLabel}</span>
-            <span id="simulationTimer">${formatDuration(simulationState.timeLeft)}</span>
+            <span>Question ${simulationState.index + 1}/${simulationState.questions.length}</span>
+            <span>Time Left: <strong id="simulationTimer">${formatDuration(simulationState.timeLeft)}</strong></span>
           </div>
         </header>
 
         <article class="jlpt-sim-question-box">
+          <p class="jlpt-sim-instruction">Pilih satu jawaban yang paling tepat.</p>
           <p class="jlpt-sim-question">${current.prompt}</p>
         </article>
 
         <div class="jlpt-sim-options">
-          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}">${opt}</button>`).join("")}
+          ${current.options.map((opt, idx) => `<button class="jlpt-sim-opt" data-index="${idx}"><span class="opt-index">${String.fromCharCode(65 + idx)}.</span> <span>${opt}</span></button>`).join("")}
         </div>
 
         <div class="jlpt-sim-actions">
@@ -746,15 +927,17 @@ function confirmEndQuiz() {
     }
 
     const config = (window.jlptSimulationConfig || {})[level];
-    const questions = buildSimulationQuestions(level);
-    if (!config || questions.length < 60) {
+    const questions = buildSimulationQuestions(level, config);
+    const expectedQuestionCount = Object.values(config?.sectionCounts || {}).reduce((sum, value) => sum + value, 0);
+
+    if (!config || questions.length < expectedQuestionCount) {
       openInfoModal("Database simulasi untuk level ini belum siap.");
       return;
     }
 
     simulationState.active = true;
     simulationState.level = level;
-    simulationState.durationSeconds = config.durationMinutes * 60;
+    simulationState.durationSeconds = (config.totalMinutes || 90) * 60;
     simulationState.timeLeft = simulationState.durationSeconds;
     simulationState.questions = questions;
     simulationState.index = 0;
@@ -1637,6 +1820,7 @@ function confirmEndQuiz() {
     if (!isTesting) unlockQuizScroll();
     if (!viewMode.startsWith("simulation:")) toggleSimulationLayout(false);
     syncMobileTopbarLayout();
+    if (!viewMode.startsWith("simulation:")) toggleSimulationLayout(false);
     grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";

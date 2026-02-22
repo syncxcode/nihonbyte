@@ -145,16 +145,12 @@
 
     <details>
   <summary>🎯 SIMULASI JLPT</summary>
-  <div class="subfolder-list simulation-menu">
-    <label for="simulationLevelSelect">Pilih Level</label>
-    <select id="simulationLevelSelect" class="simulation-level-select">
-      <option value="N5">N5</option>
-      <option value="N4">N4</option>
-      <option value="N3">N3</option>
-      <option value="N2">N2</option>
-      <option value="N1">N1</option>
-    </select>
-    <button class="menu-btn" id="startSimulationBtn">Mulai SIMULASI JLPT</button>
+  <div class="subfolder-list">
+    <button class="menu-btn simulation-btn" data-level="N5">N5</button>
+    <button class="menu-btn simulation-btn" data-level="N4">N4</button>
+    <button class="menu-btn simulation-btn" data-level="N3">N3</button>
+    <button class="menu-btn simulation-btn" data-level="N2">N2</button>
+    <button class="menu-btn simulation-btn" data-level="N1">N1</button>
   </div>
 </details>
 
@@ -254,6 +250,7 @@
 </section>
 
 <script src="./data.js"></script>
+<script src="./main/latihan/latihan-data.js"></script>
 <script src="./main/JLPT/jlpt-simulation-data.js"></script>
 <script src="./app.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>

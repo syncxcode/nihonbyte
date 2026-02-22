@@ -917,9 +917,12 @@ select, input, .action-btn {
 @media (max-width: 768px) {
   #grid {
     padding-top: 95px !important; 
-    gap: 10px !important;
+    gap: 12px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
-
+  
  .topbar {
     display: flex !important;
     align-items: center !important;
@@ -951,9 +954,9 @@ select, input, .action-btn {
   /* Urutan 3: KAPSUL (ANTI LONCAT) */
   #resultInfo {
     order: 3 !important;
-    position: static !important; /* 🚀 MATIKAN ABSOLUTE, KEMBALI KE KODRAT */
-    margin-left: auto !important; /* 🚀 Trik sakti: Dorong kapsul mentok ke kanan */
-    margin-right: 12px !important; /* Jarak aman antara kapsul dan tombol search */
+    position: static !important; 
+    margin-left: auto !important; 
+    margin-right: 12px !important; 
     
     display: inline-flex !important;
     align-items: center !important;
@@ -1031,51 +1034,81 @@ select, input, .action-btn {
   .branding img { height: 55px !important; }
 }
 
+/* =========================================
+   SIMULASI JLPT - OPTIMIZED & CENTERED
+========================================= */
 body.jlpt-simulation-active {
   background: #f8fafc;
 }
 .hidden-for-simulation {
   display: none !important;
 }
-body.jlpt-simulation-active #grid {
-  margin-top: 0 !important;
-  min-height: 100dvh;
-  width: min(980px, 100%);
-  padding: 16px;
-}
-.jlpt-sim-shell {
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
-  display: grid;
-  gap: 14px;
-}
-.jlpt-sim-header h2 { margin: 0; font-size: 1.06rem; text-transform: uppercase; letter-spacing: .04em; }
-.jlpt-sim-subtitle { margin: 2px 0 0; font-size: .92rem; color: #475569; font-weight: 700; }
-.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #1f2937; }
-.jlpt-sim-meta span { background: #f3f4f6; border: 1px solid #d1d5db; border-radius: 6px; padding: 5px 10px; font-size: .82rem; }
-.jlpt-sim-question-box { background: #fff; border: 1px solid #d1d5db; border-radius: 8px; padding: 16px; }
-.jlpt-sim-instruction { margin: 0 0 8px; font-size: .86rem; color: #64748b; font-weight: 700; }
-.jlpt-sim-question { margin: 0; font-size: clamp(1.1rem, 3vw, 1.55rem); font-weight: 700; color: #0f172a; }
-.jlpt-sim-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
-.jlpt-sim-opt { text-align: left; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 1rem; font-weight: 600; background: #fff; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-.jlpt-sim-opt .opt-index { display: inline-flex; min-width: 24px; font-weight: 800; color: #334155; }
-.jlpt-sim-opt.correct { background: #22c55e; color: #fff; border-color: #16a34a; }
-.jlpt-sim-opt.wrong { background: #f87171; color: #fff; border-color: #ef4444; }
-.jlpt-sim-actions { display: flex; justify-content: flex-end; }
 
-.jlpt-history-wrap { grid-column: 1 / -1; display: grid; place-items: center; }
-.jlpt-certificate {
-  width: min(760px, 100%);
-  border: 10px solid #d4af37;
-  border-radius: 18px;
-  padding: 28px;
-  text-align: center;
-  background: linear-gradient(180deg, #fffdf2, #fff);
-  box-shadow: 0 15px 40px rgba(15,23,42,.16);
+/* 🚀 Membuat tampilan simulasi berada persis di tengah layar */
+body.jlpt-simulation-active #grid {
+  margin: 0 auto !important;
+  min-height: 100dvh !important;
+  width: 100% !important;
+  max-width: 800px !important; /* Dibatasi agar tidak terlalu lebar di PC */
+  padding: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
 }
-.jlpt-certificate h2 { margin: 0 0 4px; }
-.jlpt-certificate h3 { margin: 0 0 18px; color: #92400e; }
-.jlpt-certificate .cert-name { font-size: 1.35rem; font-weight: 700; }
+
+/* 🚀 Desain kotak kuis (Shell) */
+.jlpt-sim-shell {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+.jlpt-sim-header h2 { margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .04em; color: #1e293b; }
+.jlpt-sim-subtitle { margin: 4px 0 0; font-size: .95rem; color: #475569; font-weight: 700; }
+.jlpt-sim-meta { display: flex; flex-wrap: wrap; gap: 8px; font-weight: 700; color: #1f2937; margin-top: 6px; }
+.jlpt-sim-meta span { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: .85rem; }
+
+.jlpt-sim-question-box { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02); }
+.jlpt-sim-instruction { margin: 0 0 10px; font-size: .9rem; color: #64748b; font-weight: 700; }
+.jlpt-sim-question { margin: 0; font-size: clamp(1.2rem, 4vw, 1.8rem); font-weight: 800; color: #0f172a; }
+
+.jlpt-sim-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.jlpt-sim-opt { text-align: left; border: 2px solid #e2e8f0; border-radius: 10px; padding: 14px; font-size: 1.05rem; font-weight: 600; background: #ffffff; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease; }
+.jlpt-sim-opt:hover { background: #f8fafc; border-color: #cbd5e1; }
+.jlpt-sim-opt .opt-index { display: inline-flex; min-width: 26px; font-weight: 800; color: #475569; }
+.jlpt-sim-opt.correct { background: #22c55e; color: #fff; border-color: #16a34a; }
+.jlpt-sim-opt.correct .opt-index { color: #fff; }
+.jlpt-sim-opt.wrong { background: #ef4444; color: #fff; border-color: #dc2626; }
+.jlpt-sim-opt.wrong .opt-index { color: #fff; }
+
+.jlpt-sim-actions { display: flex; justify-content: flex-end; margin-top: 10px; }
+.jlpt-sim-actions .action-btn { width: auto; background: #e2e8f0; color: #475569; padding: 10px 24px; }
+.jlpt-sim-actions .action-btn:hover { background: #cbd5e1; }
+
+/* 🚀 Optimasi Khusus HP untuk Simulasi JLPT */
+@media (max-width: 768px) {
+  .jlpt-sim-shell {
+    padding: 20px 16px;
+    gap: 14px;
+    border-radius: 14px;
+  }
+  .jlpt-sim-header h2 { font-size: 1rem; }
+  .jlpt-sim-question-box { padding: 16px; }
+  .jlpt-sim-options { 
+    grid-template-columns: 1fr 1fr; /* Tetap 2 kolom di HP agar mirip aslinya */
+    gap: 10px; 
+  }
+  .jlpt-sim-opt {
+    padding: 12px 10px;
+    font-size: 0.95rem;
+  }
+}

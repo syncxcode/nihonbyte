@@ -155,7 +155,7 @@ select, input, .action-btn {
 #grid {
   padding-top: 100px !important;
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
   width: 100% !important;

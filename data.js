@@ -711,7 +711,7 @@ const vocabularyData = [
 {"level": "N1", "type": "noun", "kanji": "完全主義者", "kana": "かんぜんしゅぎしゃ", "romaji": "Kanzenshugisha", "meaning": "Perfeksionis"},
 {"level": "N2", "type": "adj-na", "kanji": "個性的な", "kana": "こせいてきな", "romaji": "Koseiteki-na", "meaning": "Unik/Nyentrik"},
 {"level": "N2", "type": "adj-na", "kanji": "家庭的な", "kana": "かていてきな", "romaji": "Kateiteki-na", "meaning": "Kebapakan/Keibuan (Anak rumahan)"},
-{"level": "N2", "type": "adj-i", "kanji": "嫉妬深い", "kana": "しっとぶかい", "romaji": "Shittobukai", "meaning": "Pencemburu/Iri hati"}
+{"level": "N2", "type": "adj-i", "kanji": "嫉妬深い", "kana": "しっとぶかい", "romaji": "Shittobukai", "meaning": "Pencemburu/Iri hati"},
 
 {"level": "N2", "type": "noun-house", "kanji": "屋根裏部屋", "kana": "やねうらべや", "romaji": "Yaneurabeya", "meaning": "Loteng"},
 {"level": "N3", "type": "noun-house", "kanji": "和室", "kana": "わしつ", "romaji": "Washitsu", "meaning": "Kamar gaya Jepang"},

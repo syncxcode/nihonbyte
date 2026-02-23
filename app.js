@@ -565,6 +565,10 @@ function confirmEndQuiz() {
     "ungkapan umum": "Ungkapan Umum",
     "verb-adj-only": "Kosakata Utama",
     "pattern": "Pola Kalimat"
+    "activity": "Kosakata Aktivitas",
+    "noun-hobby": "Kosakata Hobi",
+    "noun-sports": "Kosakata Olahraga",
+    "noun-color": "Kosakata Warna",
   };
 
   function shouldShowLevelInResult(typeKey) {

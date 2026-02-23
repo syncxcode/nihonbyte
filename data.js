@@ -333,8 +333,8 @@ const vocabularyData = [
 {"level": "N1", "type": "noun-animal", "kanji": "鸚鵡", "kana": "おうむ", "romaji": "Ōmu", "meaning": "Burung Nuri"},
 {"level": "N1", "type": "noun-animal", "kanji": "カナリヤ", "kana": "カナリヤ", "romaji": "Kanariya", "meaning": "Burung Kenari"},
 {"level": "N3", "type": "noun-animal", "kanji": "鯉", "kana": "こい", "romaji": "Koi", "meaning": "Ikan Koi"},
-{"level": "N3", "type": "noun-animal", "kanji": "カンガルー", "kana": "カンガルー", "romaji": "Kangarū", "meaning": "Kanguru"}
-
+{"level": "N3", "type": "noun-animal", "kanji": "カンガルー", "kana": "カンガルー", "romaji": "Kangarū", "meaning": "Kanguru"},
+  
 {"level": "N3", "type": "noun-work", "kanji": "職業", "kana": "しょくぎょう", "romaji": "Shokugyō", "meaning": "Pekerjaan / Profesi"},
 {"level": "N5", "type": "noun-work", "kanji": "仕事", "kana": "しごと", "romaji": "Shigoto", "meaning": "Pekerjaan"},
 {"level": "N5", "type": "noun-profession", "kanji": "医者", "kana": "いしゃ", "romaji": "Isha", "meaning": "Dokter"},

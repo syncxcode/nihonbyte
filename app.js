@@ -564,7 +564,7 @@ function confirmEndQuiz() {
     "expression": "Ungkapan Umum",
     "ungkapan umum": "Ungkapan Umum",
     "verb-adj-only": "Kosakata Utama",
-    "pattern": "Pola Kalimat"
+    "pattern": "Pola Kalimat",
     "activity": "Kosakata Aktivitas",
     "noun-hobby": "Kosakata Hobi",
     "noun-sports": "Kosakata Olahraga",

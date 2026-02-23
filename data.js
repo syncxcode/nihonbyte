@@ -850,7 +850,7 @@ const vocabularyData = [
 {"level": "N3", "type": "noun-kitchen", "kanji": "食器棚", "kana": "しょっきだな", "romaji": "Shokkidana", "meaning": "Lemari Piring / Rak Makan"},
 {"level": "N5", "type": "noun", "kanji": "パソコン", "kana": "ぱそこん", "romaji": "Pasokon", "meaning": "Laptop / PC"},
 {"level": "N5", "type": "noun", "kanji": "スマホ", "kana": "すまほ", "romaji": "Sumaho", "meaning": "Smartphone"},
-{"level": "N4", "type": "noun", "kanji": "携帯電話", "kana": "けいたいでんわ", "romaji": "Keitaidenwa", "meaning": "Ponsel / Handphone"}
+{"level": "N4", "type": "noun", "kanji": "携帯電話", "kana": "けいたいでんわ", "romaji": "Keitaidenwa", "meaning": "Ponsel / Handphone"},
 
 {"level": "N5", "type": "noun-school", "kanji": "学校", "kana": "がっこう", "romaji": "Gakkō", "meaning": "Sekolah"},
 {"level": "N2", "type": "noun-school", "kanji": "保育園", "kana": "ほいくえん", "romaji": "Hoikuen", "meaning": "Play-group / Tempat Penitipan Anak"},

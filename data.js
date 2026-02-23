@@ -1264,7 +1264,7 @@ const vocabularyData = [
 {"level": "N3", "type": "noun-restaurant", "kanji": "アルコール", "kana": "アルコール", "romaji": "Arukōru", "meaning": "Alkohol"},
 {"level": "N1", "type": "noun-kitchen", "kanji": "水差し", "kana": "みずさし", "romaji": "Mizusashi", "meaning": "Teko air"},
 {"level": "N1", "type": "noun-restaurant", "kanji": "前菜", "kana": "ぜんさい", "romaji": "Zensai", "meaning": "Makanan pembuka"},
-{"level": "N3", "type": "noun-restaurant", "kanji": "食欲", "kana": "しょくよく", "romaji": "Shokuyoku", "meaning": "Nafsu makan"}
+{"level": "N3", "type": "noun-restaurant", "kanji": "食欲", "kana": "しょくよく", "romaji": "Shokuyoku", "meaning": "Nafsu makan"},
 
 {"level": "N3", "type": "noun-agriculture", "kanji": "野菜", "kana": "やさい", "romaji": "Yasai", "meaning": "Sayur-sayuran"},
 {"level": "N4", "type": "noun-agriculture", "kanji": "人参", "kana": "にんじん", "romaji": "Ninjin", "meaning": "Wortel"},

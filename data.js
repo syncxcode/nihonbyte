@@ -462,7 +462,7 @@ const vocabularyData = [
 {"level": "N3", "type": "activity", "kanji": "劇場に行く", "kana": "げきじょうにいく", "romaji": "Gekijō ni iku", "meaning": "Pergi ke teater"},
 {"level": "N2", "type": "verb-suru", "kanji": "コスプレする", "kana": "こすぷれする", "romaji": "Kosupure suru", "meaning": "Bermain Cosplay"},
 {"level": "N5", "type": "verb-ru", "kanji": "寝る", "kana": "ねる", "romaji": "Neru", "meaning": "Tidur"},
-{"level": "N5", "type": "verb-godan", "kanji": "走る", "kana": "はしる", "romaji": "Hashiru", "meaning": "Lari"}
+{"level": "N5", "type": "verb-godan", "kanji": "走る", "kana": "はしる", "romaji": "Hashiru", "meaning": "Lari"},
 
 {"level": "N3", "type": "noun-sports", "kanji": "弓道", "kana": "きゅうどう", "romaji": "Kyūdō", "meaning": "Memanah (Tradisional)"},
 {"level": "N4", "type": "noun-sports", "kanji": "野球", "kana": "やきゅう", "romaji": "Yakyū", "meaning": "Bisbol"},
@@ -1053,7 +1053,7 @@ const vocabularyData = [
 {"level": "N2", "type": "noun-school", "kanji": "パレット", "kana": "パレット", "romaji": "Paretto", "meaning": "Palet Lukis"},
 {"level": "N2", "type": "noun-school", "kanji": "絵筆", "kana": "えふで", "romaji": "Efude", "meaning": "Kuas Gambar"},
 {"level": "N3", "type": "noun-school", "kanji": "問題", "kana": "もんだい", "romaji": "Mondai", "meaning": "Soal / Masalah"},
-{"level": "N2", "type": "noun-school", "kanji": "接着剤", "kana": "せっちゃくざい", "romaji": "Setchakuzai", "meaning": "Lem"}
+{"level": "N2", "type": "noun-school", "kanji": "接着剤", "kana": "せっちゃくざい", "romaji": "Setchakuzai", "meaning": "Lem"},
 
 {"level": "N3", "type": "noun-restaurant", "kanji": "納豆", "kana": "なっとう", "romaji": "Nattō", "meaning": "Kedelai fermentasi"},
 {"level": "N4", "type": "noun-restaurant", "kanji": "寿司", "kana": "すし", "romaji": "Sushi", "meaning": "Nasi kepal berlapis ikan mentah"},

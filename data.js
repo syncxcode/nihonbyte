@@ -208,30 +208,30 @@ const vocabularyData = [
 {"level": "N5", "type": "noun-color", "kanji": "ピンク", "kana": "ピンク", "romaji": "Pinku", "meaning": "Pink"},
 {"level": "N1", "type": "noun-color", "kanji": "暗色", "kana": "あんしょく", "romaji": "Anshoku", "meaning": "Warna Gelap"},
 {"level": "N1", "type": "noun-color", "kanji": "明色", "kana": "めいしょく", "romaji": "Meishoku", "meaning": "Warna Cerah"},
-{"level": "N5", "type": "noun-color", "kanji": "黄色", "kana": "きいろ", "romaji": "Kīro", "meaning": "Kuning (Kata Benda)"},
+{"level": "N5", "type": "noun-color", "kanji": "黄色", "kana": "きいろ", "romaji": "Kīro", "meaning": "Kuning"},
 {"level": "N4", "type": "noun-color", "kanji": "金色", "kana": "きんいろ", "romaji": "Kiniro", "meaning": "Warna Emas"},
 {"level": "N4", "type": "noun-color", "kanji": "銀色", "kana": "ぎんいろ", "romaji": "Giniro", "meaning": "Warna Perak"},
 {"level": "N4", "type": "noun-color", "kanji": "紫", "kana": "むらさき", "romaji": "Murasaki", "meaning": "Ungu"},
 {"level": "N4", "type": "noun-color", "kanji": "水色", "kana": "みずいろ", "romaji": "Mizuiro", "meaning": "Biru Muda"},
 {"level": "N1", "type": "noun-color", "kanji": "赤紫", "kana": "あかむらさき", "romaji": "Akamurasaki", "meaning": "Merah Keunguan"},
-{"level": "N5", "type": "noun-color", "kanji": "茶色", "kana": "ちゃいろ", "romaji": "Chairo", "meaning": "Cokelat (Kata Benda)"},
+{"level": "N5", "type": "noun-color", "kanji": "茶色", "kana": "ちゃいろ", "romaji": "Chairo", "meaning": "Cokelat"},
 {"level": "N4", "type": "noun-color", "kanji": "緑", "kana": "みどり", "romaji": "Midori", "meaning": "Hijau"},
 {"level": "N5", "type": "noun-color", "kanji": "オレンジ色", "kana": "オレンジいろ", "romaji": "Orenji-iro", "meaning": "Oranye"},
 {"level": "N2", "type": "noun-color", "kanji": "橙色", "kana": "だいだいいろ", "romaji": "Daidai-iro", "meaning": "Jingga"},
 {"level": "N3", "type": "noun-color", "kanji": "桃色", "kana": "ももいろ", "romaji": "Momoiro", "meaning": "Peach / Merah Muda Persik"},
 {"level": "N1", "type": "noun-color", "kanji": "濃紺", "kana": "のうこん", "romaji": "Nōkon", "meaning": "Biru Tua / Navy Gelap"},
 {"level": "N4", "type": "noun-color", "kanji": "灰色", "kana": "はいいろ", "romaji": "Hai-iro", "meaning": "Abu-Abu"},
-{"level": "N5", "type": "noun-color", "kanji": "グレー", "kana": "グレー", "romaji": "Gurē", "meaning": "Abu-Abu (Katakana)"},
+{"level": "N5", "type": "noun-color", "kanji": "グレー", "kana": "グレー", "romaji": "Gurē", "meaning": "Abu-Abu"},
 {"level": "N3", "type": "noun-color", "kanji": "紺", "kana": "こん", "romaji": "Kon", "meaning": "Biru Laut / Navy"},
 {"level": "N1", "type": "noun-color", "kanji": "リラ", "kana": "リラ", "romaji": "Rira", "meaning": "Lilac / Ungu Muda"},
 {"level": "N1", "type": "noun-color", "kanji": "紅", "kana": "くれない", "romaji": "Kurenai", "meaning": "Merah Terang / Crimson"},
 
 // --- KELOMPOK KATA SIFAT -I (adj-i) ---
 // Catatan: Warna dasar ini memiliki akhiran 'i' dan berfungsi sebagai kata sifat langsung.
-{"level": "N5", "type": "adj-i", "kanji": "黒い", "kana": "くろい", "romaji": "Kuroi", "meaning": "Hitam (Sifat)"},
-{"level": "N5", "type": "adj-i", "kanji": "青い", "kana": "あおい", "romaji": "Biru (Sifat)"},
-{"level": "N5", "type": "adj-i", "kanji": "赤い", "kana": "あかい", "romaji": "Akai", "meaning": "Merah (Sifat)"},
-{"level": "N5", "type": "adj-i", "kanji": "白い", "kana": "しろい", "romaji": "Shiroi", "meaning": "Putih (Sifat)"},
+{"level": "N5", "type": "adj-i", "kanji": "黒い", "kana": "くろい", "romaji": "Kuroi", "meaning": "Hitam"},
+{"level": "N5", "type": "adj-i", "kanji": "青い", "kana": "あおい", "romaji": "Aoi", "meaning": "Biru"},
+{"level": "N5", "type": "adj-i", "kanji": "赤い", "kana": "あかい", "romaji": "Akai", "meaning": "Merah"},
+{"level": "N5", "type": "adj-i", "kanji": "白い", "kana": "しろい", "romaji": "Shiroi", "meaning": "Putih"},
 
 // --- KELOMPOK KATA SIFAT -NA (adj-na) ---
 // Catatan: Warna intensitas tinggi ini menggunakan partikel 'na' atau berfungsi sebagai kata benda penegas.

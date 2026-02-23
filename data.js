@@ -984,7 +984,7 @@ const vocabularyData = [
 {"level": "N2", "type": "verb-suru", "kanji": "カンニングする", "kana": "カンニングする", "romaji": "Kanningu suru", "meaning": "Menyontek"},
 {"level": "N2", "type": "noun-school", "kanji": "入試", "kana": "にゅうし", "romaji": "Nyūshi", "meaning": "Ujian Masuk"},
 {"level": "N3", "type": "noun-school", "kanji": "討論", "kana": "とうろん", "romaji": "Tōron", "meaning": "Diskusi / Debat"},
-{"level": "N5", "type": "verb-godan", "kanji": "書く", "kana": "かく", "romaji": "Kiku", "meaning": "Menulis"},
+{"level": "N5", "type": "verb-godan", "kanji": "書く", "kana": "かく", "romaji": "Kaku", "meaning": "Menulis"},
 {"level": "N3", "type": "noun-school", "kanji": "文化祭", "kana": "ぶんかさい", "romaji": "Bunkasai", "meaning": "Festival Kebudayaan"},
 {"level": "N2", "type": "noun-school", "kanji": "朝礼", "kana": "ちょうれい", "romaji": "Chōrei", "meaning": "Apel Pagi"},
 {"level": "N4", "type": "noun-school", "kanji": "昼休み", "kana": "ひるやすみ", "romaji": "Hiru yasumi", "meaning": "Istirahat Siang"},

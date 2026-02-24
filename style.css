@@ -1122,13 +1122,15 @@ nested-latihan-list {
   justify-content: center !important;
   min-height: calc(100dvh - 78px) !important;
   margin-top: 78px !important;
-  padding: 10px 16px !important; /* Kurangi padding luar biar lega */
+  padding: 10px 16px !important; 
   overflow: hidden !important;
 }
 
 .quiz-wrapper-pro {
   width: min(980px, 100%);
-  max-height: calc(100dvh - 90px); /* Batas aman biar gak nabrak tepi bawah */
+  /* 🚀 INI KUNCINYA BIAR GAK RENGGANG! Paksa tingginya hampir full layar (sisa margin 10px atas bawah) */
+  height: calc(100dvh - 100px); 
+  max-height: calc(100dvh - 100px); 
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1158,7 +1160,7 @@ nested-latihan-list {
 #quiz-timer { color: #e11d48; margin-left: 4px; font-size: 1.1rem; }
 
 .quiz-qcard-pro {
-  flex: 1; /* 🚀 INI KUNCINYA! Kartu pertanyaan akan memanjang/memendek otomatis ngisi sisa ruang */
+  flex: 1; /* Area biru ini otomatis membesar ngisi ruang kosong! */
   min-height: 100px;
   border-radius: 18px;
   background: linear-gradient(160deg, #f8fafc, #eef2ff);
@@ -1173,18 +1175,18 @@ nested-latihan-list {
 .quiz-question-main {
   margin: 0;
   color: #0f172a;
-  font-size: clamp(1.8rem, 5vw, 3.8rem); /* Font sedikit disesuaikan biar gak over */
+  font-size: clamp(1.8rem, 5vw, 3.8rem); 
   line-height: 1.15;
 }
 
 .quiz-options-pro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px; /* Jarak antar tombol opsi dipangkas sedikit */
+  gap: 8px; 
 }
 
 .quiz-opt-btn-pro {
-  min-height: 44px; /* Tinggi tombol opsi dirapikan */
+  min-height: 44px; 
   padding: 10px;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
@@ -1198,7 +1200,7 @@ nested-latihan-list {
 .quiz-finish-pro {
   display: flex;
   justify-content: center;
-  margin-top: 5px; /* Jarak atas disusutkan biar tombol gak tenggelam */
+  margin-top: 5px; 
   width: 100%;
 }
 
@@ -1240,11 +1242,17 @@ body.training-session #resultInfo {
   margin: 0 auto;
   font-weight: 800 !important;
   color: #e11d48 !important; 
+  
+  /* 🚀 ANTI COPY/BLOCK & CURSOR NORMAL */
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: default !important;
 }
 
 @media (max-width: 900px) {
   #grid.quiz-active-mode { padding: 8px !important; }
   .quiz-wrapper-pro {
+    height: calc(100dvh - 84px); /* Sama, paksa melar di HP juga */
     max-height: calc(100dvh - 84px);
     padding: 12px;
   }

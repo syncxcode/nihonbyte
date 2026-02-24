@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const latihanSectionLabel = {
     "goi-kanji-reading": "Membaca Kanji",
     "goi-orthography": "Ortografi",
-    "goi-context-expression": "Ekspresi Kontekstual",
+    "goi-context-expression": "Ekspresi yang didefinisikan secara kontekstual",
     "goi-paraphrase": "Parafrasa",
     "goi-usage": "Penggunaan",
     "bunpou-form": "Tata bahasa kalimat (Memilih bentuk tata bahasa)",

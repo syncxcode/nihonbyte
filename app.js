@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let score = 0;
   let timer;
   let timeLeft = 0;
+  let sessionTimeLeft = 0;
   let bodyScrollY = 0;
   let quizOriginalBodyOverflow = "";
   let quizOriginalHtmlOverflow = "";
@@ -68,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "goi-context-expression": "Ekspresi Kontekstual",
     "goi-paraphrase": "Parafrasa",
     "goi-usage": "Penggunaan",
-    "bunpou-form": "Memilih Bentuk Tata Bahasa",
-    "bunpou-composition": "Komposisi Kalimat",
+    "bunpou-form": "Tata bahasa kalimat (Memilih bentuk tata bahasa)",
+    "bunpou-composition": "Tata bahasa kalimat (Komposisi kalimat)",
     "bunpou-text": "Tata Bahasa Teks",
     "dokkai-reading": "Dokkai Membaca",
     "choukai-listening": "Choukai Mendengarkan",
@@ -95,6 +96,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.height = quizOriginalBodyHeight;
     document.documentElement.style.height = quizOriginalHtmlHeight;
     isQuizScrollLocked = false;
+  }
+
+  const goiSectionOrder = [
+    "goi-kanji-reading",
+    "goi-orthography",
+    "goi-context-expression",
+    "goi-paraphrase",
+    "goi-usage",
+  ];
+
+  const bunpouSectionOrder = [
+    "bunpou-form",
+    "bunpou-composition",
+    "bunpou-text",
+  ];
+
+  function getSectionProgress(type, section) {
+    const order = type === "bunpou" ? bunpouSectionOrder : goiSectionOrder;
+    const idx = order.indexOf(section);
+    return { index: idx >= 0 ? idx + 1 : 1, total: order.length };
+  }
+
+  function formatSessionTime(seconds) {
+    const safe = Math.max(0, seconds);
+    const mm = String(Math.floor(safe / 60)).padStart(2, "0");
+    const ss = String(safe % 60).padStart(2, "0");
+    return `${mm}:${ss}`;
   }
 
   function getLatihanVocabularySource() {
@@ -172,7 +200,13 @@ document.addEventListener("DOMContentLoaded", () => {
     quizIndex = 0;
     score = 0;
     currentQuizData = shuffleArray(questions).slice(0, Math.min(20, questions.length));
+    
+    const totalMinuteByLevel = { N5: 20, N4: 25 };
+    const defaultMinutes = totalMinuteByLevel[level] || 20;
+    sessionTimeLeft = defaultMinutes * 60;
+
     renderQuiz();
+    startTimer();
   }
 
 function renderQuiz() {
@@ -186,8 +220,7 @@ function renderQuiz() {
       ? "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)"
       : "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
 
-    const timeLimit = currentExerciseMeta.type === "bunpou" ? 45 : 25;
-    timeLeft = timeLimit;
+    const sectionProgress = getSectionProgress(currentExerciseMeta.type, currentExerciseMeta.section);
     const options = generateExerciseOptions(item);
 
     grid.className = "";
@@ -197,11 +230,12 @@ function renderQuiz() {
     grid.innerHTML = `
       <div class="quiz-wrapper-pro">
         <p class="quiz-origin-title">UJIAN JLPT REAL</p>
-        <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.sectionLabel} • ${currentExerciseMeta.level}</p>
+        <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
+        <p class="quiz-subtitle">Sesi ${sectionProgress.index}/${sectionProgress.total}: ${currentExerciseMeta.sectionLabel}</p>
 
         <div class="quiz-head-pro">
           <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
-          <div class="quiz-timer-text">Timer <span id="quiz-timer">${timeLeft}s</span></div>
+          <div class="quiz-timer-text">Timer <span id="quiz-timer">${formatSessionTime(sessionTimeLeft)}</span></div>
         </div>
 
         <div class="quiz-qcard-pro">
@@ -232,14 +266,13 @@ function renderQuiz() {
 function startTimer() {
     clearInterval(timer);
     timer = setInterval(() => {
-        timeLeft--;
-        timeLeft--;
+      sessionTimeLeft--;
       const timerDisplay = document.getElementById("quiz-timer");
-      if (timerDisplay) timerDisplay.textContent = `${timeLeft}s`;
-
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            showCorrectAnswerAndNext();
+      if (timerDisplay) timerDisplay.textContent = formatSessionTime(sessionTimeLeft);
+      
+      if (sessionTimeLeft <= 0) {
+        clearInterval(timer);
+        endQuiz();
         }
     }, 1000);
 }
@@ -295,6 +328,7 @@ function endQuiz() {
     isTesting = false;
     document.body.classList.remove("training-session");
     clearInterval(timer);
+    sessionTimeLeft = 0;
     unlockQuizScroll();
   
     const totalSoal = currentQuizData.length;
@@ -1401,7 +1435,14 @@ function confirmEndQuiz() {
       const readingListeningDev = ["dokkai", "choukai", "listening"].includes(mainType);
 
       if (goiOrBunpouDev || readingListeningDev) {
-        viewMode = `dev:exercise:${latihanSectionLabel[section] || section}:${level}`;
+        const devTitleMap = {
+          goi: "Pengetahuan Bahasa (Kosakata)",
+          bunpou: "Pengetahuan Bahasa (Tata Bahasa)",
+          dokkai: "Dokkai Membaca",
+          choukai: "Choukai Mendengarkan",
+          listening: "Choukai Mendengarkan",
+        };
+        viewMode = `dev:exercise:${devTitleMap[mainType] || (latihanSectionLabel[section] || section)}:${level}`;
         render();
         closeSidebar();
         return;
@@ -1441,7 +1482,7 @@ function confirmEndQuiz() {
 
   container.innerHTML = `
     <div style="text-align: center;">
-      <h2 style="color: #ff4d6d; margin-bottom: 20px;">🚧 ${titlePrefix} ${type}-${level} 🚧</h2>
+      <h2 style="color: #ff4d6d; margin-bottom: 20px;">🚧 ${titlePrefix} ${type} 🚧</h2>
       <p style="font-size: 1.2rem; font-weight: 600; color: #1f2937; margin-bottom: 10px;">
         Kategori yang anda pilih, masih dalam proses Pengembangan, silahkan kembali lagi nanti.
       </p>
@@ -1455,7 +1496,7 @@ function confirmEndQuiz() {
   `;
 
   grid.appendChild(container);
-  if (resultInfo) resultInfo.textContent = `${titlePrefix} ${type}-${level} (Coming Soon)`;
+  if (resultInfo) resultInfo.textContent = `${titlePrefix} ${type} ${level} (Coming Soon)`;
 }
   
   // ==========================================

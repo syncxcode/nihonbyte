@@ -895,6 +895,70 @@ function confirmEndQuiz() {
     if(resultInfo) resultInfo.textContent = formatResultInfo(expressions.length, { typeOverride: "expression" });
   }
 
+  function renderActivityPoster() {
+    grid.innerHTML = "";
+    if (typeof vocabularyData === "undefined") return;
+    
+    const activities = vocabularyData.filter(w => w.type === "activity");
+    
+    if (!activities.length) {
+      grid.innerHTML = '<div class="empty-state">Belum ada kosakata aktivitas.</div>';
+      if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "activity" });
+      return;
+    }
+    
+    const container = document.createElement("div");
+    container.className = "expression-wide-grid"; 
+    
+    activities.forEach((word) => {
+      const card = document.createElement("div");
+      card.className = "expression-wide-card";
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", `Detail aktivitas ${word.kana || word.kanji}`);
+      
+      try {
+        card.dataset.word = JSON.stringify(word);
+      } catch (err) {
+        console.warn("Gagal stringify aktivitas:", word);
+        return;
+      }
+      
+      card.innerHTML = `
+        <div class="wide-kanji">${word.kanji || "—"}</div>
+        <div class="wide-kana">${word.kana || "—"}</div>
+        <div class="wide-romaji">${word.romaji || ""}</div>
+        <div class="wide-meaning">${word.meaning || "—"}</div>
+        <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
+      `;
+      
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".wide-play-btn")) return;
+        try {
+          const storedWord = JSON.parse(card.dataset.word);
+          openModal(storedWord);
+        } catch (err) {}
+      });
+      
+      card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        speakWord(card.querySelector(".wide-play-btn").dataset.text);
+      });
+      
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          try { openModal(JSON.parse(card.dataset.word)); } catch {}
+        }
+      });
+      
+      container.appendChild(card);
+    });
+    
+    grid.appendChild(container);
+    if(resultInfo) resultInfo.textContent = formatResultInfo(activities.length, { typeOverride: "activity" });
+  }
+
   function shuffle(array) {
     if (!Array.isArray(array)) return [];
     const copy = [...array];
@@ -1477,21 +1541,27 @@ function confirmEndQuiz() {
        selectedType === "ekspresi" ||
        selectedType === "expression" ||
        selectedType === "ungkapan umum");
+       
+    const isActivityView = 
+      viewMode === "vocab" && 
+      (category?.value === "activity" || selectedType === "activity");
     
     if (viewMode.startsWith("dev:")) {
-    const parts = viewMode.split(":"); 
-    // parts[1] = mode (exercise/pattern)
-    // parts[2] = type (kanji/bunpou)
-    // parts[3] = level (N3/N2/N1)
-    renderUnderDevelopment(parts[1], parts[2], parts[3]);
-    return;
-  }
+      const parts = viewMode.split(":"); 
+      renderUnderDevelopment(parts[1], parts[2], parts[3]);
+      return;
+    }
     
     if (isExpressionView) {
       renderExpressionPoster();
       return;
     }
 
+    if (isActivityView) {
+      renderActivityPoster();
+      return;
+    }
+    
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;

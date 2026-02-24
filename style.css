@@ -1141,6 +1141,7 @@ nested-latihan-list {
 
 .quiz-origin-title { margin: 0; text-align: center; letter-spacing: .08em; font-size: .85rem; color: #64748b; font-weight: 700; }
 .quiz-section-title { margin: 0; text-align: center; color: #1e293b; font-weight: 800; }
+.quiz-subtitle { margin: -4px 0 2px; text-align: center; color: #475569; font-weight: 700; font-size: 0.95rem; }
 
 .quiz-head-pro {
   display: flex;

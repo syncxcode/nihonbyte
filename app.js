@@ -1613,6 +1613,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   function render() {
     window.scrollTo(0, 0);
+    savedScrollPosition = 0;
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
     grid.classList.remove("support-mode", "pattern-grid-layout");

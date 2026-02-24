@@ -1105,3 +1105,8 @@ select, input, .action-btn {
 @media (max-width: 480px) {
   .branding img { height: 55px !important; }
 }
+
+/* --- SEGEL UJIAN JLPT --- */
+body.quiz-running .topbar {
+  display: none !important; /* Header dihilangkan total biar ga bisa diklik/search */
+}

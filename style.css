@@ -1105,3 +1105,136 @@ select, input, .action-btn {
 @media (max-width: 480px) {
   .branding img { height: 55px !important; }
 }
+
+/* =========================================
+   LATIHAN MODE BARU (UJIAN JLPT REAL)
+========================================= */
+#grid.quiz-active-mode {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100dvh !important;
+  padding: 20px !important;
+}
+
+.quiz-wrapper-pro {
+  width: min(920px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 24px 60px rgba(20, 24, 30, 0.2);
+  padding: 22px;
+}
+
+.quiz-origin-title {
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.quiz-section-title {
+  margin: 0;
+  text-align: center;
+  color: #1e293b;
+  font-weight: 800;
+}
+
+.quiz-head-pro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+}
+
+.quiz-progress-text {
+  font-weight: 700;
+  color: #334155;
+}
+
+.quiz-timer-text {
+  font-weight: 700;
+  color: #475569;
+}
+
+#quiz-timer {
+  color: #e11d48;
+  margin-left: 4px;
+  font-size: 1.2rem;
+}
+
+.quiz-qcard-pro {
+  min-height: 240px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #f8fafc, #eef2ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.quiz-question-main {
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
+}
+
+.quiz-options-pro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quiz-opt-btn-pro {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #334155;
+  cursor: pointer;
+}
+
+.quiz-finish-pro {
+  display: flex;
+  justify-content: center;
+}
+
+#finishBtnManual {
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 10px 20px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+body.training-session #sidebar,
+body.training-session #overlay,
+body.training-session #searchBtn,
+body.training-session .branding,
+body.training-session #hamburger {
+  display: none !important;
+}
+
+body.training-session .topbar {
+  justify-content: center;
+  display: flex;
+  min-height: 74px;
+}
+
+body.training-session #resultInfo {
+  margin: 0 auto;
+  font-weight: 700;
+}
+

@@ -1194,12 +1194,38 @@ nested-latihan-list {
   cursor: pointer;
 }
 
+/* 👇 BAGIAN YANG DIPERBAIKI (TOMBOL TENGAH & SCROLLBAR) 👇 */
 .quiz-finish-pro {
-  .quiz-finish-pro { display: flex; justify-content: center; }
-  #finishBtnManual { background: #fff; border: 1px solid #cbd5e1; border-radius: 999px; padding: 10px 20px; color: #64748b; font-weight: 700; }
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  width: 100%;
+}
 
+#finishBtnManual {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 12px 28px;
+  color: #64748b;
+  font-weight: 800;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+#finishBtnManual:hover {
+  background: #f8fafc;
+  color: #e11d48;
+  border-color: #fca5a5;
+  transform: translateY(-2px);
+}
+
+/* KUNCI ANTI SCROLL DI MODE UJIAN */
 body.training-session {
   overflow: hidden !important;
+  touch-action: none;
 }
 
 body.training-session #sidebar,
@@ -1209,7 +1235,12 @@ body.training-session .branding,
 body.training-session #hamburger { display: none !important; }
 
 body.training-session .topbar { justify-content: center; display: flex; min-height: 78px; }
-body.training-session #resultInfo { margin: 0 auto; font-weight: 700; }
+
+body.training-session #resultInfo {
+  margin: 0 auto;
+  font-weight: 800 !important;
+  color: #e11d48 !important; /* Warna pink/merah biar tulisan Ganbatte-nya mencolok */
+}
 
 @media (max-width: 900px) {
   #grid.quiz-active-mode {

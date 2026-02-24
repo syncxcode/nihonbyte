@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function lockQuizScroll() {
     if (isQuizScrollLocked) return;
+    document.body.classList.add("quiz-running"); // <--- KUNCI HEADER MATI
     quizOriginalBodyOverflow = document.body.style.overflow || "";
     quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
     quizOriginalBodyHeight = document.body.style.height || "";
@@ -73,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function unlockQuizScroll() {
     if (!isQuizScrollLocked) return;
+    document.body.classList.remove("quiz-running"); // <--- HEADER NYALA LAGI
     document.body.style.overflow = quizOriginalBodyOverflow;
     document.documentElement.style.overflow = quizOriginalHtmlOverflow;
     document.body.style.height = quizOriginalBodyHeight;
@@ -142,119 +144,121 @@ function renderQuiz(type) {
 
     grid.innerHTML = `
         <style>
-            html, body { overflow: hidden !important; height: 100dvh !important; }
+            html, body { overflow: hidden !important; height: 100dvh !important; background: #f8fafc !important; }
             #grid.quiz-active-mode {
                 display: flex !important;
-                align-items: flex-start !important;
-                justify-content: center !important;
-                padding-top: 86px !important;
-                padding-bottom: 10px !important;
-                min-height: calc(100dvh - 86px) !important;
+                align-items: center !important; /* BIKIN FULL CENTER VERTIKAL */
+                justify-content: center !important; /* BIKIN FULL CENTER HORIZONTAL */
+                padding: 20px !important;
+                min-height: 100dvh !important; /* Penuhi layar penuh */
                 box-sizing: border-box !important;
-                overflow: hidden !important;
+                margin: 0 !important;
             }
             .quiz-wrapper-pro {
                 width: 100%;
-                max-width: 980px;
+                max-width: 800px;
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
-                padding: 10px 16px 6px;
-                margin: 0;
+                gap: 20px;
+                animation: fadeIn 0.4s ease-out;
             }
+            @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+            
             .quiz-head-pro {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                background: rgba(255,255,255,0.95);
-                padding: 10px 18px;
+                background: white;
+                padding: 18px 26px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            }
+            .quiz-timer-box {
+                background: #ff4d6d;
+                color: white;
+                padding: 8px 22px;
                 border-radius: 999px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-                width: 100%;
-                box-sizing: border-box;
-                gap: 12px;
+                font-weight: 800;
+                font-size: 1.4rem;
+                box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
             }
             .quiz-qcard-pro {
-                background: rgba(240, 244, 248, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 28px 16px;
-                border-radius: 16px;
+                background: white;
+                padding: 60px 20px;
+                border-radius: 24px;
                 text-align: center;
-                border: 1px solid #e2e8f0;
-                box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+                border: 2px solid #f1f5f9;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                min-height: clamp(190px, 33dvh, 320px);
+                min-height: 280px;
             }
             .quiz-options-pro {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(180px, 1fr));
-                gap: 10px;
-                width: 100%;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
             }
-            .quiz-finish-pro {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                margin-top: 0;
+            .quiz-opt-btn-pro {
+                padding: 24px 16px;
+                border: 2px solid #e2e8f0;
+                border-radius: 18px;
+                background: white;
+                color: #1e293b;
+                cursor: pointer;
+                font-size: 1.3rem;
+                font-weight: 700;
+                transition: all 0.2s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             }
-            @media (max-width: 1024px) {
-                html, body { overflow: auto !important; height: auto !important; }
-                #grid.quiz-active-mode {
-                    justify-content: flex-start !important;
-                    padding-top: 84px !important;
-                    min-height: auto !important;
-                }
-                .quiz-wrapper-pro {
-                    max-width: 100%;
-                    gap: 10px;
-                    padding: 8px 12px 12px;
-                }
-                .quiz-head-pro { padding: 10px 14px; }
-                .quiz-qcard-pro { min-height: clamp(160px, 28dvh, 240px); padding: 20px 14px; }
-                .quiz-options-pro { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+            .quiz-opt-btn-pro:hover {
+                border-color: #ff4d6d;
+                color: #ff4d6d;
+                transform: translateY(-4px);
+                box-shadow: 0 12px 25px rgba(255, 77, 109, 0.2);
             }
             @media (max-width: 640px) {
-                .quiz-head-pro { flex-direction: row; font-size: 0.92rem; }
-                .quiz-options-pro { grid-template-columns: 1fr 1fr; gap: 8px; }
-                .quiz-qcard-pro h1 { font-size: clamp(2.4rem, 12vw, 3.5rem) !important; }
+                .quiz-options-pro { grid-template-columns: 1fr; gap: 12px; } /* 1 Baris di HP */
+                .quiz-head-pro { padding: 14px 18px; }
+                .quiz-qcard-pro { padding: 40px 15px; min-height: 220px; }
             }
         </style>
 
         <div class="quiz-wrapper-pro">
-
             <div class="quiz-head-pro">
-                <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
-                    Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
+                <div style="font-weight: 800; color: #4b5563; font-size: 1.1rem; letter-spacing: 0.5px;">
+                    SOAL ${quizIndex + 1}/${currentQuizData.length} • JLPT ${item.level}
                 </div>
-                <div style="color: #374151; font-weight: 600; font-size: 0.95rem;">
-                    Sisa waktu: <span id="quiz-timer" style="color: #ff4d6d; font-weight: 800; font-size: 1.2rem; margin-left: 5px;">${timeLeft}s</span>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="color: #64748b; font-weight: 700; font-size: 0.95rem;">WAKTU</span>
+                    <div id="quiz-timer" class="quiz-timer-box">${timeLeft}s</div>
                 </div>
             </div>
             
             <div class="quiz-qcard-pro">
-                <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
-                    ${type === 'goi' ? item.meaning : item.kanji}
+                <h1 style="font-size: clamp(3rem, 8vw, 5rem); color: #0f172a; margin: 0; line-height: 1.2; font-weight: 900;">
+                    ${item.kanji || item.kana}
                 </h1>
+                <p style="color: #64748b; font-size: 1.1rem; margin-top: 15px; font-weight: 600;">Pilih bacaan hiragana yang tepat</p>
             </div>
 
             <div class="quiz-options-pro">
                 ${options.map(opt => `
-                    <button class="quiz-opt-btn-pro" data-answer="${opt}" style="padding: 16px; border: 1px solid #cbd5e1; border-radius: 12px; background: white; color: #334155; cursor: pointer; font-size: 1.15rem; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                    <button class="quiz-opt-btn-pro" data-answer="${opt}">
                         ${opt}
                     </button>
                 `).join('')}
             </div>
             
-            <div class="quiz-finish-pro">
-                <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
-                    Selesaikan Test
+            <div style="text-align: center; margin-top: 15px;">
+                <button id="finishBtnManual" style="background: transparent; color: #94a3b8; border: none; text-decoration: underline; cursor: pointer; font-size: 1rem; font-weight: 600;">
+                    Akhiri Ujian Sekarang
                 </button>
             </div>
         </div>
     `;
-
+  
     document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
         btn.addEventListener("click", () => {
             checkAnswer(btn.dataset.answer, type);

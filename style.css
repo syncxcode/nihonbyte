@@ -40,6 +40,12 @@ header, .navbar, .header-container {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
+#resultInfo {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: default !important;
+}
+
 .branding h1 {
   margin: 0;
   font-size: 1.2rem;

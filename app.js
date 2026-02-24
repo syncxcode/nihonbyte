@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let isTesting = false;
+  let currentExerciseMeta = { type: "", level: "" };
   let currentQuizData = [];
   let quizIndex = 0;
   let score = 0;
@@ -112,6 +113,7 @@ function startExercise(type, level) {
     }
 
     isTesting = true;
+    currentExerciseMeta = { type, level };
     lockQuizScroll();
     quizIndex = 0;
     score = 0;
@@ -132,123 +134,48 @@ function renderQuiz(type) {
     }
 
     const item = currentQuizData[quizIndex];
-    // Waktu disesuaikan biar ramah pemula: Kanji/Goi 15s, Bunpou 45s
-    const timeLimit = (type === 'bunpou') ? 45 : 15; 
+    const exerciseLabel = {
+      goi: "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)",
+      bunpou: "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)",
+    };
+    // Waktu disesuaikan biar ramah pemula: Goi 20s, Bunpou 45s
+    const timeLimit = (type === 'bunpou') ? 45 : 20;
     timeLeft = timeLimit;
     const options = generateOptions(item, type);
 
     grid.className = ""; 
     grid.classList.add("quiz-active-mode");
+    document.body.classList.add("training-session");
 
     grid.innerHTML = `
-        <style>
-            html, body { overflow: hidden !important; height: 100dvh !important; }
-            #grid.quiz-active-mode {
-                display: flex !important;
-                align-items: flex-start !important;
-                justify-content: center !important;
-                padding-top: 86px !important;
-                padding-bottom: 10px !important;
-                min-height: calc(100dvh - 86px) !important;
-                box-sizing: border-box !important;
-                overflow: hidden !important;
-            }
-            .quiz-wrapper-pro {
-                width: 100%;
-                max-width: 980px;
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                padding: 10px 16px 6px;
-                margin: 0;
-            }
-            .quiz-head-pro {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: rgba(255,255,255,0.95);
-                padding: 10px 18px;
-                border-radius: 999px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-                width: 100%;
-                box-sizing: border-box;
-                gap: 12px;
-            }
-            .quiz-qcard-pro {
-                background: rgba(240, 244, 248, 0.95);
-                backdrop-filter: blur(10px);
-                padding: 28px 16px;
-                border-radius: 16px;
-                text-align: center;
-                border: 1px solid #e2e8f0;
-                box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                min-height: clamp(190px, 33dvh, 320px);
-            }
-            .quiz-options-pro {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(180px, 1fr));
-                gap: 10px;
-                width: 100%;
-            }
-            .quiz-finish-pro {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                margin-top: 0;
-            }
-            @media (max-width: 1024px) {
-                html, body { overflow: auto !important; height: auto !important; }
-                #grid.quiz-active-mode {
-                    justify-content: flex-start !important;
-                    padding-top: 84px !important;
-                    min-height: auto !important;
-                }
-                .quiz-wrapper-pro {
-                    max-width: 100%;
-                    gap: 10px;
-                    padding: 8px 12px 12px;
-                }
-                .quiz-head-pro { padding: 10px 14px; }
-                .quiz-qcard-pro { min-height: clamp(160px, 28dvh, 240px); padding: 20px 14px; }
-                .quiz-options-pro { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
-            }
-            @media (max-width: 640px) {
-                .quiz-head-pro { flex-direction: row; font-size: 0.92rem; }
-                .quiz-options-pro { grid-template-columns: 1fr 1fr; gap: 8px; }
-                .quiz-qcard-pro h1 { font-size: clamp(2.4rem, 12vw, 3.5rem) !important; }
-            }
-        </style>
-
         <div class="quiz-wrapper-pro">
+            <p class="quiz-origin-title">UJIAN JLPT REAL</p>
+            <p class="quiz-section-title">${exerciseLabel[type] || type.toUpperCase()} • ${currentExerciseMeta.level}</p>
 
             <div class="quiz-head-pro">
-                <div style="font-weight: 700; color: #4b5563; font-size: 1rem;">
-                    Soal ${quizIndex + 1}/${currentQuizData.length} • ${type.toUpperCase()} ${item.level}
+                <div class="quiz-progress-text">
+                    Soal ${quizIndex + 1}/${currentQuizData.length}
                 </div>
-                <div style="color: #374151; font-weight: 600; font-size: 0.95rem;">
-                    Sisa waktu: <span id="quiz-timer" style="color: #ff4d6d; font-weight: 800; font-size: 1.2rem; margin-left: 5px;">${timeLeft}s</span>
+                <<div class="quiz-timer-text">
+                    Timer <span id="quiz-timer">${timeLeft}s</span>
                 </div>
             </div>
             
             <div class="quiz-qcard-pro">
-                <h1 style="font-size: clamp(3rem, 7vw, 5.5rem); color: #1e293b; margin: 0; letter-spacing: -1px; font-weight: 800;">
+                <h1 class="quiz-question-main">
                     ${type === 'goi' ? item.meaning : item.kanji}
                 </h1>
             </div>
 
             <div class="quiz-options-pro">
                 ${options.map(opt => `
-                    <button class="quiz-opt-btn-pro" data-answer="${opt}" style="padding: 16px; border: 1px solid #cbd5e1; border-radius: 12px; background: white; color: #334155; cursor: pointer; font-size: 1.15rem; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
-                        ${opt}
+                    <button class="quiz-opt-btn-pro" data-answer="${opt}">
                     </button>
                 `).join('')}
             </div>
             
             <div class="quiz-finish-pro">
-                <button id="finishBtnManual" style="background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 8px 20px; border-radius: 999px; cursor: pointer; font-size: 0.85rem; font-weight: 700; transition: 0.2s;">
+                <button id="finishBtnManual">
                     Selesaikan Test
                 </button>
             </div>
@@ -376,6 +303,7 @@ function generateOptions(correctItem, type) {
 // ==========================================
 function endQuiz() {
     isTesting = false;
+    document.body.classList.remove("training-session");
     clearInterval(timer);
     document.body.style.overflow = ""; // Lepas segel scroll
     unlockQuizScroll();
@@ -1486,10 +1414,10 @@ function confirmEndQuiz() {
       const type = button.dataset.type; // kanji, bunpou, goi, coukai, dokkai
       const level = button.dataset.level; // N5, N4, dll
 
-      // LOGIC FINAL:
-      // 1. Jika level N3, N2, N1 (Apapun jenis latihannya) -> DEV
-      // 2. Jika jenis latihannya Choukai (coukai) atau Dokkai (Apapun levelnya) -> DEV
-      if (["N3", "N2", "N1"].includes(level) || type === "choukai" || type === "coukai" || type === "dokkai") {
+       // Untuk menu baru:
+      // - Goi dan Bunpou N5-N4 aktif
+      // - Goi/Bunpou N3-N1 dan semua listening diarahkan ke mode development
+      if (["N3", "N2", "N1"].includes(level) || type === "listening") {
         viewMode = `dev:exercise:${type}:${level}`; 
         render();
         closeSidebar();

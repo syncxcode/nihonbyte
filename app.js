@@ -59,6 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizOriginalHtmlHeight = "";
   let isQuizScrollLocked = false;
 
+  // ==========================================
+// 1. Mesin Latihan Baru (Sumber Khusus latihan-data.js)
+// ==========================================
+  const latihanSectionLabel = {
+    "goi-kanji-reading": "Membaca Kanji",
+    "goi-orthography": "Ortografi",
+    "goi-context-expression": "Ekspresi Kontekstual",
+    "goi-paraphrase": "Parafrasa",
+    "goi-usage": "Penggunaan",
+    "bunpou-form": "Memilih Bentuk Tata Bahasa",
+    "bunpou-composition": "Komposisi Kalimat",
+    "bunpou-text": "Tata Bahasa Teks",
+    "dokkai-reading": "Dokkai Membaca",
+    "choukai-listening": "Choukai Mendengarkan",
+  };
+
   function lockQuizScroll() {
     if (isQuizScrollLocked) return;
     quizOriginalBodyOverflow = document.body.style.overflow || "";
@@ -82,129 +98,152 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getLatihanVocabularySource() {
-    return Array.isArray(window.latihanVocabularyData) ? window.latihanVocabularyData : vocabularyData;
+    return Array.isArray(window.latihanVocabularyData) ? window.latihanVocabularyData : [];
   }
 
   function getLatihanPatternSource(level) {
-    if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) {
-      return window.latihanPatternData[level];
-    }
-    return (typeof patternData !== 'undefined' ? (patternData[level] || []) : []);
+    if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) return window.latihanPatternData[level];
+    return [];
   }
       
-// ==========================================
-// 1. Fungsi Memulai Test
-// ==========================================
-function startExercise(type, level) {
-    let filteredData = [];
+  function shuffleArray(arr) {
+    return [...arr].sort(() => Math.random() - 0.5);
+  }
 
-    if (type === 'bunpou') {
-        filteredData = getLatihanPatternSource(level);
-    } else {
-        filteredData = getLatihanVocabularySource().filter(d => d.level === level);
-        if (type === 'kanji') {
-            filteredData = filteredData.filter(d => d.kanji && d.kanji !== "");
+  function buildExerciseQuestions(mainType, section, level) {
+    if (mainType === "goi") {
+      const source = getLatihanVocabularySource().filter((d) => d.level === level);
+      return source.map((item) => {
+        const kanjiText = item.kanji && item.kanji.trim() ? item.kanji : item.kana;
+
+        if (section === "goi-kanji-reading") {
+          return { prompt: item.meaning, answer: kanjiText, level };
         }
+        if (section === "goi-orthography") {
+          return { prompt: item.kana, answer: kanjiText, level };
+        }
+        if (section === "goi-context-expression") {
+          return { prompt: item.meaning, answer: item.kana, level };
+        }
+        if (section === "goi-paraphrase") {
+          return { prompt: kanjiText, answer: item.meaning, level };
+        }
+
+        return { prompt: item.meaning, answer: item.kana, level };
+      });     
     }
 
-    if (filteredData.length < 5) {
-        alert("Data belum cukup untuk memulai latihan di level ini.");
-        return;
+    if (mainType === "bunpou") {
+      const source = getLatihanPatternSource(level);
+      return source.map((item) => {
+        if (section === "bunpou-form") return { prompt: item.meaning, answer: item.pattern, level };
+        if (section === "bunpou-composition") return { prompt: item.pattern, answer: item.example, level };
+        return { prompt: item.example, answer: item.meaning, level };
+      });
+    }
+
+    return [];
+  }
+
+  function generateExerciseOptions(question) {
+    const pool = currentQuizData.map((q) => q.answer).filter((answer) => answer !== question.answer);
+    const uniqueWrong = Array.from(new Set(pool));
+    const wrongChoices = shuffleArray(uniqueWrong).slice(0, 3);
+    while (wrongChoices.length < 3) wrongChoices.push("-");
+    return shuffleArray([question.answer, ...wrongChoices]);
+  }
+
+  function startExercise(mainType, section, level) {
+    const questions = buildExerciseQuestions(mainType, section, level).filter((q) => q.prompt && q.answer);
+
+    if (questions.length < 5) {
+      alert("Data latihan belum cukup di level ini. Silakan pilih level lain.");
+      return;
     }
 
     isTesting = true;
-    currentExerciseMeta = { type, level };
+    currentExerciseMeta = {
+      type: mainType,
+      section,
+      sectionLabel: latihanSectionLabel[section] || section,
+      level,
+    };
     lockQuizScroll();
     quizIndex = 0;
     score = 0;
     
-    const maxQuestions = 20;
-    currentQuizData = filteredData.sort(() => Math.random() - 0.5).slice(0, maxQuestions);
+    currentExerciseMeta = {
+      type: mainType,
+      section,
+      sectionLabel: latihanSectionLabel[section] || section,
+      level,
+    };
 
-    renderQuiz(type);
-}
-
-// ==========================================
-// 2. Render Tampilan Kuis (Fix Jarak Atas)
-// ==========================================
-function renderQuiz(type) {
+function renderQuiz() {
     if (quizIndex >= currentQuizData.length) {
-        endQuiz();
-        return;
+      endQuiz();
+      return;
     }
 
     const item = currentQuizData[quizIndex];
-    const exerciseLabel = {
-      goi: "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)",
-      bunpou: "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)",
-    };
-    // Waktu disesuaikan biar ramah pemula: Goi 20s, Bunpou 45s
-    const timeLimit = (type === 'bunpou') ? 45 : 20;
-    timeLeft = timeLimit;
-    const options = generateOptions(item, type);
+    const mainLabel = currentExerciseMeta.type === "bunpou"
+      ? "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)"
+      : "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
 
-    grid.className = ""; 
+    const timeLimit = currentExerciseMeta.type === "bunpou" ? 45 : 25;
+    timeLeft = timeLimit;
+    const options = generateExerciseOptions(item);
+
+    grid.className = "";
     grid.classList.add("quiz-active-mode");
     document.body.classList.add("training-session");
 
     grid.innerHTML = `
-        <div class="quiz-wrapper-pro">
-            <p class="quiz-origin-title">UJIAN JLPT REAL</p>
-            <p class="quiz-section-title">${exerciseLabel[type] || type.toUpperCase()} • ${currentExerciseMeta.level}</p>
+      <div class="quiz-wrapper-pro">
+        <p class="quiz-origin-title">UJIAN JLPT REAL</p>
+        <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.sectionLabel} • ${currentExerciseMeta.level}</p>
 
-            <div class="quiz-head-pro">
-                <div class="quiz-progress-text">
-                    Soal ${quizIndex + 1}/${currentQuizData.length}
-                </div>
-                <<div class="quiz-timer-text">
-                    Timer <span id="quiz-timer">${timeLeft}s</span>
-                </div>
-            </div>
-            
-            <div class="quiz-qcard-pro">
-                <h1 class="quiz-question-main">
-                    ${type === 'goi' ? item.meaning : item.kanji}
-                </h1>
-            </div>
-
-            <div class="quiz-options-pro">
-                ${options.map(opt => `
-                    <button class="quiz-opt-btn-pro" data-answer="${opt}">
-                    </button>
-                `).join('')}
-            </div>
-            
-            <div class="quiz-finish-pro">
-                <button id="finishBtnManual">
-                    Selesaikan Test
-                </button>
-            </div>
+        <div class="quiz-head-pro">
+          <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
+          <div class="quiz-timer-text">Timer <span id="quiz-timer">${timeLeft}s</span></div>
         </div>
-    `;
 
-    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
-        btn.addEventListener("click", () => {
-            checkAnswer(btn.dataset.answer, type);
-        });
+        <div class="quiz-qcard-pro">
+          <h1 class="quiz-question-main">${item.prompt}</h1>
+        </div>
+
+        <div class="quiz-options-pro">
+          ${options.map((opt) => `<button class="quiz-opt-btn-pro" data-answer="${opt}">${opt}</button>`).join("")}
+        </div>
+
+        <div class="quiz-finish-pro">
+          <button id="finishBtnManual">Selesaikan Test</button>
+          </div>
+        </div>
+      `;
+
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
+      btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
     });
 
-    document.getElementById("finishBtnManual").addEventListener("click", confirmEndQuiz);
-    startTimer(type);
-}
+    document.getElementById("finishBtnManual")?.addEventListener("click", confirmEndQuiz);
+    startTimer();
+  }
 
 // ==========================================
 // 3. Mesin Timer (Auto Next kalau waktu habis)
 // ==========================================
-function startTimer(type) {
+function startTimer() {
     clearInterval(timer);
     timer = setInterval(() => {
         timeLeft--;
-        const timerDisplay = document.getElementById("quiz-timer");
-        if (timerDisplay) timerDisplay.textContent = `${timeLeft}s`;
+        timeLeft--;
+      const timerDisplay = document.getElementById("quiz-timer");
+      if (timerDisplay) timerDisplay.textContent = `${timeLeft}s`;
 
         if (timeLeft <= 0) {
             clearInterval(timer);
-            showCorrectAnswerAndNext(type);
+            showCorrectAnswerAndNext();
         }
     }, 1000);
 }
@@ -212,104 +251,58 @@ function startTimer(type) {
 // ==========================================
 // 4. Mesin Pengecek Jawaban
 // ==========================================
-function checkAnswer(selected, type) {
-    clearInterval(timer); 
+function checkAnswer(selected) {
+    clearInterval(timer);
     const item = currentQuizData[quizIndex];
-    const correctKana = item.kana;
-    
-    if (selected === correctKana) {
-        score++;
-    }
+    if (selected === item.answer) score++;
 
-    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
-        btn.disabled = true; 
-        btn.style.cursor = "default";
-        
-        if (btn.dataset.answer === correctKana) {
-            btn.style.background = "#4ade80"; 
-            btn.style.color = "white";
-            btn.style.borderColor = "#22c55e";
-        } else if (btn.dataset.answer === selected && selected !== correctKana) {
-            btn.style.background = "#fb7185"; 
-            btn.style.color = "white";
-            btn.style.borderColor = "#e11d48";
-        }
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
+      btn.disabled = true;
+      btn.style.cursor = "default";
+
+    if (btn.dataset.answer === item.answer) {
+        btn.style.background = "#4ade80";
+        btn.style.color = "white";
+        btn.style.borderColor = "#22c55e";
+      } else if (btn.dataset.answer === selected && selected !== item.answer) {
+        btn.style.background = "#fb7185";
+        btn.style.color = "white";
+        btn.style.borderColor = "#e11d48";
+      }
     });
 
     setTimeout(() => {
-        quizIndex++;
-        renderQuiz(type);
-    }, 1000);
-}
+      quizIndex++;
+      renderQuiz();
+    }, 900);
+  }
 
-// ==========================================
-// 5. Helper: Waktu Habis
-// ==========================================
-function showCorrectAnswerAndNext(type) {
+function showCorrectAnswerAndNext() {
     const item = currentQuizData[quizIndex];
-    const correctKana = item.kana;
-    
-    document.querySelectorAll(".quiz-opt-btn-pro").forEach(btn => {
-        btn.disabled = true;
-        if (btn.dataset.answer === correctKana) {
-            btn.style.background = "#facc15"; 
-            btn.style.color = "#854d0e";
-            btn.style.borderColor = "#eab308";
-        }
+
+    document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
+      btn.disabled = true;
+      if (btn.dataset.answer === item.answer) {
+        btn.style.background = "#facc15";
+        btn.style.color = "#854d0e";
+        btn.style.borderColor = "#eab308";
+      }
     });
 
     setTimeout(() => {
-        quizIndex++;
-        renderQuiz(type);
-    }, 1200); 
-}
+      quizIndex++;
+      renderQuiz();
+    }, 1100);
+  }
 
-// ==========================================
-// 6. Mesin Pengecoh Pintar (Anti Error / generateOptions)
-// ==========================================
-function generateOptions(correctItem, type) {
-    if (type === 'bunpou') {
-        const source = currentQuizData.length ? currentQuizData : getLatihanPatternSource(correctItem.level);
-        const wrong = shuffle(source.filter(d => d.meaning !== correctItem.meaning)).slice(0, 3).map(d => d.meaning);
-        return shuffle([correctItem.meaning, ...wrong]);
-    }
-
-    const latihanVocabulary = getLatihanVocabularySource();
-    let basePool = latihanVocabulary.filter(d => d.kana !== correctItem.kana && d.level === correctItem.level);
-
-    let smartPool = basePool.filter(d => {
-        const isSuru = (item) => (item.kana && item.kana.endsWith('する')) || (item.kanji && item.kanji.endsWith('する'));
-        if (isSuru(correctItem)) return isSuru(d);
-
-        if (correctItem.type && d.type) {
-            const baseTypeTarget = correctItem.type.split('-')[0];
-            const baseTypeD = d.type.split('-')[0];
-            return baseTypeTarget === baseTypeD;
-        }
-        return true;
-    }).map(d => d.kana);
-
-    if (smartPool.length < 3) {
-        let backupPool = basePool.map(d => d.kana).filter(k => !smartPool.includes(k));
-        smartPool = smartPool.concat(backupPool.sort(() => 0.5 - Math.random()).slice(0, 3 - smartPool.length));
-    }
-
-    let shuffledWrong = smartPool.sort(() => 0.5 - Math.random()).slice(0, 3);
-    return [...shuffledWrong, correctItem.kana].sort(() => 0.5 - Math.random());
-}
-
-// ==========================================
-// 7. Fungsi Akhiri Kuis (Fix Warna Text Nilai)
-// ==========================================
 function endQuiz() {
     isTesting = false;
     document.body.classList.remove("training-session");
     clearInterval(timer);
-    document.body.style.overflow = ""; // Lepas segel scroll
     unlockQuizScroll();
   
     const totalSoal = currentQuizData.length;
-    const jlptScore = Math.round((score / totalSoal) * 60); 
+    const jlptScore = Math.round((score / totalSoal) * 60);
     
     let gradeMsg = "";
     if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
@@ -317,28 +310,20 @@ function endQuiz() {
     else gradeMsg = "Jangan menyerah, belajar lagi yuk!";
 
     const message = `
-        <div style="text-align: center; padding: 15px;">
-            <h2 style="color: #ff4d6d; margin-bottom: 5px;">Test Selesai!</h2>
-            <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
-            <p style="font-size: 1.15rem; font-weight: 600; color: #f3f4f6;">${gradeMsg}</p>
-            <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
-            
-            <button onclick="location.reload()" style="margin-top: 25px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%; transition: transform 0.2s;">
-                KEMBALI KE MENU
-            </button>
-        </div>
+      <div style="text-align: center; padding: 15px;">
+        <h2 style="color: #ff4d6d; margin-bottom: 5px;">Test Selesai!</h2>
+        <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
+        <p style="font-size: 1.15rem; font-weight: 600; color: #f3f4f6;">${gradeMsg}</p>
+        <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
+        <button onclick="location.reload()" style="margin-top: 25px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%;">KEMBALI KE MENU</button>
+      </div>
     `;
     openInfoModal(message);
 }
       
-// ==========================================
-// 8. Proteksi Tombol Selesaikan Manual
-// ==========================================
 function confirmEndQuiz() {
-    if(confirm("Yakin ingin mengakhiri test sekarang? Skor saat ini akan langsung dihitung.")) {
-        endQuiz();
-    }
-}
+    if (confirm("Yakin ingin mengakhiri test sekarang? Skor saat ini akan langsung dihitung.")) endQuiz();
+  }
       
     searchBtn.addEventListener("click", () => {
       bodyScrollY = window.scrollY;
@@ -1411,21 +1396,22 @@ function confirmEndQuiz() {
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
     button.addEventListener("click", () => {
-      const type = button.dataset.type; // kanji, bunpou, goi, coukai, dokkai
-      const level = button.dataset.level; // N5, N4, dll
+      const mainType = button.dataset.main || button.dataset.type || "";
+      const section = button.dataset.section || mainType;
+      const level = button.dataset.level;
 
-       // Untuk menu baru:
-      // - Goi dan Bunpou N5-N4 aktif
-      // - Goi/Bunpou N3-N1 dan semua listening diarahkan ke mode development
-      if (["N3", "N2", "N1"].includes(level) || type === "listening") {
-        viewMode = `dev:exercise:${type}:${level}`; 
+      // GOI & BUNPOU hanya aktif untuk N5-N4. Dokkai/Choukai semua dev mode.
+      const goiOrBunpouDev = ["goi", "bunpou"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+      const readingListeningDev = ["dokkai", "choukai", "listening"].includes(mainType);
+
+      if (goiOrBunpouDev || readingListeningDev) {
+        viewMode = `dev:exercise:${latihanSectionLabel[section] || section}:${level}`;
         render();
         closeSidebar();
         return;
       }
 
-      // Sisanya (Kanji, Goi, Bunpou untuk N5 & N4) baru boleh jalan kuisnya
-      startExercise(type, level);
+      startExercise(mainType, section, level);
       closeSidebar();
     });
   });

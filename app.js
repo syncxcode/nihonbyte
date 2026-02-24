@@ -1192,7 +1192,7 @@ document.addEventListener("DOMContentLoaded", () => {
       poster.querySelector(".letter-poster-body").appendChild(secElem);
     });
     grid.appendChild(poster);
-    if(resultInfo) resultInfo.textContent = "";
+    resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }
 
   function renderPatternPoster(level) {

@@ -335,7 +335,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.innerHTML = `
       <div class="quiz-wrapper-pro">
-        <p class="quiz-origin-title">UJIAN JLPT REAL</p>
         <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
         <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
 

@@ -327,6 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ? { index: item.sectionIndex, total: item.sectionTotal || (currentExerciseMeta.type === "bunpou" ? 3 : 5) }
       : getSectionProgress(currentExerciseMeta.type, dynamicSection);
     const options = generateExerciseOptions(item);
+    if (resultInfo) resultInfo.textContent = "頑張ってください";
 
     grid.className = "";
     grid.classList.add("quiz-active-mode");
@@ -455,6 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
       
     searchBtn.addEventListener("click", () => {
+      if (isTesting) {
+        openInfoModal(`
+          <div style="text-align: center; padding: 10px;">
+            <h3 style="color: #ff4d6d; margin-bottom: 10px;">集中して！ (Fokus!) 🎯</h3>
+            <p style="font-size: 1.1rem;">Selesaikan ujianmu dulu sebelum mencari kosakata lain!</p>
+          </div>
+        `);
+        return;
+      }
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";

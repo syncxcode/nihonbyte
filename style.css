@@ -769,31 +769,7 @@ select, input, .action-btn {
 .expression-wide-grid {
   grid-column: 1 / -1 !important; 
   display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; 
-  gap: 40px !important;
-  width: 100% !important;
-  max-width: 1100px !important; 
-  margin: 40px auto !important;  
-  padding: 0 20px !important;
-  box-sizing: border-box !important;
-}
-
-.expression-wide-grid {
-  grid-column: 1 / -1 !important; 
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)) !important; 
-  gap: 16px !important;
-  width: 100% !important;
-  max-width: 1200px !important; 
-  margin: 20px auto !important;  
-  padding: 0 20px !important;
-  box-sizing: border-box !important;
-}
-
-.expression-wide-grid {
-  grid-column: 1 / -1 !important; 
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important; /* FIXED: Pasti 2 kolom di desktop */
+  grid-template-columns: repeat(2, 1fr) !important; /* Pasti 2 kolom di desktop */
   gap: 16px !important;
   width: 100% !important;
   max-width: 1200px !important; 
@@ -808,7 +784,7 @@ select, input, .action-btn {
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
   box-shadow: 0 10px 25px rgba(190, 24, 93, 0.15) !important; 
   min-height: 140px !important; 
-  padding: 20px 20px 35px 20px !important; /* Padding disesuaikan biar teks lega sampai pinggir */
+  padding: 20px 20px 35px 20px !important; 
   display: flex !important; 
   flex-direction: column !important; 
   justify-content: center !important; 
@@ -817,7 +793,7 @@ select, input, .action-btn {
   position: relative !important; 
   box-sizing: border-box !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-  overflow: hidden !important; /* Jaga-jaga biar ga tumpah keluar kotak */
+  overflow: hidden !important; 
 }
 
 .expression-wide-card:hover {
@@ -825,18 +801,18 @@ select, input, .action-btn {
   box-shadow: 0 16px 28px rgba(190, 24, 93, 0.25) !important;
 }
 
-/* CEGAH WRAP TEXT UNTUK SEMUA ELEMEN KARTU */
+/* ANTI WRAP TEXT (Mengecil otomatis di HP) */
 .wide-kanji, .wide-kana, .wide-romaji, .wide-meaning { 
   display: block !important; 
   width: 100% !important; 
   margin: 0 auto !important; 
-  white-space: nowrap !important; /* KUNCI ANTI WRAP */
+  white-space: nowrap !important; 
   overflow: hidden !important; 
-  text-overflow: ellipsis !important; /* Kalau kepanjangan banget, dikasih "..." di ujung */
+  text-overflow: ellipsis !important; 
 }
 
 .wide-kanji { 
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem) !important; /* Ukuran dinamis: Mengecil di HP, Max 2.2rem */
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem) !important; 
   font-weight: 900 !important; 
   margin-bottom: 6px !important; 
   color: #111827 !important;
@@ -864,8 +840,8 @@ select, input, .action-btn {
 
 .wide-play-btn { 
   position: absolute !important; 
-  right: 15px !important; /* Posisi pojok kanan */
-  bottom: 12px !important; /* Posisi pojok bawah */
+  right: 15px !important; 
+  bottom: 12px !important; 
   top: auto !important; 
   transform: none !important; 
   border: none !important; 

@@ -1281,7 +1281,11 @@ function confirmEndQuiz() {
     const isActive = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", isActive);
     hamburger.setAttribute("aria-expanded", isActive);
+    
     if (isActive) {
+      // --- TAMBAHAN BARU: Kembalikan scroll sidebar ke paling atas ---
+      sidebar.scrollTop = 0;
+      
       savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
       originalOverflow = document.body.style.overflow || '';
       originalPosition = document.body.style.position || '';

@@ -790,13 +790,25 @@ select, input, .action-btn {
   box-sizing: border-box !important;
 }
 
+.expression-wide-grid {
+  grid-column: 1 / -1 !important; 
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important; /* FIXED: Pasti 2 kolom di desktop */
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 1200px !important; 
+  margin: 20px auto !important;  
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
 .expression-wide-card {
   background: linear-gradient(160deg, rgba(255, 161, 197, 0.9), rgba(255, 186, 214, 0.9)) !important; 
   border-radius: 20px !important; 
   border: 1px solid rgba(255, 255, 255, 0.65) !important;
   box-shadow: 0 10px 25px rgba(190, 24, 93, 0.15) !important; 
   min-height: 140px !important; 
-  padding: 20px 40px !important; /* Padding kanan-kiri dibikin sama biar text CENTER SEMPURNA */
+  padding: 20px 20px 35px 20px !important; /* Padding disesuaikan biar teks lega sampai pinggir */
   display: flex !important; 
   flex-direction: column !important; 
   justify-content: center !important; 
@@ -805,6 +817,7 @@ select, input, .action-btn {
   position: relative !important; 
   box-sizing: border-box !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  overflow: hidden !important; /* Jaga-jaga biar ga tumpah keluar kotak */
 }
 
 .expression-wide-card:hover {
@@ -812,14 +825,18 @@ select, input, .action-btn {
   box-shadow: 0 16px 28px rgba(190, 24, 93, 0.25) !important;
 }
 
+/* CEGAH WRAP TEXT UNTUK SEMUA ELEMEN KARTU */
 .wide-kanji, .wide-kana, .wide-romaji, .wide-meaning { 
   display: block !important; 
   width: 100% !important; 
   margin: 0 auto !important; 
+  white-space: nowrap !important; /* KUNCI ANTI WRAP */
+  overflow: hidden !important; 
+  text-overflow: ellipsis !important; /* Kalau kepanjangan banget, dikasih "..." di ujung */
 }
 
 .wide-kanji { 
-  font-size: 2.2rem !important; 
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem) !important; /* Ukuran dinamis: Mengecil di HP, Max 2.2rem */
   font-weight: 900 !important; 
   margin-bottom: 6px !important; 
   color: #111827 !important;
@@ -827,30 +844,30 @@ select, input, .action-btn {
 }
 
 .wide-kana { 
-  font-size: 1.1rem !important; 
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem) !important; 
   color: #1f2937 !important;
   margin-bottom: 2px !important; 
 }
 
 .wide-romaji { 
-  font-size: 0.95rem !important; 
+  font-size: clamp(0.85rem, 2vw, 0.95rem) !important; 
   color: #4b5563 !important; 
   font-style: italic !important; 
   margin-bottom: 8px !important; 
 }
 
 .wide-meaning { 
-  font-size: 1.05rem !important; 
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem) !important; 
   font-weight: 700 !important; 
   color: #374151 !important;
 }
 
 .wide-play-btn { 
   position: absolute !important; 
-  right: 15px !important; /* Mentok Kanan */
-  bottom: 15px !important; /* Mentok Bawah */
-  top: auto !important; /* Reset posisi top */
-  transform: none !important; /* Reset transform */
+  right: 15px !important; /* Posisi pojok kanan */
+  bottom: 12px !important; /* Posisi pojok bawah */
+  top: auto !important; 
+  transform: none !important; 
   border: none !important; 
   width: 40px !important; 
   height: 40px !important; 
@@ -866,7 +883,7 @@ select, input, .action-btn {
 }
 
 .wide-play-btn:hover { 
-  transform: scale(1.1) !important; /* Animasi hover normal */
+  transform: scale(1.1) !important; 
 }
 
 #grid.support-mode { display: block !important; padding-top: 120px !important; padding-bottom: 0 !important; }

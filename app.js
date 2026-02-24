@@ -63,6 +63,28 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 // 1. Mesin Latihan Baru (Sumber Khusus latihan-data.js)
 // ==========================================
+  function lockQuizScroll() {
+    if (isQuizScrollLocked) return;
+    quizOriginalBodyOverflow = document.body.style.overflow || "";
+    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
+    quizOriginalBodyHeight = document.body.style.height || "";
+    quizOriginalHtmlHeight = document.documentElement.style.height || "";
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.height = "100dvh";
+    document.documentElement.style.height = "100dvh";
+    isQuizScrollLocked = true;
+  }
+
+  function unlockQuizScroll() {
+    if (!isQuizScrollLocked) return;
+    document.body.style.overflow = quizOriginalBodyOverflow;
+    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
+    document.body.style.height = quizOriginalBodyHeight;
+    document.documentElement.style.height = quizOriginalHtmlHeight;
+    isQuizScrollLocked = false;
+  }
+  
   const latihanSectionLabel = {
     "goi-kanji-reading": "Membaca Kanji",
     "goi-orthography": "Ortografi",

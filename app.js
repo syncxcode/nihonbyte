@@ -171,13 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
     lockQuizScroll();
     quizIndex = 0;
     score = 0;
-    
-    currentExerciseMeta = {
-      type: mainType,
-      section,
-      sectionLabel: latihanSectionLabel[section] || section,
-      level,
-    };
+    currentQuizData = shuffleArray(questions).slice(0, Math.min(20, questions.length));
+    renderQuiz();
+  }
 
 function renderQuiz() {
     if (quizIndex >= currentQuizData.length) {

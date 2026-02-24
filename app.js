@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizOriginalHtmlHeight = "";
   let isQuizScrollLocked = false;
 
-  // ==========================================
+// ==========================================
 // 1. Mesin Latihan Baru (Sumber Khusus latihan-data.js)
 // ==========================================
   const latihanSectionLabel = {
@@ -75,28 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "dokkai-reading": "Dokkai Membaca",
     "choukai-listening": "Choukai Mendengarkan",
   };
-
-  function lockQuizScroll() {
-    if (isQuizScrollLocked) return;
-    quizOriginalBodyOverflow = document.body.style.overflow || "";
-    quizOriginalHtmlOverflow = document.documentElement.style.overflow || "";
-    quizOriginalBodyHeight = document.body.style.height || "";
-    quizOriginalHtmlHeight = document.documentElement.style.height || "";
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    document.body.style.height = "100dvh";
-    document.documentElement.style.height = "100dvh";
-    isQuizScrollLocked = true;
-  }
-
-  function unlockQuizScroll() {
-    if (!isQuizScrollLocked) return;
-    document.body.style.overflow = quizOriginalBodyOverflow;
-    document.documentElement.style.overflow = quizOriginalHtmlOverflow;
-    document.body.style.height = quizOriginalBodyHeight;
-    document.documentElement.style.height = quizOriginalHtmlHeight;
-    isQuizScrollLocked = false;
-  }
 
   const goiSectionOrder = [
     "goi-kanji-reading",
@@ -118,6 +96,122 @@ document.addEventListener("DOMContentLoaded", () => {
     return { index: idx >= 0 ? idx + 1 : 1, total: order.length };
   }
 
+  function buildBunpouSessionQuestions(level, maxQuestions = 20) {
+    const source = getLatihanPatternSource(level);
+    const sessions = [
+      {
+        key: "bunpou-form",
+        label: latihanSectionLabel["bunpou-form"],
+        map: (item) => ({ prompt: item.meaning, answer: item.pattern, level }),
+      },
+      {
+        key: "bunpou-composition",
+        label: latihanSectionLabel["bunpou-composition"],
+        map: (item) => ({ prompt: item.pattern, answer: item.example, level }),
+      },
+      {
+        key: "bunpou-text",
+        label: latihanSectionLabel["bunpou-text"],
+        map: (item) => ({ prompt: item.example, answer: item.meaning, level }),
+      },
+    ];
+
+    const perSession = Math.max(1, Math.floor(maxQuestions / sessions.length));
+    const all = [];
+
+    sessions.forEach((session, idx) => {
+      const picked = source
+        .slice(0, perSession)
+        .map((item) => ({
+          ...session.map(item),
+          section: session.key,
+          sectionLabel: session.label,
+          sectionIndex: idx + 1,
+          sectionTotal: sessions.length,
+        }));
+      all.push(...picked);
+    });
+
+    const remaining = maxQuestions - all.length;
+    if (remaining > 0) {
+      const filler = source
+        .slice(0, remaining)
+        .map((item) => ({
+          prompt: item.meaning,
+          answer: item.pattern,
+          level,
+          section: "bunpou-form",
+          sectionLabel: latihanSectionLabel["bunpou-form"],
+          sectionIndex: 1,
+          sectionTotal: sessions.length,
+        }));
+      all.push(...filler);
+    }
+
+    return all.filter((q) => q.prompt && q.answer);
+  }
+
+  function buildGoiSessionQuestions(level, maxQuestions = 20) {
+    const source = getLatihanVocabularySource().filter((d) => d.level === level);
+    const sessions = [
+      {
+        key: "goi-kanji-reading",
+        label: latihanSectionLabel["goi-kanji-reading"],
+        map: (item) => ({ prompt: item.meaning, answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, level }),
+      },
+      {
+        key: "goi-orthography",
+        label: latihanSectionLabel["goi-orthography"],
+        map: (item) => ({ prompt: item.kana, answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, level }),
+      },
+      {
+        key: "goi-context-expression",
+        label: latihanSectionLabel["goi-context-expression"],
+        map: (item) => ({ prompt: item.meaning, answer: item.kana, level }),
+      },
+      {
+        key: "goi-paraphrase",
+        label: latihanSectionLabel["goi-paraphrase"],
+        map: (item) => ({ prompt: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, answer: item.meaning, level }),
+      },
+      {
+        key: "goi-usage",
+        label: latihanSectionLabel["goi-usage"],
+        map: (item) => ({ prompt: item.meaning, answer: item.kana, level }),
+      },
+    ];
+
+    const perSession = Math.max(1, Math.floor(maxQuestions / sessions.length));
+    const all = [];
+
+    sessions.forEach((session, idx) => {
+      const picked = source.slice(0, perSession).map((item) => ({
+        ...session.map(item),
+        section: session.key,
+        sectionLabel: session.label,
+        sectionIndex: idx + 1,
+        sectionTotal: sessions.length,
+      }));
+      all.push(...picked);
+    });
+
+    const remaining = maxQuestions - all.length;
+    if (remaining > 0) {
+      const filler = source.slice(0, remaining).map((item) => ({
+        prompt: item.meaning,
+        answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana,
+        level,
+        section: "goi-kanji-reading",
+        sectionLabel: latihanSectionLabel["goi-kanji-reading"],
+        sectionIndex: 1,
+        sectionTotal: sessions.length,
+      }));
+      all.push(...filler);
+    }
+
+    return all.filter((q) => q.prompt && q.answer);
+  }
+
   function formatSessionTime(seconds) {
     const safe = Math.max(0, seconds);
     const mm = String(Math.floor(safe / 60)).padStart(2, "0");
@@ -133,40 +227,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.latihanPatternData && Array.isArray(window.latihanPatternData[level])) return window.latihanPatternData[level];
     return [];
   }
-      
+
   function shuffleArray(arr) {
     return [...arr].sort(() => Math.random() - 0.5);
   }
 
   function buildExerciseQuestions(mainType, section, level) {
     if (mainType === "goi") {
-      const source = getLatihanVocabularySource().filter((d) => d.level === level);
-      return source.map((item) => {
-        const kanjiText = item.kanji && item.kanji.trim() ? item.kanji : item.kana;
-
-        if (section === "goi-kanji-reading") {
-          return { prompt: item.meaning, answer: kanjiText, level };
-        }
-        if (section === "goi-orthography") {
-          return { prompt: item.kana, answer: kanjiText, level };
-        }
-        if (section === "goi-context-expression") {
-          return { prompt: item.meaning, answer: item.kana, level };
-        }
-        if (section === "goi-paraphrase") {
-          return { prompt: kanjiText, answer: item.meaning, level };
-        }
-
-        return { prompt: item.meaning, answer: item.kana, level };
-      });     
+      return buildGoiSessionQuestions(level);
     }
 
     if (mainType === "bunpou") {
+      if (!section) return buildBunpouSessionQuestions(level);
       const source = getLatihanPatternSource(level);
       return source.map((item) => {
-        if (section === "bunpou-form") return { prompt: item.meaning, answer: item.pattern, level };
-        if (section === "bunpou-composition") return { prompt: item.pattern, answer: item.example, level };
-        return { prompt: item.example, answer: item.meaning, level };
+        if (section === "bunpou-form") return { prompt: item.meaning, answer: item.pattern, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 1, sectionTotal: 3 };
+        if (section === "bunpou-composition") return { prompt: item.pattern, answer: item.example, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 2, sectionTotal: 3 };
+        return { prompt: item.example, answer: item.meaning, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 3, sectionTotal: 3 };
       });
     }
 
@@ -182,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startExercise(mainType, section, level) {
+    const sectionKey = section || (mainType === "bunpou" ? "bunpou-form" : "goi-kanji-reading");
     const questions = buildExerciseQuestions(mainType, section, level).filter((q) => q.prompt && q.answer);
 
     if (questions.length < 5) {
@@ -192,15 +270,16 @@ document.addEventListener("DOMContentLoaded", () => {
     isTesting = true;
     currentExerciseMeta = {
       type: mainType,
-      section,
-      sectionLabel: latihanSectionLabel[section] || section,
+      section: sectionKey,
+      sectionLabel: latihanSectionLabel[sectionKey] || sectionKey,
       level,
     };
+
     lockQuizScroll();
     quizIndex = 0;
     score = 0;
-    currentQuizData = shuffleArray(questions).slice(0, Math.min(20, questions.length));
-    
+    currentQuizData = questions.slice(0, Math.min(20, questions.length));
+
     const totalMinuteByLevel = { N5: 20, N4: 25 };
     const defaultMinutes = totalMinuteByLevel[level] || 20;
     sessionTimeLeft = defaultMinutes * 60;
@@ -209,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startTimer();
   }
 
-function renderQuiz() {
+  function renderQuiz() {
     if (quizIndex >= currentQuizData.length) {
       endQuiz();
       return;
@@ -220,7 +299,11 @@ function renderQuiz() {
       ? "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)"
       : "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
 
-    const sectionProgress = getSectionProgress(currentExerciseMeta.type, currentExerciseMeta.section);
+    const dynamicSection = item.section || currentExerciseMeta.section;
+    const dynamicSectionLabel = item.sectionLabel || currentExerciseMeta.sectionLabel;
+    const sectionProgress = item.sectionIndex
+      ? { index: item.sectionIndex, total: item.sectionTotal || (currentExerciseMeta.type === "bunpou" ? 3 : 5) }
+      : getSectionProgress(currentExerciseMeta.type, dynamicSection);
     const options = generateExerciseOptions(item);
 
     grid.className = "";
@@ -231,7 +314,7 @@ function renderQuiz() {
       <div class="quiz-wrapper-pro">
         <p class="quiz-origin-title">UJIAN JLPT REAL</p>
         <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
-        <p class="quiz-subtitle">Sesi ${sectionProgress.index}/${sectionProgress.total}: ${currentExerciseMeta.sectionLabel}</p>
+        <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
 
         <div class="quiz-head-pro">
           <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
@@ -248,48 +331,42 @@ function renderQuiz() {
 
         <div class="quiz-finish-pro">
           <button id="finishBtnManual">Selesaikan Test</button>
-          </div>
         </div>
-      `;
+      </div>
+    `;
 
     document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
       btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
     });
 
     document.getElementById("finishBtnManual")?.addEventListener("click", confirmEndQuiz);
-    startTimer();
   }
 
-// ==========================================
-// 3. Mesin Timer (Auto Next kalau waktu habis)
-// ==========================================
-function startTimer() {
+  function startTimer() {
     clearInterval(timer);
     timer = setInterval(() => {
       sessionTimeLeft--;
       const timerDisplay = document.getElementById("quiz-timer");
       if (timerDisplay) timerDisplay.textContent = formatSessionTime(sessionTimeLeft);
-      
+
       if (sessionTimeLeft <= 0) {
         clearInterval(timer);
         endQuiz();
-        }
+      }
     }, 1000);
-}
+  }
 
-// ==========================================
-// 4. Mesin Pengecek Jawaban
-// ==========================================
-function checkAnswer(selected) {
+  function checkAnswer(selected) {
     clearInterval(timer);
     const item = currentQuizData[quizIndex];
+
     if (selected === item.answer) score++;
 
     document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
       btn.disabled = true;
       btn.style.cursor = "default";
 
-    if (btn.dataset.answer === item.answer) {
+      if (btn.dataset.answer === item.answer) {
         btn.style.background = "#4ade80";
         btn.style.color = "white";
         btn.style.borderColor = "#22c55e";
@@ -306,7 +383,7 @@ function checkAnswer(selected) {
     }, 900);
   }
 
-function showCorrectAnswerAndNext() {
+  function showCorrectAnswerAndNext() {
     const item = currentQuizData[quizIndex];
 
     document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
@@ -324,16 +401,16 @@ function showCorrectAnswerAndNext() {
     }, 1100);
   }
 
-function endQuiz() {
+  function endQuiz() {
     isTesting = false;
     document.body.classList.remove("training-session");
     clearInterval(timer);
     sessionTimeLeft = 0;
     unlockQuizScroll();
-  
+
     const totalSoal = currentQuizData.length;
     const jlptScore = Math.round((score / totalSoal) * 60);
-    
+
     let gradeMsg = "";
     if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
     else if (jlptScore >= 35) gradeMsg = "Bagus! Terus tingkatkan.";
@@ -349,9 +426,9 @@ function endQuiz() {
       </div>
     `;
     openInfoModal(message);
-}
-      
-function confirmEndQuiz() {
+  }
+
+  function confirmEndQuiz() {
     if (confirm("Yakin ingin mengakhiri test sekarang? Skor saat ini akan langsung dihitung.")) endQuiz();
   }
       

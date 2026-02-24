@@ -419,11 +419,28 @@ function confirmEndQuiz() {
       document.body.style.width = "100%";
       document.body.style.top = `-${bodyScrollY}px`;
 
+      // --- RESET TAMPILAN MODAL SAAT DIBUKA ---
+      // 1. Kosongkan input pencarian
+      if (modalSearchInput) modalSearchInput.value = "";
+      
+      // 2. Reset Level JLPT kembali ke "Semua Level"
+      document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
+      
+      // 3. Reset Kategori Khusus (Lepas semua pilihan)
+      document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+      // ----------------------------------------
+
       filterModal.classList.add("active");
       filterModal.setAttribute("aria-hidden", "false");
-      if (modalSearchInput) modalSearchInput.focus();
+      
+      // FOKUS INPUT: Hanya jalan di Desktop (lebar layar > 768px). 
+      // Di HP tidak akan fokus otomatis, jadi keyboard tidak akan tiba-tiba muncul!
+      if (modalSearchInput && window.innerWidth > 768) {
+        modalSearchInput.focus();
+      }
     });
-
+  
     function closeFilterModal() {
       filterModal.classList.remove("active");
       filterModal.setAttribute("aria-hidden", "true");
@@ -464,10 +481,18 @@ function confirmEndQuiz() {
     });
 
     // Category buttons
+    // Category buttons (Bisa di-toggle / lepas pilihan)
     document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+        // Cek apakah tombol sedang aktif
+        if (btn.classList.contains("active")) {
+          // Kalau sudah aktif, klik lagi berarti LEPAS pilihan (unselect)
+          btn.classList.remove("active");
+        } else {
+          // Kalau belum aktif, matikan yang lain lalu aktifkan yang ini
+          document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+        }
       });
     });
 

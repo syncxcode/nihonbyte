@@ -1133,6 +1133,7 @@ nested-latihan-list {
 }
 
 .quiz-wrapper-pro {
+  position: relative;
   max-width: 1000px !important; /* Dikecilin dikit dari 1200px biar proporsinya manis */
   width: 100% !important;
   min-height: auto !important; 
@@ -1238,24 +1239,27 @@ nested-latihan-list {
 }
 
 #finishBtnManual {
-  background: #fff1f2; /* Warna merah super soft biar nyambung sama tema pink NihonByte */
-  border: 2px solid #fda4af;
-  border-radius: 999px;
-  padding: 12px 32px; /* 🚀 Padding digedein biar tombolnya montok & estetik */
-  color: #e11d48; /* Teks merah tegas */
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: #ff4d6d; /* Warna merah pinkish NihonByte */
+  color: #ffffff;
+  border: none;
+  border-radius: 999px; /* Bentuk kapsul sempurna */
+  padding: 8px 18px;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15); /* Bayangan merah soft */
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.35);
+  z-index: 10;
   letter-spacing: 0.5px;
 }
 
 #finishBtnManual:hover {
-  background: #ffe4e6;
-  border-color: #fb7185;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.25);
+  background: #e11d48;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
 }
 
 #finishBtnManual:active {
@@ -1310,8 +1314,13 @@ body.training-session #resultInfo {
     font-size: 1rem !important;
   }
   #finishBtnManual {
-    padding: 10px 24px;
-    font-size: 0.95rem;
+    top: 12px;
+    right: 12px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+  .quiz-section-title {
+    padding-top: 18px;
   }
 }
 

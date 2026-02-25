@@ -173,49 +173,42 @@ document.addEventListener("DOMContentLoaded", () => {
     return all.filter((q) => q.prompt && q.answer);
   }
 
-  function buildGoiSessionQuestions(level, maxQuestions = 20) {
-    const source = getLatihanVocabularySource().filter((d) => d.level === level);
-    const sessions = [
-      {
-        key: "goi-kanji-reading",
-        label: latihanSectionLabel["goi-kanji-reading"],
-        map: (item) => ({ prompt: item.meaning, answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, level }),
-      },
-      {
-        key: "goi-orthography",
-        label: latihanSectionLabel["goi-orthography"],
-        map: (item) => ({ prompt: item.kana, answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, level }),
-      },
-      {
-        key: "goi-context-expression",
-        label: latihanSectionLabel["goi-context-expression"],
-        map: (item) => ({ prompt: item.meaning, answer: item.kana, level }),
-      },
-      {
-        key: "goi-paraphrase",
-        label: latihanSectionLabel["goi-paraphrase"],
-        map: (item) => ({ prompt: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana, answer: item.meaning, level }),
-      },
-      {
-        key: "goi-usage",
-        label: latihanSectionLabel["goi-usage"],
-        map: (item) => ({ prompt: item.meaning, answer: item.kana, level }),
-      },
-    ];
-
-    const perSession = Math.max(1, Math.floor(maxQuestions / sessions.length));
+  function buildGoiSessionQuestions(level) {
+    // Tarik data format baru (JLPT Real)
+    const source = window.latihanGoiReal && window.latihanGoiReal[level] ? window.latihanGoiReal[level] : {};
     const all = [];
 
+    // Urutan KAMAR (Sesi) yang mutlak dan gak boleh ditukar
+    const sessions = [
+      { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
+      { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
+      { key: "goi-context-expression", label: latihanSectionLabel["goi-context-expression"] },
+      { key: "goi-paraphrase", label: latihanSectionLabel["goi-paraphrase"] }
+    ];
+
     sessions.forEach((session, idx) => {
-      const picked = source.slice(0, perSession).map((item) => ({
-        ...session.map(item),
+      const questionsData = source[session.key] || [];
+      
+      // Acak urutan soal HANYA di dalam sesi ini saja!
+      const shuffledData = shuffleArray([...questionsData]);
+      
+      const picked = shuffledData.map((q) => ({
+        prompt: q.question,      // Pertanyaan yang ada <u> garis bawahnya
+        options: q.options,      // Tarik 4 pilihan ganda rakitan lu
+        answer: q.answer,        // Jawaban benarnya
+        translation: q.translation, 
+        level: level,
         section: session.key,
         sectionLabel: session.label,
         sectionIndex: idx + 1,
-        sectionTotal: sessions.length,
+        sectionTotal: sessions.length
       }));
+      
       all.push(...picked);
     });
+
+    return all;
+  }
 
     const remaining = maxQuestions - all.length;
     if (remaining > 0) {
@@ -273,6 +266,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function generateExerciseOptions(question) {
+    // 🚀 MANTRA BARU: Kalau soal dari format JLPT bawa 'options', pakai itu & acak urutannya!
+    if (question.options && Array.isArray(question.options) && question.options.length > 0) {
+      return shuffleArray([...question.options]);
+    }
+    
+    // Fallback (Cadangan) kalau format data lama
     const pool = currentQuizData.map((q) => q.answer).filter((answer) => answer !== question.answer);
     const uniqueWrong = Array.from(new Set(pool));
     const wrongChoices = shuffleArray(uniqueWrong).slice(0, 3);
@@ -300,7 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
     lockQuizScroll();
     quizIndex = 0;
     score = 0;
-    currentQuizData = questions.slice(0, Math.min(20, questions.length));
+    
+    currentQuizData = questions;
 
     const totalMinuteByLevel = { N5: 20, N4: 25 };
     const defaultMinutes = totalMinuteByLevel[level] || 20;

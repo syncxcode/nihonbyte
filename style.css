@@ -1265,3 +1265,104 @@ body.training-session #resultInfo {
   .quiz-options-pro { grid-template-columns: 1fr 1fr; }
   .quiz-qcard-pro { min-height: 90px; }
 }
+
+/* Container Utama Review (Lebar & Scrollable) */
+.review-wrapper {
+    width: 95%;
+    max-width: 1200px; /* Lebar maksimal biar enak di desktop */
+    height: 85vh; /* Ambil 85% tinggi layar */
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 0; /* Padding di-handle inner container */
+    overflow: hidden; /* Biar header tetep di atas */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Header Review (Judul & Tombol Tutup) */
+.review-header {
+    padding: 20px;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Area Scrollable untuk List Soal */
+.review-content {
+    flex: 1;
+    overflow-y: auto; /* KUNCI BIAR BISA SCROLL */
+    padding: 20px;
+    background: #f1f5f9;
+}
+
+/* Kartu Soal (Layout Grid Kiri-Kanan di Desktop) */
+.review-card {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Bagi 2 kolom */
+    gap: 30px;
+    border-left: 6px solid #ccc;
+}
+
+.review-card.benar { border-left-color: #22c55e; }
+.review-card.salah { border-left-color: #ef4444; }
+
+/* Kolom Kiri: Pertanyaan & Jawaban User */
+.review-left-col {
+    border-right: 1px dashed #cbd5e1;
+    padding-right: 20px;
+}
+
+/* Kolom Kanan: Kunci & Penjelasan */
+.review-right-col {
+    padding-left: 10px;
+}
+
+/* Penjelasan Box */
+.explanation-box {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    color: #92400e;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* RESPONSIF HP (Mobile) - Jadi Atas Bawah */
+@media (max-width: 768px) {
+    .review-wrapper {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        margin: 0;
+    }
+    
+    .review-card {
+        grid-template-columns: 1fr; /* Jadi 1 kolom */
+        gap: 15px;
+    }
+    
+    .review-left-col {
+        border-right: none;
+        border-bottom: 1px dashed #cbd5e1;
+        padding-right: 0;
+        padding-bottom: 15px;
+    }
+    
+    .review-right-col {
+        padding-left: 0;
+    }
+}

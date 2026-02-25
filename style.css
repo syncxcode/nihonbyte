@@ -1133,9 +1133,9 @@ nested-latihan-list {
 }
 
 .quiz-wrapper-pro {
-  width: min(980px, 100%);
-  /* 🚀 INI KUNCINYA BIAR GAK RENGGANG! Paksa tingginya hampir full layar (sisa margin 10px atas bawah) */
-  height: calc(100dvh - 100px); 
+  max-width: 900px !important; 
+  width: 95%;
+  margin: 20px auto;
   max-height: calc(100dvh - 100px); 
   display: flex;
   flex-direction: column;
@@ -1179,10 +1179,12 @@ nested-latihan-list {
 }
 
 .quiz-question-main {
+  white-space: normal; 
+  word-break: keep-all; /* Mencegah pemenggalan kata di tengah kanji/kana */
+  line-height: 1.6;
   margin: 0;
   color: #0f172a;
   font-size: clamp(1.8rem, 5vw, 3.8rem); 
-  line-height: 1.15;
 }
 
 .quiz-options-pro {
@@ -1266,12 +1268,21 @@ body.training-session #resultInfo {
   .quiz-qcard-pro { min-height: 90px; }
 }
 
+#grid.review-active-mode {
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+    grid-template-columns: none !important;
+    gap: 0 !important;
+    padding-bottom: 50px;
+}
+
 /* Container Utama Review (Lebar & Scrollable) */
 .review-wrapper {
     width: 95%;
     max-width: 1200px; /* Lebar maksimal biar enak di desktop */
     height: 85vh; /* Ambil 85% tinggi layar */
-    margin: 20px auto;
+    margin: 0 auto !important; /* Tengahkan */
     background: #ffffff;
     border-radius: 16px;
     padding: 0; /* Padding di-handle inner container */
@@ -1280,7 +1291,13 @@ body.training-session #resultInfo {
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     position: relative;
-    z-index: 1000;
+    z-index: 10;
+}
+
+body.review-mode-active #searchBtn,
+body.review-mode-active #hamburger {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 /* Header Review (Judul & Tombol Tutup) */

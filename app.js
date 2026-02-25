@@ -267,8 +267,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
     currentQuizData = questions;
 
-    const totalMinuteByLevel = { N5: 20, N4: 25 };
-    const defaultMinutes = totalMinuteByLevel[level] || 20;
+    // 🚀 MANTRA BARU: Timer dibedakan antara Kosakata (Goi) dan Tata Bahasa (Bunpou)
+    let defaultMinutes = 20;
+    if (mainType === "bunpou") {
+      defaultMinutes = level === "N5" ? 40 : (level === "N4" ? 55 : 40);
+    } else { // Goi
+      defaultMinutes = level === "N5" ? 20 : (level === "N4" ? 25 : 20);
+    }
     sessionTimeLeft = defaultMinutes * 60;
 
     renderQuiz();

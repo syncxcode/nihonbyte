@@ -1128,26 +1128,29 @@ nested-latihan-list {
   justify-content: center !important;
   min-height: calc(100dvh - 78px) !important;
   margin-top: 78px !important;
-  padding: 20px 30px !important; /* Jarak kiri-kanan lebih lega */
+  padding: 15px 20px !important; 
   overflow: hidden !important;
 }
 
 .quiz-wrapper-pro {
-  max-width: 1200px !important; /* 🚀 KUNCI 1: Dilebarin pol sampai 1200px (awalnya 900px) */
+  max-width: 1200px !important; 
   width: 100% !important;
-  min-height: 70vh !important; /* 🚀 KUNCI 2: Box dipaksa agak tinggi biar gak bantet */
+  /* KUNCI: Hapus min-height: 70vh biar box gak maksa manjang ke bawah */
+  min-height: auto !important; 
+  max-height: calc(100dvh - 110px); 
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px; 
+  gap: 15px; /* Jarak antar elemen dipadatkan dikit */
   background: rgba(255, 255, 255, 0.92);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 20px 50px rgba(20, 24, 30, 0.2);
-  padding: 30px !important; /* Ruang dalam (padding) diperbesar */
+  padding: 24px 30px !important; 
   box-sizing: border-box;
 }
 
+/* Header Info Quiz */
 .quiz-section-title { margin: 0; text-align: center; color: #1e293b; font-weight: 800; font-size: 1.05rem; }
 .quiz-subtitle { margin: -4px 0 2px; text-align: center; color: #475569; font-weight: 700; font-size: 0.9rem; }
 
@@ -1165,48 +1168,53 @@ nested-latihan-list {
 .quiz-timer-text { font-weight: 700; color: #475569; font-size: 0.9rem; }
 #quiz-timer { color: #e11d48; margin-left: 4px; font-size: 1.1rem; }
 
+/* Box Biru Soal */
 .quiz-qcard-pro {
   flex: 1; 
-  min-height: 250px !important; /* 🚀 Box soal biru lebih tinggi */
+  min-height: 150px !important; /* KUNCI: Gak usah terlalu tinggi, biar tombol di bawah aman */
   border-radius: 18px;
   background: linear-gradient(160deg, #f8fafc, #eef2ff);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px 50px !important; /* Teks dijauhkan dari dinding box */
+  padding: 25px 40px !important; 
   box-sizing: border-box;
+  overflow-y: auto; /* Jaga-jaga kalau soalnya beneran panjang banget */
 }
 
+/* Teks Soal Jepang */
 .quiz-question-main {
   white-space: pre-wrap !important; 
   word-break: keep-all !important; 
-  line-height: 1.6 !important;
+  line-height: 1.5 !important;
   margin: 0;
   color: #0f172a;
-  /* 🚀 KUNCI 3: Font dikecilin rasionya biar kalimat panjang muat 1 baris */
-  font-size: clamp(1.4rem, 3.5vw, 2.6rem) !important; 
+  /* KUNCI: Font digedein lagi biar gak imut! (Maksimal 3.2rem, minimal 1.8rem) */
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem) !important; 
 }
 
+/* Tombol Pilihan Ganda */
 .quiz-options-pro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px !important; /* Jarak antar tombol dijauhkan */
-  margin-top: 10px;
+  gap: 15px !important; 
+  margin-top: 5px;
 }
 
 .quiz-opt-btn-pro {
-  min-height: 60px !important; /* Tombol lebih tebal/tinggi */
+  min-height: 55px !important; 
   padding: 10px;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
   background: #fff;
   font-weight: 700;
-  font-size: 1.15rem !important; /* Font tombol digedein dikit */
+  font-size: 1.15rem !important; 
   color: #334155;
   cursor: pointer;
 }
 
+/* Tombol Selesai */
 .quiz-finish-pro {
   display: flex;
   justify-content: center;
@@ -1214,91 +1222,52 @@ nested-latihan-list {
   width: 100%;
 }
 
-#finishBtnManual {
-  background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 999px;
-  padding: 10px 24px;
-  color: #64748b;
-  font-weight: 800;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-#finishBtnManual:hover {
-  background: #f8fafc;
-  color: #e11d48;
-  border-color: #fca5a5;
-  transform: translateY(-2px);
-}
-
-/* KUNCI ANTI SCROLL DI MODE UJIAN */
-body.training-session {
-  overflow: hidden !important;
-  touch-action: none;
-}
-
-body.training-session #sidebar,
-body.training-session #overlay,
-body.training-session #searchBtn,
-body.training-session .branding,
-body.training-session #hamburger { display: none !important; }
-
-body.training-session .topbar { justify-content: center; display: flex; min-height: 78px; }
-
-body.training-session #resultInfo {
-  margin: 0 auto;
-  font-weight: 800 !important;
-  color: #e11d48 !important; 
-  
-  /* 🚀 ANTI COPY/BLOCK & CURSOR NORMAL */
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  cursor: default !important;
-}
-
+/* Responsif HP */
 @media (max-width: 900px) {
-  #grid.quiz-active-mode { padding: 15px !important; }
+  #grid.quiz-active-mode { padding: 12px !important; }
   .quiz-wrapper-pro {
-    height: calc(100dvh - 120px) !important; 
-    max-height: calc(100dvh - 120px) !important;
-    padding: 15px !important;
-    gap: 15px !important;
+    height: auto !important; 
+    max-height: calc(100dvh - 90px) !important;
+    padding: 16px !important;
+    gap: 12px !important;
   }
   .quiz-qcard-pro {
-    padding: 15px 20px !important;
-    min-height: 180px !important;
+    padding: 15px !important;
+    min-height: 120px !important;
   }
   .quiz-options-pro { 
     grid-template-columns: 1fr 1fr; 
-    gap: 12px !important; 
+    gap: 10px !important; 
   }
   .quiz-question-main {
-    font-size: clamp(1.3rem, 4.5vw, 2rem) !important;
+    font-size: clamp(1.4rem, 5vw, 2.2rem) !important;
+  }
+  .quiz-opt-btn-pro {
+    min-height: 48px !important;
+    font-size: 1rem !important;
   }
 }
 
 #grid.review-active-mode {
     display: flex !important;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; /* KUNCI: Biar boxnya di tengah vertikal, gak mentok bawah */
     grid-template-columns: none !important;
     gap: 0 !important;
-    padding-bottom: 50px;
+    padding: 90px 20px 20px !important; /* Ruang aman untuk header */
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-/* Container Utama Review (Lebar & Scrollable) */
 .review-wrapper {
-    width: 95%;
-    max-width: 1200px; /* Lebar maksimal biar enak di desktop */
-    height: 85vh; /* Ambil 85% tinggi layar */
-    margin: 0 auto !important; /* Tengahkan */
+    width: 95% !important;
+    max-width: 1200px !important; 
+    height: calc(100vh - 130px) !important; /* KUNCI: Kurangi tinggi biar gak nembus taskbar */
+    margin: 0 auto !important; 
     background: #ffffff;
     border-radius: 16px;
-    padding: 0; /* Padding di-handle inner container */
-    overflow: hidden; /* Biar header tetep di atas */
+    padding: 0; 
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);

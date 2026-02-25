@@ -440,61 +440,70 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // FITUR BARU: HALAMAN TINJAU LATIHAN (REVIEW)
   // ==========================================
+  // TIMPA fungsi window.renderReview yang lama dengan yang ini
   window.renderReview = function() {
-    closeModal(); // Tutup popup rapot
+    closeModal(); 
     grid.className = "";
-    grid.classList.add("review-active-mode");
+    
+    // Matikan scroll body utama biar fokus ke modal review
+    document.body.style.overflow = "hidden";
 
     let reviewHTML = `
-      <div class="quiz-wrapper-pro" style="margin-top: 20px; max-height: none; overflow: visible;">
-        <h2 style="text-align: center; color: #1e293b; margin-bottom: 20px;">🔍 Evaluasi Tinjauan Latihan</h2>
-        <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="review-wrapper">
+        <div class="review-header">
+          <h2 style="margin:0; color:#1e293b; font-size:1.5rem;">🔍 Evaluasi Latihan</h2>
+          <button onclick="location.reload()" style="background:#ef4444; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer; font-weight:bold;">Tutup & Selesai</button>
+        </div>
+        
+        <div class="review-content">
     `;
 
     currentQuizData.forEach((q, index) => {
       const isCorrect = q.userAnswer === q.answer;
-      const statusIcon = isCorrect ? "✅ Benar" : "❌ Salah";
-      const statusColor = isCorrect ? "#16a34a" : "#e11d48";
-      const bgColor = isCorrect ? "#f0fdf4" : "#fff1f2";
-      const borderColor = isCorrect ? "#bbf7d0" : "#fecdd3";
-      
-      // Handle kalau user kehabisan waktu sebelum jawab
-      const userAnswerText = q.userAnswer ? q.userAnswer : "<i>Tidak dijawab (Waktu Habis)</i>";
+      const statusText = isCorrect ? "✅ BENAR" : "❌ SALAH";
+      const statusClass = isCorrect ? "benar" : "salah";
+      const userColor = isCorrect ? "#16a34a" : "#dc2626";
+
+      // Teks jawaban user (handle kalau kosong)
+      const userAnswerDisplay = q.userAnswer ? q.userAnswer : "<i style='color:#94a3b8'>Tidak dijawab</i>";
 
       reviewHTML += `
-        <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 16px; padding: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px dashed ${borderColor}; padding-bottom: 8px;">
-            <span style="font-weight: 800; color: #475569; font-size: 0.95rem;">Soal ${index + 1}</span>
-            <span style="font-weight: 800; color: ${statusColor}; font-size: 0.95rem;">${statusIcon}</span>
+        <div class="review-card ${statusClass}">
+          
+          <div class="review-left-col">
+            <div style="margin-bottom:10px; font-weight:bold; color:#64748b; display:flex; justify-content:space-between;">
+              <span>Soal ${index + 1} • ${q.sectionLabel || '-'}</span>
+              <span style="color:${userColor}">${statusText}</span>
+            </div>
+            
+            <h3 style="font-size:1.3rem; margin:0 0 15px 0; color:#0f172a; line-height:1.4;">${q.prompt}</h3>
+            
+            <div style="background:#f8fafc; padding:10px; border-radius:8px; border:1px solid #e2e8f0;">
+              <div style="font-size:0.85rem; color:#64748b; margin-bottom:4px;">Jawabanmu:</div>
+              <div style="font-size:1.1rem; font-weight:bold; color:${userColor};">${userAnswerDisplay}</div>
+            </div>
           </div>
-          
-          <h3 style="font-size: 1.15rem; margin: 0 0 14px; color: #0f172a; line-height: 1.5;">${q.prompt}</h3>
-          
-          <p style="margin: 0 0 6px; font-size: 0.95rem; color: #334155;">Jawabanmu: <strong style="color: ${statusColor};">${userAnswerText}</strong></p>
+
+          <div class="review-right-col">
+             <div style="margin-bottom:15px;">
+                <div style="font-size:0.85rem; color:#64748b; margin-bottom:4px;">Kunci Jawaban:</div>
+                <div style="font-size:1.2rem; font-weight:bold; color:#16a34a;">${q.answer}</div>
+             </div>
+
+             <div class="explanation-box">
+                <strong>💡 Penjelasan / Arti:</strong><br>
+                ${q.translation || "Tidak ada penjelasan tambahan."}
+             </div>
+          </div>
+
+        </div>
       `;
-
-      // 🚀 JIKA SALAH: Munculkan Kunci Jawaban & Penjelasan
-      if (!isCorrect) {
-        reviewHTML += `
-          <p style="margin: 0 0 12px; font-size: 0.95rem; color: #334155;">Jawaban Benar: <strong style="color: #16a34a;">${q.answer}</strong></p>
-          <div style="background: #ffffff; border-left: 4px solid #facc15; padding: 12px 16px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-            <span style="font-size: 0.85rem; font-weight: 800; color: #ca8a04; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">💡 Penjelasan / Arti:</span>
-            <span style="font-size: 0.95rem; color: #475569; line-height: 1.5; font-weight: 600;">${q.translation || "Jawaban ini adalah yang paling tepat untuk konteks kalimat di atas."}</span>
-          </div>
-        `;
-      }
-
-      reviewHTML += `</div>`;
     });
 
     reviewHTML += `
-        </div>
-        <button onclick="location.reload()" style="margin-top: 24px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; width: 100%; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);">🏠 Selesai & Kembali ke Menu</button>
-      </div>
-    `;
+        </div> </div> `;
 
     grid.innerHTML = reviewHTML;
-    window.scrollTo(0, 0); // Pastikan layar naik ke atas
   };
       
     searchBtn.addEventListener("click", () => {

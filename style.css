@@ -1441,3 +1441,80 @@ body.review-mode-active #hamburger {
         padding-left: 0;
     }
 }
+
+/* =========================================
+   LAYOUT KHUSUS DOKKAI (SPLIT SCREEN)
+========================================= */
+
+.dokkai-wrapper-pro {
+  max-width: 1300px !important; /* Sengaja dibuat super lebar buat layar Desktop */
+  width: 100% !important;
+  height: calc(100vh - 120px); /* Kunci biar teksnya bisa di-scroll di dalam */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row; /* Kiri-Kanan */
+  gap: 25px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 20px 50px rgba(20, 24, 30, 0.2);
+  padding: 30px !important;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Kotak Teks di Kiri */
+.dokkai-passage-side {
+  flex: 1.2; /* Dikasih jatah layar sedikit lebih gede dari soal */
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 30px;
+  overflow-y: auto; /* KUNCI: Scroll khusus teksnya doang */
+  border: 1px solid #e2e8f0;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.dokkai-passage-content {
+  font-size: 1.3rem; /* Teks dibikin gede biar gampang dibaca */
+  line-height: 2;
+  color: #1e293b;
+  font-family: 'Noto Sans JP', sans-serif;
+  white-space: pre-wrap;
+}
+
+/* Kotak Soal di Kanan */
+.dokkai-question-side {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto; 
+  padding-right: 5px;
+  padding-top: 20px; /* Jarak biar gak nabrak tombol Akhiri Test */
+}
+
+/* Responsif Mobile HP (Ditumpuk Atas-Bawah) */
+@media (max-width: 900px) {
+  .dokkai-wrapper-pro {
+    flex-direction: column; /* Ditumpuk atas bawah */
+    height: auto;
+    max-height: calc(100dvh - 90px);
+    padding: 15px !important;
+  }
+  
+  .dokkai-passage-side {
+    flex: none;
+    height: 35vh; /* Teks ngambil 35% tinggi layar HP */
+    min-height: 200px;
+    padding: 15px 20px;
+  }
+  
+  .dokkai-passage-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  .dokkai-question-side {
+    padding-top: 5px;
+  }
+}

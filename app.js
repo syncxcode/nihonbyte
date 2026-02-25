@@ -1673,11 +1673,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const section = button.dataset.section || mainType;
       const level = button.dataset.level;
 
-      // GOI & BUNPOU hanya aktif untuk N5-N4. Dokkai/Choukai semua dev mode.
-      const goiOrBunpouDev = ["goi", "bunpou"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
-      const readingListeningDev = ["dokkai", "choukai", "listening"].includes(mainType);
+      // 🚀 KUNCI FIX: Buka gembok Dokkai untuk N5 dan N4! 
+      // Jadi Goi, Bunpou, dan Dokkai kalau N5/N4 bakal lolos. Kalau N3-N1 baru masuk Dev Mode.
+      const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+      
+      // Choukai (Listening) masih digembok total karena kita belum masukin audio
+      const isChoukaiDev = ["choukai", "listening"].includes(mainType);
 
-      if (goiOrBunpouDev || readingListeningDev) {
+      if (isGoiBunpouDokkaiDev || isChoukaiDev) {
         const devTitleMap = {
           goi: "Pengetahuan Bahasa (Kosakata)",
           bunpou: "Pengetahuan Bahasa (Tata Bahasa)",

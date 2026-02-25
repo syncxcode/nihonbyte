@@ -125,12 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function buildBunpouSessionQuestions(level) {
-    // Tarik data format baru (JLPT Real khusus Bunpou/Tata Bahasa)
-    // Pastikan besok kita bikin datanya di object window.latihanBunpouReal
     const source = window.latihanBunpouReal && window.latihanBunpouReal[level] ? window.latihanBunpouReal[level] : {};
     const all = [];
 
-    // Urutan KAMAR (Sesi) yang mutlak dan gak boleh ditukar
     const sessions = [
       { key: "bunpou-form", label: latihanSectionLabel["bunpou-form"] },
       { key: "bunpou-composition", label: latihanSectionLabel["bunpou-composition"] },
@@ -140,13 +137,14 @@ document.addEventListener("DOMContentLoaded", () => {
     sessions.forEach((session, idx) => {
       const questionsData = source[session.key] || [];
       
-      // Acak urutan soal HANYA di dalam sesi ini saja!
-      const shuffledData = shuffleArray([...questionsData]);
+      // LOGIKA BARU: Acak, terus ambil 15 biji per kategori.
+      // Total = 15 x 3 kategori = 45 Soal. Pas buat 40-55 menit.
+      const shuffledData = shuffleArray([...questionsData]).slice(0, 15);
       
       const picked = shuffledData.map((q) => ({
-        prompt: q.question,      // Pertanyaan yang ada <u> garis bawahnya atau tanda bintang (*)
-        options: q.options,      // Tarik 4 pilihan ganda rakitan lu
-        answer: q.answer,        // Jawaban benarnya
+        prompt: q.question,
+        options: q.options,
+        answer: q.answer,
         translation: q.translation, 
         level: level,
         section: session.key,
@@ -162,11 +160,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function buildGoiSessionQuestions(level) {
-    // Tarik data format baru (JLPT Real)
     const source = window.latihanGoiReal && window.latihanGoiReal[level] ? window.latihanGoiReal[level] : {};
     const all = [];
 
-    // Urutan KAMAR (Sesi) yang mutlak dan gak boleh ditukar
     const sessions = [
       { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
       { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
@@ -177,13 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
     sessions.forEach((session, idx) => {
       const questionsData = source[session.key] || [];
       
-      // Acak urutan soal HANYA di dalam sesi ini saja!
-      const shuffledData = shuffleArray([...questionsData]);
+      // LOGIKA BARU: Acak dulu, terus ambil cuma 10 biji per kategori!
+      // Jadi total soal = 10 x 4 kategori = 40 Soal. Pas buat 20-25 menit.
+      const shuffledData = shuffleArray([...questionsData]).slice(0, 10);
       
       const picked = shuffledData.map((q) => ({
-        prompt: q.question,      // Pertanyaan yang ada <u> garis bawahnya
-        options: q.options,      // Tarik 4 pilihan ganda rakitan lu
-        answer: q.answer,        // Jawaban benarnya
+        prompt: q.question,
+        options: q.options,
+        answer: q.answer,
         translation: q.translation, 
         level: level,
         section: session.key,

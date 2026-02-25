@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
 
+  // Fungsi untuk mengambil sejumlah N soal acak dari sebuah array
+  function getRandomQuestions(array, count) {
+    const shuffled = [...array].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+  
   function enforceMobileTopbarOrder() {
     const topbar = document.querySelector(".topbar");
     if (!topbar || !resultInfo || !searchBtn) return;

@@ -1381,16 +1381,11 @@ const vocabularyData = [
 
 // Kumpulan pola kalimat per level JLPT.
 const patternData = {
-  N5: [
+  "N5": [
     {"pattern": "~ は ~ です", "example": "私は学生です。(Saya adalah siswa.)", "meaning": "Kalimat nominal positif."},
     {"pattern": "~ は ~ じゃありません", "example": "田中さんは先生じゃありません。(Tanaka bukan guru.)", "meaning": "Kalimat nominal negatif."},
-    {"pattern": "~ も ～です", "example": "私も学生です。(Saya juga siswa.)", "meaning": "Juga."},
+    {"pattern": "~ も ～ です", "example": "私も学生です。(Saya juga siswa.)", "meaning": "Juga."},
     {"pattern": "~ の ~", "example": "これは私の本です。(Ini buku saya.)", "meaning": "Kepemilikan."},
-    {"pattern": "これ/それ/あれ は ~ です", "example": "これは本です。(Ini buku.)", "meaning": "Kata tunjuk benda."},
-    {"pattern": "この/その/あの ~ は ～です", "example": "この本は面白いです。(Buku ini menarik.)", "meaning": "Kata tunjuk + noun."},
-    {"pattern": "そうです/そうじゃありません", "example": "そうです。(Ya, benar.)", "meaning": "Persetujuan / penolakan."},
-    {"pattern": "ここ/そこ/あそこ/こちら は ~ です", "example": "ここは教室です。(Di sini adalah kelas.)", "meaning": "Kata tunjuk tempat."},
-    {"pattern": "~ は 場所 です", "example": "トイレはあそこです。(Toilet di sana.)", "meaning": "Menunjukkan lokasi."},
     {"pattern": "今 ～時 ～分 です", "example": "今は三時です。(Sekarang jam tiga.)", "meaning": "Menyatakan waktu."},
     {"pattern": "~ます", "example": "毎日勉強します。(Belajar setiap hari.)", "meaning": "Bentuk sopan present."},
     {"pattern": "~ません", "example": "今日は行きません。(Hari ini tidak pergi.)", "meaning": "Negatif sopan."},
@@ -1398,9 +1393,12 @@ const patternData = {
     {"pattern": "~ませんでした", "example": "昨日学校へ行きませんでした。(Kemarin tidak pergi ke sekolah.)", "meaning": "Lampau negatif."},
     {"pattern": "時間 に ~ます", "example": "七時に起きます。(Bangun jam tujuh.)", "meaning": "Waktu spesifik."},
     {"pattern": "~ から ~ まで", "example": "九時から五時まで働きます。(Bekerja dari jam 9 sampai 5.)", "meaning": "Rentang waktu/tempat."},
-    {"pattern": "場所 へ 行きます/来ます/帰ります", "example": "学校へ行きます。(Pergi ke sekolah.)", "meaning": "Pergerakan arah."},
-    {"pattern": "乗り物 で 行きます", "example": "バスで行きます。(Pergi dengan bus.)", "meaning": "Transportasi."},
-    {"pattern": "人 と 行きます", "example": "友達と行きます。(Pergi dengan teman.)", "meaning": "Bersama seseorang."},
+    {"pattern": "~ へ 行きます", "example": "学校へ行きます。(Pergi ke sekolah.)", "meaning": "Pergi ke suatu tempat."},
+    {"pattern": "~ へ 来ます", "example": "家へ来ます。(Datang ke rumah.)", "meaning": "Datang ke suatu tempat."},
+    {"pattern": "~ へ 帰ります", "example": "家へ帰ります。(Pulang ke rumah.)", "meaning": "Pulang ke suatu tempat."},
+    {"pattern": "~ に 行きます", "example": "図書館に行きます。(Pergi ke perpustakaan.)", "meaning": "Pergi ke (nuansa arah/tujuan)."},
+    {"pattern": "乗り物 で ~ます", "example": "バスで行きます。(Pergi dengan bus.)", "meaning": "Transportasi."},
+    {"pattern": "人 と ~ます", "example": "友達と行きます。(Pergi dengan teman.)", "meaning": "Bersama seseorang."},
     {"pattern": "~ を ~ます", "example": "水を飲みます。(Minum air.)", "meaning": "Objek langsung."},
     {"pattern": "場所 で ~ます", "example": "図書館で勉強します。(Belajar di perpustakaan.)", "meaning": "Tempat aktivitas."},
     {"pattern": "~ませんか", "example": "行きませんか。(Maukah pergi?)", "meaning": "Ajakan halus."},

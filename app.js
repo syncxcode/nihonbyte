@@ -352,6 +352,9 @@ document.addEventListener("DOMContentLoaded", () => {
     clearInterval(timer);
     const item = currentQuizData[quizIndex];
 
+    // 🚀 MANTRA BARU: Rekam jejak jawaban user (buat di-review nanti)
+    item.userAnswer = selected;
+
     if (selected === item.answer) score++;
 
     document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
@@ -375,24 +378,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 900);
   }
 
-  function showCorrectAnswerAndNext() {
-    const item = currentQuizData[quizIndex];
-
-    document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
-      btn.disabled = true;
-      if (btn.dataset.answer === item.answer) {
-        btn.style.background = "#facc15";
-        btn.style.color = "#854d0e";
-        btn.style.borderColor = "#eab308";
-      }
-    });
-
-    setTimeout(() => {
-      quizIndex++;
-      renderQuiz();
-    }, 1100);
-  }
-
   function endQuiz() {
     isTesting = false;
     document.body.classList.remove("training-session");
@@ -401,20 +386,45 @@ document.addEventListener("DOMContentLoaded", () => {
     unlockQuizScroll();
 
     const totalSoal = currentQuizData.length;
-    const jlptScore = Math.round((score / totalSoal) * 60);
+    // Hitung persentase skala 100
+    const percentage = totalSoal > 0 ? Math.round((score / totalSoal) * 100) : 0;
 
+    let statusLabel = "";
+    let colorTheme = "";
     let gradeMsg = "";
-    if (jlptScore >= 50) gradeMsg = "Luar Biasa! (満点!)";
-    else if (jlptScore >= 35) gradeMsg = "Bagus! Terus tingkatkan.";
-    else gradeMsg = "Jangan menyerah, belajar lagi yuk!";
+
+    // 🚀 LOGIKA LULUS / GAGAL (Batas 75)
+    if (percentage >= 75) {
+      statusLabel = "LULUS ✅";
+      colorTheme = "#4ade80"; 
+      const passQuotes = [
+        "Kerja kerasmu tidak mengkhianati hasil! Pertahankan semangat ini, Bosku! 🔥",
+        "Sugoii! Jalan menuju skor N1 semakin terbuka lebar. Gas terus! 🚀",
+        "Luar biasa! Sensei bangga padamu wkwkwk. Jangan cepat puas ya! ✨"
+      ];
+      gradeMsg = passQuotes[Math.floor(Math.random() * passQuotes.length)];
+    } else {
+      statusLabel = "GAGAL ❌";
+      colorTheme = "#fb7185"; 
+      const failQuotes = [
+        "Jangan putus asa! Kegagalan adalah bumbu penyedap kesuksesan. Yuk review lagi! 💪",
+        "Belum lulus bukan berarti gak bisa. Tarik napas, pelajari salahnya, hajar lagi! 💥",
+        "Ganbatte! Samurai yang kuat adalah yang paling sering bangkit dari kekalahan! 🎌"
+      ];
+      gradeMsg = failQuotes[Math.floor(Math.random() * failQuotes.length)];
+    }
 
     const message = `
       <div style="text-align: center; padding: 15px;">
-        <h2 style="color: #ff4d6d; margin-bottom: 5px;">Test Selesai!</h2>
-        <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${jlptScore}<span style="font-size: 1.8rem; color: #9ca3af;">/60</span></div>
-        <p style="font-size: 1.15rem; font-weight: 600; color: #f3f4f6;">${gradeMsg}</p>
-        <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
-        <button onclick="location.reload()" style="margin-top: 25px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%;">KEMBALI KE MENU</button>
+        <h2 style="color: ${colorTheme}; margin-bottom: 5px;">${statusLabel}</h2>
+        <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${percentage}<span style="font-size: 1.8rem; color: #9ca3af;">/100</span></div>
+        <p style="font-size: 1.1rem; font-weight: 600; color: #f3f4f6; margin-bottom: 10px;">${gradeMsg}</p>
+        <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem; margin-bottom: 25px;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button onclick="window.renderReview()" style="background: #ffffff; color: #1e293b; border: 2px solid #cbd5e1; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; width: 100%; transition: all 0.2s ease;">🔍 Tinjau Latihan</button>
+          <button onclick="location.reload()" style="background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%;">🏠 KEMBALI KE MENU</button>
+        </div>
       </div>
     `;
     openInfoModal(message);
@@ -423,6 +433,66 @@ document.addEventListener("DOMContentLoaded", () => {
   function confirmEndQuiz() {
     if (confirm("Yakin ingin mengakhiri test sekarang? Skor saat ini akan langsung dihitung.")) endQuiz();
   }
+
+  // ==========================================
+  // FITUR BARU: HALAMAN TINJAU LATIHAN (REVIEW)
+  // ==========================================
+  window.renderReview = function() {
+    closeModal(); // Tutup popup rapot
+    grid.className = "";
+    grid.classList.add("review-active-mode");
+
+    let reviewHTML = `
+      <div class="quiz-wrapper-pro" style="margin-top: 20px; max-height: none; overflow: visible;">
+        <h2 style="text-align: center; color: #1e293b; margin-bottom: 20px;">🔍 Evaluasi Tinjauan Latihan</h2>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+    `;
+
+    currentQuizData.forEach((q, index) => {
+      const isCorrect = q.userAnswer === q.answer;
+      const statusIcon = isCorrect ? "✅ Benar" : "❌ Salah";
+      const statusColor = isCorrect ? "#16a34a" : "#e11d48";
+      const bgColor = isCorrect ? "#f0fdf4" : "#fff1f2";
+      const borderColor = isCorrect ? "#bbf7d0" : "#fecdd3";
+      
+      // Handle kalau user kehabisan waktu sebelum jawab
+      const userAnswerText = q.userAnswer ? q.userAnswer : "<i>Tidak dijawab (Waktu Habis)</i>";
+
+      reviewHTML += `
+        <div style="background: ${bgColor}; border: 1px solid ${borderColor}; border-radius: 16px; padding: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px dashed ${borderColor}; padding-bottom: 8px;">
+            <span style="font-weight: 800; color: #475569; font-size: 0.95rem;">Soal ${index + 1}</span>
+            <span style="font-weight: 800; color: ${statusColor}; font-size: 0.95rem;">${statusIcon}</span>
+          </div>
+          
+          <h3 style="font-size: 1.15rem; margin: 0 0 14px; color: #0f172a; line-height: 1.5;">${q.prompt}</h3>
+          
+          <p style="margin: 0 0 6px; font-size: 0.95rem; color: #334155;">Jawabanmu: <strong style="color: ${statusColor};">${userAnswerText}</strong></p>
+      `;
+
+      // 🚀 JIKA SALAH: Munculkan Kunci Jawaban & Penjelasan
+      if (!isCorrect) {
+        reviewHTML += `
+          <p style="margin: 0 0 12px; font-size: 0.95rem; color: #334155;">Jawaban Benar: <strong style="color: #16a34a;">${q.answer}</strong></p>
+          <div style="background: #ffffff; border-left: 4px solid #facc15; padding: 12px 16px; border-radius: 0 8px 8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+            <span style="font-size: 0.85rem; font-weight: 800; color: #ca8a04; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">💡 Penjelasan / Arti:</span>
+            <span style="font-size: 0.95rem; color: #475569; line-height: 1.5; font-weight: 600;">${q.translation || "Jawaban ini adalah yang paling tepat untuk konteks kalimat di atas."}</span>
+          </div>
+        `;
+      }
+
+      reviewHTML += `</div>`;
+    });
+
+    reviewHTML += `
+        </div>
+        <button onclick="location.reload()" style="margin-top: 24px; background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; width: 100%; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);">🏠 Selesai & Kembali ke Menu</button>
+      </div>
+    `;
+
+    grid.innerHTML = reviewHTML;
+    window.scrollTo(0, 0); // Pastikan layar naik ke atas
+  };
       
     searchBtn.addEventListener("click", () => {
       if (isTesting) {

@@ -1113,7 +1113,7 @@ select, input, .action-btn {
 }
 
 /* =========================================
-   LATIHAN MODE BARU (UJIAN JLPT REAL)
+           LATIHAN MODE BARU
 ========================================= */
 
 nested-latihan-list {
@@ -1128,23 +1128,23 @@ nested-latihan-list {
   justify-content: center !important;
   min-height: calc(100dvh - 78px) !important;
   margin-top: 78px !important;
-  padding: 10px 16px !important; 
+  padding: 20px 30px !important; /* Jarak kiri-kanan lebih lega */
   overflow: hidden !important;
 }
 
 .quiz-wrapper-pro {
-  max-width: 900px !important; 
-  width: 95%;
-  margin: 20px auto;
-  max-height: calc(100dvh - 100px); 
+  max-width: 1200px !important; /* 🚀 KUNCI 1: Dilebarin pol sampai 1200px (awalnya 900px) */
+  width: 100% !important;
+  min-height: 70vh !important; /* 🚀 KUNCI 2: Box dipaksa agak tinggi biar gak bantet */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px; 
   background: rgba(255, 255, 255, 0.92);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 20px 50px rgba(20, 24, 30, 0.2);
-  padding: 16px;
+  padding: 30px !important; /* Ruang dalam (padding) diperbesar */
   box-sizing: border-box;
 }
 
@@ -1166,41 +1166,43 @@ nested-latihan-list {
 #quiz-timer { color: #e11d48; margin-left: 4px; font-size: 1.1rem; }
 
 .quiz-qcard-pro {
-  flex: 1; /* Area biru ini otomatis membesar ngisi ruang kosong! */
-  min-height: 100px;
+  flex: 1; 
+  min-height: 250px !important; /* 🚀 Box soal biru lebih tinggi */
   border-radius: 18px;
   background: linear-gradient(160deg, #f8fafc, #eef2ff);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 14px;
+  padding: 20px 50px !important; /* Teks dijauhkan dari dinding box */
   box-sizing: border-box;
 }
 
 .quiz-question-main {
-  white-space: normal; 
-  word-break: keep-all; /* Mencegah pemenggalan kata di tengah kanji/kana */
-  line-height: 1.6;
+  white-space: pre-wrap !important; 
+  word-break: keep-all !important; 
+  line-height: 1.6 !important;
   margin: 0;
   color: #0f172a;
-  font-size: clamp(1.8rem, 5vw, 3.8rem); 
+  /* 🚀 KUNCI 3: Font dikecilin rasionya biar kalimat panjang muat 1 baris */
+  font-size: clamp(1.4rem, 3.5vw, 2.6rem) !important; 
 }
 
 .quiz-options-pro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px; 
+  gap: 20px !important; /* Jarak antar tombol dijauhkan */
+  margin-top: 10px;
 }
 
 .quiz-opt-btn-pro {
-  min-height: 44px; 
+  min-height: 60px !important; /* Tombol lebih tebal/tinggi */
   padding: 10px;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
   background: #fff;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.15rem !important; /* Font tombol digedein dikit */
   color: #334155;
   cursor: pointer;
 }
@@ -1258,14 +1260,24 @@ body.training-session #resultInfo {
 }
 
 @media (max-width: 900px) {
-  #grid.quiz-active-mode { padding: 8px !important; }
+  #grid.quiz-active-mode { padding: 15px !important; }
   .quiz-wrapper-pro {
-    height: calc(100dvh - 84px); /* Sama, paksa melar di HP juga */
-    max-height: calc(100dvh - 84px);
-    padding: 12px;
+    height: calc(100dvh - 120px) !important; 
+    max-height: calc(100dvh - 120px) !important;
+    padding: 15px !important;
+    gap: 15px !important;
   }
-  .quiz-options-pro { grid-template-columns: 1fr 1fr; }
-  .quiz-qcard-pro { min-height: 90px; }
+  .quiz-qcard-pro {
+    padding: 15px 20px !important;
+    min-height: 180px !important;
+  }
+  .quiz-options-pro { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px !important; 
+  }
+  .quiz-question-main {
+    font-size: clamp(1.3rem, 4.5vw, 2rem) !important;
+  }
 }
 
 #grid.review-active-mode {

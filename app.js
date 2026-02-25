@@ -302,6 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startTimer();
   }
 
+  // TIMPA FUNGSI INI FULL DARI ATAS SAMPAI BAWAH DI APP.JS
   function renderQuiz() {
     if (quizIndex >= currentQuizData.length) {
       endQuiz();
@@ -309,31 +310,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const item = currentQuizData[quizIndex];
-    const mainLabel = currentExerciseMeta.type === "bunpou"
-      ? "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)"
-      : "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
+
+    // 🚀 FIX LABEL BIAR DOKKAI GAK DITULIS KOSAKATA LAGI
+    let mainLabel = "";
+    if (currentExerciseMeta.type === "bunpou") {
+      mainLabel = "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)";
+    } else if (currentExerciseMeta.type === "dokkai") {
+      mainLabel = "読解 / Dokkai (Membaca)";
+    } else {
+      mainLabel = "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
+    }
 
     const dynamicSection = item.section || currentExerciseMeta.section;
     const dynamicSectionLabel = item.sectionLabel || currentExerciseMeta.sectionLabel;
+    
+    // Penyesuaian Index (Biar Dokkai nampilin Teks ke berapa)
     const sectionProgress = item.sectionIndex
       ? { index: item.sectionIndex, total: item.sectionTotal || (currentExerciseMeta.type === "bunpou" ? 3 : 5) }
       : getSectionProgress(currentExerciseMeta.type, dynamicSection);
+      
     const options = generateExerciseOptions(item);
+    
     if (resultInfo) resultInfo.textContent = "頑張ってください";
 
-    // (Taruh ini di bawah deklarasi variabel const options, const mainLabel, dll)
+    grid.className = "";
+    grid.classList.add("quiz-active-mode");
+    document.body.classList.add("training-session");
 
+    // 🚀 CEK APAKAH INI DOKKAI?
     const isDokkai = currentExerciseMeta.type === "dokkai";
 
     if (isDokkai) {
-      // 🚀 LAYOUT KHUSUS DOKKAI (SPLIT SCREEN)
+      // ==========================================
+      // LAYOUT KHUSUS DOKKAI (SPLIT SCREEN)
+      // ==========================================
       grid.innerHTML = `
         <div class="dokkai-wrapper-pro">
           <button id="finishBtnManual">Akhiri Test</button>
 
           <div class="dokkai-passage-side">
             <div class="dokkai-passage-content">
-              ${item.passage.replace(/\n/g, '<br>')}
+              ${item.passage ? item.passage.replace(/\n/g, '<br><br>') : "Teks bacaan tidak ditemukan."}
             </div>
           </div>
 
@@ -357,7 +374,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
     } else {
-      // 🚀 LAYOUT LAMA (GOI & BUNPOU)
+      // ==========================================
+      // LAYOUT LAMA (GOI & BUNPOU)
+      // ==========================================
       grid.innerHTML = `
         <div class="quiz-wrapper-pro">
           <button id="finishBtnManual">Akhiri Test</button>
@@ -380,39 +399,14 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
 
-    grid.className = "";
-    grid.classList.add("quiz-active-mode");
-    document.body.classList.add("training-session");
-
-    grid.innerHTML = `
-      <div class="quiz-wrapper-pro">
-        <button id="finishBtnManual">Akhiri Test</button>
-
-        <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
-        <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
-
-        <div class="quiz-head-pro">
-          <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
-          <div class="quiz-timer-text">Timer <span id="quiz-timer">${formatSessionTime(sessionTimeLeft)}</span></div>
-        </div>
-
-        <div class="quiz-qcard-pro">
-          <h1 class="quiz-question-main">${item.prompt}</h1>
-        </div>
-
-        <div class="quiz-options-pro">
-          ${options.map((opt) => `<button class="quiz-opt-btn-pro" data-answer="${opt}">${opt}</button>`).join("")}
-        </div>
-      </div>
-    `;
-
+    // Pasang Event Listener buat pilihan ganda dan tombol akhir
     document.querySelectorAll(".quiz-opt-btn-pro").forEach((btn) => {
       btn.addEventListener("click", () => checkAnswer(btn.dataset.answer));
     });
 
     document.getElementById("finishBtnManual")?.addEventListener("click", confirmEndQuiz);
   }
-
+  
   function startTimer() {
     clearInterval(timer);
     timer = setInterval(() => {

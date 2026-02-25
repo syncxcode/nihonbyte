@@ -1381,184 +1381,81 @@ const vocabularyData = [
 
 // Kumpulan pola kalimat per level JLPT.
 const patternData = {
-    N5: [
-    {
-      "pattern": "です",
-      "example": "私は学生です。",
-      "meaning": "Adalah."
-    },
-    {
-      "pattern": "ます",
-      "example": "私は毎日勉強します。",
-      "meaning": "Bentuk sopan."
-    },
-    {
-      "pattern": "ません",
-      "example": "私はコーヒーを飲みません。",
-      "meaning": "Bentuk negatif sopan."
-    },
-    {
-      "pattern": "でした",
-      "example": "昨日は暑かったです。",
-      "meaning": "Bentuk lampau."
-    },
-    {
-      "pattern": "ではありません",
-      "example": "これは本ではありません。",
-      "meaning": "Bukan."
-    },
-    {
-      "pattern": "か",
-      "example": "これは何ですか？",
-      "meaning": "Pertanyaan."
-    },
-    {
-      "pattern": "も",
-      "example": "私も学生です。",
-      "meaning": "Juga."
-    },
-    {
-      "pattern": "～の",
-      "example": "これは日本の車です。",
-      "meaning": "Kepemilikan/keterangan noun."
-    },
-    {
-      "pattern": "～を",
-      "example": "私はパンを食べます。",
-      "meaning": "Penanda objek langsung."
-    },
-    {
-      "pattern": "～に",
-      "example": "7時に起きます。",
-      "meaning": "Penanda waktu/tujuan keberadaan."
-    },
-    {
-      "pattern": "～で",
-      "example": "図書館で勉強します。",
-      "meaning": "Penanda tempat kegiatan/alat."
-    },
-    {
-      "pattern": "～へ",
-      "example": "日本へ行きます。",
-      "meaning": "Arah/tujuan."
-    },
-    {
-      "pattern": "～から～まで",
-      "example": "9時から5時まで働きます。",
-      "meaning": "Dari sampai."
-    },
-    {
-      "pattern": "～と",
-      "example": "友達と映画を見ます。",
-      "meaning": "Bersama/dengan."
-    },
-    {
-      "pattern": "～や～など",
-      "example": "机の上に本やノートなどがあります。",
-      "meaning": "Daftar tidak lengkap."
-    },
-    {
-      "pattern": "～がほしい",
-      "example": "新しい辞書がほしいです。",
-      "meaning": "Ingin benda."
-    },
-    {
-      "pattern": "～たい",
-      "example": "日本へ行きたいです。",
-      "meaning": "Ingin melakukan sesuatu."
-    },
-    {
-      "pattern": "～ませんか",
-      "example": "いっしょに昼ご飯を食べませんか。",
-      "meaning": "Ajakan halus."
-    },
-    {
-      "pattern": "～ましょう",
-      "example": "少し休みましょう。",
-      "meaning": "Mari kita..."
-    },
-    {
-      "pattern": "～てください",
-      "example": "ここに名前を書いてください。",
-      "meaning": "Permintaan sopan."
-    },
-    {
-      "pattern": "～てもいいです",
-      "example": "ここで写真を撮ってもいいです。",
-      "meaning": "Izin melakukan sesuatu."
-    },
-    {
-      "pattern": "～てはいけません",
-      "example": "ここでタバコを吸ってはいけません。",
-      "meaning": "Larangan."
-    },
-    {
-      "pattern": "～ています",
-      "example": "今、雨が降っています。",
-      "meaning": "Sedang berlangsung/keadaan."
-    },
-    {
-      "pattern": "～に行きます",
-      "example": "友達と買い物に行きます。",
-      "meaning": "Pergi untuk melakukan V-masu stem."
-    },
-    {
-      "pattern": "～たことがあります",
-      "example": "富士山に登ったことがあります。",
-      "meaning": "Pernah mengalami."
-    },
-    {
-      "pattern": "～たり～たりします",
-      "example": "日曜日は掃除をしたり、音楽を聞いたりします。",
-      "meaning": "Contoh aktivitas yang dilakukan."
-    },
-    {
-      "pattern": "～くて, ～で",
-      "example": "この店は安くておいしいです。",
-      "meaning": "Menggabung sifat/kalimat."
-    },
-    {
-      "pattern": "～から",
-      "example": "今日は寒いですから、コートを着ます。",
-      "meaning": "Alasan/sebab."
-    },
-    {
-      "pattern": "～ので",
-      "example": "用事があるので、先に帰ります。",
-      "meaning": "Alasan lebih lembut."
-    },
-    {
-      "pattern": "～と思います",
-      "example": "明日は晴れると思います。",
-      "meaning": "Menyatakan pendapat."
-    },
-    {
-      "pattern": "～つもりです",
-      "example": "来年、日本へ留学するつもりです。",
-      "meaning": "Rencana/niat."
-    },
-    {
-      "pattern": "～前に",
-      "example": "寝る前に歯を磨きます。",
-      "meaning": "Sebelum."
-    },
-    {
-      "pattern": "～後で",
-      "example": "仕事の後で買い物します。",
-      "meaning": "Sesudah."
-    },
-    {
-      "pattern": "～時半",
-      "example": "9時半 (Ku-ji-han)",
-      "meaning": "Menunjukkan waktu setengah atau lewat 30 menit"
-    },
-    {
-      "pattern": "～時～分",
-      "example": "1時15分 (Ichi-ji juu-go-fun)",
-      "meaning": "Menunjukkan satuan jam dan menit secara spesifik"
-    },
+  N5: [
+    {"pattern": "~ は ~ です", "example": "私は学生です。(Saya adalah siswa.)", "meaning": "Kalimat nominal positif."},
+    {"pattern": "~ は ~ じゃありません", "example": "田中さんは先生じゃありません。(Tanaka bukan guru.)", "meaning": "Kalimat nominal negatif."},
+    {"pattern": "~ も ～です", "example": "私も学生です。(Saya juga siswa.)", "meaning": "Juga."},
+    {"pattern": "~ の ~", "example": "これは私の本です。(Ini buku saya.)", "meaning": "Kepemilikan."},
+    {"pattern": "これ/それ/あれ は ~ です", "example": "これは本です。(Ini buku.)", "meaning": "Kata tunjuk benda."},
+    {"pattern": "この/その/あの ~ は ～です", "example": "この本は面白いです。(Buku ini menarik.)", "meaning": "Kata tunjuk + noun."},
+    {"pattern": "そうです/そうじゃありません", "example": "そうです。(Ya, benar.)", "meaning": "Persetujuan / penolakan."},
+    {"pattern": "ここ/そこ/あそこ/こちら は ~ です", "example": "ここは教室です。(Di sini adalah kelas.)", "meaning": "Kata tunjuk tempat."},
+    {"pattern": "~ は 場所 です", "example": "トイレはあそこです。(Toilet di sana.)", "meaning": "Menunjukkan lokasi."},
+    {"pattern": "今 ～時 ～分 です", "example": "今は三時です。(Sekarang jam tiga.)", "meaning": "Menyatakan waktu."},
+    {"pattern": "~ます", "example": "毎日勉強します。(Belajar setiap hari.)", "meaning": "Bentuk sopan present."},
+    {"pattern": "~ません", "example": "今日は行きません。(Hari ini tidak pergi.)", "meaning": "Negatif sopan."},
+    {"pattern": "~ました", "example": "昨日映画を見ました。(Kemarin menonton film.)", "meaning": "Lampau sopan."},
+    {"pattern": "~ませんでした", "example": "昨日学校へ行きませんでした。(Kemarin tidak pergi ke sekolah.)", "meaning": "Lampau negatif."},
+    {"pattern": "時間 に ~ます", "example": "七時に起きます。(Bangun jam tujuh.)", "meaning": "Waktu spesifik."},
+    {"pattern": "~ から ~ まで", "example": "九時から五時まで働きます。(Bekerja dari jam 9 sampai 5.)", "meaning": "Rentang waktu/tempat."},
+    {"pattern": "場所 へ 行きます/来ます/帰ります", "example": "学校へ行きます。(Pergi ke sekolah.)", "meaning": "Pergerakan arah."},
+    {"pattern": "乗り物 で 行きます", "example": "バスで行きます。(Pergi dengan bus.)", "meaning": "Transportasi."},
+    {"pattern": "人 と 行きます", "example": "友達と行きます。(Pergi dengan teman.)", "meaning": "Bersama seseorang."},
+    {"pattern": "~ を ~ます", "example": "水を飲みます。(Minum air.)", "meaning": "Objek langsung."},
+    {"pattern": "場所 で ~ます", "example": "図書館で勉強します。(Belajar di perpustakaan.)", "meaning": "Tempat aktivitas."},
+    {"pattern": "~ませんか", "example": "行きませんか。(Maukah pergi?)", "meaning": "Ajakan halus."},
+    {"pattern": "~ましょう", "example": "行きましょう。(Mari pergi.)", "meaning": "Ajakan."},
+    {"pattern": "道具 で ~ます", "example": "箸で食べます。(Makan dengan sumpit.)", "meaning": "Alat."},
+    {"pattern": "人 に ~ を あげます", "example": "友達に本をあげます。(Memberi buku ke teman.)", "meaning": "Memberi."},
+    {"pattern": "人 に ~ を もらいます", "example": "先生に本をもらいました。(Menerima buku dari guru.)", "meaning": "Menerima."},
+    {"pattern": "~ は ~ です", "example": "この本は面白いです。(Buku ini menarik.)", "meaning": "I-adjective."},
+    {"pattern": "~ は ~ です", "example": "この町は静かです。(Kota ini tenang.)", "meaning": "Na-adjective."},
+    {"pattern": "どんな ~", "example": "どんな映画が好きですか。(Film seperti apa yang kamu suka?)", "meaning": "Menanyakan jenis."},
+    {"pattern": "~ が 好きです", "example": "日本語が好きです。(Suka bahasa Jepang.)", "meaning": "Menyatakan suka."},
+    {"pattern": "~ が わかります", "example": "日本語がわかります。(Mengerti bahasa Jepang.)", "meaning": "Mengerti."},
+    {"pattern": "～から、～", "example": "寒いから帰ります。(Karena dingin, pulang.)", "meaning": "Sebab akibat."},
+    {"pattern": "場所 に ~ が あります/います", "example": "部屋に机があります。(Ada meja di kamar.)", "meaning": "Keberadaan."},
+    {"pattern": "~ は 場所 に あります/います", "example": "机は部屋にあります。(Meja ada di kamar.)", "meaning": "Posisi benda."},
+    {"pattern": "~ を 数量 ~ます", "example": "りんごを三つ買いました。(Membeli tiga apel.)", "meaning": "Counter."},
+    {"pattern": "期間 に ～回 ~ます", "example": "一年に三回旅行します。(Bepergian tiga kali setahun.)", "meaning": "Frekuensi."},
+    {"pattern": "~ 過去形", "example": "昨日は暑かったです。(Kemarin panas.)", "meaning": "Lampau i-adj."},
+    {"pattern": "~ 過去形", "example": "昨日は暇でした。(Kemarin senggang.)", "meaning": "Lampau na-adj."},
+    {"pattern": "~ は ~ より ～", "example": "車は自転車より速いです。(Mobil lebih cepat.)", "meaning": "Perbandingan."},
+    {"pattern": "どちらが ～ですか", "example": "どちらが安いですか。(Mana yang lebih murah?)", "meaning": "Perbandingan pilihan."},
+    {"pattern": "~ が ほしいです", "example": "新しい車がほしいです。(Ingin mobil baru.)", "meaning": "Keinginan benda."},
+    {"pattern": "~たいです", "example": "日本へ行きたいです。(Ingin pergi ke Jepang.)", "meaning": "Keinginan aksi."},
+    {"pattern": "~に 行きます", "example": "映画を見に行きます。(Pergi untuk menonton film.)", "meaning": "Tujuan aktivitas."},
+    {"pattern": "~てください", "example": "座ってください。(Tolong duduk.)", "meaning": "Permintaan."},
+    {"pattern": "~ています", "example": "勉強しています。(Sedang belajar.)", "meaning": "Sedang berlangsung."},
+    {"pattern": "~ましょうか", "example": "手伝いましょうか。(Bisa saya bantu?)", "meaning": "Menawarkan bantuan."},
+    {"pattern": "~てもいいです", "example": "入ってもいいです。(Boleh masuk.)", "meaning": "Izin."},
+    {"pattern": "~てはいけません", "example": "ここで吸ってはいけません。(Tidak boleh merokok.)", "meaning": "Larangan."},
+    {"pattern": "~て、~て", "example": "朝ご飯を食べて学校へ行きます。(Makan pagi lalu pergi sekolah.)", "meaning": "Urutan aksi."},
+    {"pattern": "~くて / ~で", "example": "安くて便利です。(Murah dan praktis.)", "meaning": "Menggabungkan sifat."},
+    {"pattern": "~てから", "example": "食べてから寝ます。(Tidur setelah makan.)", "meaning": "Setelah lalu."},
+    {"pattern": "~ないでください", "example": "入らないでください。(Tolong jangan masuk.)", "meaning": "Larangan halus."},
+    {"pattern": "~なければなりません", "example": "勉強しなければなりません。(Harus belajar.)", "meaning": "Kewajiban."},
+    {"pattern": "~なくてもいいです", "example": "来なくてもいいです。(Tidak perlu datang.)", "meaning": "Tidak perlu."},
+    {"pattern": "~ることができます", "example": "泳ぐことができます。(Bisa berenang.)", "meaning": "Kemampuan."},
+    {"pattern": "趣味は ~ることです", "example": "趣味は本を読むことです。(Hobi saya membaca buku.)", "meaning": "Nominalisasi."},
+    {"pattern": "~ の 前に", "example": "寝る前に歯を磨きます。(Sikat gigi sebelum tidur.)", "meaning": "Sebelum."},
+    {"pattern": "~たことがあります", "example": "日本へ行ったことがあります。(Pernah ke Jepang.)", "meaning": "Pengalaman."},
+    {"pattern": "~たり ~たりします", "example": "読んだり書いたりします。(Kadang membaca dan menulis.)", "meaning": "Daftar aktivitas."},
+    {"pattern": "～になります", "example": "医者になりました。(Menjadi dokter.)", "meaning": "Perubahan."},
+    {"pattern": "普通形", "example": "食べる・食べない・食べた・食べなかった。(Bentuk biasa.)", "meaning": "Bentuk kasual."},
+    {"pattern": "普通形 と 思います", "example": "雨が降ると思います。(Saya pikir akan hujan.)", "meaning": "Pendapat."},
+    {"pattern": "普通形 と 言っていました", "example": "行くと言っていました。(Katanya akan pergi.)", "meaning": "Laporan ucapan."},
+    {"pattern": "普通形 でしょう", "example": "明日は雨でしょう。(Besok mungkin hujan.)", "meaning": "Perkiraan."},
+    {"pattern": "普通形 + ~", "example": "私が買った本。(Buku yang saya beli.)", "meaning": "Relative clause."},
+    {"pattern": "～とき", "example": "日本に行ったとき写真を撮りました。(Mengambil foto saat ke Jepang.)", "meaning": "Ketika."},
+    {"pattern": "～と (kondisional)", "example": "春になると桜が咲きます。(Jika musim semi, sakura mekar.)", "meaning": "Kondisi umum."},
+    {"pattern": "~てあげます", "example": "友達に教えてあげます。(Mengajarkan ke teman.)", "meaning": "Memberi bantuan."},
+    {"pattern": "~てもらいます", "example": "先生に教えてもらいました。(Diajari guru.)", "meaning": "Menerima bantuan."},
+    {"pattern": "~てくれます", "example": "友達が手伝ってくれました。(Teman membantu saya.)", "meaning": "Orang lain membantu saya."},
+    {"pattern": "~たら", "example": "雨が降ったら行きません。(Jika hujan, tidak pergi.)", "meaning": "Kondisional."},
+    {"pattern": "~ても", "example": "雨でも行きます。(Meskipun hujan, tetap pergi.)", "meaning": "Meskipun."}
   ],
-
+    
   N4: [
     {
       "pattern": "〜し〜し",

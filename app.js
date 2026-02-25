@@ -215,19 +215,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return [...arr].sort(() => Math.random() - 0.5);
   }
 
+  // TIMPA FUNGSI INI DI APP.JS LU
   function buildExerciseQuestions(mainType, section, level) {
     if (mainType === "goi") {
       return buildGoiSessionQuestions(level);
     }
 
     if (mainType === "bunpou") {
-      if (!section) return buildBunpouSessionQuestions(level);
-      const source = getLatihanPatternSource(level);
-      return source.map((item) => {
-        if (section === "bunpou-form") return { prompt: item.meaning, answer: item.pattern, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 1, sectionTotal: 3 };
-        if (section === "bunpou-composition") return { prompt: item.pattern, answer: item.example, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 2, sectionTotal: 3 };
-        return { prompt: item.example, answer: item.meaning, level, section, sectionLabel: latihanSectionLabel[section], sectionIndex: 3, sectionTotal: 3 };
-      });
+      // 🚀 KUNCI FIX: Langsung panggil fungsi soal campuran Bunpou.
+      // Gak usah lagi ngecek "section" atau pake logika data lama (patternData)!
+      return buildBunpouSessionQuestions(level);
     }
 
     return [];

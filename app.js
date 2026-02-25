@@ -308,6 +308,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     grid.innerHTML = `
       <div class="quiz-wrapper-pro">
+        <button id="finishBtnManual">Akhiri Test</button>
+
         <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
         <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
 
@@ -322,10 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         <div class="quiz-options-pro">
           ${options.map((opt) => `<button class="quiz-opt-btn-pro" data-answer="${opt}">${opt}</button>`).join("")}
-        </div>
-
-        <div class="quiz-finish-pro">
-          <button id="finishBtnManual">Selesaikan Test</button>
         </div>
       </div>
     `;

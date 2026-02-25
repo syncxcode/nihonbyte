@@ -217,17 +217,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // TIMPA FUNGSI INI DI APP.JS LU
   function buildExerciseQuestions(mainType, section, level) {
-    if (mainType === "goi") {
-      return buildGoiSessionQuestions(level);
-    }
-
-    if (mainType === "bunpou") {
-      // 🚀 KUNCI FIX: Langsung panggil fungsi soal campuran Bunpou.
-      // Gak usah lagi ngecek "section" atau pake logika data lama (patternData)!
-      return buildBunpouSessionQuestions(level);
-    }
-
+    if (mainType === "goi") return buildGoiSessionQuestions(level);
+    if (mainType === "bunpou") return buildBunpouSessionQuestions(level);
+    if (mainType === "dokkai") return buildDokkaiSessionQuestions(level); 
     return [];
+  }
+
+  function buildDokkaiSessionQuestions(level) {
+    const source = window.latihanDokkaiReal && window.latihanDokkaiReal[level] ? window.latihanDokkaiReal[level] : [];
+    const all = [];
+
+    // Acak urutan Teks Bacaannya (Biar gak bosen)
+    const shuffledPassages = shuffleArray([...source]).slice(0, 5); // Ambil 5 teks acak per sesi
+
+    shuffledPassages.forEach((item, passageIndex) => {
+      item.questions.forEach((q) => {
+        all.push({
+          passage: item.passage, // Teks Induk dibawa ke setiap anak soal
+          prompt: q.question,
+          options: q.options,
+          answer: q.answer,
+          translation: q.translation,
+          level: level,
+          section: "dokkai-reading",
+          sectionLabel: "読解 (Dokkai Membaca)",
+          sectionIndex: passageIndex + 1,
+          sectionTotal: shuffledPassages.length
+        });
+      });
+    });
+
+    return all;
   }
 
   function generateExerciseOptions(question) {
@@ -267,10 +287,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     currentQuizData = questions;
 
-    // 🚀 MANTRA BARU: Timer dibedakan antara Kosakata (Goi) dan Tata Bahasa (Bunpou)
+    // 🚀 MANTRA BARU: Timer dibedakan antara Kosakata, Tata Bahasa, dan Dokkai
     let defaultMinutes = 20;
     if (mainType === "bunpou") {
       defaultMinutes = level === "N5" ? 40 : (level === "N4" ? 55 : 40);
+    } else if (mainType === "dokkai") {
+      defaultMinutes = level === "N5" ? 40 : (level === "N4" ? 55 : 40); // 🚀 N5=40m, N4=55m
     } else { // Goi
       defaultMinutes = level === "N5" ? 20 : (level === "N4" ? 25 : 20);
     }
@@ -298,6 +320,65 @@ document.addEventListener("DOMContentLoaded", () => {
       : getSectionProgress(currentExerciseMeta.type, dynamicSection);
     const options = generateExerciseOptions(item);
     if (resultInfo) resultInfo.textContent = "頑張ってください";
+
+    // (Taruh ini di bawah deklarasi variabel const options, const mainLabel, dll)
+
+    const isDokkai = currentExerciseMeta.type === "dokkai";
+
+    if (isDokkai) {
+      // 🚀 LAYOUT KHUSUS DOKKAI (SPLIT SCREEN)
+      grid.innerHTML = `
+        <div class="dokkai-wrapper-pro">
+          <button id="finishBtnManual">Akhiri Test</button>
+
+          <div class="dokkai-passage-side">
+            <div class="dokkai-passage-content">
+              ${item.passage.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+
+          <div class="dokkai-question-side">
+            <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
+            <p class="quiz-subtitle">Teks ${sectionProgress.index} dari ${sectionProgress.total}</p>
+
+            <div class="quiz-head-pro">
+              <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
+              <div class="quiz-timer-text">Timer <span id="quiz-timer">${formatSessionTime(sessionTimeLeft)}</span></div>
+            </div>
+
+            <div class="quiz-qcard-pro" style="min-height: 120px !important; padding: 15px 25px !important;">
+              <h2 class="quiz-question-main" style="font-size: clamp(1.4rem, 3vw, 2.2rem) !important;">${item.prompt}</h2>
+            </div>
+
+            <div class="quiz-options-pro">
+              ${options.map((opt) => `<button class="quiz-opt-btn-pro" data-answer="${opt}">${opt}</button>`).join("")}
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      // 🚀 LAYOUT LAMA (GOI & BUNPOU)
+      grid.innerHTML = `
+        <div class="quiz-wrapper-pro">
+          <button id="finishBtnManual">Akhiri Test</button>
+          <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
+          <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
+
+          <div class="quiz-head-pro">
+            <div class="quiz-progress-text">Soal ${quizIndex + 1}/${currentQuizData.length}</div>
+            <div class="quiz-timer-text">Timer <span id="quiz-timer">${formatSessionTime(sessionTimeLeft)}</span></div>
+          </div>
+
+          <div class="quiz-qcard-pro">
+            <h1 class="quiz-question-main">${item.prompt}</h1>
+          </div>
+
+          <div class="quiz-options-pro">
+            ${options.map((opt) => `<button class="quiz-opt-btn-pro" data-answer="${opt}">${opt}</button>`).join("")}
+          </div>
+        </div>
+      `;
+    }
 
     grid.className = "";
     grid.classList.add("quiz-active-mode");

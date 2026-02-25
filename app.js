@@ -210,23 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return all;
   }
 
-    const remaining = maxQuestions - all.length;
-    if (remaining > 0) {
-      const filler = source.slice(0, remaining).map((item) => ({
-        prompt: item.meaning,
-        answer: (item.kanji && item.kanji.trim()) ? item.kanji : item.kana,
-        level,
-        section: "goi-kanji-reading",
-        sectionLabel: latihanSectionLabel["goi-kanji-reading"],
-        sectionIndex: 1,
-        sectionTotal: sessions.length,
-      }));
-      all.push(...filler);
-    }
-
-    return all.filter((q) => q.prompt && q.answer);
-  }
-
   function formatSessionTime(seconds) {
     const safe = Math.max(0, seconds);
     const mm = String(Math.floor(safe / 60)).padStart(2, "0");

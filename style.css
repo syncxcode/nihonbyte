@@ -1128,21 +1128,20 @@ nested-latihan-list {
   justify-content: center !important;
   min-height: calc(100dvh - 78px) !important;
   margin-top: 78px !important;
-  padding: 15px 20px !important; 
+  padding: 20px 30px !important;
   overflow: hidden !important;
 }
 
 .quiz-wrapper-pro {
-  max-width: 1200px !important; 
+  max-width: 1000px !important; /* Dikecilin dikit dari 1200px biar proporsinya manis */
   width: 100% !important;
-  /* KUNCI: Hapus min-height: 70vh biar box gak maksa manjang ke bawah */
   min-height: auto !important; 
   max-height: calc(100dvh - 110px); 
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Jarak antar elemen dipadatkan dikit */
-  background: rgba(255, 255, 255, 0.92);
+  gap: 15px; 
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 20px 50px rgba(20, 24, 30, 0.2);
@@ -1168,10 +1167,10 @@ nested-latihan-list {
 .quiz-timer-text { font-weight: 700; color: #475569; font-size: 0.9rem; }
 #quiz-timer { color: #e11d48; margin-left: 4px; font-size: 1.1rem; }
 
-/* Box Biru Soal */
+/* Box Biru Soal - SEKARANG ANTI COPAS! */
 .quiz-qcard-pro {
   flex: 1; 
-  min-height: 150px !important; /* KUNCI: Gak usah terlalu tinggi, biar tombol di bawah aman */
+  min-height: 180px !important; 
   border-radius: 18px;
   background: linear-gradient(160deg, #f8fafc, #eef2ff);
   display: flex;
@@ -1180,7 +1179,14 @@ nested-latihan-list {
   text-align: center;
   padding: 25px 40px !important; 
   box-sizing: border-box;
-  overflow-y: auto; /* Jaga-jaga kalau soalnya beneran panjang banget */
+  overflow-y: auto;
+  
+  /* 🚀 MANTRA ANTI COPAS / HIGHLIGHT */
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  cursor: default !important;
 }
 
 /* Teks Soal Jepang */
@@ -1190,36 +1196,93 @@ nested-latihan-list {
   line-height: 1.5 !important;
   margin: 0;
   color: #0f172a;
-  /* KUNCI: Font digedein lagi biar gak imut! (Maksimal 3.2rem, minimal 1.8rem) */
-  font-size: clamp(1.8rem, 4.5vw, 3.2rem) !important; 
+  /* Font size dirapikan, biar gak terlalu raksasa tapi gak sekecil semut */
+  font-size: clamp(1.8rem, 4vw, 2.8rem) !important; 
 }
 
-/* Tombol Pilihan Ganda */
+/* Tombol Pilihan Ganda - DIKECILIN BIAR ESTETIK */
 .quiz-options-pro {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px !important; 
+  gap: 12px !important; /* Jarak antar tombol dirapatkan dikit */
   margin-top: 5px;
 }
 
 .quiz-opt-btn-pro {
-  min-height: 55px !important; 
-  padding: 10px;
+  min-height: 48px !important; /* 🚀 Tombol gak setebal sebelumnya */
+  padding: 10px 16px;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
   background: #fff;
   font-weight: 700;
-  font-size: 1.15rem !important; 
+  font-size: 1.1rem !important; /* Font diturunin dikit */
   color: #334155;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
-/* Tombol Selesai */
+.quiz-opt-btn-pro:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Tombol Selesai - SEKARANG LEBIH GENDUT & ESTETIK */
 .quiz-finish-pro {
   display: flex;
   justify-content: center;
-  margin-top: 5px; 
+  margin-top: 15px; /* Jarak dari pilihan ganda agak dijauhin */
   width: 100%;
+}
+
+#finishBtnManual {
+  background: #fff1f2; /* Warna merah super soft biar nyambung sama tema pink NihonByte */
+  border: 2px solid #fda4af;
+  border-radius: 999px;
+  padding: 12px 32px; /* 🚀 Padding digedein biar tombolnya montok & estetik */
+  color: #e11d48; /* Teks merah tegas */
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15); /* Bayangan merah soft */
+  letter-spacing: 0.5px;
+}
+
+#finishBtnManual:hover {
+  background: #ffe4e6;
+  border-color: #fb7185;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.25);
+}
+
+#finishBtnManual:active {
+  transform: translateY(0);
+}
+
+/* KUNCI ANTI SCROLL DI MODE UJIAN */
+body.training-session {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+body.training-session #sidebar,
+body.training-session #overlay,
+body.training-session #searchBtn,
+body.training-session .branding,
+body.training-session #hamburger { display: none !important; }
+
+body.training-session .topbar { justify-content: center; display: flex; min-height: 78px; }
+
+body.training-session #resultInfo {
+  margin: 0 auto;
+  font-weight: 800 !important;
+  color: #e11d48 !important; 
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: default !important;
 }
 
 /* Responsif HP */
@@ -1245,6 +1308,10 @@ nested-latihan-list {
   .quiz-opt-btn-pro {
     min-height: 48px !important;
     font-size: 1rem !important;
+  }
+  #finishBtnManual {
+    padding: 10px 24px;
+    font-size: 0.95rem;
   }
 }
 

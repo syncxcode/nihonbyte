@@ -443,9 +443,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // TIMPA fungsi window.renderReview yang lama dengan yang ini
   window.renderReview = function() {
     closeModal(); 
+    document.body.classList.add("review-mode-active");
     grid.className = "";
+    grid.classList.add("review-active-mode"); // Ini trigger CSS flexbox tadi
     
-    // Matikan scroll body utama biar fokus ke modal review
     document.body.style.overflow = "hidden";
 
     let reviewHTML = `
@@ -507,6 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
       
     searchBtn.addEventListener("click", () => {
+      if (document.body.classList.contains("review-mode-active")) return;
       if (isTesting) {
         openInfoModal(`
           <div style="text-align: center; padding: 10px;">
@@ -1561,6 +1563,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const randomMsg = messages[Math.floor(Math.random() * messages.length)];
       openInfoModal(`<div style="text-align: center; padding: 10px;">${randomMsg}</div>`);
       return;
+    }
+
+    if (document.body.classList.contains("review-mode-active")) {
+       location.reload(); 
+       return;
     }
 
     // LOGIC NORMAL: Jika tidak sedang test

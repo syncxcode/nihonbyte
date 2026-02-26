@@ -2062,95 +2062,93 @@ body.history-mode #pagination-container {
   display: none !important;
 }
 
+/* =========================================
+   TABEL RIWAYAT NILAI (TAMPILAN BARU: GEDE & CENTER)
+========================================= */
 .history-container {
-  width: min(1240px, 100%);
-  margin: 0 auto;
-  padding: 34px 32px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 28px;
-  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
-  overflow-x: auto;
+  padding: 25px;
+  /* 🚀 BIKIN GEDE (Mobile-first): Lebarin container nempel pinggir dikit */
+  width: 92%; 
+  max-width: 900px; /* Base limit buat tablet */
+  
+  /* 🚀 BIKIN CENTER: Margin auto kiri kanan */
+  margin: 30px auto 40px auto; 
+  
+  /* Efek Kaca (Glassmorphism) diperhalus */
+  background: rgba(255, 255, 255, 0.75); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.history-header {
-  text-align: center;
-  margin-bottom: 18px;
-}
-
-.history-header h2 {
-  margin: 0;
+/* Judul dibikin Center & Pro */
+.history-container h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
   color: #1e293b;
-  font-size: clamp(1.55rem, 2.8vw, 2.08rem);
+  margin-bottom: 25px;
+  text-align: center; /* Judul ratain tengah */
 }
 
-.history-header p {
-  margin: 10px 0 0;
-  color: #475569;
-  font-size: 1rem;
-}
-
+/* Dandanin Tabel Riwayat */
 .history-table {
   width: 100%;
-  min-width: 1100px;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 18px;
-  font-size: 0.95rem;
-  overflow: hidden;
-  border-radius: 16px;
-  background: #fff;
+  border-collapse: collapse;
+  margin-top: 0;
+  font-size: 0.9rem;
 }
 
+/* Header Tabel Pro (Pink ala NihonByte) */
 .history-table th {
   background: #ff4d6d;
-  color: #fff;
-  padding: 14px 14px;
+  color: white;
+  padding: 14px 10px;
   text-align: left;
-  font-size: 0.9rem;
-  white-space: nowrap;
+  border-radius: 0;
+  font-weight: 700;
 }
 
+/* Rapihin sudut header */
+.history-table tr:first-child th:first-child { border-radius: 10px 0 0 10px; }
+.history-table tr:first-child th:last-child { border-radius: 0 10px 10px 0; }
+
+/* Baris Tabel Estetik (Tanpa Garis Solid) */
 .history-table td {
-  padding: 14px 14px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 10px;
   color: #334155;
-  vertical-align: middle;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6); /* Garis transparan kalem */
 }
 
-.history-category-col,
-.history-category-cell {
-  white-space: nowrap;
-}
+.status-lulus { color: #22c55e; font-weight: bold; }
+.status-gagal { color: #ef4444; font-weight: bold; }
 
-.history-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.status-lulus { color: #22c55e; font-weight: 700; }
-.status-gagal { color: #ef4444; font-weight: 700; }
-
-@media (max-width: 768px) {
-  body.history-mode #grid {
-    place-items: start center;
-    min-height: auto;
-    padding: 16px 12px 96px;
+/* --- TAMPILAN DESKTOP (Poster IMAX & Riwayat GEDE) --- */
+@media (min-width: 769px) {
+  /* 🚀 BIKIN GEDE: Lebarin container posternya sampai nyaris penuh */
+  .letter-poster {
+    width: 96% !important; /* Gunakan 96% lebar layar biar lega */
+    max-width: 1600px !important; /* Batas atas dilebarin drastis */
+    margin: 20px auto 40px auto !important; /* Kasih napas atas-bawah */
+    padding: 30px 40px 40px 40px !important; /* Padding dalam dilebarin */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1) !important; /* Bayangan lebih halus */
   }
 
+  /* 🚀 BIKIN GEDE & CENTER: Melarin Riwayat Nilai Latihan */
   .history-container {
-    padding: 18px 12px;
-    border-radius: 20px;
+    width: 96% !important; /* Gede penuh layar */
+    max-width: 1600px !important; /* Batas atas dilebarin */
+    padding: 30px 40px 40px 40px !important;
   }
 
-  .history-table {
-    min-width: 920px;
-    font-size: 0.86rem;
+  /* Teks di desktop gedein dikit */
+  .letter-poster h2, .history-container h2 {
+    font-size: 1.8rem !important; 
+    margin-bottom: 25px !important;
   }
-
-  .history-table th,
-  .history-table td {
-    padding: 11px 10px;
-  }
+  
+  .letter-cell { font-size: 1.5rem !important; }
+  .history-table th, .history-table td { font-size: 1rem !important; padding: 15px !important; }
 }
-

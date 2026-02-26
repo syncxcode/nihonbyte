@@ -1829,8 +1829,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
   function render() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    savedScrollPosition = 0;
+    savedScrollPosition = 0; 
+    setTimeout(() => {
+       window.scrollTo(0, 0); 
+       document.documentElement.scrollTop = 0;
+       document.body.scrollTop = 0;
+    }, 50);
+
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
     grid.classList.remove("support-mode", "pattern-grid-layout");

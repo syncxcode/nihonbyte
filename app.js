@@ -1319,27 +1319,20 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     };
 
-    // 🚀 LOGIKA BARU: 1 SECTION = 1 POSTER TERPISAH
+    // 🚀 LOOPING UTAMA (Mecah 3 Poster)
     data.sections.forEach((section) => {
       const poster = document.createElement("article");
       poster.className = "letter-poster";
       
-      // Kasih jarak presisi biar gak mepet
-      poster.style.padding = isDesktop ? "25px 35px" : "15px 15px";
-      poster.style.marginBottom = "12px"; // Jarak antar poster dirapatkan!
-
-      // Gabungin Judul Utama & Sub Judul (Misal: Poster Hiragana • Gojūon)
+      // Judul Gabungan
       poster.innerHTML = `
-        <h2 style="margin-top:0; margin-bottom:15px; font-size: ${isDesktop ? '1.5rem' : '1.3rem'}; text-align:center; color: #1e293b;">
-          ${data.title} • <span style="color: #ff4d6d;">${section.subtitle}</span>
-        </h2>
+        <h2>${data.title} • <span style="color: #ff4d6d;">${section.subtitle}</span></h2>
         <div class="letter-poster-body"></div>
       `;
 
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       
-      // Kasih KTP khusus Yoon
       if (section.subtitle === "Yōon") secElem.classList.add("yoon-section");
 
       let rowsToRender = section.rows;
@@ -1355,6 +1348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const colCount = rowsToRender[0].length; 
       gridContainer.style.gridTemplateColumns = `repeat(${colCount}, minmax(0, 1fr))`;
 
+      // 🚀 LOOPING HURUF
       rowsToRender.forEach((row, rowIndex) => {
         row.forEach((cell, colIndex) => {
           const cellElem = document.createElement("div");
@@ -1367,8 +1361,6 @@ document.addEventListener("DOMContentLoaded", () => {
               cellElem.textContent = cell;
               
               // 🚀 MANTRA RADAR: Deteksi Huruf Panduan Vokal (A, I, U, E, O)
-              // Di Desktop, vokal ada di kolom pertama (colIndex 0)
-              // Di HP, vokal ada di baris pertama (rowIndex 0)
               const isVokal = isDesktop ? (colIndex === 0) : (rowIndex === 0);
               if (isVokal) {
                   cellElem.classList.add("label-vokal");
@@ -1381,6 +1373,12 @@ document.addEventListener("DOMContentLoaded", () => {
           gridContainer.appendChild(cellElem);
         });
       });
+      
+      // 🚀 INI BAGIAN YANG TADI GAK SENGAJA KEHAPUS SAMA LU BOSKU!
+      secElem.appendChild(gridContainer);
+      poster.querySelector(".letter-poster-body").appendChild(secElem);
+      grid.appendChild(poster);
+    }); // <-- Ini penutup data.sections.forEach yang hilang tadi
     
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }

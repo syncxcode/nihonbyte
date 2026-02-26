@@ -1532,3 +1532,20 @@ body.review-mode-active #hamburger {
     padding-top: 5px;
   }
 }
+
+.version-tag {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: rgba(255, 105, 180, 0.9); /* Pink hot transparan */
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 1px;
+  z-index: 9999;
+  pointer-events: none; /* Kunci biar tag ini "tembus pandang" kalau gak sengaja ke-klik */
+  background: rgba(255, 255, 255, 0.6); /* Background putih tipis biar teks tetep kebaca */
+  padding: 4px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px); /* Efek kaca kekinian */
+}

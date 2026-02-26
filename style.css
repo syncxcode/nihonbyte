@@ -2163,6 +2163,15 @@ body.history-mode #grid {
 /* =========================================
    PERBAIKAN SIDEBAR: RATA KIRI (KHUSUS MOBILE)
 ========================================= */
+
+/* Pengecualian: judul sub-drop list LATIHAN boleh wrap */
+.latihan-dropdown .sub-details summary {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.35 !important;
+}
+
 @media (max-width: 768px) {
   .menu-btn,
   .sidebar-tree summary {

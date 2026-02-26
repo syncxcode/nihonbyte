@@ -1925,3 +1925,85 @@ body.review-mode-active .app-footer {
   .letter-cell { font-size: 1.25rem !important; }
   .letter-poster h2 { font-size: 1.2rem !important; }
 }
+
+/* =========================================
+   UI LOGIN & PROFIL (SIDEBAR)
+========================================= */
+.user-profile-section {
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  margin: 10px 20px 20px 20px;
+  border: 1px solid rgba(255, 77, 109, 0.2);
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #334155;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+.login-btn:active { transform: scale(0.97); }
+.login-btn img { width: 20px; height: 20px; }
+.login-desc {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* Tampilan Sesudah Login */
+#logged-in-view {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #ff4d6d;
+  object-fit: cover;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+.user-name {
+  font-weight: 800;
+  color: #1e293b;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logout-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  cursor: pointer;
+  width: fit-content;
+}
+.sidebar-divider {
+  border: 0;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0 20px 20px 20px;
+}

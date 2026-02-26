@@ -1647,96 +1647,102 @@ body.review-mode-active #hamburger {
 }
 
 /* =========================================
-   REVISI FINAL UX POSTER HURUF (SUPER COMPACT & ROUNDED)
+   REVISI UX POSTER HURUF (SOLID, BESAR, ROUNDED)
 ========================================= */
 
-/* 1. WADAH GRID UTAMA (Desktop & Mobile) */
 .letter-grid-desktop, .letter-grid-mobile {
   display: grid;
-  gap: 5px; /* Jarak dirapatkan biar compact */
   width: 100%;
 }
 
-/* 2. SEMUA KOTAK (Huruf, Penunjuk, Kosong) Dibuat Seragam & Rounded */
+/* 🚀 MANTRA ANTI-TIMBUL (Hover Dimatikan) */
+.letter-cell:hover, .letter-label:hover, .letter-empty:hover {
+  transform: none !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important; /* Paksa balik ke bayangan awal */
+  cursor: default !important;
+}
+
+/* Base Kotak */
 .letter-cell, .letter-label, .letter-empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px !important; /* MANTRA ROUNDED! Lengkungan presisi */
   min-width: 0;
   box-sizing: border-box;
 }
 
-/* 3. KOTAK HURUF KANA (Putih Bersih & Menonjol) */
+/* 🚀 BORDER SOLID & JELAS */
 .letter-cell {
   background: #ffffff !important;
   color: #1e293b !important;
   font-weight: 800 !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
-  border: 1px solid #f1f5f9 !important;
+  border: 1.5px solid #cbd5e1 !important; /* Border dipertebal dan disolidkan */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
 }
 
-/* 4. KOTAK PENUNJUK A, I, U, KA (Kelihatan Jelas & Punya Border) */
 .letter-label {
-  background: #f8fafc !important; /* Putih keabu-abuan dikit biar beda */
-  color: #334155 !important; /* Warna teks ditebelin biar kebaca! */
+  background: #f8fafc !important; 
+  color: #334155 !important; 
   font-weight: 700 !important;
-  border: 1px solid #cbd5e1 !important; /* BORDER ABU-ABU TEGAS */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+  border: 1.5px solid #94a3b8 !important; /* Border penunjuk lebih gelap dari huruf */
 }
 
-/* 5. KOTAK KOSONG (Abu-abu, persis kayak referensi lu) */
+/* Kotak Kosong dibikin dashed (putus-putus) biar elegan */
 .letter-empty {
-  background: #e2e8f0 !important; 
-  border: 1px solid #cbd5e1 !important;
+  background: #f1f5f9 !important; 
+  border: 1.5px dashed #cbd5e1 !important; 
 }
 
-/* --- TAMPILAN DESKTOP (SUPER COMPACT SEPERTI GAMBAR 3) --- */
+/* Sembunyikan h3 karena judulnya udah gabung di atas (Poster Hiragana • Gojuon) */
+.letter-section h3 {
+  display: none !important; 
+}
+
+/* --- TAMPILAN DESKTOP --- */
 @media (min-width: 769px) {
+  .letter-grid-desktop {
+    gap: 10px !important; /* Jarak antar huruf dilebarkan biar lega */
+  }
   .letter-poster {
     width: 100%;
     overflow-x: hidden;
   }
-  /* Bikin tinggi kotak dikunci biar gak makan ruang vertikal */
   .letter-cell, .letter-label, .letter-empty {
     padding: 0 !important;
-    height: 38px !important; /* Mentok tinggi 38px biar langsing! */
+    height: 52px !important; /* Kotak dibikin lebih tinggi */
+    border-radius: 10px !important; /* Rounded standar desktop */
   }
-  .letter-cell { font-size: 1.15rem !important; }
-  .letter-label { font-size: 0.85rem !important; }
-  
-  /* Pangkas spasi judul biar tabelnya naik ke atas */
-  .letter-section h3 {
-    margin: 12px 0 8px 0 !important;
-    font-size: 1rem !important;
+  .letter-cell { 
+    font-size: 1.6rem !important; /* HURUF RAKSASA & JELAS */
+  } 
+  .letter-label { 
+    font-size: 0.95rem !important; 
   }
 }
 
-/* --- TAMPILAN MOBILE (PAS DI LAYAR, GAK PERLU BANYAK SCROLL) --- */
+/* --- TAMPILAN MOBILE --- */
 @media (max-width: 768px) {
-  /* Rapatkan grid biar あ~ん muat di satu layar hp */
   .letter-grid-mobile {
-    gap: 5px !important;
+    gap: 8px !important;
   }
   .letter-cell, .letter-label, .letter-empty {
     padding: 0 !important;
-    height: 44px !important; /* Cukup pas buat disentuh jempol */
+    height: 48px !important; 
+    border-radius: 14px !important; /* 🚀 MANTRA SUPER ROUNDED (Gak Kaku Lagi) */
   }
-  .letter-cell { font-size: 1.3rem !important; }
-  .letter-label { font-size: 0.8rem !important; }
-  
-  /* MANTRA NAIKIN GRID KE ATAS (Potong Margin Judul) */
+  .letter-cell { 
+    font-size: 1.4rem !important; 
+  }
+  .letter-label { 
+    font-size: 0.85rem !important; 
+  }
   .letter-poster h2 {
     margin-top: 0 !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 15px !important;
   }
-  .letter-section h3 {
-    margin: 5px 0 8px 0 !important;
-  }
-  
   /* Yoon rata tengah di Mobile */
   .yoon-section .letter-grid-mobile {
-    grid-template-columns: repeat(4, minmax(40px, 65px)) !important;
+    grid-template-columns: repeat(4, minmax(40px, 70px)) !important;
     justify-content: center;
   }
 }

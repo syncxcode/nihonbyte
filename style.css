@@ -1763,37 +1763,37 @@ body.review-mode-active .app-footer {
   display: none !important; 
 }
 
-/* --- TAMPILAN DESKTOP --- */
+/* --- TAMPILAN DESKTOP (Poster IMAX & Mewah) --- */
 @media (min-width: 769px) {
+  /* 🚀 BIKIN GEDE: Lebarin container posternya sampai nyaris penuh */
   .letter-poster {
-    width: 100% !important;
-    max-width: 1250px !important;
-    
-    /* 🚀 TURUNIN POSTER (margin-top 20px) & JAUHKAN POSTER BAWAH (margin-bottom 40px) */
-    margin: 20px auto 40px auto !important; 
-    
-    /* 🚀 KASIH NAPAS DI BAWAH HURUF (padding-bottom 40px) */
-    padding: 25px 40px 40px 40px !important; 
-    
-    box-sizing: border-box !important;
-    overflow-x: hidden;
+    width: 96% !important; /* Gunakan 96% lebar layar biar lega */
+    max-width: 1600px !important; /* Batas atas dilebarin drastis */
+    margin: 20px auto 40px auto !important; /* Kasih napas atas-bawah */
+    padding: 30px 40px 40px 40px !important; /* Padding dalam dilebarin */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1) !important; /* Bayangan lebih halus */
   }
+
+  /* Ratain judul ke tengah biar makin pro */
+  .letter-poster h2 {
+    font-size: 1.8rem !important; /* Judul gedein dikit */
+    margin-bottom: 25px !important;
+    text-align: center !important;
+  }
+
+  /* 🚀 BIKIN GEDE: Melarin grid hurufnya */
   .letter-grid-desktop {
-    gap: 8px 14px !important; 
+    width: 100% !important;
+    gap: 8px 12px !important; /* Jarak antar kotak pas */
   }
+
+  /* Kotak huruf dibikin sedikit lebih gemuk & jelas */
   .letter-cell, .letter-label, .letter-empty {
-    padding: 0 !important;
-    height: 42px !important; /* Tetap langsing */
+    height: 48px !important; /* Tinggiin dikit biar gak gepeng */
     border-radius: 8px !important; 
   }
-  .letter-cell { font-size: 1.35rem !important; } 
-  .letter-label { font-size: 0.85rem !important; }
-  
-  .letter-poster h2 {
-    font-size: 1.5rem !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important; /* Jarak antara Judul dan tabel huruf diperbesar sedikit */
-  }
+  .letter-cell { font-size: 1.5rem !important; } /* Huruf gedein */
+  .letter-label { font-size: 0.95rem !important; } /* Panduan gedein */
 }
 
 /* --- TAMPILAN MOBILE --- */

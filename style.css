@@ -2159,3 +2159,18 @@ body.history-mode #grid {
 .sidebar-tree .subfolder-list .menu-btn {
   padding-left: 2.2rem !important; 
 }
+
+/* =========================================
+   PERBAIKAN SIDEBAR: RATA KIRI (KHUSUS MOBILE)
+========================================= */
+@media (max-width: 768px) {
+  .menu-btn,
+  .sidebar-tree summary {
+    font-size: 0.88rem !important; /* Dikecilin dikit biar teksnya lebih muat banyak di HP */
+    padding-left: 0.8rem !important; /* Padding dikurangin dikit biar layar HP lega */
+  }
+  
+  .sidebar-tree .subfolder-list .menu-btn {
+    padding-left: 1.8rem !important; /* Indentasi anak menu dirapatkan dikit buat HP */
+  }
+}

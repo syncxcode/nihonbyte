@@ -1927,83 +1927,95 @@ body.review-mode-active .app-footer {
 }
 
 /* =========================================
-   UI LOGIN & PROFIL (SIDEBAR)
+   UI LOGIN & PROFIL (SIDEBAR) - VERSI BULAT KECE
 ========================================= */
 .user-profile-section {
-  padding: 15px 20px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  margin: 10px 20px 20px 20px;
-  border: 1px solid rgba(255, 77, 109, 0.2);
+  padding: 10px 15px;
+  background: transparent; /* Hilangin background kotak jelek */
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .login-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  padding: 10px;
+  padding: 12px 20px;
   background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-weight: 700;
+  border: none;
+  border-radius: 999px; /* 🚀 MANTRA KAPSUL BULAT */
+  font-weight: 800;
   color: #334155;
+  font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  transition: all 0.2s;
-}
-.login-btn:active { transform: scale(0.97); }
-.login-btn img { width: 20px; height: 20px; }
-.login-desc {
-  font-size: 0.75rem;
-  color: #64748b;
-  text-align: center;
-  margin-top: 8px;
-  margin-bottom: 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Bayangan soft biar tombolnya melayang */
+  transition: all 0.3s ease;
 }
 
-/* Tampilan Sesudah Login */
+.login-btn:active { 
+  transform: scale(0.96); 
+}
+
+.login-btn img { 
+  width: 22px; 
+  height: 22px; 
+}
+
+.login-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8); /* Teks dibikin putih pudar biar nyatu sama tema lu */
+  margin-top: 12px;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* --- TAMPILAN SESUDAH LOGIN --- */
 #logged-in-view {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.15); /* Efek kaca transparan */
+  padding: 8px 12px;
+  border-radius: 999px; /* Profil juga dibikin bulat kapsul */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
 .user-avatar {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: 2px solid #ff4d6d;
+  border: 2px solid #ffffff;
   object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 .user-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 2px;
   overflow: hidden;
 }
+
 .user-name {
   font-weight: 800;
-  color: #1e293b;
+  color: #ffffff; /* Nama dibikin putih biar kontras */
   font-size: 0.95rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 130px;
 }
+
 .logout-btn {
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  color: #ef4444;
+  background: transparent;
+  border: none;
+  color: #ffb3c6; /* Pink pudar ala-ala */
   font-size: 0.75rem;
   font-weight: bold;
-  padding: 4px 8px;
+  padding: 0;
   cursor: pointer;
-  width: fit-content;
-}
-.sidebar-divider {
-  border: 0;
-  height: 1px;
-  background: #e2e8f0;
-  margin: 0 20px 20px 20px;
+  text-decoration: underline;
 }

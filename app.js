@@ -2223,7 +2223,34 @@ document.addEventListener("DOMContentLoaded", () => {
       versionElement.innerText = APP_VERSION;
     }
   });
-  
+
+  // ==========================================
+  // FUNGSI KIRIM SKOR KE FIREBASE CLOUD
+  // ==========================================
+  async function saveScoreToCloud(type, level, correct, total, percentage) {
+    if (!window.currentUser || !window.firebaseDb) return;
+
+    try {
+      const uid = window.currentUser.uid;
+      const docId = new Date().getTime().toString(); // Gunakan timestamp sebagai ID Unik
+      
+      // Simpan di folder: users -> [ID_USER] -> history -> [TIMESTAMP]
+      const docRef = window.doc(window.firebaseDb, "users", uid, "history", docId);
+      
+      await window.setDoc(docRef, {
+        kategori: type,
+        level: level,
+        skor_benar: correct,
+        total_soal: total,
+        nilai: percentage,
+        tanggal: new Date().toLocaleString("id-ID")
+      });
+      console.log("✅ Skor berhasil mendarat di Database!");
+    } catch (err) {
+      console.error("❌ Gagal kirim skor:", err);
+    }
+  }
+
   // Panggil render saat pertama kali dimuat
   window.addEventListener("resize", enforceMobileTopbarOrder);
   enforceMobileTopbarOrder();

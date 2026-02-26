@@ -1615,8 +1615,21 @@ body.review-mode-active #hamburger {
   padding: 0 4px;
 }
 
-/* Versi HP */
+/* Versi Mobie */
 @media (max-width: 768px) {
-  .page-btn { width: 36px; height: 36px; font-size: 0.9rem; }
-  .pagination-container { gap: 5px; margin-bottom: 20px !important; }
+  .page-btn { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 0.9rem; 
+  }
+  .pagination-container { 
+    gap: 5px; 
+    margin-bottom: 55px !important;
+  }
+  .version-tag {
+    bottom: 10px; 
+    right: 12px;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
 }

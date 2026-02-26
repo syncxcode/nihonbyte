@@ -1302,6 +1302,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderLetterPoster(script) {
     grid.innerHTML = "";
+    
+    // 🚀 MANTRA HAPUS ANGKA HALAMAN DI MENU HURUF
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.innerHTML = "";
+
     const data = letterSets[script];
     if (!data) return;
     const poster = document.createElement("article");

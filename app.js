@@ -1660,6 +1660,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const isActive = sidebar.classList.toggle("active");
     overlay.classList.toggle("active", isActive);
+    document.body.classList.toggle("sidebar-open", isActive);
     hamburger.setAttribute("aria-expanded", isActive);
     
     if (isActive) {
@@ -1686,6 +1687,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeSidebar() {
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
+    document.body.classList.remove("sidebar-open");
     hamburger.setAttribute("aria-expanded", "false");
 
     // ==================================================
@@ -2309,7 +2311,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <thead>
                 <tr>
                   <th>Tanggal</th>
-                  <th>Kategori Latihan</th>
+                  <th class="history-category-col">Kategori Latihan</th>
                   <th>Level</th>
                   <th>Skor</th>
                   <th>Hasil</th>
@@ -2324,7 +2326,7 @@ document.addEventListener("DOMContentLoaded", () => {
           tableHTML += `
             <tr>
               <td>${d.tanggal.split(',')[0]}</td>
-              <td>${getLatihanCategoryLabel(d.kategori)}</td>
+              <td class="history-category-cell">${getLatihanCategoryLabel(d.kategori)}</td>
               <td>${d.level}</td>
               <td>${d.skor_benar}/${d.total_soal} (${d.nilai}%)</td>
               <td class="${status}">${d.nilai >= 60 ? 'LULUS' : 'REMIDI'}</td>

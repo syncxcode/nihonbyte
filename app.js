@@ -1316,43 +1316,60 @@ document.addEventListener("DOMContentLoaded", () => {
     poster.className = "letter-poster";
     poster.innerHTML = `<h2>${data.title}</h2><div class="letter-poster-body"></div>`;
 
+    // 🚀 LOGIKA TRANSPOSE AMAN (Anti Error)
+    const transpose = (matrix) => {
+      const maxCols = Math.max(...matrix.map(row => row.length));
+      return Array.from({ length: maxCols }, (_, colIndex) =>
+        matrix.map(row => row[colIndex] || "")
+      );
+    };
+
     data.sections.forEach((section) => {
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       
-      // Kasih KTP khusus buat Yoon biar bisa kita atur di CSS
+      // Kasih KTP khusus Yoon
       if (section.subtitle === "Yōon") secElem.classList.add("yoon-section");
 
       secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
       
       let rowsToRender = section.rows;
 
-      // Putar jadi Horizontal untuk Desktop
+      // Putar jadi Horizontal KHUSUS DESKTOP
       if (isDesktop) {
-        rowsToRender = rowsToRender[0].map((_, colIndex) => rowsToRender.map(row => row[colIndex]));
+        rowsToRender = transpose(rowsToRender);
       }
 
+      // 🚀 WADAH GRID BARU (FLAT GRID)
+      const gridContainer = document.createElement("div");
+      gridContainer.className = isDesktop ? "letter-grid-desktop" : "letter-grid-mobile";
+      
+      // Dinamis ngikutin jumlah kolom (Desktop 12 kolom, HP 6 kolom)
+      const colCount = rowsToRender[0].length; 
+      gridContainer.style.gridTemplateColumns = `repeat(${colCount}, minmax(0, 1fr))`;
+
       rowsToRender.forEach((row) => {
-        const rowElem = document.createElement("div");
-        rowElem.className = "letter-row";
-        
-        // 🚀 MANTRA GRID ANTI-MELUBER (Bikin Desktop Ringan & Compact)
-        rowElem.style.display = "grid";
-        rowElem.style.gridTemplateColumns = `repeat(${row.length}, minmax(0, 1fr))`;
-        rowElem.style.gap = isDesktop ? "4px" : "8px";
-        rowElem.style.marginBottom = "8px";
-        rowElem.style.width = "100%";
-        
         row.forEach((cell) => {
           const cellElem = document.createElement("div");
-          cellElem.className = cell ? "letter-cell" : "letter-label";
-          cellElem.textContent = cell || "";
-          rowElem.appendChild(cellElem);
+          
+          // Deteksi otomatis: Kosong, Label Penunjuk (A, KA, dll), atau Huruf Jepang
+          const isLabel = /^[A-Z]*$/.test(cell); 
+          
+          if (cell === "") {
+              cellElem.className = "letter-empty";
+          } else if (isLabel) {
+              cellElem.className = "letter-label";
+              cellElem.textContent = cell;
+          } else {
+              cellElem.className = "letter-cell";
+              cellElem.textContent = cell;
+          }
+          
+          gridContainer.appendChild(cellElem);
         });
-        
-        secElem.appendChild(rowElem);
       });
       
+      secElem.appendChild(gridContainer);
       poster.querySelector(".letter-poster-body").appendChild(secElem);
     });
     

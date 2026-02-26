@@ -6,7 +6,10 @@ html, body {
 }
 
 body {
-  background: none;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  background: none; 
   font-family: 'Ubuntu', sans-serif;
   color: #1f2937;
 }
@@ -159,11 +162,13 @@ select, input, .action-btn {
    2. GRID UTAMA & LAYOUT KARTU
 ========================================= */
 #grid {
-  padding-top: 100px !important;
+  flex: 1 !important; 
+  align-content: start !important;
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
+  padding-top: 100px !important; /* 🚀 TARUH DI SINI BIAR GAK KETIMPA PADDING 15PX */
   width: 100% !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
@@ -1558,8 +1563,12 @@ body.review-mode-active #hamburger {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin: 30px auto 50px; /* Jarak biar gak nabrak footer bawah */
   width: 100%;
+  margin-top: auto !important; /* 🚀 INI KUNCI BUAT NENDANG KE BAWAH! */
+  margin-bottom: 25px !important; 
+  padding-top: 20px !important; 
+  position: relative;
+  z-index: 10;
 }
 
 .page-btn {
@@ -1609,5 +1618,5 @@ body.review-mode-active #hamburger {
 /* Versi HP */
 @media (max-width: 768px) {
   .page-btn { width: 36px; height: 36px; font-size: 0.9rem; }
-  .pagination-container { gap: 5px; margin: 20px auto 40px; }
+  .pagination-container { gap: 5px; margin-bottom: 20px !important; }
 }

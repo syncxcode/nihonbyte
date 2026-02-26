@@ -1647,66 +1647,93 @@ body.review-mode-active #hamburger {
 }
 
 /* =========================================
-   REVISI FINAL UX POSTER HURUF (FLAT GRID)
+   REVISI FINAL UX POSTER HURUF (SUPER COMPACT & ROUNDED)
 ========================================= */
 
+/* 1. WADAH GRID UTAMA (Desktop & Mobile) */
 .letter-grid-desktop, .letter-grid-mobile {
   display: grid;
-  gap: 6px;
+  gap: 5px; /* Jarak dirapatkan biar compact */
   width: 100%;
 }
 
-/* Sel huruf secara umum */
+/* 2. SEMUA KOTAK (Huruf, Penunjuk, Kosong) Dibuat Seragam & Rounded */
 .letter-cell, .letter-label, .letter-empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  min-width: 0; /* MANTRA ANTI OFFSIDE */
+  border-radius: 8px !important; /* MANTRA ROUNDED! Lengkungan presisi */
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-/* Huruf Jepang */
+/* 3. KOTAK HURUF KANA (Putih Bersih & Menonjol) */
 .letter-cell {
-  background: #ffffff;
-  color: #1e293b;
-  font-weight: 800;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  background: #ffffff !important;
+  color: #1e293b !important;
+  font-weight: 800 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  border: 1px solid #f1f5f9 !important;
 }
 
-/* Petunjuk (A, KA, SA dll) dibuat redup elegan */
+/* 4. KOTAK PENUNJUK A, I, U, KA (Kelihatan Jelas & Punya Border) */
 .letter-label {
-  font-size: 0.8rem;
-  color: #94a3b8; /* Abu-abu sopan */
-  font-weight: 600;
-  background: transparent;
+  background: #f8fafc !important; /* Putih keabu-abuan dikit biar beda */
+  color: #334155 !important; /* Warna teks ditebelin biar kebaca! */
+  font-weight: 700 !important;
+  border: 1px solid #cbd5e1 !important; /* BORDER ABU-ABU TEGAS */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
 }
 
-/* Kotak kosong biar layout tetep rapi */
+/* 5. KOTAK KOSONG (Abu-abu, persis kayak referensi lu) */
 .letter-empty {
-  background: rgba(0,0,0,0.03); 
+  background: #e2e8f0 !important; 
+  border: 1px solid #cbd5e1 !important;
 }
 
-/* --- TAMPILAN DESKTOP --- */
+/* --- TAMPILAN DESKTOP (SUPER COMPACT SEPERTI GAMBAR 3) --- */
 @media (min-width: 769px) {
   .letter-poster {
     width: 100%;
-    overflow-x: hidden; /* Haram ada scrollbar horizontal */
+    overflow-x: hidden;
   }
-  .letter-cell {
-    padding: 8px 0;
-    font-size: 1.25rem;
+  /* Bikin tinggi kotak dikunci biar gak makan ruang vertikal */
+  .letter-cell, .letter-label, .letter-empty {
+    padding: 0 !important;
+    height: 38px !important; /* Mentok tinggi 38px biar langsing! */
+  }
+  .letter-cell { font-size: 1.15rem !important; }
+  .letter-label { font-size: 0.85rem !important; }
+  
+  /* Pangkas spasi judul biar tabelnya naik ke atas */
+  .letter-section h3 {
+    margin: 12px 0 8px 0 !important;
+    font-size: 1rem !important;
   }
 }
 
-/* --- TAMPILAN MOBILE --- */
+/* --- TAMPILAN MOBILE (PAS DI LAYAR, GAK PERLU BANYAK SCROLL) --- */
 @media (max-width: 768px) {
-  .letter-cell {
-    padding: 10px 0;
-    font-size: 1.4rem; /* Huruf Jepang digedein dikit di HP */
+  /* Rapatkan grid biar あ~ん muat di satu layar hp */
+  .letter-grid-mobile {
+    gap: 5px !important;
   }
-  .letter-label {
-    font-size: 0.75rem;
+  .letter-cell, .letter-label, .letter-empty {
+    padding: 0 !important;
+    height: 44px !important; /* Cukup pas buat disentuh jempol */
   }
+  .letter-cell { font-size: 1.3rem !important; }
+  .letter-label { font-size: 0.8rem !important; }
+  
+  /* MANTRA NAIKIN GRID KE ATAS (Potong Margin Judul) */
+  .letter-poster h2 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+  .letter-section h3 {
+    margin: 5px 0 8px 0 !important;
+  }
+  
   /* Yoon rata tengah di Mobile */
   .yoon-section .letter-grid-mobile {
     grid-template-columns: repeat(4, minmax(40px, 65px)) !important;

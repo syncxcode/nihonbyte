@@ -2282,77 +2282,113 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const historyBtn = document.getElementById("show-history-btn");
 
-  if (historyBtn) {
-    historyBtn.addEventListener("click", async () => {
-      if (!window.currentUser) return alert("Login dulu Bosku!");
-      
-      const grid = document.getElementById("grid");
-      grid.innerHTML = "<div class='loader'>Sabar, lagi narik data dari awan...</div>";
+if (historyBtn) {
+  historyBtn.addEventListener("click", async () => {
+    // 1. Cek Login
+    if (!window.currentUser) {
+      alert("Silahkan Login!");
+      return; 
+    }
 
-      try {
-        const uid = window.currentUser.uid;
-        // Ambil data dari folder history, urutkan dari yang terbaru
-        const q = window.firebaseDb && window.doc ? 
-                  await fetchHistoryData(uid) : [];
+    const grid = document.getElementById("grid");
+    
+    // 2. Tampilkan Layar Loading
+    grid.innerHTML = `
+      <div class="history-container" style="text-align: center; padding: 50px;">
+        <p>⏳ Sabar, lagi narik data dari awan...</p>
+      </div>
+    `;    
 
-        if (!q || q.empty) {
-          grid.innerHTML = `
-            <section class="history-container">
-              <div class="history-header">
-                <h2>📊 Riwayat Nilai Latihan</h2>
-                <p>Belum ada riwayat latihan tersimpan.</p>
-              </div>
-            </section>
-          `;
-          setHistoryMode(true);
-          closeSidebar();
-          return;
-        }
-        
-        let tableHTML = `
-          <section class="history-container">
-            <div class="history-header">
-              <h2>📊 Riwayat Nilai Latihan</h2>
-              <p>Rekap berdasarkan kategori latihan yang dijalani.</p>
+    try {
+      const uid = window.currentUser.uid;
+      const q = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : null;
+
+      // 3. --- KASUS KOSONG (Belum Pernah Latihan) ---
+      if (!q || q.empty) {
+        grid.innerHTML = `
+          <div class="history-container">
+            <h2>📊 Riwayat Nilai Latihan</h2>
+            <div style="text-align: center; padding: 30px; color: #64748b;">
+              <p>Belum ada riwayat latihan tersimpan.</p>
             </div>
-            <table class="history-table">
-              <thead>
-                <tr>
-                  <th>Tanggal</th>
-                  <th class="history-category-col">Kategori Latihan</th>
-                  <th>Level</th>
-                  <th>Skor</th>
-                  <th>Hasil</th>
-                </tr>
-              </thead>
-              <tbody>
+          </div>
         `;
+        if (typeof setHistoryMode === "function") setHistoryMode(true);
+        if (typeof closeSidebar === "function") closeSidebar();
+        return;
+      }      
 
-        q.forEach(doc => {
-          const d = doc.data();
-          const status = d.nilai >= 60 ? "status-lulus" : "status-gagal";
-          tableHTML += `
-            <tr>
-              <td>${d.tanggal.split(',')[0]}</td>
-              <td class="history-category-cell">${getLatihanCategoryLabel(d.kategori)}</td>
-              <td>${d.level}</td>
-              <td>${d.skor_benar}/${d.total_soal} (${d.nilai}%)</td>
-              <td class="${status}">${d.nilai >= 60 ? 'LULUS' : 'REMIDI'}</td>
-            </tr>
-          `;
-        });
+      // 4. --- BUILD HTML DENGAN KAPSUL PER ITEM ---
+      let historyHTML = `
+        <div class="history-container">
+          <h2>📊 Riwayat Nilai Latihan</h2>
+          <p style="text-align: center; color: #64748b; margin-bottom: 20px;">
+            Rekap berdasarkan kategori latihan yang dijalani.
+          </p>
+          <div class="history-list" style="display: flex; flex-direction: column; gap: 15px;">
+      `;      
 
-        tableHTML += "</tbody></table></section>";
-        grid.innerHTML = tableHTML;
-        setHistoryMode(true);
-        closeSidebar(); // Tutup sidebar biar keliatan tabelnya
-      } catch (err) {
-        console.error(err);
-        grid.innerHTML = "Gagal narik riwayat. Pastikan internet kenceng!";
-        setHistoryMode(true);
-      }
-    });
-  }
+      // Looping Data dari Firebase
+      q.forEach(doc => {
+        const d = doc.data();
+        const isLulus = d.nilai >= 60;
+        const statusColor = isLulus ? "#22c55e" : "#ef4444"; // Hijau kalau lulus, Merah kalau remidi
+        
+        // Panggil fungsi label (kalau ada), kalau gak ada pakai teks aslinya
+        const kategoriLabel = typeof getLatihanCategoryLabel === "function" 
+                              ? getLatihanCategoryLabel(d.kategori) 
+                              : d.kategori.toUpperCase();
+
+        // Template Kapsul Per Item
+        historyHTML += `
+            <div class="history-capsule" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+              
+              <div class="capsule-left" style="display: flex; flex-direction: column; gap: 5px;">
+                <span style="font-size: 0.8rem; color: #94a3b8;">📅 ${d.tanggal ? d.tanggal.split(',')[0] : '-'}</span>
+                <strong style="font-size: 1.1rem; color: #1e293b;">📚 ${kategoriLabel}</strong>
+                <span style="font-size: 0.85rem; background: #e2e8f0; padding: 2px 8px; border-radius: 6px; width: fit-content;">🏷️ Level: ${d.level || '-'}</span>
+              </div>
+
+              <div class="capsule-right" style="text-align: right; display: flex; flex-direction: column; gap: 5px;">
+                <strong style="font-size: 1.2rem; color: ${statusColor};">${d.nilai || 0}%</strong>
+                <span style="font-size: 0.85rem; color: #64748b;">🎯 Benar: ${d.skor_benar || 0}/${d.total_soal || 0}</span>
+                <span style="font-weight: 800; font-size: 0.9rem; color: ${statusColor};">
+                  ${isLulus ? 'LULUS ✅' : 'GAGAL ❌'}
+                </span>
+              </div>
+
+            </div>
+        `;
+      });      
+
+      // Tutup container HTML-nya
+      historyHTML += `
+          </div>
+        </div>
+      `;
+
+      // 5. Render ke layar
+      grid.innerHTML = historyHTML;      
+      if (typeof setHistoryMode === "function") setHistoryMode(true);
+      if (typeof closeSidebar === "function") closeSidebar(); 
+
+    } catch (err) {
+      console.error("Error loading history:", err);
+      
+      // 6. --- KASUS ERROR (Internet Putus / Gagal Fetch) ---
+      grid.innerHTML = `
+        <div class="history-container">
+          <h2>📊 Riwayat Nilai Latihan</h2>
+          <div style="text-align: center; padding: 30px; color: #ef4444; background: #fee2e2; border-radius: 10px;">
+            <p><strong>⚠️ Gagal memuat riwayat.</strong></p>
+            <p style="font-size: 0.9rem; margin-top: 5px;">Pastikan koneksi internet stabil.</p>
+          </div>
+        </div>
+      `;
+      if (typeof setHistoryMode === "function") setHistoryMode(true);
+    }
+  });
+}
 
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
   async function fetchHistoryData(uid) {

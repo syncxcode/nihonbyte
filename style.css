@@ -2136,13 +2136,26 @@ body.history-mode #grid {
 .status-remidi { color: #ef4444 !important; }
 .status-lulus  { color: #22c55e !important; }
 
-/* Sidebar - anti wrap */
+/* =========================================
+   PERBAIKAN SIDEBAR: RATA KIRI & TRUNCATE
+========================================= */
 .menu-btn,
-.sidebar-tree summary,
-.subfolder-list .menu-btn {
+.sidebar-tree summary {
+  /* Bikin teks gak turun ke bawah & pakai titik-titik kalau kepanjangan */
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  padding-left: 0.7rem !important;
-  font-size: 0.93rem !important;   /* sedikit lebih kecil biar muat */
+  font-size: 0.93rem !important;
+  
+  /* 🚀 MANTRA PAKSA RATA KIRI */
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important; 
+  padding-left: 1rem !important; /* Jarak pas dari ujung kiri kotak */
+}
+
+/* Biar anak-anak menu (sub-menu) agak menjorok ke dalam biar rapi */
+.sidebar-tree .subfolder-list .menu-btn {
+  padding-left: 2.2rem !important; 
 }

@@ -1326,7 +1326,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
       // Judul Gabungan
       poster.innerHTML = `
-        <h2>${data.title} • <span style="color: #ff4d6d;">${section.subtitle}</span></h2>
+        <h2>${data.title} • <span class="letter-poster-subtitle">${section.subtitle}</span></h2>
         <div class="letter-poster-body"></div>
       `;
 

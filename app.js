@@ -1355,8 +1355,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const colCount = rowsToRender[0].length; 
       gridContainer.style.gridTemplateColumns = `repeat(${colCount}, minmax(0, 1fr))`;
 
-      rowsToRender.forEach((row) => {
-        row.forEach((cell) => {
+      rowsToRender.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
           const cellElem = document.createElement("div");
           const isLabel = /^[A-Z]*$/.test(cell); 
           
@@ -1365,6 +1365,14 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (isLabel) {
               cellElem.className = "letter-label";
               cellElem.textContent = cell;
+              
+              // 🚀 MANTRA RADAR: Deteksi Huruf Panduan Vokal (A, I, U, E, O)
+              // Di Desktop, vokal ada di kolom pertama (colIndex 0)
+              // Di HP, vokal ada di baris pertama (rowIndex 0)
+              const isVokal = isDesktop ? (colIndex === 0) : (rowIndex === 0);
+              if (isVokal) {
+                  cellElem.classList.add("label-vokal");
+              }
           } else {
               cellElem.className = "letter-cell";
               cellElem.textContent = cell;
@@ -1373,13 +1381,6 @@ document.addEventListener("DOMContentLoaded", () => {
           gridContainer.appendChild(cellElem);
         });
       });
-      
-      secElem.appendChild(gridContainer);
-      poster.querySelector(".letter-poster-body").appendChild(secElem);
-      
-      // Masukin ke grid utama
-      grid.appendChild(poster);
-    });
     
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }

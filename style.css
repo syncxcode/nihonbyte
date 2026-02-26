@@ -1637,4 +1637,15 @@ body.review-mode-active #hamburger {
     font-size: 0.75rem;
     padding: 3px 8px;
   }
+  .letter-poster .letter-row {
+    gap: 8px;
+  }
+  .letter-cell, .letter-label {
+    padding: 12px 5px !important; 
+    font-size: 1.1rem; 
+  }
+}
+
+.yoon-section .letter-row {
+  justify-content: center !important;
 }

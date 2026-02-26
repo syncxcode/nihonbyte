@@ -2063,7 +2063,7 @@ body.history-mode #pagination-container {
 }
 
 /* =========================================
-   RIWAYAT LATIHAN - VERSI 3.0 (KOTAK + JUDUL KAPSUL SAJA)
+   HISTORY POSTER - VERSI FINAL (ITEM KAPSUL)
 ========================================= */
 
 body.history-mode #grid {
@@ -2071,78 +2071,78 @@ body.history-mode #grid {
   justify-content: center !important;
   align-items: flex-start !important;
   min-height: calc(100dvh - 160px) !important;
-  padding: 110px 15px 140px !important;   /* Jarak aman dari header */
-  background: transparent !important;
+  padding: 110px 15px 140px !important;
 }
 
-/* Container utama = KOTAK dengan rounded sedang */
+/* Container utama = kotak rounded sedang */
 .history-container {
   width: 96% !important;
   max-width: 1480px !important;
   margin: 0 auto 80px auto !important;
-  padding: 48px 55px !important;
-  background: rgba(255, 255, 255, 0.85) !important;
+  padding: 40px 50px !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(18px) !important;
-  border-radius: 32px !important;           /* ← Kotak agak rounded (sesuai request) */
+  border-radius: 28px !important;           /* ← kotak agak rounded */
   border: 3px solid #ff4d6d !important;
-  box-shadow: 0 25px 70px rgba(255, 77, 109, 0.22) !important;
+  box-shadow: 0 25px 70px rgba(255, 77, 109, 0.20) !important;
 }
 
-/* HANYA JUDUL yang jadi kapsul pink */
+/* Judul tetap kapsul pink */
 .history-container h2 {
   display: inline-block !important;
   background: linear-gradient(90deg, #ff4d6d, #ff8fa3) !important;
-  color: #ffffff !important;
+  color: #fff !important;
   padding: 12px 38px !important;
-  border-radius: 9999px !important;         /* ← KAPSUL sempurna */
+  border-radius: 9999px !important;
   font-size: 2.05rem !important;
   font-weight: 800 !important;
-  margin: 0 auto 20px auto !important;      /* Center + jarak bawah */
+  margin: 0 auto 28px auto !important;
   box-shadow: 0 6px 20px rgba(255, 77, 109, 0.35) !important;
-  text-align: center !important;
 }
 
-/* Tabel tetap rapi & full text */
-.history-table th,
-.history-table td {
-  padding: 17px 14px !important;
-  vertical-align: middle !important;
+/* Setiap baris riwayat = kapsul dengan border */
+.history-item {
+  display: flex !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  border: 2.5px solid #ff4d6d !important;
+  border-radius: 9999px !important;           /* ← kapsul sempurna */
+  padding: 16px 24px !important;
+  margin-bottom: 14px !important;
+  box-shadow: 0 4px 15px rgba(255, 77, 109, 0.12) !important;
+  transition: all 0.25s ease !important;
 }
 
-.history-category-col {
-  width: 46% !important;
-  min-width: 420px !important;
-  white-space: normal !important;
-  line-height: 1.45 !important;
-  font-size: 0.97rem !important;
+.history-item:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 25px rgba(255, 77, 109, 0.22) !important;
 }
 
-/* Mobile Optimization (iOS & Android) */
-@media (max-width: 768px) {
-  body.history-mode #grid {
-    padding: 95px 10px 130px 10px !important;
-  }
-  
-  .history-container {
-    width: 100% !important;
-    margin: 10px 8px 90px 8px !important;
-    padding: 32px 22px !important;
-    border-radius: 28px !important;   /* Sedikit lebih kecil di HP */
-  }
-
-  .history-container h2 {
-    font-size: 1.68rem !important;
-    padding: 10px 28px !important;
-  }
+/* Kolom di dalam kapsul */
+.history-item > div {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  color: #1e293b;
 }
 
-/* Sidebar teks lebih ke kiri lagi */
+.history-item .date     { flex: 0.9; text-align: left; }
+.history-item .category { flex: 2.3; text-align: left; line-height: 1.45; font-size: 0.96rem; }
+.history-item .level    { flex: 0.7; }
+.history-item .score    { flex: 1.0; }
+.history-item .status   { flex: 0.8; font-weight: 700; }
+
+/* Warna status */
+.status-remidi { color: #ef4444 !important; }
+.status-lulus  { color: #22c55e !important; }
+
+/* Sidebar - anti wrap */
 .menu-btn,
 .sidebar-tree summary,
-.subfolder-list .menu-btn,
-.sidebar-tree details summary,
-.test-tree summary {
-  text-align: left !important;
-  padding-left: 0.90rem !important;   /* ← Digeser lebih kiri dari sebelumnya */
-  padding-right: 1rem !important;
+.subfolder-list .menu-btn {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding-left: 0.7rem !important;
+  font-size: 0.93rem !important;   /* sedikit lebih kecil biar muat */
 }

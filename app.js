@@ -1303,14 +1303,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderLetterPoster(script) {
     grid.innerHTML = "";
     
-    // Hapus angka navigasi di bawah
+    // Hilangkan navigasi angka di bawah
     const paginationContainer = document.getElementById("pagination-container");
     if (paginationContainer) paginationContainer.innerHTML = "";
 
     const data = letterSets[script];
     if (!data) return;
 
-    // 🚀 CEK LEBAR LAYAR: Desktop (> 768px) atau Mobile
     const isDesktop = window.innerWidth > 768;
 
     const poster = document.createElement("article");
@@ -1321,16 +1320,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       
-      // 🚀 TANDAI KHUSUS YOON BIAR BISA DI-CENTER-IN DI CSS NANTI
-      if (section.subtitle === "Yōon") {
-        secElem.classList.add("yoon-section");
-      }
+      // Kasih KTP khusus buat Yoon biar bisa kita atur di CSS
+      if (section.subtitle === "Yōon") secElem.classList.add("yoon-section");
 
       secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
       
       let rowsToRender = section.rows;
 
-      // 🚀 MANTRA TRANSPOSE MATRIX: Putar posisi Vertikal jadi Horizontal khusus Desktop!
+      // Putar jadi Horizontal untuk Desktop
       if (isDesktop) {
         rowsToRender = rowsToRender[0].map((_, colIndex) => rowsToRender.map(row => row[colIndex]));
       }
@@ -1338,7 +1335,13 @@ document.addEventListener("DOMContentLoaded", () => {
       rowsToRender.forEach((row) => {
         const rowElem = document.createElement("div");
         rowElem.className = "letter-row";
-        rowElem.style.setProperty("--cols", row.length); // Set jumlah kolom dinamis
+        
+        // 🚀 MANTRA GRID ANTI-MELUBER (Bikin Desktop Ringan & Compact)
+        rowElem.style.display = "grid";
+        rowElem.style.gridTemplateColumns = `repeat(${row.length}, minmax(0, 1fr))`;
+        rowElem.style.gap = isDesktop ? "4px" : "8px";
+        rowElem.style.marginBottom = "8px";
+        rowElem.style.width = "100%";
         
         row.forEach((cell) => {
           const cellElem = document.createElement("div");

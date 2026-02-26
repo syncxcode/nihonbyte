@@ -2157,7 +2157,12 @@ body.history-mode #grid {
 
 /* Biar anak-anak menu (sub-menu) agak menjorok ke dalam biar rapi */
 .sidebar-tree .subfolder-list .menu-btn {
-  padding-left: 2.2rem !important; 
+  padding-left: 2.2rem !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.25 !important;
+  font-size: 0.86rem !important;
 }
 
 /* =========================================
@@ -2169,7 +2174,7 @@ body.history-mode #grid {
 /* Khusus KOTOBA: teks lebih pas di dalam border tombol */
 .kotoba-dropdown .subfolder-list .menu-btn {
   display: block !important;
-  font-size: 0.86rem !important;
+  font-size: 0.82rem !important;
   line-height: 1.25 !important;
   padding-left: 1rem !important;
   padding-right: 0.75rem !important;
@@ -2190,11 +2195,12 @@ body.history-mode #grid {
   }
   
   .sidebar-tree .subfolder-list .menu-btn {
-    padding-left: 1.8rem !important; /* Indentasi anak menu dirapatkan dikit buat HP */
+    padding-left: 1.6rem !important; /* Indentasi anak menu dirapatkan dikit buat HP */
+    font-size: 0.82rem !important;
   }
 
   .kotoba-dropdown .subfolder-list .menu-btn {
-    font-size: 0.82rem !important;
+    font-size: 0.78rem !important;
     padding-left: 0.9rem !important;
     padding-right: 0.65rem !important;
   }

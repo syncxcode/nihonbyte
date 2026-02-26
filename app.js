@@ -1303,37 +1303,60 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderLetterPoster(script) {
     grid.innerHTML = "";
     
-    // 🚀 MANTRA HAPUS ANGKA HALAMAN DI MENU HURUF
+    // Hapus angka navigasi di bawah
     const paginationContainer = document.getElementById("pagination-container");
     if (paginationContainer) paginationContainer.innerHTML = "";
 
     const data = letterSets[script];
     if (!data) return;
+
+    // 🚀 CEK LEBAR LAYAR: Desktop (> 768px) atau Mobile
+    const isDesktop = window.innerWidth > 768;
+
     const poster = document.createElement("article");
     poster.className = "letter-poster";
     poster.innerHTML = `<h2>${data.title}</h2><div class="letter-poster-body"></div>`;
+
     data.sections.forEach((section) => {
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
+      
+      // 🚀 TANDAI KHUSUS YOON BIAR BISA DI-CENTER-IN DI CSS NANTI
+      if (section.subtitle === "Yōon") {
+        secElem.classList.add("yoon-section");
+      }
+
       secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
-      section.rows.forEach((row) => {
+      
+      let rowsToRender = section.rows;
+
+      // 🚀 MANTRA TRANSPOSE MATRIX: Putar posisi Vertikal jadi Horizontal khusus Desktop!
+      if (isDesktop) {
+        rowsToRender = rowsToRender[0].map((_, colIndex) => rowsToRender.map(row => row[colIndex]));
+      }
+
+      rowsToRender.forEach((row) => {
         const rowElem = document.createElement("div");
         rowElem.className = "letter-row";
-        rowElem.style.setProperty("--cols", row.length);
+        rowElem.style.setProperty("--cols", row.length); // Set jumlah kolom dinamis
+        
         row.forEach((cell) => {
           const cellElem = document.createElement("div");
           cellElem.className = cell ? "letter-cell" : "letter-label";
           cellElem.textContent = cell || "";
           rowElem.appendChild(cellElem);
         });
+        
         secElem.appendChild(rowElem);
       });
+      
       poster.querySelector(".letter-poster-body").appendChild(secElem);
     });
+    
     grid.appendChild(poster);
-    resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
+    if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }
-
+  
   function renderPatternPoster(level) {
     grid.classList.add("pattern-grid-layout");
     grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
@@ -1779,7 +1802,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
   function render() {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     savedScrollPosition = 0;
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
@@ -1834,6 +1857,17 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCurrentTestQuestion();
       return;
     }
+
+    window.addEventListener("resize", () => {
+    syncMobileTopbarLayout();
+    if (viewMode.startsWith("patterns:")) {
+      grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
+    }
+    // 🚀 TAMBAHIN INI: Biar tabel huruf langsung nyesuaiin pas layar dikecilin/digedein!
+    if (viewMode.startsWith("letters:")) {
+      render(); 
+    }
+  });
 
 // ==== LOGIKA KARTU KOSAKATA & PAGINATION ====
     const words = getFilteredWords();

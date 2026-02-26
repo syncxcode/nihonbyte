@@ -1568,6 +1568,22 @@ body.review-mode-active #hamburger {
   opacity: 0.7;
 }
 
+
+/* Footer tetap terlihat pada semua mode latihan/review */
+body.training-session .app-footer,
+body.review-mode-active .app-footer {
+  display: flex !important;
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
+  width: min(560px, calc(100% - 20px));
+  margin: 0 !important;
+  z-index: 1200;
+  pointer-events: none;
+}
+
+
 /* =========================================
    PAGINATION (JATAH KARTU HALAMAN)
 ========================================= */
@@ -1645,6 +1661,11 @@ body.review-mode-active #hamburger {
     padding: 8px 10px;
     font-size: 0.74rem;
     gap: 8px;
+  }
+  body.training-session .app-footer,
+  body.review-mode-active .app-footer {
+    bottom: 8px;
+    width: calc(100% - 16px);
   }
   .letter-poster .letter-row {
     gap: 8px;

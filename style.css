@@ -1698,25 +1698,35 @@ body.review-mode-active #hamburger {
   display: none !important; 
 }
 
-/* --- TAMPILAN DESKTOP --- */
+/* --- TAMPILAN DESKTOP (MELEBAR, KOTAK PERSEGI PANJANG, & FIT 1 LAYAR) --- */
 @media (min-width: 769px) {
-  .letter-grid-desktop {
-    gap: 10px !important; /* Jarak antar huruf dilebarkan biar lega */
-  }
   .letter-poster {
-    width: 100%;
-    overflow-x: hidden;
+    width: 100% !important;
+    max-width: 1250px !important; /* Tarik mentok kiri-kanan layar biar lebar! */
+    margin: 0 auto 25px auto !important; 
+    padding: 20px 40px !important; /* Atas-bawah wajar, Kiri-kanan dilebarin */
+    box-sizing: border-box !important;
+  }
+  .letter-grid-desktop {
+    gap: 8px 14px !important; /* Vertikal rapet (8px), Horizontal direnggangin (14px) */
   }
   .letter-cell, .letter-label, .letter-empty {
     padding: 0 !important;
-    height: 52px !important; /* Kotak dibikin lebih tinggi */
-    border-radius: 10px !important; /* Rounded standar desktop */
+    height: 42px !important; /* 🚀 KUNCI UTAMA: Dibikin pendek (42px) biar poster gak tenggelam ke bawah layar! */
+    border-radius: 8px !important; 
   }
   .letter-cell { 
-    font-size: 1.6rem !important; /* HURUF RAKSASA & JELAS */
+    font-size: 1.35rem !important; /* Font disesuaikan biar pas di kotak pendek */
   } 
   .letter-label { 
-    font-size: 0.95rem !important; 
+    font-size: 0.85rem !important; 
+  }
+  
+  /* Pangkas spasi judul biar tabel makin naik ke atas */
+  .letter-poster h2 {
+    font-size: 1.4rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important; 
   }
 }
 
@@ -1728,7 +1738,7 @@ body.review-mode-active #hamburger {
   .letter-cell, .letter-label, .letter-empty {
     padding: 0 !important;
     height: 48px !important; 
-    border-radius: 14px !important; /* 🚀 MANTRA SUPER ROUNDED (Gak Kaku Lagi) */
+    border-radius: 14px !important; 
   }
   .letter-cell { 
     font-size: 1.4rem !important; 

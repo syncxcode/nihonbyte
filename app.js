@@ -1933,6 +1933,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
+    setHistoryMode(false);
     grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";
@@ -2251,6 +2252,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const latihanCategoryLabelMap = {
+    goi: "言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)",
+    bunpou: "言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)",
+    dokkai: "読解 Dokkai Membaca",
+    listening: "聴解 Mendengarkan",
+    choukai: "聴解 Mendengarkan",
+  };
+
+  function getLatihanCategoryLabel(rawCategory = "") {
+    return latihanCategoryLabelMap[String(rawCategory).toLowerCase()] || String(rawCategory || "-");
+  }
+
+  function setHistoryMode(isActive) {
+    document.body.classList.toggle("history-mode", isActive);
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.style.display = isActive ? "none" : "flex";
+  }
+
   const historyBtn = document.getElementById("show-history-btn");
 
   if (historyBtn) {
@@ -2265,15 +2284,32 @@ document.addEventListener("DOMContentLoaded", () => {
         // Ambil data dari folder history, urutkan dari yang terbaru
         const q = window.firebaseDb && window.doc ? 
                   await fetchHistoryData(uid) : [];
+
+        if (!q || q.empty) {
+          grid.innerHTML = `
+            <section class="history-container">
+              <div class="history-header">
+                <h2>📊 Riwayat Nilai Latihan</h2>
+                <p>Belum ada riwayat latihan tersimpan.</p>
+              </div>
+            </section>
+          `;
+          setHistoryMode(true);
+          closeSidebar();
+          return;
+        }
         
         let tableHTML = `
-          <div class="history-container">
-            <h2>📊 Riwayat Nilai Latihan</h2>
+          <section class="history-container">
+            <div class="history-header">
+              <h2>📊 Riwayat Nilai Latihan</h2>
+              <p>Rekap berdasarkan kategori latihan yang dijalani.</p>
+            </div>
             <table class="history-table">
               <thead>
                 <tr>
                   <th>Tanggal</th>
-                  <th>Materi</th>
+                  <th>Kategori Latihan</th>
                   <th>Level</th>
                   <th>Skor</th>
                   <th>Hasil</th>
@@ -2288,7 +2324,7 @@ document.addEventListener("DOMContentLoaded", () => {
           tableHTML += `
             <tr>
               <td>${d.tanggal.split(',')[0]}</td>
-              <td>${d.kategori.toUpperCase()}</td>
+              <td>${getLatihanCategoryLabel(d.kategori)}</td>
               <td>${d.level}</td>
               <td>${d.skor_benar}/${d.total_soal} (${d.nilai}%)</td>
               <td class="${status}">${d.nilai >= 60 ? 'LULUS' : 'REMIDI'}</td>
@@ -2296,12 +2332,14 @@ document.addEventListener("DOMContentLoaded", () => {
           `;
         });
 
-        tableHTML += "</tbody></table></div>";
+        tableHTML += "</tbody></table></section>";
         grid.innerHTML = tableHTML;
+        setHistoryMode(true);
         closeSidebar(); // Tutup sidebar biar keliatan tabelnya
       } catch (err) {
         console.error(err);
         grid.innerHTML = "Gagal narik riwayat. Pastikan internet kenceng!";
+        setHistoryMode(true);
       }
     });
   }

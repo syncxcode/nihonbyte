@@ -14,6 +14,10 @@ body {
   color: #1f2937;
 }
 
+:root {
+  --sidebar-width: 320px;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -41,6 +45,13 @@ header, .navbar, .header-container {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+
+body.sidebar-open .topbar {
+  background: rgba(255, 161, 197, 0.72) !important;
+  backdrop-filter: blur(12px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(120%) !important;
 }
 
 #resultInfo {
@@ -616,7 +627,7 @@ select, input, .action-btn {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: var(--sidebar-width);
   height: 100vh;
   background: linear-gradient(180deg, #9f2f56, #5c1129) !important;
   will-change: transform;
@@ -634,10 +645,20 @@ select, input, .action-btn {
 
 #sidebar.active { transform: translateX(0); }
 #sidebar h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7); 
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-section-title {
+  margin: 10px 0 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .sidebar-tree { display: grid; gap: 10px; margin-bottom: 14px; }
@@ -677,7 +698,7 @@ select, input, .action-btn {
 
 #overlay.active {
   opacity: 1; visibility: visible; pointer-events: auto;
-  left: 260px; width: calc(100vw - 260px); 
+  left: var(--sidebar-width); width: calc(100vw - var(--sidebar-width)); 
 }
 
 #sidebar::-webkit-scrollbar { width: 6px; }
@@ -969,7 +990,7 @@ select, input, .action-btn {
   }
 
   #grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-  #sidebar { width: 280px; }
+  #sidebar { width: var(--sidebar-width); }
   .kanji-modal-content { width: min(80vw, 900px); }
   .expanded-card .card-image.expanded img { height: 350px; }
   .recommendation-item { min-width: 120px; }
@@ -998,6 +1019,8 @@ select, input, .action-btn {
    8. ATURAN KHUSUS MOBILE (MAKS 768PX)
 ========================================= */
 @media (max-width: 768px) {
+  :root { --sidebar-width: 290px; }
+
   #grid {
     padding-top: 95px !important; 
     gap: 12px !important;
@@ -2029,11 +2052,10 @@ body.review-mode-active .app-footer {
 
 /* Tabel Riwayat */
 body.history-mode #grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   min-height: calc(100vh - 170px);
-  padding: 28px 20px 100px;
+  padding: 24px 20px 100px;
 }
 
 body.history-mode #pagination-container {
@@ -2041,13 +2063,15 @@ body.history-mode #pagination-container {
 }
 
 .history-container {
-  width: min(1080px, 100%);
+  width: min(1240px, 100%);
   margin: 0 auto;
-  padding: 34px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
+  padding: 34px 32px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.86));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-radius: 28px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+  overflow-x: auto;
 }
 
 .history-header {
@@ -2058,17 +2082,18 @@ body.history-mode #pagination-container {
 .history-header h2 {
   margin: 0;
   color: #1e293b;
-  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-size: clamp(1.55rem, 2.8vw, 2.08rem);
 }
 
 .history-header p {
   margin: 10px 0 0;
   color: #475569;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 
 .history-table {
   width: 100%;
+  min-width: 1100px;
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 18px;
@@ -2080,17 +2105,23 @@ body.history-mode #pagination-container {
 
 .history-table th {
   background: #ff4d6d;
-  color: white;
-  padding: 14px 12px;
+  color: #fff;
+  padding: 14px 14px;
   text-align: left;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .history-table td {
-  padding: 14px 12px;
+  padding: 14px 14px;
   border-bottom: 1px solid #e2e8f0;
   color: #334155;
-  vertical-align: top;
+  vertical-align: middle;
+}
+
+.history-category-col,
+.history-category-cell {
+  white-space: nowrap;
 }
 
 .history-table tbody tr:last-child td {
@@ -2102,20 +2133,18 @@ body.history-mode #pagination-container {
 
 @media (max-width: 768px) {
   body.history-mode #grid {
-    align-items: flex-start;
+    place-items: start center;
     min-height: auto;
     padding: 16px 12px 96px;
   }
 
   .history-container {
-    padding: 20px 14px;
+    padding: 18px 12px;
     border-radius: 20px;
   }
 
   .history-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
+    min-width: 920px;
     font-size: 0.86rem;
   }
 
@@ -2124,3 +2153,4 @@ body.history-mode #pagination-container {
     padding: 11px 10px;
   }
 }
+

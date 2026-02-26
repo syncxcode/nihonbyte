@@ -1647,139 +1647,105 @@ body.review-mode-active #hamburger {
 }
 
 /* =========================================
-   REVISI FINAL UX POSTER HURUF (GLASS EFFECT, SPACING, NO-HIGHLIGHT)
+   11. LETTER POSTER TUNING (AESTHETIC + LIGHTWEIGHT)
 ========================================= */
-
-/* 1. WADAH POSTER (EFEK KACA & BLOKIR HIGHLIGHT) */
 .letter-poster {
-  /* Efek Kaca (Glassmorphism) */
-  background: rgba(255, 255, 255, 0.75) !important; 
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
-  
-  /* Blokir Kursor / Anti Highlight */
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  cursor: default !important;
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.97), rgba(252, 244, 248, 0.95)) !important;
+  border: 1px solid rgba(255, 77, 109, 0.12) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-.letter-grid-desktop, .letter-grid-mobile {
-  display: grid;
-  width: 100%;
+.letter-poster h2 {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #111827 !important;
 }
 
-/* Matikan Hover */
-.letter-cell:hover, .letter-label:hover, .letter-empty:hover {
-  transform: none !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-  cursor: default !important;
+.letter-poster-subtitle {
+  color: #e11d48;
+  font-weight: 800;
 }
 
-/* Base Kotak */
-.letter-cell, .letter-label, .letter-empty {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  box-sizing: border-box;
+.letter-grid-desktop,
+.letter-grid-mobile {
+  gap: 10px !important;
 }
 
-/* Kotak Huruf (Tetap Putih Solid & Jelas) */
-.letter-cell {
-  background: #ffffff !important;
-  color: #1e293b !important;
-  font-weight: 800 !important;
-  border: 1.5px solid #cbd5e1 !important;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
-}
-
-/* Kotak Penunjuk (A, I, U) */
-.letter-label {
-  background: rgba(248, 250, 252, 0.9) !important; 
-  color: #334155 !important; 
-  font-weight: 700 !important;
-  border: 1.5px solid #94a3b8 !important; 
-}
-
-/* 🚀 KOTAK KOSONG DIBIKIN ABU MUDA */
+.letter-cell,
+.letter-label,
 .letter-empty {
-  background: rgba(255, 255, 255, 0.3) !important; /* Efek kaca transparan abu muda */
-  border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Border putih tipis elegan */
-  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2) !important; /* Pantulan cahaya biar mewah */
-  backdrop-filter: blur(4px) !important; /* Tambahan ngeblur dikit di kotaknya */
+  border-radius: 12px !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.letter-cell {
+  background: #fff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.letter-cell:hover {
+  background: #fff4f7 !important;
+  border-color: #fda4af !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.letter-label {
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #334155 !important;
 }
 
 .label-vokal {
-  border: 1px solid rgba(148, 163, 184, 0.3) !important; /* Border diredupin & dikecilin */
-  background: rgba(248, 250, 252, 0.4) !important; /* Sedikit lebih tembus pandang */
-  box-shadow: none !important; /* Hilangin bayangan biar nge-blend sama poster */
-  color: #64748b !important; /* Warna font dibikin sedikit lebih kalem */
+  background: #fff1f2 !important;
+  border-color: #fda4af !important;
+  color: #be123c !important;
 }
 
-/* Sembunyikan h3 karena judulnya udah gabung di atas */
-.letter-section h3 {
-  display: none !important; 
+.letter-empty {
+  background: #f8fafc !important;
+  border: 1px dashed #dbe4ee !important;
+  box-shadow: none !important;
 }
 
-/* --- TAMPILAN DESKTOP --- */
 @media (min-width: 769px) {
   .letter-poster {
-    width: 100% !important;
-    max-width: 1250px !important;
-    
-    /* 🚀 TURUNIN POSTER (margin-top 20px) & JAUHKAN POSTER BAWAH (margin-bottom 40px) */
-    margin: 20px auto 40px auto !important; 
-    
-    /* 🚀 KASIH NAPAS DI BAWAH HURUF (padding-bottom 40px) */
-    padding: 25px 40px 40px 40px !important; 
-    
-    box-sizing: border-box !important;
-    overflow-x: hidden;
+    max-width: 1180px !important;
+    margin: 16px auto 28px !important;
+    padding: 24px 28px 30px !important;
   }
+
   .letter-grid-desktop {
-    gap: 8px 14px !important; 
+    gap: 10px 12px !important;
   }
-  .letter-cell, .letter-label, .letter-empty {
-    padding: 0 !important;
-    height: 42px !important; /* Tetap langsing */
-    border-radius: 8px !important; 
-  }
-  .letter-cell { font-size: 1.35rem !important; } 
-  .letter-label { font-size: 0.85rem !important; }
-  
-  .letter-poster h2 {
-    font-size: 1.5rem !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important; /* Jarak antara Judul dan tabel huruf diperbesar sedikit */
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    height: 48px !important;
   }
 }
 
-/* --- TAMPILAN MOBILE --- */
 @media (max-width: 768px) {
   .letter-poster {
-    margin: 15px 15px 25px 15px !important; /* Poster HP juga dikasih napas bawahnya */
-    padding: 20px 15px 30px 15px !important; /* Padding bawah (30px) biar huruf ujung gak nempel layar */
+    margin: 12px 12px 22px !important;
+    padding: 16px 12px 20px !important;
   }
+
   .letter-grid-mobile {
-    gap: 8px !important;
+    gap: 7px !important;
   }
-  .letter-cell, .letter-label, .letter-empty {
-    padding: 0 !important;
-    height: 48px !important; 
-    border-radius: 14px !important; 
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    height: 44px !important;
+    border-radius: 10px !important;
   }
-  .letter-cell { font-size: 1.4rem !important; }
-  .letter-label { font-size: 0.85rem !important; }
-  .letter-poster h2 {
-    margin-top: 0 !important;
-    margin-bottom: 15px !important;
-  }
-  .yoon-section .letter-grid-mobile {
-    grid-template-columns: repeat(4, minmax(40px, 70px)) !important;
-    justify-content: center;
-  }
+
+  .letter-cell { font-size: 1.25rem !important; }
+  .letter-poster h2 { font-size: 1.2rem !important; }
 }

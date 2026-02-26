@@ -2267,10 +2267,18 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setHistoryMode(isActive) {
-    document.body.classList.toggle("history-mode", isActive);
-    const paginationContainer = document.getElementById("pagination-container");
-    if (paginationContainer) paginationContainer.style.display = isActive ? "none" : "flex";
+  document.body.classList.toggle("history-mode", isActive);
+  
+  // Paksa ulang layout agar center sempurna
+  const grid = document.getElementById("grid");
+  if (grid) {
+    grid.style.display = isActive ? "flex" : "";
+    grid.style.justifyContent = isActive ? "center" : "";
   }
+  
+  const paginationContainer = document.getElementById("pagination-container");
+  if (paginationContainer) paginationContainer.style.display = isActive ? "none" : "flex";
+}
 
   const historyBtn = document.getElementById("show-history-btn");
 

@@ -2251,6 +2251,70 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const historyBtn = document.getElementById("show-history-btn");
+
+  if (historyBtn) {
+    historyBtn.addEventListener("click", async () => {
+      if (!window.currentUser) return alert("Login dulu Bosku!");
+      
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "<div class='loader'>Sabar, lagi narik data dari awan...</div>";
+
+      try {
+        const uid = window.currentUser.uid;
+        // Ambil data dari folder history, urutkan dari yang terbaru
+        const q = window.firebaseDb && window.doc ? 
+                  await fetchHistoryData(uid) : [];
+        
+        let tableHTML = `
+          <div class="history-container">
+            <h2>📜 Riwayat Latihan Lu</h2>
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Materi</th>
+                  <th>Level</th>
+                  <th>Skor</th>
+                  <th>Hasil</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        q.forEach(doc => {
+          const d = doc.data();
+          const status = d.nilai >= 60 ? "status-lulus" : "status-gagal";
+          tableHTML += `
+            <tr>
+              <td>${d.tanggal.split(',')[0]}</td>
+              <td>${d.kategori.toUpperCase()}</td>
+              <td>${d.level}</td>
+              <td>${d.skor_benar}/${d.total_soal} (${d.nilai}%)</td>
+              <td class="${status}">${d.nilai >= 60 ? 'LULUS' : 'REMIDI'}</td>
+            </tr>
+          `;
+        });
+
+        tableHTML += "</tbody></table></div>";
+        grid.innerHTML = tableHTML;
+        closeSidebar(); // Tutup sidebar biar keliatan tabelnya
+      } catch (err) {
+        console.error(err);
+        grid.innerHTML = "Gagal narik riwayat. Pastikan internet kenceng!";
+      }
+    });
+  }
+
+  // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
+  async function fetchHistoryData(uid) {
+    const { collection, getDocs, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
+    const historyRef = collection(window.firebaseDb, "users", uid, "history");
+    const q = query(historyRef, orderBy("tanggal", "desc"));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot;
+  }
+
   // Panggil render saat pertama kali dimuat
   window.addEventListener("resize", enforceMobileTopbarOrder);
   enforceMobileTopbarOrder();

@@ -2164,6 +2164,16 @@ body.history-mode #grid {
    PERBAIKAN SIDEBAR: RATA KIRI (KHUSUS MOBILE)
 ========================================= */
 
+
+
+/* Khusus KOTOBA: teks lebih pas di dalam border tombol */
+.kotoba-dropdown .subfolder-list .menu-btn {
+  display: block !important;
+  font-size: 0.86rem !important;
+  line-height: 1.25 !important;
+  padding-left: 1rem !important;
+  padding-right: 0.75rem !important;
+}
 /* Pengecualian: judul sub-drop list LATIHAN boleh wrap */
 .latihan-dropdown .sub-details summary {
   white-space: normal !important;
@@ -2181,5 +2191,11 @@ body.history-mode #grid {
   
   .sidebar-tree .subfolder-list .menu-btn {
     padding-left: 1.8rem !important; /* Indentasi anak menu dirapatkan dikit buat HP */
+  }
+
+  .kotoba-dropdown .subfolder-list .menu-btn {
+    font-size: 0.82rem !important;
+    padding-left: 0.9rem !important;
+    padding-right: 0.65rem !important;
   }
 }

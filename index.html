@@ -14,6 +14,24 @@
 
 <aside id="sidebar" aria-label="Menu samping">
   <h3>Menu</h3>
+  <div id="user-profile-section" class="user-profile-section">
+        <div id="logged-out-view">
+          <button id="login-google-btn" class="login-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+            <span>Masuk dengan Google</span>
+          </button>
+          <p class="login-desc">Simpan skor latihanmu ke Cloud!</p>
+        </div>
+
+        <div id="logged-in-view" style="display: none;">
+          <img id="user-avatar" src="" alt="Avatar" class="user-avatar">
+          <div class="user-info">
+            <span id="user-name" class="user-name">Nama User</span>
+            <button id="logout-btn" class="logout-btn">Keluar</button>
+          </div>
+        </div>
+      </div>
+      <hr class="sidebar-divider">
   <div class="sidebar-tree">
     <!-- HURUF -->
     <details>

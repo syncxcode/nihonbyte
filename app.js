@@ -1325,8 +1325,8 @@ document.addEventListener("DOMContentLoaded", () => {
       poster.className = "letter-poster";
       
       // Kasih jarak presisi biar gak mepet
-      poster.style.padding = isDesktop ? "20px 25px" : "15px 15px";
-      poster.style.marginBottom = "20px";
+      poster.style.padding = isDesktop ? "25px 35px" : "15px 15px";
+      poster.style.marginBottom = "12px"; // Jarak antar poster dirapatkan!
 
       // Gabungin Judul Utama & Sub Judul (Misal: Poster Hiragana • Gojūon)
       poster.innerHTML = `

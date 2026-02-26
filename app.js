@@ -1312,11 +1312,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isDesktop = window.innerWidth > 768;
 
-    const poster = document.createElement("article");
-    poster.className = "letter-poster";
-    poster.innerHTML = `<h2>${data.title}</h2><div class="letter-poster-body"></div>`;
-
-    // 🚀 LOGIKA TRANSPOSE AMAN (Anti Error)
     const transpose = (matrix) => {
       const maxCols = Math.max(...matrix.map(row => row.length));
       return Array.from({ length: maxCols }, (_, colIndex) =>
@@ -1324,15 +1319,29 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     };
 
+    // 🚀 LOGIKA BARU: 1 SECTION = 1 POSTER TERPISAH
     data.sections.forEach((section) => {
+      const poster = document.createElement("article");
+      poster.className = "letter-poster";
+      
+      // Kasih jarak presisi biar gak mepet
+      poster.style.padding = isDesktop ? "20px 25px" : "15px 15px";
+      poster.style.marginBottom = "20px";
+
+      // Gabungin Judul Utama & Sub Judul (Misal: Poster Hiragana • Gojūon)
+      poster.innerHTML = `
+        <h2 style="margin-top:0; margin-bottom:15px; font-size: ${isDesktop ? '1.5rem' : '1.3rem'}; text-align:center; color: #1e293b;">
+          ${data.title} • <span style="color: #ff4d6d;">${section.subtitle}</span>
+        </h2>
+        <div class="letter-poster-body"></div>
+      `;
+
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       
       // Kasih KTP khusus Yoon
       if (section.subtitle === "Yōon") secElem.classList.add("yoon-section");
 
-      secElem.innerHTML = `<h3>${section.subtitle}</h3>`;
-      
       let rowsToRender = section.rows;
 
       // Putar jadi Horizontal KHUSUS DESKTOP
@@ -1340,19 +1349,15 @@ document.addEventListener("DOMContentLoaded", () => {
         rowsToRender = transpose(rowsToRender);
       }
 
-      // 🚀 WADAH GRID BARU (FLAT GRID)
       const gridContainer = document.createElement("div");
       gridContainer.className = isDesktop ? "letter-grid-desktop" : "letter-grid-mobile";
       
-      // Dinamis ngikutin jumlah kolom (Desktop 12 kolom, HP 6 kolom)
       const colCount = rowsToRender[0].length; 
       gridContainer.style.gridTemplateColumns = `repeat(${colCount}, minmax(0, 1fr))`;
 
       rowsToRender.forEach((row) => {
         row.forEach((cell) => {
           const cellElem = document.createElement("div");
-          
-          // Deteksi otomatis: Kosong, Label Penunjuk (A, KA, dll), atau Huruf Jepang
           const isLabel = /^[A-Z]*$/.test(cell); 
           
           if (cell === "") {
@@ -1371,9 +1376,11 @@ document.addEventListener("DOMContentLoaded", () => {
       
       secElem.appendChild(gridContainer);
       poster.querySelector(".letter-poster-body").appendChild(secElem);
+      
+      // Masukin ke grid utama
+      grid.appendChild(poster);
     });
     
-    grid.appendChild(poster);
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }
   

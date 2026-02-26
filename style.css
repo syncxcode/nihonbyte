@@ -2019,3 +2019,24 @@ body.review-mode-active .app-footer {
   cursor: pointer;
   text-decoration: underline;
 }
+
+.history-link {
+  background: none; border: none; color: #fff; 
+  font-size: 0.7rem; font-weight: bold; cursor: pointer; text-decoration: underline; padding: 0;
+}
+.user-actions { display: flex; align-items: center; gap: 8px; }
+.sep { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
+
+/* Tabel Riwayat */
+.history-container {
+  padding: 20px; max-width: 900px; margin: 20px auto;
+  background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+  border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.history-table {
+  width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem;
+}
+.history-table th { background: #ff4d6d; color: white; padding: 12px; text-align: left; }
+.history-table td { padding: 10px; border-bottom: 1px solid #eee; color: #334155; }
+.status-lulus { color: #22c55e; font-weight: bold; }
+.status-gagal { color: #ef4444; font-weight: bold; }

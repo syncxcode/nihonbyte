@@ -736,7 +736,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedLevel = "all";
   let selectedType = "verb-adj-only";
   let viewMode = "vocab";
-
+  let currentPage = 1;      
+  let lastQueryState = "";  
+  
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
     "verb-ru": "Kata Kerja Ichidan",
@@ -1800,66 +1802,111 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ==== BAGIAN INI YANG SEBELUMNYA KESASAR KE BAWAH FILE ====
+// ==== LOGIKA KARTU KOSAKATA & PAGINATION ====
     const words = getFilteredWords();
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.innerHTML = ""; // Bersihkan angka halaman
     
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
-      if (resultInfo) {
-        resultInfo.textContent = formatResultInfo(0);
-      }
+      if (resultInfo) resultInfo.textContent = formatResultInfo(0);
       return;
     }
 
+    // --- LOGIKA JATAH KARTU ---
+    const currentState = `${selectedLevel}-${selectedType}-${search ? search.value : ""}`;
+    if (lastQueryState !== currentState) {
+       currentPage = 1; // Otomatis balik ke halaman 1 kalau ganti folder/pencarian
+       lastQueryState = currentState;
+    }
+
+    const itemsPerPage = window.innerWidth > 768 ? 16 : 10; // Desktop 16, HP 10
+    const totalPages = Math.ceil(words.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedWords = words.slice(startIndex, endIndex); // Potong array sesuai jatah
+
     const fragment = document.createDocumentFragment();
-    words.forEach((word) => {
+    paginatedWords.forEach((word) => {
       const cardButton = document.createElement("article");
       cardButton.className = "card";
       cardButton.setAttribute("role", "button");
       cardButton.setAttribute("tabindex", "0");
-      cardButton.setAttribute("aria-label", `Lihat detail ${word.kanji || word.kana || 'kata'}`);
       
-      try {
-        cardButton.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal menyimpan data word:", word);
-        return;
-      }
+      try { cardButton.dataset.word = JSON.stringify(word); } catch (err) { return; }
       
       cardButton.innerHTML = cardImageTemplate(word);
       
       cardButton.addEventListener("click", (e) => {
         if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn")) return;
-        try {
-          const storedWord = JSON.parse(cardButton.dataset.word);
-          openModal(storedWord);
-        } catch (err) {
-          console.error("Gagal membaca data kartu:", err);
-        }
+        try { openModal(JSON.parse(cardButton.dataset.word)); } catch (err) {}
       });
-      
-      cardButton.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          try {
-            const storedWord = JSON.parse(cardButton.dataset.word);
-            openModal(storedWord);
-          } catch (err) {
-            console.error("Gagal membaca data kartu (keyboard):", err);
-          }
-        }
-      });
-      
       fragment.appendChild(cardButton);
     });
     
     grid.appendChild(fragment);
     
-    
+    // Panggil mesin tombol halaman
+    renderPagination(totalPages);
+
     if (resultInfo) {
       resultInfo.textContent = formatResultInfo(words.length);
     }
   } // <-- Akhir dari fungsi render()
+
+  // --- MESIN PEMBUAT TOMBOL ANGKA HALAMAN ---
+  function renderPagination(totalPages) {
+    const paginationContainer = document.getElementById("pagination-container");
+    if (!paginationContainer || totalPages <= 1) return; // Kalau cuma 1 halaman, sembunyikan tombol
+
+    // Tombol Prev (Kiri)
+    const prevBtn = document.createElement("button");
+    prevBtn.className = "page-btn";
+    prevBtn.innerHTML = "«";
+    prevBtn.disabled = currentPage === 1;
+    prevBtn.addEventListener("click", () => { if (currentPage > 1) { currentPage--; render(); } });
+    paginationContainer.appendChild(prevBtn);
+
+    // Hitung jendela halaman (biar angka gak kepanjangan)
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, currentPage + 1);
+    if (currentPage === 1) endPage = Math.min(3, totalPages);
+    if (currentPage === totalPages) startPage = Math.max(1, totalPages - 2);
+
+    if (startPage > 1) {
+      const firstBtn = document.createElement("button");
+      firstBtn.className = "page-btn"; firstBtn.innerText = "1";
+      firstBtn.addEventListener("click", () => { currentPage = 1; render(); });
+      paginationContainer.appendChild(firstBtn);
+      if (startPage > 2) paginationContainer.insertAdjacentHTML('beforeend', '<span class="page-dots">...</span>');
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      const btn = document.createElement("button");
+      btn.className = `page-btn ${i === currentPage ? "active" : ""}`;
+      btn.innerText = i;
+      btn.addEventListener("click", () => { currentPage = i; render(); });
+      paginationContainer.appendChild(btn);
+    }
+
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) paginationContainer.insertAdjacentHTML('beforeend', '<span class="page-dots">...</span>');
+      const lastBtn = document.createElement("button");
+      lastBtn.className = "page-btn"; lastBtn.innerText = totalPages;
+      lastBtn.addEventListener("click", () => { currentPage = totalPages; render(); });
+      paginationContainer.appendChild(lastBtn);
+    }
+
+    // Tombol Next (Kanan)
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "page-btn";
+    nextBtn.innerHTML = "»";
+    nextBtn.disabled = currentPage === totalPages;
+    nextBtn.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; render(); } });
+    paginationContainer.appendChild(nextBtn);
+  }
 
   if (category) {
     category.addEventListener("change", () => {

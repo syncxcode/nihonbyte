@@ -1629,7 +1629,6 @@ window.latihanDokkaiReal = {
       {"question": "シャワーを使うときの注意は？", "options": ["長時間使う", "長時間使わない", "使わない", "毎日使う"], "answer": "長時間使わない", "translation": "Jangan lama-lama."}
     ]
   },
-  [
   {
     "passage": "太郎さん へ 。 来週 の 日曜日 に 私の 家 で 誕生日 パーティー を します 。 午後 2時 から 始め ます 。 お菓子 を 持って 来なく て も いい です が 、 ゲーム や カラオケ を する つもり です 。 返事 は 金曜日 まで に メール で お願い します 。 みんな で 楽しく 過ごせる の を 楽しみ に して います 。 花子 より 。",
     "questions": [
@@ -1919,7 +1918,8 @@ window.latihanDokkaiReal = {
       {"question": "卒業式はいつどこでありますか。", "options": ["3月15日 体育館", "4月15日 教室", "3月5日 公園", "2月15日"], "answer": "3月15日 体育館", "translation": "15 Maret di gedung olahraga."},
       {"question": "保護者はどうしますか。", "options": ["来ないで", "是非出席", "子供だけ", "電話"], "answer": "是非出席", "translation": "Silakan hadir."},
       {"question": "服装のおすすめは？", "options": ["Tシャツ", "スーツまたは着物", "水着", "ジーンズ"], "answer": "スーツまたは着物", "translation": "Jas atau kimono."}
-      }
-    ]
-  };
+      ]
+    }
+  ]
+};
 

@@ -1043,6 +1043,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function renderExpressionPoster() {
     grid.innerHTML = "";
+    
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.innerHTML = "";
+
     if (typeof vocabularyData === "undefined") return;
     
     const expressions = vocabularyData.filter(w =>
@@ -1053,20 +1057,32 @@ document.addEventListener("DOMContentLoaded", () => {
       if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "expression" });
       return;
     }
+
+    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    const currentState = "ekspresi-poster";
+    if (lastQueryState !== currentState) {
+      currentPage = 1;
+      lastQueryState = currentState;
+    }
+    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const totalPages = Math.ceil(expressions.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedExpr = expressions.slice(startIndex, endIndex);
+
     const container = document.createElement("div");
     container.className = "expression-wide-grid";
-    expressions.forEach((word) => {
+    
+    // Looping data yang udah dipotong
+    paginatedExpr.forEach((word) => {
       const card = document.createElement("div");
       card.className = "expression-wide-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
-      try {
-        card.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal stringify ungkapan:", word);
-        return;
-      }
+      try { card.dataset.word = JSON.stringify(word); } catch (err) { return; }
       card.innerHTML = `
         <div class="wide-kanji">${word.kanji || "—"}</div>
         <div class="wide-kana">${word.kana || "—"}</div>
@@ -1076,31 +1092,27 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       card.addEventListener("click", (e) => {
         if (e.target.closest(".wide-play-btn")) return;
-        try {
-          const storedWord = JSON.parse(card.dataset.word);
-          openModal(storedWord);
-        } catch (err) {}
+        try { openModal(JSON.parse(card.dataset.word)); } catch (err) {}
       });
       card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         speakWord(card.querySelector(".wide-play-btn").dataset.text);
       });
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          try { openModal(JSON.parse(card.dataset.word)); } catch {}
-        }
-      });
       container.appendChild(card);
     });
     grid.appendChild(container);
+    
+    renderPagination(totalPages); // Munculin navigasi < 1 2 3 >
     if(resultInfo) resultInfo.textContent = formatResultInfo(expressions.length, { typeOverride: "expression" });
   }
 
   function renderActivityPoster() {
     grid.innerHTML = "";
-    if (typeof vocabularyData === "undefined") return;
     
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.innerHTML = "";
+
+    if (typeof vocabularyData === "undefined") return;
     const activities = vocabularyData.filter(w => w.type === "activity");
     
     if (!activities.length) {
@@ -1109,22 +1121,30 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     
+    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    const currentState = "activity-poster";
+    if (lastQueryState !== currentState) {
+      currentPage = 1;
+      lastQueryState = currentState;
+    }
+    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const totalPages = Math.ceil(activities.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedAct = activities.slice(startIndex, endIndex);
+
     const container = document.createElement("div");
     container.className = "expression-wide-grid"; 
     
-    activities.forEach((word) => {
+    paginatedAct.forEach((word) => {
       const card = document.createElement("div");
       card.className = "expression-wide-card";
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
       card.setAttribute("aria-label", `Detail aktivitas ${word.kana || word.kanji}`);
-      
-      try {
-        card.dataset.word = JSON.stringify(word);
-      } catch (err) {
-        console.warn("Gagal stringify aktivitas:", word);
-        return;
-      }
+      try { card.dataset.word = JSON.stringify(word); } catch (err) { return; }
       
       card.innerHTML = `
         <div class="wide-kanji">${word.kanji || "—"}</div>
@@ -1133,31 +1153,19 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="wide-meaning">${word.meaning || "—"}</div>
         <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar">▶</button>
       `;
-      
       card.addEventListener("click", (e) => {
         if (e.target.closest(".wide-play-btn")) return;
-        try {
-          const storedWord = JSON.parse(card.dataset.word);
-          openModal(storedWord);
-        } catch (err) {}
+        try { openModal(JSON.parse(card.dataset.word)); } catch (err) {}
       });
-      
       card.querySelector(".wide-play-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         speakWord(card.querySelector(".wide-play-btn").dataset.text);
       });
-      
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          try { openModal(JSON.parse(card.dataset.word)); } catch {}
-        }
-      });
-      
       container.appendChild(card);
     });
     
     grid.appendChild(container);
+    renderPagination(totalPages);
     if(resultInfo) resultInfo.textContent = formatResultInfo(activities.length, { typeOverride: "activity" });
   }
 
@@ -1325,13 +1333,32 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.classList.add("pattern-grid-layout");
     grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     grid.innerHTML = "";
+    
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) paginationContainer.innerHTML = "";
+
     const patterns = typeof patternData !== "undefined" ? patternData[level] || [] : [];
     if (!patterns.length) {
       grid.innerHTML = '<div class="empty-state">Tidak ada pola kalimat untuk level ini.</div>';
       if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
       return;
     }
-    patterns.forEach((pattern) => {
+
+    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    const currentState = `pattern-${level}`;
+    if (lastQueryState !== currentState) {
+      currentPage = 1;
+      lastQueryState = currentState;
+    }
+    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const totalPages = Math.ceil(patterns.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedPatterns = patterns.slice(startIndex, endIndex);
+
+    paginatedPatterns.forEach((pattern) => {
       const card = document.createElement("article");
       card.className = "pattern-card";
       const fullExample = pattern.example || "";
@@ -1345,10 +1372,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="pattern-meaning">${pattern.meaning}</div>
         <button class="pattern-audio-btn" type="button" data-text="${pattern.example}" aria-label="Putar audio pola">▶</button>
       `;
-      
       grid.appendChild(card);
     });
-   if(resultInfo) resultInfo.textContent = formatResultInfo(patterns.length, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
+    
+    renderPagination(totalPages);
+    if(resultInfo) resultInfo.textContent = formatResultInfo(patterns.length, { typeOverride: "pattern", levelOverride: level, includeLevel: true });
   }
 
   function syncMobileTopbarLayout() {

@@ -2268,7 +2268,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let tableHTML = `
           <div class="history-container">
-            <h2>📜 Riwayat Latihan Lu</h2>
+            <h2>📊 Riwayat Nilai Latihan</h2>
             <table class="history-table">
               <thead>
                 <tr>

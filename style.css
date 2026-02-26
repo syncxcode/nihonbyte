@@ -1707,8 +1707,17 @@ body.review-mode-active #hamburger {
 
 /* 🚀 KOTAK KOSONG DIBIKIN ABU MUDA */
 .letter-empty {
-  background: #e2e8f0 !important; /* Warna abu muda solid */
-  border: 1.5px dashed #94a3b8 !important; /* Garis putus-putus dibikin sedikit lebih gelap biar nyata */
+  background: rgba(255, 255, 255, 0.3) !important; /* Efek kaca transparan abu muda */
+  border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Border putih tipis elegan */
+  box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.2) !important; /* Pantulan cahaya biar mewah */
+  backdrop-filter: blur(4px) !important; /* Tambahan ngeblur dikit di kotaknya */
+}
+
+.label-vokal {
+  border: 1px solid rgba(148, 163, 184, 0.3) !important; /* Border diredupin & dikecilin */
+  background: rgba(248, 250, 252, 0.4) !important; /* Sedikit lebih tembus pandang */
+  box-shadow: none !important; /* Hilangin bayangan biar nge-blend sama poster */
+  color: #64748b !important; /* Warna font dibikin sedikit lebih kalem */
 }
 
 /* Sembunyikan h3 karena judulnya udah gabung di atas */

@@ -1646,62 +1646,70 @@ body.review-mode-active #hamburger {
   }
 }
 
-/* 1. Meredupkan Label Penunjuk (A, I, U / KA, SA, TA) */
-.letter-label {
-  font-size: 0.75rem !important; 
-  color: #94a3b8 !important; /* Warna abu-abu redup, biar gak mendominasi */
-  font-weight: 600 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* =========================================
+   REVISI FINAL UX POSTER HURUF (FLAT GRID)
+========================================= */
+
+.letter-grid-desktop, .letter-grid-mobile {
+  display: grid;
+  gap: 6px;
+  width: 100%;
 }
 
-/* 2. Style Dasar Huruf Kana (Biar Makin Menonjol) */
-.letter-cell {
-  font-weight: 800 !important;
-  color: #1e293b !important;
-  background: #ffffff !important;
-  border-radius: 8px !important;
+/* Sel huruf secara umum */
+.letter-cell, .letter-label, .letter-empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
+  border-radius: 6px;
+  min-width: 0; /* MANTRA ANTI OFFSIDE */
+}
+
+/* Huruf Jepang */
+.letter-cell {
+  background: #ffffff;
+  color: #1e293b;
+  font-weight: 800;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Petunjuk (A, KA, SA dll) dibuat redup elegan */
+.letter-label {
+  font-size: 0.8rem;
+  color: #94a3b8; /* Abu-abu sopan */
+  font-weight: 600;
+  background: transparent;
+}
+
+/* Kotak kosong biar layout tetep rapi */
+.letter-empty {
+  background: rgba(0,0,0,0.03); 
+}
+
+/* --- TAMPILAN DESKTOP --- */
+@media (min-width: 769px) {
+  .letter-poster {
+    width: 100%;
+    overflow-x: hidden; /* Haram ada scrollbar horizontal */
+  }
+  .letter-cell {
+    padding: 8px 0;
+    font-size: 1.25rem;
+  }
 }
 
 /* --- TAMPILAN MOBILE --- */
 @media (max-width: 768px) {
   .letter-cell {
-    font-size: 1.35rem !important; /* Huruf Jepang dibuat lebih tebal & besar di HP */
-    padding: 12px 0 !important;
-  }
-  
-  /* Sentering Yoon khusus Mobile (Karena isinya cuma 4 kolom) */
-  .yoon-section .letter-row {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 8px !important;
-  }
-  .yoon-section .letter-cell,
-  .yoon-section .letter-label {
-    flex: 0 0 22% !important; /* Paksa lebarnya pas di tengah */
-  }
-}
-
-/* --- TAMPILAN DESKTOP (COMPACT & ANTI SCROLLBAR) --- */
-@media (min-width: 769px) {
-  .letter-poster {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: hidden !important; /* Kunci rapat, haram ada scroll horizontal */
-  }
-  .letter-cell {
-    padding: 8px 0 !important; /* Dibuat langsing (compact) biar muat 12 kolom */
-    font-size: 1.15rem !important; 
+    padding: 10px 0;
+    font-size: 1.4rem; /* Huruf Jepang digedein dikit di HP */
   }
   .letter-label {
-    font-size: 0.8rem !important;
+    font-size: 0.75rem;
+  }
+  /* Yoon rata tengah di Mobile */
+  .yoon-section .letter-grid-mobile {
+    grid-template-columns: repeat(4, minmax(40px, 65px)) !important;
+    justify-content: center;
   }
 }
-

@@ -24,6 +24,69 @@ document.addEventListener("DOMContentLoaded", () => {
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
 
+  // ==========================================
+  // MESIN LOGIN FIREBASE & PROFIL USER
+  // ==========================================
+  const loginBtn = document.getElementById("login-google-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const loggedOutView = document.getElementById("logged-out-view");
+  const loggedInView = document.getElementById("logged-in-view");
+  const userNameDisplay = document.getElementById("user-name");
+  const userAvatarDisplay = document.getElementById("user-avatar");
+
+  // Fungsi Login
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      if (!window.firebaseAuth || !window.firebaseProvider) {
+        alert("Mesin Firebase belum siap! Tunggu sebentar atau refresh halaman.");
+        return;
+      }
+      loginBtn.innerHTML = "Memuat..."; // Efek loading
+      window.signInWithPopup(window.firebaseAuth, window.firebaseProvider)
+        .then((result) => {
+          console.log("Login Berhasil:", result.user.displayName);
+        })
+        .catch((error) => {
+          console.error("Gagal Login:", error);
+          alert("Gagal login: " + error.message);
+          loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
+        });
+    });
+  }
+
+  // Fungsi Logout
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      window.signOut(window.firebaseAuth).then(() => {
+        console.log("User berhasil keluar.");
+      });
+    });
+  }
+
+  // Deteksi Perubahan Status Login (Otomatis jalan saat halaman dibuka)
+  if (window.firebaseAuth && window.onAuthStateChanged) {
+    window.onAuthStateChanged(window.firebaseAuth, (user) => {
+      if (user) {
+        // JIKA LOGIN BERHASIL
+        loggedOutView.style.display = "none";
+        loggedInView.style.display = "flex";
+        
+        // Pasang Nama dan Foto Profil Google
+        userNameDisplay.textContent = user.displayName || "Pelajar";
+        userAvatarDisplay.src = user.photoURL || "./assets/logo.png";
+        
+        // Simpan data user ke variable global (buat nanti simpan skor database)
+        window.currentUser = user; 
+      } else {
+        // JIKA BELUM LOGIN / LOGOUT
+        loggedOutView.style.display = "block";
+        loggedInView.style.display = "none";
+        loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
+        window.currentUser = null;
+      }
+    });
+  }
+
   // Fungsi untuk mengambil sejumlah N soal acak dari sebuah array
   function getRandomQuestions(array, count) {
     const shuffled = [...array].sort(() => 0.5 - Math.random());

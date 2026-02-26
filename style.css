@@ -1574,7 +1574,7 @@ body.training-session .app-footer,
 body.review-mode-active .app-footer {
   display: flex !important;
   position: fixed;
-  right: 16px;
+  right: 8px;
   top: 86px;
   left: auto;
   bottom: auto;

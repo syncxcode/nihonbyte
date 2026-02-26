@@ -1974,6 +1974,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, 150); 
 };
+
+  const APP_VERSION = "v1.1.0";
+  document.addEventListener("DOMContentLoaded", () => {
+    const versionElement = document.getElementById("app-version");
+    if (versionElement) {
+      versionElement.innerText = APP_VERSION;
+    }
+  });
   
   // Panggil render saat pertama kali dimuat
   window.addEventListener("resize", enforceMobileTopbarOrder);

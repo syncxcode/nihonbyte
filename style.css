@@ -2289,3 +2289,55 @@ body.guest-mode #sidebar .sidebar-tree button.restricted {
   cursor: not-allowed;
   pointer-events: none;
 }
+
+
+.auth-gate-email-btn {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #fda4af;
+  background: #fff1f2;
+  color: #9f1239;
+  padding: 11px 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.email-auth-form {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.email-auth-form input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+}
+
+.email-auth-form button[type="submit"] {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #0f172a;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.email-auth-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.email-auth-links button {
+  border: none;
+  background: transparent;
+  color: #475569;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8rem;
+}

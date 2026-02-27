@@ -2476,48 +2476,72 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { capture: true });
 
+  function getSquareDownloadTypography(text = '') {
+    const cleanText = (text || '').trim();
+    const length = cleanText.length || 1;
+
+    if (length <= 1) return { kanji: 320, kana: 82, romaji: 56, meaning: 62 };
+    if (length <= 2) return { kanji: 270, kana: 78, romaji: 54, meaning: 58 };
+    if (length <= 4) return { kanji: 230, kana: 72, romaji: 50, meaning: 52 };
+    if (length <= 8) return { kanji: 190, kana: 66, romaji: 46, meaning: 48 };
+    return { kanji: 150, kana: 58, romaji: 42, meaning: 42 };
+  }
+
+  function escapeHTML(value = '') {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   window.downloadAsImage = function(event, cardId) {
-  event.stopPropagation();
+    event.stopPropagation();
 
-  const element = document.getElementById(cardId);
-  if (!element) return;
+    const element = document.getElementById(cardId);
+    if (!element) return;
 
-  const cardOverlay = element.querySelector('.card-overlay');
-  const sourceKanji = cardOverlay?.querySelector('.kanji')?.textContent?.trim() || '—';
-  const sourceKana = cardOverlay?.querySelector('.kana')?.textContent?.trim() || '—';
-  const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
-  const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
+    const cardOverlay = element.querySelector('.card-overlay');
+    const sourceKanji = cardOverlay?.querySelector('.kanji')?.textContent?.trim() || '—';
+    const sourceKana = cardOverlay?.querySelector('.kana')?.textContent?.trim() || '—';
+    const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
+    const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
 
-  const exportNode = document.createElement('div');
-  exportNode.className = 'download-export-card';
-  exportNode.innerHTML = `
-    <div class="download-export-content">
-      <div class="download-export-kanji">${sourceKanji}</div>
-      <div class="download-export-kana">${sourceKana}</div>
-      <div class="download-export-romaji">${sourceRomaji}</div>
-      <div class="download-export-meaning">${sourceMeaning}</div>
-      <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
-    </div>
-  `;
+    const sizes = getSquareDownloadTypography(sourceKanji);
 
-  document.body.appendChild(exportNode);
+    const exportNode = document.createElement('div');
+    exportNode.className = 'download-export-card';
+    exportNode.innerHTML = `
+      <div class="download-export-content">
+        <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
+        <div class="download-export-kanji" style="font-size:${sizes.kanji}px">${escapeHTML(sourceKanji)}</div>
+        <div class="download-export-kana" style="font-size:${sizes.kana}px">${escapeHTML(sourceKana)}</div>
+        <div class="download-export-romaji" style="font-size:${sizes.romaji}px">${escapeHTML(sourceRomaji)}</div>
+        <div class="download-export-meaning" style="font-size:${sizes.meaning}px">${escapeHTML(sourceMeaning)}</div>
+      </div>
+    `;
 
-  html2canvas(exportNode, {
-    backgroundColor: null,
-    scale: 3,
-    useCORS: true,
-    logging: false,
-  }).then(canvas => {
-    const link = document.createElement('a');
-    link.download = `NihonByte-${cardId}-1x1.png`;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
-  }).catch(err => {
-    console.error('Gagal mendownload gambar:', err);
-  }).finally(() => {
-    exportNode.remove();
-  });
-};
+    document.body.appendChild(exportNode);
+
+    html2canvas(exportNode, {
+      backgroundColor: null,
+      scale: 2,
+      width: 1080,
+      height: 1080,
+      useCORS: true,
+      logging: false,
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = `NihonByte-${cardId}-square.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).catch(err => {
+      console.error('Gagal mendownload gambar:', err);
+    }).finally(() => {
+      exportNode.remove();
+    });
+  };
 
   const APP_VERSION = "v1.1.0";
   document.addEventListener("DOMContentLoaded", () => {

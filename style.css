@@ -645,6 +645,37 @@ select, input, .action-btn {
   overflow-y: auto;
 }
 
+.logout-floating-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.1));
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(31, 41, 55, 0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  z-index: 2;
+}
+
+.logout-floating-btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.18));
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.35);
+}
+
+.logout-floating-btn:active {
+  transform: scale(0.96);
+}
+
 #sidebar.active { transform: translateX(0); }
 #sidebar h3 {
   margin: 0 0 18px;
@@ -686,6 +717,83 @@ select, input, .action-btn {
 }
 
 .menu-btn:hover { background: rgba(255, 255, 255, 0.25); transform: translateX(4px); }
+
+.download-export-card {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+  border-radius: 68px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 58%),
+    radial-gradient(circle at 87% 89%, rgba(255, 255, 255, 0.4), transparent 48%),
+    linear-gradient(155deg, #ffd6e2 0%, #ff9fba 48%, #ff7595 100%);
+  border: 14px solid rgba(255, 255, 255, 0.62);
+  box-sizing: border-box;
+}
+
+.download-export-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 112px;
+  box-sizing: border-box;
+}
+
+.download-export-watermark {
+  position: absolute;
+  width: 75%;
+  max-width: 700px;
+  opacity: 0.1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: saturate(110%);
+  pointer-events: none;
+}
+
+.download-export-kanji,
+.download-export-kana,
+.download-export-romaji,
+.download-export-meaning {
+  position: relative;
+  z-index: 1;
+  color: #0f172a;
+  text-shadow: 0 4px 14px rgba(255, 255, 255, 0.45);
+}
+
+.download-export-kanji {
+  font-size: 300px;
+  line-height: 0.9;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.download-export-kana {
+  font-size: 78px;
+  font-weight: 600;
+}
+
+.download-export-romaji {
+  font-size: 56px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.download-export-meaning {
+  font-size: 62px;
+  font-weight: 700;
+  text-transform: capitalize;
+  max-width: 88%;
+}
 
 #overlay {
   position: fixed;

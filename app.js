@@ -2710,7 +2710,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderDashboard(user, profile, historyItems = [], options = {}) {
     const emailUser = !isGoogleUser(user);
-    const statusText = user.emailVerified || !emailUser ? "✅ Akun aktif" : "⚠️ Email belum terverifikasi";
     const photoUrl = resolveProfilePhoto(user, profile);
     const displayName = profile?.displayName || defaultDisplayName(user);
     const historyMarkup = historyItems.length
@@ -2747,11 +2746,17 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="dashboard-avatar-frame">
             <img id="dashboard-avatar-preview" src="${photoUrl}" alt="Avatar profil">
           </div>
+          <button id="dashboard-edit-toggle" type="button" class="dashboard-edit-toggle" aria-expanded="false" aria-controls="dashboard-profile-form" title="Edit profil">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+            </svg>
+            <span>Edit profil</span>
+          </button>
           <h2>${displayName}</h2>
           <p class="dashboard-email">${user.email || '-'}</p>
-          <p class="dashboard-status">${statusText}</p>
 
-          <form id="dashboard-profile-form" class="dashboard-profile-form">
+          <form id="dashboard-profile-form" class="dashboard-profile-form" hidden>
             <label for="dashboard-name-input">Nama tampilan</label>
             <input id="dashboard-name-input" type="text" value="${displayName}" maxlength="40" required>
             <p class="dashboard-form-note">Nama ini yang akan tampil di sidebar & dashboard.</p>
@@ -2780,11 +2785,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function bindDashboardProfileEvents(user, profile = null) {
     const form = document.getElementById("dashboard-profile-form");
+    const editToggleBtn = document.getElementById("dashboard-edit-toggle");
     const nameInput = document.getElementById("dashboard-name-input");
     const avatarPreview = document.getElementById("dashboard-avatar-preview");
     const avatarUpload = document.getElementById("dashboard-avatar-upload");
     const presetButtons = document.querySelectorAll(".avatar-preset-btn");
-    if (!form || !nameInput || !avatarPreview) return;
+    if (!form || !nameInput || !avatarPreview || !editToggleBtn) return;
+
+    editToggleBtn.addEventListener("click", () => {
+      const isOpen = !form.hidden;
+      form.hidden = isOpen;
+      editToggleBtn.setAttribute("aria-expanded", String(!isOpen));
+      editToggleBtn.classList.toggle("active", !isOpen);
+      if (!isOpen) nameInput.focus();
+    });
 
     let selectedPhotoUrl = resolveProfilePhoto(user, profile);
     let photoSource = profile?.photoSource || (isGoogleUser(user) ? "google" : "default");
@@ -2846,6 +2860,9 @@ document.addEventListener("DOMContentLoaded", () => {
         userNameDisplay.textContent = displayName;
         applyUserAvatar(window.currentUser, cachedUserProfile);
         alert("Profil berhasil diperbarui.");
+        form.hidden = true;
+        editToggleBtn.setAttribute("aria-expanded", "false");
+        editToggleBtn.classList.remove("active");
       } catch (error) {
         alert("Gagal menyimpan profil: " + error.message);
       }

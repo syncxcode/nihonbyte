@@ -2210,6 +2210,11 @@ body.history-mode #grid {
 /* =========================================
    AUTH GATE + MODE TAMU
 ========================================= */
+body.auth-locked {
+  overflow: hidden;
+  height: 100dvh;
+}
+
 .auth-gate {
   position: fixed;
   inset: 0;

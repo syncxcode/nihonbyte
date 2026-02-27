@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let accessMode = "locked";
   let isEmailRegisterMode = false;
+  let shouldOpenVerificationModalAfterSignup = false;
 
 
   function isLoggedInUser() {
@@ -130,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
           await window.sendEmailVerification(result.user);
           alert("Akun berhasil dibuat. Email verifikasi sudah dikirim.");
         }
+        shouldOpenVerificationModalAfterSignup = true;
       } else {
         await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
       }
@@ -316,6 +318,10 @@ document.addEventListener("DOMContentLoaded", () => {
         window.currentUser = user; 
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
+        if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
+          openAccountModal();
+        }
+        shouldOpenVerificationModalAfterSignup = false;
       } else {
         // JIKA BELUM LOGIN / LOGOUT
         loggedOutView.style.display = "block";
@@ -324,6 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.currentUser = null;
         updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
+        shouldOpenVerificationModalAfterSignup = false;
       }
     });
   }

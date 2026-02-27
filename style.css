@@ -2460,3 +2460,43 @@ body.guest-mode #sidebar .sidebar-tree button.restricted {
   cursor: pointer;
   font-size: 0.8rem;
 }
+
+/* =========================================
+   🔧 FIX LAYOUT: HEADER, SIDEBAR & GRID
+========================================= */
+
+/* 1. Paksa Topbar selalu di paling atas (mengatasi sidebar menutupi header) */
+.topbar {
+  z-index: 1005 !important;
+}
+
+/* 2. Sesuaikan Sidebar agar meluncur rapi di bawah Topbar */
+#sidebar {
+  z-index: 1000 !important;
+  /* Dorong isi menu ke bawah sejauh tinggi header + 30px ruang napas */
+  padding-top: calc(var(--topbar-offset) + 30px) !important;
+}
+
+/* 3. Paksa Kartu Kanji menempel ke atas (mengatasi kartu tenggelam) */
+#grid {
+  align-content: start !important;
+  align-items: start !important;
+  grid-auto-rows: max-content !important; /* Mencegah baris melar ke bawah */
+  padding-top: calc(var(--topbar-offset) + 20px) !important;
+  margin-top: 0 !important;
+}
+
+/* 4. Sembunyikan baris rekomendasi jika kebetulan kosong agar tidak memakan tempat */
+#recommendationRow:empty {
+  display: none !important;
+}
+
+/* Penyesuaian khusus untuk versi HP (Mobile) agar jaraknya pas */
+@media (max-width: 768px) {
+  #sidebar {
+    padding-top: calc(var(--topbar-offset) + 25px) !important;
+  }
+  #grid {
+    padding-top: calc(var(--topbar-offset) + 15px) !important;
+  }
+}

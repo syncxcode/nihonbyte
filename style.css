@@ -2052,6 +2052,97 @@ body.review-mode-active .app-footer {
 .user-actions { display: flex; align-items: center; gap: 8px; }
 .sep { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
 
+
+.verification-hold-note {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 236, 179, 0.2);
+  border: 1px solid rgba(255, 236, 179, 0.45);
+  color: #fff4c2;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.logout-floating-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#sidebar { position: relative; }
+
+#logged-in-view {
+  justify-content: flex-start;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+#dashboard-btn.history-link {
+  font-size: 0.78rem;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: rgba(255,255,255,0.08);
+}
+
+.download-export-card {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+  border-radius: 44px;
+  background: linear-gradient(140deg, rgba(255,255,255,0.34), rgba(255,255,255,0.14));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255,255,255,0.45);
+  overflow: hidden;
+}
+
+.download-export-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #101010;
+  text-align: center;
+  padding: 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.download-export-kanji { font-size: 220px; font-weight: 900; line-height: 1; }
+.download-export-kana { font-size: 68px; font-weight: 700; margin-top: 8px; }
+.download-export-romaji { font-size: 48px; margin-top: 8px; }
+.download-export-meaning { font-size: 56px; margin-top: 14px; font-weight: 800; }
+.download-export-watermark {
+  position: absolute;
+  width: 70%;
+  max-width: 720px;
+  opacity: 0.12;
+  inset: 0;
+  margin: auto;
+}
+
 /* Tabel Riwayat */
 body.history-mode #grid {
   display: grid;

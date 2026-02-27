@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const accountModalBackdrop = document.getElementById("accountModalBackdrop");
   const accountModalClose = document.getElementById("accountModalClose");
   const resendVerificationBtn = document.getElementById("resend-verification-btn");
-  const changeEmailForm = document.getElementById("change-email-form");
-  const newEmailInput = document.getElementById("new-email-input");
   const accountEmailStatus = document.getElementById("account-email-status");
   const dashboardBtn = document.getElementById("dashboard-btn");
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
@@ -72,6 +70,57 @@ document.addEventListener("DOMContentLoaded", () => {
     ? `${window.location.origin}${window.location.pathname}`
     : "https://nihonbyte.web.app/";
 
+  const avatarPresets = [
+    { id: "aqua", label: "Aqua", color: "#0ea5e9", emoji: "🌊" },
+    { id: "fox", label: "Fox", color: "#f97316", emoji: "🦊" },
+    { id: "dragon", label: "Dragon", color: "#10b981", emoji: "🐉" },
+    { id: "bird", label: "Bird", color: "#6366f1", emoji: "🐦" },
+    { id: "panda", label: "Panda", color: "#8b5cf6", emoji: "🐼" },
+    { id: "cat", label: "Cat", color: "#f43f5e", emoji: "🐱" },
+    { id: "ball", label: "Ball", color: "#14b8a6", emoji: "🏀" },
+    { id: "bike", label: "Bike", color: "#3b82f6", emoji: "🚲" },
+    { id: "bird2", label: "Robin", color: "#ef4444", emoji: "🐤" },
+    { id: "cheese", label: "Cheese", color: "#eab308", emoji: "🧀" },
+    { id: "football", label: "Football", color: "#f59e0b", emoji: "🏈" },
+    { id: "ramen", label: "Ramen", color: "#06b6d4", emoji: "🍜" }
+  ];
+
+  let cachedUserProfile = null;
+
+  function buildPresetAvatarDataUrl(preset) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><defs><radialGradient id="g" cx="30%" cy="30%" r="80%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/><stop offset="100%" stop-color="${preset.color}"/></radialGradient></defs><circle cx="60" cy="60" r="58" fill="url(#g)"/><text x="60" y="73" text-anchor="middle" font-size="50">${preset.emoji}</text></svg>`;
+    return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  }
+
+  async function loadUserProfile(uid) {
+    if (!window.firebaseDb || !window.doc || !window.getDoc) return null;
+    try {
+      const ref = window.doc(window.firebaseDb, "users", uid);
+      const snap = await window.getDoc(ref);
+      if (!snap.exists()) return null;
+      const data = snap.data() || {};
+      return {
+        displayName: data.profileDisplayName || "",
+        photoURL: data.profilePhotoURL || "",
+        photoSource: data.profilePhotoSource || ""
+      };
+    } catch (error) {
+      console.error("Gagal ambil profil user:", error);
+      return null;
+    }
+  }
+
+  async function saveUserProfile(uid, patch = {}) {
+    if (!window.firebaseDb || !window.doc || !window.setDoc) return;
+    const ref = window.doc(window.firebaseDb, "users", uid);
+    await window.setDoc(ref, {
+      profileDisplayName: patch.displayName || "",
+      profilePhotoURL: patch.photoURL || "",
+      profilePhotoSource: patch.photoSource || "",
+      updatedAt: new Date().toISOString()
+    }, { merge: true });
+  }
+
   function isLoggedInUser() {
     return !!window.currentUser;
   }
@@ -84,14 +133,23 @@ document.addEventListener("DOMContentLoaded", () => {
     return !!user.emailVerified;
   }
 
-  function applyUserAvatar(user) {
+  function isGoogleUser(user) {
     const providerIds = Array.isArray(user?.providerData) ? user.providerData.map((p) => p?.providerId) : [];
-    const isGoogleUser = providerIds.includes("google.com");
-    if (isGoogleUser && user?.photoURL) {
-      userAvatarDisplay.src = user.photoURL;
-    } else {
-      userAvatarDisplay.src = "./assets/profile-default.svg";
-    }
+    return providerIds.includes("google.com");
+  }
+
+  function defaultDisplayName(user) {
+    return user?.displayName || (user?.email ? user.email.split("@")[0] : "Pelajar");
+  }
+
+  function resolveProfilePhoto(user, profile = null) {
+    if (profile?.photoURL) return profile.photoURL;
+    if (isGoogleUser(user) && user?.photoURL) return user.photoURL;
+    return "./assets/profile-default.svg";
+  }
+
+  function applyUserAvatar(user, profile = null) {
+    userAvatarDisplay.src = resolveProfilePhoto(user, profile);
   }
 
   function setAccessMode(mode) {
@@ -354,27 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (changeEmailForm) {
-    changeEmailForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!window.currentUser || !window.updateEmail) return;
-      const newEmail = (newEmailInput?.value || "").trim();
-      if (!newEmail) return;
-      try {
-        await window.updateEmail(window.currentUser, newEmail);
-        alert("Email berhasil diubah. Silakan verifikasi email baru.");
-        if (window.sendEmailVerification) {
-          await window.sendEmailVerification(window.currentUser, {
-            url: authActionUrl,
-            handleCodeInApp: true
-          });
-        }
-        updateAccountStatusUI(window.currentUser);
-      } catch (error) {
-        alert("Gagal ubah email: " + error.message + " (biasanya butuh login ulang)");
-      }
-    });
-  }
 
   // Fungsi Logout
   if (logoutBtn) {
@@ -398,13 +435,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Deteksi Perubahan Status Login (Otomatis jalan saat halaman dibuka)
   if (window.firebaseAuth && window.onAuthStateChanged) {
-    window.onAuthStateChanged(window.firebaseAuth, (user) => {
+    window.onAuthStateChanged(window.firebaseAuth, async (user) => {
       if (user && isVerifiedUser(user)) {
         loggedOutView.style.display = "none";
         loggedInView.style.display = "flex";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
-        userNameDisplay.textContent = user.displayName || (user.email ? user.email.split("@")[0] : "Pelajar");
-        applyUserAvatar(user);
+        cachedUserProfile = await loadUserProfile(user.uid);
+        const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
+        userNameDisplay.textContent = resolvedName;
+        applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
@@ -2669,115 +2708,181 @@ document.addEventListener("DOMContentLoaded", () => {
   if (paginationContainer) paginationContainer.style.display = isActive ? "none" : "flex";
 }
 
+  function renderDashboard(user, profile, historyItems = [], options = {}) {
+    const emailUser = !isGoogleUser(user);
+    const statusText = user.emailVerified || !emailUser ? "✅ Akun aktif" : "⚠️ Email belum terverifikasi";
+    const photoUrl = resolveProfilePhoto(user, profile);
+    const displayName = profile?.displayName || defaultDisplayName(user);
+    const historyMarkup = historyItems.length
+      ? historyItems.map((d) => {
+          const isLulus = d.nilai >= 60;
+          const statusClass = isLulus ? "status-lulus" : "status-remidi";
+          const kategoriLabel = getLatihanCategoryLabel(d.kategori);
+          return `
+            <article class="dashboard-history-item">
+              <div>
+                <p class="dashboard-history-date">📅 ${d.tanggal ? d.tanggal.split(',')[0] : '-'}</p>
+                <h4>📚 ${kategoriLabel}</h4>
+                <span class="dashboard-level">Level ${d.level || '-'}</span>
+              </div>
+              <div class="dashboard-history-score ${statusClass}">${d.nilai || 0}%</div>
+              <div class="dashboard-history-meta">
+                <p>🎯 ${d.skor_benar || 0}/${d.total_soal || 0}</p>
+                <strong class="${statusClass}">${isLulus ? 'LULUS ✅' : 'GAGAL ❌'}</strong>
+              </div>
+            </article>
+          `;
+        }).join("")
+      : '<div class="dashboard-empty">Belum ada riwayat latihan tersimpan.</div>';
+
+    const avatarPresetMarkup = avatarPresets.map((preset) => {
+      const avatarUrl = buildPresetAvatarDataUrl(preset);
+      return `<button type="button" class="avatar-preset-btn" data-avatar-url="${avatarUrl}" title="${preset.label}">${preset.emoji}</button>`;
+    }).join("");
+
+    return `
+      <section class="dashboard-shell">
+        <div class="dashboard-cover"></div>
+        <div class="dashboard-profile-card">
+          <div class="dashboard-avatar-frame">
+            <img id="dashboard-avatar-preview" src="${photoUrl}" alt="Avatar profil">
+          </div>
+          <h2>${displayName}</h2>
+          <p class="dashboard-email">${user.email || '-'}</p>
+          <p class="dashboard-status">${statusText}</p>
+
+          <form id="dashboard-profile-form" class="dashboard-profile-form">
+            <label for="dashboard-name-input">Nama tampilan</label>
+            <input id="dashboard-name-input" type="text" value="${displayName}" maxlength="40" required>
+            <p class="dashboard-form-note">Nama ini yang akan tampil di sidebar & dashboard.</p>
+
+            <div class="dashboard-avatar-tools">
+              <p>Pilih avatar</p>
+              <div class="avatar-preset-grid">${avatarPresetMarkup}</div>
+              ${emailUser
+                ? '<label class="dashboard-upload-label" for="dashboard-avatar-upload">Atau upload foto sendiri</label><input id="dashboard-avatar-upload" type="file" accept="image/*">'
+                : '<p class="dashboard-upload-disabled">Login Google: upload foto dimatikan. Gunakan avatar pilihan di atas.</p>'}
+            </div>
+
+            <button type="submit" class="dashboard-save-btn">Simpan profil</button>
+          </form>
+        </div>
+
+        <div class="dashboard-history-panel">
+          <h3>📊 Riwayat Latihan</h3>
+          <p class="dashboard-history-sub">Rekap berdasarkan kategori latihan yang dijalani.</p>
+          <div class="dashboard-history-list">${historyMarkup}</div>
+          ${options.error ? '<p class="dashboard-error">⚠️ Gagal memuat sebagian data riwayat.</p>' : ''}
+        </div>
+      </section>
+    `;
+  }
+
+  function bindDashboardProfileEvents(user, profile = null) {
+    const form = document.getElementById("dashboard-profile-form");
+    const nameInput = document.getElementById("dashboard-name-input");
+    const avatarPreview = document.getElementById("dashboard-avatar-preview");
+    const avatarUpload = document.getElementById("dashboard-avatar-upload");
+    const presetButtons = document.querySelectorAll(".avatar-preset-btn");
+    if (!form || !nameInput || !avatarPreview) return;
+
+    let selectedPhotoUrl = resolveProfilePhoto(user, profile);
+    let photoSource = profile?.photoSource || (isGoogleUser(user) ? "google" : "default");
+
+    presetButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectedPhotoUrl = btn.dataset.avatarUrl || selectedPhotoUrl;
+        photoSource = "preset";
+        avatarPreview.src = selectedPhotoUrl;
+        presetButtons.forEach((el) => el.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    if (avatarUpload) {
+      avatarUpload.addEventListener("change", () => {
+        const file = avatarUpload.files?.[0];
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+          alert("File avatar harus berupa gambar.");
+          avatarUpload.value = "";
+          return;
+        }
+        if (file.size > 2 * 1024 * 1024) {
+          alert("Maksimal ukuran avatar 2MB.");
+          avatarUpload.value = "";
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+          selectedPhotoUrl = typeof reader.result === "string" ? reader.result : selectedPhotoUrl;
+          photoSource = "upload";
+          avatarPreview.src = selectedPhotoUrl;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const displayName = (nameInput.value || "").trim();
+      if (displayName.length < 2) {
+        alert("Nama minimal 2 karakter.");
+        return;
+      }
+      try {
+        if (window.updateProfile && window.currentUser) {
+          await window.updateProfile(window.currentUser, {
+            displayName,
+            photoURL: selectedPhotoUrl
+          });
+        }
+        await saveUserProfile(user.uid, {
+          displayName,
+          photoURL: selectedPhotoUrl,
+          photoSource
+        });
+        cachedUserProfile = { displayName, photoURL: selectedPhotoUrl, photoSource };
+        userNameDisplay.textContent = displayName;
+        applyUserAvatar(window.currentUser, cachedUserProfile);
+        alert("Profil berhasil diperbarui.");
+      } catch (error) {
+        alert("Gagal menyimpan profil: " + error.message);
+      }
+    });
+  }
+
   const historyBtn = dashboardBtn;
 
-if (historyBtn) {
-  historyBtn.addEventListener("click", async () => {
-    // 1. Cek Login
-    if (!window.currentUser) {
-      alert("Silahkan Login!");
-      return; 
-    }
-
-    const grid = document.getElementById("grid");
-    
-    // 2. Tampilkan Layar Loading
-    grid.innerHTML = `
-      <div class="history-container" style="text-align: center; padding: 50px;">
-        <p>⏳ Sabar, lagi narik data dari awan...</p>
-      </div>
-    `;    
-
-    try {
-      const uid = window.currentUser.uid;
-      const q = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : null;
-
-      // 3. --- KASUS KOSONG (Belum Pernah Latihan) ---
-      if (!q || q.empty) {
-        grid.innerHTML = `
-          <div class="history-container">
-            <h2>📊 Dasbor Pengguna</h2>
-            <div style="text-align: center; padding: 30px; color: #64748b;">
-              <p>Belum ada riwayat latihan tersimpan.</p>
-            </div>
-          </div>
-        `;
-        if (typeof setHistoryMode === "function") setHistoryMode(true);
-        if (typeof closeSidebar === "function") closeSidebar();
+  if (historyBtn) {
+    historyBtn.addEventListener("click", async () => {
+      if (!window.currentUser) {
+        alert("Silahkan Login!");
         return;
-      }      
+      }
 
-      // 4. --- BUILD HTML DENGAN KAPSUL PER ITEM ---
-      let historyHTML = `
-        <div class="history-container">
-          <h2>📊 Dasbor Pengguna</h2>
-          <p style="text-align: center; color: #64748b; margin-bottom: 20px;">
-            Rekap berdasarkan kategori latihan yang dijalani.
-          </p>
-          <div class="history-list" style="display: flex; flex-direction: column; gap: 15px;">
-      `;      
-
-      // Looping Data dari Firebase
-      q.forEach(doc => {
-        const d = doc.data();
-        const isLulus = d.nilai >= 60;
-        const statusColor = isLulus ? "#22c55e" : "#ef4444"; // Hijau kalau lulus, Merah kalau remidi
-        
-        // Panggil fungsi label (kalau ada), kalau gak ada pakai teks aslinya
-        const kategoriLabel = typeof getLatihanCategoryLabel === "function" 
-                              ? getLatihanCategoryLabel(d.kategori) 
-                              : d.kategori.toUpperCase();
-
-        // Template Kapsul Per Item
-        historyHTML += `
-            <div class="history-capsule" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-              
-              <div class="capsule-left" style="display: flex; flex-direction: column; gap: 5px;">
-                <span style="font-size: 0.8rem; color: #94a3b8;">📅 ${d.tanggal ? d.tanggal.split(',')[0] : '-'}</span>
-                <strong style="font-size: 1.1rem; color: #1e293b;">📚 ${kategoriLabel}</strong>
-                <span style="font-size: 0.85rem; background: #e2e8f0; padding: 2px 8px; border-radius: 6px; width: fit-content;">🏷️ Level: ${d.level || '-'}</span>
-              </div>
-
-              <div class="capsule-right" style="text-align: right; display: flex; flex-direction: column; gap: 5px;">
-                <strong style="font-size: 1.2rem; color: ${statusColor};">${d.nilai || 0}%</strong>
-                <span style="font-size: 0.85rem; color: #64748b;">🎯 Benar: ${d.skor_benar || 0}/${d.total_soal || 0}</span>
-                <span style="font-weight: 800; font-size: 0.9rem; color: ${statusColor};">
-                  ${isLulus ? 'LULUS ✅' : 'GAGAL ❌'}
-                </span>
-              </div>
-
-            </div>
-        `;
-      });      
-
-      // Tutup container HTML-nya
-      historyHTML += `
-          </div>
-        </div>
-      `;
-
-      // 5. Render ke layar
-      grid.innerHTML = historyHTML;      
+      grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>⏳ Menyiapkan dashboard...</p></div>';
       if (typeof setHistoryMode === "function") setHistoryMode(true);
-      if (typeof closeSidebar === "function") closeSidebar(); 
+      if (typeof closeSidebar === "function") closeSidebar();
 
-    } catch (err) {
-      console.error("Error loading history:", err);
-      
-      // 6. --- KASUS ERROR (Internet Putus / Gagal Fetch) ---
-      grid.innerHTML = `
-        <div class="history-container">
-          <h2>📊 Dasbor Pengguna</h2>
-          <div style="text-align: center; padding: 30px; color: #ef4444; background: #fee2e2; border-radius: 10px;">
-            <p><strong>⚠️ Gagal memuat riwayat.</strong></p>
-            <p style="font-size: 0.9rem; margin-top: 5px;">Pastikan koneksi internet stabil.</p>
-          </div>
-        </div>
-      `;
-      if (typeof setHistoryMode === "function") setHistoryMode(true);
-    }
-  });
-}
+      try {
+        const uid = window.currentUser.uid;
+        const profile = cachedUserProfile || await loadUserProfile(uid);
+        cachedUserProfile = profile;
+        const q = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : null;
+        const historyItems = [];
+        if (q && !q.empty) q.forEach((item) => historyItems.push(item.data()));
+
+        grid.innerHTML = renderDashboard(window.currentUser, profile, historyItems);
+        bindDashboardProfileEvents(window.currentUser, profile);
+      } catch (err) {
+        console.error("Error loading dashboard:", err);
+        const profile = cachedUserProfile || null;
+        grid.innerHTML = renderDashboard(window.currentUser, profile, [], { error: true });
+        bindDashboardProfileEvents(window.currentUser, profile);
+      }
+    });
+  }
 
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
   async function fetchHistoryData(uid) {

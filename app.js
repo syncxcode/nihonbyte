@@ -68,6 +68,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let shouldOpenVerificationModalAfterSignup = false;
 
 
+  const authActionUrl = window.location.origin && window.location.origin !== "null"
+    ? `${window.location.origin}${window.location.pathname}`
+    : "https://nihonbyte.web.app/";
+
   function isLoggedInUser() {
     return !!window.currentUser;
   }
@@ -155,7 +159,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isEmailRegisterMode) {
         const result = await window.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
         if (window.sendEmailVerification) {
-          await window.sendEmailVerification(result.user);
+          await window.sendEmailVerification(result.user, {
+            url: authActionUrl,
+            handleCodeInApp: true
+          });
           alert("Akun berhasil dibuat. Email verifikasi sudah dikirim.");
         }
         shouldOpenVerificationModalAfterSignup = true;
@@ -184,7 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     try {
-      await window.sendPasswordResetEmail(window.firebaseAuth, email);
+      await window.sendPasswordResetEmail(window.firebaseAuth, email, {
+        url: authActionUrl,
+        handleCodeInApp: true
+      });
       alert("Link reset password sudah dikirim ke email.");
     } catch (error) {
       alert("Gagal kirim reset password: " + error.message);
@@ -211,6 +221,40 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeAccountModal() {
     accountModal?.classList.remove("active");
     accountModal?.setAttribute("aria-hidden", "true");
+  }
+
+  async function handleEmailActionFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get("mode");
+    const oobCode = params.get("oobCode");
+    if (!mode || !oobCode || !window.firebaseAuth) return;
+
+    try {
+      if (mode === "verifyEmail") {
+        if (!window.applyActionCode) return;
+        await window.applyActionCode(window.firebaseAuth, oobCode);
+        alert("Email berhasil diverifikasi. Silakan login ulang.");
+      } else if (mode === "resetPassword") {
+        if (!window.verifyPasswordResetCode || !window.confirmPasswordReset) return;
+        await window.verifyPasswordResetCode(window.firebaseAuth, oobCode);
+        const newPassword = prompt("Masukkan password baru (minimal 6 karakter):", "");
+        if (!newPassword) {
+          alert("Reset password dibatalkan. Buka link reset lagi jika diperlukan.");
+          return;
+        }
+        if (newPassword.length < 6) {
+          alert("Password baru minimal 6 karakter.");
+          return;
+        }
+        await window.confirmPasswordReset(window.firebaseAuth, oobCode, newPassword);
+        alert("Password berhasil diubah. Silakan login dengan password baru.");
+      }
+    } catch (error) {
+      alert("Proses tautan email gagal: " + error.message);
+    } finally {
+      const cleanUrl = `${window.location.origin}${window.location.pathname}`;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
   }
 
   function loginWithGoogle() {
@@ -299,7 +343,10 @@ document.addEventListener("DOMContentLoaded", () => {
     resendVerificationBtn.addEventListener("click", async () => {
       if (!window.currentUser || !window.sendEmailVerification) return;
       try {
-        await window.sendEmailVerification(window.currentUser);
+        await window.sendEmailVerification(window.currentUser, {
+          url: authActionUrl,
+          handleCodeInApp: true
+        });
         alert("Email verifikasi dikirim ulang.");
       } catch (error) {
         alert("Gagal kirim verifikasi: " + error.message);
@@ -316,7 +363,12 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         await window.updateEmail(window.currentUser, newEmail);
         alert("Email berhasil diubah. Silakan verifikasi email baru.");
-        if (window.sendEmailVerification) await window.sendEmailVerification(window.currentUser);
+        if (window.sendEmailVerification) {
+          await window.sendEmailVerification(window.currentUser, {
+            url: authActionUrl,
+            handleCodeInApp: true
+          });
+        }
         updateAccountStatusUI(window.currentUser);
       } catch (error) {
         alert("Gagal ubah email: " + error.message + " (biasanya butuh login ulang)");
@@ -340,6 +392,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // Proses tautan aksi dari email (verifikasi / reset password)
+  handleEmailActionFromUrl();
 
   // Deteksi Perubahan Status Login (Otomatis jalan saat halaman dibuka)
   if (window.firebaseAuth && window.onAuthStateChanged) {

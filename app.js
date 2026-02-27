@@ -111,6 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.classList.toggle("restricted", isGuest);
       summary.setAttribute("aria-disabled", isGuest ? "true" : "false");
     });
+
+    if (searchBtn) {
+      searchBtn.disabled = isGuest;
+      searchBtn.setAttribute("aria-disabled", isGuest ? "true" : "false");
+      searchBtn.title = isGuest ? "Pencarian dikunci di mode tamu" : "Buka pencarian & filter";
+    }
   }
 
   function toggleEmailAuthPanel(forceOpen = null) {
@@ -971,6 +977,10 @@ document.addEventListener("DOMContentLoaded", () => {
   };
       
     searchBtn.addEventListener("click", () => {
+      if (accessMode === "guest") {
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Pencarian & filter dikunci untuk mode tamu. Silakan login untuk membuka fitur ini.</p>");
+        return;
+      }
       if (document.body.classList.contains("review-mode-active")) return;
       if (isTesting) {
         openInfoModal(`

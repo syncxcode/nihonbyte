@@ -33,6 +33,7 @@
     </form>
 
     <button id="continue-guest-btn" class="auth-gate-guest-btn">Masuk sebagai tamu (akses terbatas)</button>
+    <div id="verification-hold-note" class="verification-hold-note" style="display:none;"></div>
     <ul class="auth-gate-note-list">
       <li>Tamu hanya melihat preview konten awal.</li>
       <li>Sidebar kategori dan fitur latihan wajib login.</li>
@@ -43,6 +44,13 @@
 <div id="overlay"></div>
 
 <aside id="sidebar" aria-label="Menu samping">
+  <button id="logout-floating-btn" class="logout-floating-btn" type="button" aria-label="Keluar" style="display:none;">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+  </button>
   <h3>Halo, Selamat Datang</h3>
   <div id="user-profile-section" class="user-profile-section">
         <div id="logged-out-view">
@@ -60,11 +68,10 @@
           <div class="user-info">
             <span id="user-name" class="user-name">Nama User</span>
             <div class="user-actions">
-               <button id="show-history-btn" class="history-link">📜 Riwayat</button>
-               <span class="sep">|</span>
-               <button id="account-btn" class="history-link">⚙️ Akun</button>
-               <span class="sep">|</span>
-            <button id="logout-btn" class="logout-btn">Keluar</button>
+               <button id="dashboard-btn" class="history-link">Dasbor</button>
+               <button id="account-btn" class="history-link" style="display:none;">⚙️ Akun</button>
+               <button id="logout-btn" class="logout-btn" style="display:none;">Keluar</button>
+            </div>
           </div>
         </div>
       </div>

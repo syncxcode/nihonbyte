@@ -325,7 +325,7 @@
 <script type="module">
   // 1. Import Senjata Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateEmail } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateEmail, applyActionCode, confirmPasswordReset, verifyPasswordResetCode } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
   // 2. Ambil Config Firebase dari file lokal `firebase-config.js` (di-ignore Git)
@@ -344,6 +344,9 @@
     window.sendEmailVerification = null;
     window.sendPasswordResetEmail = null;
     window.updateEmail = null;
+    window.applyActionCode = null;
+    window.confirmPasswordReset = null;
+    window.verifyPasswordResetCode = null;
     window.doc = null;
     window.setDoc = null;
     window.getDoc = null;
@@ -366,6 +369,9 @@
     window.sendEmailVerification = sendEmailVerification;
     window.sendPasswordResetEmail = sendPasswordResetEmail;
     window.updateEmail = updateEmail;
+    window.applyActionCode = applyActionCode;
+    window.confirmPasswordReset = confirmPasswordReset;
+    window.verifyPasswordResetCode = verifyPasswordResetCode;
     window.doc = doc;
     window.setDoc = setDoc;
     window.getDoc = getDoc;

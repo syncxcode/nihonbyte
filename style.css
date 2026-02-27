@@ -16,6 +16,8 @@ body {
 
 :root {
   --sidebar-width: 320px;
+  --topbar-offset: 78px;
+  --sidebar-top-safe: 56px;
 }
 
 body::before {
@@ -179,7 +181,7 @@ select, input, .action-btn {
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
-  padding-top: 100px !important; /* 🚀 TARUH DI SINI BIAR GAK KETIMPA PADDING 15PX */
+  padding-top: calc(var(--topbar-offset) + 8px) !important;
   width: 100% !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
@@ -636,7 +638,7 @@ select, input, .action-btn {
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;
   z-index: 1000;
-  padding: 2rem 1.5rem 120px 1.5rem; 
+  padding: var(--sidebar-top-safe) 1.5rem 120px 1.5rem; 
   box-sizing: border-box !important; 
   color: #ffffff;
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
@@ -646,8 +648,9 @@ select, input, .action-btn {
 }
 
 #sidebar.active { transform: translateX(0); }
-#sidebar h3 {
-  margin: 0 0 18px;
+ #sidebar h3 {
+  margin: 0 0 14px;
+  padding-right: 48px;
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
@@ -1006,7 +1009,8 @@ select, input, .action-btn {
 }
 
 @media (min-width: 1024px) {
-  #grid { padding-top: 100px !important; }
+  :root { --topbar-offset: 78px; }
+  #grid { padding-top: calc(var(--topbar-offset) + 8px) !important; }
   .letter-poster { max-width: 960px !important; margin: 18px auto 2.8rem auto !important; padding: 2.5rem 2.4rem 3rem !important; border-radius: 28px; background: rgba(255, 255, 255, 0.975) !important; box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25); }
   .letter-poster-body { gap: 32px !important; }
   .letter-row { gap: 16px !important; grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important; justify-content: center; }
@@ -1021,10 +1025,10 @@ select, input, .action-btn {
    8. ATURAN KHUSUS MOBILE (MAKS 768PX)
 ========================================= */
 @media (max-width: 768px) {
-  :root { --sidebar-width: 290px; }
+  :root { --sidebar-width: 290px; --topbar-offset: 72px; --sidebar-top-safe: 64px; }
 
   #grid {
-    padding-top: 95px !important; 
+    padding-top: calc(var(--topbar-offset) + 6px) !important; 
     gap: 12px !important;
     grid-template-columns: repeat(2, 1fr) !important;
     padding-left: 16px !important;
@@ -1100,6 +1104,27 @@ select, input, .action-btn {
     z-index: 100 !important;
   }
   
+
+
+  #sidebar {
+    padding-left: 1.1rem !important;
+    padding-right: 1.1rem !important;
+    padding-top: var(--sidebar-top-safe) !important;
+  }
+
+  #sidebar h3 {
+    font-size: 1.38rem !important;
+    margin-bottom: 12px !important;
+    padding-right: 44px !important;
+  }
+
+  .logout-floating-btn {
+    top: 10px !important;
+    right: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+
   /* --- Overrides Tombol Download untuk Mobile --- */
   .download-card-btn {
     top: 10px !important;
@@ -1956,6 +1981,7 @@ body.review-mode-active .app-footer {
 ========================================= */
 .user-profile-section {
   padding: 10px 15px;
+  margin-top: 2px;
   background: transparent; /* Hilangin background kotak jelek */
   margin-bottom: 15px;
   text-align: center;

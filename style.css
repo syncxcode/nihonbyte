@@ -45,6 +45,12 @@ header, .navbar, .header-container {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden;
+}
+
+.topbar > * {
+  position: relative;
+  z-index: 1;
 }
 
 
@@ -52,6 +58,15 @@ body.sidebar-open .topbar {
   background: rgba(255, 161, 197, 0.72) !important;
   backdrop-filter: blur(12px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(120%) !important;
+  z-index: 998 !important;
+}
+
+body.sidebar-open .topbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  pointer-events: none;
 }
 
 #resultInfo {
@@ -159,6 +174,19 @@ select, input, .action-btn {
 
 .search-icon-btn:active {
   transform: scale(0.95);
+}
+
+.search-icon-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.search-icon-btn:disabled:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: none;
+  box-shadow: none;
 }
 
 .search-svg {
@@ -679,6 +707,7 @@ select, input, .action-btn {
 #sidebar.active { transform: translateX(0); }
 #sidebar h3 {
   margin: 0 0 18px;
+  padding-right: 56px;
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;

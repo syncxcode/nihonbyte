@@ -2750,8 +2750,10 @@ document.addEventListener("DOMContentLoaded", () => {
           </button>
         </div>
         <div class="dashboard-profile-card">
-          <div class="dashboard-avatar-frame">
-            <img id="dashboard-avatar-preview" src="${photoUrl}" alt="Avatar profil">
+          <div class="dashboard-avatar-wrap">
+            <div class="dashboard-avatar-frame">
+              <img id="dashboard-avatar-preview" src="${photoUrl}" alt="Avatar profil">
+            </div>
             <button id="dashboard-camera-btn" class="dashboard-camera-btn" type="button" aria-label="Ubah avatar" title="Ubah avatar">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>

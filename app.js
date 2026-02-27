@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const authGate = document.getElementById("auth-gate");
   const authGateGoogleBtn = document.getElementById("auth-gate-google-btn");
   const continueGuestBtn = document.getElementById("continue-guest-btn");
+  const guestSidebarBtn = document.getElementById("guest-sidebar-btn");
   const authGateEmailToggleBtn = document.getElementById("auth-gate-email-toggle");
   const loginEmailBtn = document.getElementById("login-email-btn");
   const emailAuthForm = document.getElementById("email-auth-form");
@@ -52,6 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const changeEmailForm = document.getElementById("change-email-form");
   const newEmailInput = document.getElementById("new-email-input");
   const accountEmailStatus = document.getElementById("account-email-status");
+
+  let originalOverflow = '';
+  let originalPosition = '';
+  let originalTop = '';
+  let originalWidth = '';
+  let savedScrollPosition = 0;
 
   let accessMode = "locked";
   let isEmailRegisterMode = false;
@@ -1879,12 +1886,6 @@ document.addEventListener("DOMContentLoaded", () => {
       closeSidebar();
     }
   });
-
-  let originalOverflow = '';
-  let originalPosition = '';
-  let originalTop = '';
-  let originalWidth = '';
-  let savedScrollPosition = 0;
 
   hamburger.addEventListener("click", () => {
     if (isTesting) {

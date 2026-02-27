@@ -2500,6 +2500,7 @@ body.history-mode #grid {
 }
 
 .dashboard-cover {
+  position: relative;
   min-height: 170px;
   background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 35%), linear-gradient(135deg, #ff4d6d, #ff8fa3);
 }
@@ -2544,24 +2545,80 @@ body.history-mode #grid {
   color: #64748b;
 }
 
-.dashboard-edit-toggle {
-  margin: 6px auto 8px;
+.dashboard-settings-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: #334155;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  background: #fff;
-  color: #334155;
-  padding: 6px 12px;
-  font-weight: 700;
+  justify-content: center;
   cursor: pointer;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.2);
 }
 
-.dashboard-edit-toggle.active {
-  border-color: #ff4d6d;
-  color: #be123c;
-  box-shadow: 0 6px 16px rgba(255, 77, 109, 0.2);
+.dashboard-avatar-frame {
+  position: relative;
+}
+
+.dashboard-camera-btn {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #334155;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.3);
+}
+
+.dashboard-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 1300;
+}
+
+.dashboard-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, calc(100% - 28px));
+  max-height: min(86vh, 760px);
+  overflow: auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px 16px 16px;
+  z-index: 1301;
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.35);
+}
+
+.dashboard-modal h4 {
+  margin: 0 0 14px;
+  color: #0f172a;
+}
+
+.dashboard-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .dashboard-profile-form {
@@ -2701,7 +2758,9 @@ body.history-mode #grid {
   .dashboard-profile-card { width: calc(100% - 10px); border-radius: 18px; padding: 0 14px 18px; }
   .dashboard-avatar-frame { width: 96px; height: 96px; transform: translateY(-42px); }
   .dashboard-profile-card h2 { font-size: 1.45rem; }
-  .dashboard-edit-toggle { font-size: 0.82rem; padding: 6px 11px; }
+  .dashboard-settings-btn { top: 10px; right: 10px; width: 34px; height: 34px; }
+  .dashboard-camera-btn { width: 32px; height: 32px; }
+  .dashboard-modal { width: calc(100% - 20px); border-radius: 14px; padding: 18px 12px 12px; }
   .dashboard-history-item {
     grid-template-columns: 1fr;
     text-align: left;

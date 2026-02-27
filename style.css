@@ -306,6 +306,7 @@ select, input, .action-btn {
 /* =========================================
    3. MODAL (KANJI, EXPANDED & FILTER)
 ========================================= */
+.kanji-modal,
 #kanjiModal {
   position: fixed;
   inset: 0;
@@ -320,6 +321,7 @@ select, input, .action-btn {
   box-sizing: border-box;
 }
 
+.kanji-modal.active,
 #kanjiModal.active {
   display: flex;
 }

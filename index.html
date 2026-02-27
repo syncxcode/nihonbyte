@@ -20,6 +20,18 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
       <span>Lanjutkan dengan Google</span>
     </button>
+    <button id="auth-gate-email-toggle" class="auth-gate-email-btn">Masuk / Daftar dengan Email</button>
+
+    <form id="email-auth-form" class="email-auth-form" style="display:none;" novalidate>
+      <input id="email-auth-input" type="email" placeholder="email@contoh.com" required>
+      <input id="email-auth-password" type="password" placeholder="Password minimal 6 karakter" required>
+      <button id="email-auth-submit" type="submit">Masuk dengan Email</button>
+      <div class="email-auth-links">
+        <button id="email-auth-switch-mode" type="button">Belum punya akun? Daftar</button>
+        <button id="email-auth-reset" type="button">Lupa password</button>
+      </div>
+    </form>
+
     <button id="continue-guest-btn" class="auth-gate-guest-btn">Masuk sebagai tamu (akses terbatas)</button>
     <ul class="auth-gate-note-list">
       <li>Tamu hanya melihat preview konten awal.</li>
@@ -38,6 +50,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
             <span>Masuk dengan Google</span>
           </button>
+          <button id="login-email-btn" class="guest-btn">Masuk / Daftar Email</button>
           <button id="guest-sidebar-btn" class="guest-btn">Lanjut sebagai tamu</button>
           <p class="login-desc">Simpan skor latihanmu ke Cloud!</p>
         </div>
@@ -48,6 +61,8 @@
             <span id="user-name" class="user-name">Nama User</span>
             <div class="user-actions">
                <button id="show-history-btn" class="history-link">📜 Riwayat</button>
+               <span class="sep">|</span>
+               <button id="account-btn" class="history-link">⚙️ Akun</button>
                <span class="sep">|</span>
             <button id="logout-btn" class="logout-btn">Keluar</button>
           </div>
@@ -280,11 +295,30 @@
     <p>v1.1.0</p>
   </footer>
   
+
+<section id="accountModal" class="kanji-modal" aria-hidden="true">
+  <div class="kanji-modal-backdrop" id="accountModalBackdrop"></div>
+  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Pengaturan akun">
+    <button id="accountModalClose" class="modal-close" aria-label="Tutup">✕</button>
+    <article class="expanded-card">
+      <div class="info-poster" style="background:#fff; color:#0f172a;">
+        <h3 style="margin-top:0;">Pengaturan Akun Email</h3>
+        <p id="account-email-status" style="font-weight:700; margin:8px 0 16px;">Status verifikasi: -</p>
+        <button id="resend-verification-btn" class="auth-gate-email-btn" style="margin-bottom:12px;">Kirim ulang verifikasi email</button>
+        <form id="change-email-form" class="email-auth-form" style="display:block;">
+          <input id="new-email-input" type="email" placeholder="Email baru" required>
+          <button type="submit">Ubah alamat email</button>
+        </form>
+      </div>
+    </article>
+  </div>
+</section>
+
 <script src="./firebase-config.js"></script>
 <script type="module">
   // 1. Import Senjata Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateEmail } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
   // 2. Ambil Config Firebase dari file lokal `firebase-config.js` (di-ignore Git)
@@ -298,6 +332,11 @@
     window.signInWithPopup = null;
     window.signOut = null;
     window.onAuthStateChanged = null;
+    window.createUserWithEmailAndPassword = null;
+    window.signInWithEmailAndPassword = null;
+    window.sendEmailVerification = null;
+    window.sendPasswordResetEmail = null;
+    window.updateEmail = null;
     window.doc = null;
     window.setDoc = null;
     window.getDoc = null;
@@ -315,6 +354,11 @@
     window.signInWithPopup = signInWithPopup;
     window.signOut = signOut;
     window.onAuthStateChanged = onAuthStateChanged;
+    window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+    window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    window.sendEmailVerification = sendEmailVerification;
+    window.sendPasswordResetEmail = sendPasswordResetEmail;
+    window.updateEmail = updateEmail;
     window.doc = doc;
     window.setDoc = setDoc;
     window.getDoc = getDoc;

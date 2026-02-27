@@ -280,41 +280,47 @@
     <p>v1.1.0</p>
   </footer>
   
+<script src="./firebase-config.js"></script>
 <script type="module">
   // 1. Import Senjata Firebase
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
   import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
   import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
-  // 2. Kunci Config Lu (Gak gua ubah sama sekali)
-  const firebaseConfig = {
-    apiKey: "AIzaSyBaFQYSr3WlD3h_d-_ZxX63FVCNjLclfSg",
-    authDomain: "nihonbyte.firebaseapp.com",
-    projectId: "nihonbyte",
-    storageBucket: "nihonbyte.firebasestorage.app",
-    messagingSenderId: "385677455975",
-    appId: "1:385677455975:web:3d8b0fab928c628c501ac2",
-    measurementId: "G-DEL9QGN671"
-  };
+  // 2. Ambil Config Firebase dari file lokal `firebase-config.js` (di-ignore Git)
+  const firebaseConfig = window.NIHONBYTE_FIREBASE_CONFIG;
 
-  // 3. Nyalain Mesinnya!
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-  const provider = new GoogleAuthProvider();
+  if (!firebaseConfig || !firebaseConfig.apiKey || !firebaseConfig.projectId) {
+    console.warn("⚠️ Firebase config belum ditemukan. Salin firebase-config.example.js jadi firebase-config.js lalu isi config project Anda.");
+    window.firebaseAuth = null;
+    window.firebaseDb = null;
+    window.firebaseProvider = null;
+    window.signInWithPopup = null;
+    window.signOut = null;
+    window.onAuthStateChanged = null;
+    window.doc = null;
+    window.setDoc = null;
+    window.getDoc = null;
+  } else {
+    // 3. Nyalain Mesinnya!
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
 
-  // 4. JADIKAN GLOBAL BIAR BISA DIPAKE DI app.js
-  window.firebaseAuth = auth;
-  window.firebaseDb = db;
-  window.firebaseProvider = provider;
-  window.signInWithPopup = signInWithPopup;
-  window.signOut = signOut;
-  window.onAuthStateChanged = onAuthStateChanged;
-  window.doc = doc;
-  window.setDoc = setDoc;
-  window.getDoc = getDoc;
-  
-  console.log("🔥 Mesin Firebase Sukses Dinyalakan!");
+    // 4. JADIKAN GLOBAL BIAR BISA DIPAKE DI app.js
+    window.firebaseAuth = auth;
+    window.firebaseDb = db;
+    window.firebaseProvider = provider;
+    window.signInWithPopup = signInWithPopup;
+    window.signOut = signOut;
+    window.onAuthStateChanged = onAuthStateChanged;
+    window.doc = doc;
+    window.setDoc = setDoc;
+    window.getDoc = getDoc;
+
+    console.log("🔥 Mesin Firebase Sukses Dinyalakan!");
+  }
 </script>
 
 <script src="app.js"></script>  

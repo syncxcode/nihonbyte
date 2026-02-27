@@ -2741,37 +2741,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return `
       <section class="dashboard-shell">
-        <div class="dashboard-cover"></div>
+        <div class="dashboard-cover">
+          <button id="dashboard-settings-btn" type="button" class="dashboard-settings-btn" aria-label="Pengaturan profil" title="Pengaturan profil">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </div>
         <div class="dashboard-profile-card">
           <div class="dashboard-avatar-frame">
             <img id="dashboard-avatar-preview" src="${photoUrl}" alt="Avatar profil">
+            <button id="dashboard-camera-btn" class="dashboard-camera-btn" type="button" aria-label="Ubah avatar" title="Ubah avatar">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </button>
           </div>
-          <button id="dashboard-edit-toggle" type="button" class="dashboard-edit-toggle" aria-expanded="false" aria-controls="dashboard-profile-form" title="Edit profil">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 20h9"></path>
-              <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
-            </svg>
-            <span>Edit profil</span>
-          </button>
           <h2>${displayName}</h2>
           <p class="dashboard-email">${user.email || '-'}</p>
+        </div>
 
-          <form id="dashboard-profile-form" class="dashboard-profile-form" hidden>
+        <div id="dashboard-modal-backdrop" class="dashboard-modal-backdrop" hidden></div>
+
+        <section id="dashboard-settings-modal" class="dashboard-modal" role="dialog" aria-modal="true" aria-label="Pengaturan profil" hidden>
+          <button type="button" class="dashboard-modal-close" data-close-modal>✕</button>
+          <h4>Pengaturan Profil</h4>
+          <form id="dashboard-name-form" class="dashboard-profile-form">
             <label for="dashboard-name-input">Nama tampilan</label>
             <input id="dashboard-name-input" type="text" value="${displayName}" maxlength="40" required>
             <p class="dashboard-form-note">Nama ini yang akan tampil di sidebar & dashboard.</p>
-
-            <div class="dashboard-avatar-tools">
-              <p>Pilih avatar</p>
-              <div class="avatar-preset-grid">${avatarPresetMarkup}</div>
-              ${emailUser
-                ? '<label class="dashboard-upload-label" for="dashboard-avatar-upload">Atau upload foto sendiri</label><input id="dashboard-avatar-upload" type="file" accept="image/*">'
-                : '<p class="dashboard-upload-disabled">Login Google: upload foto dimatikan. Gunakan avatar pilihan di atas.</p>'}
-            </div>
-
-            <button type="submit" class="dashboard-save-btn">Simpan profil</button>
+            <button type="submit" class="dashboard-save-btn">Simpan nama</button>
           </form>
-        </div>
+        </section>
+
+        <section id="dashboard-avatar-modal" class="dashboard-modal" role="dialog" aria-modal="true" aria-label="Ganti avatar" hidden>
+          <button type="button" class="dashboard-modal-close" data-close-modal>✕</button>
+          <h4>Ganti Avatar</h4>
+          <div class="dashboard-avatar-tools">
+            <p>Pilih avatar default</p>
+            <div class="avatar-preset-grid">${avatarPresetMarkup}</div>
+            ${emailUser
+              ? '<label class="dashboard-upload-label" for="dashboard-avatar-upload">Atau upload foto</label><input id="dashboard-avatar-upload" type="file" accept="image/*">'
+              : '<p class="dashboard-upload-disabled">Login Google: upload dimatikan. Silakan pilih avatar default.</p>'}
+            <button id="dashboard-avatar-save" type="button" class="dashboard-save-btn">Simpan avatar</button>
+          </div>
+        </section>
 
         <div class="dashboard-history-panel">
           <h3>📊 Riwayat Latihan</h3>
@@ -2784,24 +2800,41 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function bindDashboardProfileEvents(user, profile = null) {
-    const form = document.getElementById("dashboard-profile-form");
-    const editToggleBtn = document.getElementById("dashboard-edit-toggle");
+    const settingsBtn = document.getElementById("dashboard-settings-btn");
+    const cameraBtn = document.getElementById("dashboard-camera-btn");
+    const backdrop = document.getElementById("dashboard-modal-backdrop");
+    const settingsModal = document.getElementById("dashboard-settings-modal");
+    const avatarModal = document.getElementById("dashboard-avatar-modal");
+    const closeButtons = document.querySelectorAll("[data-close-modal]");
+    const nameForm = document.getElementById("dashboard-name-form");
     const nameInput = document.getElementById("dashboard-name-input");
     const avatarPreview = document.getElementById("dashboard-avatar-preview");
     const avatarUpload = document.getElementById("dashboard-avatar-upload");
+    const avatarSaveBtn = document.getElementById("dashboard-avatar-save");
     const presetButtons = document.querySelectorAll(".avatar-preset-btn");
-    if (!form || !nameInput || !avatarPreview || !editToggleBtn) return;
 
-    editToggleBtn.addEventListener("click", () => {
-      const isOpen = !form.hidden;
-      form.hidden = isOpen;
-      editToggleBtn.setAttribute("aria-expanded", String(!isOpen));
-      editToggleBtn.classList.toggle("active", !isOpen);
-      if (!isOpen) nameInput.focus();
-    });
+    if (!settingsBtn || !cameraBtn || !backdrop || !settingsModal || !avatarModal || !nameForm || !nameInput || !avatarPreview || !avatarSaveBtn) return;
 
     let selectedPhotoUrl = resolveProfilePhoto(user, profile);
     let photoSource = profile?.photoSource || (isGoogleUser(user) ? "google" : "default");
+
+    function closeAllModals() {
+      backdrop.hidden = true;
+      settingsModal.hidden = true;
+      avatarModal.hidden = true;
+    }
+
+    function openModal(type) {
+      backdrop.hidden = false;
+      settingsModal.hidden = type !== "settings";
+      avatarModal.hidden = type !== "avatar";
+      if (type === "settings") nameInput.focus();
+    }
+
+    settingsBtn.addEventListener("click", () => openModal("settings"));
+    cameraBtn.addEventListener("click", () => openModal("avatar"));
+    backdrop.addEventListener("click", closeAllModals);
+    closeButtons.forEach((btn) => btn.addEventListener("click", closeAllModals));
 
     presetButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -2837,7 +2870,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    form.addEventListener("submit", async (event) => {
+    nameForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       const displayName = (nameInput.value || "").trim();
       if (displayName.length < 2) {
@@ -2859,12 +2892,36 @@ document.addEventListener("DOMContentLoaded", () => {
         cachedUserProfile = { displayName, photoURL: selectedPhotoUrl, photoSource };
         userNameDisplay.textContent = displayName;
         applyUserAvatar(window.currentUser, cachedUserProfile);
-        alert("Profil berhasil diperbarui.");
-        form.hidden = true;
-        editToggleBtn.setAttribute("aria-expanded", "false");
-        editToggleBtn.classList.remove("active");
+        const title = document.querySelector(".dashboard-profile-card h2");
+        if (title) title.textContent = displayName;
+        alert("Nama profil berhasil diperbarui.");
+        closeAllModals();
       } catch (error) {
         alert("Gagal menyimpan profil: " + error.message);
+      }
+    });
+
+    avatarSaveBtn.addEventListener("click", async () => {
+      const displayName = (nameInput.value || "").trim() || defaultDisplayName(user);
+      try {
+        if (window.updateProfile && window.currentUser) {
+          await window.updateProfile(window.currentUser, {
+            displayName,
+            photoURL: selectedPhotoUrl
+          });
+        }
+        await saveUserProfile(user.uid, {
+          displayName,
+          photoURL: selectedPhotoUrl,
+          photoSource
+        });
+        cachedUserProfile = { displayName, photoURL: selectedPhotoUrl, photoSource };
+        userNameDisplay.textContent = displayName;
+        applyUserAvatar(window.currentUser, cachedUserProfile);
+        alert("Avatar berhasil diperbarui.");
+        closeAllModals();
+      } catch (error) {
+        alert("Gagal menyimpan avatar: " + error.message);
       }
     });
   }

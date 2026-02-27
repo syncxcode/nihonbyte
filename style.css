@@ -2515,14 +2515,20 @@ body.history-mode #grid {
   box-shadow: 0 16px 34px rgba(148, 163, 184, 0.25);
 }
 
+.dashboard-avatar-wrap {
+  position: relative;
+  width: 118px;
+  margin: 0 auto;
+  transform: translateY(-45px);
+  margin-bottom: -32px;
+}
+
 .dashboard-avatar-frame {
   width: 118px;
   height: 118px;
   margin: 0 auto;
   border-radius: 50%;
   border: 6px solid #fff;
-  transform: translateY(-45px);
-  margin-bottom: -32px;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
   overflow: hidden;
   background: #f1f5f9;
@@ -2562,14 +2568,11 @@ body.history-mode #grid {
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.2);
 }
 
-.dashboard-avatar-frame {
-  position: relative;
-}
 
 .dashboard-camera-btn {
   position: absolute;
-  right: -2px;
-  bottom: -2px;
+  right: -8px;
+  bottom: 4px;
   width: 34px;
   height: 34px;
   border: none;
@@ -2756,10 +2759,11 @@ body.history-mode #grid {
   .dashboard-shell { border-radius: 20px; width: calc(100% - 2px); }
   .dashboard-cover { min-height: 145px; }
   .dashboard-profile-card { width: calc(100% - 10px); border-radius: 18px; padding: 0 14px 18px; }
-  .dashboard-avatar-frame { width: 96px; height: 96px; transform: translateY(-42px); }
+  .dashboard-avatar-wrap { width: 96px; transform: translateY(-42px); margin-bottom: -30px; }
+  .dashboard-avatar-frame { width: 96px; height: 96px; }
   .dashboard-profile-card h2 { font-size: 1.45rem; }
   .dashboard-settings-btn { top: 10px; right: 10px; width: 34px; height: 34px; }
-  .dashboard-camera-btn { width: 32px; height: 32px; }
+  .dashboard-camera-btn { width: 32px; height: 32px; right: -7px; bottom: 2px; }
   .dashboard-modal { width: calc(100% - 20px); border-radius: 14px; padding: 18px 12px 12px; }
   .dashboard-history-item {
     grid-template-columns: 1fr;

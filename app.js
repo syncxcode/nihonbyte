@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const changeEmailForm = document.getElementById("change-email-form");
   const newEmailInput = document.getElementById("new-email-input");
   const accountEmailStatus = document.getElementById("account-email-status");
+  const dashboardBtn = document.getElementById("dashboard-btn");
+  const logoutFloatingBtn = document.getElementById("logout-floating-btn");
+  const verificationHoldNote = document.getElementById("verification-hold-note");
 
   let originalOverflow = '';
   let originalPosition = '';
@@ -67,6 +70,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function isLoggedInUser() {
     return !!window.currentUser;
+  }
+
+  function isVerifiedUser(user) {
+    if (!user) return false;
+    const providerIds = Array.isArray(user.providerData) ? user.providerData.map((p) => p?.providerId) : [];
+    const isGoogleUser = providerIds.includes("google.com");
+    if (isGoogleUser) return true;
+    return !!user.emailVerified;
+  }
+
+  function applyUserAvatar(user) {
+    const providerIds = Array.isArray(user?.providerData) ? user.providerData.map((p) => p?.providerId) : [];
+    const isGoogleUser = providerIds.includes("google.com");
+    if (isGoogleUser && user?.photoURL) {
+      userAvatarDisplay.src = user.photoURL;
+    } else {
+      userAvatarDisplay.src = "./assets/profile-default.svg";
+    }
   }
 
   function setAccessMode(mode) {
@@ -132,6 +153,10 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Akun berhasil dibuat. Email verifikasi sudah dikirim.");
         }
         shouldOpenVerificationModalAfterSignup = true;
+        if (verificationHoldNote) {
+          verificationHoldNote.textContent = "Akun baru ditahan sampai email terverifikasi. Cek inbox lalu login ulang.";
+          verificationHoldNote.style.display = "block";
+        }
       } else {
         await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
       }
@@ -302,30 +327,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  if (logoutFloatingBtn) {
+    logoutFloatingBtn.addEventListener("click", () => {
+      window.signOut(window.firebaseAuth).then(() => {
+        console.log("User berhasil keluar.");
+      });
+    });
+  }
+
   // Deteksi Perubahan Status Login (Otomatis jalan saat halaman dibuka)
   if (window.firebaseAuth && window.onAuthStateChanged) {
     window.onAuthStateChanged(window.firebaseAuth, (user) => {
-      if (user) {
-        // JIKA LOGIN BERHASIL
+      if (user && isVerifiedUser(user)) {
         loggedOutView.style.display = "none";
         loggedInView.style.display = "flex";
-        
-        // Pasang Nama dan Foto Profil Google
-        userNameDisplay.textContent = user.displayName || "Pelajar";
-        userAvatarDisplay.src = user.photoURL || "./assets/logo.png";
-        
-        // Simpan data user ke variable global (buat nanti simpan skor database)
-        window.currentUser = user; 
+        if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
+        userNameDisplay.textContent = user.displayName || (user.email ? user.email.split("@")[0] : "Pelajar");
+        applyUserAvatar(user);
+        window.currentUser = user;
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
+        if (verificationHoldNote) verificationHoldNote.style.display = "none";
+        viewMode = "vocab";
+        selectedType = "verb-adj-only";
+        selectedLevel = "all";
+        render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
           openAccountModal();
         }
         shouldOpenVerificationModalAfterSignup = false;
+      } else if (user && !isVerifiedUser(user)) {
+        if (window.currentUser) window.currentUser = null;
+        if (loggedOutView) loggedOutView.style.display = "block";
+        if (loggedInView) loggedInView.style.display = "none";
+        if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
+        setAccessMode("locked");
+        updateAccountStatusUI(user);
+        if (verificationHoldNote) {
+          verificationHoldNote.textContent = "Email belum terverifikasi. Silakan verifikasi dulu sebelum masuk ke aplikasi.";
+          verificationHoldNote.style.display = "block";
+        }
       } else {
-        // JIKA BELUM LOGIN / LOGOUT
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
+        if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
         updateAccountStatusUI(null);
@@ -1342,12 +1387,17 @@ document.addEventListener("DOMContentLoaded", () => {
     
     return wordType?.startsWith(targetType) || false;
   }
+  function getHomepagePriorityWords(list) {
+    const homepageOrder = ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"];
+    return homepageOrder.flatMap((type) => list.filter((word) => word.type === type));
+  }
+
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
     const selectedFromDropdown = category ? category.value : "all";
     if (typeof vocabularyData === "undefined") return []; // Safety check
-    
-    return vocabularyData.filter((word) => {
+
+    const filtered = vocabularyData.filter((word) => {
       if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
@@ -1359,6 +1409,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ].join("").toLowerCase();
       return !key || text.includes(key);
     });
+
+    if (selectedType === "verb-adj-only" && selectedLevel === "all" && !key) {
+      return getHomepagePriorityWords(filtered);
+    }
+
+    return filtered;
   }
 
   function cardImageTemplate(word, expanded = false) {
@@ -2421,67 +2477,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { capture: true });
 
   window.downloadAsImage = function(event, cardId) {
-  event.stopPropagation(); // Mencegah modal pop-up ikut kebuka
+  event.stopPropagation();
 
   const element = document.getElementById(cardId);
   if (!element) return;
 
-  const watermark = element.querySelector('.watermark-logo');
-  const audioBtn = element.querySelector('.play-audio-btn');
-  const dlBtn = element.querySelector('.download-card-btn');
+  const cardOverlay = element.querySelector('.card-overlay');
+  const sourceKanji = cardOverlay?.querySelector('.kanji')?.textContent?.trim() || '—';
+  const sourceKana = cardOverlay?.querySelector('.kana')?.textContent?.trim() || '—';
+  const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
+  const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
 
-  // 1. Persiapan sebelum difoto
-  if (watermark) watermark.style.opacity = '0.15'; 
-  if (audioBtn) audioBtn.style.visibility = 'hidden';
-  if (dlBtn) dlBtn.style.visibility = 'hidden';
+  const exportNode = document.createElement('div');
+  exportNode.className = 'download-export-card';
+  exportNode.innerHTML = `
+    <div class="download-export-content">
+      <div class="download-export-kanji">${sourceKanji}</div>
+      <div class="download-export-kana">${sourceKana}</div>
+      <div class="download-export-romaji">${sourceRomaji}</div>
+      <div class="download-export-meaning">${sourceMeaning}</div>
+      <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
+    </div>
+  `;
 
-  // 🚀 KALKULASI RESOLUSI FHD DINAMIS (ANTI BURIK CLUB!)
-  const rect = element.getBoundingClientRect();
-  const targetWidth = 1080; // Target kita: Lebar foto 1080px (FHD / IG Story Ready)
-  let dynamicScale = targetWidth / rect.width;
+  document.body.appendChild(exportNode);
 
-  // Safety Limit biar RAM HP kentang gak meledak!
-  // Mentok di scale 4, minimal di scale 2.5 biar tetep tajam.
-  if (dynamicScale > 4) dynamicScale = 4;
-  if (dynamicScale < 2.5) dynamicScale = 2.5;
-
-  setTimeout(() => {
-    html2canvas(element, {
-      backgroundColor: null, // Tetap transparan
-      scale: dynamicScale,   // <--- MANTRA BARU: Pakai kalkulasi skala di atas!
-      useCORS: true,
-      allowTaint: true,   
-      logging: false,
-      onclone: function (clonedDoc) {
-        const clonedCard = clonedDoc.getElementById(cardId);
-        
-        // Paksa lengkungan dan potong area luar
-        clonedCard.style.borderRadius = "16px"; 
-        clonedCard.style.overflow = "hidden";   
-
-        // Bikin elemen induk jadi transparan total biar gak bocor kotak-kotak putihnya
-        if (clonedCard.parentElement) {
-            clonedCard.parentElement.style.background = "transparent";
-            clonedCard.parentElement.style.backgroundColor = "transparent";
-        }
-      }
-    }).then(canvas => {
-      const link = document.createElement('a');
-      link.download = `NihonByte-${cardId}.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-
-      // 3. Kembalikan ke tampilan semula
-      if (watermark) watermark.style.opacity = '0'; 
-      if (audioBtn) audioBtn.style.visibility = 'visible';
-      if (dlBtn) dlBtn.style.visibility = 'visible';
-    }).catch(err => {
-      console.error("Gagal mendownload gambar:", err);
-      if (watermark) watermark.style.opacity = '0';
-      if (audioBtn) audioBtn.style.visibility = 'visible';
-      if (dlBtn) dlBtn.style.visibility = 'visible';
-    });
-  }, 150); 
+  html2canvas(exportNode, {
+    backgroundColor: null,
+    scale: 3,
+    useCORS: true,
+    logging: false,
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `NihonByte-${cardId}-1x1.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }).catch(err => {
+    console.error('Gagal mendownload gambar:', err);
+  }).finally(() => {
+    exportNode.remove();
+  });
 };
 
   const APP_VERSION = "v1.1.0";
@@ -2545,7 +2580,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (paginationContainer) paginationContainer.style.display = isActive ? "none" : "flex";
 }
 
-  const historyBtn = document.getElementById("show-history-btn");
+  const historyBtn = dashboardBtn;
 
 if (historyBtn) {
   historyBtn.addEventListener("click", async () => {
@@ -2572,7 +2607,7 @@ if (historyBtn) {
       if (!q || q.empty) {
         grid.innerHTML = `
           <div class="history-container">
-            <h2>📊 Riwayat Nilai Latihan</h2>
+            <h2>📊 Dasbor Pengguna</h2>
             <div style="text-align: center; padding: 30px; color: #64748b;">
               <p>Belum ada riwayat latihan tersimpan.</p>
             </div>
@@ -2586,7 +2621,7 @@ if (historyBtn) {
       // 4. --- BUILD HTML DENGAN KAPSUL PER ITEM ---
       let historyHTML = `
         <div class="history-container">
-          <h2>📊 Riwayat Nilai Latihan</h2>
+          <h2>📊 Dasbor Pengguna</h2>
           <p style="text-align: center; color: #64748b; margin-bottom: 20px;">
             Rekap berdasarkan kategori latihan yang dijalani.
           </p>
@@ -2643,7 +2678,7 @@ if (historyBtn) {
       // 6. --- KASUS ERROR (Internet Putus / Gagal Fetch) ---
       grid.innerHTML = `
         <div class="history-container">
-          <h2>📊 Riwayat Nilai Latihan</h2>
+          <h2>📊 Dasbor Pengguna</h2>
           <div style="text-align: center; padding: 30px; color: #ef4444; background: #fee2e2; border-radius: 10px;">
             <p><strong>⚠️ Gagal memuat riwayat.</strong></p>
             <p style="font-size: 0.9rem; margin-top: 5px;">Pastikan koneksi internet stabil.</p>

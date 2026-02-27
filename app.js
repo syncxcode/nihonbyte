@@ -2507,7 +2507,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- MESIN PEMBUAT TOMBOL ANGKA HALAMAN ---
   function renderPagination(totalPages) {
     const paginationContainer = document.getElementById("pagination-container");
-    if (!paginationContainer || totalPages <= 1) return; // Kalau cuma 1 halaman, sembunyikan tombol
+    if (!paginationContainer) return;
+
+    paginationContainer.innerHTML = "";
+    if (totalPages <= 1) {
+      paginationContainer.style.display = "none";
+      return;
+    }
+
+    paginationContainer.style.display = "flex";
 
     // Tombol Prev (Kiri)
     const prevBtn = document.createElement("button");

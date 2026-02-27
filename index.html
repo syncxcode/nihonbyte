@@ -10,6 +10,24 @@
 </head>
 <body>
 
+<section id="auth-gate" class="auth-gate active" aria-live="polite">
+  <div class="auth-gate-card">
+    <img src="./assets/logo.png" alt="NihonByte Logo" class="auth-gate-logo">
+    <p class="auth-gate-badge">NihonByte Access</p>
+    <h1>Belajar Jepang Lebih Fokus</h1>
+    <p class="auth-gate-subtext">Masuk dengan Google untuk membuka semua fitur, progres cloud, kategori lengkap, dan mode latihan tanpa batas.</p>
+    <button id="auth-gate-google-btn" class="auth-gate-google-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+      <span>Lanjutkan dengan Google</span>
+    </button>
+    <button id="continue-guest-btn" class="auth-gate-guest-btn">Masuk sebagai tamu (akses terbatas)</button>
+    <ul class="auth-gate-note-list">
+      <li>Tamu hanya melihat preview konten awal.</li>
+      <li>Sidebar kategori dan fitur latihan wajib login.</li>
+    </ul>
+  </div>
+</section>
+
 <div id="overlay"></div>
 
 <aside id="sidebar" aria-label="Menu samping">
@@ -20,6 +38,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
             <span>Masuk dengan Google</span>
           </button>
+          <button id="guest-sidebar-btn" class="guest-btn">Lanjut sebagai tamu</button>
           <p class="login-desc">Simpan skor latihanmu ke Cloud!</p>
         </div>
 

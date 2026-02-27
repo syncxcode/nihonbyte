@@ -198,6 +198,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function clearEmailAuthForm() {
+    if (emailAuthForm) emailAuthForm.reset();
+    if (emailAuthInput) emailAuthInput.value = "";
+    if (emailAuthPassword) emailAuthPassword.value = "";
+  }
+
   async function loginOrRegisterWithEmail(event) {
     event.preventDefault();
     const email = (emailAuthInput?.value || "").trim();
@@ -231,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
       }
-      if (emailAuthForm) emailAuthForm.reset();
+      clearEmailAuthForm();
       toggleEmailAuthPanel(false);
     } catch (error) {
       alert("Auth email gagal: " + error.message);
@@ -366,6 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (authGateEmailToggleBtn) {
     authGateEmailToggleBtn.addEventListener("click", () => {
+      clearEmailAuthForm();
       toggleEmailAuthPanel();
       syncEmailAuthMode();
     });
@@ -374,6 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (loginEmailBtn) {
     loginEmailBtn.addEventListener("click", () => {
       setAccessMode("locked");
+      clearEmailAuthForm();
       toggleEmailAuthPanel(true);
       syncEmailAuthMode();
       closeSidebar();
@@ -385,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (emailAuthSwitchModeBtn) {
     emailAuthSwitchModeBtn.addEventListener("click", () => {
       isEmailRegisterMode = !isEmailRegisterMode;
+      clearEmailAuthForm();
       syncEmailAuthMode();
     });
   }
@@ -734,6 +743,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     isTesting = true;
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) {
+      paginationContainer.innerHTML = "";
+      paginationContainer.style.display = "none";
+    }
     currentExerciseMeta = {
       type: mainType,
       section: sectionKey,
@@ -2311,6 +2325,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderUnderDevelopment(mode, type, level) {
   grid.classList.remove("support-mode");
   grid.innerHTML = "";
+  const paginationContainer = document.getElementById("pagination-container");
+  if (paginationContainer) {
+    paginationContainer.innerHTML = "";
+    paginationContainer.style.display = "none";
+  }
 
   // Menentukan judul berdasarkan mode
   const titlePrefix = mode === "exercise" ? "Latihan" : "Pola Kalimat";
@@ -2357,6 +2376,11 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.classList.remove("support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) {
+      paginationContainer.innerHTML = "";
+      paginationContainer.style.display = "none";
+    }
 
     if (viewMode === "support") {
       renderSupportPoster();
@@ -2419,8 +2443,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ==== LOGIKA KARTU KOSAKATA & PAGINATION ====
     let words = getFilteredWords();
-    const paginationContainer = document.getElementById("pagination-container");
-    if (paginationContainer) paginationContainer.innerHTML = ""; // Bersihkan angka halaman
+    if (paginationContainer) {
+      paginationContainer.innerHTML = "";
+      paginationContainer.style.display = "flex";
+    }
     
     const isGuestPreview = accessMode === "guest" && viewMode === "vocab" && selectedType === "verb-adj-only" && selectedLevel === "all" && !(search?.value || "").trim();
     if (isGuestPreview) {
@@ -2791,6 +2817,19 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </section>
 
+        <section id="dashboard-crop-modal" class="dashboard-modal crop-modal" role="dialog" aria-modal="true" aria-label="Crop avatar" hidden>
+          <button type="button" class="dashboard-modal-close" data-close-crop>✕</button>
+          <h4>Sesuaikan Foto Profil (Square)</h4>
+          <div class="crop-square-wrap">
+            <canvas id="dashboard-crop-canvas" width="320" height="320"></canvas>
+          </div>
+          <input id="dashboard-crop-zoom" type="range" min="1" max="3" step="0.01" value="1">
+          <div class="crop-actions">
+            <button id="dashboard-crop-cancel" type="button" class="dashboard-cancel-btn">Batal</button>
+            <button id="dashboard-crop-apply" type="button" class="dashboard-save-btn">Crop & Gunakan</button>
+          </div>
+        </section>
+
         <div class="dashboard-history-panel">
           <h3>📊 Riwayat Latihan</h3>
           <p class="dashboard-history-sub">Rekap berdasarkan kategori latihan yang dijalani.</p>
@@ -2824,6 +2863,8 @@ document.addEventListener("DOMContentLoaded", () => {
       backdrop.hidden = true;
       settingsModal.hidden = true;
       avatarModal.hidden = true;
+      const cropModal = document.getElementById("dashboard-crop-modal");
+      if (cropModal) cropModal.hidden = true;
     }
 
     function openModal(type) {
@@ -2848,6 +2889,120 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    const cropModal = document.getElementById("dashboard-crop-modal");
+    const cropCanvas = document.getElementById("dashboard-crop-canvas");
+    const cropZoom = document.getElementById("dashboard-crop-zoom");
+    const cropApplyBtn = document.getElementById("dashboard-crop-apply");
+    const cropCancelBtn = document.getElementById("dashboard-crop-cancel");
+    const cropCloseBtn = document.querySelector("[data-close-crop]");
+
+    const cropState = {
+      image: null,
+      scale: 1,
+      minScale: 1,
+      offsetX: 0,
+      offsetY: 0,
+      dragging: false,
+      startX: 0,
+      startY: 0
+    };
+
+    function drawCropPreview() {
+      if (!cropCanvas || !cropState.image) return;
+      const ctx = cropCanvas.getContext("2d");
+      const { width, height } = cropCanvas;
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, width, height);
+      const drawW = cropState.image.width * cropState.scale;
+      const drawH = cropState.image.height * cropState.scale;
+      const dx = (width - drawW) / 2 + cropState.offsetX;
+      const dy = (height - drawH) / 2 + cropState.offsetY;
+      ctx.drawImage(cropState.image, dx, dy, drawW, drawH);
+    }
+
+    function openCropModal(dataUrl) {
+      if (!cropModal || !cropCanvas || !cropZoom) return;
+      const img = new Image();
+      img.onload = () => {
+        cropState.image = img;
+        const baseScale = Math.max(cropCanvas.width / img.width, cropCanvas.height / img.height);
+        cropState.minScale = baseScale;
+        cropState.scale = baseScale;
+        cropState.offsetX = 0;
+        cropState.offsetY = 0;
+        cropZoom.min = String(baseScale);
+        cropZoom.max = String(baseScale * 3);
+        cropZoom.value = String(baseScale);
+        backdrop.hidden = false;
+        cropModal.hidden = false;
+        drawCropPreview();
+      };
+      img.src = dataUrl;
+    }
+
+    function closeCropModal() {
+      if (!cropModal) return;
+      cropModal.hidden = true;
+      if (!settingsModal.hidden || !avatarModal.hidden) return;
+      backdrop.hidden = true;
+    }
+
+    if (cropZoom) {
+      cropZoom.addEventListener("input", () => {
+        cropState.scale = Math.max(cropState.minScale, Number(cropZoom.value || cropState.minScale));
+        drawCropPreview();
+      });
+    }
+
+    if (cropCanvas) {
+      cropCanvas.addEventListener("pointerdown", (event) => {
+        cropState.dragging = true;
+        cropState.startX = event.clientX;
+        cropState.startY = event.clientY;
+      });
+      cropCanvas.addEventListener("pointermove", (event) => {
+        if (!cropState.dragging) return;
+        const dx = event.clientX - cropState.startX;
+        const dy = event.clientY - cropState.startY;
+        cropState.startX = event.clientX;
+        cropState.startY = event.clientY;
+        cropState.offsetX += dx;
+        cropState.offsetY += dy;
+        drawCropPreview();
+      });
+      ["pointerup", "pointerleave", "pointercancel"].forEach((evt) => {
+        cropCanvas.addEventListener(evt, () => {
+          cropState.dragging = false;
+        });
+      });
+    }
+
+    if (cropApplyBtn && cropCanvas) {
+      cropApplyBtn.addEventListener("click", () => {
+        if (!cropState.image) return;
+        const outputCanvas = document.createElement("canvas");
+        outputCanvas.width = 512;
+        outputCanvas.height = 512;
+        const outCtx = outputCanvas.getContext("2d");
+        outCtx.fillStyle = "#0f172a";
+        outCtx.fillRect(0, 0, 512, 512);
+        const scaleRatio = 512 / cropCanvas.width;
+        const drawW = cropState.image.width * cropState.scale * scaleRatio;
+        const drawH = cropState.image.height * cropState.scale * scaleRatio;
+        const dx = ((cropCanvas.width - cropState.image.width * cropState.scale) / 2 + cropState.offsetX) * scaleRatio;
+        const dy = ((cropCanvas.height - cropState.image.height * cropState.scale) / 2 + cropState.offsetY) * scaleRatio;
+        outCtx.drawImage(cropState.image, dx, dy, drawW, drawH);
+        selectedPhotoUrl = outputCanvas.toDataURL("image/jpeg", 0.92);
+        photoSource = "upload";
+        avatarPreview.src = selectedPhotoUrl;
+        closeCropModal();
+      });
+    }
+
+    if (cropCancelBtn) cropCancelBtn.addEventListener("click", closeCropModal);
+    if (cropCloseBtn) cropCloseBtn.addEventListener("click", closeCropModal);
+
     if (avatarUpload) {
       avatarUpload.addEventListener("change", () => {
         const file = avatarUpload.files?.[0];
@@ -2857,16 +3012,15 @@ document.addEventListener("DOMContentLoaded", () => {
           avatarUpload.value = "";
           return;
         }
-        if (file.size > 2 * 1024 * 1024) {
-          alert("Maksimal ukuran avatar 2MB.");
+        if (file.size > 4 * 1024 * 1024) {
+          alert("Maksimal ukuran avatar 4MB.");
           avatarUpload.value = "";
           return;
         }
         const reader = new FileReader();
         reader.onload = () => {
-          selectedPhotoUrl = typeof reader.result === "string" ? reader.result : selectedPhotoUrl;
-          photoSource = "upload";
-          avatarPreview.src = selectedPhotoUrl;
+          const imageSrc = typeof reader.result === "string" ? reader.result : "";
+          if (imageSrc) openCropModal(imageSrc);
         };
         reader.readAsDataURL(file);
       });
@@ -2881,10 +3035,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       try {
         if (window.updateProfile && window.currentUser) {
-          await window.updateProfile(window.currentUser, {
-            displayName,
-            photoURL: selectedPhotoUrl
-          });
+          await window.updateProfile(window.currentUser, { displayName });
         }
         await saveUserProfile(user.uid, {
           displayName,
@@ -2907,10 +3058,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const displayName = (nameInput.value || "").trim() || defaultDisplayName(user);
       try {
         if (window.updateProfile && window.currentUser) {
-          await window.updateProfile(window.currentUser, {
-            displayName,
-            photoURL: selectedPhotoUrl
-          });
+          await window.updateProfile(window.currentUser, { displayName });
         }
         await saveUserProfile(user.uid, {
           displayName,
@@ -2938,6 +3086,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>⏳ Menyiapkan dashboard...</p></div>';
+      if (resultInfo) resultInfo.textContent = "Dasbor saya";
       if (typeof setHistoryMode === "function") setHistoryMode(true);
       if (typeof closeSidebar === "function") closeSidebar();
 

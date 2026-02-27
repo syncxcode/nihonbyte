@@ -33,25 +33,88 @@ document.addEventListener("DOMContentLoaded", () => {
   const loggedInView = document.getElementById("logged-in-view");
   const userNameDisplay = document.getElementById("user-name");
   const userAvatarDisplay = document.getElementById("user-avatar");
+  const authGate = document.getElementById("auth-gate");
+  const authGateGoogleBtn = document.getElementById("auth-gate-google-btn");
+  const continueGuestBtn = document.getElementById("continue-guest-btn");
+  const guestSidebarBtn = document.getElementById("guest-sidebar-btn");
+
+  let accessMode = "locked";
+
+
+  function isLoggedInUser() {
+    return !!window.currentUser;
+  }
+
+  function setAccessMode(mode) {
+    accessMode = mode;
+    document.body.classList.toggle("auth-locked", mode === "locked");
+    document.body.classList.toggle("guest-mode", mode === "guest");
+    document.body.classList.toggle("logged-in-mode", mode === "logged-in");
+
+    if (authGate) authGate.classList.toggle("active", mode === "locked");
+
+    const sidebarButtons = document.querySelectorAll("#sidebar .sidebar-tree button");
+    const sidebarSummaries = document.querySelectorAll("#sidebar .sidebar-tree summary");
+    const isGuest = mode === "guest";
+
+    sidebarButtons.forEach((btn) => {
+      btn.disabled = isGuest;
+      btn.classList.toggle("restricted", isGuest);
+    });
+
+    sidebarSummaries.forEach((summary) => {
+      summary.classList.toggle("restricted", isGuest);
+      summary.setAttribute("aria-disabled", isGuest ? "true" : "false");
+    });
+  }
+
+  function loginWithGoogle() {
+    if (!window.firebaseAuth || !window.firebaseProvider) {
+      alert("Mesin Firebase belum siap! Tunggu sebentar atau refresh halaman.");
+      return;
+    }
+
+    if (loginBtn) loginBtn.innerHTML = "Memuat...";
+    if (authGateGoogleBtn) authGateGoogleBtn.classList.add("loading");
+
+    window.signInWithPopup(window.firebaseAuth, window.firebaseProvider)
+      .then((result) => {
+        console.log("Login Berhasil:", result.user.displayName);
+      })
+      .catch((error) => {
+        console.error("Gagal Login:", error);
+        alert("Gagal login: " + error.message);
+        if (loginBtn) loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
+      })
+      .finally(() => {
+        if (authGateGoogleBtn) authGateGoogleBtn.classList.remove("loading");
+      });
+  }
+
+  function continueAsGuest() {
+    window.currentUser = null;
+    if (loggedOutView) loggedOutView.style.display = "block";
+    if (loggedInView) loggedInView.style.display = "none";
+    setAccessMode("guest");
+    closeSidebar();
+    render();
+  }
 
   // Fungsi Login
   if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      if (!window.firebaseAuth || !window.firebaseProvider) {
-        alert("Mesin Firebase belum siap! Tunggu sebentar atau refresh halaman.");
-        return;
-      }
-      loginBtn.innerHTML = "Memuat..."; // Efek loading
-      window.signInWithPopup(window.firebaseAuth, window.firebaseProvider)
-        .then((result) => {
-          console.log("Login Berhasil:", result.user.displayName);
-        })
-        .catch((error) => {
-          console.error("Gagal Login:", error);
-          alert("Gagal login: " + error.message);
-          loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
-        });
-    });
+    loginBtn.addEventListener("click", loginWithGoogle);
+  }
+
+  if (authGateGoogleBtn) {
+    authGateGoogleBtn.addEventListener("click", loginWithGoogle);
+  }
+
+  if (continueGuestBtn) {
+    continueGuestBtn.addEventListener("click", continueAsGuest);
+  }
+
+  if (guestSidebarBtn) {
+    guestSidebarBtn.addEventListener("click", continueAsGuest);
   }
 
   // Fungsi Logout
@@ -77,12 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Simpan data user ke variable global (buat nanti simpan skor database)
         window.currentUser = user; 
+        setAccessMode("logged-in");
       } else {
         // JIKA BELUM LOGIN / LOGOUT
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
+        if (accessMode !== "guest") setAccessMode("locked");
       }
     });
   }
@@ -328,6 +393,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startExercise(mainType, section, level) {
+    if (!isLoggedInUser()) {
+      openInfoModal("<h3>Mode Latihan Wajib Login 🔒</h3><p>Silakan masuk dengan Google dulu untuk membuka fitur latihan.</p>");
+      return;
+    }
     const sectionKey = section || (mainType === "bunpou" ? "bunpou-form" : "goi-kanji-reading");
     const questions = buildExerciseQuestions(mainType, section, level).filter((q) => q.prompt && q.answer);
 
@@ -1748,6 +1817,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
+      if (accessMode === "guest") {
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Filter kategori sidebar khusus pengguna login Google.</p>");
+        return;
+      }
       viewMode = "vocab";
       selectedLevel = button.dataset.level || "all";
       selectedType = button.dataset.type || "all";
@@ -1760,6 +1833,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".letter-btn").forEach((button) => {
     button.addEventListener("click", () => {
+      if (accessMode === "guest") {
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
+        return;
+      }
       viewMode = `letters:${button.dataset.script}`;
       if (search) search.value = "";
       closeModal();
@@ -1770,6 +1847,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".pattern-btn").forEach((button) => {
   button.addEventListener("click", () => {
+    if (accessMode === "guest") {
+      openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
+      return;
+    }
     const level = button.dataset.level;
 
     // Jika user klik N3, N2, atau N1 di menu Pola Kalimat
@@ -2000,10 +2081,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 // ==== LOGIKA KARTU KOSAKATA & PAGINATION ====
-    const words = getFilteredWords();
+    let words = getFilteredWords();
     const paginationContainer = document.getElementById("pagination-container");
     if (paginationContainer) paginationContainer.innerHTML = ""; // Bersihkan angka halaman
     
+    const isGuestPreview = accessMode === "guest" && viewMode === "vocab" && selectedType === "verb-adj-only" && selectedLevel === "all" && !(search?.value || "").trim();
+    if (isGuestPreview) {
+      words = words.slice(0, 6);
+    }
+
     if (!words.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada hasil untuk kombinasi folder/kategori ini.</div>';
       if (resultInfo) resultInfo.textContent = formatResultInfo(0);
@@ -2046,10 +2132,12 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.appendChild(fragment);
     
     // Panggil mesin tombol halaman
-    renderPagination(totalPages);
+    if (!isGuestPreview) renderPagination(totalPages);
 
     if (resultInfo) {
-      resultInfo.textContent = formatResultInfo(words.length);
+      resultInfo.textContent = isGuestPreview
+        ? `${words.length} (Preview Tamu) • Login untuk buka semua materi`
+        : formatResultInfo(words.length);
     }
   } // <-- Akhir dari fungsi render()
 
@@ -2403,5 +2491,6 @@ if (historyBtn) {
   window.addEventListener("resize", enforceMobileTopbarOrder);
   enforceMobileTopbarOrder();
   
+  setAccessMode("locked");
   render();
 });

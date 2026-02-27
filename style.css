@@ -16,8 +16,6 @@ body {
 
 :root {
   --sidebar-width: 320px;
-  --topbar-offset: 78px;
-  --sidebar-top-safe: 56px;
 }
 
 body::before {
@@ -181,7 +179,7 @@ select, input, .action-btn {
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
-  padding-top: calc(var(--topbar-offset) + 8px) !important;
+  padding-top: 100px !important; /* 🚀 TARUH DI SINI BIAR GAK KETIMPA PADDING 15PX */
   width: 100% !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
@@ -638,7 +636,7 @@ select, input, .action-btn {
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;
   z-index: 1000;
-  padding: var(--sidebar-top-safe) 1.5rem 120px 1.5rem; 
+  padding: 2rem 1.5rem 120px 1.5rem; 
   box-sizing: border-box !important; 
   color: #ffffff;
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
@@ -648,9 +646,8 @@ select, input, .action-btn {
 }
 
 #sidebar.active { transform: translateX(0); }
- #sidebar h3 {
-  margin: 0 0 14px;
-  padding-right: 48px;
+#sidebar h3 {
+  margin: 0 0 18px;
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
@@ -1009,8 +1006,7 @@ select, input, .action-btn {
 }
 
 @media (min-width: 1024px) {
-  :root { --topbar-offset: 78px; }
-  #grid { padding-top: calc(var(--topbar-offset) + 8px) !important; }
+  #grid { padding-top: 100px !important; }
   .letter-poster { max-width: 960px !important; margin: 18px auto 2.8rem auto !important; padding: 2.5rem 2.4rem 3rem !important; border-radius: 28px; background: rgba(255, 255, 255, 0.975) !important; box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.25); }
   .letter-poster-body { gap: 32px !important; }
   .letter-row { gap: 16px !important; grid-template-columns: 72px repeat(calc(var(--cols, 6) - 1), 92px) !important; justify-content: center; }
@@ -1025,10 +1021,10 @@ select, input, .action-btn {
    8. ATURAN KHUSUS MOBILE (MAKS 768PX)
 ========================================= */
 @media (max-width: 768px) {
-  :root { --sidebar-width: 290px; --topbar-offset: 72px; --sidebar-top-safe: 64px; }
+  :root { --sidebar-width: 290px; }
 
   #grid {
-    padding-top: calc(var(--topbar-offset) + 6px) !important; 
+    padding-top: 95px !important; 
     gap: 12px !important;
     grid-template-columns: repeat(2, 1fr) !important;
     padding-left: 16px !important;
@@ -1104,27 +1100,6 @@ select, input, .action-btn {
     z-index: 100 !important;
   }
   
-
-
-  #sidebar {
-    padding-left: 1.1rem !important;
-    padding-right: 1.1rem !important;
-    padding-top: var(--sidebar-top-safe) !important;
-  }
-
-  #sidebar h3 {
-    font-size: 1.38rem !important;
-    margin-bottom: 12px !important;
-    padding-right: 44px !important;
-  }
-
-  .logout-floating-btn {
-    top: 10px !important;
-    right: 10px !important;
-    width: 36px !important;
-    height: 36px !important;
-  }
-
   /* --- Overrides Tombol Download untuk Mobile --- */
   .download-card-btn {
     top: 10px !important;
@@ -1981,7 +1956,6 @@ body.review-mode-active .app-footer {
 ========================================= */
 .user-profile-section {
   padding: 10px 15px;
-  margin-top: 2px;
   background: transparent; /* Hilangin background kotak jelek */
   margin-bottom: 15px;
   text-align: center;
@@ -2077,97 +2051,6 @@ body.review-mode-active .app-footer {
 }
 .user-actions { display: flex; align-items: center; gap: 8px; }
 .sep { color: rgba(255,255,255,0.4); font-size: 0.7rem; }
-
-
-.verification-hold-note {
-  margin-top: 10px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255, 236, 179, 0.2);
-  border: 1px solid rgba(255, 236, 179, 0.45);
-  color: #fff4c2;
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
-.logout-floating-btn {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-#sidebar { position: relative; }
-
-#logged-in-view {
-  justify-content: flex-start;
-}
-
-.user-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-#dashboard-btn.history-link {
-  font-size: 0.78rem;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 999px;
-  padding: 4px 12px;
-  background: rgba(255,255,255,0.08);
-}
-
-.download-export-card {
-  position: fixed;
-  left: -9999px;
-  top: 0;
-  width: 1080px;
-  height: 1080px;
-  border-radius: 44px;
-  background: linear-gradient(140deg, rgba(255,255,255,0.34), rgba(255,255,255,0.14));
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 2px solid rgba(255,255,255,0.45);
-  overflow: hidden;
-}
-
-.download-export-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #101010;
-  text-align: center;
-  padding: 80px;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.download-export-kanji { font-size: 220px; font-weight: 900; line-height: 1; }
-.download-export-kana { font-size: 68px; font-weight: 700; margin-top: 8px; }
-.download-export-romaji { font-size: 48px; margin-top: 8px; }
-.download-export-meaning { font-size: 56px; margin-top: 14px; font-weight: 800; }
-.download-export-watermark {
-  position: absolute;
-  width: 70%;
-  max-width: 720px;
-  opacity: 0.12;
-  inset: 0;
-  margin: auto;
-}
 
 /* Tabel Riwayat */
 body.history-mode #grid {
@@ -2459,44 +2342,4 @@ body.guest-mode #sidebar .sidebar-tree button.restricted {
   text-decoration: underline;
   cursor: pointer;
   font-size: 0.8rem;
-}
-
-/* =========================================
-   🔧 FIX LAYOUT: HEADER, SIDEBAR & GRID
-========================================= */
-
-/* 1. Paksa Topbar selalu di paling atas (mengatasi sidebar menutupi header) */
-.topbar {
-  z-index: 1005 !important;
-}
-
-/* 2. Sesuaikan Sidebar agar meluncur rapi di bawah Topbar */
-#sidebar {
-  z-index: 1000 !important;
-  /* Dorong isi menu ke bawah sejauh tinggi header + 30px ruang napas */
-  padding-top: calc(var(--topbar-offset) + 30px) !important;
-}
-
-/* 3. Paksa Kartu Kanji menempel ke atas (mengatasi kartu tenggelam) */
-#grid {
-  align-content: start !important;
-  align-items: start !important;
-  grid-auto-rows: max-content !important; /* Mencegah baris melar ke bawah */
-  padding-top: calc(var(--topbar-offset) + 20px) !important;
-  margin-top: 0 !important;
-}
-
-/* 4. Sembunyikan baris rekomendasi jika kebetulan kosong agar tidak memakan tempat */
-#recommendationRow:empty {
-  display: none !important;
-}
-
-/* Penyesuaian khusus untuk versi HP (Mobile) agar jaraknya pas */
-@media (max-width: 768px) {
-  #sidebar {
-    padding-top: calc(var(--topbar-offset) + 25px) !important;
-  }
-  #grid {
-    padding-top: calc(var(--topbar-offset) + 15px) !important;
-  }
 }

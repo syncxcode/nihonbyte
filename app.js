@@ -36,9 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const authGate = document.getElementById("auth-gate");
   const authGateGoogleBtn = document.getElementById("auth-gate-google-btn");
   const continueGuestBtn = document.getElementById("continue-guest-btn");
-  const guestSidebarBtn = document.getElementById("guest-sidebar-btn");
+  const authGateEmailToggleBtn = document.getElementById("auth-gate-email-toggle");
+  const loginEmailBtn = document.getElementById("login-email-btn");
+  const emailAuthForm = document.getElementById("email-auth-form");
+  const emailAuthInput = document.getElementById("email-auth-input");
+  const emailAuthPassword = document.getElementById("email-auth-password");
+  const emailAuthSubmitBtn = document.getElementById("email-auth-submit");
+  const emailAuthSwitchModeBtn = document.getElementById("email-auth-switch-mode");
+  const emailAuthResetBtn = document.getElementById("email-auth-reset");
+  const accountBtn = document.getElementById("account-btn");
+  const accountModal = document.getElementById("accountModal");
+  const accountModalBackdrop = document.getElementById("accountModalBackdrop");
+  const accountModalClose = document.getElementById("accountModalClose");
+  const resendVerificationBtn = document.getElementById("resend-verification-btn");
+  const changeEmailForm = document.getElementById("change-email-form");
+  const newEmailInput = document.getElementById("new-email-input");
+  const accountEmailStatus = document.getElementById("account-email-status");
 
   let accessMode = "locked";
+  let isEmailRegisterMode = false;
 
 
   function isLoggedInUser() {
@@ -66,6 +82,95 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.classList.toggle("restricted", isGuest);
       summary.setAttribute("aria-disabled", isGuest ? "true" : "false");
     });
+  }
+
+  function toggleEmailAuthPanel(forceOpen = null) {
+    if (!emailAuthForm) return;
+    const shouldOpen = forceOpen === null ? emailAuthForm.style.display === "none" : forceOpen;
+    emailAuthForm.style.display = shouldOpen ? "grid" : "none";
+  }
+
+  function syncEmailAuthMode() {
+    if (!emailAuthSwitchModeBtn || !emailAuthSubmitBtn) return;
+    if (isEmailRegisterMode) {
+      emailAuthSubmitBtn.textContent = "Daftar akun email";
+      emailAuthSwitchModeBtn.textContent = "Sudah punya akun? Masuk";
+    } else {
+      emailAuthSubmitBtn.textContent = "Masuk dengan Email";
+      emailAuthSwitchModeBtn.textContent = "Belum punya akun? Daftar";
+    }
+  }
+
+  async function loginOrRegisterWithEmail(event) {
+    event.preventDefault();
+    const email = (emailAuthInput?.value || "").trim();
+    const password = emailAuthPassword?.value || "";
+
+    if (!email || !password) {
+      alert("Isi email dan password dulu.");
+      return;
+    }
+
+    if (!window.firebaseAuth) {
+      alert("Firebase belum siap. Cek file firebase-config.js");
+      return;
+    }
+
+    try {
+      if (isEmailRegisterMode) {
+        const result = await window.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+        if (window.sendEmailVerification) {
+          await window.sendEmailVerification(result.user);
+          alert("Akun berhasil dibuat. Email verifikasi sudah dikirim.");
+        }
+      } else {
+        await window.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+      }
+      if (emailAuthForm) emailAuthForm.reset();
+      toggleEmailAuthPanel(false);
+    } catch (error) {
+      alert("Auth email gagal: " + error.message);
+    }
+  }
+
+  async function sendResetPassword() {
+    const email = (emailAuthInput?.value || "").trim();
+    if (!email) {
+      alert("Isi email dulu untuk reset password.");
+      return;
+    }
+    if (!window.firebaseAuth || !window.sendPasswordResetEmail) {
+      alert("Firebase belum siap.");
+      return;
+    }
+    try {
+      await window.sendPasswordResetEmail(window.firebaseAuth, email);
+      alert("Link reset password sudah dikirim ke email.");
+    } catch (error) {
+      alert("Gagal kirim reset password: " + error.message);
+    }
+  }
+
+  function updateAccountStatusUI(user) {
+    if (!accountEmailStatus) return;
+    if (!user) {
+      accountEmailStatus.textContent = "Status verifikasi: -";
+      return;
+    }
+    const status = user.emailVerified ? "✅ Sudah terverifikasi" : "⚠️ Belum terverifikasi";
+    accountEmailStatus.textContent = `Email: ${user.email || "-"} | ${status}`;
+  }
+
+  function openAccountModal() {
+    if (!window.currentUser) return;
+    updateAccountStatusUI(window.currentUser);
+    accountModal?.classList.add("active");
+    accountModal?.setAttribute("aria-hidden", "false");
+  }
+
+  function closeAccountModal() {
+    accountModal?.classList.remove("active");
+    accountModal?.setAttribute("aria-hidden", "true");
   }
 
   function loginWithGoogle() {
@@ -117,6 +222,68 @@ document.addEventListener("DOMContentLoaded", () => {
     guestSidebarBtn.addEventListener("click", continueAsGuest);
   }
 
+  if (authGateEmailToggleBtn) {
+    authGateEmailToggleBtn.addEventListener("click", () => {
+      toggleEmailAuthPanel();
+      syncEmailAuthMode();
+    });
+  }
+
+  if (loginEmailBtn) {
+    loginEmailBtn.addEventListener("click", () => {
+      setAccessMode("locked");
+      toggleEmailAuthPanel(true);
+      syncEmailAuthMode();
+      closeSidebar();
+    });
+  }
+
+  if (emailAuthForm) emailAuthForm.addEventListener("submit", loginOrRegisterWithEmail);
+
+  if (emailAuthSwitchModeBtn) {
+    emailAuthSwitchModeBtn.addEventListener("click", () => {
+      isEmailRegisterMode = !isEmailRegisterMode;
+      syncEmailAuthMode();
+    });
+  }
+
+  if (emailAuthResetBtn) {
+    emailAuthResetBtn.addEventListener("click", sendResetPassword);
+  }
+
+  if (accountBtn) accountBtn.addEventListener("click", openAccountModal);
+  if (accountModalClose) accountModalClose.addEventListener("click", closeAccountModal);
+  if (accountModalBackdrop) accountModalBackdrop.addEventListener("click", closeAccountModal);
+
+  if (resendVerificationBtn) {
+    resendVerificationBtn.addEventListener("click", async () => {
+      if (!window.currentUser || !window.sendEmailVerification) return;
+      try {
+        await window.sendEmailVerification(window.currentUser);
+        alert("Email verifikasi dikirim ulang.");
+      } catch (error) {
+        alert("Gagal kirim verifikasi: " + error.message);
+      }
+    });
+  }
+
+  if (changeEmailForm) {
+    changeEmailForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!window.currentUser || !window.updateEmail) return;
+      const newEmail = (newEmailInput?.value || "").trim();
+      if (!newEmail) return;
+      try {
+        await window.updateEmail(window.currentUser, newEmail);
+        alert("Email berhasil diubah. Silakan verifikasi email baru.");
+        if (window.sendEmailVerification) await window.sendEmailVerification(window.currentUser);
+        updateAccountStatusUI(window.currentUser);
+      } catch (error) {
+        alert("Gagal ubah email: " + error.message + " (biasanya butuh login ulang)");
+      }
+    });
+  }
+
   // Fungsi Logout
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
@@ -140,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Simpan data user ke variable global (buat nanti simpan skor database)
         window.currentUser = user; 
+        updateAccountStatusUI(user);
         setAccessMode("logged-in");
       } else {
         // JIKA BELUM LOGIN / LOGOUT
@@ -147,6 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loggedInView.style.display = "none";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
+        updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
       }
     });

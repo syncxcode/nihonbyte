@@ -2205,3 +2205,82 @@ body.history-mode #grid {
     padding-right: 0.65rem !important;
   }
 }
+
+
+/* =========================================
+   AUTH GATE + MODE TAMU
+========================================= */
+.auth-gate {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 24px;
+  background: radial-gradient(circle at top, rgba(255, 77, 109, 0.25), rgba(15, 23, 42, 0.92));
+  backdrop-filter: blur(8px);
+}
+
+.auth-gate.active { display: flex; }
+
+.auth-gate-card {
+  width: min(560px, 100%);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 28px;
+  padding: 32px 28px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+}
+
+.auth-gate-logo { width: 78px; height: 78px; object-fit: contain; margin-bottom: 10px; }
+.auth-gate-badge { display: inline-block; padding: 6px 14px; border-radius: 999px; background: #ffe4ea; color: #be123c; font-weight: 700; font-size: 0.78rem; margin: 0 0 8px; }
+.auth-gate-card h1 { margin: 6px 0 10px; color: #0f172a; }
+.auth-gate-subtext { margin: 0 0 18px; color: #475569; line-height: 1.6; }
+
+.auth-gate-google-btn,
+.auth-gate-guest-btn,
+.guest-btn {
+  width: 100%;
+  border-radius: 999px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auth-gate-google-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ff4d6d, #ff758f);
+  color: #fff;
+  padding: 13px 20px;
+}
+
+.auth-gate-google-btn.loading { opacity: 0.7; pointer-events: none; }
+.auth-gate-google-btn img { width: 20px; height: 20px; }
+
+.auth-gate-guest-btn,
+.guest-btn {
+  margin-top: 10px;
+  padding: 11px 20px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+}
+
+.auth-gate-note-list {
+  margin: 15px 0 0;
+  padding-left: 18px;
+  color: #64748b;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+body.guest-mode #sidebar .sidebar-tree summary.restricted,
+body.guest-mode #sidebar .sidebar-tree button.restricted {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -51,11 +51,9 @@
         <p><strong>Romaji:</strong> ${example.romaji}</p>
         <p><strong>Arti:</strong> ${example.meaning}</p>
         <div class="sentence-box">
-          <div class="sentence-box-head">
-            <button type="button" class="wide-play-btn form-sentence-play-btn" data-text="${sentence.audio || sentence.jp}" aria-label="Putar kalimat">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12l10-6z"></path></svg>
-            </button>
-          </div>
+          <button type="button" class="wide-play-btn form-sentence-play-btn" data-text="${sentence.audio || sentence.jp}" aria-label="Putar kalimat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12l10-6z"></path></svg>
+          </button>
           <p class="sentence-jp" data-role="sentence-jp">${sentence.jp}</p>
           <p data-role="sentence-kana">${sentence.kana}</p>
           <p data-role="sentence-romaji">${sentence.romaji}</p>

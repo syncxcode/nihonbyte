@@ -1,170 +1,385 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NihonByte</title>
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="icon" type="image/png" href="./assets/favicon.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand">
-        <img src="./assets/logo.png" alt="NihonByte" />
-        <div>
-          <h1>NihonByte</h1>
-          <p>Roadmap + kosakata + komunitas real</p>
-        </div>
+
+<section id="auth-gate" class="auth-gate active" aria-live="polite">
+  <div class="auth-gate-card">
+    <img src="./assets/logo.png" alt="NihonByte Logo" class="auth-gate-logo">
+    <p class="auth-gate-badge">NihonByte Access</p>
+    <h1>Belajar Jepang Lebih Fokus</h1>
+    <p class="auth-gate-subtext">Masuk dengan Google untuk membuka semua fitur, progres cloud, kategori lengkap, dan mode latihan tanpa batas.</p>
+    <button id="auth-gate-google-btn" class="auth-gate-google-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+      <span>Lanjutkan dengan Google</span>
+    </button>
+    <button id="auth-gate-email-toggle" class="auth-gate-email-btn">Masuk / Daftar dengan Email</button>
+
+    <form id="email-auth-form" class="email-auth-form" style="display:none;" novalidate>
+      <input id="email-auth-input" type="email" placeholder="email@contoh.com" required>
+      <input id="email-auth-password" type="password" placeholder="Password minimal 6 karakter" required>
+      <button id="email-auth-submit" type="submit">Masuk dengan Email</button>
+      <div class="email-auth-links">
+        <button id="email-auth-switch-mode" type="button">Belum punya akun? Daftar</button>
+        <button id="email-auth-reset" type="button">Lupa password</button>
       </div>
+    </form>
 
-      <div class="auth-box" id="auth-box">
-        <div id="logged-out">
-          <button id="google-login" class="primary-btn">Masuk Google</button>
-          <form id="email-form" class="email-form">
-            <input id="email-input" type="email" placeholder="Email" required />
-            <input id="password-input" type="password" placeholder="Password" required />
-            <div class="auth-actions">
-              <button type="button" id="email-login" class="ghost-btn">Masuk</button>
-              <button type="button" id="email-register" class="ghost-btn">Daftar</button>
+    <button id="continue-guest-btn" class="auth-gate-guest-btn">Masuk sebagai tamu (akses terbatas)</button>
+    <div id="verification-hold-note" class="verification-hold-note" style="display:none;"></div>
+  </div>
+</section>
+
+<div id="overlay"></div>
+
+<aside id="sidebar" aria-label="Menu samping">
+  <button id="logout-floating-btn" class="logout-floating-btn" type="button" aria-label="Keluar" style="display:none;">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+  </button>
+  <h3>Halo, Selamat Datang</h3>
+  <div id="user-profile-section" class="user-profile-section">
+        <div id="logged-out-view">
+          <button id="login-google-btn" class="login-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+            <span>Masuk dengan Google</span>
+          </button>
+          <button id="login-email-btn" class="guest-btn">Masuk / Daftar Email</button>
+          <button id="guest-sidebar-btn" class="guest-btn">Lanjut sebagai tamu</button>
+          <p class="login-desc">Simpan skor latihanmu ke Cloud!</p>
+        </div>
+
+        <div id="logged-in-view" style="display: none;">
+          <img id="user-avatar" src="" alt="Avatar" class="user-avatar">
+          <div class="user-info">
+            <span id="user-name" class="user-name">Nama User</span>
+            <div class="user-actions">
+               <button id="dashboard-btn" class="history-link">Dasbor</button>
+               <button id="account-btn" class="history-link" style="display:none;">⚙️ Akun</button>
+               <button id="logout-btn" class="logout-btn" style="display:none;">Keluar</button>
             </div>
-          </form>
-        </div>
-        <div id="logged-in" class="hidden">
-          <p id="user-text">Login sebagai -</p>
-          <button id="logout" class="ghost-btn">Keluar</button>
-        </div>
-      </div>
-
-      <nav class="sidebar-nav" id="sidebar-nav">
-        <button class="nav-btn active" data-view="roadmap">🏠 Learn</button>
-        <button class="nav-btn" data-view="practice">🏋️ Practice</button>
-        <button class="nav-btn" data-view="leaderboard">🛡️ Leaderboard</button>
-        <button class="nav-btn" data-view="missions">🎯 Quests</button>
-        <button class="nav-btn" data-view="community">👥 Komunitas</button>
-        <button class="nav-btn" data-view="profile">🧑 Dasbor Saya</button>
-      </nav>
-
-      <details open class="sidebar-group">
-        <summary>Kosa Kata & Tata Bahasa</summary>
-        <button class="type-btn" data-type="verb-godan">Kata Kerja Godan</button>
-        <button class="type-btn" data-type="verb-ru">Kata Kerja Ichidan</button>
-        <button class="type-btn" data-type="verb-suru">Kata Kerja Suru</button>
-        <button class="type-btn" data-type="adj-i">Kata Sifat -i</button>
-        <button class="type-btn" data-type="adj-na">Kata Sifat -na</button>
-        <button class="type-btn" data-type="noun">Kata Benda</button>
-        <button class="type-btn" data-type="activity">Aktivitas</button>
-        <button class="type-btn" data-type="expression">Ungkapan</button>
-      </details>
-    </aside>
-
-    <main class="main-content">
-      <header class="topbar">
-        <div>
-          <p class="status">Belajar Harian Aktif</p>
-          <h2 id="page-title">Roadmap Belajar</h2>
-        </div>
-        <div class="stats" id="top-stats"></div>
-      </header>
-
-      <section class="view active" id="view-roadmap">
-        <div class="roadmap-layout">
-          <section>
-            <article class="roadmap-hero">
-              <p id="active-section">Section 1 • Unit 1</p>
-              <h3 id="active-title">Form Basic Sentences</h3>
-              <button id="continue-btn">Continue</button>
-            </article>
-            <div class="roadmap-path" id="roadmap-path"></div>
-          </section>
-          <aside class="panel">
-            <div class="panel-head">
-              <h3>Daily Missions</h3>
-              <span>Reset 11 jam</span>
-            </div>
-            <div id="daily-missions"></div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="view" id="view-practice">
-        <div class="panel">
-          <h3>Practice Developer Mode</h3>
-          <div class="practice-controls">
-            <label>Jenis
-              <select id="practice-type">
-                <option value="goi">Goi (Kosakata)</option>
-                <option value="bunpou">Bunpou (Tata Bahasa)</option>
-                <option value="dokkai">Dokkai (Membaca)</option>
-              </select>
-            </label>
-            <label>Level
-              <select id="practice-level">
-                <option value="N5">N5</option>
-                <option value="N4">N4</option>
-                <option value="N3">N3</option>
-                <option value="N2">N2</option>
-                <option value="N1">N1</option>
-              </select>
-            </label>
-            <button id="practice-start" class="primary-btn">Mulai Latihan</button>
           </div>
-          <div id="quiz-list" class="card-grid"></div>
         </div>
-        <div class="panel">
-          <h3>Kosakata (dari data.js)</h3>
-          <div id="vocab-list" class="card-grid"></div>
-        </div>
-      </section>
+      </div>
+      <hr class="sidebar-divider">
+  <p class="sidebar-section-title">Menu</p>
+  <div class="sidebar-tree">
+    <!-- HURUF -->
+    <details>
+      <summary>🔤 HURUF</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn letter-btn" data-script="hiragana">📄 Hiragana</button>
+        <button class="menu-btn letter-btn" data-script="katakana">📄 Katakana</button>
+      </div>
+    </details>
 
-      <section class="view" id="view-leaderboard">
-        <div class="panel"><h3>Leaderboard User Real</h3><div id="leaderboard-list"></div></div>
-      </section>
-      <section class="view" id="view-missions"><div class="panel"><h3>Misi Detail</h3><div id="mission-detail-list"></div></div></section>
-      <section class="view" id="view-community"><div class="panel"><h3>Komunitas User Terdaftar</h3><div id="community-feed"></div></div></section>
-      <section class="view" id="view-profile"><div class="panel" id="profile-card"></div></section>
-    </main>
+    <!-- BENTUK KATA KERJA -->
+    <details>
+      <summary>🗣️ BENTUK KATA KERJA</summary>
+      <div class="subfolder-list"><!-- kosong --></div>
+    </details>
+
+    <!-- BENTUK KATA SIFAT -->
+    <details>
+      <summary>📝 BENTUK KATA SIFAT</summary>
+      <div class="subfolder-list"><!-- kosong --></div>
+    </details>
+
+    <!-- POLA KALIMAT -->
+    <details>
+      <summary>📖 POLA KALIMAT</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn pattern-btn" data-level="N5">N5</button>
+        <button class="menu-btn pattern-btn" data-level="N4">N4</button>
+        <button class="menu-btn pattern-btn" data-level="N3">N3</button>
+        <button class="menu-btn pattern-btn" data-level="N2">N2</button>
+        <button class="menu-btn pattern-btn" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <!-- UNGKAPAN UMUM -->
+    <details>
+      <summary>💬 UNGKAPAN UMUM</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn sidebar-filter-btn" data-type="ekspresi" data-level="all">Ungkapan Umum</button>
+      </div>
+    </details>
+
+    <!-- KOTOBA -->
+    <details class="kotoba-dropdown">
+      <summary>📚 KOTOBA</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn sidebar-filter-btn" data-type="noun" data-level="all">KOSAKATA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="activity" data-level="all">KOSAKATA AKTIVITAS</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-number-counter" data-level="all">KOSAKATA ANGKA & SATUAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-work" data-level="all">KOSAKATA DUNIA KERJA UMUM</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-hobby" data-level="all">KOSAKATA HOBI</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="question" data-level="all">KOSAKATA KATA TANYA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-vehicle" data-level="all">KOSAKATA KENDARAAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-caregiving" data-level="all">KOSAKATA KEPERAWATAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="adv" data-level="all">KOSAKATA KETERANGAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-animal" data-level="all">KOSAKATA NAMA BINATANG</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-sports" data-level="all">KOSAKATA OLAHRAGA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-factory" data-level="all">KOSAKATA PABRIK & MANUFAKTUR</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-agriculture" data-level="all">KOSAKATA PERTANIAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-profession" data-level="all">KOSAKATA PROFESI</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-restaurant" data-level="all">KOSAKATA RESTORAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-house-family" data-level="all">KOSAKATA RUMAH & KELUARGA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-school" data-level="all">KOSAKATA SEKOLAH</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-place" data-level="all">KOSAKATA TEMPAT & BANGUNAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-body-medical" data-level="all">KOSAKATA TUBUH & KESEHATAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-time-weather" data-level="all">KOSAKATA WAKTU & CUACA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-color" data-level="all">KOSAKATA WARNA</button>
+      </div>
+    </details>
+
+    <!-- LATIHAN -->
+    <details class="latihan-dropdown">
+  <summary>📝 LATIHAN</summary>
+  <div class="subfolder-list">
+    
+    <details class="sub-details">
+      <summary>言語知識（文字・語彙）<br>Pengetahuan Bahasa (Kosakata)</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>言語知識（文法）<br>Pengetahuan Bahasa (Tata Bahasa)</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>読解<br>Dokkai Membaca</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>聴解<br>Mendengarkan</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N1">N1</button>
+      </div>
+    </details>
+
+  </div>
+</details>
+
+    <button class="support-btn" id="supportBtn">❤️ DUKUNG PENGEMBANG</button>
+  </div>
+</aside>
+
+<header class="topbar">
+  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="branding">
+    <img id="logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
   </div>
 
-  <dialog id="daily-login-modal" class="daily-modal">
-    <div class="daily-card">
-      <p>Daily login berhasil 🔥</p>
-      <h3 id="streak-count">Streak 1 hari</h3>
-      <button id="daily-login-close">Lanjut belajar</button>
+  <!-- ICON SEARCH SVG (sudah benar) -->
+  <button id="searchBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+  
+  <p id="resultInfo" aria-live="polite"></p>
+  
+  <!-- ELEMEN TERSEMBUNYI (PENTING! biar JS tidak crash) -->
+  <div style="display: none !important;">
+    <select id="category">
+      <option value="all">Semua</option>
+      <optgroup label="KATA KERJA">
+        <option value="verb-godan">KATA KERJA GODAN</option>
+        <option value="verb-ru">KATA KERJA ICHIDAN</option>
+        <option value="verb-irregular">KATA KERJA SURU</option>
+      </optgroup>
+      <optgroup label="KATA SIFAT">
+        <option value="adj-i">KATA SIFAT い</option>
+        <option value="adj-na">KATA SIFAT な</option>
+      </optgroup>
+    </select>
+    <input id="search" value="">
+  </div>
+</header>
+  
+<main id="grid"></main>
+  
+  <div id="pagination-container" class="pagination-container"></div>
+
+<!-- KANJI MODAL (lama) -->
+<section id="kanjiModal" class="kanji-modal" aria-hidden="true">
+  <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
+  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
+    <button id="modalClose" class="modal-close" aria-label="Tutup detail">✕</button>
+    <article id="expandedCard" class="expanded-card"></article>
+    <h4 id="modalSubtitle">Rekomendasi terkait</h4>
+    <div id="recommendationRow" class="recommendation-row"></div>
+  </div>
+</section>
+
+<!-- MODAL FILTER BARU (popup besar) -->
+<section id="filterModal" class="filter-modal" aria-hidden="true">
+  <div class="filter-modal-backdrop" id="filterBackdrop"></div>
+  <div class="filter-modal-content">
+    <div class="filter-modal-header">
+      <h3>🔍 Cari & Filter Cepat</h3>
+      <button id="filterModalClose" class="modal-close" aria-label="Tutup">✕</button>
     </div>
-  </dialog>
 
-  <script src="./data.js"></script>
-  <script src="./latihan/meta-data.js"></script>
-  <script src="./latihan/data-goi.js"></script>
-  <script src="./latihan/data-bunpou.js"></script>
-  <script src="./latihan/data-dokkai.js"></script>
-  <script src="./firebase-config.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    <input type="text" id="modalSearchInput" class="modal-search-input" placeholder="Cari kanji / kana / romaji / arti...">
 
-    const config = window.NIHONBYTE_FIREBASE_CONFIG;
-    if (config?.apiKey && config?.projectId) {
-      const app = initializeApp(config);
-      window.firebaseAuth = getAuth(app);
-      window.firebaseProvider = new GoogleAuthProvider();
-      window.signInWithPopup = signInWithPopup;
-      window.signOut = signOut;
-      window.onAuthStateChanged = onAuthStateChanged;
-      window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
-      window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-      window.firebaseDb = getFirestore(app);
-      window.fs = { doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, serverTimestamp };
-      window.dispatchEvent(new Event("nihonbyte:firebase-ready"));
-    } else {
-      console.warn("Firebase config tidak valid / belum dimuat.");
-    }
-  </script>
-  <script src="./app.js"></script>
+    <div class="filter-section">
+      <h4>Level JLPT</h4>
+      <div class="level-grid" id="levelGrid">
+        <button class="level-btn active" data-level="all">Semua Level</button>
+        <button class="level-btn" data-level="N5">N5</button>
+        <button class="level-btn" data-level="N4">N4</button>
+        <button class="level-btn" data-level="N3">N3</button>
+        <button class="level-btn" data-level="N2">N2</button>
+        <button class="level-btn" data-level="N1">N1</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <h4>Kategori Khusus</h4>
+      <div class="category-grid" id="categoryGrid">
+        <button class="cat-btn" data-type="verb-godan">KATA KERJA GODAN</button>
+        <button class="cat-btn" data-type="verb-ru">KATA KERJA ICHIDAN</button>
+        <button class="cat-btn" data-type="verb-irregular">KATA KERJA SURU</button>
+        <button class="cat-btn" data-type="adj-i">KATA SIFAT い</button>
+        <button class="cat-btn" data-type="adj-na">KATA SIFAT な</button>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button id="applyFilterBtn" class="apply-filter-btn">Tampilkan Hasil</button>
+      <button id="resetFilterBtn" class="reset-filter-btn">Reset Semua</button>
+    </div>
+  </div>
+</section>
+  
+  <footer class="app-footer" aria-label="Informasi aplikasi">
+    <p>© 2026 NihonByte</p>
+    <span aria-hidden="true">•</span>
+    <p>v1.2.0</p>
+  </footer>
+  
+
+<section id="accountModal" class="kanji-modal" aria-hidden="true">
+  <div class="kanji-modal-backdrop" id="accountModalBackdrop"></div>
+  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Pengaturan akun">
+    <button id="accountModalClose" class="modal-close" aria-label="Tutup">✕</button>
+    <article class="expanded-card">
+      <div class="info-poster" style="background:#fff; color:#0f172a;">
+        <h3 style="margin-top:0;">Pengaturan Akun Email</h3>
+        <p id="account-email-status" style="font-weight:700; margin:8px 0 16px;">Status verifikasi: -</p>
+        <button id="resend-verification-btn" class="auth-gate-email-btn" style="margin-bottom:12px;">Kirim ulang verifikasi email</button>
+        <p style="margin:0; color:#64748b; font-size:0.85rem;">Fitur ganti email dinonaktifkan untuk menjaga kestabilan akun.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script src="./firebase-config.js"></script>
+<script type="module">
+  // 1. Import Senjata Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateEmail, updateProfile, applyActionCode, confirmPasswordReset, verifyPasswordResetCode } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+  // 2. Ambil Config Firebase dari file lokal `firebase-config.js` (di-ignore Git)
+  const firebaseConfig = window.NIHONBYTE_FIREBASE_CONFIG;
+
+  if (!firebaseConfig || !firebaseConfig.apiKey || !firebaseConfig.projectId) {
+    console.warn("⚠️ Firebase config belum ditemukan. Salin firebase-config.example.js jadi firebase-config.js lalu isi config project Anda.");
+    window.firebaseAuth = null;
+    window.firebaseDb = null;
+    window.firebaseProvider = null;
+    window.signInWithPopup = null;
+    window.signOut = null;
+    window.onAuthStateChanged = null;
+    window.createUserWithEmailAndPassword = null;
+    window.signInWithEmailAndPassword = null;
+    window.sendEmailVerification = null;
+    window.sendPasswordResetEmail = null;
+    window.updateEmail = null;
+    window.updateProfile = null;
+    window.applyActionCode = null;
+    window.confirmPasswordReset = null;
+    window.verifyPasswordResetCode = null;
+    window.doc = null;
+    window.setDoc = null;
+    window.getDoc = null;
+  } else {
+    // 3. Nyalain Mesinnya!
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    // 4. JADIKAN GLOBAL BIAR BISA DIPAKE DI app.js
+    window.firebaseAuth = auth;
+    window.firebaseDb = db;
+    window.firebaseProvider = provider;
+    window.signInWithPopup = signInWithPopup;
+    window.signOut = signOut;
+    window.onAuthStateChanged = onAuthStateChanged;
+    window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+    window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    window.sendEmailVerification = sendEmailVerification;
+    window.sendPasswordResetEmail = sendPasswordResetEmail;
+    window.updateEmail = updateEmail;
+    window.updateProfile = updateProfile;
+    window.applyActionCode = applyActionCode;
+    window.confirmPasswordReset = confirmPasswordReset;
+    window.verifyPasswordResetCode = verifyPasswordResetCode;
+    window.doc = doc;
+    window.setDoc = setDoc;
+    window.getDoc = getDoc;
+
+    console.log("🔥 Mesin Firebase Sukses Dinyalakan!");
+  }
+</script>
+
+<script src="app.js"></script>  
+<script src="./data.js"></script>
+<script src="./latihan/data-goi.js"></script>
+<script src="./latihan/data-dokkai.js"></script>
+<script src="./latihan/data-bunpou.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
 </html>

@@ -49,23 +49,15 @@
       </nav>
 
       <details open class="sidebar-group">
-        <summary>Kosakata Kata Kerja</summary>
-        <button class="type-btn" data-type="verb-godan">Godan</button>
-        <button class="type-btn" data-type="verb-ru">Ichidan (ru)</button>
-        <button class="type-btn" data-type="verb-suru">Irregular (suru)</button>
-      </details>
-
-      <details open class="sidebar-group">
-        <summary>Kosakata Kata Sifat</summary>
-        <button class="type-btn" data-type="adj-i">Sifat -i</button>
-        <button class="type-btn" data-type="adj-na">Sifat -na</button>
-      </details>
-
-      <details class="sidebar-group">
-        <summary>Kosakata Lainnya</summary>
-        <button class="type-btn" data-type="noun">Noun</button>
-        <button class="type-btn" data-type="activity">Activity</button>
-        <button class="type-btn" data-type="expression">Expression</button>
+        <summary>Kosa Kata & Tata Bahasa</summary>
+        <button class="type-btn" data-type="verb-godan">Kata Kerja Godan</button>
+        <button class="type-btn" data-type="verb-ru">Kata Kerja Ichidan</button>
+        <button class="type-btn" data-type="verb-suru">Kata Kerja Suru</button>
+        <button class="type-btn" data-type="adj-i">Kata Sifat -i</button>
+        <button class="type-btn" data-type="adj-na">Kata Sifat -na</button>
+        <button class="type-btn" data-type="noun">Kata Benda</button>
+        <button class="type-btn" data-type="activity">Aktivitas</button>
+        <button class="type-btn" data-type="expression">Ungkapan</button>
       </details>
     </aside>
 
@@ -100,7 +92,26 @@
 
       <section class="view" id="view-practice">
         <div class="panel">
-          <h3>Latihan Roadmap</h3>
+          <h3>Practice Developer Mode</h3>
+          <div class="practice-controls">
+            <label>Jenis
+              <select id="practice-type">
+                <option value="goi">Goi (Kosakata)</option>
+                <option value="bunpou">Bunpou (Tata Bahasa)</option>
+                <option value="dokkai">Dokkai (Membaca)</option>
+              </select>
+            </label>
+            <label>Level
+              <select id="practice-level">
+                <option value="N5">N5</option>
+                <option value="N4">N4</option>
+                <option value="N3">N3</option>
+                <option value="N2">N2</option>
+                <option value="N1">N1</option>
+              </select>
+            </label>
+            <button id="practice-start" class="primary-btn">Mulai Latihan</button>
+          </div>
           <div id="quiz-list" class="card-grid"></div>
         </div>
         <div class="panel">
@@ -128,6 +139,9 @@
 
   <script src="./data.js"></script>
   <script src="./latihan/meta-data.js"></script>
+  <script src="./latihan/data-goi.js"></script>
+  <script src="./latihan/data-bunpou.js"></script>
+  <script src="./latihan/data-dokkai.js"></script>
   <script src="./firebase-config.js"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";

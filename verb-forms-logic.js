@@ -47,14 +47,23 @@
         <p><strong>Romaji:</strong> ${example.romaji}</p>
         <p><strong>Arti:</strong> ${example.meaning}</p>
         <div class="sentence-box">
-          <p class="sentence-jp">${sentence.jp}</p>
-          <p>${sentence.kana}</p>
-          <p>${sentence.romaji}</p>
-          <p>${sentence.meaning}</p>
+          <div class="sentence-box-head">
+            <button type="button" class="wide-play-btn form-sentence-play-btn" data-text="${sentence.audio || sentence.jp}" aria-label="Putar kalimat">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12l10-6z"></path></svg>
+            </button>
+          </div>
+          <p class="sentence-jp" data-role="sentence-jp">${sentence.jp}</p>
+          <p data-role="sentence-kana">${sentence.kana}</p>
+          <p data-role="sentence-romaji">${sentence.romaji}</p>
+          <p data-role="sentence-meaning">${sentence.meaning}</p>
         </div>
         <div class="sentence-actions">
-          <button type="button" class="wide-play-btn" data-text="${sentence.audio || sentence.jp}">▶ Play</button>
-          <button type="button" class="shuffle-sentence-btn" data-key="${key}">🔀 Acak Kalimat</button>
+          <button type="button" class="shuffle-sentence-btn" data-key="${key}">
+            <span class="shuffle-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16 3h5v5"></path><path d="M4 20l7-7"></path><path d="M21 3l-7 7"></path><path d="M16 21h5v-5"></path><path d="M4 4l7 7"></path><path d="M21 21l-7-7"></path></svg>
+            </span>
+            Acak Kalimat
+          </button>
         </div>
       </article>
     `;
@@ -118,11 +127,11 @@
         sentenceState.set(key, next);
 
         const sentence = selectedExample.sentences[next];
-        target.querySelector(".sentence-jp").textContent = sentence.jp;
-        target.querySelector(".sentence-box p:nth-child(2)").textContent = sentence.kana;
-        target.querySelector(".sentence-box p:nth-child(3)").textContent = sentence.romaji;
-        target.querySelector(".sentence-box p:nth-child(4)").textContent = sentence.meaning;
-        target.querySelector(".wide-play-btn").dataset.text = sentence.audio || sentence.jp;
+        target.querySelector('[data-role="sentence-jp"]').textContent = sentence.jp;
+        target.querySelector('[data-role="sentence-kana"]').textContent = sentence.kana;
+        target.querySelector('[data-role="sentence-romaji"]').textContent = sentence.romaji;
+        target.querySelector('[data-role="sentence-meaning"]').textContent = sentence.meaning;
+        target.querySelector(".form-sentence-play-btn").dataset.text = sentence.audio || sentence.jp;
       });
     });
   }

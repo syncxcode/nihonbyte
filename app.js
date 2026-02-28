@@ -1253,24 +1253,34 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
+    function applyModalFilter() {
+      const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
+      let activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "verb-adj-only";
+
+      // KUNCI GLOBAL SEARCH POP-UP: Buka gembok jadi "all" kalau user cuma ngetik tapi gak milih kategori
+      if (modalSearchInput && modalSearchInput.value.trim() !== "" && !document.querySelector("#categoryGrid .cat-btn.active")) {
+        activeType = "all";
+      }
+
+      selectedLevel = activeLevel;
+      selectedType = activeType;
+      viewMode = "vocab";
+      if (search && modalSearchInput) search.value = modalSearchInput.value.trim();
+
+      closeFilterModal();
+      render();
+    }
+
     // Apply & Reset
     if (applyFilterBtn) {
-      applyFilterBtn.addEventListener("click", () => {
-        const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
-        let activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "verb-adj-only";
+      applyFilterBtn.addEventListener("click", applyModalFilter);
+    }
 
-        // KUNCI GLOBAL SEARCH POP-UP: Buka gembok jadi "all" kalau user cuma ngetik tapi gak milih kategori
-        if (modalSearchInput && modalSearchInput.value.trim() !== "" && !document.querySelector("#categoryGrid .cat-btn.active")) {
-          activeType = "all";
-        }
-
-        selectedLevel = activeLevel;
-        selectedType = activeType;
-        viewMode = "vocab";
-        if (search && modalSearchInput) search.value = modalSearchInput.value.trim();
-
-        closeFilterModal();
-        render();
+    if (modalSearchInput) {
+      modalSearchInput.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        applyModalFilter();
       });
     }
 

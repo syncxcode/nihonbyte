@@ -1,276 +1,264 @@
 (() => {
   const data = window.NIHONBYTE_META_DATA;
-  if (!data) return;
-
+  const vocabData = window.vocabularyData || [];
   const $ = (s) => document.querySelector(s);
   const $$ = (s) => Array.from(document.querySelectorAll(s));
 
-  const DB_NAME = 'nihonbyte-meta-db';
-  const STORE = 'profile';
-  const PROFILE_KEY = 'main';
-
-  const defaultProfile = {
-    name: 'Kamu',
-    points: 420,
-    exp: 860,
-    level: 7,
-    streak: 1,
-    follows: [],
-    lastLoginDate: ''
+  const defaultStats = { exp: 0, level: 1, points: 0, streak: 0, lastLoginDate: '' };
+  const state = {
+    currentUser: null,
+    profile: { ...defaultStats, displayName: 'Guest', email: '', following: [] },
+    selectedType: 'verb-godan',
+    users: []
   };
 
-  let state = { profile: { ...defaultProfile } };
-
-  function openDB() {
-    return new Promise((resolve, reject) => {
-      const req = indexedDB.open(DB_NAME, 1);
-      req.onupgradeneeded = () => {
-        req.result.createObjectStore(STORE);
-      };
-      req.onsuccess = () => resolve(req.result);
-      req.onerror = () => reject(req.error);
-    });
+  function needFirebase() {
+    return !(window.firebaseAuth && window.firebaseDb && window.fs);
   }
 
-  async function getProfileFromDB() {
-    const db = await openDB();
-    return new Promise((resolve) => {
-      const tx = db.transaction(STORE, 'readonly');
-      const store = tx.objectStore(STORE);
-      const req = store.get(PROFILE_KEY);
-      req.onsuccess = () => resolve(req.result || null);
-      req.onerror = () => resolve(null);
-    });
-  }
+  function toast(msg) { alert(msg); }
 
-  async function saveProfileToDB() {
-    const db = await openDB();
-    return new Promise((resolve) => {
-      const tx = db.transaction(STORE, 'readwrite');
-      tx.objectStore(STORE).put(state.profile, PROFILE_KEY);
-      tx.oncomplete = () => resolve(true);
-      tx.onerror = () => resolve(false);
-    });
-  }
+  function computeLevel(exp) { return Math.max(1, Math.floor(exp / 120) + 1); }
 
-  function todayKey() {
-    return new Date().toISOString().slice(0, 10);
-  }
+  function todayKey() { return new Date().toISOString().slice(0, 10); }
 
   function renderTopStats() {
-    const container = $('#top-stats');
-    const m = data.dailyMissions.reduce((acc, i) => acc + Math.min(i.progress, i.total), 0);
-    container.innerHTML = [
-      `⭐ XP ${state.profile.exp}`,
-      `🔥 Streak ${state.profile.streak}`,
-      `💎 Poin ${state.profile.points}`,
-      `🎯 Progres Misi ${m}`
-    ].map((text) => `<span class="stat-chip">${text}</span>`).join('');
-  }
-
-  function renderVerbList() {
-    $('#verb-list').innerHTML = data.verbs.map((v) => `<li>${v}</li>`).join('');
+    const el = $('#top-stats');
+    el.innerHTML = [
+      `⭐ XP ${state.profile.exp || 0}`,
+      `📈 Level ${state.profile.level || 1}`,
+      `💎 Poin ${state.profile.points || 0}`,
+      `🔥 Streak ${state.profile.streak || 0}`
+    ].map((x) => `<span class="stat-chip">${x}</span>`).join('');
   }
 
   function renderRoadmap() {
     const active = data.roadmap.find((r) => r.status === 'active') || data.roadmap[0];
     $('#active-section').textContent = `${active.section} • ${active.unit}`;
     $('#active-title').textContent = active.title;
-
-    $('#roadmap-path').innerHTML = data.roadmap.map((item, idx) => {
-      const iconClass = item.status === 'done' ? 'done' : item.status === 'locked' ? 'locked' : '';
-      const emoji = item.status === 'locked' ? '🔒' : item.status === 'done' ? '✓' : idx + 1;
-      const action = item.status === 'active' ? 'START' : item.status === 'done' ? 'REVIEW' : 'LOCKED';
-      return `
-        <article class="lesson-node">
-          <div class="node-icon ${iconClass}">${emoji}</div>
-          <div>
-            <h4>${item.section}, ${item.unit} — ${item.title}</h4>
-            <p>${item.skill} • reward ${item.xp} XP</p>
-          </div>
-          <span class="roadmap-action">${action}</span>
-        </article>
-      `;
+    $('#roadmap-path').innerHTML = data.roadmap.map((item, i) => {
+      const c = item.status === 'done' ? 'done' : item.status === 'locked' ? 'locked' : '';
+      const icon = item.status === 'done' ? '✓' : item.status === 'locked' ? '🔒' : i + 1;
+      return `<article class="lesson-node"><div class="node-icon ${c}">${icon}</div><div><strong>${item.title}</strong><div>${item.skill}</div></div><span>${item.xp} XP</span></article>`;
     }).join('');
+  }
+
+  function missionTemplate(m) {
+    const pct = Math.min(100, Math.round((m.progress / m.total) * 100));
+    return `<article class="mission-item"><h4>${m.title}</h4><div class="progress"><span style="width:${pct}%"></span></div><small>${m.progress}/${m.total} • reward ${m.reward}</small></article>`;
   }
 
   function renderMissions() {
-    const mkMission = (m) => {
-      const pct = Math.min(100, Math.round((m.progress / m.total) * 100));
-      return `
-      <article class="mission-item">
-        <h4>${m.title}</h4>
-        <div class="progress"><span style="width:${pct}%"></span></div>
-        <small>${m.progress}/${m.total} • reward ${m.reward} pts</small>
-      </article>`;
-    };
-    $('#daily-missions').innerHTML = data.dailyMissions.map(mkMission).join('');
-    $('#mission-detail-list').innerHTML = data.dailyMissions.map((m) => `<div class="list-card">${mkMission(m)}</div>`).join('');
+    $('#daily-missions').innerHTML = data.dailyMissions.map(missionTemplate).join('');
+    $('#mission-detail-list').innerHTML = data.dailyMissions.map((m) => `<div class="list-card">${missionTemplate(m)}</div>`).join('');
   }
 
   function renderQuizzes() {
-    $('#quiz-list').innerHTML = data.quizzes.map((q) => `
-      <article class="list-card">
-        <h4>${q.title}</h4>
-        <p>${q.questions} soal • ${q.difficulty}</p>
-        <button class="follow-btn" data-quiz="${q.id}">Kerjakan latihan</button>
-      </article>
-    `).join('');
-
-    $$('#quiz-list [data-quiz]').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        state.profile.exp += 15;
-        state.profile.points += 10;
-        if (state.profile.exp >= state.profile.level * 140) state.profile.level += 1;
-        await saveProfileToDB();
-        renderAll();
-      });
-    });
+    $('#quiz-list').innerHTML = data.quizzes.map((q) => `<article class="list-card"><h4>${q.title}</h4><p>${q.questions} soal • ${q.difficulty}</p><button class="follow-btn" data-quiz="${q.id}">Kerjakan</button></article>`).join('');
+    $$('#quiz-list [data-quiz]').forEach((btn) => btn.onclick = () => handleEarn('quiz'));
   }
 
-  function renderLeaderboard() {
-    const board = [...data.leaderboard];
-    board[0] = {
-      ...board[0],
-      points: state.profile.points,
-      exp: state.profile.exp,
-      level: state.profile.level,
-      online: !document.hidden
-    };
-    board.sort((a, b) => b.points - a.points);
-    $('#leaderboard-list').innerHTML = board.map((u, idx) => `
-      <article class="list-card user-row">
-        <div class="user-meta">
-          <strong>#${idx + 1}</strong>
-          <div>
-            <div>${u.name} <span class="avatar-dot ${u.online ? 'online' : ''}"></span></div>
-            <small>Level ${u.level} • XP ${u.exp}</small>
-          </div>
-        </div>
-        <strong>${u.points} pts</strong>
-      </article>
-    `).join('');
-  }
-
-  function renderCommunity() {
-    $('#community-feed').innerHTML = data.communityPosts.map((p) => {
-      const followed = state.profile.follows.includes(p.userId);
-      return `
-      <article class="list-card">
-        <div class="user-row">
-          <div class="user-meta">
-            <strong>${p.userId.toUpperCase()}</strong>
-            <span class="avatar-dot ${p.online ? 'online' : ''}"></span>
-          </div>
-          <button class="follow-btn" data-follow="${p.userId}">${followed ? 'Following' : 'Follow'}</button>
-        </div>
-        <p>${p.text}</p>
-        <small>❤️ ${p.likes} likes</small>
-      </article>`;
-    }).join('');
-
-    $$('#community-feed [data-follow]').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const id = btn.dataset.follow;
-        const set = new Set(state.profile.follows);
-        if (set.has(id)) set.delete(id); else set.add(id);
-        state.profile.follows = [...set];
-        await saveProfileToDB();
-        renderCommunity();
-      });
-    });
+  function renderVocab() {
+    const list = vocabData.filter((v) => v.type === state.selectedType).slice(0, 80);
+    $('#vocab-list').innerHTML = list.map((v) => `<article class="list-card"><strong>${v.kanji || '-'}</strong><div>${v.kana} • ${v.romaji}</div><small>${v.meaning}</small></article>`).join('') || '<p>Tidak ada data.</p>';
   }
 
   function renderProfile() {
-    const completed = data.roadmap.filter((r) => r.status === 'done').length;
-    const active = data.roadmap.find((r) => r.status === 'active');
-    $('#profile-card').innerHTML = `
-      <article class="profile-box">
-        <h3>${state.profile.name}</h3>
-        <p>Level ${state.profile.level} • XP ${state.profile.exp}</p>
-        <p>Poin kompetisi: ${state.profile.points}</p>
-      </article>
-      <article class="profile-box">
-        <h3>Lencana</h3>
-        <div class="badges">${data.badges.map((b) => `<span class="badge">${b}</span>`).join('')}</div>
-      </article>
-      <article class="profile-box">
-        <h3>Progress Roadmap</h3>
-        <p>Selesai unit: ${completed}/${data.roadmap.length}</p>
-        <p>Latihan aktif: ${active ? active.title : '-'}</p>
-      </article>
-      <article class="profile-box">
-        <h3>Misi Harian</h3>
-        <p>Streak login: ${state.profile.streak} hari</p>
-        <p>Following: ${state.profile.follows.length} user</p>
-      </article>
-    `;
+    $('#profile-card').innerHTML = `<h3>${state.profile.displayName}</h3><p>${state.profile.email || '-'}</p><p>XP ${state.profile.exp} • Level ${state.profile.level} • Poin ${state.profile.points}</p><p>Following: ${state.profile.following?.length || 0}</p>`;
   }
 
-  function setupNavigation() {
-    $$('#sidebar-nav .nav-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        $$('#sidebar-nav .nav-btn').forEach((n) => n.classList.remove('active'));
-        btn.classList.add('active');
-        const view = btn.dataset.view;
-        $('#page-title').textContent = btn.textContent.trim();
-        $$('.view').forEach((v) => v.classList.remove('active'));
-        $(`#view-${view}`).classList.add('active');
-      });
+  function renderLeaderboard() {
+    const users = [...state.users].sort((a, b) => (b.points || 0) - (a.points || 0));
+    $('#leaderboard-list').innerHTML = users.map((u, i) => `<article class="list-card user-row"><div><strong>#${i + 1} ${u.displayName || 'User'}</strong> <span class="avatar-dot ${(u.presence?.isOnline) ? 'online' : ''}"></span><div>Level ${u.level || 1} • XP ${u.exp || 0}</div></div><strong>${u.points || 0}</strong></article>`).join('') || '<p>Belum ada user.</p>';
+  }
+
+  function renderCommunity() {
+    const users = state.users.slice(0, 12);
+    $('#community-feed').innerHTML = users.map((u) => {
+      const uid = u.uid;
+      const following = (state.profile.following || []).includes(uid);
+      return `<article class="list-card"><div class="user-row"><div><strong>${u.displayName || 'User'}</strong> <span class="avatar-dot ${(u.presence?.isOnline) ? 'online' : ''}"></span></div><button class="follow-btn" data-follow="${uid}">${following ? 'Following' : 'Follow'}</button></div><p>${u.recentActivity || 'Sedang belajar roadmap.'}</p><small>XP ${u.exp || 0} • Poin ${u.points || 0}</small></article>`;
+    }).join('') || '<p>Komunitas kosong.</p>';
+
+    $$('#community-feed [data-follow]').forEach((btn) => {
+      btn.onclick = () => toggleFollow(btn.dataset.follow);
     });
   }
 
-  async function showDailyLoginModalIfNeeded() {
-    const modal = $('#daily-login-modal');
-    const sameDay = state.profile.lastLoginDate === todayKey();
-    if (sameDay) return;
+  async function loadUsers() {
+    if (needFirebase()) return;
+    const { collection, getDocs, query, orderBy, limit } = window.fs;
+    const snap = await getDocs(query(collection(window.firebaseDb, 'users'), orderBy('points', 'desc'), limit(50)));
+    state.users = snap.docs.map((d) => ({ uid: d.id, ...(d.data() || {}) }));
+  }
 
-    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-    state.profile.streak = state.profile.lastLoginDate === yesterday ? state.profile.streak + 1 : 1;
-    state.profile.lastLoginDate = todayKey();
-    state.profile.exp += 10;
-    await saveProfileToDB();
-
-    $('#streak-count').textContent = `Streak ${state.profile.streak} hari`;
-    $('#streak-days').innerHTML = ['Su','Mo','Tu','We','Th','Fr','Sa']
-      .map((d, i) => `<div class="streak-day">${d}<br>${i < Math.min(state.profile.streak, 7) ? '✅' : '◯'}</div>`)
-      .join('');
-
-    if (typeof modal.showModal === 'function') {
-      modal.showModal();
-      $('#daily-login-close').onclick = () => modal.close();
+  async function ensureUserDoc(user) {
+    const { doc, getDoc, setDoc, serverTimestamp } = window.fs;
+    const ref = doc(window.firebaseDb, 'users', user.uid);
+    const snap = await getDoc(ref);
+    if (!snap.exists()) {
+      await setDoc(ref, {
+        displayName: user.displayName || user.email?.split('@')[0] || 'User',
+        email: user.email || '',
+        exp: 0,
+        level: 1,
+        points: 0,
+        streak: 0,
+        lastLoginDate: '',
+        following: [],
+        recentActivity: 'Baru bergabung di NihonByte.',
+        presence: { isOnline: true, lastActiveAt: serverTimestamp() },
+        createdAt: serverTimestamp()
+      }, { merge: true });
     }
   }
 
-  async function renderAll() {
+  async function loadMyProfile() {
+    if (!state.currentUser || needFirebase()) return;
+    const { doc, getDoc } = window.fs;
+    const snap = await getDoc(doc(window.firebaseDb, 'users', state.currentUser.uid));
+    const p = snap.data() || {};
+    state.profile = { ...defaultStats, ...p, displayName: p.displayName || state.currentUser.displayName || 'User', email: p.email || state.currentUser.email || '' };
+  }
+
+  async function persistProfile(patch) {
+    if (!state.currentUser || needFirebase()) return;
+    const { doc, setDoc, serverTimestamp } = window.fs;
+    state.profile = { ...state.profile, ...patch };
+    await setDoc(doc(window.firebaseDb, 'users', state.currentUser.uid), {
+      ...patch,
+      level: computeLevel((patch.exp ?? state.profile.exp) || 0),
+      updatedAt: serverTimestamp()
+    }, { merge: true });
+  }
+
+  async function handleEarn(source) {
+    if (!state.currentUser) return toast('Login dulu untuk menyimpan XP real ke Firebase.');
+    const exp = (state.profile.exp || 0) + 20;
+    const points = (state.profile.points || 0) + 12;
+    const level = computeLevel(exp);
+    await persistProfile({ exp, points, level, recentActivity: `Selesai ${source} roadmap +20 XP` });
+    await reloadData();
+  }
+
+  async function toggleFollow(uid) {
+    if (!state.currentUser) return toast('Login dulu untuk follow user komunitas.');
+    const set = new Set(state.profile.following || []);
+    if (set.has(uid)) set.delete(uid); else set.add(uid);
+    await persistProfile({ following: [...set] });
+    await reloadData();
+  }
+
+  async function updatePresence(isOnline) {
+    if (!state.currentUser || needFirebase()) return;
+    const { doc, updateDoc, serverTimestamp } = window.fs;
+    await updateDoc(doc(window.firebaseDb, 'users', state.currentUser.uid), {
+      presence: { isOnline, lastActiveAt: serverTimestamp() }
+    });
+  }
+
+  async function dailyLoginCheck() {
+    if (!state.currentUser) return;
+    const today = todayKey();
+    if (state.profile.lastLoginDate === today) return;
+    const prev = state.profile.lastLoginDate ? new Date(state.profile.lastLoginDate) : null;
+    const diffDays = prev ? Math.round((new Date(today) - prev) / 86400000) : 99;
+    const streak = diffDays === 1 ? (state.profile.streak || 0) + 1 : 1;
+    const exp = (state.profile.exp || 0) + 10;
+    const points = (state.profile.points || 0) + 5;
+    await persistProfile({ streak, lastLoginDate: today, exp, points, level: computeLevel(exp), recentActivity: `Daily login streak ${streak} hari` });
+    $('#streak-count').textContent = `Streak ${streak} hari`;
+    const modal = $('#daily-login-modal');
+    if (modal.showModal) modal.showModal();
+  }
+
+  function setupNav() {
+    $$('#sidebar-nav .nav-btn').forEach((btn) => btn.onclick = () => {
+      $$('#sidebar-nav .nav-btn').forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      $('#page-title').textContent = btn.textContent.trim();
+      $$('.view').forEach((v) => v.classList.remove('active'));
+      $(`#view-${btn.dataset.view}`).classList.add('active');
+    });
+
+    $$('.type-btn').forEach((btn) => btn.onclick = () => {
+      state.selectedType = btn.dataset.type;
+      const practice = $('[data-view="practice"]');
+      if (practice) practice.click();
+      renderVocab();
+    });
+  }
+
+  function syncAuthUI() {
+    const logged = !!state.currentUser;
+    $('#logged-out').classList.toggle('hidden', logged);
+    $('#logged-in').classList.toggle('hidden', !logged);
+    $('#user-text').textContent = logged ? `Login: ${state.profile.displayName}` : 'Belum login';
+  }
+
+  async function reloadData() {
+    await loadMyProfile();
+    await loadUsers();
     renderTopStats();
-    renderVerbList();
     renderRoadmap();
     renderMissions();
     renderQuizzes();
+    renderVocab();
     renderLeaderboard();
     renderCommunity();
     renderProfile();
+    syncAuthUI();
   }
 
-  async function init() {
-    const saved = await getProfileFromDB();
-    state.profile = { ...defaultProfile, ...(saved || {}) };
+  async function initAuth() {
+    if (needFirebase()) {
+      toast('firebase-config.js belum tersedia / tidak valid.');
+      return;
+    }
 
-    setupNavigation();
-    $('#continue-btn').addEventListener('click', async () => {
-      const active = data.dailyMissions[0];
-      active.progress = Math.min(active.total, active.progress + 10);
-      state.profile.exp += 8;
-      state.profile.points += 6;
-      await saveProfileToDB();
-      renderAll();
+    $('#google-login').onclick = async () => {
+      await window.signInWithPopup(window.firebaseAuth, window.firebaseProvider);
+    };
+    $('#logout').onclick = async () => {
+      await updatePresence(false);
+      await window.signOut(window.firebaseAuth);
+    };
+    $('#email-login').onclick = async () => {
+      await window.signInWithEmailAndPassword(window.firebaseAuth, $('#email-input').value.trim(), $('#password-input').value);
+    };
+    $('#email-register').onclick = async () => {
+      await window.createUserWithEmailAndPassword(window.firebaseAuth, $('#email-input').value.trim(), $('#password-input').value);
+    };
+
+    window.onAuthStateChanged(window.firebaseAuth, async (user) => {
+      state.currentUser = user || null;
+      if (user) {
+        await ensureUserDoc(user);
+        await updatePresence(true);
+        await reloadData();
+        await dailyLoginCheck();
+        await reloadData();
+      } else {
+        state.profile = { ...defaultStats, displayName: 'Guest', email: '', following: [] };
+        await reloadData();
+      }
     });
 
-    document.addEventListener('visibilitychange', () => renderLeaderboard());
+    document.addEventListener('visibilitychange', () => updatePresence(!document.hidden));
+    window.addEventListener('beforeunload', () => { updatePresence(false); });
+  }
 
-    await showDailyLoginModalIfNeeded();
-    await renderAll();
+  function init() {
+    setupNav();
+    $('#continue-btn').onclick = () => handleEarn('continue');
+    $('#daily-login-close').onclick = () => $('#daily-login-modal').close();
+    renderRoadmap();
+    renderMissions();
+    renderQuizzes();
+    renderVocab();
+    renderTopStats();
+    renderProfile();
+    initAuth();
   }
 
   init();

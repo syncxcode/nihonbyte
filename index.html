@@ -146,6 +146,9 @@
       window.signInWithEmailAndPassword = signInWithEmailAndPassword;
       window.firebaseDb = getFirestore(app);
       window.fs = { doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, serverTimestamp };
+      window.dispatchEvent(new Event("nihonbyte:firebase-ready"));
+    } else {
+      console.warn("Firebase config tidak valid / belum dimuat.");
     }
   </script>
   <script src="./app.js"></script>

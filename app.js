@@ -2286,6 +2286,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll(".verb-form-menu-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (accessMode === "guest") {
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
+        return;
+      }
+      viewMode = "verb-forms";
+      if (search) search.value = "";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
+  document.querySelectorAll(".adjective-form-menu-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (accessMode === "guest") {
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
+        return;
+      }
+      viewMode = "adjective-forms";
+      if (search) search.value = "";
+      closeModal();
+      render();
+      closeSidebar();
+    });
+  });
+
   document.querySelectorAll(".pattern-btn").forEach((button) => {
   button.addEventListener("click", () => {
     if (accessMode === "guest") {
@@ -2504,6 +2532,58 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     
+    if (viewMode === "verb-forms") {
+      window.verbFormsUI?.renderHub({
+        grid,
+        onOpenPoster: (formId) => {
+          viewMode = `verb-form:${formId}`;
+          render();
+        }
+      });
+      if (resultInfo) resultInfo.textContent = "Materi Bentuk Kata Kerja";
+      return;
+    }
+
+    if (viewMode.startsWith("verb-form:")) {
+      const formId = viewMode.split(":")[1];
+      window.verbFormsUI?.renderPoster({
+        grid,
+        formId,
+        onBack: () => {
+          viewMode = "verb-forms";
+          render();
+        }
+      });
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja • ${formId.toUpperCase()}`;
+      return;
+    }
+
+    if (viewMode === "adjective-forms") {
+      window.adjectiveFormsUI?.renderHub({
+        grid,
+        onOpenPoster: (formId) => {
+          viewMode = `adjective-form:${formId}`;
+          render();
+        }
+      });
+      if (resultInfo) resultInfo.textContent = "Materi Bentuk Kata Sifat";
+      return;
+    }
+
+    if (viewMode.startsWith("adjective-form:")) {
+      const formId = viewMode.split(":")[1];
+      window.adjectiveFormsUI?.renderPoster({
+        grid,
+        formId,
+        onBack: () => {
+          viewMode = "adjective-forms";
+          render();
+        }
+      });
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat • ${formId.toUpperCase()}`;
+      return;
+    }
+
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;

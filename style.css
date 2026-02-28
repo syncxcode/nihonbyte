@@ -3700,6 +3700,12 @@ body {
   background: #f8fafc;
 }
 
+.sentence-box-head {
+  display: flex;
+  justify-content: flex-end;
+  margin: -2px -2px 4px;
+}
+
 .sentence-box p {
   margin: 4px 0;
 }
@@ -3724,7 +3730,16 @@ body {
   height: 36px !important;
   min-width: 36px;
   min-height: 36px;
+  border: 1px solid #cbd5e1 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
   box-shadow: 0 4px 10px rgba(17, 24, 39, 0.22) !important;
+}
+
+.example-card .form-sentence-play-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
 }
 
 .shuffle-sentence-btn {

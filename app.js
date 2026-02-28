@@ -3117,7 +3117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
+  // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang
   async function fetchHistoryData(uid) {
     const { collection, getDocs, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
     const historyRef = collection(window.firebaseDb, "users", uid, "history");

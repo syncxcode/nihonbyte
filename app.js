@@ -2546,7 +2546,7 @@ document.addEventListener("DOMContentLoaded", () => {
        lastQueryState = currentState;
     }
 
-    const itemsPerPage = window.innerWidth > 768 ? 16 : 10; // Desktop 16, HP 10
+    const itemsPerPage = window.innerWidth > 768 ? 12 : 8; // Desktop 16, HP 10
     const totalPages = Math.ceil(words.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     

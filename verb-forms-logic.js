@@ -1,9 +1,9 @@
-(function initAdjectiveFormsLogic() {
+(function initVerbFormsLogic() {
   const sentenceState = new Map();
   const KEY_SEPARATOR = "::";
 
   function getData() {
-    return Array.isArray(window.adjectiveFormsData) ? window.adjectiveFormsData : [];
+    return Array.isArray(window.verbFormsData) ? window.verbFormsData : [];
   }
 
   function randomIndex(max, except = -1) {
@@ -13,16 +13,12 @@
     return idx;
   }
 
-  function createKey(formId, groupName, exampleIndex) {
-    return [formId, groupName, exampleIndex].join(KEY_SEPARATOR);
-  }
-
-  function renderHub({ grid, onOpenPoster }) {
+  function renderVerbFormsHub({ grid, onOpenPoster }) {
     const forms = getData();
     grid.innerHTML = `
       <section class="forms-hub">
-        <h2>Bentuk Kata Sifat</h2>
-        <p>Pilih poster bentuk kata sifat untuk buka materi lengkap.</p>
+        <h2>Bentuk Kata Kerja</h2>
+        <p>Pilih poster bentuk kata kerja untuk buka materi lengkap.</p>
         <div class="forms-brick-grid"></div>
       </section>
     `;
@@ -39,7 +35,7 @@
   }
 
   function buildSentenceCard(example, formId, groupName, exampleIndex) {
-    const key = createKey(formId, groupName, exampleIndex);
+    const key = [formId, groupName, exampleIndex].join(KEY_SEPARATOR);
     if (!sentenceState.has(key)) sentenceState.set(key, 0);
     const idx = sentenceState.get(key);
     const sentence = example.sentences[idx] || example.sentences[0];
@@ -71,10 +67,20 @@
     `;
   }
 
-  function renderPoster({ grid, formId, onBack }) {
+
+
+  function getVerbGroupDisplayName(name) {
+    if (!name) return "";
+    if (/godan/i.test(name)) return "KATA KERJA GODAN";
+    if (/ichidan/i.test(name)) return "KATA KERJA ICHIDAN";
+    if (/irregular|suru|kuru/i.test(name)) return "KATA KERJA IRREGULER";
+    return `KATA KERJA ${name.toUpperCase()}`;
+  }
+
+  function renderVerbFormPoster({ grid, formId, onBack }) {
     const form = getData().find((item) => item.id === formId);
     if (!form) {
-      grid.innerHTML = '<div class="empty-state">Materi bentuk kata sifat tidak ditemukan.</div>';
+      grid.innerHTML = '<div class="empty-state">Materi bentuk kata kerja tidak ditemukan.</div>';
       return;
     }
 
@@ -90,7 +96,7 @@
 
         return `
           <section class="form-group-panel">
-            <h4>${group.name}</h4>
+            <h4>${getVerbGroupDisplayName(group.name)} <span class="group-subtitle">(${group.name})</span></h4>
             ${examplesHtml}
           </section>
         `;
@@ -117,9 +123,9 @@
         const target = grid.querySelector(`[data-example-key="${key}"]`);
         if (!target) return;
 
-        const [formIdPart, groupName, exampleIndexRaw] = key.split(KEY_SEPARATOR);
+        const [formKey, groupName, exampleIndexRaw] = key.split(KEY_SEPARATOR);
         const exampleIndex = Number(exampleIndexRaw);
-        const selectedForm = getData().find((item) => item.id === formIdPart);
+        const selectedForm = getData().find((item) => item.id === formKey);
         const selectedGroup = selectedForm?.groups.find((item) => item.name === groupName);
         const selectedExample = selectedGroup?.examples[exampleIndex];
         if (!selectedExample) return;
@@ -138,5 +144,8 @@
     });
   }
 
-  window.adjectiveFormsUI = { renderHub, renderPoster };
+  window.verbFormsUI = {
+    renderHub: renderVerbFormsHub,
+    renderPoster: renderVerbFormPoster
+  };
 })();

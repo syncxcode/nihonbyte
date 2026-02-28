@@ -3661,9 +3661,9 @@ body {
 }
 
 .form-group-panel {
-  border: 1px solid #dbeafe;
+  border: 1px solid rgba(125, 211, 252, 0.7);
   border-radius: 14px;
-  background: #f8fbff;
+  background: linear-gradient(165deg, rgba(239, 246, 255, 0.9), rgba(240, 249, 255, 0.65));
   padding: 12px;
   margin-bottom: 10px;
 }
@@ -3671,13 +3671,20 @@ body {
 .form-group-panel h4 {
   margin: 0;
   color: #1d4ed8;
+  font-size: 1.06rem;
+}
+
+.group-subtitle {
+  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
 .example-card {
-  border: 1px solid #cbd5e1;
+  border: 1px solid rgba(191, 219, 254, 0.95);
   border-radius: 12px;
   padding: 12px;
-  background: #ffffff;
+  background: linear-gradient(165deg, #ffffff, #f8fbff);
   margin-top: 10px;
 }
 
@@ -3693,27 +3700,30 @@ body {
 }
 
 .sentence-box {
+  position: relative;
   margin-top: 10px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(186, 230, 253, 0.95);
   border-radius: 10px;
-  padding: 10px;
-  background: #f8fafc;
+  padding: 12px 56px 10px 10px;
+  background: linear-gradient(155deg, #f8fafc, #f0f9ff);
 }
 
-.sentence-box-head {
-  display: flex;
-  justify-content: flex-end;
-  margin: -2px -2px 4px;
-}
 
 .sentence-box p {
   margin: 4px 0;
 }
 
 .sentence-jp {
-  font-size: 1.05rem;
+  font-size: 1.14rem;
   font-weight: 700;
   color: #0f172a;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
+}
+
+.example-card h5,
+.example-card [data-role="sentence-kana"] {
+  font-size: 1.05rem;
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
 }
 
 .sentence-actions {
@@ -3724,16 +3734,19 @@ body {
 }
 
 .example-card .form-sentence-play-btn {
-  position: static !important;
-  inset: auto !important;
-  width: 36px !important;
-  height: 36px !important;
-  min-width: 36px;
-  min-height: 36px;
-  border: 1px solid #cbd5e1 !important;
-  background: #ffffff !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  inset: auto 8px auto auto !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px;
+  min-height: 34px;
+  border: 1px solid #bfdbfe !important;
+  background: rgba(255, 255, 255, 0.96) !important;
   color: #0f172a !important;
-  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.22) !important;
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.18) !important;
+  z-index: 2;
 }
 
 .example-card .form-sentence-play-btn svg {
@@ -3784,4 +3797,16 @@ body {
     padding: 12px;
     border-radius: 16px;
   }
+}
+
+
+#sidebar .menu-btn,
+#sidebar .sidebar-tree summary {
+  cursor: pointer !important;
+}
+
+#sidebar .sidebar-tree summary:hover,
+#sidebar .menu-btn:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+  transform: translateX(4px);
 }

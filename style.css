@@ -3717,10 +3717,14 @@ body {
   gap: 8px;
 }
 
-.example-card .pattern-audio-btn {
-  position: static;
-  width: 36px;
-  height: 36px;
+.example-card .form-sentence-play-btn {
+  position: static !important;
+  inset: auto !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px;
+  min-height: 36px;
+  box-shadow: 0 4px 10px rgba(17, 24, 39, 0.22) !important;
 }
 
 .shuffle-sentence-btn {
@@ -3731,6 +3735,27 @@ body {
   color: #0f172a;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.shuffle-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shuffle-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 @media (max-width: 767px) {

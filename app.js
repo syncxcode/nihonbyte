@@ -173,20 +173,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function setSidebarGreeting(name = "") {
     if (!sidebarGreeting) return;
     const cleanName = (name || "").trim();
-    const greetingText = cleanName
-      ? `Halo, Selamat Datang ${cleanName}`
-      : "Halo, Selamat Datang";
+    const honorName = cleanName ? `${cleanName}ーさん` : "ゲストーさん";
 
-    sidebarGreeting.textContent = greetingText;
-    sidebarGreeting.title = greetingText;
+    sidebarGreeting.innerHTML = `<span class="greet-jp">こんにちは</span><span class="greet-user">${honorName}</span>`;
+    sidebarGreeting.title = `こんにちは ${honorName}`;
 
-    const length = greetingText.length;
-    let fontSize = 2.05;
-    if (length > 40) fontSize = 1.35;
-    else if (length > 34) fontSize = 1.5;
-    else if (length > 28) fontSize = 1.65;
-    else if (length > 23) fontSize = 1.78;
-    sidebarGreeting.style.fontSize = `${fontSize}rem`;
+    const length = honorName.length;
+    let fontSize = 1.2;
+    if (length > 26) fontSize = 0.86;
+    else if (length > 22) fontSize = 0.95;
+    else if (length > 18) fontSize = 1.04;
+    else if (length > 14) fontSize = 1.1;
+    sidebarGreeting.style.setProperty("--greet-user-size", `${fontSize}rem`);
   }
 
   function generateEmailDefaultUsername(email = "") {

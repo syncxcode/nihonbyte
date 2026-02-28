@@ -3098,3 +3098,70 @@ body::before {
     font-size: 1.42rem !important;
   }
 }
+
+/* === Follow-up 3: spacing konsisten + tema crimson/ivory === */
+:root {
+  --content-top-gap: 16px;
+  --topbar-height: 78px;
+}
+
+body {
+  background: #fff8e7 !important; /* ivory */
+}
+
+@media (min-width: 768px) {
+  #grid {
+    padding-top: calc(var(--topbar-height) + var(--content-top-gap)) !important;
+  }
+
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  #grid.history-mode {
+    padding-top: calc(var(--topbar-height) + var(--content-top-gap)) !important;
+  }
+
+  .letter-poster,
+  .support-poster,
+  .expression-wide-grid,
+  .pattern-grid-layout {
+    margin-top: 0 !important;
+  }
+
+  .expression-wide-grid {
+    margin-bottom: 8px !important;
+  }
+}
+
+/* warna poster kotoba + aktivitas + ungkapan + pola kalimat => crimson */
+.card-image,
+.expression-wide-card,
+.pattern-card {
+  background: linear-gradient(155deg, rgba(187, 18, 61, 0.92), rgba(220, 20, 60, 0.9)) !important;
+  border: 1px solid rgba(255, 214, 224, 0.42) !important;
+  box-shadow: 0 12px 28px rgba(127, 29, 29, 0.34) !important;
+}
+
+.card-overlay,
+.pattern-title,
+.pattern-example-jp,
+.pattern-example-id,
+.pattern-meaning,
+.wide-kanji,
+.wide-kana,
+.wide-romaji,
+.wide-meaning {
+  color: #fff7f8 !important;
+  text-shadow: none !important;
+}
+
+.card-overlay .kanji {
+  color: #fff7f8 !important;
+}
+
+@media (max-width: 767px) {
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout {
+    padding-top: calc(72px + 14px) !important;
+  }
+}

@@ -2825,7 +2825,7 @@ body.review-mode-active .pagination-container {
 
 /* === Layout refresh: sidebar menyatu + split scroll + warna baru === */
 body {
-  background: #121212 !important;
+  background: #D3D3D3 !important;
 }
 
 body::before {
@@ -3108,7 +3108,7 @@ body::before {
 }
 
 body {
-  background: #121212 !important;
+  background: #D3D3D3 !important;
 }
 
 @media (min-width: 768px) {

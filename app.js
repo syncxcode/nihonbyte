@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardBtn = document.getElementById("dashboard-btn");
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
+  const sidebarGreeting = document.getElementById("sidebar-greeting");
 
   let originalOverflow = '';
   let originalPosition = '';
@@ -169,6 +170,25 @@ document.addEventListener("DOMContentLoaded", () => {
     return user?.displayName || (user?.email ? user.email.split("@")[0] : "Pelajar");
   }
 
+  function setSidebarGreeting(name = "") {
+    if (!sidebarGreeting) return;
+    const cleanName = (name || "").trim();
+    sidebarGreeting.textContent = cleanName
+      ? `Halo, Selamat Datang ${cleanName}`
+      : "Halo, Selamat Datang";
+  }
+
+  function generateEmailDefaultUsername(email = "") {
+    const localName = (email.split("@")[0] || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "")
+      .slice(0, 10);
+    const randomLetters = Math.random().toString(36).slice(2, 5);
+    const randomDigits = Math.floor(1000 + Math.random() * 9000);
+    const baseName = localName || `huruf${randomLetters}`;
+    return `user_${baseName}_${randomDigits}`;
+  }
+
   function resolveProfilePhoto(user, profile = null) {
     if (profile?.photoURL) return profile.photoURL;
     if (isGoogleUser(user) && user?.photoURL) return user.photoURL;
@@ -249,6 +269,17 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       if (isEmailRegisterMode) {
         const result = await window.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+        const defaultUsername = generateEmailDefaultUsername(email);
+
+        if (window.updateProfile) {
+          await window.updateProfile(result.user, { displayName: defaultUsername });
+        }
+        await saveUserProfile(result.user.uid, {
+          displayName: defaultUsername,
+          photoURL: "",
+          photoSource: "email-default"
+        });
+
         if (window.sendEmailVerification) {
           await window.sendEmailVerification(result.user, {
             url: authActionUrl,
@@ -375,6 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.currentUser = null;
     if (loggedOutView) loggedOutView.style.display = "block";
     if (loggedInView) loggedInView.style.display = "none";
+    setSidebarGreeting("");
     setAccessMode("guest");
     closeSidebar();
     render();
@@ -479,6 +511,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
+        setSidebarGreeting(resolvedName);
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
@@ -503,6 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
           verificationHoldNote.textContent = "Email belum terverifikasi. Silakan verifikasi dulu sebelum masuk ke aplikasi.";
           verificationHoldNote.style.display = "block";
         }
+        setSidebarGreeting("");
       } else {
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
@@ -512,6 +546,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
         shouldOpenVerificationModalAfterSignup = false;
+        setSidebarGreeting("");
       }
     });
   }
@@ -2271,7 +2306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.getElementById("logo")?.addEventListener("click", () => {
+  document.querySelectorAll(".js-reset-logo").forEach((logoElem) => logoElem.addEventListener("click", () => {
     // PROTEKSI MODE TEST: User gak boleh kabur lewat logo
     if (isTesting) {
       const messages = [
@@ -2301,7 +2336,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".sidebar-filter-btn").forEach(btn => btn.classList.remove("active"));
 
     render();
-  });
+  }));
   
   document.getElementById("supportBtn")?.addEventListener("click", () => {
     viewMode = "support";

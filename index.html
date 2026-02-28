@@ -63,7 +63,12 @@
             <span id="user-name" class="user-name">Nama User</span>
             <div class="user-actions">
                <button id="dashboard-btn" class="history-link">Dasbor</button>
-               <button id="account-btn" class="history-link" style="display:none;">⚙️ Akun</button>
+               <button id="account-btn" class="history-link" style="display:none;">
+                 <svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true" focusable="false">
+                   <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.1-3.5c0-.36-.03-.71-.08-1.05l2.04-1.59-1.92-3.33-2.46.78a7.83 7.83 0 0 0-1.82-1.05L14.5 2h-5l-.36 2.76c-.65.24-1.26.6-1.82 1.05l-2.46-.78L2.94 8.36l2.04 1.59c-.05.34-.08.69-.08 1.05s.03.71.08 1.05l-2.04 1.59 1.92 3.33 2.46-.78c.56.45 1.17.8 1.82 1.05L9.5 22h5l.36-2.76c.65-.24 1.26-.6 1.82-1.05l2.46.78 1.92-3.33-2.04-1.59c.05-.34.08-.69.08-1.05Z" />
+                 </svg>
+                 Akun
+               </button>
                <button id="logout-btn" class="logout-btn" style="display:none;">Keluar</button>
             </div>
           </div>
@@ -81,28 +86,28 @@
   <div class="sidebar-tree">
     <!-- HURUF -->
     <details>
-      <summary>🔤 HURUF</summary>
+      <summary><img src="./assets/huruf-icon.svg" class="inline-menu-icon huruf-icon" alt=""> HURUF</summary>
       <div class="subfolder-list">
-        <button class="menu-btn letter-btn" data-script="hiragana">📄 Hiragana</button>
-        <button class="menu-btn letter-btn" data-script="katakana">📄 Katakana</button>
+        <button class="menu-btn letter-btn" data-script="hiragana"><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm7 1.5V9h4.5"/></svg> Hiragana</button>
+        <button class="menu-btn letter-btn" data-script="katakana"><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm7 1.5V9h4.5"/></svg> Katakana</button>
       </div>
     </details>
 
     <!-- BENTUK KATA KERJA -->
     <details>
-      <summary>🗣️ BENTUK KATA KERJA</summary>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 12a8 8 0 1 0 8-8v8Z"/><path d="M13 4a8 8 0 0 1 7 7h-7Z"/></svg> BENTUK KATA KERJA</summary>
       <div class="subfolder-list"><!-- kosong --></div>
     </details>
 
     <!-- BENTUK KATA SIFAT -->
     <details>
-      <summary>📝 BENTUK KATA SIFAT</summary>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/></svg> BENTUK KATA SIFAT</summary>
       <div class="subfolder-list"><!-- kosong --></div>
     </details>
 
     <!-- POLA KALIMAT -->
     <details>
-      <summary>📖 POLA KALIMAT</summary>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Zm8-2h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/></svg> POLA KALIMAT</summary>
       <div class="subfolder-list">
         <button class="menu-btn pattern-btn" data-level="N5">N5</button>
         <button class="menu-btn pattern-btn" data-level="N4">N4</button>
@@ -114,7 +119,7 @@
 
     <!-- UNGKAPAN UMUM -->
     <details>
-      <summary>💬 UNGKAPAN UMUM</summary>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/></svg> UNGKAPAN UMUM</summary>
       <div class="subfolder-list">
         <button class="menu-btn sidebar-filter-btn" data-type="ekspresi" data-level="all">Ungkapan Umum</button>
       </div>
@@ -122,7 +127,7 @@
 
     <!-- KOTOBA -->
     <details class="kotoba-dropdown">
-      <summary>📚 KOTOBA</summary>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2V5Zm9-2h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5V3Z"/></svg> KOTOBA</summary>
       <div class="subfolder-list">
         <button class="menu-btn sidebar-filter-btn" data-type="noun" data-level="all">KOSAKATA</button>
         <button class="menu-btn sidebar-filter-btn" data-type="activity" data-level="all">KOSAKATA AKTIVITAS</button>
@@ -150,7 +155,7 @@
 
     <!-- LATIHAN -->
     <details class="latihan-dropdown">
-  <summary>📝 LATIHAN</summary>
+  <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M5 3h10l4 4v14H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm9 1.5V8h3.5"/><path d="M8 12h8M8 16h8"/></svg> LATIHAN</summary>
   <div class="subfolder-list">
     
     <details class="sub-details">
@@ -200,7 +205,7 @@
   </div>
 </details>
 
-    <button class="support-btn" id="supportBtn">❤️ DUKUNG PENGEMBANG</button>
+    <button class="support-btn" id="supportBtn"><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M12 21s-7.5-4.35-9.5-8.4C.5 8.65 2.65 5 6.4 5c2.2 0 3.4 1.3 4.1 2.3.7-1 1.9-2.3 4.1-2.3 3.75 0 5.9 3.65 3.9 7.6C19.5 16.65 12 21 12 21Z"/></svg> DUKUNG PENGEMBANG</button>
   </div>
 </aside>
 
@@ -263,7 +268,7 @@
   <div class="filter-modal-backdrop" id="filterBackdrop"></div>
   <div class="filter-modal-content">
     <div class="filter-modal-header">
-      <h3>🔍 Cari & Filter Cepat</h3>
+      <h3><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Cari & Filter Cepat</h3>
       <button id="filterModalClose" class="modal-close" aria-label="Tutup">✕</button>
     </div>
 

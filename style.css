@@ -3351,3 +3351,65 @@ body {
     color: #2f2f2f !important;
   }
 }
+
+/* === UI polish: svg menu icons + unselectable greeting + invisible sidebar scrollbar === */
+.inline-menu-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 7px;
+  vertical-align: -2px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.huruf-icon {
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.filter-modal-header h3,
+#sidebar .sidebar-tree summary,
+#sidebar .menu-btn,
+#supportBtn,
+#account-btn {
+  display: inline-flex;
+  align-items: center;
+}
+
+#sidebar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+#sidebar::-webkit-scrollbar,
+#sidebar::-webkit-scrollbar-thumb,
+#sidebar::-webkit-scrollbar-track {
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+#sidebar-greeting,
+#sidebar-greeting *,
+#user-name,
+#logged-in-view .user-info {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#sidebar-greeting .greet-user {
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px rgba(255, 239, 245, 0.4), 0 1px 0 rgba(255, 255, 255, 0.18);
+  animation: greetingPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes greetingPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.96; }
+  50% { transform: translateY(-1px); opacity: 1; }
+}

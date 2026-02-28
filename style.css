@@ -3274,3 +3274,50 @@ body {
     padding: calc(72px + 14px) 14px 16px !important;
   }
 }
+
+/* === Follow-up 5: fix hamburger visibility on mobile + greeting readability === */
+#sidebar-greeting {
+  white-space: normal !important;
+}
+
+#sidebar-greeting .greet-jp,
+#sidebar-greeting .greet-user {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  #hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* paksa untuk device sentuh (Android/iOS) walau viewport aneh */
+@media (hover: none) and (pointer: coarse) {
+  #hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar-head {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  #sidebar-greeting {
+    line-height: 1.04 !important;
+    gap: 1px !important;
+  }
+
+  #sidebar-greeting .greet-jp {
+    font-size: 0.86rem !important;
+  }
+
+  #sidebar-greeting .greet-user {
+    font-size: clamp(0.92rem, 3.7vw, 1.12rem) !important;
+  }
+}

@@ -173,9 +173,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function setSidebarGreeting(name = "") {
     if (!sidebarGreeting) return;
     const cleanName = (name || "").trim();
-    sidebarGreeting.textContent = cleanName
+    const greetingText = cleanName
       ? `Halo, Selamat Datang ${cleanName}`
       : "Halo, Selamat Datang";
+
+    sidebarGreeting.textContent = greetingText;
+    sidebarGreeting.title = greetingText;
+
+    const length = greetingText.length;
+    let fontSize = 2.05;
+    if (length > 40) fontSize = 1.35;
+    else if (length > 34) fontSize = 1.5;
+    else if (length > 28) fontSize = 1.65;
+    else if (length > 23) fontSize = 1.78;
+    sidebarGreeting.style.fontSize = `${fontSize}rem`;
   }
 
   function generateEmailDefaultUsername(email = "") {
@@ -2537,7 +2548,7 @@ document.addEventListener("DOMContentLoaded", () => {
        lastQueryState = currentState;
     }
 
-    const itemsPerPage = window.innerWidth > 768 ? 12 : 10; // Desktop 16, HP 10
+    const itemsPerPage = window.innerWidth > 768 ? 16 : 10; // Desktop 16, HP 10
     const totalPages = Math.ceil(words.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     

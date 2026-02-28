@@ -22,7 +22,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("./assets/bg.webp") center / cover no-repeat;
+  background: none;
   z-index: -1;
 }
 
@@ -2818,4 +2818,97 @@ body.history-mode #grid {
 body.training-session .pagination-container,
 body.review-mode-active .pagination-container {
   display: none !important;
+}
+
+
+/* === Layout refresh: sidebar menyatu + split scroll + warna baru === */
+body {
+  background: #f6f1e7 !important;
+}
+
+body::before {
+  display: none !important;
+  background: none !important;
+}
+
+.topbar,
+.app-footer {
+  background: linear-gradient(135deg, #d81b86 0%, #c2185b 55%, #a80f3f 100%) !important;
+  color: #ffffff !important;
+}
+
+.app-footer p,
+.app-footer span {
+  color: #ffffff !important;
+  opacity: 0.92;
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+
+  #hamburger,
+  #overlay {
+    display: none !important;
+  }
+
+  #sidebar {
+    position: fixed !important;
+    top: 78px !important;
+    left: 0 !important;
+    height: calc(100vh - 78px) !important;
+    width: var(--sidebar-width) !important;
+    transform: translateX(0) !important;
+    border-radius: 0 !important;
+    border-right: 1px solid rgba(148, 21, 78, 0.28);
+    box-shadow: none !important;
+    padding-bottom: 24px !important;
+    overflow-y: auto !important;
+  }
+
+  #grid {
+    position: fixed !important;
+    top: 78px !important;
+    left: var(--sidebar-width) !important;
+    right: 0 !important;
+    bottom: 86px !important;
+    width: calc(100vw - var(--sidebar-width)) !important;
+    margin: 0 !important;
+    padding-top: 16px !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  .pagination-container {
+    position: fixed;
+    left: var(--sidebar-width);
+    right: 0;
+    bottom: 50px;
+    z-index: 1001;
+    background: rgba(246, 241, 231, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 0;
+  }
+
+  .app-footer {
+    position: fixed;
+    left: var(--sidebar-width);
+    right: 0;
+    bottom: 0;
+    width: auto;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    justify-content: center;
+    z-index: 1002;
+  }
+}
+
+@media (max-width: 767px) {
+  #hamburger {
+    display: inline-flex !important;
+  }
 }

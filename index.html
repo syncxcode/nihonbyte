@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NihonByte Meta UX</title>
+  <title>NihonByte</title>
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,28 +12,61 @@
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar" aria-label="Navigasi utama">
+    <aside class="sidebar">
       <div class="brand">
         <img src="./assets/logo.png" alt="NihonByte" />
         <div>
           <h1>NihonByte</h1>
-          <p>Roadmap belajar Jepang</p>
+          <p>Roadmap + kosakata + komunitas real</p>
+        </div>
+      </div>
+
+      <div class="auth-box" id="auth-box">
+        <div id="logged-out">
+          <button id="google-login" class="primary-btn">Masuk Google</button>
+          <form id="email-form" class="email-form">
+            <input id="email-input" type="email" placeholder="Email" required />
+            <input id="password-input" type="password" placeholder="Password" required />
+            <div class="auth-actions">
+              <button type="button" id="email-login" class="ghost-btn">Masuk</button>
+              <button type="button" id="email-register" class="ghost-btn">Daftar</button>
+            </div>
+          </form>
+        </div>
+        <div id="logged-in" class="hidden">
+          <p id="user-text">Login sebagai -</p>
+          <button id="logout" class="ghost-btn">Keluar</button>
         </div>
       </div>
 
       <nav class="sidebar-nav" id="sidebar-nav">
         <button class="nav-btn active" data-view="roadmap">🏠 Learn</button>
         <button class="nav-btn" data-view="practice">🏋️ Practice</button>
-        <button class="nav-btn" data-view="leaderboard">🛡️ Leaderboards</button>
+        <button class="nav-btn" data-view="leaderboard">🛡️ Leaderboard</button>
         <button class="nav-btn" data-view="missions">🎯 Quests</button>
         <button class="nav-btn" data-view="community">👥 Komunitas</button>
-        <button class="nav-btn" data-view="profile">🧑 Profile</button>
+        <button class="nav-btn" data-view="profile">🧑 Dasbor Saya</button>
       </nav>
 
-      <div class="sidebar-block">
-        <h3>Kata Kerja Fokus</h3>
-        <ul id="verb-list"></ul>
-      </div>
+      <details open class="sidebar-group">
+        <summary>Kosakata Kata Kerja</summary>
+        <button class="type-btn" data-type="verb-godan">Godan</button>
+        <button class="type-btn" data-type="verb-ru">Ichidan (ru)</button>
+        <button class="type-btn" data-type="verb-suru">Irregular (suru)</button>
+      </details>
+
+      <details open class="sidebar-group">
+        <summary>Kosakata Kata Sifat</summary>
+        <button class="type-btn" data-type="adj-i">Sifat -i</button>
+        <button class="type-btn" data-type="adj-na">Sifat -na</button>
+      </details>
+
+      <details class="sidebar-group">
+        <summary>Kosakata Lainnya</summary>
+        <button class="type-btn" data-type="noun">Noun</button>
+        <button class="type-btn" data-type="activity">Activity</button>
+        <button class="type-btn" data-type="expression">Expression</button>
+      </details>
     </aside>
 
     <main class="main-content">
@@ -47,7 +80,7 @@
 
       <section class="view active" id="view-roadmap">
         <div class="roadmap-layout">
-          <section class="roadmap-area">
+          <section>
             <article class="roadmap-hero">
               <p id="active-section">Section 1 • Unit 1</p>
               <h3 id="active-title">Form Basic Sentences</h3>
@@ -55,11 +88,10 @@
             </article>
             <div class="roadmap-path" id="roadmap-path"></div>
           </section>
-
-          <aside class="panel quests-panel">
+          <aside class="panel">
             <div class="panel-head">
               <h3>Daily Missions</h3>
-              <span id="daily-time-left">Reset 11 jam</span>
+              <span>Reset 11 jam</span>
             </div>
             <div id="daily-missions"></div>
           </aside>
@@ -69,50 +101,53 @@
       <section class="view" id="view-practice">
         <div class="panel">
           <h3>Latihan Roadmap</h3>
-          <p>Pilih latihan dari unit aktif untuk dapat XP dan poin leaderboard.</p>
-          <div id="quiz-list" class="quiz-grid"></div>
+          <div id="quiz-list" class="card-grid"></div>
+        </div>
+        <div class="panel">
+          <h3>Kosakata (dari data.js)</h3>
+          <div id="vocab-list" class="card-grid"></div>
         </div>
       </section>
 
       <section class="view" id="view-leaderboard">
-        <div class="panel">
-          <h3>Leaderboard Mingguan</h3>
-          <div id="leaderboard-list"></div>
-        </div>
+        <div class="panel"><h3>Leaderboard User Real</h3><div id="leaderboard-list"></div></div>
       </section>
-
-      <section class="view" id="view-missions">
-        <div class="panel">
-          <h3>Misi Harian Detail</h3>
-          <div id="mission-detail-list"></div>
-        </div>
-      </section>
-
-      <section class="view" id="view-community">
-        <div class="panel">
-          <h3>Beranda Komunitas</h3>
-          <p>Bagikan hasil quiz, lihat pencapaian teman, dan follow user aktif.</p>
-          <div id="community-feed"></div>
-        </div>
-      </section>
-
-      <section class="view" id="view-profile">
-        <div class="panel profile-grid" id="profile-card"></div>
-      </section>
+      <section class="view" id="view-missions"><div class="panel"><h3>Misi Detail</h3><div id="mission-detail-list"></div></div></section>
+      <section class="view" id="view-community"><div class="panel"><h3>Komunitas User Terdaftar</h3><div id="community-feed"></div></div></section>
+      <section class="view" id="view-profile"><div class="panel" id="profile-card"></div></section>
     </main>
   </div>
 
   <dialog id="daily-login-modal" class="daily-modal">
     <div class="daily-card">
-      <p class="streak-title">Daily login berhasil 🔥</p>
+      <p>Daily login berhasil 🔥</p>
       <h3 id="streak-count">Streak 1 hari</h3>
-      <p>Datang tiap hari untuk bonus XP dan badge khusus.</p>
-      <div id="streak-days" class="streak-days"></div>
       <button id="daily-login-close">Lanjut belajar</button>
     </div>
   </dialog>
 
+  <script src="./data.js"></script>
   <script src="./latihan/meta-data.js"></script>
+  <script src="./firebase-config.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+    const config = window.NIHONBYTE_FIREBASE_CONFIG;
+    if (config?.apiKey && config?.projectId) {
+      const app = initializeApp(config);
+      window.firebaseAuth = getAuth(app);
+      window.firebaseProvider = new GoogleAuthProvider();
+      window.signInWithPopup = signInWithPopup;
+      window.signOut = signOut;
+      window.onAuthStateChanged = onAuthStateChanged;
+      window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+      window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+      window.firebaseDb = getFirestore(app);
+      window.fs = { doc, getDoc, setDoc, updateDoc, collection, getDocs, query, orderBy, limit, serverTimestamp };
+    }
+  </script>
   <script src="./app.js"></script>
 </body>
 </html>

@@ -2912,3 +2912,109 @@ body::before {
     display: inline-flex !important;
   }
 }
+
+
+/* === Follow-up refinement berdasarkan feedback === */
+.sidebar-logo-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 14px;
+}
+
+.sidebar-logo-wrap img {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+#sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.24));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+  }
+
+  #sidebar {
+    top: 0 !important;
+    height: 100vh !important;
+    padding-top: 14px !important;
+  }
+
+  .topbar {
+    left: var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+  }
+
+  .topbar .branding {
+    display: none !important;
+  }
+
+  #grid {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-left: var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    padding-top: 106px !important;
+    padding-bottom: 8px !important;
+    overflow: visible !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .pagination-container {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    margin: 10px 0 16px var(--sidebar-width) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-top: 1px solid rgba(148, 163, 184, 0.3);
+    padding-top: 12px;
+  }
+
+  .app-footer {
+    position: static !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    margin: 0 0 0 var(--sidebar-width) !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1100px) {
+  #grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar-logo-wrap {
+    display: none;
+  }
+
+  .topbar .branding {
+    display: block !important;
+  }
+}

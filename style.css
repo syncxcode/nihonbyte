@@ -3335,19 +3335,19 @@ body {
   #hamburger {
     display: inline-flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Menggeser ikon mepet ke kiri agar tidak renggang */
-    width: 38px !important; /* Mengurangi lebar wadah (sebelumnya 52px) */
-    min-width: 38px !important; /* Mengurangi lebar minimum */
-    height: 52px !important; /* Tinggi tetap 52px agar area sentuh/klik di HP tetap nyaman */
-    padding: 0 !important; /* Memastikan tidak ada ruang kosong tambahan */
+    justify-content: flex-start !important; 
+    width: 44px !important; /* Wadah ikut diperbesar agar ikon tidak terpotong */
+    min-width: 44px !important; /* Wadah ikut diperbesar */
+    height: 52px !important; 
+    padding: 0 !important; 
     visibility: visible !important;
     opacity: 1 !important;
     z-index: 1200 !important;
   }
 
   #hamburger .hamburger-svg {
-    width: 36px !important; /* Membesarkan ukuran ikon (sebelumnya 30px) */
-    height: 36px !important; /* Membesarkan ukuran ikon (sebelumnya 30px) */
+    width: 44px !important; /* Ikon diperbesar dari 36px menjadi 44px */
+    height: 44px !important; /* Ikon diperbesar dari 36px menjadi 44px */
     color: #2f2f2f !important;
   }
 }

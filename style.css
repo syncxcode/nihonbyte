@@ -3309,15 +3309,45 @@ body {
   }
 
   #sidebar-greeting {
-    line-height: 1.04 !important;
-    gap: 1px !important;
+    line-height: 1.15 !important;
+    gap: 4px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
 
   #sidebar-greeting .greet-jp {
-    font-size: 0.86rem !important;
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
   }
 
   #sidebar-greeting .greet-user {
-    font-size: clamp(0.92rem, 3.7vw, 1.12rem) !important;
+    font-size: clamp(1.04rem, 4.4vw, 1.2rem) !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  #hamburger {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 44px !important;
+    min-width: 44px !important;
+    height: 44px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1200 !important;
+  }
+
+  #hamburger span {
+    display: block !important;
+    width: 24px !important;
+    height: 3px !important;
+    margin: 3px 0 !important;
+    background: #2f2f2f !important;
+    border-radius: 999px !important;
   }
 }

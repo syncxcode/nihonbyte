@@ -3018,3 +3018,83 @@ body::before {
     display: block !important;
   }
 }
+
+/* === Follow-up 2: Header sidebar compact + logout di kapsul profil === */
+.sidebar-head {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin: 2px 0 10px;
+}
+
+#sidebar h3,
+#sidebar-greeting {
+  margin: 0 !important;
+  padding-right: 0 !important;
+  font-size: 1.92rem;
+  line-height: 1.02;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-logo-wrap {
+  margin: 0 !important;
+  justify-content: center;
+}
+
+.sidebar-logo-wrap img {
+  width: 54px !important;
+  height: 54px !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.22);
+}
+
+.user-profile-section {
+  padding: 8px 8px 10px !important;
+}
+
+#logged-in-view {
+  position: relative;
+  padding-right: 50px !important;
+  min-height: 58px;
+}
+
+.logout-floating-btn {
+  position: absolute !important;
+  top: 50% !important;
+  right: 10px !important;
+  transform: translateY(-50%);
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 11px !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1)) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.24) !important;
+}
+
+.logout-floating-btn:hover {
+  transform: translateY(-50%) scale(1.04) !important;
+}
+
+.logout-floating-btn:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    padding: 10px 12px 18px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar-head {
+    grid-template-columns: 50px minmax(0, 1fr);
+  }
+
+  #sidebar h3,
+  #sidebar-greeting {
+    font-size: 1.42rem !important;
+  }
+}

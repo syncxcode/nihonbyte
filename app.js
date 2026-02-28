@@ -61,6 +61,33 @@ document.addEventListener("DOMContentLoaded", () => {
   let originalWidth = '';
   let savedScrollPosition = 0;
 
+  const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
+
+  function isDesktopLayout() {
+    return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
+  }
+
+  function applyResponsiveSidebarLayout() {
+    if (!sidebar || !overlay || !hamburger) return;
+
+    if (isDesktopLayout()) {
+      sidebar.classList.add("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+    } else {
+      sidebar.classList.remove("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+  }
+
   let accessMode = "locked";
   let isEmailRegisterMode = false;
   let shouldOpenVerificationModalAfterSignup = false;
@@ -499,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const topbar = document.querySelector(".topbar");
     if (!topbar || !resultInfo || !searchBtn) return;
 
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 767) {
       topbar.insertBefore(resultInfo, searchBtn);
       topbar.appendChild(searchBtn);
       resultInfo.style.position = "static";
@@ -1907,7 +1934,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function renderPatternPoster(level) {
     grid.classList.add("pattern-grid-layout");
-    grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
+    grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     grid.innerHTML = "";
     
     const paginationContainer = document.getElementById("pagination-container");
@@ -1926,7 +1953,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentPage = 1;
       lastQueryState = currentState;
     }
-    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const itemsPerPage = window.innerWidth >= 768 ? 6 : 4;
     const totalPages = Math.ceil(patterns.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     
@@ -1957,7 +1984,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function syncMobileTopbarLayout() {
     const topbar = document.querySelector(".topbar");
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 767;
     if (!topbar || !resultInfo) return;
 
     if (isMobile) {
@@ -2069,6 +2096,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   hamburger.addEventListener("click", () => {
+    if (isDesktopLayout()) return;
     if (isTesting) {
       openInfoModal(`
         <div style="text-align: center; padding: 10px;">
@@ -2105,6 +2133,14 @@ document.addEventListener("DOMContentLoaded", () => {
   overlay.addEventListener("click", closeSidebar);
 
   function closeSidebar() {
+    if (isDesktopLayout()) {
+      sidebar.classList.add("active");
+      overlay.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+      hamburger.setAttribute("aria-expanded", "false");
+      return;
+    }
+
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
     document.body.classList.remove("sidebar-open");
@@ -2591,8 +2627,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.addEventListener("resize", () => {
     syncMobileTopbarLayout();
+    applyResponsiveSidebarLayout();
     if (viewMode.startsWith("patterns:")) {
-      grid.style.setProperty("grid-template-columns", window.innerWidth <= 768 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
+      grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
   });
   if (document.documentElement.classList.contains('ios-device')) {
@@ -2605,8 +2642,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = '';
     document.documentElement.style.overflow = '';
   }
+
+  applyResponsiveSidebarLayout();
   
   sidebar.addEventListener('click', function(e) {
+    if (isDesktopLayout()) return;
     if (e.target.closest('button') || 
         e.target.closest('a') || 
         e.target.closest('[role="button"]')) {
@@ -3117,7 +3157,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang
+  // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
   async function fetchHistoryData(uid) {
     const { collection, getDocs, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
     const historyRef = collection(window.firebaseDb, "users", uid, "history");

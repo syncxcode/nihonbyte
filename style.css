@@ -4525,28 +4525,55 @@ body {
   margin-bottom: 6px;
 }
 
+/* =========================================
+   PERBAIKAN TOTAL HASIL DOWNLOAD KARTU (V2)
+   (Rounded + Crimson Gradient + Outline Glass)
+========================================= */
+
+/* 1. Elemen Utama (Tetap kotak solid untuk ngebunuh glitch html2canvas) */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
   width: 1080px !important;
   height: 1080px !important;
-
-  /* 🚀 1. BANTAI RADIUS & SHADOW: Ini akar masalah html2canvas nge-glitch! */
-  border-radius: 0 !important; 
+  
+  /* Latar belakang putih solid untuk membantu kalkulasi html2canvas */
+  background: #ffffff !important; 
+  
+  /* Hilangkan semua radius dan shadow di container utama */
+  border-radius: 0 !important;
   border: none !important;
   box-shadow: none !important;
-  outline: none !important;
-
-  /* 🚀 2. WARNA PADAT: Pakai HEX murni, hilangkan layer transparan yang bikin pudar/belang */
-  background: linear-gradient(145deg, #e11d48 0%, #be123c 55%, #9f1239 100%) !important;
-
   overflow: hidden !important;
   box-sizing: border-box !important;
 }
 
-/* 🚀 3. Bantai sisaan elemen gaib */
+/* 2. ELEMEN DALEM BARU (Ini kunci mengembalikan lengkung, gradasi, dan outline) */
+.download-export-card .download-export-inner {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+
+  /* 🚀 Bawa balik rounded corners aslinya */
+  border-radius: 64px !important;
+  
+  /* 🚀 Bawa balik GRADASI CRIMSON NYALA aslinya dari web (Pake HEX biar solid) */
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.14), transparent 42%),
+    linear-gradient(155deg, #981836, #c01641 54%, #dc143c) !important;
+  
+  /* 🚀 Bawa balik efek kaca tipis di outline dalam kartunya */
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.35) !important;
+  
+  /* Pastikan content dalem gak keluar dari lengkungan */
+  overflow: hidden !important; 
+}
+
+/* 3. Bantai elemen ::before lamanya biar gak ada garis solid kaku */
 .download-export-card::before,
-.download-export-card::after {
+.download-export-card .download-export-inner::before {
   display: none !important;
 }

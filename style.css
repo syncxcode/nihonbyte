@@ -4466,3 +4466,12 @@ body {
   color: #1f2937;
   line-height: 1.4;
 }
+
+/* Follow-up 6: title card bentuk kata kerja tampil suffix saja (~る, ~ます, dst) */
+.form-brick-title-only {
+  display: block;
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 6px;
+}

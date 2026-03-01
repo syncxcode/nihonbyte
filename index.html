@@ -39,12 +39,35 @@
 
 <div id="overlay"></div>
 
+<header class="topbar">
+  <div class="header-identity">
+    <img class="js-reset-logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
+    <h3 id="sidebar-greeting">Halo, Selamat Datang</h3>
+  </div>
+
+  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+    <svg class="hamburger-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M4 6H10M14 6H20M4 12H20M4 18H8M12 18H20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button id="searchBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+
+  <p id="resultInfo" aria-live="polite"></p>
+</header>
+
+<div class="app-body-shell">
 <aside id="sidebar" aria-label="Menu samping">
   <div class="sidebar-head">
     <div class="sidebar-logo-wrap">
       <img id="logo" class="js-reset-logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
     </div>
-    <h3 id="sidebar-greeting">Halo, Selamat Datang</h3>
+    <h3 class="sidebar-menu-title">Menu Navigasi</h3>
   </div>
   <div id="user-profile-section" class="user-profile-section">
         <div id="logged-out-view">
@@ -201,26 +224,18 @@
   </div>
 </aside>
 
-<header class="topbar">
-  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
-    <svg class="hamburger-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <path d="M4 6H10M14 6H20M4 12H20M4 18H8M12 18H20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-
-  <div class="branding">
-    <img class="js-reset-logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
-  </div>
-
-  <!-- ICON SEARCH SVG (sudah benar) -->
-  <button id="searchBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-  </button>
+<div class="content-panel">
+<main id="grid"></main>
   
-  <p id="resultInfo" aria-live="polite"></p>
+  <div id="pagination-container" class="pagination-container"></div>
+
+  <footer class="app-footer" aria-label="Informasi aplikasi">
+    <p>© 2026 NihonByte</p>
+    <span aria-hidden="true">•</span>
+    <p>v1.2.0</p>
+  </footer>
+</div>
+</div>
   
   <!-- ELEMEN TERSEMBUNYI (PENTING! biar JS tidak crash) -->
   <div style="display: none !important;">
@@ -238,11 +253,6 @@
     </select>
     <input id="search" value="">
   </div>
-</header>
-  
-<main id="grid"></main>
-  
-  <div id="pagination-container" class="pagination-container"></div>
 
 <!-- KANJI MODAL (lama) -->
 <section id="kanjiModal" class="kanji-modal" aria-hidden="true">
@@ -295,12 +305,6 @@
     </div>
   </div>
 </section>
-  
-  <footer class="app-footer" aria-label="Informasi aplikasi">
-    <p>© 2026 NihonByte</p>
-    <span aria-hidden="true">•</span>
-    <p>v1.2.0</p>
-  </footer>
   
 
 <section id="accountModal" class="kanji-modal" aria-hidden="true">

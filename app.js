@@ -2797,6 +2797,35 @@ document.addEventListener("DOMContentLoaded", () => {
       .replace(/'/g, '&#39;');
   }
 
+  function getAdaptiveDownloadKanjiSize(text = '') {
+    const cleanText = (text || '').replace(/\s+/g, '').trim() || '—';
+    const charCount = [...cleanText].length;
+
+    let preferredSize = 360;
+    if (charCount === 2) preferredSize = 330;
+    else if (charCount === 3) preferredSize = 290;
+    else if (charCount === 4) preferredSize = 250;
+    else if (charCount >= 5) preferredSize = 220;
+
+    const maxWidth = 860;
+    const minSize = 132;
+    const fontFamily = '"Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif';
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return preferredSize;
+
+    let size = preferredSize;
+    while (size > minSize) {
+      ctx.font = `700 ${size}px ${fontFamily}`;
+      const measuredWidth = ctx.measureText(cleanText).width;
+      if (measuredWidth <= maxWidth) break;
+      size -= 4;
+    }
+
+    return Math.max(size, minSize);
+  }
+
   window.downloadAsImage = function(event, cardId) {
     event.stopPropagation();
 
@@ -2809,13 +2838,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
     const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
 
+    const kanjiSize = getAdaptiveDownloadKanjiSize(sourceKanji);
+
     const exportNode = document.createElement('div');
     exportNode.className = 'download-export-card';
     exportNode.innerHTML = `
       <div class="download-export-content">
         <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
         <div class="download-export-watermark-text">学</div>
-        <div class="download-export-kanji">${escapeHTML(sourceKanji)}</div>
+        <div class="download-export-kanji" style="font-size:${kanjiSize}px">${escapeHTML(sourceKanji)}</div>
         <div class="download-export-kana">${escapeHTML(sourceKana)}</div>
         <div class="download-export-romaji">${escapeHTML(sourceRomaji)}</div>
         <div class="download-export-meaning">${escapeHTML(sourceMeaning)}</div>

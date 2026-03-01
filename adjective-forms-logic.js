@@ -24,18 +24,66 @@
         <h2>Bentuk Kata Sifat</h2>
         <p>Pilih poster bentuk kata sifat untuk buka materi lengkap.</p>
         <div class="forms-brick-grid"></div>
+        <div class="forms-hub-pagination" aria-label="Pagination bentuk kata sifat"></div>
       </section>
     `;
 
     const brickGrid = grid.querySelector(".forms-brick-grid");
-    forms.forEach((form) => {
-      const btn = document.createElement("button");
-      btn.className = "form-brick";
-      btn.type = "button";
-      btn.innerHTML = `<strong>${form.title}</strong><span>${form.summary}</span>`;
-      btn.addEventListener("click", () => onOpenPoster?.(form.id));
-      brickGrid.appendChild(btn);
-    });
+    const localPagination = grid.querySelector(".forms-hub-pagination");
+    const HUB_PAGE_SIZE = 15;
+    let hubPage = 1;
+
+    function renderHubPagination(totalPages, onChange) {
+      if (!localPagination) return;
+      localPagination.innerHTML = "";
+      if (totalPages <= 1) {
+        localPagination.style.display = "none";
+        return;
+      }
+      localPagination.style.display = "flex";
+
+      for (let page = 1; page <= totalPages; page += 1) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `forms-page-btn ${page === hubPage ? "active" : ""}`;
+        btn.textContent = String(page);
+        btn.addEventListener("click", () => onChange(page));
+        localPagination.appendChild(btn);
+      }
+    }
+
+    function paintList() {
+      brickGrid.innerHTML = "";
+      if (!forms.length) {
+        brickGrid.innerHTML = '<div class="empty-state">Belum ada materi bentuk kata sifat.</div>';
+        if (localPagination) {
+          localPagination.innerHTML = "";
+          localPagination.style.display = "none";
+        }
+        return;
+      }
+
+      const totalPages = Math.max(1, Math.ceil(forms.length / HUB_PAGE_SIZE));
+      if (hubPage > totalPages) hubPage = totalPages;
+      const start = (hubPage - 1) * HUB_PAGE_SIZE;
+      const currentForms = forms.slice(start, start + HUB_PAGE_SIZE);
+
+      currentForms.forEach((form) => {
+        const btn = document.createElement("button");
+        btn.className = "form-brick";
+        btn.type = "button";
+        btn.innerHTML = `<strong>${form.title}</strong><span>${form.summary}</span>`;
+        btn.addEventListener("click", () => onOpenPoster?.(form.id));
+        brickGrid.appendChild(btn);
+      });
+
+      renderHubPagination(totalPages, (nextPage) => {
+        hubPage = nextPage;
+        paintList();
+      });
+    }
+
+    paintList();
   }
 
   function buildSentenceCard(example, formId, groupName, exampleIndex) {

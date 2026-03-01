@@ -4526,20 +4526,28 @@ body {
 }
 
 .download-export-card {
-  /* Gradasi Crimson cerah persis kayak di tampilan web */
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+  border-radius: 64px;
+  overflow: hidden;
+  /* Warna disamakan murni dengan web, dibikin solid (hex) biar download-nya gak error pudar */
   background:
-    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.2), transparent 34%),
-    radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.14), transparent 42%),
-    linear-gradient(155deg, rgba(152, 24, 54, 1), rgba(192, 22, 65, 1) 54%, rgba(220, 20, 60, 1)) !important;
+    radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.24), transparent 56%),
+    radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.18), transparent 50%),
+    linear-gradient(155deg, #981836 0%, #c01641 54%, #dc143c 100%);
   
-  /* Bantai semua border sesuai perintah bos! */
+  /* NO BORDER sama sekali */
   border: none !important;
   
-  /* Efek kaca tipis di pinggiran dalam kartu (aman dari error html2canvas) */
-  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.25) !important; 
+  /* Cuma efek kaca tipis di outline dalam kartunya */
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.35) !important;
+  box-sizing: border-box;
 }
 
-/* Tetap matikan ::before biar gak ada garis merah kaku bawaan lama */
+/* KUNCI UTAMA: Kita matikan elemen '::before' yang jadi biang kerok kotak lapis dua */
 .download-export-card::before {
   display: none !important;
 }

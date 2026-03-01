@@ -4142,3 +4142,46 @@ body {
     max-width: 35vw !important; /* Dibatasi agar teks panjang tidak merusak layout HP */
   }
 }
+
+/* =========================================
+   Desktop split-scroll: sidebar + content independen
+========================================= */
+@media (min-width: 768px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    overflow: hidden !important;
+  }
+
+  .app-body-shell {
+    height: calc(100vh - var(--topbar-height));
+    min-height: calc(100vh - var(--topbar-height));
+    overflow: hidden;
+  }
+
+  #sidebar {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    scrollbar-width: none; /* Firefox: scrollbar sidebar tidak terlihat */
+    -ms-overflow-style: none; /* IE/Edge lama */
+  }
+
+  #sidebar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .content-panel {
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-left: 1px solid rgba(148, 21, 78, 0.24); /* pembatas body vs sidebar */
+  }
+}

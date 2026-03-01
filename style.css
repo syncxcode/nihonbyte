@@ -4525,59 +4525,86 @@ body {
   margin-bottom: 6px;
 }
 
-/* =========================================
-   PERBAIKAN FINAL HASIL DOWNLOAD KARTU (PNG)
-   (Vibrant Crimson, Super Smooth, Premium Glossy)
-========================================= */
-
-/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Nyala (Aesthetic) */
+/* ==================== DOWNLOAD KANJI CARD - AESTHETIC SOFT SAKURA 2026 ==================== */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
   width: 1080px !important;
   height: 1080px !important;
+  border-radius: 128px !important;           /* lebih rounded, premium */
   
-  /* 🚀 RADIUS PAS untuk 1080p */
-  border-radius: 96px !important; 
+  /* GRADIENT BARU: Soft Sakura Pink (tidak crimson horror) */
+  background: linear-gradient(135deg, 
+    #fff0f8 0%, 
+    #ffe4f0 25%, 
+    #ffb6d1 50%, 
+    #ff8fb7 75%, 
+    #ff6fa3 100%) !important;
   
-  /* 🚀 GRADASI AESTHETIC: Merah Pinkish yang cerah, elegan, dan GAK HOROR */
-  background: linear-gradient(135deg, #d81b86 0%, #c2185b 45%, #e11d48 100%) !important;
-    
-  /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar html2canvas aman) */
   border: none !important;
   box-shadow: none !important;
-  outline: none !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
 }
 
-/* 2. EFEK KACA & PANTULAN CAHAYA (Lebih Smooth & Mewah) */
+/* Glass effect yang SUPER soft & elegant (NO BORDER MERAH) */
 .download-export-glass-outline {
   position: absolute !important;
   inset: 0 !important;
+  border-radius: 128px !important;
   
-  /* Samain radiusnya */
-  border-radius: 96px !important;
-  
-  /* 🚀 OUTLINE KACA: Garis putih halus menyatu dengan background */
-  border: 4px solid rgba(255, 255, 255, 0.45) !important;
-  
-  /* 🚀 EFEK GLOSSY PREMIUM: Pantulan melengkung estetik dari atas */
+  /* Hanya soft inner glow, tidak ada border keras */
   background: 
-    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 40%),
-    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.25), transparent 40%) !important;
+    linear-gradient(145deg, 
+      rgba(255,255,255,0.45) 0%, 
+      rgba(255,255,255,0.12) 35%, 
+      transparent 70%) !important;
   
-  /* 🚀 INNER GLOW: Bayangan putih ke dalam biar kartu terasa "Bouncy" */
-  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    inset 0 0 120px rgba(255,255,255,0.65),   /* highlight atas */
+    inset 0 50px 90px rgba(255,255,255,0.35), /* cahaya tengah */
+    inset 0 -60px 80px rgba(0,0,0,0.12),      /* bayangan bawah lembut */
+    0 0 60px rgba(255, 182, 209, 0.4);        /* outer soft glow pink */
   
-  box-sizing: border-box !important;
   pointer-events: none !important;
-  z-index: 10 !important;
+  z-index: 5 !important;
 }
 
-/* 3. BERSIHIN SAMPAH LAMA */
+/* Bersihkan sisa-sisa kode lama */
 .download-export-card::before,
 .download-export-card::after {
   display: none !important;
+}
+
+/* Teks tetap putih lembut + shadow halus */
+.download-export-kanji,
+.download-export-kana,
+.download-export-romaji,
+.download-export-meaning {
+  text-shadow: 0 8px 25px rgba(0,0,0,0.35),
+               0 2px 8px rgba(255,255,255,0.6) !important;
+  color: #fffaf5 !important;
+}
+
+.download-export-kanji {
+  font-size: 365px !important;
+  line-height: 0.88 !important;
+  margin-top: -20px !important;
+}
+
+.download-export-kana {
+  font-size: 78px !important;
+  margin-top: -12px !important;
+}
+
+.download-export-romaji {
+  font-size: 52px !important;
+  opacity: 0.95 !important;
+}
+
+.download-export-meaning {
+  font-size: 58px !important;
+  max-width: 85% !important;
+  line-height: 1.05 !important;
 }

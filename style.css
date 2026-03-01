@@ -2899,31 +2899,41 @@ body::before {
     position: relative !important;
   }
 
-  /* 2. Beri ruang di DALAM content-panel biar konten & pagination gak ketutup footer */
+  /* Ruang scroll disesuaikan agar pas dengan tinggi footer baru */
   body:not(.training-session):not(.review-mode-active) .content-panel {
-    padding-bottom: 60px !important; 
+    padding-bottom: 45px !important; 
   }
 
-  /* 3. Footer full width mutlak di bawah, DIKUNCI TINGGINYA biar gak segede gaban */
   body:not(.training-session):not(.review-mode-active) .app-footer {
     position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
     width: 100% !important;
     
-    /* MANTRA PELANGSING FOOTER 🚀 */
-    height: 46px !important; 
-    min-height: 46px !important; 
+    /* 🚀 DIPAKSA KECIL & RAMPING (Maksimal 34px) */
+    height: 34px !important; 
+    min-height: 34px !important; 
+    max-height: 34px !important; 
+    
+    /* Bantai semua jarak yang bikin bengkak */
     padding: 0 !important; 
     margin: 0 !important;
     border-radius: 0 !important;
     border: none !important;
     z-index: 50 !important;
+    overflow: hidden !important;
     
-    /* Bikin teks persis di tengah-tengah vertikal */
+    /* Paksa teks persis di tengah */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+  }
+  
+  /* Pastikan paragraf di dalam footer tidak punya margin/padding bawaan */
+  body:not(.training-session):not(.review-mode-active) .app-footer p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
   }
 }
 

@@ -2843,7 +2843,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const exportNode = document.createElement('div');
     exportNode.className = 'download-export-card';
     exportNode.innerHTML = `
-      exportNode.innerHTML = `
       <div class="download-export-inner">
         <div class="download-export-content">
           <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">

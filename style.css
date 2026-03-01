@@ -4525,86 +4525,75 @@ body {
   margin-bottom: 6px;
 }
 
-/* ==================== DOWNLOAD KANJI CARD - AESTHETIC SOFT SAKURA 2026 ==================== */
+/* ==================== DOWNLOAD KANJI CARD - PREMIUM SAKURA GLOW v3 (HIGH CONTRAST) ==================== */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
   width: 1080px !important;
   height: 1080px !important;
-  border-radius: 128px !important;           /* lebih rounded, premium */
+  border-radius: 128px !important;
   
-  /* GRADIENT BARU: Soft Sakura Pink (tidak crimson horror) */
+  /* Gradient Sakura yang elegan & vibrant */
   background: linear-gradient(135deg, 
-    #fff0f8 0%, 
-    #ffe4f0 25%, 
-    #ffb6d1 50%, 
-    #ff8fb7 75%, 
-    #ff6fa3 100%) !important;
+    #ff8ab8 0%, 
+    #ff5fa3 32%, 
+    #ff3d8c 58%, 
+    #e81e72 80%, 
+    #c81c5f 100%) !important;
   
-  border: none !important;
-  box-shadow: none !important;
   overflow: hidden !important;
-  box-sizing: border-box !important;
+  box-shadow: none !important;
 }
 
-/* Glass effect yang SUPER soft & elegant (NO BORDER MERAH) */
+/* Glass & Glossy effect premium (tidak bikin pudar) */
 .download-export-glass-outline {
   position: absolute !important;
   inset: 0 !important;
   border-radius: 128px !important;
-  
-  /* Hanya soft inner glow, tidak ada border keras */
-  background: 
-    linear-gradient(145deg, 
-      rgba(255,255,255,0.45) 0%, 
-      rgba(255,255,255,0.12) 35%, 
-      transparent 70%) !important;
+  background: linear-gradient(145deg, 
+    rgba(255,255,255,0.68) 0%, 
+    rgba(255,255,255,0.32) 40%, 
+    transparent 75%) !important;
   
   box-shadow: 
-    inset 0 0 120px rgba(255,255,255,0.65),   /* highlight atas */
-    inset 0 50px 90px rgba(255,255,255,0.35), /* cahaya tengah */
-    inset 0 -60px 80px rgba(0,0,0,0.12),      /* bayangan bawah lembut */
-    0 0 60px rgba(255, 182, 209, 0.4);        /* outer soft glow pink */
+    inset 0 45px 100px rgba(255,255,255,0.75),
+    inset 0 -55px 85px rgba(0,0,0,0.25),
+    inset 0 0 140px rgba(255, 105, 180, 0.45) !important;
   
-  pointer-events: none !important;
   z-index: 5 !important;
+  pointer-events: none !important;
 }
 
-/* Bersihkan sisa-sisa kode lama */
-.download-export-card::before,
-.download-export-card::after {
-  display: none !important;
-}
-
-/* Teks tetap putih lembut + shadow halus */
-.download-export-kanji,
-.download-export-kana,
-.download-export-romaji,
-.download-export-meaning {
-  text-shadow: 0 8px 25px rgba(0,0,0,0.35),
-               0 2px 8px rgba(255,255,255,0.6) !important;
-  color: #fffaf5 !important;
-}
-
+/* KANJI - Sekarang super jelas & bold */
 .download-export-kanji {
-  font-size: 365px !important;
-  line-height: 0.88 !important;
-  margin-top: -20px !important;
+  font-size: 385px !important;
+  line-height: 0.84 !important;
+  font-weight: 900 !important;
+  color: #fff9f4 !important;
+  text-shadow: 
+    0 14px 38px rgba(0,0,0,0.78),
+    0 6px 18px rgba(0,0,0,0.55),
+    3px 3px 8px rgba(0,0,0,0.4) !important;
+  margin-top: -28px !important;
 }
 
+/* Kana, Romaji, Meaning - tetap soft tapi tetap kelihatan */
 .download-export-kana {
-  font-size: 78px !important;
-  margin-top: -12px !important;
+  font-size: 84px !important;
+  color: #fff0f8 !important;
+  text-shadow: 0 8px 22px rgba(0,0,0,0.65) !important;
 }
 
 .download-export-romaji {
-  font-size: 52px !important;
-  opacity: 0.95 !important;
+  font-size: 54px !important;
+  color: #ffe4f2 !important;
+  text-shadow: 0 5px 16px rgba(0,0,0,0.6) !important;
 }
 
 .download-export-meaning {
-  font-size: 58px !important;
-  max-width: 85% !important;
-  line-height: 1.05 !important;
+  font-size: 64px !important;
+  color: #ffe9f5 !important;
+  text-shadow: 0 5px 16px rgba(0,0,0,0.6) !important;
+  max-width: 86% !important;
 }

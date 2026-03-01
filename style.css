@@ -4527,10 +4527,10 @@ body {
 
 /* =========================================
    PERBAIKAN FINAL HASIL DOWNLOAD KARTU (PNG)
-   (Melengkung, Gradasi Hidup, Outline Kaca, NO GLITCH)
+   (Super Rounded, Deep Crimson Gradient, Premium Glossy)
 ========================================= */
 
-/* 1. KANVAS UTAMA: Radius 64px & Gradasi, NO SHADOW, NO BORDER */
+/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Mewah */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
@@ -4538,16 +4538,13 @@ body {
   width: 1080px !important;
   height: 1080px !important;
   
-  /* Bikin PNG-nya punya ujung melengkung dan transparan */
-  border-radius: 64px !important; 
+  /* 🚀 BIKIN LEBIH ROUNDED (Skala disesuaikan buat kanvas 1080p) */
+  border-radius: 100px !important; 
   
-  /* Gradasi asli web lu! */
-  background:
-    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.2), transparent 34%),
-    radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.14), transparent 42%),
-    linear-gradient(155deg, #981836, #c01641 54%, #dc143c) !important;
+  /* 🚀 GRADASI CRIMSON PREMIUM (Mulus tanpa bintik, dari gelap ke terang) */
+  background: linear-gradient(150deg, #780d28 0%, #bd1540 45%, #e81c4f 100%) !important;
     
-  /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar gak glitch) */
+  /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar html2canvas aman) */
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
@@ -4555,19 +4552,19 @@ body {
   box-sizing: border-box !important;
 }
 
-/* 2. EFEK KACA TIPIS (Dipisah pakai div sendiri biar aman) */
+/* 2. EFEK KACA & PANTULAN CAHAYA (Glossy) */
 .download-export-glass-outline {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  inset: 0 !important;
   
-  /* Radius disamain sama kanvas luar */
-  border-radius: 64px !important;
+  /* Samain radiusnya */
+  border-radius: 100px !important;
   
-  /* INI DIA EFEK KACANYA: Pakai border transparan di div dalam */
-  border: 2.5px solid rgba(255, 255, 255, 0.35) !important;
+  /* 🚀 OUTLINE KACA: Dibikin lebih tebal (8px) biar kelihatan mewah di resolusi tinggi */
+  border: 8px solid rgba(255, 255, 255, 0.28) !important;
+  
+  /* 🚀 EFEK SHINE / GLOSSY: Pantulan cahaya elegan dari pojok kiri atas */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 35%) !important;
   
   box-sizing: border-box !important;
   pointer-events: none !important;

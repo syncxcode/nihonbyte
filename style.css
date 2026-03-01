@@ -4527,10 +4527,10 @@ body {
 
 /* =========================================
    PERBAIKAN FINAL HASIL DOWNLOAD KARTU (PNG)
-   (Super Rounded, Deep Crimson Gradient, Premium Glossy)
+   (Vibrant Crimson, Super Smooth, Premium Glossy)
 ========================================= */
 
-/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Mewah */
+/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Nyala (Aesthetic) */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
@@ -4538,11 +4538,11 @@ body {
   width: 1080px !important;
   height: 1080px !important;
   
-  /* 🚀 BIKIN LEBIH ROUNDED (Skala disesuaikan buat kanvas 1080p) */
-  border-radius: 100px !important; 
+  /* 🚀 RADIUS PAS untuk 1080p */
+  border-radius: 96px !important; 
   
-  /* 🚀 GRADASI CRIMSON PREMIUM (Mulus tanpa bintik, dari gelap ke terang) */
-  background: linear-gradient(150deg, #780d28 0%, #bd1540 45%, #e81c4f 100%) !important;
+  /* 🚀 GRADASI AESTHETIC: Merah Pinkish yang cerah, elegan, dan GAK HOROR */
+  background: linear-gradient(135deg, #d81b86 0%, #c2185b 45%, #e11d48 100%) !important;
     
   /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar html2canvas aman) */
   border: none !important;
@@ -4552,19 +4552,24 @@ body {
   box-sizing: border-box !important;
 }
 
-/* 2. EFEK KACA & PANTULAN CAHAYA (Glossy) */
+/* 2. EFEK KACA & PANTULAN CAHAYA (Lebih Smooth & Mewah) */
 .download-export-glass-outline {
   position: absolute !important;
   inset: 0 !important;
   
   /* Samain radiusnya */
-  border-radius: 100px !important;
+  border-radius: 96px !important;
   
-  /* 🚀 OUTLINE KACA: Dibikin lebih tebal (8px) biar kelihatan mewah di resolusi tinggi */
-  border: 8px solid rgba(255, 255, 255, 0.28) !important;
+  /* 🚀 OUTLINE KACA: Garis putih halus menyatu dengan background */
+  border: 4px solid rgba(255, 255, 255, 0.45) !important;
   
-  /* 🚀 EFEK SHINE / GLOSSY: Pantulan cahaya elegan dari pojok kiri atas */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 35%) !important;
+  /* 🚀 EFEK GLOSSY PREMIUM: Pantulan melengkung estetik dari atas */
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 40%),
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.25), transparent 40%) !important;
+  
+  /* 🚀 INNER GLOW: Bayangan putih ke dalam biar kartu terasa "Bouncy" */
+  box-shadow: inset 0 0 0 8px rgba(255, 255, 255, 0.15) !important;
   
   box-sizing: border-box !important;
   pointer-events: none !important;

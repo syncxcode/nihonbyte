@@ -3882,8 +3882,9 @@ body {
 
 #sidebar .sidebar-tree details[open] > .subfolder-list,
 #sidebar .sidebar-tree details[open] > .level-list {
-  max-height: 900px;
+  max-height: 5000px;
   opacity: 1;
+  overflow: visible;
   transform: translateY(0);
 }
 

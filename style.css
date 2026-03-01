@@ -3537,6 +3537,42 @@ body {
   color: #334155;
 }
 
+
+.forms-hub-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-end;
+}
+
+.forms-level-filter-wrap {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.forms-level-filter {
+  min-width: 170px;
+  border: 2px solid rgba(148, 163, 184, 0.45);
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-weight: 700;
+  color: #0f172a;
+  background: #fff;
+}
+
+.form-level-badge {
+  justify-self: start;
+  display: inline-flex;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(219, 39, 119, 0.12);
+  color: #9d174d;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .forms-brick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

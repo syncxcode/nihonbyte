@@ -4527,24 +4527,40 @@ body {
 
 /* =========================================
    PERBAIKAN FINAL HASIL DOWNLOAD KARTU (PNG)
-   (Super Rounded, Deep Crimson Gradient, Premium Glossy)
+   (HD+ 1600x900 + Kartu Square 1:1 + Glass Lebih Smooth)
 ========================================= */
 
-/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Mewah */
-.download-export-card {
+/* 1) STAGE EXPORT HD+ (16:9) */
+.download-export-stage {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
-  width: 1080px !important;
-  height: 1080px !important;
+  width: 1600px !important;
+  height: 900px !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.22), transparent 44%),
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.14), transparent 48%),
+    linear-gradient(155deg, #5f0b1f 0%, #b5123e 52%, #f41d5b 100%) !important;
+  box-sizing: border-box !important;
+}
+
+/* 2) KARTU UTAMA 1:1 (SQUARE) */
+.download-export-card {
+  position: relative !important;
+  width: 900px !important;
+  height: 900px !important;
   
-  /* 🚀 BIKIN LEBIH ROUNDED (Skala disesuaikan buat kanvas 1080p) */
-  border-radius: 100px !important; 
+  border-radius: 92px !important;
   
-  /* 🚀 GRADASI CRIMSON PREMIUM (Mulus tanpa bintik, dari gelap ke terang) */
-  background: linear-gradient(150deg, #780d28 0%, #bd1540 45%, #e81c4f 100%) !important;
+  background:
+    radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.24), transparent 56%),
+    radial-gradient(circle at 80% 86%, rgba(255, 255, 255, 0.15), transparent 52%),
+    linear-gradient(150deg, #7a0e2a 0%, #bf1641 46%, #ef1e55 100%) !important;
     
-  /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar html2canvas aman) */
+  /* Tidak pakai border agar aman dari artefak garis kotak html2canvas */
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
@@ -4552,26 +4568,22 @@ body {
   box-sizing: border-box !important;
 }
 
-/* 2. EFEK KACA & PANTULAN CAHAYA (Glossy) */
+/* 3) EFEK KACA & PANTULAN CAHAYA (Glossy) */
 .download-export-glass-outline {
   position: absolute !important;
   inset: 0 !important;
-  
-  /* Samain radiusnya */
-  border-radius: 100px !important;
-  
-  /* 🚀 OUTLINE KACA: Dibikin lebih tebal (8px) biar kelihatan mewah di resolusi tinggi */
-  border: 8px solid rgba(255, 255, 255, 0.28) !important;
-  
-  /* 🚀 EFEK SHINE / GLOSSY: Pantulan cahaya elegan dari pojok kiri atas */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 35%) !important;
+  border-radius: 92px !important;
+  border: 5px solid rgba(255, 255, 255, 0.23) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 36%),
+    linear-gradient(325deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 30%) !important;
   
   box-sizing: border-box !important;
   pointer-events: none !important;
   z-index: 10 !important;
 }
 
-/* 3. BERSIHIN SAMPAH LAMA */
+/* 4) BERSIHKAN pseudo lama agar tidak bikin garis artefak */
 .download-export-card::before,
 .download-export-card::after {
   display: none !important;

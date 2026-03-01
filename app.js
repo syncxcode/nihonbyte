@@ -2843,18 +2843,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const exportNode = document.createElement('div');
     exportNode.className = 'download-export-card';
     exportNode.innerHTML = `
-      <div class="download-export-inner">
-        <div class="download-export-content">
-          <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
-          <div class="download-export-watermark-text">学</div>
-          <div class="download-export-kanji" style="font-size:${kanjiSize}px">${escapeHTML(sourceKanji)}</div>
-          <div class="download-export-kana">${escapeHTML(sourceKana)}</div>
-          <div class="download-export-romaji">${escapeHTML(sourceRomaji)}</div>
-          <div class="download-export-meaning">${escapeHTML(sourceMeaning)}</div>
-        </div>
+      <div class="download-export-glass-outline"></div>
+      <div class="download-export-content">
+        <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
+        <div class="download-export-watermark-text">学</div>
+        <div class="download-export-kanji" style="font-size:${kanjiSize}px">${escapeHTML(sourceKanji)}</div>
+        <div class="download-export-kana">${escapeHTML(sourceKana)}</div>
+        <div class="download-export-romaji">${escapeHTML(sourceRomaji)}</div>
+        <div class="download-export-meaning">${escapeHTML(sourceMeaning)}</div>
       </div>
     `;
-
     document.body.appendChild(exportNode);
 
     html2canvas(exportNode, {

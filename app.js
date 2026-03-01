@@ -2788,17 +2788,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, { capture: true });
 
-  function getSquareDownloadTypography(text = '') {
-    const cleanText = (text || '').trim();
-    const length = cleanText.length || 1;
-
-    if (length <= 1) return { kanji: 320, kana: 82, romaji: 56, meaning: 62 };
-    if (length <= 2) return { kanji: 270, kana: 78, romaji: 54, meaning: 58 };
-    if (length <= 4) return { kanji: 230, kana: 72, romaji: 50, meaning: 52 };
-    if (length <= 8) return { kanji: 190, kana: 66, romaji: 46, meaning: 48 };
-    return { kanji: 150, kana: 58, romaji: 42, meaning: 42 };
-  }
-
   function escapeHTML(value = '') {
     return String(value)
       .replace(/&/g, '&amp;')
@@ -2820,17 +2809,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
     const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
 
-    const sizes = getSquareDownloadTypography(sourceKanji);
-
     const exportNode = document.createElement('div');
     exportNode.className = 'download-export-card';
     exportNode.innerHTML = `
       <div class="download-export-content">
         <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
-        <div class="download-export-kanji" style="font-size:${sizes.kanji}px">${escapeHTML(sourceKanji)}</div>
-        <div class="download-export-kana" style="font-size:${sizes.kana}px">${escapeHTML(sourceKana)}</div>
-        <div class="download-export-romaji" style="font-size:${sizes.romaji}px">${escapeHTML(sourceRomaji)}</div>
-        <div class="download-export-meaning" style="font-size:${sizes.meaning}px">${escapeHTML(sourceMeaning)}</div>
+        <div class="download-export-watermark-text">学</div>
+        <div class="download-export-kanji">${escapeHTML(sourceKanji)}</div>
+        <div class="download-export-kana">${escapeHTML(sourceKana)}</div>
+        <div class="download-export-romaji">${escapeHTML(sourceRomaji)}</div>
+        <div class="download-export-meaning">${escapeHTML(sourceMeaning)}</div>
       </div>
     `;
 
@@ -2845,7 +2833,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logging: false,
     }).then(canvas => {
       const link = document.createElement('a');
-      link.download = `NihonByte-${cardId}-square.png`;
+      link.download = `kanji-card-${cardId}-square.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }).catch(err => {

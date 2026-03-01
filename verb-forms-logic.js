@@ -33,11 +33,34 @@
           </label>
         </div>
         <div class="forms-brick-grid"></div>
+        <div class="forms-hub-pagination" aria-label="Pagination bentuk kata kerja"></div>
       </section>
     `;
 
     const brickGrid = grid.querySelector(".forms-brick-grid");
     const levelSelect = grid.querySelector("#verb-form-level-filter");
+    const localPagination = grid.querySelector(".forms-hub-pagination");
+    const HUB_PAGE_SIZE = 15;
+    let hubPage = 1;
+
+    function renderHubPagination(totalPages, onChange) {
+      if (!localPagination) return;
+      localPagination.innerHTML = "";
+      if (totalPages <= 1) {
+        localPagination.style.display = "none";
+        return;
+      }
+      localPagination.style.display = "flex";
+
+      for (let page = 1; page <= totalPages; page += 1) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `forms-page-btn ${page === hubPage ? "active" : ""}`;
+        btn.textContent = String(page);
+        btn.addEventListener("click", () => onChange(page));
+        localPagination.appendChild(btn);
+      }
+    }
 
     function paintList() {
       const selectedLevel = levelSelect?.value || "all";
@@ -49,10 +72,19 @@
 
       if (!filteredForms.length) {
         brickGrid.innerHTML = '<div class="empty-state">Belum ada materi untuk level ini.</div>';
+        if (localPagination) {
+          localPagination.innerHTML = "";
+          localPagination.style.display = "none";
+        }
         return;
       }
 
-      filteredForms.forEach((form) => {
+      const totalPages = Math.max(1, Math.ceil(filteredForms.length / HUB_PAGE_SIZE));
+      if (hubPage > totalPages) hubPage = totalPages;
+      const start = (hubPage - 1) * HUB_PAGE_SIZE;
+      const currentForms = filteredForms.slice(start, start + HUB_PAGE_SIZE);
+
+      currentForms.forEach((form) => {
         const btn = document.createElement("button");
         btn.className = "form-brick";
         btn.type = "button";
@@ -60,9 +92,17 @@
         btn.addEventListener("click", () => onOpenPoster?.(form.id));
         brickGrid.appendChild(btn);
       });
+
+      renderHubPagination(totalPages, (nextPage) => {
+        hubPage = nextPage;
+        paintList();
+      });
     }
 
-    levelSelect?.addEventListener("change", paintList);
+    levelSelect?.addEventListener("change", () => {
+      hubPage = 1;
+      paintList();
+    });
     paintList();
   }
 

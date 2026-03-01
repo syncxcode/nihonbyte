@@ -3844,7 +3844,7 @@ body {
 #sidebar .sidebar-tree summary:hover,
 #sidebar .menu-btn:hover {
   background: rgba(255, 255, 255, 0.24) !important;
-  transform: translateX(4px);
+  transform: none;
 }
 
 
@@ -3852,53 +3852,42 @@ body {
    SIDEBAR SMOOTH LIST MOTION (GLOBAL)
 ========================================= */
 #sidebar {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 #sidebar .sidebar-tree details {
-  transition: background-color 0.28s ease, box-shadow 0.28s ease, transform 0.22s ease;
-  will-change: transform;
+  transition: background-color 0.15s ease;
+  will-change: auto;
 }
 
 #sidebar .sidebar-tree details:hover {
   background: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 10px 22px -16px rgba(15, 23, 42, 0.72);
+  box-shadow: none;
 }
 
 #sidebar .sidebar-tree summary,
 #sidebar .menu-btn,
 #sidebar .sub-details summary {
-  transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, opacity 0.22s ease;
+  transition: background-color 0.15s ease;
 }
 
 #sidebar .sidebar-tree details .subfolder-list,
 #sidebar .sidebar-tree details .level-list {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transform: translateY(-4px);
-  transition: max-height 0.34s ease, opacity 0.24s ease, transform 0.24s ease;
+  display: none;
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
+  transform: none;
+  transition: none;
 }
 
 #sidebar .sidebar-tree details[open] > .subfolder-list,
 #sidebar .sidebar-tree details[open] > .level-list {
-  max-height: 5000px;
-  opacity: 1;
-  overflow: visible;
-  transform: translateY(0);
+  display: grid;
 }
 
 #sidebar .menu-btn:active,
 #sidebar .sidebar-tree summary:active,
 #sidebar .sub-details summary:active {
-  transform: translateX(2px) scale(0.99);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #sidebar,
-  #sidebar * {
-    scroll-behavior: auto !important;
-    transition: none !important;
-    animation: none !important;
-  }
+  transform: none;
 }

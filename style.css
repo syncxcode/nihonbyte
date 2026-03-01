@@ -2895,23 +2895,25 @@ body::before {
     padding: 6px 0;
   }
 
-  .app-footer {
-    position: fixed !important;
+  body:not(.training-session):not(.review-mode-active) .app-body-shell {
+    position: relative !important;
+  }
+
+  /* 2. Beri ruang di DALAM content-panel, bukan di shell, biar background sidebar turun sempurna */
+  body:not(.training-session):not(.review-mode-active) .content-panel {
+    padding-bottom: 60px !important; 
+  }
+
+  /* 3. Footer full width mutlak di bawah, menimpa sidebar tanpa merusak mode lain */
+  body:not(.training-session):not(.review-mode-active) .app-footer {
+    position: absolute !important;
     bottom: 0 !important;
     left: 0 !important;
-    width: 100vw !important; /* Paksa lebar penuh seukuran layar */
+    width: 100% !important;
     margin: 0 !important;
     border-radius: 0 !important;
     border: none !important;
-    z-index: 1050 !important; /* Pastikan dia di atas sidebar */
-  }
-
-  /* Beri ruang kosong di bawah agar konten/sidebar tidak tertutup oleh footer */
-  #sidebar {
-    padding-bottom: 60px !important;
-  }
-  .content-panel {
-    padding-bottom: 60px !important;
+    z-index: 50 !important;
   }
 }
 

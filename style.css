@@ -3903,7 +3903,7 @@ body {
   width: 100% !important;
   height: var(--topbar-height);
   display: grid !important;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto auto !important;
   align-items: center;
   gap: 10px;
   padding: 8px 14px !important;
@@ -3955,6 +3955,11 @@ body {
   margin: 0 !important;
 }
 
+/* Sidebar cukup pakai judul, logo sudah ada di header */
+.sidebar-logo-wrap {
+  display: none !important;
+}
+
 @media (min-width: 768px) {
   #hamburger {
     display: none !important;
@@ -3967,18 +3972,20 @@ body {
   .app-body-shell {
     display: grid;
     grid-template-columns: var(--body-sidebar-width) minmax(0, 1fr);
-    align-items: start;
+    align-items: stretch;
   }
 
   #sidebar {
-    position: sticky !important;
-    top: var(--topbar-height) !important;
+    position: relative !important;
+    top: 0 !important;
     left: auto !important;
     transform: none !important;
     width: var(--body-sidebar-width) !important;
-    height: calc(100vh - var(--topbar-height)) !important;
+    height: auto !important;
+    min-height: 100% !important;
     border-radius: 0 !important;
     z-index: 20 !important;
+    overflow: visible !important;
   }
 
   .content-panel {
@@ -3993,13 +4000,27 @@ body {
   }
 
   .topbar .search-icon-btn {
+    display: inline-flex !important;
     justify-self: end;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .topbar #resultInfo {
+    position: static !important;
+    margin-left: auto !important;
+    margin-right: 6px !important;
+  }
+
+  .topbar #searchBtn {
+    position: static !important;
+    margin-left: 0 !important;
   }
 }
 
 @media (max-width: 767px) {
   .topbar {
-    grid-template-columns: auto 1fr auto auto;
+    grid-template-columns: auto 1fr auto auto !important;
   }
 
   #hamburger {

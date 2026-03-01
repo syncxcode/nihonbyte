@@ -1,167 +1,155 @@
-window.verbFormsData = [
-  {
-    id: "te",
-    title: "~TE (て形)",
-    summary: "Bentuk sambung untuk meminta, menghubungkan kalimat, progresif (~ています), izin (~てもいい), dan larangan (~てはいけない).",
-    formulas: [
-      {
-        group: "Godan",
-        rule: "Ubah akhiran sesuai baris: う/つ/る → って, む/ぶ/ぬ → んで, く → いて (行く → 行って), ぐ → いで, す → して."
-      },
-      {
-        group: "Ichidan",
-        rule: "Hapus akhiran る lalu tambah て."
-      },
-      {
-        group: "Irregular / Suru",
-        rule: "する → して, 来る(くる) → 来て(きて)."
-      }
-    ],
-    groups: [
-      {
-        name: "Godan",
-        examples: [
-          {
-            base: "洗う",
-            transformed: "洗って",
-            kana: "あらう → あらって",
-            romaji: "arau → aratte",
-            meaning: "mencuci",
-            sentences: [
-              {
-                jp: "手を洗ってください。",
-                kana: "てを あらって ください。",
-                romaji: "Te o aratte kudasai.",
-                meaning: "Tolong cuci tangan.",
-                audio: "手を洗ってください。"
-              },
-              {
-                jp: "皿を洗ってから寝ます。",
-                kana: "さらを あらって から ねます。",
-                romaji: "Sara o aratte kara nemasu.",
-                meaning: "Saya tidur setelah mencuci piring.",
-                audio: "皿を洗ってから寝ます。"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Ichidan",
-        examples: [
-          {
-            base: "食べる",
-            transformed: "食べて",
-            kana: "たべる → たべて",
-            romaji: "taberu → tabete",
-            meaning: "makan",
-            sentences: [
-              {
-                jp: "野菜を食べて元気になりましょう。",
-                kana: "やさいを たべて げんきに なりましょう。",
-                romaji: "Yasai o tabete genki ni narimashou.",
-                meaning: "Mari makan sayur agar sehat.",
-                audio: "野菜を食べて元気になりましょう。"
-              },
-              {
-                jp: "朝ごはんを食べて学校へ行きます。",
-                kana: "あさごはんを たべて がっこうへ いきます。",
-                romaji: "Asagohan o tabete gakkou e ikimasu.",
-                meaning: "Saya sarapan lalu pergi ke sekolah.",
-                audio: "朝ごはんを食べて学校へ行きます。"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Irregular / Suru",
-        examples: [
-          {
-            base: "掃除する",
-            transformed: "掃除して",
-            kana: "そうじする → そうじして",
-            romaji: "souji suru → souji shite",
-            meaning: "bersih-bersih",
-            sentences: [
-              {
-                jp: "部屋を掃除してから出かけます。",
-                kana: "へやを そうじして から でかけます。",
-                romaji: "Heya o souji shite kara dekakemasu.",
-                meaning: "Saya pergi setelah membersihkan kamar.",
-                audio: "部屋を掃除してから出かけます。"
-              },
-              {
-                jp: "週末にいっしょに掃除してくれませんか。",
-                kana: "しゅうまつに いっしょに そうじして くれませんか。",
-                romaji: "Shuumatsu ni issho ni souji shite kuremasen ka.",
-                meaning: "Mau bantu bersih-bersih bareng akhir pekan ini?",
-                audio: "週末にいっしょに掃除してくれませんか。"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: "nai",
-    title: "~NAI (ない形)",
-    summary: "Bentuk negatif kasual untuk menyatakan tidak melakukan suatu aksi.",
-    formulas: [
-      { group: "Godan", rule: "Ubah akhiran u ke baris a + ない. Khusus う → わない." },
-      { group: "Ichidan", rule: "Hapus る lalu tambah ない." },
-      { group: "Irregular / Suru", rule: "する → しない, 来る(くる) → 来ない(こない)." }
-    ],
-    groups: [
-      {
-        name: "Godan",
-        examples: [
-          {
-            base: "飲む",
-            transformed: "飲まない",
-            kana: "のむ → のまない",
-            romaji: "nomu → nomanai",
-            meaning: "tidak minum",
-            sentences: [
-              { jp: "今日はコーヒーを飲まない。", kana: "きょうは コーヒーを のまない。", romaji: "Kyou wa koohii o nomanai.", meaning: "Hari ini saya tidak minum kopi.", audio: "今日はコーヒーを飲まない。" },
-              { jp: "薬を飲まないとだめです。", kana: "くすりを のまないと だめです。", romaji: "Kusuri o nomanai to dame desu.", meaning: "Kalau tidak minum obat tidak boleh.", audio: "薬を飲まないとだめです。" }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Ichidan",
-        examples: [
-          {
-            base: "見る",
-            transformed: "見ない",
-            kana: "みる → みない",
-            romaji: "miru → minai",
-            meaning: "tidak melihat",
-            sentences: [
-              { jp: "テレビを見ないで勉強します。", kana: "テレビを みないで べんきょうします。", romaji: "Terebi o minaide benkyou shimasu.", meaning: "Saya belajar tanpa menonton TV.", audio: "テレビを見ないで勉強します。" },
-              { jp: "怖い映画は見ない。", kana: "こわい えいがは みない。", romaji: "Kowai eiga wa minai.", meaning: "Saya tidak menonton film horor.", audio: "怖い映画は見ない。" }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Irregular / Suru",
-        examples: [
-          {
-            base: "勉強する",
-            transformed: "勉強しない",
-            kana: "べんきょうする → べんきょうしない",
-            romaji: "benkyou suru → benkyou shinai",
-            meaning: "tidak belajar",
-            sentences: [
-              { jp: "毎日勉強しないと忘れます。", kana: "まいにち べんきょうしないと わすれます。", romaji: "Mainichi benkyou shinai to wasuremasu.", meaning: "Kalau tidak belajar tiap hari, akan lupa.", audio: "毎日勉強しないと忘れます。" },
-              { jp: "今日は日本語を勉強しない。", kana: "きょうは にほんごを べんきょうしない。", romaji: "Kyou wa nihongo o benkyou shinai.", meaning: "Hari ini saya tidak belajar bahasa Jepang.", audio: "今日は日本語を勉強しない。" }
-            ]
-          }
-        ]
-      }
-    ]
+(function initVerbFormsData() {
+  const LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
+
+  const formDefinitions = [
+    ["1", "~る", "Bentuk Kamus (Present/Future Plain)", "N5"],
+    ["2", "~ない", "Bentuk Negatif Plain", "N5"],
+    ["3", "~ます", "Bentuk Sopan Present/Future", "N5"],
+    ["4", "~ません", "Bentuk Sopan Negatif", "N5"],
+    ["5", "~た", "Bentuk Lampau Plain", "N5"],
+    ["6", "~なかった", "Bentuk Lampau Negatif Plain", "N5"],
+    ["7", "~ました", "Bentuk Lampau Sopan", "N5"],
+    ["8", "~ませんでした", "Bentuk Lampau Negatif Sopan", "N5"],
+    ["9", "~るでしょう", "Dugaan Sopan (Mungkin…)", "N4"],
+    ["10", "~ないでしょう", "Dugaan Negatif Sopan", "N4"],
+    ["11", "~るよ", "Present Casual (Penekanan)", "N5"],
+    ["12", "~ないよ", "Negatif Casual (Penekanan)", "N5"],
+    ["13", "~れば", "Bentuk Syarat (Kalau…)", "N4"],
+    ["14", "~なければ", "Bentuk Syarat Negatif", "N4"],
+    ["15", "~て", "Bentuk Te-form (Sambung / Sedang / Permintaan)", "N5"],
+    ["16", "~ないで", "Bentuk Negatif Te", "N5"],
+    ["17", "~てください", "Permintaan Sopan (Tolong…)", "N5"],
+    ["18", "~ないでください", "Larangan Sopan (Tolong Jangan…)", "N5"],
+    ["19", "~ろ", "Perintah Kasar (Imperatif)", "N5"],
+    ["20", "~るな", "Larangan Kasar", "N5"],
+    ["21", "~ろよ", "Perintah Kasar Santai", "N5"],
+    ["22", "~るなよ", "Larangan Kasar Santai", "N5"],
+    ["23", "~てしまう", "Selesai Total / Menyesal (Shimau)", "N4"],
+    ["24", "~てしまいます", "Selesai Total Sopan", "N4"],
+    ["25", "~てしまった", "Lampau Selesai/Menyesal", "N4"],
+    ["26", "~てしまいました", "Lampau Selesai Sopan", "N4"],
+    ["27", "~ちゃう", "Versi Santai Shimau", "N4"],
+    ["28", "~ちゃいます", "Versi Santai Sopan Shimau", "N4"],
+    ["29", "~ちゃった", "Lampau Santai Shimau", "N4"],
+    ["30", "~ちゃいました", "Lampau Santai Sopan Shimau", "N4"],
+    ["31", "~てもいい", "Boleh / Diizinkan", "N4"],
+    ["32", "~なくてもいい", "Tidak Perlu / Boleh Tidak", "N4"],
+    ["33", "~ないといけない", "Harus / Wajib", "N4"],
+    ["34", "~てはいけない", "Tidak Boleh", "N4"],
+    ["35", "~たい", "Keinginan (Ingin…)", "N4"],
+    ["36", "~たくない", "Tidak Ingin", "N4"],
+    ["37", "~たいです", "Keinginan Sopan", "N4"],
+    ["38", "~たくないです", "Tidak Ingin Sopan", "N4"],
+    ["39", "~たかった", "Keinginan Lampau", "N4"],
+    ["40", "~たくなかった", "Tidak Ingin Lampau", "N4"],
+    ["41", "~たかったです", "Keinginan Lampau Sopan", "N4"],
+    ["42", "~たくなかったです", "Tidak Ingin Lampau Sopan", "N4"],
+    ["43", "~てほしい", "Harap Orang Lain Melakukan", "N4"],
+    ["44", "~てほしくない", "Tidak Harap Orang Lain Melakukan", "N4"],
+    ["45", "~てほしかった", "Harap Orang Lain (Dulu)", "N4"],
+    ["46", "~てほしくなかった", "Tidak Harap Orang Lain (Dulu)", "N4"],
+    ["47", "~るべきだ", "Seharusnya / Sebaiknya", "N3"],
+    ["48", "~るべきです", "Seharusnya (Sopan)", "N3"],
+    ["49", "~るべきでしょう", "Mungkin Sebaiknya", "N3"],
+    ["50", "~たほうがいい", "Lebih Baik Melakukan", "N4"],
+    ["51", "~ないほうがいい", "Lebih Baik Tidak Melakukan", "N4"],
+    ["52", "~ましょう", "Ajakan Sopan (Mari Kita…)", "N4"],
+    ["53", "~ようとする", "Berniat / Mencoba Melakukan", "N3"],
+    ["54", "~やすい", "Mudah Dilakukan", "N4"],
+    ["55", "~にくい", "Sulit Dilakukan", "N4"],
+    ["56", "~させる", "Menyuruh (Causative)", "N4"],
+    ["57", "~させます", "Menyuruh (Sopan)", "N4"],
+    ["58", "~させた", "Sudah Menyuruh", "N4"],
+    ["59", "~させました", "Sudah Menyuruh (Sopan)", "N4"],
+    ["60", "~すぎる", "Terlalu Banyak", "N4"],
+    ["61", "~すぎた", "Sudah Terlalu Banyak", "N4"],
+    ["62", "~てもらう", "Minta Orang Lain Melakukan / Dibantu", "N4"]
+  ];
+
+  const groupSeeds = [
+    {
+      name: "Godan",
+      base: "書く",
+      baseKana: "かく",
+      baseRomaji: "kaku",
+      meaning: "menulis"
+    },
+    {
+      name: "Ichidan",
+      base: "食べる",
+      baseKana: "たべる",
+      baseRomaji: "taberu",
+      meaning: "makan"
+    },
+    {
+      name: "Irregular / Suru",
+      base: "勉強する",
+      baseKana: "べんきょうする",
+      baseRomaji: "benkyou suru",
+      meaning: "belajar"
+    }
+  ];
+
+  const sentenceTimeWords = [
+    ["毎日", "まいにち", "mainichi", "setiap hari"],
+    ["今朝", "けさ", "kesa", "pagi ini"],
+    ["今日は", "きょうは", "kyou wa", "hari ini"],
+    ["明日", "あした", "ashita", "besok"],
+    ["授業で", "じゅぎょうで", "jugyou de", "di kelas"],
+    ["家で", "いえで", "ie de", "di rumah"],
+    ["学校で", "がっこうで", "gakkou de", "di sekolah"],
+    ["仕事の後で", "しごとの あとで", "shigoto no ato de", "setelah kerja"],
+    ["週末に", "しゅうまつに", "shuumatsu ni", "di akhir pekan"],
+    ["友だちと", "ともだちと", "tomodachi to", "bersama teman"]
+  ];
+
+  function createExampleSentences(transformed, baseMeaning, title) {
+    return sentenceTimeWords.map(([prefixJp, prefixKana, prefixRomaji, prefixMeaning], index) => ({
+      jp: `${prefixJp}「${transformed}」を使います。`,
+      kana: `${prefixKana}「${transformed}」を つかいます。`,
+      romaji: `${prefixRomaji} "${transformed}" o tsukaimasu.`,
+      meaning: `${prefixMeaning}, saya memakai bentuk ${title.toLowerCase()} untuk kata kerja "${baseMeaning}".`,
+      audio: `${prefixJp}「${transformed}」を使います。`,
+      order: index + 1
+    }));
   }
-];
+
+  function makeForm([number, suffix, summary, level]) {
+    const id = `vf-${String(number).padStart(2, "0")}`;
+    const title = `${suffix} • ${summary}`;
+
+    return {
+      id,
+      level,
+      order: Number(number),
+      title,
+      summary: `${summary} (${level}).`,
+      formulas: [
+        { group: "Godan", rule: `Pakai pola ${suffix} untuk kata kerja golongan Godan sesuai konteks.` },
+        { group: "Ichidan", rule: `Pakai pola ${suffix} untuk kata kerja golongan Ichidan sesuai konteks.` },
+        { group: "Irregular / Suru", rule: `Pakai pola ${suffix} untuk kata kerja tidak beraturan seperti する/来る.` }
+      ],
+      groups: groupSeeds.map((seed) => {
+        const transformed = `${seed.base}${suffix.replace("~", "")}`;
+        return {
+          name: seed.name,
+          examples: [
+            {
+              base: seed.base,
+              transformed,
+              kana: `${seed.baseKana} → ${seed.baseKana} + ${suffix.replace("~", "")}`,
+              romaji: `${seed.baseRomaji} → ${seed.baseRomaji} + ${suffix.replace("~", "")}`,
+              meaning: `${seed.meaning} (${summary.toLowerCase()})`,
+              sentences: createExampleSentences(transformed, seed.meaning, summary)
+            }
+          ]
+        };
+      })
+    };
+  }
+
+  const forms = formDefinitions.map(makeForm).sort((a, b) => a.order - b.order);
+
+  window.verbFormsData = forms;
+  window.verbFormsLevels = LEVEL_ORDER;
+})();

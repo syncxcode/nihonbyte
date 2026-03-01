@@ -754,13 +754,17 @@ select, input, .action-btn {
   top: 0;
   width: 1080px;
   height: 1080px;
-  border-radius: 68px;
+  border-radius: 64px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.5), transparent 58%),
-    radial-gradient(circle at 87% 89%, rgba(255, 255, 255, 0.4), transparent 48%),
-    linear-gradient(155deg, #ffd6e2 0%, #ff9fba 48%, #ff7595 100%);
-  border: 14px solid rgba(255, 255, 255, 0.62);
+    radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.36), transparent 54%),
+    radial-gradient(circle at 82% 88%, rgba(255, 255, 255, 0.26), transparent 48%),
+    linear-gradient(155deg, #7f1d1d 0%, #b91c1c 38%, #dc143c 100%);
+  border: 12px solid rgba(255, 235, 241, 0.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+    inset 0 24px 56px rgba(255, 255, 255, 0.08),
+    inset 0 -28px 48px rgba(0, 0, 0, 0.22);
   box-sizing: border-box;
 }
 
@@ -773,21 +777,38 @@ select, input, .action-btn {
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 20px;
-  padding: 112px;
+  gap: 16px;
+  padding: 100px 90px;
   box-sizing: border-box;
 }
 
 .download-export-watermark {
   position: absolute;
-  width: 75%;
-  max-width: 700px;
-  opacity: 0.1;
+  width: 74%;
+  max-width: 690px;
+  opacity: 0.06;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: saturate(110%);
+  filter: grayscale(100%) saturate(120%) brightness(1.15);
   pointer-events: none;
+}
+
+.download-export-watermark-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--jp-calligraphy);
+  font-size: 300px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.05);
+  transform: rotate(-18deg) translateY(-5px);
+  pointer-events: none;
+  user-select: none;
+  text-transform: uppercase;
 }
 
 .download-export-kanji,
@@ -796,33 +817,39 @@ select, input, .action-btn {
 .download-export-meaning {
   position: relative;
   z-index: 1;
-  color: #0f172a;
-  text-shadow: 0 4px 14px rgba(255, 255, 255, 0.45);
+  color: #fff8fa;
+  text-shadow: 0 8px 22px rgba(36, 7, 13, 0.38);
 }
 
 .download-export-kanji {
-  font-size: 300px;
-  line-height: 0.9;
-  font-weight: 800;
+  font-size: 430px;
+  line-height: 0.83;
+  font-family: var(--jp-calligraphy);
+  font-weight: 700;
   letter-spacing: 0.02em;
+  margin-top: -12px;
+  margin-bottom: 8px;
 }
 
 .download-export-kana {
-  font-size: 78px;
+  font-size: 72px;
   font-weight: 600;
+  color: #ffdce7;
 }
 
 .download-export-romaji {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 500;
-  opacity: 0.9;
+  opacity: 0.92;
+  color: #ffe9f0;
 }
 
 .download-export-meaning {
-  font-size: 62px;
+  font-size: 56px;
   font-weight: 700;
   text-transform: capitalize;
   max-width: 88%;
+  color: #fff2f6;
 }
 
 #overlay {
@@ -3237,6 +3264,14 @@ body {
 .pattern-title {
   font-family: var(--jp-calligraphy) !important;
   font-weight: 700 !important;
+}
+
+.card-overlay .kanji {
+  font-size: clamp(3.1rem, 7.4vw, 4.6rem) !important;
+  line-height: 0.9 !important;
+  margin-top: -20px !important;
+  margin-bottom: 10px !important;
+  letter-spacing: 0.02em !important;
 }
 
 .card-overlay .kana,

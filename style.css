@@ -4535,8 +4535,8 @@ body {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
-  width: 1600px !important;
-  height: 900px !important;
+  width: 1080px !important;
+  height: 1080px !important;
   display: grid !important;
   place-items: center !important;
   overflow: hidden !important;
@@ -4590,7 +4590,7 @@ body {
 }
 
 /* =========================================
-   HOTFIX EXPORT DOWNLOAD FULL (HD+ 1600x900)
+   HOTFIX EXPORT DOWNLOAD FULL (SQUARE 1080x1080)
 ========================================= */
 .download-export-stage {
   display: none !important;
@@ -4600,8 +4600,8 @@ body {
   position: fixed !important;
   left: 0 !important;
   top: 0 !important;
-  width: 1600px !important;
-  height: 900px !important;
+  width: 1080px !important;
+  height: 1080px !important;
   pointer-events: none !important;
   z-index: -1 !important;
   border-radius: 78px !important;

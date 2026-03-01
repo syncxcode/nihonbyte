@@ -4316,3 +4316,79 @@ body {
     transform: translateZ(0);
   }
 }
+
+/* =========================================
+   Follow-up 3: sidebar font consistency + auto dot marker + forms local pagination
+========================================= */
+#sidebar .sidebar-tree > .menu-btn,
+#sidebar .sidebar-tree > details > summary {
+  font-weight: 700 !important;
+  font-size: 0.93rem !important;
+  letter-spacing: 0;
+}
+
+#sidebar .verb-form-menu-btn,
+#sidebar .adjective-form-menu-btn {
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Dot marker otomatis untuk item subkategori (kecuali menu huruf) */
+#sidebar .sidebar-tree details .subfolder-list .menu-btn:not(.letter-btn),
+#sidebar .sidebar-tree details .level-list .menu-btn {
+  position: relative;
+  padding-left: 1.65rem !important;
+}
+
+#sidebar .sidebar-tree details .subfolder-list .menu-btn:not(.letter-btn)::before,
+#sidebar .sidebar-tree details .level-list .menu-btn::before {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+/* Pagination lokal untuk hub Bentuk Kata Kerja / Kata Sifat */
+.forms-hub-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.forms-page-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #475569;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.forms-page-btn.active {
+  background: #ff4d6d;
+  border-color: #ff4d6d;
+  color: #fff;
+}
+
+.forms-page-btn:hover {
+  border-color: #ff8faa;
+  color: #be123c;
+}
+
+@media (max-width: 767px) {
+  .forms-page-btn {
+    width: 34px;
+    height: 34px;
+  }
+}

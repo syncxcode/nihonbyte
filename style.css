@@ -4588,3 +4588,63 @@ body {
 .download-export-card::after {
   display: none !important;
 }
+
+/* =========================================
+   HOTFIX EXPORT DOWNLOAD FULL (HD+ 1600x900)
+========================================= */
+.download-export-stage {
+  display: none !important;
+}
+
+.download-export-card {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 1600px !important;
+  height: 900px !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  border-radius: 78px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.22), transparent 44%),
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.14), transparent 48%),
+    linear-gradient(155deg, #5f0b1f 0%, #b5123e 52%, #f41d5b 100%) !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.download-export-glass-outline {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 78px !important;
+  border: 6px solid rgba(255, 255, 255, 0.24) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.27) 0%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(322deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0) 28%) !important;
+  box-sizing: border-box !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+}
+
+.download-export-card::before,
+.download-export-card::after {
+  display: none !important;
+}
+
+.download-export-content {
+  padding: 72px 140px 74px !important;
+  gap: 12px !important;
+}
+
+.download-export-watermark {
+  width: 62% !important;
+  max-width: 940px !important;
+  opacity: 0.075 !important;
+}
+
+.download-export-kanji {
+  margin-bottom: 4px !important;
+}

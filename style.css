@@ -4051,3 +4051,50 @@ body {
     z-index: 1000;
   }
 }
+
+/* =========================================
+   PERBAIKAN HEADER: RESULT INFO -> SEARCH ICON
+========================================= */
+
+/* 1. Ubah topbar menjadi flexbox agar mudah diatur urutannya */
+.topbar {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 14px !important;
+}
+
+/* 2. Bagian Kiri (Logo & Identitas) */
+.header-identity,
+.branding {
+  order: 1 !important;
+  margin-right: auto !important; /* KUNCI: Mendorong elemen lain ke kanan penuh */
+}
+
+/* 3. Bagian Tengah-Kanan (Kapsul Result Info) */
+#resultInfo {
+  order: 2 !important;
+  position: static !important; /* Matikan absolute positioning sebelumnya */
+  margin: 0 12px 0 auto !important; /* Kasih jarak 12px di sebelah kanan icon search */
+  transform: none !important;
+  display: inline-flex !important;
+}
+
+/* 4. Bagian Ujung Kanan (Search Icon SVG) */
+#searchBtn, 
+.search-icon-btn {
+  order: 3 !important;
+  position: static !important;
+  margin: 0 !important;
+}
+
+/* --- Penyesuaian Responsif Mobile (HP) --- */
+@media (max-width: 767px) {
+  #hamburger {
+    order: 0 !important; /* Hamburger tetap paling ujung kiri di HP */
+    margin-right: 8px !important;
+  }
+  #resultInfo {
+    display: inline-flex !important; /* Pastikan kapsul tetap muncul di HP */
+    max-width: 35vw !important; /* Dibatasi agar teks panjang tidak merusak layout HP */
+  }
+}

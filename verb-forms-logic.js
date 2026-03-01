@@ -88,7 +88,7 @@
         const btn = document.createElement("button");
         btn.className = "form-brick";
         btn.type = "button";
-        btn.innerHTML = `<span class="form-brick-desc-only">${form.summary}</span><small class="form-level-badge">${form.level || "-"}</small>`;
+        btn.innerHTML = `<strong class="form-brick-title-only">${(form.title || "").split("•")[0].trim()}</strong><span class="form-brick-desc-only">${form.summary}</span><small class="form-level-badge">${form.level || "-"}</small>`;
         btn.addEventListener("click", () => onOpenPoster?.(form.id));
         brickGrid.appendChild(btn);
       });

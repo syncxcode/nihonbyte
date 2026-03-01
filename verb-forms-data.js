@@ -1575,7 +1575,11 @@
     ["62", "~てもらう", "Minta Orang Lain Melakukan / Dibantu", "N4"]
   ];
 
-  const generatedRemaining = remainingDefs.map(def => ({
+  const manualIds = new Set(manualForms.map((form) => form.id));
+
+  const generatedRemaining = remainingDefs
+  .filter((def) => !manualIds.has(`vf-${String(def[0]).padStart(2, "0")}`))
+  .map(def => ({
     id: `vf-${String(def[0]).padStart(2, "0")}`,
     level: def[3],
     order: Number(def[0]),
@@ -1592,3 +1596,4 @@
   window.verbFormsData = [...manualForms, ...generatedRemaining].sort((a, b) => a.order - b.order);
   window.verbFormsLevels = LEVEL_ORDER;
 })();
+

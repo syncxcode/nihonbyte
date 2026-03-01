@@ -4416,3 +4416,53 @@ body {
     z-index: 1;
   }
 }
+
+/* =========================================
+   Follow-up 5: latihan spacing + greeting single-line + support poster lift
+========================================= */
+/* 1) Dropdown latihan tidak mepet ke folder induk */
+#sidebar .latihan-dropdown .sub-details .level-list {
+  margin-top: 8px;
+}
+
+#sidebar .latihan-dropdown .sub-details {
+  margin-top: 10px;
+}
+
+/* 2) Sapaan user satu baris di header samping logo */
+#sidebar-greeting {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  grid-template-rows: none !important;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#sidebar-greeting .greet-jp,
+#sidebar-greeting .greet-user {
+  display: inline !important;
+  white-space: nowrap !important;
+}
+
+/* 3) Poster dukungan pengembang dinaikkan agar tidak tenggelam */
+#grid.support-mode {
+  align-items: flex-start !important;
+  padding-top: calc(var(--topbar-height) + 18px) !important;
+  padding-bottom: 72px !important;
+}
+
+.support-poster {
+  margin-top: 0 !important;
+  margin-bottom: 18px !important;
+}
+
+/* Rapikan card forms saat title disembunyikan */
+.form-brick-desc-only {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.4;
+}

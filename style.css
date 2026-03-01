@@ -4648,3 +4648,26 @@ body {
 .download-export-kanji {
   margin-bottom: 4px !important;
 }
+
+/* Tuning spacing vertical untuk teks export */
+.download-export-content {
+  gap: 16px !important;
+}
+
+.download-export-kanji {
+  margin-bottom: 16px !important;
+}
+
+.download-export-kana {
+  margin-top: 6px !important;
+  margin-bottom: 8px !important;
+}
+
+.download-export-romaji {
+  margin-top: 4px !important;
+  margin-bottom: 10px !important;
+}
+
+.download-export-meaning {
+  margin-top: 6px !important;
+}

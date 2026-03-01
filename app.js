@@ -173,9 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function setSidebarGreeting(name = "") {
     if (!sidebarGreeting) return;
     const cleanName = (name || "").trim();
-    const honorName = cleanName ? `${cleanName}ーさん` : "ゲストーさん";
+    const honorName = cleanName ? `${cleanName} ーさん` : "ゲスト ーさん";
 
-    sidebarGreeting.innerHTML = `<span class="greet-jp">こんにちは</span><span class="greet-user">${honorName}</span>`;
+    sidebarGreeting.innerHTML = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
     sidebarGreeting.title = `こんにちは ${honorName}`;
 
     const length = honorName.length;

@@ -4392,3 +4392,27 @@ body {
     height: 34px;
   }
 }
+
+/* =========================================
+   Follow-up 4: sidebar background contrast (remove bright glow)
+========================================= */
+@media (min-width: 768px) {
+  #sidebar {
+    background: linear-gradient(180deg, #8f2a4f 0%, #6f1738 58%, #4b0f27 100%) !important;
+  }
+
+  /* pastikan area bawah sidebar tetap gelap agar teks terbaca */
+  #sidebar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.12) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #sidebar > * {
+    position: relative;
+    z-index: 1;
+  }
+}

@@ -4524,3 +4524,22 @@ body {
   color: #0f172a;
   margin-bottom: 6px;
 }
+
+.download-export-card {
+  /* Gradasi Crimson cerah persis kayak di tampilan web */
+  background:
+    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.14), transparent 42%),
+    linear-gradient(155deg, rgba(152, 24, 54, 1), rgba(192, 22, 65, 1) 54%, rgba(220, 20, 60, 1)) !important;
+  
+  /* Bantai semua border sesuai perintah bos! */
+  border: none !important;
+  
+  /* Efek kaca tipis di pinggiran dalam kartu (aman dari error html2canvas) */
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.25) !important; 
+}
+
+/* Tetap matikan ::before biar gak ada garis merah kaku bawaan lama */
+.download-export-card::before {
+  display: none !important;
+}

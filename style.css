@@ -4267,3 +4267,52 @@ body {
     padding-left: 0 !important;
   }
 }
+
+/* =========================================
+   Follow-up 2: samakan ukuran item sidebar + optimasi scroll grid desktop
+========================================= */
+@media (min-width: 768px) {
+  /* Samakan semua item menu sidebar (button + summary) */
+  #sidebar .menu-btn,
+  #sidebar .sidebar-tree > details > summary,
+  #sidebar .sidebar-tree .sub-details > summary {
+    min-height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 0.75rem 1rem !important;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.14) !important;
+  }
+
+  #sidebar .menu-btn:hover,
+  #sidebar .sidebar-tree > details > summary:hover,
+  #sidebar .sidebar-tree .sub-details > summary:hover {
+    background: rgba(255, 255, 255, 0.24) !important;
+    border-color: rgba(255, 255, 255, 0.28);
+  }
+
+  /* Performa: render kartu seperlunya saat discroll */
+  #grid .card {
+    content-visibility: auto;
+    contain-intrinsic-size: 280px;
+  }
+
+  /* Kurangi repaint berat saat hover di desktop */
+  .card-image {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.26) !important;
+    transition: transform 0.16s ease, box-shadow 0.16s ease !important;
+    will-change: transform;
+  }
+
+  .card-image:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Hindari efek compositing berlebih di panel scroll */
+  .content-panel {
+    will-change: auto;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+}

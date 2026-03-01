@@ -4525,74 +4525,54 @@ body {
   margin-bottom: 6px;
 }
 
-/* ==================== DOWNLOAD KANJI CARD - PREMIUM SAKURA V4 (HIGH CONTRAST + GLOW) ==================== */
+/* =========================================
+   PERBAIKAN FINAL HASIL DOWNLOAD KARTU (PNG)
+   (Super Rounded, Deep Crimson Gradient, Premium Glossy)
+========================================= */
+
+/* 1. KANVAS UTAMA: Radius Lebih Gede & Gradasi Mewah */
 .download-export-card {
   position: fixed !important;
   left: -9999px !important;
   top: 0 !important;
   width: 1080px !important;
   height: 1080px !important;
-  border-radius: 128px !important;
   
-  /* Gradient Sakura yang kaya, vibrant, tapi elegan */
-  background: linear-gradient(135deg, 
-    #ff4d94 0%, 
-    #ff2e7f 25%, 
-    #e81e72 50%, 
-    #c7155f 75%, 
-    #9f1a4f 100%) !important;
+  /* 🚀 BIKIN LEBIH ROUNDED (Skala disesuaikan buat kanvas 1080p) */
+  border-radius: 100px !important; 
   
+  /* 🚀 GRADASI CRIMSON PREMIUM (Mulus tanpa bintik, dari gelap ke terang) */
+  background: linear-gradient(150deg, #780d28 0%, #bd1540 45%, #e81c4f 100%) !important;
+    
+  /* HARAM PAKAI BORDER ATAU SHADOW DI SINI (Biar html2canvas aman) */
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
   overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
-/* Glass glow premium (tidak bikin tengah pudar) */
+/* 2. EFEK KACA & PANTULAN CAHAYA (Glossy) */
 .download-export-glass-outline {
   position: absolute !important;
   inset: 0 !important;
-  border-radius: 128px !important;
-  background: linear-gradient(160deg, 
-    rgba(255,255,255,0.75) 0%, 
-    rgba(255,255,255,0.35) 35%, 
-    transparent 70%) !important;
   
-  box-shadow: 
-    inset 0 60px 120px rgba(255,255,255,0.85),
-    inset 0 -70px 100px rgba(0,0,0,0.35),
-    0 0 80px rgba(255, 80, 140, 0.6) !important;
+  /* Samain radiusnya */
+  border-radius: 100px !important;
   
-  z-index: 5 !important;
-}
-
-/* KANJI — sekarang jelas banget, bold, mewah */
-.download-export-kanji {
-  font-size: 398px !important;
-  line-height: 0.82 !important;
-  font-weight: 900 !important;
-  color: #fff9f0 !important;
-  text-shadow: 
-    0 18px 45px rgba(0,0,0,0.85),
-    0 8px 25px rgba(0,0,0,0.65),
-    4px 4px 12px rgba(0,0,0,0.5) !important;
-  margin-top: -35px !important;
+  /* 🚀 OUTLINE KACA: Dibikin lebih tebal (8px) biar kelihatan mewah di resolusi tinggi */
+  border: 8px solid rgba(255, 255, 255, 0.28) !important;
+  
+  /* 🚀 EFEK SHINE / GLOSSY: Pantulan cahaya elegan dari pojok kiri atas */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 35%) !important;
+  
+  box-sizing: border-box !important;
+  pointer-events: none !important;
   z-index: 10 !important;
 }
 
-/* Kana, Romaji, Arti — tetap soft tapi keliatan jelas */
-.download-export-kana {
-  font-size: 88px !important;
-  color: #fff0f8 !important;
-  text-shadow: 0 10px 28px rgba(0,0,0,0.75) !important;
-}
-
-.download-export-romaji {
-  font-size: 56px !important;
-  color: #ffe4f5 !important;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.7) !important;
-}
-
-.download-export-meaning {
-  font-size: 66px !important;
-  color: #ffe9f7 !important;
-  text-shadow: 0 6px 20px rgba(0,0,0,0.7) !important;
-  max-width: 84% !important;
+/* 3. BERSIHIN SAMPAH LAMA */
+.download-export-card::before,
+.download-export-card::after {
+  display: none !important;
 }

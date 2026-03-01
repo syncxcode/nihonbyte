@@ -2801,11 +2801,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const cleanText = (text || '').replace(/\s+/g, '').trim() || '—';
     const charCount = [...cleanText].length;
 
-    let preferredSize = 360;
-    if (charCount === 2) preferredSize = 330;
-    else if (charCount === 3) preferredSize = 290;
-    else if (charCount === 4) preferredSize = 250;
-    else if (charCount >= 5) preferredSize = 220;
+    let preferredSize = 400;
+    if (charCount === 2) preferredSize = 372;
+    else if (charCount === 3) preferredSize = 320;
+    else if (charCount === 4) preferredSize = 270;
+    else if (charCount >= 5) preferredSize = 232;
 
     const maxWidth = 860;
     const minSize = 132;
@@ -2855,6 +2855,13 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.body.appendChild(exportNode);
 
+    const getSafeDownloadName = (text = '') => (text || '')
+      .replace(/[\\/:*?"<>|]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const cardName = getSafeDownloadName(sourceKanji !== '—' ? sourceKanji : (sourceKana || cardId)) || 'kanji-card';
+
     html2canvas(exportNode, {
       backgroundColor: null,
       scale: 1,
@@ -2864,7 +2871,7 @@ document.addEventListener("DOMContentLoaded", () => {
       logging: false,
     }).then(canvas => {
       const link = document.createElement('a');
-      link.download = `kanji-card-${cardId}-square.png`;
+      link.download = `card-${cardName}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }).catch(err => {

@@ -15,23 +15,55 @@
 
   function renderVerbFormsHub({ grid, onOpenPoster }) {
     const forms = getData();
+    const levels = Array.isArray(window.verbFormsLevels) ? window.verbFormsLevels : ["N5", "N4", "N3", "N2", "N1"];
+
     grid.innerHTML = `
       <section class="forms-hub">
-        <h2>Bentuk Kata Kerja</h2>
-        <p>Pilih poster bentuk kata kerja untuk buka materi lengkap.</p>
+        <div class="forms-hub-head">
+          <div>
+            <h2>Bentuk Kata Kerja</h2>
+            <p>Pilih level JLPT dulu, lalu buka poster bentuk kata kerja yang kamu butuhkan.</p>
+          </div>
+          <label class="forms-level-filter-wrap" for="verb-form-level-filter">
+            <span>Level</span>
+            <select id="verb-form-level-filter" class="forms-level-filter">
+              <option value="all">Semua Level (N5~N1)</option>
+              ${levels.map((level) => `<option value="${level}">${level}</option>`).join("")}
+            </select>
+          </label>
+        </div>
         <div class="forms-brick-grid"></div>
       </section>
     `;
 
     const brickGrid = grid.querySelector(".forms-brick-grid");
-    forms.forEach((form) => {
-      const btn = document.createElement("button");
-      btn.className = "form-brick";
-      btn.type = "button";
-      btn.innerHTML = `<strong>${form.title}</strong><span>${form.summary}</span>`;
-      btn.addEventListener("click", () => onOpenPoster?.(form.id));
-      brickGrid.appendChild(btn);
-    });
+    const levelSelect = grid.querySelector("#verb-form-level-filter");
+
+    function paintList() {
+      const selectedLevel = levelSelect?.value || "all";
+      const filteredForms = selectedLevel === "all"
+        ? forms
+        : forms.filter((form) => form.level === selectedLevel);
+
+      brickGrid.innerHTML = "";
+
+      if (!filteredForms.length) {
+        brickGrid.innerHTML = '<div class="empty-state">Belum ada materi untuk level ini.</div>';
+        return;
+      }
+
+      filteredForms.forEach((form) => {
+        const btn = document.createElement("button");
+        btn.className = "form-brick";
+        btn.type = "button";
+        btn.innerHTML = `<strong>${form.title}</strong><span>${form.summary}</span><small class="form-level-badge">${form.level || "-"}</small>`;
+        btn.addEventListener("click", () => onOpenPoster?.(form.id));
+        brickGrid.appendChild(btn);
+      });
+    }
+
+    levelSelect?.addEventListener("change", paintList);
+    paintList();
   }
 
   function buildSentenceCard(example, formId, groupName, exampleIndex) {

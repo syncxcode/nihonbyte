@@ -4185,3 +4185,85 @@ body {
     border-left: 1px solid rgba(148, 21, 78, 0.24); /* pembatas body vs sidebar */
   }
 }
+
+/* =========================================
+   Hotfix feedback: pagination/footer overlap + sidebar feel + perf scroll
+========================================= */
+@media (min-width: 768px) {
+  /* pastikan footer & pagination tidak tenggelam/ketiban */
+  body:not(.training-session):not(.review-mode-active) .content-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-bottom: 0 !important;
+    contain: layout paint;
+  }
+
+  body:not(.training-session):not(.review-mode-active) #grid {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16px 14px 14px !important;
+    overflow: visible !important;
+    contain: layout paint;
+  }
+
+  body:not(.training-session):not(.review-mode-active) .pagination-container {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    z-index: 2 !important;
+    margin: 0 !important;
+    padding: 8px 10px 14px !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-top: 0 !important;
+  }
+
+  body:not(.training-session):not(.review-mode-active) .app-footer {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    min-height: 36px !important;
+    height: 36px !important;
+    max-height: none !important;
+    z-index: 1 !important;
+  }
+
+  /* tombol Dukung Pengembang tidak ketiban */
+  #sidebar {
+    padding-bottom: 72px !important;
+  }
+
+  /* samakan rasa tombol sidebar (ringan, tidak sesak) */
+  #sidebar .sidebar-tree details {
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  #sidebar .sidebar-tree > details > summary,
+  #sidebar .sidebar-tree .sub-details > summary {
+    min-height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15) !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  #sidebar .sidebar-tree > details > summary:hover,
+  #sidebar .sidebar-tree .sub-details > summary:hover,
+  #sidebar .menu-btn:hover {
+    background: rgba(255, 255, 255, 0.24) !important;
+  }
+
+  #sidebar .subfolder-list {
+    margin-top: 8px;
+    padding-left: 0 !important;
+  }
+}

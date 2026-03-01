@@ -2807,7 +2807,7 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (charCount === 4) preferredSize = 250;
     else if (charCount >= 5) preferredSize = 220;
 
-    const maxWidth = 1180;
+    const maxWidth = 860;
     const minSize = 132;
     const fontFamily = '"Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif';
 
@@ -2856,15 +2856,15 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(exportNode);
 
     html2canvas(exportNode, {
-      backgroundColor: '#5f0b1f',
+      backgroundColor: null,
       scale: 1,
-      width: 1600,
-      height: 900,
+      width: 1080,
+      height: 1080,
       useCORS: true,
       logging: false,
     }).then(canvas => {
       const link = document.createElement('a');
-      link.download = `kanji-card-${cardId}-hd-plus.png`;
+      link.download = `kanji-card-${cardId}-square.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }).catch(err => {

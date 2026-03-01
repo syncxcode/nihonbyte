@@ -4509,7 +4509,12 @@ body {
 
 /* Rapikan card forms saat title disembunyikan */
 .form-brick-desc-only {
-  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(1.4em * 2);
   font-size: 1.02rem;
   font-weight: 700;
   color: #1f2937;

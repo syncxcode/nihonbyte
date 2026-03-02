@@ -62,11 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let originalTop = '';
   let originalWidth = '';
   let savedScrollPosition = 0;
+  let preserveDesktopScrollOnce = false;
 
   const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
 
   function isDesktopLayout() {
     return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
+  }
+
+  function queueDesktopScrollPreserve() {
+    preserveDesktopScrollOnce = isDesktopLayout();
   }
 
   function applyResponsiveSidebarLayout() {
@@ -2298,6 +2303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedType = button.dataset.type || "all";
       if (selectedType !== "all" && category) category.value = selectedType;
       if (search) search.value = "";
+      queueDesktopScrollPreserve();
       render();
       closeSidebar();
     });
@@ -2312,6 +2318,7 @@ document.addEventListener("DOMContentLoaded", () => {
       viewMode = `letters:${button.dataset.script}`;
       if (search) search.value = "";
       closeModal();
+      queueDesktopScrollPreserve();
       render();
       closeSidebar();
     });
@@ -2326,6 +2333,7 @@ document.addEventListener("DOMContentLoaded", () => {
       viewMode = "verb-forms";
       if (search) search.value = "";
       closeModal();
+      queueDesktopScrollPreserve();
       render();
       closeSidebar();
     });
@@ -2340,6 +2348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       viewMode = "adjective-forms";
       if (search) search.value = "";
       closeModal();
+      queueDesktopScrollPreserve();
       render();
       closeSidebar();
     });
@@ -2358,6 +2367,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Formatnya: dev : mode : tipe_materi : level
       // Kita pakai mode 'pattern' agar fungsinya nulis "Pola Kalimat"
       viewMode = `dev:pattern:Pola Kalimat:${level}`; 
+      queueDesktopScrollPreserve();
       render();
       closeSidebar();
       return;
@@ -2365,6 +2375,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Jika N5 atau N4 (Normal)
     viewMode = `patterns:${level}`;
+    queueDesktopScrollPreserve();
     render();
     closeSidebar();
   });
@@ -2420,6 +2431,7 @@ document.addEventListener("DOMContentLoaded", () => {
     viewMode = "support";
     if (search) search.value = "";
     if (category) category.value = "all";
+    queueDesktopScrollPreserve();
     render();
     closeSidebar();
   });
@@ -2512,12 +2524,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
   function render() {
-    savedScrollPosition = 0; 
-    setTimeout(() => {
-       window.scrollTo(0, 0); 
-       document.documentElement.scrollTop = 0;
-       document.body.scrollTop = 0;
-    }, 50);
+    const shouldResetScroll = !isDesktopLayout() || !preserveDesktopScrollOnce;
+    preserveDesktopScrollOnce = false;
+
+    if (shouldResetScroll) {
+      savedScrollPosition = 0;
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
+    }
 
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();

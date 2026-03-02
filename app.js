@@ -1651,24 +1651,30 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  function getAdaptiveCardKanjiSize(kanji = "") {
+  function getAdaptiveCardKanjiSize(kanji = "", expanded = false) {
     const clean = (kanji || "").replace(/\s+/g, "").trim();
     const len = [...clean].length;
 
-    if (len <= 2) return 50;
-    if (len <= 4) return 44;
-    if (len <= 6) return 38;
-    if (len <= 8) return 34;
-    if (len <= 10) return 30;
-    return 27;
+    if (expanded) {
+      if (len <= 2) return 148;
+      if (len <= 4) return 124;
+      if (len <= 6) return 100;
+      if (len <= 8) return 84;
+      return 72;
+    }
+
+    if (len <= 2) return 56;
+    if (len <= 4) return 48;
+    if (len <= 6) return 42;
+    if (len <= 8) return 36;
+    if (len <= 10) return 32;
+    return 28;
   }
 
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
     const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
-    const mobileAndroidKanjiSize = document.documentElement.classList.contains("android-device")
-      ? getAdaptiveCardKanjiSize(word?.kanji || "")
-      : null;
+    const adaptiveKanjiSize = getAdaptiveCardKanjiSize(word?.kanji || "", expanded);
 
     return `
       <div class="card-image ${expandedClass}" id="${cardId}">
@@ -1683,7 +1689,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
-          <div class="kanji"${mobileAndroidKanjiSize ? ` style="font-size:${mobileAndroidKanjiSize}px"` : ""}>${word.kanji || "—"}</div>
+          <div class="kanji" style="font-size:${adaptiveKanjiSize}px">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>

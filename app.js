@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
   }
 
-
   function applyResponsiveSidebarLayout() {
     if (!sidebar || !overlay || !hamburger) return;
 

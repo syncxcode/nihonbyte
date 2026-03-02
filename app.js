@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
   const sidebarGreeting = document.getElementById("sidebar-greeting");
+  const headerGreeting = document.getElementById("header-greeting");
 
   let originalOverflow = '';
   let originalPosition = '';
@@ -171,12 +172,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setSidebarGreeting(name = "") {
-    if (!sidebarGreeting) return;
     const cleanName = (name || "").trim();
     const honorName = cleanName ? `${cleanName} ーさん` : "ゲスト ーさん";
 
-    sidebarGreeting.innerHTML = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
-    sidebarGreeting.title = `こんにちは ${honorName}`;
+    const greetingMarkup = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
+
+    [sidebarGreeting, headerGreeting].forEach((el) => {
+      if (!el) return;
+      el.innerHTML = greetingMarkup;
+      el.title = `こんにちは ${honorName}`;
+    });
 
     const length = honorName.length;
     let fontSize = 1.2;
@@ -184,7 +189,11 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (length > 22) fontSize = 0.95;
     else if (length > 18) fontSize = 1.04;
     else if (length > 14) fontSize = 1.1;
-    sidebarGreeting.style.setProperty("--greet-user-size", `${fontSize}rem`);
+
+    [sidebarGreeting, headerGreeting].forEach((el) => {
+      if (!el) return;
+      el.style.setProperty("--greet-user-size", `${fontSize}rem`);
+    });
   }
 
   function generateEmailDefaultUsername(email = "") {

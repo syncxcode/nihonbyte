@@ -2700,7 +2700,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resultInfo) {
       resultInfo.textContent = isGuestPreview
-        ? `${words.length} (Preview Tamu) • Login untuk buka semua materi`
+        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) • Login untuk buka semua materi`)
         : formatResultInfo(words.length);
     }
 

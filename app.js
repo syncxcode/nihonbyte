@@ -1655,20 +1655,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const clean = (kanji || "").replace(/\s+/g, "").trim();
     const len = [...clean].length;
 
+    // Jika sedang dibuka di Pop-up Modal (kartu besar)
     if (expanded) {
-      if (len <= 2) return 148;
-      if (len <= 4) return 118;
-      if (len <= 6) return 96;
-      if (len <= 8) return 80;
-      return 64;
+      if (len <= 2) return "148px";
+      if (len <= 4) return "110px";
+      if (len <= 6) return "80px";
+      if (len <= 8) return "56px";
+      if (len <= 10) return "42px";
+      return "32px";
     }
 
-    if (len <= 2) return 56;
-    if (len <= 4) return 46;
-    if (len <= 6) return 38;
-    if (len <= 8) return 33;
-    if (len <= 10) return 29;
-    return 24;
+    // Jika di kartu grid biasa (Mengecil drastis kalau hurufnya banyak)
+    if (len <= 2) return "clamp(32px, 6vw, 56px)";  // Normal
+    if (len <= 4) return "clamp(22px, 4.5vw, 42px)"; // Agak panjang
+    if (len <= 6) return "clamp(16px, 3vw, 32px)";   // Panjang
+    if (len <= 8) return "clamp(14px, 2.5vw, 24px)"; // Sangat panjang
+    if (len <= 10) return "clamp(12px, 2vw, 18px)";  // Ekstrem
+    return "clamp(10px, 1.5vw, 14px)";             // Super ekstrem
   }
 
   function cardImageTemplate(word, expanded = false) {
@@ -1689,7 +1692,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
-          <div class="kanji" style="--kanji-size:${adaptiveKanjiSize}px">${word.kanji || "—"}</div>
+          <div class="kanji" style="font-size: ${adaptiveKanjiSize} !important; white-space: nowrap !important; text-overflow: clip !important; line-height: 1.1 !important; overflow: visible !important;">
+            ${word.kanji || "—"}
+          </div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>

@@ -1202,6 +1202,69 @@ select, input, .action-btn {
 @media (max-width: 768px) {
   :root { --sidebar-width: 290px; }
 
+  html,
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mobile performance mode: kurangi efek berat agar sidebar + scroll lebih halus */
+  body.sidebar-open .topbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 161, 197, 0.95) !important;
+  }
+
+  #overlay {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(0, 0, 0, 0.22) !important;
+  }
+
+  #sidebar {
+    contain: layout paint;
+    will-change: transform;
+    box-shadow: 2px 0 14px rgba(0, 0, 0, 0.14);
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  #grid {
+    contain: layout style;
+  }
+
+  .card,
+  .card-image,
+  .wide-card,
+  .recommendation-item {
+    content-visibility: auto;
+    contain-intrinsic-size: 220px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .card-image,
+  .wide-card {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.22) !important;
+    transition: none !important;
+  }
+
+  #recommendationRow,
+  .recommendation-row {
+    scroll-behavior: auto;
+  }
+
+  .menu-btn,
+  .search-icon-btn,
+  .download-card-btn,
+  .logout-floating-btn {
+    transition: none !important;
+  }
+
   #grid {
     padding-top: 106px !important; 
     gap: 12px !important;
@@ -5017,4 +5080,3 @@ body.guest-mode .download-card-btn.guest-restricted {
   stroke-linejoin: round;
   transform: translateY(-1.5px);
 }
-

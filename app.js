@@ -1326,18 +1326,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   
-  // ===== DEVICE DETECTOR (iOS/Android mobile tuning) =====
+  // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||
            (navigator.platform === 'MacIntel' && 'ontouchend' in document);
-  }
-
-  function isAndroid() {
-    return /Android/i.test(navigator.userAgent || "");
-  }
-
-  if (isAndroid()) {
-    document.documentElement.classList.add('android-device');
   }
 
   if (isIOS()) {
@@ -1651,34 +1643,10 @@ document.addEventListener("DOMContentLoaded", () => {
     return filtered;
   }
 
-  function getAdaptiveCardKanjiSize(kanji = "", expanded = false) {
-    const clean = (kanji || "").replace(/\s+/g, "").trim();
-    const len = [...clean].length;
-
-    // Jika sedang dibuka di Pop-up Modal (kartu besar / expanded)
-    if (expanded) {
-      if (len <= 2) return "clamp(72px, 16vw, 140px)";  // Di HP min 72px, Desktop max 140px
-      if (len <= 4) return "clamp(46px, 10vw, 96px)";   // Di HP min 46px, Desktop max 96px
-      if (len <= 6) return "clamp(32px, 7vw, 72px)";    // Di HP min 32px, Desktop max 72px
-      if (len <= 8) return "clamp(24px, 5vw, 52px)";    // Di HP min 24px, Desktop max 52px
-      if (len <= 10) return "clamp(18px, 4vw, 40px)";
-      return "clamp(14px, 3vw, 32px)";
-    }
-
-    // Jika di kartu grid biasa (tampilan luar)
-    if (len <= 2) return "clamp(52px, 12vw, 64px)";   // 1-2 huruf: Tetap raksasa (min 52px)
-    if (len <= 4) return "clamp(32px, 8vw, 46px)";    // 3-4 huruf: Agak besar (min 32px)
-    if (len <= 6) return "clamp(22px, 5vw, 34px)";    // 5-6 huruf: Kecil supaya pas 1 baris
-    if (len <= 8) return "clamp(16px, 4vw, 24px)";    // 7-8 huruf: Sangat kecil
-    if (len <= 10) return "clamp(14px, 3vw, 18px)";   // Ekstrem
-    return "clamp(12px, 2.5vw, 14px)";                // Super ekstrem
-  }
-
   function cardImageTemplate(word, expanded = false) {
     const expandedClass = expanded ? "expanded" : "";
     const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
-    const adaptiveKanjiSize = getAdaptiveCardKanjiSize(word?.kanji || "", expanded);
-
+    
     return `
       <div class="card-image ${expandedClass}" id="${cardId}">
         <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio">▶</button>
@@ -1692,9 +1660,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
-          <div class="kanji" style="font-size: ${adaptiveKanjiSize} !important; white-space: nowrap !important; text-overflow: clip !important; line-height: 1.1 !important; overflow: visible !important;">
-            ${word.kanji || "—"}
-          </div>
+          <div class="kanji">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>
@@ -2734,7 +2700,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resultInfo) {
       resultInfo.textContent = isGuestPreview
-        ? `${words.length} (Preview Tamu) • Login untuk buka semua materi`
+        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) • Login untuk buka semua materi`)
         : formatResultInfo(words.length);
     }
 

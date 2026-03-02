@@ -264,6 +264,64 @@ document.addEventListener("DOMContentLoaded", () => {
     applyGuestDownloadRestrictions();
   }
 
+  function getAdaptiveCardKanjiSize(text = "", expanded = false) {
+    const clean = (text || "").replace(/\s+/g, "").trim();
+    const len = [...clean].length;
+
+    // Jika sedang dibuka di Pop-up Modal (kartu besar / expanded)
+    if (expanded) {
+      if (len <= 3) return ""; // 1-3 huruf: KOSONG (Pakai CSS bawaan yang udah pas)
+      if (len === 4) return "clamp(52px, 10vw, 86px)";
+      if (len <= 6) return "clamp(38px, 7vw, 62px)";
+      if (len <= 8) return "clamp(28px, 5vw, 44px)";
+      if (len <= 10) return "clamp(22px, 4vw, 32px)";
+      return "clamp(16px, 3vw, 24px)";
+    }
+
+    // Jika di kartu grid biasa (tampilan luar)
+    if (len <= 4) return ""; // 1-4 huruf: KOSONG (Pakai CSS bawaan yang udah pas)
+    if (len <= 6) return "clamp(22px, 4vw, 32px)";    // 5-6 huruf: Agak panjang, kecilin dikit
+    if (len <= 8) return "clamp(16px, 2.5vw, 24px)";  // 7-8 huruf (kayak バスケットボール)
+    if (len <= 10) return "clamp(13px, 2vw, 18px)";   // Ekstrem
+    return "clamp(11px, 1.5vw, 14px)";                // Super ekstrem
+  }
+
+  function cardImageTemplate(word, expanded = false) {
+    const expandedClass = expanded ? "expanded" : "";
+    const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
+    
+    // Hitung ukuran berdasarkan Kanji (atau Kana kalau Kanjinya gak ada)
+    const textToMeasure = (word.kanji && word.kanji !== "—") ? word.kanji : word.kana;
+    const adaptiveSize = getAdaptiveCardKanjiSize(textToMeasure, expanded);
+    
+    // Kalau ada isinya, suntik gaya inline. Kalau kosong, biarin aja.
+    const styleInject = adaptiveSize ? `style="font-size: ${adaptiveSize} !important; white-space: nowrap !important; line-height: 1.1 !important;"` : "";
+
+    return `
+      <div class="card-image ${expandedClass}" id="${cardId}">
+        <button class="play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio">▶</button>
+        
+        <button class="download-card-btn" type="button" onclick="downloadAsImage(event, '${cardId}')" title="Download Flashcard" style="position:absolute;top:10px;right:10px;left:auto;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:20;background:rgba(255,255,255,0.4);border:1px solid rgba(255,255,255,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);color:#ff4d6d;appearance:none;-webkit-appearance:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+        
+        <div class="card-overlay" style="position: relative; z-index: 2;">
+          
+          <div class="kanji" ${styleInject}>${word.kanji || "—"}</div>
+          <div class="kana">${word.kana || "—"}</div>
+          <div class="romaji">${word.romaji || ""}</div>
+          <div class="meaning">${word.meaning || "—"}</div>
+          
+          <img class="watermark-logo" src="./assets/logo.png" alt="NihonByte Logo" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:70%; height:auto; opacity:0; pointer-events:none; z-index:-1;">
+        </div>
+      </div>
+    `;
+  }
+
   function toggleEmailAuthPanel(forceOpen = null) {
     if (!emailAuthForm) return;
     const shouldOpen = forceOpen === null ? emailAuthForm.style.display === "none" : forceOpen;

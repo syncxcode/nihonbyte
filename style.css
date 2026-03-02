@@ -5108,41 +5108,74 @@ body.guest-mode .download-card-btn.guest-restricted {
 }
 
 /* ====================================================
-   FIX MOBILE: REKOMENDASI KANJI & POLA KALIMAT
-   (Wajib taruh di paling bawah style.css)
+   FIX MOBILE: REKOMENDASI KANJI (2 KARTU & TEXT CENTER)
+   Wajib taruh di paling bawah style.css
 ==================================================== */
 @media (max-width: 767px) {
   
-  /* 1. JURUS GRID: ANTI MELAR (Gak nunggu di-scroll) */
   #kanjiModal #recommendationRow,
   #kanjiModal .recommendation-row {
     display: grid !important;
-    grid-auto-flow: column !important; /* Paksa berbaris ke samping */
-    grid-auto-columns: 110px !important; /* Lebar masing-masing item dipaku 110px */
+    grid-auto-flow: column !important;
+    
+    /* 🚀 RUMUS SAKTI: Pas 2 Kartu per layar (100% - gap) / 2 */
+    grid-auto-columns: calc((100% - 12px) / 2) !important;
+    gap: 12px !important;
+    padding: 5px 10px 15px !important;
+    
     overflow-x: auto !important;
     overflow-y: hidden !important;
     align-items: center !important;
     
-    height: 120px !important;
-    min-height: 120px !important;
-    max-height: 120px !important;
-    
-    padding: 5px 10px !important;
-    gap: 12px !important;
+    height: 125px !important;
+    min-height: 125px !important;
+    max-height: 125px !important;
     -webkit-overflow-scrolling: touch !important;
+    
+    /* Bikin scrollnya mulus dan berhenti pas di tengah kartu */
+    scroll-snap-type: x mandatory; 
   }
   
   #kanjiModal .recommendation-item {
-    width: 100% !important; /* Ngikutin ukuran grid-auto-columns di atas */
+    width: 100% !important; 
     max-width: 100% !important;
-    height: 90px !important;
-    min-height: 90px !important;
-    max-height: 90px !important;
+    min-width: 0 !important; /* Wajib nol agar calc() di atas berfungsi */
+    height: 95px !important;
+    min-height: 95px !important;
+    max-height: 95px !important;
     margin: 0 !important;
-    overflow: hidden !important;
+    padding: 10px !important;
+    
+    /* 🚀 KUNCI CENTER TEKS */
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
+    align-items: center !important;      /* Rata Tengah Horizontal */
+    justify-content: center !important;  /* Rata Tengah Vertikal */
+    text-align: center !important;
+    
+    scroll-snap-align: start; /* Temannya scroll-snap-type */
+    position: relative !important;
+  }
+
+  /* Biar Kanjinya otomatis nyesuaiin ukuran kotak 50% layar */
+  #kanjiModal .recommendation-item .rec-kanji {
+    font-size: clamp(1.4rem, 6vw, 1.8rem) !important; 
+    margin-bottom: 2px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Teks cara bacanya dirapikan */
+  #kanjiModal .recommendation-item .rec-kana {
+    font-size: 0.8rem !important;
+    color: #4b5563 !important;
+  }
+
+  /* Tombol play dipatenkan di pojok bawah biar gak nabrak teks di tengah */
+  #kanjiModal .recommendation-item .rec-audio-btn {
+    position: absolute !important;
+    right: 6px !important;
+    bottom: 6px !important;
+    margin: 0 !important;
   }
 
   /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */

@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const verificationHoldNote = document.getElementById("verification-hold-note");
   const sidebarGreeting = document.getElementById("sidebar-greeting");
   const headerGreeting = document.getElementById("header-greeting");
-  const userProfileSection = document.getElementById("user-profile-section");
 
   let originalOverflow = '';
   let originalPosition = '';
@@ -249,8 +248,10 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.setAttribute("aria-disabled", isGuest ? "true" : "false");
     });
 
-    if (userProfileSection) {
-      userProfileSection.style.display = isGuest ? "none" : "block";
+    if (isGuest) {
+      if (loggedOutView) loggedOutView.style.display = "block";
+      if (loggedInView) loggedInView.style.display = "none";
+      if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
     }
 
     if (searchBtn) {

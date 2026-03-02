@@ -4981,3 +4981,39 @@ body.guest-mode .download-card-btn.guest-restricted {
     margin-left: -6px !important;
   }
 }
+
+#supportBtn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffdce8 !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+#supportBtn:hover,
+#supportBtn:active {
+  transform: none !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+#supportBtn::before {
+  content: none !important;
+  animation: none !important;
+}
+
+#supportBtn .support-dev-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+

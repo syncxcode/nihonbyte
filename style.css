@@ -5180,63 +5180,66 @@ body.guest-mode .download-card-btn.guest-restricted {
   transform: translateY(-1.5px);
 }
 
-/* === Mobile hotfix: card typography hierarchy + modal recommendation stability === */
+/* === Mobile hotfix (Android): kanji dominance + spacing + tighter pattern header gap === */
 @media (max-width: 767px) {
-  #grid.pattern-grid-layout {
-    padding-top: calc(72px + 8px) !important;
+  .android-device #grid.pattern-grid-layout {
+    padding-top: calc(72px + 2px) !important;
     margin-top: 0 !important;
   }
 
-  .card-overlay {
-    padding: 10px 10px 40px !important;
+  .android-device .card-overlay {
+    padding: 14px 10px 42px !important;
+    justify-content: flex-start !important;
+    row-gap: 4px;
   }
 
-  .card-overlay .kanji {
-    font-size: clamp(2rem, 9.2vw, 2.55rem) !important;
-    line-height: 1.02 !important;
+  .android-device .card-overlay .kanji {
+    line-height: 1.05 !important;
     margin-top: 0 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 8px !important;
     font-weight: 900 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
-  .card-overlay .kana {
-    font-size: clamp(0.82rem, 3.2vw, 0.94rem) !important;
-    line-height: 1.2 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
-
-  .card-overlay .romaji {
-    font-size: clamp(0.74rem, 2.8vw, 0.84rem) !important;
-    line-height: 1.15 !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-  }
-
-  .card-overlay .meaning {
-    font-size: clamp(0.82rem, 3.15vw, 0.92rem) !important;
+  .android-device .card-overlay .kana {
+    margin: 0 0 4px !important;
     line-height: 1.22 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .android-device .card-overlay .romaji {
+    margin: 0 0 5px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .android-device .card-overlay .meaning {
+    margin: 0 !important;
+    line-height: 1.24 !important;
+    display: block !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: initial !important;
+    overflow: visible !important;
     white-space: normal !important;
   }
 
-  #kanjiModal #recommendationRow,
-  #kanjiModal .recommendation-row {
+  .android-device #kanjiModal #recommendationRow,
+  .android-device #kanjiModal .recommendation-row {
     align-items: stretch !important;
     min-height: 108px !important;
     padding: 10px 4px 8px !important;
     gap: 10px !important;
   }
 
-  #kanjiModal .recommendation-item {
+  .android-device #kanjiModal .recommendation-item {
     flex: 0 0 112px !important;
     min-width: 112px !important;
     width: 112px !important;

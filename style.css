@@ -5196,6 +5196,7 @@ body.guest-mode .download-card-btn.guest-restricted {
 }
 
 /* === Mobile hotfix (Android): kanji dominance + spacing + tighter pattern header gap === */
+/* === Mobile hotfix (Android): kanji dominance + spacing + tighter pattern header gap === */
 @media (max-width: 767px) {
   .android-device #grid.pattern-grid-layout {
     padding-top: calc(72px + 2px) !important;
@@ -5213,11 +5214,11 @@ body.guest-mode .download-card-btn.guest-restricted {
     margin-top: 0 !important;
     margin-bottom: 8px !important;
     font-weight: 900 !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    overflow-wrap: normal !important;
+    word-break: keep-all !important;
   }
 
   .android-device .card-overlay .kana {
@@ -5249,12 +5250,10 @@ body.guest-mode .download-card-btn.guest-restricted {
 
   .android-device #kanjiModal #recommendationRow,
   .android-device #kanjiModal .recommendation-row {
-    display: grid !important;
-    grid-auto-flow: column !important;
-    grid-template-rows: repeat(2, minmax(96px, auto)) !important;
-    grid-auto-columns: minmax(calc((100% - 10px) / 2), calc((100% - 10px) / 2)) !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
     align-items: stretch !important;
-    min-height: 212px !important;
+    min-height: 110px !important;
     padding: 10px 4px 8px !important;
     gap: 10px !important;
     overflow-x: auto !important;
@@ -5262,8 +5261,9 @@ body.guest-mode .download-card-btn.guest-restricted {
   }
 
   .android-device #kanjiModal .recommendation-item {
-    width: 100% !important;
-    min-width: 0 !important;
+    flex: 0 0 calc((100% - 10px) / 2) !important;
+    width: calc((100% - 10px) / 2) !important;
+    min-width: calc((100% - 10px) / 2) !important;
     height: 96px !important;
     min-height: 96px !important;
     max-height: 96px !important;

@@ -56,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const verificationHoldNote = document.getElementById("verification-hold-note");
   const sidebarGreeting = document.getElementById("sidebar-greeting");
   const headerGreeting = document.getElementById("header-greeting");
+  const userProfileSection = document.getElementById("user-profile-section");
 
   let originalOverflow = '';
   let originalPosition = '';
@@ -217,6 +218,15 @@ document.addEventListener("DOMContentLoaded", () => {
     userAvatarDisplay.src = resolveProfilePhoto(user, profile);
   }
 
+  function applyGuestDownloadRestrictions() {
+    const isGuest = accessMode === "guest";
+    document.querySelectorAll(".download-card-btn").forEach((btn) => {
+      btn.classList.toggle("guest-restricted", isGuest);
+      btn.setAttribute("aria-disabled", isGuest ? "true" : "false");
+      btn.title = isGuest ? "Login untuk mengunduh kartu" : "Download Flashcard";
+    });
+  }
+
   function setAccessMode(mode) {
     accessMode = mode;
     document.body.classList.toggle("auth-locked", mode === "locked");
@@ -239,11 +249,18 @@ document.addEventListener("DOMContentLoaded", () => {
       summary.setAttribute("aria-disabled", isGuest ? "true" : "false");
     });
 
+    if (userProfileSection) {
+      userProfileSection.style.display = isGuest ? "none" : "block";
+    }
+
     if (searchBtn) {
       searchBtn.disabled = isGuest;
+      searchBtn.classList.toggle("guest-restricted", isGuest);
       searchBtn.setAttribute("aria-disabled", isGuest ? "true" : "false");
       searchBtn.title = isGuest ? "Pencarian dikunci di mode tamu" : "Buka pencarian & filter";
     }
+
+    applyGuestDownloadRestrictions();
   }
 
   function toggleEmailAuthPanel(forceOpen = null) {
@@ -2681,6 +2698,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `${words.length} (Preview Tamu) • Login untuk buka semua materi`
         : formatResultInfo(words.length);
     }
+
+    applyGuestDownloadRestrictions();
   } // <-- Akhir dari fungsi render()
 
   // --- MESIN PEMBUAT TOMBOL ANGKA HALAMAN ---
@@ -2837,6 +2856,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.downloadAsImage = function(event, cardId) {
     event.stopPropagation();
+
+    if (accessMode === "guest") {
+      openInfoModal("<h3>Mode Tamu</h3><p>Fitur download kartu dikunci. Silakan login untuk mengunduh.</p>");
+      return;
+    }
 
     const element = document.getElementById(cardId);
     if (!element) return;

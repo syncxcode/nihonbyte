@@ -1657,18 +1657,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (expanded) {
       if (len <= 2) return 148;
-      if (len <= 4) return 124;
-      if (len <= 6) return 100;
-      if (len <= 8) return 84;
-      return 72;
+      if (len <= 4) return 118;
+      if (len <= 6) return 96;
+      if (len <= 8) return 80;
+      return 64;
     }
 
     if (len <= 2) return 56;
-    if (len <= 4) return 48;
-    if (len <= 6) return 42;
-    if (len <= 8) return 36;
-    if (len <= 10) return 32;
-    return 28;
+    if (len <= 4) return 46;
+    if (len <= 6) return 38;
+    if (len <= 8) return 33;
+    if (len <= 10) return 29;
+    return 24;
   }
 
   function cardImageTemplate(word, expanded = false) {
@@ -1689,7 +1689,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </button>
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
-          <div class="kanji" style="font-size:${adaptiveKanjiSize}px">${word.kanji || "—"}</div>
+          <div class="kanji" style="--kanji-size:${adaptiveKanjiSize}px">${word.kanji || "—"}</div>
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>

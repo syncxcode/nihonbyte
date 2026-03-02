@@ -2124,6 +2124,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function openModal(word) {
+    if (accessMode === "guest") {
+      openInfoModal("<h3>Mode Tamu</h3><p>Expand kartu dikunci. Silakan login untuk membuka detail kanji card.</p>");
+      return;
+    }
     if (!word) return;
     modalSubtitle.style.display = "block";
     recommendationRow.style.display = "flex";

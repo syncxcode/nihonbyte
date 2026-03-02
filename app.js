@@ -1326,10 +1326,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   
-  // ===== IOS DETECTOR - SEMUA iOS DEVICE (Safari + Chrome iOS) =====
+  // ===== DEVICE DETECTOR (iOS/Android mobile tuning) =====
   function isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.platform) ||
            (navigator.platform === 'MacIntel' && 'ontouchend' in document);
+  }
+
+  function isAndroid() {
+    return /Android/i.test(navigator.userAgent || "");
+  }
+
+  if (isAndroid()) {
+    document.documentElement.classList.add('android-device');
   }
 
   if (isIOS()) {
@@ -2700,7 +2708,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (resultInfo) {
       resultInfo.textContent = isGuestPreview
-        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) • Login untuk buka semua materi`)
+        ? `${words.length} (Preview Tamu) • Login untuk buka semua materi`
         : formatResultInfo(words.length);
     }
 

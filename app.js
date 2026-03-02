@@ -2155,6 +2155,9 @@ document.addEventListener("DOMContentLoaded", () => {
     lockPageScrollForKanjiModal();
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");
+      if (recommendationRow) {
+      recommendationRow.scrollLeft = 0;
+    }
   }
 
   function closeModal() {

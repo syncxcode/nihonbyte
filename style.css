@@ -5148,7 +5148,7 @@ body.guest-mode .download-card-btn.guest-restricted {
 
   /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */
   body #grid.pattern-grid-layout {
-    padding-top: 35px !important; /* Angka diperkecil agar mepet atas */
+    padding-top: 25px !important; /* Angka diperkecil agar mepet atas */
     margin-top: 0 !important;
   }
 }

@@ -1370,7 +1370,33 @@ select, input, .action-btn {
   #grid.pattern-grid-layout {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
-    padding-top: 84px !important;
+    padding-top: 66px !important;
+    margin-top: 0 !important;
+  }
+
+  #kanjiModal #recommendationRow,
+  #kanjiModal .recommendation-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 10px 4px 15px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  #kanjiModal .recommendation-item {
+    flex: 0 0 auto !important;
+    width: 110px !important;
+    min-width: 110px !important;
+    height: auto !important;
+    min-height: 90px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
   }
 
   /* --- Support Mode / Poster --- */
@@ -3295,8 +3321,7 @@ body {
 
 @media (max-width: 767px) {
   #grid,
-  #grid.support-mode,
-  #grid.pattern-grid-layout {
+  #grid.support-mode {
     padding-top: calc(72px + 14px) !important;
   }
 }

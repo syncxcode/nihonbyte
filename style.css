@@ -4782,3 +4782,147 @@ body {
     border-radius: 14px;
   }
 }
+
+/* === Fix follow-up mobile sidebar alignment + desktop/mobile greeting split === */
+.header-greeting {
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.28);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60vw;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+
+#header-greeting .greet-jp,
+#header-greeting .greet-user,
+#sidebar-greeting .greet-jp,
+#sidebar-greeting .greet-user {
+  line-height: 1.15;
+}
+
+/* default: desktop pakai greeting di header */
+#header-greeting {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#sidebar-greeting {
+  display: none;
+}
+
+/* rapikan blok profil + logout agar center sejajar */
+#logged-in-view {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center !important;
+  gap: 10px;
+  padding: 10px 12px !important;
+}
+
+#logged-in-view .user-avatar {
+  margin: 0;
+}
+
+#logged-in-view .user-info {
+  padding: 0 !important;
+  min-width: 0;
+}
+
+#logged-in-view .logout-floating-btn {
+  position: static !important;
+  transform: none !important;
+  align-self: center;
+  justify-self: end;
+  margin: 0;
+}
+
+#sidebar .sidebar-tree > .menu-btn,
+#sidebar .sidebar-tree > details > summary,
+#sidebar .sidebar-tree .sub-details > summary,
+#sidebar .sidebar-tree details .subfolder-list .menu-btn,
+#sidebar .sidebar-tree details .level-list .menu-btn {
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.75rem 1rem !important;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.14) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#sidebar .sidebar-tree > .menu-btn:hover,
+#sidebar .sidebar-tree > details > summary:hover,
+#sidebar .sidebar-tree .sub-details > summary:hover,
+#sidebar .sidebar-tree details .subfolder-list .menu-btn:hover,
+#sidebar .sidebar-tree details .level-list .menu-btn:hover {
+  background: rgba(255, 255, 255, 0.24) !important;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+#sidebar .inline-menu-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+@media (max-width: 767px) {
+  /* mobile: sapaan pindah ke sidebar */
+  #header-greeting {
+    display: none !important;
+  }
+
+  #sidebar-greeting {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #sidebar .sidebar-tree > .menu-btn,
+  #sidebar .sidebar-tree > details > summary,
+  #sidebar .sidebar-tree .sub-details > summary,
+  #sidebar .sidebar-tree details .subfolder-list .menu-btn,
+  #sidebar .sidebar-tree details .level-list .menu-btn {
+    min-height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.14) !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  #logged-in-view {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center !important;
+    gap: 10px;
+    padding: 10px 12px !important;
+    border-radius: 16px;
+  }
+
+  #logged-in-view .logout-floating-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 10px !important;
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #header-greeting {
+    display: inline-flex !important;
+  }
+
+  #sidebar-greeting {
+    display: none !important;
+  }
+}

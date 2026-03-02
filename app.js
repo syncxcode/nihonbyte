@@ -290,12 +290,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const expandedClass = expanded ? "expanded" : "";
     const cardId = `card-${(word.kanji || word.kana).replace(/\s+/g, '')}`;
     
-    // Hitung ukuran berdasarkan Kanji (atau Kana kalau Kanjinya gak ada)
+    // 1. Ambil teks yang mau diukur
     const textToMeasure = (word.kanji && word.kanji !== "—") ? word.kanji : word.kana;
+    
+    // 2. Dapatkan rumus ukurannya (pastikan fungsi getAdaptiveCardKanjiSize sudah ada di app.js)
     const adaptiveSize = getAdaptiveCardKanjiSize(textToMeasure, expanded);
     
-    // Kalau ada isinya, suntik gaya inline. Kalau kosong, biarin aja.
-    const styleInject = adaptiveSize ? `style="font-size: ${adaptiveSize} !important; white-space: nowrap !important; line-height: 1.1 !important;"` : "";
+    // 3. JURUS PAMUNGKAS: Masukkan font-size dan nowrap ke variabel style
+    // Jika adaptiveSize ada isinya (untuk kanji panjang), kita paksa inline style
+    const styleInject = adaptiveSize ? `style="font-size: ${adaptiveSize} !important; white-space: nowrap !important; line-height: 1 !important; display: block !important;"` : "";
 
     return `
       <div class="card-image ${expandedClass}" id="${cardId}">
@@ -311,7 +314,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
           
-          <div class="kanji" ${styleInject}>${word.kanji || "—"}</div>
+          <div class="kanji" ${styleInject}>
+            ${word.kanji || "—"}
+          </div>
+          
           <div class="kana">${word.kana || "—"}</div>
           <div class="romaji">${word.romaji || ""}</div>
           <div class="meaning">${word.meaning || "—"}</div>

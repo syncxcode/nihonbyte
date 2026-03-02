@@ -5113,16 +5113,16 @@ body.guest-mode .download-card-btn.guest-restricted {
 ==================================================== */
 @media (max-width: 767px) {
   
-  /* 1. FIX REKOMENDASI KANJI HORIZONTAL (ANTI MELAR VERTIKAL) */
-  #kanjiModal #recommendationRow {
-    display: flex !important;
-    flex-direction: row !important; /* Paksa nyamping */
-    flex-wrap: nowrap !important;   /* Dilarang turun baris */
-    overflow-x: auto !important;    /* Scroll nyamping */
-    overflow-y: hidden !important;  /* Kunci vertikal */
+  /* 1. JURUS GRID: ANTI MELAR (Gak nunggu di-scroll) */
+  #kanjiModal #recommendationRow,
+  #kanjiModal .recommendation-row {
+    display: grid !important;
+    grid-auto-flow: column !important; /* Paksa berbaris ke samping */
+    grid-auto-columns: 110px !important; /* Lebar masing-masing item dipaku 110px */
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
     align-items: center !important;
     
-    /* Gembok tingginya biar ga bisa melar */
     height: 120px !important;
     min-height: 120px !important;
     max-height: 120px !important;
@@ -5133,9 +5133,8 @@ body.guest-mode .download-card-btn.guest-restricted {
   }
   
   #kanjiModal .recommendation-item {
-    flex: 0 0 110px !important; /* Kunci ukuran item (gak membesar/menyusut) */
-    width: 110px !important;
-    max-width: 110px !important;
+    width: 100% !important; /* Ngikutin ukuran grid-auto-columns di atas */
+    max-width: 100% !important;
     height: 90px !important;
     min-height: 90px !important;
     max-height: 90px !important;
@@ -5148,7 +5147,7 @@ body.guest-mode .download-card-btn.guest-restricted {
 
   /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */
   body #grid.pattern-grid-layout {
-    padding-top: 25px !important; /* Angka diperkecil agar mepet atas */
+    padding-top: 60px !important; 
     margin-top: 0 !important;
   }
 }

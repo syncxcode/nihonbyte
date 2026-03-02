@@ -5147,7 +5147,7 @@ body.guest-mode .download-card-btn.guest-restricted {
 
   /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */
   body #grid.pattern-grid-layout {
-    padding-top: 60px !important; 
+    padding-top: 19px !important; 
     margin-top: 0 !important;
   }
 }

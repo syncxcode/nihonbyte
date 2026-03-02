@@ -40,7 +40,7 @@
     const brickGrid = grid.querySelector(".forms-brick-grid");
     const levelSelect = grid.querySelector("#verb-form-level-filter");
     const localPagination = grid.querySelector(".forms-hub-pagination");
-    const HUB_PAGE_SIZE = 15;
+    const HUB_PAGE_SIZE = window.innerWidth <= 767 ? 5 : 12;
     let hubPage = 1;
 
     function renderHubPagination(totalPages, onChange) {

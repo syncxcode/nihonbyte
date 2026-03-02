@@ -5007,12 +5007,12 @@ body.guest-mode .download-card-btn.guest-restricted {
 }
 
 #supportBtn .support-dev-icon {
-  width: 16px;
-  height: 16px;
-  flex: 0 0 16px;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
   fill: none;
-  stroke: currentColor;
-  stroke-width: 1.9;
+  stroke: #ff86b4;
+  stroke-width: 2.1;
   stroke-linecap: round;
   stroke-linejoin: round;
 }

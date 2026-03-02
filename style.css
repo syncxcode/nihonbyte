@@ -5106,3 +5106,49 @@ body.guest-mode .download-card-btn.guest-restricted {
   stroke-linejoin: round;
   transform: translateY(-1.5px);
 }
+
+/* ====================================================
+   FIX MOBILE: REKOMENDASI KANJI & POLA KALIMAT
+   (Wajib taruh di paling bawah style.css)
+==================================================== */
+@media (max-width: 767px) {
+  
+  /* 1. FIX REKOMENDASI KANJI HORIZONTAL (ANTI MELAR VERTIKAL) */
+  #kanjiModal #recommendationRow {
+    display: flex !important;
+    flex-direction: row !important; /* Paksa nyamping */
+    flex-wrap: nowrap !important;   /* Dilarang turun baris */
+    overflow-x: auto !important;    /* Scroll nyamping */
+    overflow-y: hidden !important;  /* Kunci vertikal */
+    align-items: center !important;
+    
+    /* Gembok tingginya biar ga bisa melar */
+    height: 120px !important;
+    min-height: 120px !important;
+    max-height: 120px !important;
+    
+    padding: 5px 10px !important;
+    gap: 12px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  #kanjiModal .recommendation-item {
+    flex: 0 0 110px !important; /* Kunci ukuran item (gak membesar/menyusut) */
+    width: 110px !important;
+    max-width: 110px !important;
+    height: 90px !important;
+    min-height: 90px !important;
+    max-height: 90px !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */
+  body #grid.pattern-grid-layout {
+    padding-top: 35px !important; /* Angka diperkecil agar mepet atas */
+    margin-top: 0 !important;
+  }
+}

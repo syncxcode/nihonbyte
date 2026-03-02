@@ -2511,12 +2511,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // INI ADALAH FUNGSI RENDER() YANG BENAR
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
-  function render() {
-    savedScrollPosition = 0; 
-    setTimeout(() => {
-       window.scrollTo(0, 0); 
-       document.documentElement.scrollTop = 0;
-       document.body.scrollTop = 0;
     function render() {
     savedScrollPosition = 0; 
     setTimeout(() => {

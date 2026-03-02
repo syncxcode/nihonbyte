@@ -2517,6 +2517,19 @@ document.addEventListener("DOMContentLoaded", () => {
        window.scrollTo(0, 0); 
        document.documentElement.scrollTop = 0;
        document.body.scrollTop = 0;
+    function render() {
+    savedScrollPosition = 0; 
+    setTimeout(() => {
+       // Reset scroll global (Mobile)
+       window.scrollTo(0, 0); 
+       document.documentElement.scrollTop = 0;
+       document.body.scrollTop = 0;
+       
+       // Reset scroll spesifik Desktop (karena desktop pakai layout split-panel)
+       if (window.innerWidth >= 768) {
+         const contentPanel = document.querySelector(".content-panel");
+         if (contentPanel) contentPanel.scrollTop = 0;
+       }
     }, 50);
 
     if (!isTesting) unlockQuizScroll();

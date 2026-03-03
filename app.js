@@ -80,6 +80,69 @@ document.addEventListener("DOMContentLoaded", () => {
     return window.NIHONBYTE_I18N?.tMeaning ? window.NIHONBYTE_I18N.tMeaning(text) : text;
   }
 
+  function shouldSkipTranslationNode(node) {
+    if (!node) return true;
+    const parent = node.parentElement;
+    if (!parent) return true;
+    if (parent.closest("script, style, textarea, input, option")) return true;
+    if (parent.closest('[data-role="sentence-jp"], [data-role="sentence-kana"], [data-role="sentence-romaji"], .kanji, .kana, .romaji')) return true;
+    return false;
+  }
+
+  function translateRenderedContent(root = document.body) {
+    if (currentLang() !== "en" || !root) return;
+
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    let textNode = walker.nextNode();
+    while (textNode) {
+      if (!shouldSkipTranslationNode(textNode)) {
+        const original = textNode.nodeValue;
+        const trimmed = original?.trim();
+        if (trimmed) {
+          const translated = tMeaning(trimmed);
+          if (translated && translated !== trimmed) {
+            textNode.nodeValue = original.replace(trimmed, translated);
+          }
+        }
+      }
+      textNode = walker.nextNode();
+    }
+
+    root.querySelectorAll("[aria-label], [title], [placeholder]").forEach((el) => {
+      ["aria-label", "title", "placeholder"].forEach((attr) => {
+        const value = el.getAttribute(attr);
+        if (!value) return;
+        const translated = tMeaning(value);
+        if (translated && translated !== value) el.setAttribute(attr, translated);
+      });
+    });
+  }
+
+
+  let translateObserver = null;
+  let translateRaf = null;
+
+  function queueTranslateRenderedContent() {
+    if (currentLang() !== "en") return;
+    if (translateRaf) cancelAnimationFrame(translateRaf);
+    translateRaf = requestAnimationFrame(() => {
+      translateRaf = null;
+      translateRenderedContent(document.body);
+    });
+  }
+
+  function setupTranslateObserver() {
+    if (translateObserver) return;
+    translateObserver = new MutationObserver(() => queueTranslateRenderedContent());
+    translateObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["aria-label", "title", "placeholder"]
+    });
+  }
+
   function updateLanguageSwitchIcon() {
     if (!languageSwitchIcon) return;
     languageSwitchIcon.innerHTML = currentLang() === "en" ? FLAG_SVG.en : FLAG_SVG.id;
@@ -3402,6 +3465,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLanguageSwitchIcon();
     if (window.NIHONBYTE_I18N?.applyStaticText) window.NIHONBYTE_I18N.applyStaticText();
     render();
+    queueTranslateRenderedContent();
   }
   window.refreshLanguage = refreshLanguage;
 
@@ -3412,6 +3476,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   
+  setupTranslateObserver();
   setAccessMode("locked");
   refreshLanguage();
 });

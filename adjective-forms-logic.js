@@ -6,6 +6,10 @@
     return Array.isArray(window.adjectiveFormsData) ? window.adjectiveFormsData : [];
   }
 
+  function t(text) {
+    return window.NIHONBYTE_I18N?.tMeaning ? window.NIHONBYTE_I18N.tMeaning(text) : text;
+  }
+
   function randomIndex(max, except = -1) {
     if (max <= 1) return 0;
     let idx = Math.floor(Math.random() * max);
@@ -21,10 +25,10 @@
     const forms = getData();
     grid.innerHTML = `
       <section class="forms-hub">
-        <h2>Bentuk Kata Sifat</h2>
-        <p>Pilih poster bentuk kata sifat untuk buka materi lengkap.</p>
+        <h2>${t("Bentuk Kata Sifat")}</h2>
+        <p>${t("Pilih poster bentuk kata sifat untuk buka materi lengkap.")}</p>
         <div class="forms-brick-grid"></div>
-        <div class="forms-hub-pagination" aria-label="Pagination bentuk kata sifat"></div>
+        <div class="forms-hub-pagination" aria-label="${t("Pagination bentuk kata sifat")}"></div>
       </section>
     `;
 
@@ -55,7 +59,7 @@
     function paintList() {
       brickGrid.innerHTML = "";
       if (!forms.length) {
-        brickGrid.innerHTML = '<div class="empty-state">Belum ada materi bentuk kata sifat.</div>';
+        brickGrid.innerHTML = `<div class="empty-state">${t("Belum ada materi bentuk kata sifat.")}</div>`;
         if (localPagination) {
           localPagination.innerHTML = "";
           localPagination.style.display = "none";
@@ -72,7 +76,7 @@
         const btn = document.createElement("button");
         btn.className = "form-brick";
         btn.type = "button";
-        btn.innerHTML = `<span class="form-brick-desc-only">${form.summary}</span>`;
+        btn.innerHTML = `<span class="form-brick-desc-only">${t(form.summary)}</span>`;
         btn.addEventListener("click", () => onOpenPoster?.(form.id));
         brickGrid.appendChild(btn);
       });
@@ -97,22 +101,22 @@
         <h5>${example.base} → ${example.transformed}</h5>
         <p><strong>Kana:</strong> ${example.kana}</p>
         <p><strong>Romaji:</strong> ${example.romaji}</p>
-        <p><strong>Arti:</strong> ${example.meaning}</p>
+        <p><strong>${t("Arti:")}</strong> ${t(example.meaning)}</p>
         <div class="sentence-box">
-          <button type="button" class="wide-play-btn form-sentence-play-btn" data-text="${sentence.audio || sentence.jp}" aria-label="Putar kalimat">
+          <button type="button" class="wide-play-btn form-sentence-play-btn" data-text="${sentence.audio || sentence.jp}" aria-label="${t("Putar kalimat")}">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6v12l10-6z"></path></svg>
           </button>
           <p class="sentence-jp" data-role="sentence-jp">${sentence.jp}</p>
           <p data-role="sentence-kana">${sentence.kana}</p>
           <p data-role="sentence-romaji">${sentence.romaji}</p>
-          <p data-role="sentence-meaning">${sentence.meaning}</p>
+          <p data-role="sentence-meaning">${t(sentence.meaning)}</p>
         </div>
         <div class="sentence-actions">
           <button type="button" class="shuffle-sentence-btn" data-key="${key}">
             <span class="shuffle-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M16 3h5v5"></path><path d="M4 20l7-7"></path><path d="M21 3l-7 7"></path><path d="M16 21h5v-5"></path><path d="M4 4l7 7"></path><path d="M21 21l-7-7"></path></svg>
             </span>
-            Acak Kalimat
+            ${t("Acak Kalimat")}
           </button>
         </div>
       </article>
@@ -122,12 +126,12 @@
   function renderPoster({ grid, formId, onBack }) {
     const form = getData().find((item) => item.id === formId);
     if (!form) {
-      grid.innerHTML = '<div class="empty-state">Materi bentuk kata sifat tidak ditemukan.</div>';
+      grid.innerHTML = `<div class="empty-state">${t("Materi bentuk kata sifat tidak ditemukan.")}</div>`;
       return;
     }
 
     const formulaHtml = form.formulas
-      .map((item) => `<li><strong>${item.group}:</strong> ${item.rule}</li>`)
+      .map((item) => `<li><strong>${item.group}:</strong> ${t(item.rule)}</li>`)
       .join("");
 
     const groupsHtml = form.groups
@@ -138,7 +142,7 @@
 
         return `
           <section class="form-group-panel">
-            <h4>${group.name}</h4>
+            <h4>${t(group.name)}</h4>
             ${examplesHtml}
           </section>
         `;
@@ -147,12 +151,12 @@
 
     grid.innerHTML = `
       <section class="form-poster">
-        <button type="button" class="form-back-btn">← Kembali ke daftar</button>
-        <h2>${form.title}</h2>
-        <p>${form.summary}</p>
-        <h3>Rumus</h3>
+        <button type="button" class="form-back-btn">← ${t("Kembali ke daftar")}</button>
+        <h2>${t(form.title)}</h2>
+        <p>${t(form.summary)}</p>
+        <h3>${t("Rumus")}</h3>
         <ul>${formulaHtml}</ul>
-        <h3>Contoh Kosakata + Kalimat</h3>
+        <h3>${t("Contoh Kosakata + Kalimat")}</h3>
         ${groupsHtml}
       </section>
     `;
@@ -180,7 +184,7 @@
         target.querySelector('[data-role="sentence-jp"]').textContent = sentence.jp;
         target.querySelector('[data-role="sentence-kana"]').textContent = sentence.kana;
         target.querySelector('[data-role="sentence-romaji"]').textContent = sentence.romaji;
-        target.querySelector('[data-role="sentence-meaning"]').textContent = sentence.meaning;
+        target.querySelector('[data-role="sentence-meaning"]').textContent = t(sentence.meaning);
         target.querySelector(".form-sentence-play-btn").dataset.text = sentence.audio || sentence.jp;
       });
     });

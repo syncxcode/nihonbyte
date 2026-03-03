@@ -57,8 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileDropdown = document.getElementById("profile-dropdown");
   const profileLanguageBtn = document.getElementById("profile-language-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
-  const sidebarGreeting = document.getElementById("sidebar-greeting");
-  const headerGreeting = document.getElementById("header-greeting");
   const languageSwitch = document.getElementById("languageSwitch");
   const languageSwitchIcon = document.getElementById("languageSwitchIcon");
 
@@ -255,20 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function defaultDisplayName(user) {
     return user?.displayName || (user?.email ? user.email.split("@")[0] : "Pelajar");
-  }
-
-  function setSidebarGreeting(name = "") {
-    const cleanName = (name || "").trim();
-    const headerText = cleanName ? `NihonByte • ${cleanName}` : "NihonByte";
-
-    if (headerGreeting) {
-      headerGreeting.textContent = headerText;
-      headerGreeting.title = headerText;
-    }
-
-    if (sidebarGreeting) {
-      sidebarGreeting.textContent = "";
-    }
   }
 
   function closeProfileDropdown() {
@@ -532,7 +516,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.currentUser = null;
     if (loggedOutView) loggedOutView.style.display = "block";
     if (loggedInView) loggedInView.style.display = "none";
-    setSidebarGreeting("");
+
     setAccessMode("guest");
     closeSidebar();
     render();
@@ -658,7 +642,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
-        setSidebarGreeting(resolvedName);
+
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
@@ -683,7 +667,7 @@ document.addEventListener("DOMContentLoaded", () => {
           verificationHoldNote.textContent = "Email belum terverifikasi. Silakan verifikasi dulu sebelum masuk ke aplikasi.";
           verificationHoldNote.style.display = "block";
         }
-        setSidebarGreeting("");
+
       } else {
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
@@ -693,7 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
         shouldOpenVerificationModalAfterSignup = false;
-        setSidebarGreeting("");
+
       }
     });
   }

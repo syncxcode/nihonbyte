@@ -4696,7 +4696,7 @@ window.NIHONBYTE_MEANING_EN = {
   "Ubah kata kerja ke bentuk Te (て), lalu tambah ほしくなかった. Contoh: 見る → 見てほしくなかった.": "Change the verb to the Te (て) form, then add ほしくなかった. Example: 見る → 見てほしくなかった.",
   "する → してほしくなかった, 来る (くる) → 来てほしくなかった (きてほしくなかった). Contoh: 心配する → 心配してほしくなかった.": "する → didn't want (someone) to do, 来る (くる) → didn't want (someone) to come (きてほしくなかった). Example: 心配する → didn't want (someone) to worry.",
   "~るべきだ • Seharusnya / Sebaiknya": "~るべきだ • Should / Ought to",
-  "Seharusnya / Sebaiknya (N3). Digunakan untuk menyatakan sesuatu yang 'sudah sewajarnya' atau 'sangat disarankan' untuk dilakukan. Berasal dari pendapat umum, moral, atau pandangan kuat pembicara. Ini adalah bentuk biasa (plain).": "Seharusnya / Sebaiknya (N3). Used to express something that is 'proper' or 'highly recommended' to do. Derived from common opinion, morals, or the strong view of the speaker. This is the plain form.",
+  "Seharusnya / Sebaiknya (N3). Digunakan untuk menyatakan sesuatu yang 'sudah sewajarnya' atau 'sangat disarankan' untuk dilakukan. Berasal dari pendapat umum, moral, atau pandangan kuat pembicara. Ini adalah bentuk biasa (plain).": "Should / Ought to (N3). Used to express something that is 'proper' or 'highly recommended' to do. Derived from common opinion, morals, or the strong view of the speaker. This is the plain form.",
   "Bentuk kamus (dictionary form) + べきだ. Contoh: 謝る → 謝るべきだ.": "Dictionary form + べきだ. Example: 謝る → 謝るべきだ.",
   "Bentuk kamus + べきだ. Contoh: 見る → 見るべきだ.": "Dictionary form + べきだ. Example: 見る → 見るべきだ.",
   "する → するべきだ (atau すべきだ). 来る → 来るべきだ (くるべきだ). Contoh: 勉強する → 勉強するべきだ.": "する → するべきだ (or すべきだ). 来る → 来るべきだ (くるべきだ). Example: 勉強する → 勉強するべきだ.",

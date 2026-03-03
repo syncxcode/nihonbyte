@@ -1,16 +1,6 @@
 (function initI18N() {
   const STORAGE_KEY = "nihonbyte_language";
-  const manualMeaningEn = {
-    "Bermain kartu": "Play cards",
-    "Mendengar musik": "Listen to music",
-    "Pergi ke bioskop": "Go to the cinema",
-    "Menggambar": "Draw",
-    "Bernyanyi": "Sing",
-    "Menonton film": "Watch a movie",
-    "Makan": "Eat",
-    "Minum": "Drink"
-  };
-
+  
   const ui = {
     id: {
       "auth-gate-email-toggle": "Masuk / Daftar dengan Email",
@@ -34,7 +24,7 @@
       "account-btn": "Account",
       "logout-btn": "Sign out",
       "email-auth-submit": "Sign in with Email",
-      "email-auth-switch-mode": "Don\'t have an account? Register",
+      "email-auth-switch-mode": "Don't have an account? Register",
       "email-auth-reset": "Forgot password",
       "resend-verification-btn": "Resend email verification"
     }
@@ -64,8 +54,12 @@
 
   function tMeaning(text) {
     if (!text || state.current === "id") return text;
-    const merged = { ...(window.NIHONBYTE_MEANING_EN || {}), ...manualMeaningEn };
-    return merged[text] || text;
+    
+    if (window.NIHONBYTE_MEANING_EN && window.NIHONBYTE_MEANING_EN[text]) {
+      return window.NIHONBYTE_MEANING_EN[text];
+    }
+    
+    return text;
   }
 
   function applyStaticText() {

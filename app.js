@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const accountEmailStatus = document.getElementById("account-email-status");
   const dashboardBtn = document.getElementById("dashboard-btn");
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
+  const profileTrigger = document.getElementById("profile-trigger");
+  const profileDropdown = document.getElementById("profile-dropdown");
+  const profileLanguageBtn = document.getElementById("profile-language-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
   const sidebarGreeting = document.getElementById("sidebar-greeting");
   const headerGreeting = document.getElementById("header-greeting");
@@ -256,27 +259,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function setSidebarGreeting(name = "") {
     const cleanName = (name || "").trim();
-    const honorName = cleanName ? `${cleanName} ーさん` : "ゲスト ーさん";
+    const headerText = cleanName ? `NihonByte • ${cleanName}` : "NihonByte";
 
-    const greetingMarkup = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
+    if (headerGreeting) {
+      headerGreeting.textContent = headerText;
+      headerGreeting.title = headerText;
+    }
 
-    [sidebarGreeting, headerGreeting].forEach((el) => {
-      if (!el) return;
-      el.innerHTML = greetingMarkup;
-      el.title = `こんにちは ${honorName}`;
-    });
+    if (sidebarGreeting) {
+      sidebarGreeting.textContent = "";
+    }
+  }
 
-    const length = honorName.length;
-    let fontSize = 1.2;
-    if (length > 26) fontSize = 0.86;
-    else if (length > 22) fontSize = 0.95;
-    else if (length > 18) fontSize = 1.04;
-    else if (length > 14) fontSize = 1.1;
+  function closeProfileDropdown() {
+    if (!profileDropdown || !profileTrigger) return;
+    profileDropdown.classList.remove("show");
+    profileDropdown.setAttribute("aria-hidden", "true");
+    profileTrigger.setAttribute("aria-expanded", "false");
+  }
 
-    [sidebarGreeting, headerGreeting].forEach((el) => {
-      if (!el) return;
-      el.style.setProperty("--greet-user-size", `${fontSize}rem`);
-    });
+  function toggleProfileDropdown() {
+    if (!profileDropdown || !profileTrigger) return;
+    const willOpen = !profileDropdown.classList.contains("show");
+    profileDropdown.classList.toggle("show", willOpen);
+    profileDropdown.setAttribute("aria-hidden", willOpen ? "false" : "true");
+    profileTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
   }
 
   function generateEmailDefaultUsername(email = "") {
@@ -581,6 +588,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (accountBtn) accountBtn.addEventListener("click", openAccountModal);
+  if (accountBtn) accountBtn.addEventListener("click", closeProfileDropdown);
+  if (dashboardBtn) dashboardBtn.addEventListener("click", closeProfileDropdown);
+  if (profileTrigger) profileTrigger.addEventListener("click", toggleProfileDropdown);
+  if (profileLanguageBtn) {
+    profileLanguageBtn.addEventListener("click", () => {
+      languageSwitch?.click();
+      closeProfileDropdown();
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    if (!profileDropdown || !profileTrigger) return;
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("#logged-in-view")) return;
+    closeProfileDropdown();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeProfileDropdown();
+  });
   if (accountModalClose) accountModalClose.addEventListener("click", closeAccountModal);
   if (accountModalBackdrop) accountModalBackdrop.addEventListener("click", closeAccountModal);
 

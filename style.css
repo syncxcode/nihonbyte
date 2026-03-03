@@ -5203,3 +5203,148 @@ body.guest-mode .download-card-btn.guest-restricted {
   width: 24px;
   height: 24px;
 }
+
+/* === 2026-03 UI refresh: clean sidebar + compact header + simple profile dropdown === */
+.topbar {
+  background: #f4f6fb !important;
+  padding: 4px 12px !important;
+  min-height: 52px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.12) !important;
+}
+
+.header-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-identity img {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 0.98rem;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+#sidebar .sidebar-head {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+#sidebar .sidebar-logo-wrap img {
+  width: 44px !important;
+  height: 44px !important;
+  box-shadow: none;
+}
+
+#sidebar .sidebar-tree details,
+#sidebar .sidebar-tree summary,
+#sidebar .menu-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#sidebar .sidebar-tree summary,
+#sidebar .menu-btn {
+  border-radius: 12px;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+#sidebar .sidebar-tree summary:hover,
+#sidebar .menu-btn:hover,
+#sidebar .sidebar-tree details:hover > summary {
+  background: rgba(24, 119, 242, 0.14) !important;
+  color: #eaf3ff;
+}
+
+#sidebar .sidebar-tree summary .inline-menu-icon,
+#sidebar .menu-btn .inline-menu-icon {
+  color: #58a6ff;
+}
+
+#sidebar .sidebar-tree summary:hover .inline-menu-icon,
+#sidebar .menu-btn:hover .inline-menu-icon {
+  color: #8bc3ff;
+}
+
+#logged-in-view {
+  position: relative;
+  padding: 0 !important;
+}
+
+.profile-trigger {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.09);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.user-role {
+  font-size: 0.76rem;
+  opacity: 0.82;
+}
+
+.profile-caret {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+}
+
+.profile-dropdown {
+  display: none;
+  margin-top: 8px;
+  border-radius: 14px;
+  background: #111827;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 6px;
+}
+
+.profile-dropdown.show {
+  display: grid;
+  animation: dropdownFade .18s ease;
+}
+
+.profile-menu-item {
+  border: 0;
+  background: transparent;
+  color: #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.profile-menu-item:hover {
+  background: rgba(24, 119, 242, 0.22);
+  color: #fff;
+}
+
+.profile-menu-item .inline-menu-icon {
+  color: #58a6ff;
+}
+
+.logout-item .inline-menu-icon,
+.logout-item {
+  color: #fca5a5;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

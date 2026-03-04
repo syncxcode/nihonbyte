@@ -5529,3 +5529,109 @@ body.review-mode-active .bottom-nav {
     gap: 10px;
   }
 }
+
+/* === Bottom navbar dedicated hubs (MENU & LATIHAN only) === */
+.bottom-nav-hub {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  body.bottom-nav-hub-open #grid,
+  body.bottom-nav-hub-open .pagination-container,
+  body.bottom-nav-hub-open .app-footer {
+    display: none !important;
+  }
+
+  .bottom-nav-hub {
+    display: block;
+    padding: calc(var(--topbar-height) + 8px) 12px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 10px);
+    min-height: calc(100dvh - var(--topbar-height));
+    box-sizing: border-box;
+  }
+
+  .bottom-nav-hub[hidden] {
+    display: none !important;
+  }
+
+  .bottom-nav-hub__screen {
+    display: grid;
+    gap: 12px;
+  }
+
+  .bottom-nav-hub__header {
+    background: #ffd1e0;
+    border-radius: 14px;
+    padding: 12px;
+    color: #5b1f33;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  }
+
+  .bottom-nav-hub__header h2 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .bottom-nav-hub__header p {
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .bottom-nav-hub__group {
+    background: rgba(255,255,255,0.56);
+    border-radius: 14px;
+    padding: 10px;
+    border: 1px solid rgba(148,163,184,0.25);
+  }
+
+  .bottom-nav-hub__group h3 {
+    margin: 0 0 8px;
+    font-size: 0.86rem;
+    color: #334155;
+  }
+
+  .bottom-nav-hub__chips {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .bottom-nav-hub__chip {
+    border: 1px solid rgba(148,163,184,0.35);
+    background: #fff;
+    border-radius: 10px;
+    min-height: 34px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #334155;
+  }
+
+  .bottom-nav-hub__menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .bottom-nav-hub__menu-card {
+    border: 1px solid rgba(148,163,184,0.28);
+    background: rgba(255,255,255,0.9);
+    border-radius: 14px;
+    padding: 10px;
+    text-align: left;
+    display: grid;
+    gap: 3px;
+    min-height: 74px;
+  }
+
+  .bottom-nav-hub__menu-card strong {
+    font-size: 0.83rem;
+    color: #111827;
+  }
+
+  .bottom-nav-hub__menu-card span {
+    font-size: 0.7rem;
+    color: #475569;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}

@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalSubtitle = document.getElementById("modalSubtitle");
   
   const topbar = document.querySelector(".topbar");
+  const bottomNavHub = document.getElementById("bottomNavHub");
   
   // ==================== MODAL FILTER FINAL - BACKDROP 100% BISA KLIK ======================
   const searchBtn = document.getElementById("searchBtn");
@@ -2540,6 +2541,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (tab === "home") {
+      closeBottomNavHub();
       selectedLevel = "all";
       selectedType = "verb-adj-only";
       if (typeof category !== "undefined" && category) category.value = "all";
@@ -2554,22 +2556,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (tab === "practice") {
-      viewMode = "practice-hub";
-      render();
       closeSidebar();
+      openBottomNavHub("practice");
       setBottomNavActive("practice");
       return;
     }
 
     if (tab === "menu") {
-      viewMode = "menu";
-      render();
       closeSidebar();
+      openBottomNavHub("menu");
       setBottomNavActive("menu");
       return;
     }
 
     if (tab === "dashboard") {
+      closeBottomNavHub();
       setBottomNavActive("dashboard");
       document.getElementById("dashboard-btn")?.click();
       closeSidebar();
@@ -2731,6 +2732,172 @@ document.addEventListener("DOMContentLoaded", () => {
 }
   
   
+  // ==========================================
+  // HUB KHUSUS BOTTOM NAV (Mobile)
+  // - Terpisah dari grid utama
+  // ==========================================
+  function closeBottomNavHub() {
+    if (!bottomNavHub) return;
+    bottomNavHub.hidden = true;
+    bottomNavHub.innerHTML = "";
+    document.body.classList.remove("bottom-nav-hub-open");
+  }
+
+  function openBottomNavHub(kind) {
+    if (!bottomNavHub || window.innerWidth > 767) return false;
+
+    const isPractice = kind === "practice";
+
+    bottomNavHub.innerHTML = isPractice
+      ? `
+        <section class="bottom-nav-hub__screen" aria-label="Latihan cepat dari navbar">
+          <header class="bottom-nav-hub__header">
+            <h2>Latihan</h2>
+            <p>Pilih kategori dan level tanpa pakai grid utama.</p>
+          </header>
+          <div class="bottom-nav-hub__group">
+            <h3>Goi</h3>
+            <div class="bottom-nav-hub__chips">
+              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N3">N3</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N2">N2</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N1">N1</button>
+            </div>
+          </div>
+          <div class="bottom-nav-hub__group">
+            <h3>Bunpou</h3>
+            <div class="bottom-nav-hub__chips">
+              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N3">N3</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N2">N2</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N1">N1</button>
+            </div>
+          </div>
+          <div class="bottom-nav-hub__group">
+            <h3>Dokkai</h3>
+            <div class="bottom-nav-hub__chips">
+              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N3">N3</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N2">N2</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N1">N1</button>
+            </div>
+          </div>
+        </section>
+      `
+      : `
+        <section class="bottom-nav-hub__screen" aria-label="Menu cepat dari navbar">
+          <header class="bottom-nav-hub__header">
+            <h2>Menu</h2>
+            <p>Shortcut cepat, layout terpisah dari grid utama.</p>
+          </header>
+          <div class="bottom-nav-hub__menu-grid">
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana"><strong>Huruf</strong><span>Hiragana</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="katakana"><strong>Huruf</strong><span>Katakana</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms"><strong>Verb Forms</strong><span>Materi + poster</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms"><strong>Adj Forms</strong><span>Materi + poster</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="patterns" data-level="N5"><strong>Pola Kalimat</strong><span>Level N5</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions"><strong>Ungkapan</strong><span>Ekspresi umum</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="open-filter"><strong>Cari & Filter</strong><span>Keyword + kategori</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="support"><strong>Dukung Dev</strong><span>Project NihonByte</span></button>
+          </div>
+        </section>
+      `;
+
+    bottomNavHub.hidden = false;
+    document.body.classList.add("bottom-nav-hub-open");
+
+    bottomNavHub.querySelectorAll("[data-practice]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const mainType = btn.dataset.practice || "";
+        const section = btn.dataset.section || mainType;
+        const level = btn.dataset.level || "N5";
+
+        closeBottomNavHub();
+
+        const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+        if (isGoiBunpouDokkaiDev) {
+          const devTitleMap = {
+            goi: "Pengetahuan Bahasa (Kosakata)",
+            bunpou: "Pengetahuan Bahasa (Tata Bahasa)",
+            dokkai: "Dokkai Membaca",
+          };
+          viewMode = `dev:exercise:${devTitleMap[mainType] || mainType}:${level}`;
+          render();
+          return;
+        }
+
+        startExercise(mainType, section, level);
+      });
+    });
+
+    bottomNavHub.querySelectorAll("[data-menu-action]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const action = btn.dataset.menuAction || "";
+        const script = btn.dataset.script || "";
+        const level = btn.dataset.level || "N5";
+
+        closeBottomNavHub();
+
+        if (action === "support") {
+          document.getElementById("supportBtn")?.click();
+          return;
+        }
+
+        if (action === "open-filter") {
+          document.getElementById("searchBtn")?.click();
+          return;
+        }
+
+        if (action === "letters") {
+          if (!ensureLoginForMenu()) return;
+          viewMode = `letters:${script || "hiragana"}`;
+          if (search) search.value = "";
+          render();
+          return;
+        }
+
+        if (action === "verb-forms") {
+          if (!ensureLoginForMenu()) return;
+          viewMode = "verb-forms";
+          if (search) search.value = "";
+          render();
+          return;
+        }
+
+        if (action === "adjective-forms") {
+          if (!ensureLoginForMenu()) return;
+          viewMode = "adjective-forms";
+          if (search) search.value = "";
+          render();
+          return;
+        }
+
+        if (action === "patterns") {
+          if (!ensureLoginForMenu()) return;
+          viewMode = `patterns:${level}`;
+          render();
+          return;
+        }
+
+        if (action === "expressions") {
+          if (!ensureLoginForMenu()) return;
+          viewMode = "vocab";
+          selectedLevel = "all";
+          selectedType = "ekspresi";
+          if (category) category.value = "ekspresi";
+          if (search) search.value = "";
+          render();
+        }
+      });
+    });
+
+    if (resultInfo) resultInfo.textContent = isPractice ? "Latihan" : "Menu";
+    return true;
+  }
+
   // ==========================================
   // HUB VIEWS (Mobile-first)
   // - viewMode: "menu" dan "practice-hub"
@@ -3042,6 +3209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     syncBottomNav();
+    closeBottomNavHub();
 
     if (viewMode === "support") {
       renderSupportPoster();

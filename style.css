@@ -839,6 +839,8 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  overflow: hidden;
 }
 
 .duo-nav-details > summary {
@@ -853,7 +855,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   display: grid;
   gap: 8px;
   margin-top: 10px;
-  padding-left: 6px;
+  padding: 2px 0 0;
 }
 
 .duo-nav-subitem {
@@ -4459,6 +4461,26 @@ body {
    Hotfix feedback: pagination/footer overlap + sidebar feel + perf scroll
 ========================================= */
 @media (min-width: 768px) {
+  .duo-nav-details {
+    border-radius: 14px;
+    padding: 6px;
+  }
+
+  .duo-nav-details > summary {
+    margin: 0;
+  }
+
+  .duo-nav-sub {
+    margin-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-top: 8px;
+  }
+
+  .duo-nav-subitem {
+    width: 100%;
+    margin: 0;
+  }
+
   /* pastikan footer & pagination tidak tenggelam/ketiban */
   body:not(.training-session):not(.review-mode-active) .content-panel {
     display: flex;
@@ -5517,6 +5539,77 @@ body.review-mode-active .bottom-nav {
 }
 
 .hub-card:active {
+  transform: translateY(1px);
+}
+
+/* =========================================
+   Menu hub grid (terpisah dari hub utama)
+========================================= */
+
+.menu-hub-screen {
+  max-width: 980px;
+}
+
+.menu-hub-header {
+  margin-bottom: 14px;
+}
+
+.menu-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 540px) {
+  .menu-hub-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.menu-hub-card {
+  border: 1px solid rgba(148, 21, 78, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: left;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.menu-hub-card svg {
+  width: 42px;
+  height: 42px;
+  padding: 9px;
+  border-radius: 14px;
+  background: rgba(255, 77, 109, 0.10);
+  color: #ff4d6d;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.menu-hub-card strong {
+  display: block;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.menu-hub-card span {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(17, 24, 39, 0.68);
+  line-height: 1.25;
+}
+
+.menu-hub-card:active {
   transform: translateY(1px);
 }
 

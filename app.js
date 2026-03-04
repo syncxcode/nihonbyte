@@ -3223,77 +3223,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
 
     grid.innerHTML = `
-      <section class="hub-screen">
-        <header class="hub-header">
+      <section class="hub-screen menu-hub-screen">
+        <header class="hub-header menu-hub-header">
           <h2>Menu</h2>
           <p>Semua fitur NihonByte dalam tampilan mobile yang clean &amp; native.</p>
         </header>
 
-        <div class="hub-grid">
-          <button type="button" class="hub-card" data-hub="letters" data-script="hiragana">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h6"/></svg>
-            <div>
-              <strong>Huruf</strong>
-              <span>Hiragana &amp; Katakana</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="verb-forms">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 8-8v8Z"/><path d="M13 4a8 8 0 0 1 7 7h-7Z"/></svg>
-            <div>
-              <strong>Bentuk Kata Kerja</strong>
-              <span>Materi + poster</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="adjective-forms">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/></svg>
-            <div>
-              <strong>Bentuk Kata Sifat</strong>
-              <span>Materi + poster</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="patterns" data-level="N5">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Z"/><path d="M12 3h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/></svg>
-            <div>
-              <strong>Pola Kalimat</strong>
-              <span>N5–N1 (N3+ coming soon)</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="expressions">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/></svg>
-            <div>
-              <strong>Ungkapan Umum</strong>
-              <span>Ekspresi sehari-hari</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="open-filter">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/></svg>
-            <div>
-              <strong>Cari &amp; Filter</strong>
-              <span>Level, kategori, keyword</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="practice">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M17 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
-            <div>
-              <strong>Latihan</strong>
-              <span>Goi, Bunpou, Dokkai</span>
-            </div>
-          </button>
-
-          <button type="button" class="hub-card" data-hub="support">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
-            <div>
-              <strong>Dukung Developer</strong>
-              <span>Biar project tetap hidup</span>
-            </div>
-          </button>
-        </div>
+        ${renderMenuHubCards()}
 
         <div class="hub-section">
           <h3>Huruf cepat</h3>
@@ -3335,6 +3271,81 @@ document.addEventListener("DOMContentLoaded", () => {
     grid.querySelectorAll("[data-hub]").forEach((btn) => {
       btn.addEventListener("click", () => handleHubAction(btn));
     });
+  }
+
+  function getMenuHubCards() {
+    return [
+      {
+        action: "letters",
+        script: "hiragana",
+        title: "Huruf",
+        description: "Hiragana & Katakana",
+        icon: '<path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h6"/>'
+      },
+      {
+        action: "verb-forms",
+        title: "Bentuk Kata Kerja",
+        description: "Materi + poster",
+        icon: '<path d="M4 12a8 8 0 1 0 8-8v8Z"/><path d="M13 4a8 8 0 0 1 7 7h-7Z"/>'
+      },
+      {
+        action: "adjective-forms",
+        title: "Bentuk Kata Sifat",
+        description: "Materi + poster",
+        icon: '<path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/>'
+      },
+      {
+        action: "patterns",
+        level: "N5",
+        title: "Pola Kalimat",
+        description: "N5–N1 (N3+ coming soon)",
+        icon: '<path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Z"/><path d="M12 3h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/>'
+      },
+      {
+        action: "expressions",
+        title: "Ungkapan Umum",
+        description: "Ekspresi sehari-hari",
+        icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
+      },
+      {
+        action: "open-filter",
+        title: "Cari & Filter",
+        description: "Level, kategori, keyword",
+        icon: '<path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/>'
+      },
+      {
+        action: "practice",
+        title: "Latihan",
+        description: "Goi, Bunpou, Dokkai",
+        icon: '<path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M17 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/>'
+      },
+      {
+        action: "support",
+        title: "Dukung Developer",
+        description: "Biar project tetap hidup",
+        icon: '<path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/>'
+      }
+    ];
+  }
+
+  function renderMenuHubCards() {
+    const cards = getMenuHubCards()
+      .map(({ action, script = "", level = "", title, description, icon }) => {
+        const scriptAttr = script ? ` data-script="${script}"` : "";
+        const levelAttr = level ? ` data-level="${level}"` : "";
+        return `
+          <button type="button" class="menu-hub-card" data-hub="${action}"${scriptAttr}${levelAttr}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>
+            <div>
+              <strong>${title}</strong>
+              <span>${description}</span>
+            </div>
+          </button>
+        `;
+      })
+      .join("");
+
+    return `<div class="menu-hub-grid">${cards}</div>`;
   }
 
   function handleHubAction(btn) {

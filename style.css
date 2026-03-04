@@ -5557,21 +5557,14 @@ body.review-mode-active .bottom-nav {
 
 .menu-panel-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
   gap: 12px;
   width: 100%;
+  align-items: stretch;
 }
 
-@media (min-width: 540px) {
-  .menu-panel-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .menu-panel-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+#grid.hub-mode {
+  grid-template-columns: minmax(0, 1fr) !important;
 }
 
 .menu-panel-card {

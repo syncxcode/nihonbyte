@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardBtn = document.getElementById("dashboard-btn");
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
-  const sidebarGreeting = document.getElementById("sidebar-greeting");
   const headerGreeting = document.getElementById("header-greeting");
   const languageSwitch = document.getElementById("languageSwitch");
   const languageSwitchIcon = document.getElementById("languageSwitchIcon");
@@ -260,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const greetingMarkup = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
 
-    [sidebarGreeting, headerGreeting].forEach((el) => {
+    [headerGreeting].forEach((el) => {
       if (!el) return;
       el.innerHTML = greetingMarkup;
       el.title = `こんにちは ${honorName}`;
@@ -273,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (length > 18) fontSize = 1.04;
     else if (length > 14) fontSize = 1.1;
 
-    [sidebarGreeting, headerGreeting].forEach((el) => {
+    [headerGreeting].forEach((el) => {
       if (!el) return;
       el.style.setProperty("--greet-user-size", `${fontSize}rem`);
     });
@@ -2549,6 +2548,7 @@ document.addEventListener("DOMContentLoaded", () => {
       viewMode = "vocab";
       render();
       closeSidebar();
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setBottomNavActive("home");
       return;
     }
@@ -2604,12 +2604,47 @@ document.addEventListener("DOMContentLoaded", () => {
     setBottomNavActive(tab);
   }
 
+  let lastScrollY = window.scrollY;
+  let isBottomNavHidden = false;
+
+  function setBottomNavVisibility(shouldHide) {
+    if (!bottomNav) return;
+    if (isBottomNavHidden === shouldHide) return;
+    isBottomNavHidden = shouldHide;
+    bottomNav.classList.toggle("is-hidden", shouldHide);
+  }
+
+  function handleBottomNavAutoHide() {
+    if (!bottomNav) return;
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (!isMobile || document.body.classList.contains("training-session") || document.body.classList.contains("review-mode-active")) {
+      setBottomNavVisibility(false);
+      lastScrollY = window.scrollY;
+      return;
+    }
+
+    const currentY = window.scrollY;
+    const delta = currentY - lastScrollY;
+
+    if (currentY <= 8 || delta < -6) {
+      setBottomNavVisibility(false);
+    } else if (delta > 8 && currentY > 120) {
+      setBottomNavVisibility(true);
+    }
+
+    lastScrollY = currentY;
+  }
+
   if (bottomNav) {
     bottomNav.addEventListener("click", (event) => {
       const btn = event.target.closest(".bottom-nav__item");
       if (!btn) return;
       navigateBottomTab(btn.dataset.tab || "home");
     });
+
+    window.addEventListener("scroll", handleBottomNavAutoHide, { passive: true });
+    window.addEventListener("resize", handleBottomNavAutoHide);
+    handleBottomNavAutoHide();
   }
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {

@@ -58,14 +58,6 @@
     </svg>
   </button>
 
-  <button id="languageSwitch" class="language-switch" aria-label="Ganti bahasa" title="Ganti bahasa">
-    <svg id="languageSwitchIcon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-      <rect x="8" y="12" width="48" height="40" rx="6" fill="#fff" stroke="#cbd5e1"/>
-      <rect x="8" y="12" width="48" height="20" rx="6" fill="#ef4444"/>
-    </svg>
-  </button>
-
-
   <p id="resultInfo" aria-live="polite"></p>
 </header>
 
@@ -75,7 +67,13 @@
     <div class="sidebar-logo-wrap">
       <img id="logo" class="js-reset-logo" src="./assets/favicon.webp" alt="NihonByte" title="Klik untuk reset filter">
     </div>
-    <h3 id="sidebar-greeting" class="sidebar-greeting">Halo, Selamat Datang</h3>
+    <button id="languageSwitch" class="language-switch sidebar-language-switch" aria-label="Ganti bahasa" title="Ganti bahasa">
+      <svg id="languageSwitchIcon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <rect x="8" y="12" width="48" height="40" rx="6" fill="#fff" stroke="#cbd5e1"/>
+        <rect x="8" y="12" width="48" height="20" rx="6" fill="#ef4444"/>
+      </svg>
+      <span>Switch Language</span>
+    </button>
   </div>
   <div id="user-profile-section" class="user-profile-section">
         <div id="logged-out-view">

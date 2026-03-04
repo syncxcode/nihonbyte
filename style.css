@@ -5553,22 +5553,6 @@ body.review-mode-active .bottom-nav {
 
 .menu-hub-header {
   margin-bottom: 14px;
-  background: #ffffff !important;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-.menu-hub-header h2 {
-  color: #111827;
-  text-shadow: none;
-  font-weight: 900;
-}
-
-.menu-hub-header p {
-  color: #374151;
-  font-weight: 500;
 }
 
 .menu-panel-grid {
@@ -5655,7 +5639,7 @@ body.review-mode-active .bottom-nav {
 }
 
 .menu-hub-screen .hub-section h3 {
-  color: #111827;
+  color: #ffe8ef;
   text-shadow: none;
   font-size: 1.05rem;
   letter-spacing: 0.1px;
@@ -5666,10 +5650,6 @@ body.review-mode-active .bottom-nav {
   align-items: center;
   padding: 8px 14px;
   border-radius: 999px;
-  background: #ffffff;
-  color: #111827 !important;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
   font-size: 1.14rem !important;
   font-weight: 900 !important;
   line-height: 1.2;
@@ -6050,4 +6030,33 @@ body.review-mode-active .bottom-nav {
 #grid.hub-mode * {
   user-select: none !important;
   -webkit-user-select: none !important;
+}
+
+
+@media (max-width: 767px) {
+  .menu-hub-header {
+    background: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .menu-hub-header h2 {
+    color: #111827;
+    text-shadow: none;
+    font-weight: 900;
+  }
+
+  .menu-hub-header p {
+    color: #374151;
+    font-weight: 500;
+  }
+
+  .menu-hub-screen .menu-section-title-pill {
+    background: #ffffff;
+    color: #111827 !important;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+  }
 }

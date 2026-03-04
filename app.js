@@ -272,22 +272,6 @@ grid.style.display="grid";
         <span>Belajar</span>
       </button>
 
-      <details class="duo-nav-details">
-        <summary class="duo-nav-item" data-duo-nav="letters" aria-label="Huruf">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h6"/></svg>
-          <span>Huruf</span>
-        </summary>
-        <div class="duo-nav-sub">
-          <button type="button" class="duo-nav-subitem" data-duo-nav="letters:hiragana">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h16"/></svg>
-            <span>Hiragana</span>
-          </button>
-          <button type="button" class="duo-nav-subitem" data-duo-nav="letters:katakana">
-            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h10"/></svg>
-            <span>Katakana</span>
-          </button>
-        </div>
-      </details>
 
       <button type="button" class="duo-nav-item" data-duo-nav="practice" aria-label="Latihan">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -314,7 +298,7 @@ grid.style.display="grid";
 
       <button type="button" class="duo-nav-support" data-duo-nav="support" aria-label="Dukung Pengembang">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
-        <span>Dukung Dev</span>
+        <span>Dukung Pengembang</span>
       </button>
     `;
 
@@ -341,7 +325,7 @@ grid.style.display="grid";
 
       <button type="button" class="duo-nav-item" data-duo-nav="support" aria-label="Dukung Pengembang">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
-        <span>Dukung Dev</span>
+        <span>Dukung Pengenbang</span>
       </button>
     `;
 
@@ -3300,9 +3284,6 @@ grid.style.display="grid";
             <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="katakana">Katakana</button>
           </div>
 
-          <div class="hub-note">
-            Tip: di <b>Latihan</b>, mode <b>Dokkai</b> tetap split screen supaya baca &amp; soal bisa jalan bareng.
-          </div>
         </div>
 
         <div class="hub-section">
@@ -3318,12 +3299,11 @@ grid.style.display="grid";
 
         <div class="hub-section">
           <h3>Kotoba (kosakata)</h3>
-          <details class="hub-details">
-            <summary>Lihat kategori</summary>
+          <div class="hub-details hub-details--always-open">
             <div class="hub-levels">
               ${kotobaButtons}
             </div>
-          </details>
+          </div>
         </div>
       </section>
     `;
@@ -3484,7 +3464,7 @@ grid.style.display="grid";
 
     const renderLevelButtons = (main, sectionOverride = null) =>
       levels
-        .map((lvl) => `<button type="button" class="hub-level-btn" data-main="${main}" data-section="${sectionOverride || main}" data-level="${lvl}">${lvl}</button>`)
+        .map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="${main}" data-section="${sectionOverride || main}" data-level="${lvl}">${lvl}</button>`)
         .join("");
 
     grid.innerHTML = `
@@ -3519,7 +3499,7 @@ grid.style.display="grid";
           <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
           <div class="hub-levels">
             ${levels
-              .map((lvl) => `<button type="button" class="hub-level-btn" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`)
+              .map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`)
               .join("")}
           </div>
           <div class="hub-note">

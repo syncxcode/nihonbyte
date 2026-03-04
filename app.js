@@ -377,6 +377,12 @@ grid.style.display="grid";
       return;
     }
 
+    if (action === "switch-language") {
+      document.getElementById("languageSwitch")?.click();
+      closeSidebar();
+      return;
+    }
+
     if (action.startsWith("letters:")) {
       const script = action.split(":")[1] || "hiragana";
       if (!ensureLoginForMenu()) return;
@@ -3056,7 +3062,7 @@ grid.style.display="grid";
 
     bottomNavHub.innerHTML = isPractice
       ? `
-        <section class="bottom-nav-hub__screen" aria-label="Latihan cepat dari navbar">
+        <section class="bottom-nav-hub__screen bottom-nav-hub__screen--practice" aria-label="Latihan cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Latihan</h2>
             <p>Pilih kategori dan level tanpa pakai grid utama.</p>
@@ -3105,7 +3111,7 @@ grid.style.display="grid";
         </section>
       `
       : `
-        <section class="bottom-nav-hub__screen" aria-label="Menu cepat dari navbar">
+        <section class="bottom-nav-hub__screen bottom-nav-hub__screen--menu" aria-label="Menu cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Menu</h2>
             <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>

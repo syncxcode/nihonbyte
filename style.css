@@ -5555,6 +5555,19 @@ body.review-mode-active .bottom-nav {
 
 .menu-hub-header {
   margin-bottom: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+}
+
+.menu-hub-header h2 {
+  color: #0f172a;
+  text-shadow: none;
+  font-weight: 950;
+}
+
+.menu-hub-header p {
+  color: #334155;
 }
 
 .menu-panel-grid {
@@ -5730,6 +5743,22 @@ body.review-mode-active .bottom-nav {
   box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16);
 }
 
+.hub-screen--practice .hub-level-btn--patterns {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb);
+}
+
+.hub-screen--practice .hub-section:nth-of-type(2) .hub-level-btn--patterns {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+.hub-screen--practice .hub-section:nth-of-type(3) .hub-level-btn--patterns {
+  background: linear-gradient(135deg, #fb7185, #e11d48);
+}
+
+.hub-screen--practice .hub-section:nth-of-type(4) .hub-level-btn--patterns {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
 .menu-hub-screen .hub-level-btn--category {
   background: linear-gradient(135deg, #8b5cf6, #6366f1);
 }
@@ -5774,8 +5803,8 @@ body.review-mode-active .bottom-nav {
 }
 
 .menu-hub-screen .hub-details--always-open {
-  background: linear-gradient(140deg, #db2777, #7c3aed);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: linear-gradient(140deg, #eef2ff, #ddd6fe);
+  border-color: rgba(99, 102, 241, 0.32);
 }
 
 .hub-details > summary {
@@ -5927,7 +5956,7 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__header h2 {
     margin: 0;
     font-size: 1.08rem;
-    font-weight: 900;
+    font-weight: 980;
   }
 
   .bottom-nav-hub__header p {
@@ -6009,6 +6038,47 @@ body.review-mode-active .bottom-nav {
     font-weight: 700;
     line-height: 1.24;
   }
+
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__header {
+    background: #ffffff;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
+    background: linear-gradient(140deg, #eff6ff, #e0e7ff);
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 1) {
+    background: linear-gradient(140deg, #fff1f2, #ffe4e6);
+    border-color: rgba(244, 63, 94, 0.26);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 2) {
+    background: linear-gradient(140deg, #ecfeff, #cffafe);
+    border-color: rgba(6, 182, 212, 0.26);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n) {
+    background: linear-gradient(140deg, #eef2ff, #e0e7ff);
+    border-color: rgba(99, 102, 241, 0.28);
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2n + 1) {
+    background: linear-gradient(140deg, #fef3c7, #ffedd5);
+    border-color: rgba(249, 115, 22, 0.25);
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2n) {
+    background: linear-gradient(140deg, #ecfeff, #dbeafe);
+    border-color: rgba(37, 99, 235, 0.22);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__chip,
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(100, 116, 139, 0.3);
+  }
 }
 
 /* =========================================
@@ -6074,9 +6144,19 @@ body.review-mode-active .bottom-nav {
   }
 
   .menu-hub-screen .menu-section-title-pill {
-    background: #ffffff;
-    color: #111827 !important;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
+    color: #fff !important;
+    border: 0;
+  }
+
+  .menu-hub-screen .hub-section:nth-of-type(1) .menu-section-title-pill {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+  }
+
+  .menu-hub-screen .hub-section:nth-of-type(2) .menu-section-title-pill {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  }
+
+  .menu-hub-screen .hub-section:nth-of-type(3) .menu-section-title-pill {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
   }
 }

@@ -5553,7 +5553,7 @@ body.review-mode-active .bottom-nav {
 
 .menu-hub-header {
   margin-bottom: 14px;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
   backdrop-filter: none;
@@ -5563,10 +5563,12 @@ body.review-mode-active .bottom-nav {
 .menu-hub-header h2 {
   color: #111827;
   text-shadow: none;
+  font-weight: 900;
 }
 
 .menu-hub-header p {
   color: #374151;
+  font-weight: 500;
 }
 
 .menu-panel-grid {
@@ -5669,7 +5671,7 @@ body.review-mode-active .bottom-nav {
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 8px 16px rgba(15, 23, 42, 0.12);
   font-size: 1.14rem !important;
-  font-weight: 900;
+  font-weight: 900 !important;
   line-height: 1.2;
 }
 

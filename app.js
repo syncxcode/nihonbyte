@@ -3088,7 +3088,7 @@ grid.style.display="grid";
             <p>Pilih kategori dan level tanpa pakai grid utama.</p>
           </header>
           <div class="bottom-nav-hub__group">
-            <h3>Goi</h3>
+            <h3>言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
@@ -3098,7 +3098,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3>Bunpou</h3>
+            <h3>言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
@@ -3108,7 +3108,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3>Dokkai</h3>
+            <h3>読解 Dokkai (Membaca)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
@@ -3362,18 +3362,7 @@ grid.style.display="grid";
         description: "Ekspresi sehari-hari",
         icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
       },
-      {
-        action: "practice",
-        title: "Latihan",
-        description: "Goi, Bunpou, Dokkai",
-        icon: '<path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M17 3v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/>'
-      },
-      {
-        action: "support",
-        title: "Dukung Developer",
-        description: "Biar project tetap hidup",
-        icon: '<path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/>'
-      }
+
     ];
   }
 
@@ -3499,38 +3488,35 @@ grid.style.display="grid";
         .join("");
 
     grid.innerHTML = `
-      <section class="hub-screen">
+      <section class="hub-screen hub-screen--practice">
         <header class="hub-header">
           <h2>Latihan</h2>
           <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
         </header>
 
         <div class="hub-section">
-          <h3>言語知識（文字・語彙） • Goi</h3>
+          <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
           <div class="hub-levels">
             ${renderLevelButtons("goi")}
           </div>
         </div>
 
         <div class="hub-section">
-          <h3>言語知識（文法） • Bunpou</h3>
+          <h3 class="hub-section-capsule hub-section-capsule--bunpou">言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
           <div class="hub-levels">
             ${renderLevelButtons("bunpou")}
           </div>
         </div>
 
         <div class="hub-section">
-          <h3>読解 • Dokkai</h3>
+          <h3 class="hub-section-capsule hub-section-capsule--dokkai">読解 Dokkai (Membaca)</h3>
           <div class="hub-levels">
             ${renderLevelButtons("dokkai", "dokkai-reading")}
-          </div>
-          <div class="hub-note">
-            Dokkai memakai split screen (bacaan + soal) supaya alur latihan tetap enak.
           </div>
         </div>
 
         <div class="hub-section">
-          <h3>聴解 • Choukai</h3>
+          <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
           <div class="hub-levels">
             ${levels
               .map((lvl) => `<button type="button" class="hub-level-btn" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`)

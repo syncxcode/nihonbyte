@@ -3272,13 +3272,13 @@ grid.style.display="grid";
       <section class="hub-screen menu-hub-screen">
         <header class="hub-header menu-hub-header">
           <h2>Menu</h2>
-          <p>Semua fitur NihonByte dalam tampilan mobile yang clean &amp; native.</p>
+          <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
         </header>
 
         ${renderMenuPanelGrid()}
 
         <div class="hub-section">
-          <h3>Huruf cepat</h3>
+          <h3 class="menu-section-title-pill">Poster Huruf</h3>
           <div class="hub-levels">
             <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="hiragana">Hiragana</button>
             <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="katakana">Katakana</button>
@@ -3287,7 +3287,7 @@ grid.style.display="grid";
         </div>
 
         <div class="hub-section">
-          <h3>Pola kalimat cepat</h3>
+          <h3 class="menu-section-title-pill">Pola Kalimat</h3>
           <div class="hub-levels">
             <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N5">N5</button>
             <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N4">N4</button>
@@ -3298,7 +3298,7 @@ grid.style.display="grid";
         </div>
 
         <div class="hub-section">
-          <h3>Kotoba (kosakata)</h3>
+          <h3 class="menu-section-title-pill">Kotoba (Kosakata)</h3>
           <div class="hub-details hub-details--always-open">
             <div class="hub-levels">
               ${kotobaButtons}

@@ -3281,7 +3281,7 @@ grid.style.display="grid";
       const fullLabel = typeLabelMap[key] || key;
       const shortLabel = KOTOBA_SHORT_LABELS[key] || fullLabel;
       const safeTitle = String(fullLabel).replace(/"/g, "&quot;");
-      return `<button type="button" class="hub-level-btn" data-hub="set-type" data-type="${key}" title="${safeTitle}">${shortLabel}</button>`;
+      return `<button type="button" class="hub-level-btn hub-level-btn--category" data-hub="set-type" data-type="${key}" title="${safeTitle}">${shortLabel}</button>`;
     }).join("");
 
     grid.innerHTML = `
@@ -3296,8 +3296,8 @@ grid.style.display="grid";
         <div class="hub-section">
           <h3>Huruf cepat</h3>
           <div class="hub-levels">
-            <button type="button" class="hub-level-btn" data-hub="letters" data-script="hiragana">Hiragana</button>
-            <button type="button" class="hub-level-btn" data-hub="letters" data-script="katakana">Katakana</button>
+            <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="hiragana">Hiragana</button>
+            <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="katakana">Katakana</button>
           </div>
 
           <div class="hub-note">
@@ -3308,11 +3308,11 @@ grid.style.display="grid";
         <div class="hub-section">
           <h3>Pola kalimat cepat</h3>
           <div class="hub-levels">
-            <button type="button" class="hub-level-btn" data-hub="patterns" data-level="N5">N5</button>
-            <button type="button" class="hub-level-btn" data-hub="patterns" data-level="N4">N4</button>
-            <button type="button" class="hub-level-btn" data-hub="patterns" data-level="N3">N3</button>
-            <button type="button" class="hub-level-btn" data-hub="patterns" data-level="N2">N2</button>
-            <button type="button" class="hub-level-btn" data-hub="patterns" data-level="N1">N1</button>
+            <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N5">N5</button>
+            <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N4">N4</button>
+            <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N3">N3</button>
+            <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N2">N2</button>
+            <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N1">N1</button>
           </div>
         </div>
 
@@ -3357,23 +3357,10 @@ grid.style.display="grid";
         icon: '<path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/>'
       },
       {
-        action: "patterns",
-        level: "N5",
-        title: "Pola Kalimat",
-        description: "N5–N1 (N3+ coming soon)",
-        icon: '<path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Z"/><path d="M12 3h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/>'
-      },
-      {
         action: "expressions",
         title: "Ungkapan Umum",
         description: "Ekspresi sehari-hari",
         icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
-      },
-      {
-        action: "open-filter",
-        title: "Cari & Filter",
-        description: "Level, kategori, keyword",
-        icon: '<path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/>'
       },
       {
         action: "practice",

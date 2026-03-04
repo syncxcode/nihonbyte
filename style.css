@@ -5547,7 +5547,8 @@ body.review-mode-active .bottom-nav {
 ========================================= */
 
 .menu-hub-screen {
-  max-width: 980px;
+  width: 100%;
+  max-width: none;
 }
 
 .menu-hub-header {
@@ -5566,17 +5567,24 @@ body.review-mode-active .bottom-nav {
   }
 }
 
+@media (min-width: 1024px) {
+  .menu-hub-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 .menu-hub-card {
   border: 1px solid rgba(148, 21, 78, 0.18);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 18px;
   padding: 14px 12px;
   text-align: left;
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
   display: grid;
-  grid-template-columns: 42px 1fr;
+  grid-template-columns: 46px minmax(0, 1fr);
   gap: 10px;
-  align-items: center;
+  align-items: start;
+  min-height: 106px;
 }
 
 .menu-hub-card svg {
@@ -5608,6 +5616,15 @@ body.review-mode-active .bottom-nav {
   color: rgba(17, 24, 39, 0.68);
   line-height: 1.25;
 }
+.menu-hub-card > div {
+  min-width: 0;
+}
+
+.menu-hub-card strong {
+  font-size: 1.02rem;
+  word-break: break-word;
+}
+
 
 .menu-hub-card:active {
   transform: translateY(1px);
@@ -5623,6 +5640,11 @@ body.review-mode-active .bottom-nav {
   font-weight: 900;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.menu-hub-screen .hub-section h3 {
+  color: #ffe8ef;
+  text-shadow: none;
 }
 
 .hub-levels {
@@ -5646,6 +5668,28 @@ body.review-mode-active .bottom-nav {
   transform: translateY(1px);
 }
 
+.menu-hub-screen .hub-level-btn {
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.16);
+}
+
+.menu-hub-screen .hub-level-btn--letters {
+  background: linear-gradient(135deg, #fb7185, #ec4899);
+}
+
+.menu-hub-screen .hub-level-btn--patterns {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+}
+
+.menu-hub-screen .hub-level-btn--category {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+.menu-hub-screen .hub-level-btn:hover {
+  filter: brightness(1.04);
+}
+
 .hub-note {
   margin-top: 10px;
   padding: 12px 12px;
@@ -5657,12 +5701,23 @@ body.review-mode-active .bottom-nav {
   line-height: 1.45;
 }
 
+.menu-hub-screen .hub-note {
+  background: linear-gradient(135deg, #fb7185, #e11d48);
+  border-color: rgba(255, 255, 255, 0.34);
+  color: #fff;
+}
+
 .hub-details {
   margin-top: 10px;
   padding: 12px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.menu-hub-screen .hub-details {
+  background: linear-gradient(140deg, #db2777, #7c3aed);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .hub-details > summary {

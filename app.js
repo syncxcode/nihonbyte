@@ -3291,7 +3291,7 @@ grid.style.display="grid";
           <p>Semua fitur NihonByte dalam tampilan mobile yang clean &amp; native.</p>
         </header>
 
-        ${renderMenuHubCards()}
+        ${renderMenuPanelGrid()}
 
         <div class="hub-section">
           <h3>Huruf cepat</h3>
@@ -3335,7 +3335,7 @@ grid.style.display="grid";
     });
   }
 
-  function getMenuHubCards() {
+  function getMenuPanelCards() {
     return [
       {
         action: "letters",
@@ -3377,15 +3377,15 @@ grid.style.display="grid";
     ];
   }
 
-  function renderMenuHubCards() {
-    const cards = getMenuHubCards()
+  function renderMenuPanelGrid() {
+    const cards = getMenuPanelCards()
       .map(({ action, script = "", level = "", title, description, icon }) => {
         const scriptAttr = script ? ` data-script="${script}"` : "";
         const levelAttr = level ? ` data-level="${level}"` : "";
         return `
-          <button type="button" class="menu-hub-card" data-hub="${action}"${scriptAttr}${levelAttr}>
+          <button type="button" class="menu-panel-card" data-hub="${action}"${scriptAttr}${levelAttr}>
             <svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>
-            <div>
+            <div class="menu-panel-card__body">
               <strong>${title}</strong>
               <span>${description}</span>
             </div>
@@ -3394,7 +3394,7 @@ grid.style.display="grid";
       })
       .join("");
 
-    return `<div class="menu-hub-grid">${cards}</div>`;
+    return `<div class="menu-panel-grid">${cards}</div>`;
   }
 
   function handleHubAction(btn) {

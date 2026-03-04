@@ -73,6 +73,68 @@ document.addEventListener("DOMContentLoaded", () => {
     en: '<rect x="8" y="12" width="48" height="40" rx="6" fill="#b91c1c"/><path d="M8 16h48v8H8zm0 16h48v8H8zm0 16h48v4H8z" fill="#fff"/><rect x="8" y="12" width="20" height="22" rx="4" fill="#1d4ed8"/>'
   };
 
+  function openMenuHub(){
+
+  const grid = document.getElementById("grid");
+  const hub = document.getElementById("menuHubContainer");
+
+  grid.style.display = "none";
+  hub.style.display = "block";
+
+  renderMenuHub();
+
+}
+
+  function renderMenuHub(){
+
+const hub = document.getElementById("menuHubContainer");
+
+hub.innerHTML = `
+<div class="menu-hub-grid">
+
+<div class="menu-hub-card" data-mode="letter">
+Huruf Jepang
+</div>
+
+<div class="menu-hub-card" data-mode="verb">
+Bentuk Kata Kerja
+</div>
+
+<div class="menu-hub-card" data-mode="adj">
+Bentuk Kata Sifat
+</div>
+
+<div class="menu-hub-card" data-mode="pattern">
+Pola Kalimat
+</div>
+
+<div class="menu-hub-card" data-mode="expression">
+Ungkapan
+</div>
+
+<div class="menu-hub-card" data-mode="latihan">
+Latihan
+</div>
+
+<div class="menu-hub-card" data-mode="support">
+Dukung Developer
+</div>
+
+</div>
+`;
+
+}
+
+  function openStudy(){
+
+const grid = document.getElementById("grid");
+const hub = document.getElementById("menuHubContainer");
+
+hub.style.display="none";
+grid.style.display="grid";
+
+}
+
   function currentLang() {
     return window.NIHONBYTE_I18N?.state?.current || "id";
   }

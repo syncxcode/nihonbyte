@@ -5879,3 +5879,37 @@ body.review-mode-active .bottom-nav {
     line-height: 1.2;
   }
 }
+
+/* =========================================
+   MENU HUB LAYOUT (TERPISAH DARI GRID)
+========================================= */
+
+.menu-hub-container {
+  display: none;
+  padding-top: 110px;
+  padding-left: 340px;
+  padding-right: 40px;
+  padding-bottom: 40px;
+  box-sizing: border-box;
+}
+
+.menu-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 18px;
+  max-width: 900px;
+}
+
+.menu-hub-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.menu-hub-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}

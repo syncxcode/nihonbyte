@@ -303,29 +303,19 @@ grid.style.display="grid";
     `;
 
     const mobileMarkup = `
-      <button type="button" class="duo-nav-item" data-duo-nav="open-filter" aria-label="Cari dan filter">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/></svg>
-        <span>Cari &amp; Filter</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Belajar (Beranda)">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10.5Z"/></svg>
+        <span>Belajar</span>
       </button>
 
-      <button type="button" class="duo-nav-item" data-duo-nav="open-bottom-menu" aria-label="Buka menu bawah">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-        <span>Menu</span>
-      </button>
-
-      <button type="button" class="duo-nav-item" data-duo-nav="open-bottom-practice" aria-label="Buka latihan bawah">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/>
-          <path d="M17 3v6h6"/>
-          <path d="M8 13h8"/>
-          <path d="M8 17h5"/>
-        </svg>
-        <span>Latihan</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="switch-language" aria-label="Ganti bahasa">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h18"/><path d="M6 12h12"/><path d="M9 17h6"/></svg>
+        <span>Ganti Bahasa</span>
       </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="support" aria-label="Dukung Pengembang">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
-        <span>Dukung Pengenbang</span>
+        <span>Dukung Pengembang</span>
       </button>
     `;
 
@@ -3101,33 +3091,49 @@ grid.style.display="grid";
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N1">N1</button>
             </div>
           </div>
+
+          <div class="bottom-nav-hub__group">
+            <h3>聴解 Choukai (Mendengarkan)</h3>
+            <div class="bottom-nav-hub__chips">
+              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N5">N5</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N4">N4</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N3">N3</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N2">N2</button>
+              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N1">N1</button>
+            </div>
+          </div>
         </section>
       `
       : `
         <section class="bottom-nav-hub__screen" aria-label="Menu cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Menu</h2>
-            <p>Shortcut cepat, layout terpisah dari grid utama.</p>
+            <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
           </header>
           <div class="bottom-nav-hub__menu-grid">
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana"><strong>Huruf</strong><span>Hiragana</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="katakana"><strong>Huruf</strong><span>Katakana</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms"><strong>Verb Forms</strong><span>Materi + poster</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms"><strong>Adj Forms</strong><span>Materi + poster</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions"><strong>Ungkapan</strong><span>Ekspresi umum</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="open-filter"><strong>Cari & Filter</strong><span>Keyword + kategori</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="support"><strong>Dukung Dev</strong><span>Project NihonByte</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana"><strong>Huruf</strong><span>Hiragana & Katakana</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms"><strong>Bentuk Kata Kerja</strong><span>Materi + poster</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms"><strong>Bentuk Kata Sifat</strong><span>Materi + poster</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions"><strong>Ungkapan Umum</strong><span>Ekspresi sehari-hari</span></button>
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3>Pola kalimat</h3>
+            <h3>Poster Huruf</h3>
+            <div class="bottom-nav-hub__chips">
+              <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="hiragana">Hiragana</button>
+              <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="katakana">Katakana</button>
+            </div>
+          </div>
+
+          <div class="bottom-nav-hub__group">
+            <h3>Pola Kalimat</h3>
             <div class="bottom-nav-hub__chips">
               ${patternChips}
             </div>
           </div>
 
-          <div class="bottom-nav-hub__group">
-            <h3>Kotoba</h3>
+          <div class="bottom-nav-hub__group bottom-nav-hub__group--kotoba">
+            <h3>Kotoba (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               ${kotobaChips}
             </div>
@@ -3147,11 +3153,14 @@ grid.style.display="grid";
         closeBottomNavHub();
 
         const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
-        if (isGoiBunpouDokkaiDev) {
+        const isChoukaiDev = ["choukai", "listening"].includes(mainType);
+        if (isGoiBunpouDokkaiDev || isChoukaiDev) {
           const devTitleMap = {
             goi: "Pengetahuan Bahasa (Kosakata)",
             bunpou: "Pengetahuan Bahasa (Tata Bahasa)",
             dokkai: "Dokkai Membaca",
+            choukai: "Choukai Mendengarkan",
+            listening: "Choukai Mendengarkan",
           };
           viewMode = `dev:exercise:${devTitleMap[mainType] || mainType}:${level}`;
           render();
@@ -3174,6 +3183,12 @@ grid.style.display="grid";
         if (action === "support") {
           document.getElementById("supportBtn")?.click();
           return;
+        }
+
+        if (action === "switch-language") {
+      document.getElementById("languageSwitch")?.click();
+      closeSidebar();
+      return;
         }
 
         if (action === "open-filter") {

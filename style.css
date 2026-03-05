@@ -888,7 +888,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   background:
     radial-gradient(circle at 16% 10%, rgba(255, 255, 255, 0.24), transparent 56%),
     radial-gradient(circle at 84% 86%, rgba(255, 255, 255, 0.18), transparent 50%),
-    linear-gradient(155deg, #842539 0%, #ad2f4a 45%, #c74363 100%);
+    linear-gradient(155deg, #2f3031 0%, #242526 45%, #1d1e1f 100%);
   border: none;
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.14),
@@ -4805,7 +4805,7 @@ body {
   background:
     radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.24), transparent 56%),
     radial-gradient(circle at 80% 86%, rgba(255, 255, 255, 0.15), transparent 52%),
-    linear-gradient(150deg, #7a0e2a 0%, #bf1641 46%, #ef1e55 100%) !important;
+    linear-gradient(150deg, #2f3031 0%, #242526 46%, #1d1e1f 100%) !important;
     
   /* Tidak pakai border agar aman dari artefak garis kotak html2canvas */
   border: none !important;

@@ -6866,3 +6866,66 @@ body.review-mode-active .bottom-nav {
     border: 2px solid #D3D3D3 !important;
   }
 }
+
+/* === Requested: Desktop training dedicated page + dashboard scrollbar visibility === */
+@media (min-width: 769px) {
+  /* Halaman latihan berdiri sendiri: hanya result info, konten center */
+  body.training-session .header-identity,
+  body.training-session #searchBtn,
+  body.training-session .search-icon-btn {
+    display: none !important;
+  }
+
+  body.training-session .topbar {
+    justify-content: center !important;
+  }
+
+  body.training-session .app-body-shell {
+    display: block !important;
+    height: calc(100vh - var(--topbar-height)) !important;
+    min-height: calc(100vh - var(--topbar-height)) !important;
+    overflow: hidden !important;
+  }
+
+  body.training-session .content-panel {
+    height: calc(100vh - var(--topbar-height)) !important;
+    min-height: calc(100vh - var(--topbar-height)) !important;
+    overflow: auto !important;
+    border-left: none !important;
+  }
+
+  body.training-session #grid.quiz-active-mode {
+    margin-top: 0 !important;
+    padding: 28px !important;
+    min-height: calc(100vh - var(--topbar-height)) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  body.training-session .quiz-wrapper-pro,
+  body.training-session .dokkai-wrapper-pro {
+    width: min(1280px, 96vw) !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Dasbor: tampilkan scrollbar agar riwayat latihan bisa di-scroll jelas */
+  body.history-mode .content-panel {
+    overflow-y: auto !important;
+    scrollbar-width: auto !important;
+    -ms-overflow-style: auto !important;
+  }
+
+  body.history-mode .content-panel::-webkit-scrollbar {
+    width: 10px !important;
+  }
+
+  body.history-mode .content-panel::-webkit-scrollbar-thumb {
+    background: rgba(36, 37, 38, 0.45) !important;
+    border-radius: 999px !important;
+  }
+
+  body.history-mode .content-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.24) !important;
+  }
+}

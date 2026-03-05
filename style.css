@@ -6298,3 +6298,48 @@ body.review-mode-active .bottom-nav {
     background: linear-gradient(135deg, #8b5cf6, #6366f1);
   }
 }
+
+/* === Mobile spacing fix: rapat ke topbar + search button perfect circle === */
+@media (max-width: 767px) {
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  body.history-mode #grid {
+    padding-top: 8px !important;
+  }
+
+  body.history-mode #grid {
+    align-items: flex-start !important;
+    align-content: flex-start !important;
+    justify-content: start !important;
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
+  }
+
+  .dashboard-shell {
+    margin-top: 0 !important;
+  }
+
+  .bottom-nav-hub,
+  .menu-hub-container {
+    padding-top: 8px !important;
+  }
+
+  #searchBtn,
+  .search-icon-btn {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    border-radius: 999px !important;
+    padding: 0 !important;
+    aspect-ratio: 1 / 1;
+  }
+
+  #searchBtn svg,
+  .search-icon-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}

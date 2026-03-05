@@ -6627,3 +6627,98 @@ body.review-mode-active .bottom-nav {
     padding-top: 10px !important;
   }
 }
+
+/* === Follow-up fix: desktop logo fit, sidebar flat, profile version, footer removed === */
+.app-footer {
+  display: none !important;
+}
+
+#logged-in-view {
+  border: 1px solid rgba(17, 24, 39, 0.18) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.24) !important;
+}
+
+#logged-in-view .profile-version {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(15, 23, 42, 0.72);
+  line-height: 1.25;
+}
+
+@media (min-width: 769px) {
+  .topbar {
+    height: 52px !important;
+    min-height: 52px !important;
+    padding: 0 12px !important;
+  }
+
+  .header-identity {
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0 !important;
+  }
+
+  .header-identity img {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    display: block !important;
+    box-shadow: none !important;
+  }
+
+  #sidebar {
+    background: #D3D3D3 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+  }
+
+  #sidebar::before,
+  #sidebar::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  #sidebar .sidebar-tree > .menu-btn,
+  #sidebar .sidebar-tree > details > summary,
+  #sidebar .sidebar-tree .sub-details > summary,
+  #sidebar .sidebar-tree details .subfolder-list .menu-btn,
+  #sidebar .sidebar-tree details .level-list .menu-btn,
+  #sidebar-duo-nav .duo-nav-item,
+  #sidebar-duo-nav .duo-nav-support,
+  #sidebar-duo-nav .duo-nav-subitem,
+  #languageSwitch,
+  #supportBtn {
+    background: #05070b !important;
+    color: #f8fafc !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: none !important;
+  }
+
+  #sidebar .sidebar-tree > .menu-btn:hover,
+  #sidebar .sidebar-tree > details > summary:hover,
+  #sidebar .sidebar-tree .sub-details > summary:hover,
+  #sidebar .sidebar-tree details .subfolder-list .menu-btn:hover,
+  #sidebar .sidebar-tree details .level-list .menu-btn:hover,
+  #sidebar-duo-nav .duo-nav-item:hover,
+  #sidebar-duo-nav .duo-nav-support:hover,
+  #sidebar-duo-nav .duo-nav-subitem:hover,
+  #languageSwitch:hover,
+  #supportBtn:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .app-body-shell {
+    margin-top: 52px !important;
+    min-height: calc(100vh - 52px) !important;
+  }
+}

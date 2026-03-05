@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dashboardBtn = document.getElementById("dashboard-btn");
   const logoutFloatingBtn = document.getElementById("logout-floating-btn");
   const verificationHoldNote = document.getElementById("verification-hold-note");
-  const headerGreeting = document.getElementById("header-greeting");
   const languageSwitch = document.getElementById("languageSwitch");
   const languageSwitchIcon = document.getElementById("languageSwitchIcon");
 
@@ -503,31 +502,6 @@ grid.style.display="grid";
     return user?.displayName || (user?.email ? user.email.split("@")[0] : "Pelajar");
   }
 
-  function setSidebarGreeting(name = "") {
-    const cleanName = (name || "").trim();
-    const honorName = cleanName ? `${cleanName} ーさん` : "ゲスト ーさん";
-
-    const greetingMarkup = `<span class="greet-jp">こんにちは</span> <span class="greet-user">${honorName}</span>`;
-
-    [headerGreeting].forEach((el) => {
-      if (!el) return;
-      el.innerHTML = greetingMarkup;
-      el.title = `こんにちは ${honorName}`;
-    });
-
-    const length = honorName.length;
-    let fontSize = 1.2;
-    if (length > 26) fontSize = 0.86;
-    else if (length > 22) fontSize = 0.95;
-    else if (length > 18) fontSize = 1.04;
-    else if (length > 14) fontSize = 1.1;
-
-    [headerGreeting].forEach((el) => {
-      if (!el) return;
-      el.style.setProperty("--greet-user-size", `${fontSize}rem`);
-    });
-  }
-
   function generateEmailDefaultUsername(email = "") {
     const localName = (email.split("@")[0] || "")
       .toLowerCase()
@@ -774,7 +748,6 @@ grid.style.display="grid";
     window.currentUser = null;
     if (loggedOutView) loggedOutView.style.display = "block";
     if (loggedInView) loggedInView.style.display = "none";
-    setSidebarGreeting("");
     setAccessMode("guest");
     closeSidebar();
     render();
@@ -879,7 +852,6 @@ grid.style.display="grid";
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
-        setSidebarGreeting(resolvedName);
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
@@ -904,7 +876,6 @@ grid.style.display="grid";
           verificationHoldNote.textContent = "Email belum terverifikasi. Silakan verifikasi dulu sebelum masuk ke aplikasi.";
           verificationHoldNote.style.display = "block";
         }
-        setSidebarGreeting("");
       } else {
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
@@ -914,7 +885,6 @@ grid.style.display="grid";
         updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
         shouldOpenVerificationModalAfterSignup = false;
-        setSidebarGreeting("");
       }
     });
   }

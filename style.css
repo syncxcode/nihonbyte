@@ -6040,7 +6040,7 @@ body.review-mode-active .bottom-nav {
     max-width: 100%;
   }
 
-  .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
     flex: 0 1 auto;
     text-align: center;
   }
@@ -6115,23 +6115,8 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--menu .bottom-nav-hub__chip,
   .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
     border-color: rgba(100, 116, 139, 0.28);
-  }
-
-<<<<<<< ours
-  .bottom-nav-hub__screen--menu .bottom-nav-hub__chip {
-    background: linear-gradient(135deg, #f8fafc, #eef2ff);
-    color: #1f2937;
-  }
-
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    color: #1f2937;
-=======
-  .bottom-nav-hub__screen--menu .bottom-nav-hub__chip,
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.9);
     color: #334155;
->>>>>>> theirs
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
@@ -6142,25 +6127,43 @@ body.review-mode-active .bottom-nav {
     display: inline-flex;
     padding: 7px 14px;
     border-radius: 999px;
-<<<<<<< ours
     background: linear-gradient(135deg, #ec4899, #db2777);
     color: #fff;
     box-shadow: 0 8px 14px rgba(219, 39, 119, 0.25);
-=======
-    background: #ffffff !important;
-    color: #111827 !important;
-    border: 1px solid rgba(148, 163, 184, 0.45);
-    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
->>>>>>> theirs
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule {
     font-weight: 920;
   }
 
-  .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--letters,
-  .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--patterns {
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--letters {
     background: linear-gradient(135deg, #ec4899, #f43f5e);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--patterns {
+    background: linear-gradient(135deg, #fb7185, #f97316);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--kotoba {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(1) .bottom-nav-hub__chip {
+    background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+    border-color: rgba(251, 113, 133, 0.3);
+    color: #9f1239;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(2) .bottom-nav-hub__chip {
+    background: linear-gradient(135deg, #fff7ed, #ffedd5);
+    border-color: rgba(249, 115, 22, 0.3);
+    color: #9a3412;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+    border-color: rgba(99, 102, 241, 0.34);
+    color: #3730a3;
   }
 
   .bottom-nav-hub__menu-card strong {
@@ -6170,20 +6173,20 @@ body.review-mode-active .bottom-nav {
   }
 
   .bottom-nav-hub__menu-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border-radius: 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: 0 0 24px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    flex: 0 0 22px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
   }
 
   .bottom-nav-hub__menu-icon img,
   .bottom-nav-hub__menu-icon svg {
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     display: block;
   }
 
@@ -6196,22 +6199,23 @@ body.review-mode-active .bottom-nav {
   }
 
   .bottom-nav-hub__menu-icon--letters {
-    background: linear-gradient(135deg, #fbcfe8, #f9a8d4);
+    background: linear-gradient(135deg, #fbcfe8, #f472b6);
+    color: #9d174d;
   }
 
   .bottom-nav-hub__menu-icon--verb {
-    background: linear-gradient(135deg, #bfdbfe, #93c5fd);
-    color: #1d4ed8;
+    background: linear-gradient(135deg, #93c5fd, #60a5fa);
+    color: #1e3a8a;
   }
 
   .bottom-nav-hub__menu-icon--adjective {
-    background: linear-gradient(135deg, #ddd6fe, #c4b5fd);
-    color: #6d28d9;
+    background: linear-gradient(135deg, #c4b5fd, #a78bfa);
+    color: #581c87;
   }
 
   .bottom-nav-hub__menu-icon--expressions {
-    background: linear-gradient(135deg, #fde68a, #fcd34d);
-    color: #b45309;
+    background: linear-gradient(135deg, #fcd34d, #fb923c);
+    color: #9a3412;
   }
 }
 

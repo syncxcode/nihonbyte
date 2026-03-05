@@ -3124,7 +3124,9 @@ grid.style.display="grid";
           <div class="bottom-nav-hub__menu-grid">
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana">
               <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true"><img src="assets/huruf-icon.svg" alt=""></span>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M8.5 9.5h7M8.5 13h7M8.5 16.5h4.5"/></svg>
+                </span>
                 Huruf
               </strong>
               <span>Hiragana & Katakana</span>

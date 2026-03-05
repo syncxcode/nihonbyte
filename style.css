@@ -6726,8 +6726,8 @@ body.review-mode-active .bottom-nav {
 /* === Follow-up desktop refinement: capsule tone #242526 + stronger reset logo === */
 @media (min-width: 769px) {
   .header-identity img {
-    width: 38px !important;
-    height: 38px !important;
+    width: 50px !important;
+    height: 50px !important;
   }
 
   #logged-in-view {

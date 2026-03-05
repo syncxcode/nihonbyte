@@ -2740,35 +2740,41 @@ grid.style.display="grid";
   });
 
   document.querySelectorAll(".js-reset-logo").forEach((logoElem) => logoElem.addEventListener("click", () => {
-    // PROTEKSI MODE TEST: User gak boleh kabur lewat logo
-    if (isTesting) {
-      const messages = [
-        "<h3>諦めないで (Jangan Menyerah)! 💪</h3><p>Latihan ini adalah langkahmu menuju kesuksesan. Selesaikan dulu ujiannya!!</p>",
-        "<h3>ちょっと待って! (Tunggu Sebentar!) ✋</h3><p>Sayang banget skornya kalau ditinggal sekarang. Sedikit lagi kamu akan menguasai materi ini!</p>",
-        "<h3>Fokus, Bosku! 🔥</h3><p>Selesaikan apa yang sudah kamu mulai. Perjalanan seribu mil dimulai dengan satu langkah (dan tidak berhenti di tengah jalan).</p>"
-      ];
-      
-      const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-      openInfoModal(`<div style="text-align: center; padding: 10px;">${randomMsg}</div>`);
+    const isPracticeLockedMode = isTesting || document.body.classList.contains("training-session") || viewMode === "practice-hub" || String(viewMode || "").startsWith("dev:exercise:") || String(viewMode || "").startsWith("test:");
+
+    // PROTEKSI MODE LATIHAN/TEST + MODE TAMU: reset via logo dikunci total
+    if (isPracticeLockedMode || accessMode === "guest") {
+      if (isPracticeLockedMode) {
+        const messages = [
+          "<h3>諦めないで (Jangan Menyerah)! 💪</h3><p>Latihan sedang berjalan. Selesaikan dulu sebelum kembali ke beranda.</p>",
+          "<h3>ちょっと待って! (Tunggu Sebentar!) ✋</h3><p>Mode latihan sedang dikunci agar progres kamu tidak hilang.</p>",
+          "<h3>Fokus, Bosku! 🔥</h3><p>Bereskan sesi latihan dulu, setelah itu baru reset ke halaman awal.</p>"
+        ];
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        openInfoModal(`<div style="text-align: center; padding: 10px;">${randomMsg}</div>`);
+      }
       return;
     }
 
     if (document.body.classList.contains("review-mode-active")) {
-       location.reload(); 
-       return;
+      location.reload();
+      return;
     }
 
-    // LOGIC NORMAL: Jika tidak sedang test
+    // RESET TOTAL: balik ke beranda + halaman 1 dari posisi halaman berapa pun
     selectedLevel = "all";
-    selectedType = "verb-adj-only"; // <--- INI KUNCINYA, UBAH JADI VERB-ADJ-ONLY
-    if (typeof category !== 'undefined' && category) category.value = "all";
+    selectedType = "verb-adj-only";
+    currentPage = 1;
+    lastQueryState = "";
+    if (typeof category !== "undefined" && category) category.value = "all";
     if (search) search.value = "";
     viewMode = "vocab";
 
-    // Hapus warna aktif di tombol sidebar (kalau abis buka dari sidebar)
-    document.querySelectorAll(".sidebar-filter-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".sidebar-filter-btn").forEach((btn) => btn.classList.remove("active"));
 
     render();
+    closeSidebar();
+    window.scrollTo({ top: 0, behavior: "auto" });
   }));
   
   document.getElementById("supportBtn")?.addEventListener("click", () => {

@@ -6722,3 +6722,57 @@ body.review-mode-active .bottom-nav {
     min-height: calc(100vh - 52px) !important;
   }
 }
+
+/* === Follow-up desktop refinement: capsule tone #242526 + stronger reset logo === */
+@media (min-width: 769px) {
+  .header-identity img {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  #logged-in-view {
+    background: #242526 !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 14px !important;
+  }
+
+  #logged-in-view .user-name,
+  #logged-in-view .profile-version {
+    color: #e8eaed !important;
+  }
+
+  #logged-in-view .profile-version {
+    opacity: 0.8;
+  }
+
+  #logged-in-view .logout-floating-btn,
+  .logout-floating-btn {
+    color: #7dd3fc !important;
+    border-color: rgba(125, 211, 252, 0.42) !important;
+    background: rgba(3, 7, 18, 0.55) !important;
+    box-shadow: none !important;
+  }
+
+  #sidebar-duo-nav .duo-nav-item,
+  #sidebar-duo-nav .duo-nav-support,
+  #sidebar-duo-nav .duo-nav-subitem,
+  #sidebar .sidebar-tree > .menu-btn,
+  #sidebar .sidebar-tree > details > summary,
+  #sidebar .sidebar-tree .sub-details > summary,
+  #sidebar .sidebar-tree details .subfolder-list .menu-btn,
+  #sidebar .sidebar-tree details .level-list .menu-btn,
+  #languageSwitch,
+  #supportBtn {
+    background: #242526 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #f5f6f7 !important;
+    border-radius: 999px !important;
+    box-shadow: none !important;
+  }
+
+  #sidebar .sidebar-tree details {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}

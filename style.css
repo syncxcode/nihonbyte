@@ -6929,3 +6929,21 @@ body.review-mode-active .bottom-nav {
     background: rgba(255, 255, 255, 0.24) !important;
   }
 }
+
+/* === Requested follow-up: dashboard scrollbar visible + block dashboard text selection === */
+body.history-mode .content-panel {
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable both-edges !important;
+}
+
+body.history-mode .dashboard-shell,
+body.history-mode .dashboard-shell * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+body.history-mode .dashboard-shell input,
+body.history-mode .dashboard-shell textarea {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}

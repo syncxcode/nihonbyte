@@ -6117,6 +6117,7 @@ body.review-mode-active .bottom-nav {
     border-color: rgba(100, 116, 139, 0.28);
   }
 
+<<<<<<< ours
   .bottom-nav-hub__screen--menu .bottom-nav-hub__chip {
     background: linear-gradient(135deg, #f8fafc, #eef2ff);
     color: #1f2937;
@@ -6125,6 +6126,12 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
     background: linear-gradient(135deg, #f8fafc, #e2e8f0);
     color: #1f2937;
+=======
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__chip,
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+    background: rgba(255, 255, 255, 0.92);
+    color: #334155;
+>>>>>>> theirs
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
@@ -6135,9 +6142,16 @@ body.review-mode-active .bottom-nav {
     display: inline-flex;
     padding: 7px 14px;
     border-radius: 999px;
+<<<<<<< ours
     background: linear-gradient(135deg, #ec4899, #db2777);
     color: #fff;
     box-shadow: 0 8px 14px rgba(219, 39, 119, 0.25);
+=======
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+>>>>>>> theirs
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule {

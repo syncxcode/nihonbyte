@@ -2740,7 +2740,7 @@ grid.style.display="grid";
   });
 
   document.querySelectorAll(".js-reset-logo").forEach((logoElem) => logoElem.addEventListener("click", () => {
-    const isPracticeLockedMode = isTesting || document.body.classList.contains("training-session") || viewMode === "practice-hub" || String(viewMode || "").startsWith("dev:exercise:") || String(viewMode || "").startsWith("test:");
+    const isPracticeLockedMode = isTesting || document.body.classList.contains("training-session");
 
     // PROTEKSI MODE LATIHAN/TEST + MODE TAMU: reset via logo dikunci total
     if (isPracticeLockedMode || accessMode === "guest") {

@@ -6777,7 +6777,7 @@ body.review-mode-active .bottom-nav {
   }
 }
 
-/* === Desktop-only follow-up: topbar dark, menu title capsule, extra top logo, invisible body scrollbar === */
+/* === Desktop-only follow-up: topbar dark, menu title capsule, extra top logo === */
 @media (min-width: 769px) {
   .topbar {
     background: #242526 !important;
@@ -6793,11 +6793,12 @@ body.review-mode-active .bottom-nav {
   }
 
   .header-identity .topbar-side-logo {
-    width: 48px !important;
+    width: auto !important;
     height: 48px !important;
     object-fit: contain;
+    max-width: 140px !important;
     display: block;
-    border-radius: 50%;
+    border-radius: 0;
   }
 
   .sidebar-section-title {

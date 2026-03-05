@@ -3621,7 +3621,7 @@ grid.style.display="grid";
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
     setHistoryMode(false);
-    grid.classList.remove("support-mode", "pattern-grid-layout");
+    grid.classList.remove("hub-mode", "support-mode", "pattern-grid-layout");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";
     const paginationContainer = document.getElementById("pagination-container");

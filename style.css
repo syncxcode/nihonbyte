@@ -5981,6 +5981,42 @@ body.review-mode-active .bottom-nav {
     color: #1f2937;
   }
 
+  .bottom-nav-hub__capsule {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.97rem !important;
+    line-height: 1.25;
+    color: #fff !important;
+    text-shadow: none;
+    box-shadow: 0 8px 14px rgba(15, 23, 42, 0.14);
+  }
+
+  .bottom-nav-hub__capsule--goi,
+  .bottom-nav-hub__capsule--letters {
+    background: linear-gradient(135deg, #ec4899, #db2777);
+  }
+
+  .bottom-nav-hub__capsule--bunpou {
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  }
+
+  .bottom-nav-hub__capsule--dokkai,
+  .bottom-nav-hub__capsule--patterns {
+    background: linear-gradient(135deg, #f97316, #ef4444);
+  }
+
+  .bottom-nav-hub__capsule--choukai {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  }
+
+  .bottom-nav-hub__capsule--kotoba {
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+  }
+
   .bottom-nav-hub__chips {
     display: flex;
     flex-wrap: wrap;
@@ -6000,11 +6036,12 @@ body.review-mode-active .bottom-nav {
     word-break: break-word;
     line-height: 1.15;
     flex: 0 1 auto;
+    width: auto;
     max-width: 100%;
   }
 
   .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
-    flex: 1 1 120px;
+    flex: 0 1 auto;
     text-align: center;
   }
 
@@ -6050,18 +6087,18 @@ body.review-mode-active .bottom-nav {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 1) {
-    background: linear-gradient(140deg, #fff1f2, #ffe4e6);
-    border-color: rgba(244, 63, 94, 0.26);
+    background: linear-gradient(140deg, #fde2e8, #ffd6e2);
+    border-color: rgba(236, 72, 153, 0.26);
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 2) {
-    background: linear-gradient(140deg, #ecfeff, #cffafe);
-    border-color: rgba(6, 182, 212, 0.26);
+    background: linear-gradient(140deg, #e0f2fe, #dbeafe);
+    border-color: rgba(37, 99, 235, 0.24);
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n) {
-    background: linear-gradient(140deg, #eef2ff, #e0e7ff);
-    border-color: rgba(99, 102, 241, 0.28);
+    background: linear-gradient(140deg, #ede9fe, #e0e7ff);
+    border-color: rgba(139, 92, 246, 0.26);
   }
 
   .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2n + 1) {

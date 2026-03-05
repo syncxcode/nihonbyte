@@ -2832,6 +2832,11 @@ grid.style.display="grid";
   }
 
   function navigateBottomTab(tab) {
+    if (accessMode === "guest") {
+      openInfoModal("<h3>Mode Tamu</h3><p>Navigasi navbar mobile dikunci. Silakan login untuk membuka Beranda, Latihan, Dasbor, dan Menu.</p>");
+      return;
+    }
+
     // Safety: kalau sedang latihan/test, jangan lompat view
     if (document.body.classList.contains("training-session") || isTesting) {
       openInfoModal("<h3>Latihan sedang berjalan</h3><p>Selesaikan dulu sesi latihan ya ✨</p>");
@@ -3065,10 +3070,10 @@ grid.style.display="grid";
         <section class="bottom-nav-hub__screen bottom-nav-hub__screen--practice" aria-label="Latihan cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Latihan</h2>
-            <p>Pilih kategori dan level tanpa pakai grid utama.</p>
+            <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
           </header>
           <div class="bottom-nav-hub__group">
-            <h3>言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
@@ -3078,7 +3083,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3>言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
@@ -3088,7 +3093,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3>読解 Dokkai (Membaca)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">読解 Dokkai (Membaca)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
@@ -3099,7 +3104,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3>聴解 Choukai (Mendengarkan)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N4">N4</button>
@@ -3124,7 +3129,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3>Poster Huruf</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--letters">Poster Huruf</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="hiragana">Hiragana</button>
               <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="katakana">Katakana</button>
@@ -3132,14 +3137,14 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3>Pola Kalimat</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Pola Kalimat</h3>
             <div class="bottom-nav-hub__chips">
               ${patternChips}
             </div>
           </div>
 
           <div class="bottom-nav-hub__group bottom-nav-hub__group--kotoba">
-            <h3>Kotoba (Kosakata)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--kotoba">Kotoba (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               ${kotobaChips}
             </div>

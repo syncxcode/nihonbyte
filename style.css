@@ -6776,3 +6776,52 @@ body.review-mode-active .bottom-nav {
     box-shadow: none !important;
   }
 }
+
+/* === Desktop-only follow-up: topbar dark, menu title capsule, extra top logo, invisible body scrollbar === */
+@media (min-width: 769px) {
+  .topbar {
+    background: #242526 !important;
+  }
+
+  .header-identity {
+    gap: 8px !important;
+  }
+
+  .header-identity .js-reset-logo {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .header-identity .topbar-side-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .sidebar-section-title {
+    display: inline-flex !important;
+    width: fit-content !important;
+    max-width: 100% !important;
+    padding: 5px 12px !important;
+    border-radius: 999px !important;
+    background: #242526 !important;
+    color: #f5f6f7 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    margin: 8px 0 12px !important;
+  }
+
+  html,
+  body {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+}

@@ -6854,4 +6854,10 @@ body.review-mode-active .bottom-nav {
     color: #242526 !important;
     stroke: #242526 !important;
   }
+
+
+  /* Desktop only: samakan border expanded kanji card dengan warna body */
+  #kanjiModal #expandedCard .card-image.expanded {
+    border-color: #D3D3D3 !important;
+  }
 }

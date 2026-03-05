@@ -2625,6 +2625,10 @@ grid.style.display="grid";
   });
 
   recommendationRow.addEventListener("click", (event) => {
+    if (event.target.closest(".recommendation-item")) {
+      event.stopPropagation();
+    }
+
     const audioButton = event.target.closest(".rec-audio-btn");
     if (audioButton) {
       event.preventDefault();

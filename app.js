@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
 
   const FLAG_SVG = {
-    id: '<rect x="8" y="12" width="48" height="40" rx="6" fill="#fff" stroke="#cbd5e1"/><rect x="8" y="12" width="48" height="20" rx="6" fill="#ef4444"/>',
-    en: '<rect x="8" y="12" width="48" height="40" rx="6" fill="#b91c1c"/><path d="M8 16h48v8H8zm0 16h48v8H8zm0 16h48v4H8z" fill="#fff"/><rect x="8" y="12" width="20" height="22" rx="4" fill="#1d4ed8"/>'
+    id: '<defs><clipPath id="flagCircleId"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleId)"><rect x="8" y="8" width="48" height="24" fill="#e11d48"/><rect x="8" y="32" width="48" height="24" fill="#ffffff"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/>',
+    en: '<defs><clipPath id="flagCircleEn"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleEn)"><rect x="8" y="8" width="48" height="48" fill="#ffffff"/><rect x="8" y="8" width="48" height="8" fill="#b91c1c"/><rect x="8" y="24" width="48" height="8" fill="#b91c1c"/><rect x="8" y="40" width="48" height="8" fill="#b91c1c"/><rect x="8" y="8" width="24" height="24" fill="#1d4ed8"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/>'
   };
 
   function openMenuHub(){
@@ -211,6 +211,15 @@ grid.style.display="grid";
     languageSwitchIcon.innerHTML = currentLang() === "en" ? FLAG_SVG.en : FLAG_SVG.id;
   }
 
+  function updateLanguageSwitchLabel() {
+    if (!languageSwitch) return;
+    const label = currentLang() === "en" ? "Switch Language" : "Ganti Bahasa";
+    const textEl = languageSwitch.querySelector("span");
+    if (textEl) textEl.textContent = label;
+    languageSwitch.setAttribute("aria-label", label);
+    languageSwitch.setAttribute("title", label);
+  }
+
   function isDesktopLayout() {
     return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
   }
@@ -283,13 +292,6 @@ grid.style.display="grid";
         <span>Latihan</span>
       </button>
 
-      <button type="button" class="duo-nav-item" data-duo-nav="dashboard" aria-label="Dasbor">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M20 21a8 8 0 1 0-16 0"/>
-          <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"/>
-        </svg>
-        <span>Dasbor</span>
-      </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="menu" aria-label="Menu lengkap">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
@@ -308,9 +310,9 @@ grid.style.display="grid";
         <span>Belajar</span>
       </button>
 
-      <button type="button" class="duo-nav-item" data-duo-nav="switch-language" aria-label="Ganti bahasa">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 7h18"/><path d="M6 12h12"/><path d="M9 17h6"/></svg>
-        <span>Ganti Bahasa</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="switch-language" aria-label="${currentLang() === "en" ? "Switch Language" : "Ganti Bahasa"}">
+        <svg class="duo-flag-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">${currentLang() === "en" ? FLAG_SVG.en : FLAG_SVG.id}</svg>
+        <span>${currentLang() === "en" ? "Switch Language" : "Ganti Bahasa"}</span>
       </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="support" aria-label="Dukung Pengembang">
@@ -343,12 +345,6 @@ grid.style.display="grid";
     if (action === "practice") {
       viewMode = "practice-hub";
       render();
-      closeSidebar();
-      return;
-    }
-
-    if (action === "dashboard") {
-      dashboardBtn?.click();
       closeSidebar();
       return;
     }
@@ -2880,7 +2876,7 @@ grid.style.display="grid";
     if (tab === "dashboard") {
       closeBottomNavHub();
       setBottomNavActive("dashboard");
-      document.getElementById("dashboard-btn")?.click();
+      openDashboard();
       closeSidebar();
       return;
     }
@@ -4447,37 +4443,41 @@ grid.style.display="grid";
     });
   }
 
-  const historyBtn = dashboardBtn;
+  async function openDashboard() {
+    if (!window.currentUser) {
+      alert("Silahkan Login!");
+      return;
+    }
 
-  if (historyBtn) {
-    historyBtn.addEventListener("click", async () => {
-      if (!window.currentUser) {
-        alert("Silahkan Login!");
-        return;
-      }
+    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>⏳ Menyiapkan dashboard...</p></div>';
+    if (resultInfo) resultInfo.textContent = "Dasbor saya";
+    if (typeof setHistoryMode === "function") setHistoryMode(true);
+    if (typeof closeSidebar === "function") closeSidebar();
 
-      grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>⏳ Menyiapkan dashboard...</p></div>';
-      if (resultInfo) resultInfo.textContent = "Dasbor saya";
-      if (typeof setHistoryMode === "function") setHistoryMode(true);
-      if (typeof closeSidebar === "function") closeSidebar();
+    try {
+      const uid = window.currentUser.uid;
+      const profile = cachedUserProfile || await loadUserProfile(uid);
+      cachedUserProfile = profile;
+      const q = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : null;
+      const historyItems = [];
+      if (q && !q.empty) q.forEach((item) => historyItems.push(item.data()));
 
-      try {
-        const uid = window.currentUser.uid;
-        const profile = cachedUserProfile || await loadUserProfile(uid);
-        cachedUserProfile = profile;
-        const q = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : null;
-        const historyItems = [];
-        if (q && !q.empty) q.forEach((item) => historyItems.push(item.data()));
+      grid.innerHTML = renderDashboard(window.currentUser, profile, historyItems);
+      bindDashboardProfileEvents(window.currentUser, profile);
+    } catch (err) {
+      console.error("Error loading dashboard:", err);
+      const profile = cachedUserProfile || null;
+      grid.innerHTML = renderDashboard(window.currentUser, profile, [], { error: true });
+      bindDashboardProfileEvents(window.currentUser, profile);
+    }
+  }
 
-        grid.innerHTML = renderDashboard(window.currentUser, profile, historyItems);
-        bindDashboardProfileEvents(window.currentUser, profile);
-      } catch (err) {
-        console.error("Error loading dashboard:", err);
-        const profile = cachedUserProfile || null;
-        grid.innerHTML = renderDashboard(window.currentUser, profile, [], { error: true });
-        bindDashboardProfileEvents(window.currentUser, profile);
-      }
-    });
+  if (dashboardBtn) {
+    dashboardBtn.addEventListener("click", openDashboard);
+  }
+
+  if (userAvatarDisplay) {
+    userAvatarDisplay.addEventListener("click", openDashboard);
   }
 
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
@@ -4495,6 +4495,7 @@ grid.style.display="grid";
 
   function refreshLanguage() {
     updateLanguageSwitchIcon();
+    updateLanguageSwitchLabel();
     if (window.NIHONBYTE_I18N?.applyStaticText) window.NIHONBYTE_I18N.applyStaticText();
     render();
     queueTranslateRenderedContent();

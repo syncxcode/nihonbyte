@@ -6550,3 +6550,20 @@ body.review-mode-active .bottom-nav {
     width: 100%;
   }
 }
+
+/* === Requested tweaks: profile-to-dashboard, language flag, mobile menu spacing === */
+.user-avatar {
+  cursor: pointer;
+}
+
+.sidebar-language-switch svg,
+.duo-flag-icon {
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
+    margin-top: 10px;
+  }
+}

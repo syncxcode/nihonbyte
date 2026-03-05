@@ -3530,12 +3530,15 @@ grid.style.display="grid";
 
     grid.innerHTML = `
       <section class="hub-screen hub-screen--practice">
-        <header class="hub-header">
-          <h2>Latihan</h2>
-          <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
-        </header>
+        <div class="hub-practice-shell">
+          <header class="hub-header hub-header--practice">
+            <h2><span class="practice-hub-title-pill">Latihan</span></h2>
+            <p>Halaman ini berisi pilihan latihan JLPT per kategori agar kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
+          </header>
 
-        <div class="hub-practice-wrapper">
+          <div class="hub-practice-divider" aria-hidden="true"></div>
+
+          <div class="hub-practice-wrapper">
           <div class="hub-section">
             <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
             <div class="hub-levels">
@@ -3568,6 +3571,7 @@ grid.style.display="grid";
               Choukai Sedang Dalam pengembangan
             </div>
           </div>
+        </div>
         </div>
       </section>
     `;

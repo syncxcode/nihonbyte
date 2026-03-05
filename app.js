@@ -3072,6 +3072,7 @@ grid.style.display="grid";
             <h2>Latihan</h2>
             <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
           </header>
+          <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">
             <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
@@ -3112,6 +3113,8 @@ grid.style.display="grid";
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N2">N2</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N1">N1</button>
             </div>
+            <div class="bottom-nav-hub__note bottom-nav-hub__note--choukai">Choukai Sedang Dalam pengembangan</div>
+          </div>
           </div>
         </section>
       `
@@ -3355,7 +3358,7 @@ grid.style.display="grid";
           </div>
         </div>
 
-        <div class="hub-section">
+        <div class="hub-section menu-hub-section-card menu-hub-section-card--kotoba">
           <h3 class="menu-section-title-pill">Kotoba (Kosakata)</h3>
           <div class="hub-details hub-details--always-open">
             <div class="hub-levels">
@@ -3532,36 +3535,38 @@ grid.style.display="grid";
           <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
         </header>
 
-        <div class="hub-section">
-          <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
-          <div class="hub-levels">
-            ${renderLevelButtons("goi")}
+        <div class="hub-practice-wrapper">
+          <div class="hub-section">
+            <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
+            <div class="hub-levels">
+              ${renderLevelButtons("goi")}
+            </div>
           </div>
-        </div>
 
-        <div class="hub-section">
-          <h3 class="hub-section-capsule hub-section-capsule--bunpou">言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
-          <div class="hub-levels">
-            ${renderLevelButtons("bunpou")}
+          <div class="hub-section">
+            <h3 class="hub-section-capsule hub-section-capsule--bunpou">言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <div class="hub-levels">
+              ${renderLevelButtons("bunpou")}
+            </div>
           </div>
-        </div>
 
-        <div class="hub-section">
-          <h3 class="hub-section-capsule hub-section-capsule--dokkai">読解 Dokkai (Membaca)</h3>
-          <div class="hub-levels">
-            ${renderLevelButtons("dokkai", "dokkai-reading")}
+          <div class="hub-section">
+            <h3 class="hub-section-capsule hub-section-capsule--dokkai">読解 Dokkai (Membaca)</h3>
+            <div class="hub-levels">
+              ${renderLevelButtons("dokkai", "dokkai-reading")}
+            </div>
           </div>
-        </div>
 
-        <div class="hub-section">
-          <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
-          <div class="hub-levels">
-            ${levels
-              .map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`)
-              .join("")}
-          </div>
-          <div class="hub-note">
-            Choukai belum aktif karena masih proses masukin audio.
+          <div class="hub-section">
+            <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
+            <div class="hub-levels">
+              ${levels
+                .map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`)
+                .join("")}
+            </div>
+            <div class="hub-note hub-note--choukai">
+              Choukai Sedang Dalam pengembangan
+            </div>
           </div>
         </div>
       </section>

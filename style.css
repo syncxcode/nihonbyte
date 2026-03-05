@@ -6383,3 +6383,99 @@ body.review-mode-active .bottom-nav {
     height: 20px !important;
   }
 }
+
+/* === Refresh: menu kotoba + latihan container overrides === */
+.menu-hub-screen .menu-hub-section-card--kotoba,
+.menu-hub-screen .menu-hub-section-card--kotoba .hub-details,
+.menu-hub-screen .menu-hub-section-card--kotoba .hub-details--always-open {
+  background: #ffffff !important;
+}
+
+.menu-hub-screen .menu-hub-section-card--kotoba .menu-section-title-pill {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1) !important;
+}
+
+.hub-practice-wrapper {
+  background: #ffffff !important;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+  padding: 16px;
+  margin: 16px auto 22px;
+  width: min(100%, 860px);
+}
+
+.hub-practice-wrapper .hub-section:first-child {
+  margin-top: 0;
+}
+
+.hub-note--choukai {
+  background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+@media (max-width: 767px) {
+  .menu-hub-screen .menu-hub-section-card,
+  .menu-hub-screen .menu-hub-section-card--kotoba,
+  .menu-hub-screen .menu-hub-section-card--kotoba .hub-details,
+  .menu-hub-screen .menu-hub-section-card--kotoba .hub-details--always-open {
+    background: #ffffff !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group {
+    background: #ffffff !important;
+    border-color: rgba(148, 163, 184, 0.32) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group .bottom-nav-hub__chip,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(1) .bottom-nav-hub__chip,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(2) .bottom-nav-hub__chip {
+    background: #ffffff !important;
+    color: #334155 !important;
+    border-color: rgba(100, 116, 139, 0.28) !important;
+  }
+
+  .bottom-nav-hub__practice-wrapper {
+    background: #ffffff !important;
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    margin: 4px 0 8px;
+  }
+
+  .bottom-nav-hub__practice-wrapper .bottom-nav-hub__group {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 0 12px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .bottom-nav-hub__practice-wrapper .bottom-nav-hub__group:last-child {
+    padding-bottom: 0;
+  }
+
+  .bottom-nav-hub__note {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .bottom-nav-hub__note--choukai {
+    background: linear-gradient(135deg, #0ea5e9, #2563eb) !important;
+    color: #ffffff !important;
+  }
+
+  .hub-practice-wrapper {
+    margin: 12px 0 calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px);
+    width: 100%;
+  }
+}

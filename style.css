@@ -6792,6 +6792,10 @@ body.review-mode-active .bottom-nav {
     height: 50px !important;
   }
 
+  .header-identity > img.js-reset-logo:not(.topbar-side-logo) {
+    display: none !important;
+  }
+
   .header-identity .topbar-side-logo {
     width: auto !important;
     height: 48px !important;
@@ -6857,7 +6861,8 @@ body.review-mode-active .bottom-nav {
 
 
   /* Desktop only: samakan border expanded kanji card dengan warna body */
-  #kanjiModal #expandedCard .card-image.expanded {
-    border-color: #D3D3D3 !important;
+  #kanjiModal #expandedCard .card-image.expanded,
+  #kanjiModal .expanded-card .card-image.expanded {
+    border: 2px solid #D3D3D3 !important;
   }
 }

@@ -3118,7 +3118,7 @@ grid.style.display="grid";
       : `
         <section class="bottom-nav-hub__screen bottom-nav-hub__screen--menu" aria-label="Menu cepat dari navbar">
           <header class="bottom-nav-hub__header">
-            <h2>Menu</h2>
+            <h2><span class="menu-hub-title-pill">Menu</span></h2>
             <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
           </header>
           <div class="bottom-nav-hub__menu-grid">
@@ -3329,7 +3329,7 @@ grid.style.display="grid";
     grid.innerHTML = `
       <section class="hub-screen menu-hub-screen">
         <header class="hub-header menu-hub-header">
-          <h2>Menu</h2>
+          <h2><span class="menu-hub-title-pill">Menu</span></h2>
           <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
         </header>
 

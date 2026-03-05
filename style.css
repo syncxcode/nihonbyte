@@ -5561,9 +5561,23 @@ body.review-mode-active .bottom-nav {
 }
 
 .menu-hub-header h2 {
+  margin: 0 0 6px;
   color: #0f172a;
   text-shadow: none;
   font-weight: 950;
+}
+
+.menu-hub-title-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #ef4444);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 950;
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.22);
 }
 
 .menu-hub-header p {
@@ -5665,9 +5679,24 @@ body.review-mode-active .bottom-nav {
   align-items: center;
   padding: 8px 14px;
   border-radius: 999px;
+  color: #ffffff !important;
   font-size: 1.14rem !important;
-  font-weight: 900 !important;
+  font-weight: 950 !important;
   line-height: 1.2;
+  text-shadow: none;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.16);
+}
+
+.menu-hub-screen .hub-section:nth-of-type(1) .menu-section-title-pill {
+  background: linear-gradient(135deg, #f97316, #ef4444);
+}
+
+.menu-hub-screen .hub-section:nth-of-type(2) .menu-section-title-pill {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+}
+
+.menu-hub-screen .hub-section:nth-of-type(3) .menu-section-title-pill {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
 }
 
 
@@ -6276,26 +6305,20 @@ body.review-mode-active .bottom-nav {
     font-weight: 900;
   }
 
+  .menu-hub-title-pill {
+    font-size: 1.1rem;
+    padding: 6px 12px;
+  }
+
   .menu-hub-header p {
     color: #374151;
     font-weight: 500;
   }
 
   .menu-hub-screen .menu-section-title-pill {
-    color: #fff !important;
     border: 0;
-  }
-
-  .menu-hub-screen .hub-section:nth-of-type(1) .menu-section-title-pill {
-    background: linear-gradient(135deg, #f97316, #ef4444);
-  }
-
-  .menu-hub-screen .hub-section:nth-of-type(2) .menu-section-title-pill {
-    background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  }
-
-  .menu-hub-screen .hub-section:nth-of-type(3) .menu-section-title-pill {
-    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    font-size: 1.02rem !important;
+    padding: 7px 12px;
   }
 }
 

@@ -4857,7 +4857,7 @@ body {
   background:
     radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.22), transparent 44%),
     radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.14), transparent 48%),
-    linear-gradient(155deg, #5f0b1f 0%, #b5123e 52%, #f41d5b 100%) !important;
+    #242526 !important;
   border: none !important;
   box-shadow: none !important;
   outline: none !important;

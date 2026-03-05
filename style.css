@@ -5555,7 +5555,7 @@ body.review-mode-active .bottom-nav {
 
 .menu-hub-header {
   margin-bottom: 14px;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid rgba(15, 23, 42, 0.12);
   box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
 }
@@ -5697,6 +5697,23 @@ body.review-mode-active .bottom-nav {
 
 .menu-hub-screen .hub-section:nth-of-type(3) .menu-section-title-pill {
   background: linear-gradient(135deg, #8b5cf6, #6366f1);
+}
+
+
+@media (min-width: 768px) {
+  .menu-hub-screen .menu-hub-section-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    border-radius: 16px;
+    padding: 10px 12px 12px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .menu-hub-screen .menu-hub-section-card .hub-levels {
+    gap: 8px;
+  }
 }
 
 
@@ -6107,7 +6124,7 @@ body.review-mode-active .bottom-nav {
 
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header {
-    background: #ffffff;
+    background: #ffffff !important;
     border-color: rgba(236, 72, 153, 0.24);
   }
 
@@ -6153,12 +6170,12 @@ body.review-mode-active .bottom-nav {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header h2 {
-    display: inline-flex;
-    padding: 7px 14px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, #ec4899, #db2777);
-    color: #fff;
-    box-shadow: 0 8px 14px rgba(219, 39, 119, 0.25);
+    display: block;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule {

@@ -3335,7 +3335,7 @@ grid.style.display="grid";
 
         ${renderMenuPanelGrid()}
 
-        <div class="hub-section">
+        <div class="hub-section menu-hub-section-card">
           <h3 class="menu-section-title-pill">Poster Huruf</h3>
           <div class="hub-levels">
             <button type="button" class="hub-level-btn hub-level-btn--letters" data-hub="letters" data-script="hiragana">Hiragana</button>
@@ -3344,7 +3344,7 @@ grid.style.display="grid";
 
         </div>
 
-        <div class="hub-section">
+        <div class="hub-section menu-hub-section-card">
           <h3 class="menu-section-title-pill">Pola Kalimat</h3>
           <div class="hub-levels">
             <button type="button" class="hub-level-btn hub-level-btn--patterns" data-hub="patterns" data-level="N5">N5</button>

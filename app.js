@@ -3122,10 +3122,40 @@ grid.style.display="grid";
             <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
           </header>
           <div class="bottom-nav-hub__menu-grid">
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana"><strong>Huruf</strong><span>Hiragana & Katakana</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms"><strong>Bentuk Kata Kerja</strong><span>Materi + poster</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms"><strong>Bentuk Kata Sifat</strong><span>Materi + poster</span></button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions"><strong>Ungkapan Umum</strong><span>Ekspresi sehari-hari</span></button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true"><img src="assets/huruf-icon.svg" alt=""></span>
+                Huruf
+              </strong>
+              <span>Hiragana & Katakana</span>
+            </button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-9"/></svg>
+                </span>
+                Bentuk Kata Kerja
+              </strong>
+              <span>Materi + poster</span>
+            </button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--adjective" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M12 3.5 15 9l6 .9-4.4 4.2 1 6-5.6-3.1L6.4 20l1-6L3 9.9 9 9Z"/></svg>
+                </span>
+                Bentuk Kata Sifat
+              </strong>
+              <span>Materi + poster</span>
+            </button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2Z"/></svg>
+                </span>
+                Ungkapan Umum
+              </strong>
+              <span>Ekspresi sehari-hari</span>
+            </button>
           </div>
 
           <div class="bottom-nav-hub__group">

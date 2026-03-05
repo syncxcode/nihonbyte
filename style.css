@@ -6793,8 +6793,8 @@ body.review-mode-active .bottom-nav {
   }
 
   .header-identity .topbar-side-logo {
-    width: 28px;
-    height: 28px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
     display: block;
     border-radius: 50%;

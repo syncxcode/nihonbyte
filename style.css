@@ -6981,7 +6981,7 @@ body.history-mode .dashboard-shell textarea {
   body.history-mode .content-panel::after {
     content: "";
     display: block;
-    height: 80px !important; /* Besaran ruang kosong di bawah, sesuaikan seleramu */
+    height: 10px !important; /* Besaran ruang kosong di bawah, sesuaikan seleramu */
     width: 100%;
   }
 }

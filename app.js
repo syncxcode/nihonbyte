@@ -767,6 +767,10 @@ grid.style.display="grid";
     return String(profile?.role || "").toLowerCase() === "developer";
   }
 
+  function isDeveloperAccountActive() {
+    return window.currentUserRole === "developer" || !!window.currentUser?.isDeveloper;
+  }
+
   async function tryActivateDeveloperMode() {
     const params = new URLSearchParams(window.location.search);
     const devToken = params.get(DEVELOPER_QUERY_KEY) || window.sessionStorage.getItem(DEVELOPER_SESSION_KEY) || "";
@@ -815,6 +819,7 @@ grid.style.display="grid";
       emailVerified: true,
       isDeveloper: true
     };
+    window.currentUserRole = "developer";
 
     if (loggedOutView) loggedOutView.style.display = "none";
     if (loggedInView) loggedInView.style.display = "flex";
@@ -956,6 +961,7 @@ grid.style.display="grid";
     if (window.currentUser?.isDeveloper) {
       window.sessionStorage.removeItem(DEVELOPER_SESSION_KEY);
       window.currentUser = null;
+      window.currentUserRole = null;
       setAccessMode("locked");
       render();
       return;
@@ -986,18 +992,19 @@ grid.style.display="grid";
         loggedInView.style.display = "flex";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
         cachedUserProfile = await loadUserProfile(user.uid);
-        if (!cachedUserProfile?.onboardingDone) {
+        const signedInAsDeveloper = isDeveloperRole(cachedUserProfile);
+        if (!signedInAsDeveloper && !cachedUserProfile?.onboardingDone) {
           window.location.href = "./onboarding.html";
           return;
         }
         window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
-        userLevel = normalizeOnboardingLevel(cachedUserProfile?.level);
+        userLevel = signedInAsDeveloper ? "all" : normalizeOnboardingLevel(cachedUserProfile?.level);
         selectedLevel = userLevel;
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
-        window.currentUserRole = isDeveloperRole(cachedUserProfile) ? "developer" : "user";
+        window.currentUserRole = signedInAsDeveloper ? "developer" : "user";
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
 
@@ -1008,7 +1015,7 @@ grid.style.display="grid";
         }
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
         viewMode = "vocab";
-        selectedType = "verb-adj-only";
+        selectedType = signedInAsDeveloper ? "all" : "verb-adj-only";
         selectedLevel = userLevel;
         render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
@@ -1778,7 +1785,7 @@ grid.style.display="grid";
     if (resetFilterBtn) {
       resetFilterBtn.addEventListener("click", () => {
         selectedLevel = userLevel;
-        selectedType = "verb-adj-only"; // Balik ke default user onboarding
+        selectedType = isDeveloperAccountActive() ? "all" : "verb-adj-only"; // Developer bebas filter default onboarding
         if (search) search.value = "";
         if (modalSearchInput) modalSearchInput.value = "";
 

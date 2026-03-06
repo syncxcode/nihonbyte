@@ -6948,7 +6948,6 @@ body.history-mode .dashboard-shell textarea {
   -webkit-user-select: text !important;
 }
 
-/* Pastikan dashboard desktop benar-benar pakai scrollbar halaman utama */
 @media (min-width: 768px) {
   body.history-mode {
     overflow-y: auto !important;

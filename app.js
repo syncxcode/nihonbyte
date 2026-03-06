@@ -460,6 +460,7 @@ grid.style.display="grid";
       if (!snap.exists()) return null;
       const data = snap.data() || {};
       return {
+        onboardingDone: !!data.onboardingDone,
         displayName: data.profileDisplayName || "",
         photoURL: data.profilePhotoURL || "",
         photoSource: data.profilePhotoSource || ""
@@ -850,6 +851,10 @@ grid.style.display="grid";
         loggedInView.style.display = "flex";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
         cachedUserProfile = await loadUserProfile(user.uid);
+        if (!cachedUserProfile?.onboardingDone) {
+          window.location.href = "./onboarding.html";
+          return;
+        }
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);

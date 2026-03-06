@@ -6948,42 +6948,33 @@ body.history-mode .dashboard-shell textarea {
   -webkit-user-select: text !important;
 }
 
+/* =========================================
+   🔥 KUNCI SIDEBAR BIAR DIAM (KAYA MENU) 🔥
+========================================= */
 @media (min-width: 768px) {
-  body.history-mode {
+  /* 1. Kunci layar utama, GAK BOLEH ada scroll global */
+  html, body.history-mode {
     overflow: hidden !important;
   }
 
+  /* 2. Pastikan kerangka utamanya pas selayar dan diam */
   body.history-mode .app-body-shell {
-    height: calc(100vh - var(--topbar-height)) !important;
-    min-height: calc(100vh - var(--topbar-height)) !important;
+    height: 100vh !important;
     overflow: hidden !important;
   }
 
-  /* Content-panel scroll mandiri — sidebar TIDAK ikut scroll */
+  /* 3. CUMA area kotak kanan (dasbor) yang diizinkan scroll! */
   body.history-mode .content-panel {
     height: 100% !important;
-    min-height: 0 !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-
-    /* Scrollbar invisible (sama seperti sidebar) */
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
+    display: block !important;
   }
 
-  body.history-mode .content-panel::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  /* Pastikan #grid di dalam content-panel mengisi ruang dengan benar */
+  /* 4. Biarkan konten riwayat melar ke bawah secara natural */
   body.history-mode #grid {
-    position: relative !important;
-    inset: auto !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 16px 14px 32px !important;
-    overflow: visible !important;
-    contain: layout paint;
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 150px !important; /* Ruang aman di bawah biar riwayat gak kepotong */
   }
 }

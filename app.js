@@ -768,6 +768,8 @@ grid.style.display="grid";
     if (loggedOutView) loggedOutView.style.display = "block";
     if (loggedInView) loggedInView.style.display = "none";
     setAccessMode("guest");
+    viewMode = "menu";
+    if (search) search.value = "";
     closeSidebar();
     render();
   }
@@ -876,9 +878,10 @@ grid.style.display="grid";
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
-        viewMode = "vocab";
+        viewMode = "menu";
         selectedType = "verb-adj-only";
         selectedLevel = "all";
+        if (search) search.value = "";
         render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
           openAccountModal();

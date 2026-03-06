@@ -992,19 +992,29 @@ grid.style.display="grid";
   // Proses tautan aksi dari email (verifikasi / reset password)
   handleEmailActionFromUrl();
 
+  let authRedirectInProgress = false;
+
   // Deteksi Perubahan Status Login (Otomatis jalan saat halaman dibuka)
   if (window.firebaseAuth && window.onAuthStateChanged) {
     window.onAuthStateChanged(window.firebaseAuth, async (user) => {
       if (user && isVerifiedUser(user)) {
+        if (authRedirectInProgress) return;
+
+        cachedUserProfile = await loadUserProfile(user.uid);
+        const signedInAsDeveloper = isDeveloperRole(cachedUserProfile);
+        const needsOnboarding = !signedInAsDeveloper && !cachedUserProfile?.onboardingDone;
+
+        if (needsOnboarding) {
+          authRedirectInProgress = true;
+          window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
+          window.location.replace("./onboarding.html");
+          return;
+        }
+
+        authRedirectInProgress = false;
         loggedOutView.style.display = "none";
         loggedInView.style.display = "flex";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
-        cachedUserProfile = await loadUserProfile(user.uid);
-        const signedInAsDeveloper = isDeveloperRole(cachedUserProfile);
-        if (!signedInAsDeveloper && !cachedUserProfile?.onboardingDone) {
-          window.location.href = "./onboarding.html";
-          return;
-        }
         window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
         userLevel = signedInAsDeveloper ? "all" : normalizeOnboardingLevel(cachedUserProfile?.level);
         selectedLevel = userLevel;
@@ -1031,6 +1041,7 @@ grid.style.display="grid";
         }
         shouldOpenVerificationModalAfterSignup = false;
       } else if (user && !isVerifiedUser(user)) {
+        authRedirectInProgress = false;
         if (window.currentUser) window.currentUser = null;
         window.currentUserRole = null;
         if (loggedOutView) loggedOutView.style.display = "block";
@@ -1043,6 +1054,7 @@ grid.style.display="grid";
           verificationHoldNote.style.display = "block";
         }
       } else {
+        authRedirectInProgress = false;
         loggedOutView.style.display = "block";
         loggedInView.style.display = "none";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";

@@ -275,9 +275,13 @@ grid.style.display="grid";
     if (!sidebarDuoNav) return;
 
     const desktopMarkup = `
-      <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Belajar (Beranda)">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10.5Z"/></svg>
-        <span>Belajar</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Flashcard">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M8 4h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-1"/>
+          <path d="M5 7h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/>
+          <path d="M7.5 12h6"/>
+        </svg>
+        <span>Flashcard</span>
       </button>
 
 
@@ -292,9 +296,12 @@ grid.style.display="grid";
       </button>
 
 
-      <button type="button" class="duo-nav-item" data-duo-nav="menu" aria-label="Menu lengkap">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-        <span>Menu</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="menu" aria-label="Belajar (Menu)">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 6.5a5 5 0 0 0-4-2H4v13.5h4a5 5 0 0 1 4 2a5 5 0 0 1 4-2h4V4.5h-4a5 5 0 0 0-4 2Z"/>
+          <path d="M12 6.5V20"/>
+        </svg>
+        <span>Belajar</span>
       </button>
 
       <button type="button" class="duo-nav-support" data-duo-nav="support" aria-label="Dukung Pengembang">
@@ -304,9 +311,13 @@ grid.style.display="grid";
     `;
 
     const mobileMarkup = `
-      <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Belajar (Beranda)">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10.5Z"/></svg>
-        <span>Belajar</span>
+      <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Flashcard">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M8 4h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-1"/>
+          <path d="M5 7h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/>
+          <path d="M7.5 12h6"/>
+        </svg>
+        <span>Flashcard</span>
       </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="switch-language" aria-label="${currentLang() === "en" ? "Switch Language" : "Ganti Bahasa"}">
@@ -328,7 +339,15 @@ grid.style.display="grid";
     if (!action) return;
 
     if (action === "learn") {
-      document.querySelector(".js-reset-logo")?.click();
+      selectedLevel = "all";
+      selectedType = "verb-adj-only";
+      currentPage = 1;
+      lastQueryState = "";
+      if (typeof category !== "undefined" && category) category.value = "all";
+      if (search) search.value = "";
+      if (modalSearchInput) modalSearchInput.value = "";
+      viewMode = "vocab";
+      render();
       closeSidebar();
       return;
     }
@@ -1656,7 +1675,7 @@ grid.style.display="grid";
 
   let selectedLevel = "all";
   let selectedType = "verb-adj-only";
-  let viewMode = "vocab";
+  let viewMode = "menu";
   let currentPage = 1;      
   let lastQueryState = "";  
   
@@ -2765,14 +2784,15 @@ grid.style.display="grid";
       return;
     }
 
-    // RESET TOTAL: balik ke beranda + halaman 1 dari posisi halaman berapa pun
+    // RESET TOTAL: balik ke halaman awal (Menu) + reset state kartu ke default render
     selectedLevel = "all";
     selectedType = "verb-adj-only";
     currentPage = 1;
     lastQueryState = "";
     if (typeof category !== "undefined" && category) category.value = "all";
     if (search) search.value = "";
-    viewMode = "vocab";
+    if (modalSearchInput) modalSearchInput.value = "";
+    viewMode = "menu";
 
     document.querySelectorAll(".sidebar-filter-btn").forEach((btn) => btn.classList.remove("active"));
 
@@ -2831,7 +2851,7 @@ grid.style.display="grid";
       if (typeof category !== "undefined" && category) category.value = "all";
       if (search) search.value = "";
       if (modalSearchInput) modalSearchInput.value = "";
-      viewMode = "vocab";
+      viewMode = "menu";
       render();
       closeSidebar();
       window.scrollTo({ top: 0, behavior: "smooth" });

@@ -66,6 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let savedScrollPosition = 0;
 
   const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
+  const GUEST_ACCESS_SESSION_KEY = "nihonbyte_guest_access";
+  const GUEST_ONBOARDING_DONE_KEY = "nihonbyte_guest_onboarding_done";
+
 
   const FLAG_SVG = {
     id: '<defs><clipPath id="flagCircleId"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleId)"><rect x="8" y="8" width="48" height="24" fill="#e11d48"/><rect x="8" y="32" width="48" height="24" fill="#ffffff"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/>',
@@ -722,6 +725,20 @@ grid.style.display="grid";
     }
   }
 
+  function isGuestOnboardingDone() {
+    return window.sessionStorage.getItem(GUEST_ONBOARDING_DONE_KEY) === "1";
+  }
+
+  function shouldUseGuestSession() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("mode") === "guest" || window.sessionStorage.getItem(GUEST_ACCESS_SESSION_KEY) === "1";
+  }
+
+  function tampilkanPopupWelcomeBack(displayName) {
+    const safeName = String(displayName || "Pelajar").replace(/[<>]/g, "");
+    openInfoModal(`<h3>Selamat Datang Kembali, ${safeName}! 👋</h3><p>Progress belajarmu sudah kami siapkan. Yuk lanjutkan perjalanan Bahasa Jepangmu hari ini ✨</p>`);
+  }
+
   function loginWithGoogle() {
     if (!window.firebaseAuth || !window.firebaseProvider) {
       alert("Mesin Firebase belum siap! Tunggu sebentar atau refresh halaman.");
@@ -745,7 +762,24 @@ grid.style.display="grid";
       });
   }
 
-  function continueAsGuest() {
+  function continueAsGuest(options = {}) {
+    window.sessionStorage.setItem(GUEST_ACCESS_SESSION_KEY, "1");
+
+    if (!options.skipOnboardingCheck && !isGuestOnboardingDone()) {
+      window.location.href = "./onboarding.html?mode=guest";
+      return;
+    }
+
+    if (window.location.pathname.endsWith("index.html")) {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("mode") === "guest") {
+        params.delete("mode");
+        const cleanQuery = params.toString();
+        const cleanUrl = `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ""}${window.location.hash}`;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    }
+
     window.currentUser = null;
     if (loggedOutView) loggedOutView.style.display = "block";
     if (loggedInView) loggedInView.style.display = "none";
@@ -855,12 +889,19 @@ grid.style.display="grid";
           window.location.href = "./onboarding.html";
           return;
         }
+        window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
+
+        const welcomeBackShownKey = `nihonbyte_welcome_back_shown_${user.uid}`;
+        if (!window.sessionStorage.getItem(welcomeBackShownKey)) {
+          tampilkanPopupWelcomeBack(resolvedName);
+          window.sessionStorage.setItem(welcomeBackShownKey, "1");
+        }
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
         viewMode = "vocab";
         selectedType = "verb-adj-only";
@@ -888,7 +929,11 @@ grid.style.display="grid";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
         updateAccountStatusUI(null);
-        if (accessMode !== "guest") setAccessMode("locked");
+        if (shouldUseGuestSession()) {
+          continueAsGuest();
+        } else if (accessMode !== "guest") {
+          setAccessMode("locked");
+        }
         shouldOpenVerificationModalAfterSignup = false;
       }
     });
@@ -2939,6 +2984,7 @@ grid.style.display="grid";
 
   document.querySelectorAll(".exercise-btn").forEach((button) => {
     button.addEventListener("click", () => {
+      if (!ensureLoginForMenu()) return;
       const mainType = button.dataset.main || button.dataset.type || "";
       const section = button.dataset.section || mainType;
       const level = button.dataset.level;
@@ -3173,6 +3219,7 @@ grid.style.display="grid";
 
     bottomNavHub.querySelectorAll("[data-practice]").forEach((btn) => {
       btn.addEventListener("click", () => {
+        if (!ensureLoginForMenu()) return;
         const mainType = btn.dataset.practice || "";
         const section = btn.dataset.section || mainType;
         const level = btn.dataset.level || "N5";
@@ -3565,6 +3612,7 @@ grid.style.display="grid";
   }
 
   function launchExerciseFromHub(button) {
+    if (!ensureLoginForMenu()) return;
     const mainType = button.dataset.main || button.dataset.type || "";
     const section = button.dataset.section || mainType;
     const level = button.dataset.level;

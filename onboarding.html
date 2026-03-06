@@ -196,6 +196,10 @@
   let currentStep = 0;
   const totalSteps = 4;
   const selected = { level: null, goal: null, time: null };
+  const params = new URLSearchParams(window.location.search);
+  const isGuestMode = params.get("mode") === "guest";
+  const GUEST_ACCESS_SESSION_KEY = "nihonbyte_guest_access";
+  const GUEST_ONBOARDING_DONE_KEY = "nihonbyte_guest_onboarding_done";
 
   const levelMap = {
     zero: { label: "Baru Mulai — Belum kenal hiragana", icon: "🌱" },
@@ -218,6 +222,24 @@
     "30": { label: "30 menit", icon: "🔥" },
     "60": { label: "1 jam+", icon: "⚔️" },
   };
+
+  function enforceOnboardingAccess() {
+    if (isGuestMode) {
+      window.sessionStorage.setItem(GUEST_ACCESS_SESSION_KEY, "1");
+      return;
+    }
+
+    if (!window.firebaseAuth || !window.onAuthStateChanged) {
+      window.location.href = "./index.html";
+      return;
+    }
+
+    window.onAuthStateChanged(window.firebaseAuth, async (user) => {
+      if (!user) {
+        window.location.href = "./index.html";
+      }
+    });
+  }
 
   for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
@@ -273,6 +295,13 @@
 
   async function finishOnboarding() {
     try {
+      if (isGuestMode) {
+        window.sessionStorage.setItem(GUEST_ACCESS_SESSION_KEY, "1");
+        window.sessionStorage.setItem(GUEST_ONBOARDING_DONE_KEY, "1");
+        window.location.href = "./index.html?mode=guest";
+        return;
+      }
+
       if (!window.firebaseAuth || !window.firebaseDb || !window.doc || !window.setDoc) {
         throw new Error("Firebase belum siap. Pastikan firebase-config.js sudah diisi.");
       }
@@ -296,6 +325,8 @@
       alert("Gagal menyimpan profil: " + (error?.message || error));
     }
   }
+
+  enforceOnboardingAccess();
 
   window.nextStep = nextStep;
   window.prevStep = prevStep;

@@ -487,6 +487,7 @@ grid.style.display="grid";
       return {
         onboardingDone: !!data.onboardingDone,
         level: normalizeOnboardingLevel(data.level),
+        role: String(data.role || "user").toLowerCase(),
         displayName: data.profileDisplayName || "",
         photoURL: data.profilePhotoURL || "",
         photoSource: data.profilePhotoSource || ""
@@ -762,6 +763,9 @@ grid.style.display="grid";
     openInfoModal(`<h3>Selamat Datang Kembali, ${safeName}! 👋</h3><p>Progress belajarmu sudah kami siapkan. Yuk lanjutkan perjalanan Bahasa Jepangmu hari ini ✨</p>`);
   }
 
+  function isDeveloperRole(profile = null) {
+    return String(profile?.role || "").toLowerCase() === "developer";
+
   async function tryActivateDeveloperMode() {
     const params = new URLSearchParams(window.location.search);
     const devToken = params.get(DEVELOPER_QUERY_KEY) || window.sessionStorage.getItem(DEVELOPER_SESSION_KEY) || "";
@@ -992,6 +996,7 @@ grid.style.display="grid";
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
+        window.currentUserRole = isDeveloperRole(cachedUserProfile) ? "developer" : "user";
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
 
@@ -1011,6 +1016,7 @@ grid.style.display="grid";
         shouldOpenVerificationModalAfterSignup = false;
       } else if (user && !isVerifiedUser(user)) {
         if (window.currentUser) window.currentUser = null;
+        window.currentUserRole = null;
         if (loggedOutView) loggedOutView.style.display = "block";
         if (loggedInView) loggedInView.style.display = "none";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
@@ -1026,6 +1032,7 @@ grid.style.display="grid";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
+        window.currentUserRole = null;
         updateAccountStatusUI(null);
 
         if (await tryActivateDeveloperMode()) {

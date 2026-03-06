@@ -765,6 +765,7 @@ grid.style.display="grid";
 
   function isDeveloperRole(profile = null) {
     return String(profile?.role || "").toLowerCase() === "developer";
+    {
 
   async function tryActivateDeveloperMode() {
     const params = new URLSearchParams(window.location.search);

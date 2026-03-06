@@ -6950,19 +6950,19 @@ body.history-mode .dashboard-shell textarea {
 
 @media (min-width: 768px) {
   body.history-mode {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    overflow: hidden !important; 
   }
 
   body.history-mode .app-body-shell {
-    height: auto !important;
+    height: calc(100vh - var(--topbar-height)) !important;
     min-height: calc(100vh - var(--topbar-height)) !important;
-    overflow: visible !important;
+    overflow: hidden !important;
   }
 
   body.history-mode .content-panel {
-    height: auto !important;
-    min-height: calc(100vh - var(--topbar-height)) !important;
-    overflow: visible !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-y: auto !important; 
+    overflow-x: hidden !important;
   }
 }

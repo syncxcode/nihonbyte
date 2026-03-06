@@ -6948,9 +6948,10 @@ body.history-mode .dashboard-shell textarea {
   -webkit-user-select: text !important;
 }
 
+/* 🚀 KUNCI 3: SPLIT-SCROLL DESKTOP (Persis seperti Halaman Menu) */
 @media (min-width: 768px) {
   body.history-mode {
-    overflow: hidden !important;
+    overflow: hidden !important; /* Kunci layar utama, Sidebar jadi patung */
   }
 
   body.history-mode .app-body-shell {
@@ -6961,9 +6962,9 @@ body.history-mode .dashboard-shell textarea {
 
   body.history-mode .content-panel {
     height: 100% !important;
-    min-height: 0 !important; 
-    overflow-y: auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important; /* Hanya kotak kanan/dasbor yang bisa scroll */
     overflow-x: hidden !important;
-    display: block !important; 
+    display: block !important;
   }
 }

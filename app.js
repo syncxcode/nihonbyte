@@ -68,6 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
   const GUEST_ACCESS_SESSION_KEY = "nihonbyte_guest_access";
   const GUEST_ONBOARDING_DONE_KEY = "nihonbyte_guest_onboarding_done";
+  const DEVELOPER_SESSION_KEY = "nihonbyte_developer_access_key";
+  const DEVELOPER_QUERY_KEY = "dev_key";
 
 
   const FLAG_SVG = {
@@ -455,6 +457,26 @@ grid.style.display="grid";
     return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
   }
 
+  function normalizeOnboardingLevel(rawLevel) {
+    const level = String(rawLevel || "").toLowerCase();
+    if (level === "n5" || level === "zero") return "N5";
+    if (level === "n4") return "N4";
+    if (level === "n3") return "N3";
+    if (level === "n2") return "N2";
+    if (level === "n1") return "N1";
+    if (["N5", "N4", "N3", "N2", "N1"].includes(String(rawLevel || ""))) return String(rawLevel);
+    return "all";
+  }
+
+  function cleanUrlQueryParam(key) {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has(key)) return;
+    params.delete(key);
+    const cleanQuery = params.toString();
+    const cleanUrl = `${window.location.pathname}${cleanQuery ? `?${cleanQuery}` : ""}${window.location.hash}`;
+    window.history.replaceState({}, document.title, cleanUrl);
+  }
+
   async function loadUserProfile(uid) {
     if (!window.firebaseDb || !window.doc || !window.getDoc) return null;
     try {
@@ -464,6 +486,7 @@ grid.style.display="grid";
       const data = snap.data() || {};
       return {
         onboardingDone: !!data.onboardingDone,
+        level: normalizeOnboardingLevel(data.level),
         displayName: data.profileDisplayName || "",
         photoURL: data.profilePhotoURL || "",
         photoSource: data.profilePhotoSource || ""
@@ -739,6 +762,72 @@ grid.style.display="grid";
     openInfoModal(`<h3>Selamat Datang Kembali, ${safeName}! 👋</h3><p>Progress belajarmu sudah kami siapkan. Yuk lanjutkan perjalanan Bahasa Jepangmu hari ini ✨</p>`);
   }
 
+  async function tryActivateDeveloperMode() {
+    const params = new URLSearchParams(window.location.search);
+    const devToken = params.get(DEVELOPER_QUERY_KEY) || window.sessionStorage.getItem(DEVELOPER_SESSION_KEY) || "";
+    if (!devToken) return false;
+
+    const localDevKey = (window.NIHONBYTE_DEV_ACCESS_KEY || "").trim();
+
+    let remoteConfig = null;
+    if (window.firebaseDb && window.doc && window.getDoc) {
+      try {
+        const configRef = window.doc(window.firebaseDb, "app_config", "developer_access");
+        const snap = await window.getDoc(configRef);
+        remoteConfig = snap.exists() ? (snap.data() || {}) : null;
+      } catch (error) {
+        console.warn("Gagal baca app_config/developer_access:", error);
+      }
+    }
+
+    const acceptedRemote = remoteConfig?.accessKey && devToken === String(remoteConfig.accessKey);
+    const acceptedLocal = localDevKey && devToken === localDevKey;
+
+    if (!acceptedRemote && !acceptedLocal) {
+      window.sessionStorage.removeItem(DEVELOPER_SESSION_KEY);
+      return false;
+    }
+
+    const developerDisplayName = remoteConfig?.displayName || "Developer";
+    const developerLevel = normalizeOnboardingLevel(remoteConfig?.defaultLevel || "n1");
+
+    window.sessionStorage.setItem(DEVELOPER_SESSION_KEY, devToken);
+    window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
+
+    cachedUserProfile = {
+      onboardingDone: true,
+      level: developerLevel,
+      displayName: developerDisplayName,
+      photoURL: "",
+      photoSource: "developer"
+    };
+
+    window.currentUser = {
+      uid: "developer-mode",
+      displayName: developerDisplayName,
+      email: "developer@nihonbyte.local",
+      providerData: [{ providerId: "developer" }],
+      emailVerified: true,
+      isDeveloper: true
+    };
+
+    if (loggedOutView) loggedOutView.style.display = "none";
+    if (loggedInView) loggedInView.style.display = "flex";
+    if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
+
+    userLevel = developerLevel;
+    selectedLevel = userLevel;
+    selectedType = "verb-adj-only";
+    viewMode = "vocab";
+    userNameDisplay.textContent = developerDisplayName;
+    applyUserAvatar(window.currentUser, cachedUserProfile);
+    updateAccountStatusUI(window.currentUser);
+    setAccessMode("logged-in");
+    cleanUrlQueryParam(DEVELOPER_QUERY_KEY);
+    render();
+    return true;
+  }
+
   function loginWithGoogle() {
     if (!window.firebaseAuth || !window.firebaseProvider) {
       alert("Mesin Firebase belum siap! Tunggu sebentar atau refresh halaman.");
@@ -858,20 +947,27 @@ grid.style.display="grid";
 
 
   // Fungsi Logout
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      window.signOut(window.firebaseAuth).then(() => {
-        console.log("User berhasil keluar.");
-      });
+  function handleLogout() {
+    if (window.currentUser?.isDeveloper) {
+      window.sessionStorage.removeItem(DEVELOPER_SESSION_KEY);
+      window.currentUser = null;
+      setAccessMode("locked");
+      render();
+      return;
+    }
+
+    if (!window.signOut || !window.firebaseAuth) return;
+    window.signOut(window.firebaseAuth).then(() => {
+      console.log("User berhasil keluar.");
     });
   }
 
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+
   if (logoutFloatingBtn) {
-    logoutFloatingBtn.addEventListener("click", () => {
-      window.signOut(window.firebaseAuth).then(() => {
-        console.log("User berhasil keluar.");
-      });
-    });
+    logoutFloatingBtn.addEventListener("click", handleLogout);
   }
 
   // Proses tautan aksi dari email (verifikasi / reset password)
@@ -890,6 +986,8 @@ grid.style.display="grid";
           return;
         }
         window.sessionStorage.removeItem(GUEST_ACCESS_SESSION_KEY);
+        userLevel = normalizeOnboardingLevel(cachedUserProfile?.level);
+        selectedLevel = userLevel;
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
@@ -905,7 +1003,7 @@ grid.style.display="grid";
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
         viewMode = "vocab";
         selectedType = "verb-adj-only";
-        selectedLevel = "all";
+        selectedLevel = userLevel;
         render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
           openAccountModal();
@@ -929,6 +1027,12 @@ grid.style.display="grid";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
         updateAccountStatusUI(null);
+
+        if (await tryActivateDeveloperMode()) {
+          shouldOpenVerificationModalAfterSignup = false;
+          return;
+        }
+
         if (shouldUseGuestSession()) {
           continueAsGuest();
         } else if (accessMode !== "guest") {
@@ -1559,9 +1663,9 @@ grid.style.display="grid";
       // 1. Kosongkan input pencarian
       if (modalSearchInput) modalSearchInput.value = "";
       
-      // 2. Reset Level JLPT kembali ke "Semua Level"
+      // 2. Reset Level JLPT kembali ke preferensi onboarding user
       document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
+      document.querySelector(`#levelGrid [data-level="${selectedLevel}"]`)?.classList.add("active") || document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
       
       // 3. Reset Kategori Khusus (Lepas semua pilihan)
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
@@ -1665,13 +1769,13 @@ grid.style.display="grid";
 
     if (resetFilterBtn) {
       resetFilterBtn.addEventListener("click", () => {
-        selectedLevel = "all";
-        selectedType = "verb-adj-only"; // Balik ke default halaman awal
+        selectedLevel = userLevel;
+        selectedType = "verb-adj-only"; // Balik ke default user onboarding
         if (search) search.value = "";
         if (modalSearchInput) modalSearchInput.value = "";
 
         document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
-        document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
+        document.querySelector(`#levelGrid [data-level="${selectedLevel}"]`)?.classList.add("active") || document.querySelector('#levelGrid [data-level="all"]')?.classList.add("active");
 
         closeFilterModal();
         render();
@@ -1705,6 +1809,7 @@ grid.style.display="grid";
   }
 
   let selectedLevel = "all";
+  let userLevel = "all";
   let selectedType = "verb-adj-only";
   let viewMode = "vocab";
   let currentPage = 1;      

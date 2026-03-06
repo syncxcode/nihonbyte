@@ -6949,42 +6949,39 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =========================================
-   🔥 KUNCI SIDEBAR BIAR DIAM (KAYA MENU) 🔥
+   🔥 FIX FINAL: SIDEBAR DIAM + KANAN SCROLL + GAK TENGGELAM 🔥
 ========================================= */
 @media (min-width: 768px) {
-  /* 1. Kunci layar utama, GAK BOLEH ada scroll global */
+  /* 1. Gembok global, Sidebar fix 100% DIAM */
   html, body.history-mode {
     overflow: hidden !important;
   }
 
-  /* 2. Pastikan kerangka utamanya pas selayar dan diam */
+  /* 2. Kerangka utama dipotong topbar biar gak tembus ke bawah layar */
   body.history-mode .app-body-shell {
-    height: 100vh !important;
+    height: calc(100vh - var(--topbar-height, 60px)) !important;
     overflow: hidden !important;
   }
 
-  /* 3. CUMA area kotak kanan (dasbor) yang diizinkan scroll! */
+  /* 3. Panel kanan aja yang SCROLLABLE (Wajib block, JANGAN flex) */
   body.history-mode .content-panel {
     height: 100% !important;
-    min-height: 0 !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    display: flex !important; 
-    flex-direction: column !important; 
+    display: block !important; 
   }
 
-  body.history-mode .content-panel > * {
-    flex-shrink: 0 !important;
-  }
-
-  body.history-mode .dashboard-shell {
-    margin-bottom: 60px !important; /* Sesuaikan angkanya dengan seleramu */
-  }
-
-  /* 4. Biarkan konten riwayat melar ke bawah secara natural */
+  /* 4. Bebaskan grid bawaan */
   body.history-mode #grid {
     display: block !important;
     height: auto !important;
-    padding-bottom: 150px !important; /* Ruang aman di bawah biar riwayat gak kepotong */
+  }
+
+  /* 5. GANJELAN GAIB: Solusi elegan biar poster bawah gak tenggelam */
+  body.history-mode .content-panel::after {
+    content: "";
+    display: block;
+    height: 80px !important; /* Besaran ruang kosong di bawah, sesuaikan seleramu */
+    width: 100%;
   }
 }

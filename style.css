@@ -6948,10 +6948,9 @@ body.history-mode .dashboard-shell textarea {
   -webkit-user-select: text !important;
 }
 
-/* 🚀 KUNCI 3: SPLIT-SCROLL DESKTOP (Persis seperti Halaman Menu) */
 @media (min-width: 768px) {
   body.history-mode {
-    overflow: hidden !important; /* Kunci layar utama, Sidebar jadi patung */
+    overflow: hidden !important;
   }
 
   body.history-mode .app-body-shell {
@@ -6960,11 +6959,31 @@ body.history-mode .dashboard-shell textarea {
     overflow: hidden !important;
   }
 
+  /* Content-panel scroll mandiri — sidebar TIDAK ikut scroll */
   body.history-mode .content-panel {
     height: 100% !important;
     min-height: 0 !important;
-    overflow-y: auto !important; /* Hanya kotak kanan/dasbor yang bisa scroll */
+    overflow-y: auto !important;
     overflow-x: hidden !important;
-    display: block !important;
+
+    /* Scrollbar invisible (sama seperti sidebar) */
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  body.history-mode .content-panel::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  /* Pastikan #grid di dalam content-panel mengisi ruang dengan benar */
+  body.history-mode #grid {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16px 14px 32px !important;
+    overflow: visible !important;
+    contain: layout paint;
   }
 }

@@ -3766,7 +3766,7 @@ grid.style.display="grid";
        lastQueryState = currentState;
     }
 
-    const itemsPerPage = window.innerWidth > 768 ? 12 : 10; // Desktop 16, HP 10
+    const itemsPerPage = window.innerWidth > 768 ? 24 : 30; 
     const totalPages = Math.ceil(words.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     

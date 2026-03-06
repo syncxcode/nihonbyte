@@ -765,7 +765,7 @@ grid.style.display="grid";
 
   function isDeveloperRole(profile = null) {
     return String(profile?.role || "").toLowerCase() === "developer";
-    {
+  }
 
   async function tryActivateDeveloperMode() {
     const params = new URLSearchParams(window.location.search);
@@ -1338,6 +1338,39 @@ grid.style.display="grid";
     startTimer();
   }
 
+  // ==========================================
+  // FITUR NERBANGIN SKOR KE FIREBASE CLOUD
+  // ==========================================
+  async function saveScoreToCloud(exerciseType, level, correctCount, totalCount, percentage) {
+    // Kalau user belum login atau main mode offline, cuekin aja (gak usah disimpen)
+    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) {
+      console.log("User belum login, skor cuma tampil di layar.");
+      return;
+    }
+
+    try {
+      const uid = window.currentUser.uid;
+      const timeId = new Date().getTime().toString(); // Bikin ID unik berdasarkan detik ini
+      
+      // Bikin dokumen di folder: users -> [UID USER LU] -> history_latihan -> [Waktu Saat Ini]
+      const scoreRef = window.doc(window.firebaseDb, "users", uid, "history_latihan", timeId);
+
+      // Simpan datanya!
+      await window.setDoc(scoreRef, {
+        kategori: exerciseType,
+        level: level,
+        benar: correctCount,
+        total_soal: totalCount,
+        nilai_persen: percentage,
+        waktu: new Date().toLocaleString("id-ID") // Waktu lokal Indonesia
+      });
+      console.log("✅ Skor berhasil diterbangkan ke Cloud!");
+    } catch (err) {
+      console.error("❌ Waduh, gagal nyimpen skor ke Cloud:", err);
+    }
+  }
+
+  // TIMPA FUNGSI INI FULL DARI ATAS SAMPAI BAWAH DI APP.JS    
   function renderQuiz() {
     if (quizIndex >= currentQuizData.length) {
       endQuiz();

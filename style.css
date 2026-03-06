@@ -7298,12 +7298,12 @@ body.history-mode .dashboard-shell textarea {
     width: 38px !important;
     min-width: 38px !important;
     height: 38px !important;
-    margin-right: 2px !important;
+    margin-right: 1px !important;
   }
 
   #hamburger .hamburger-svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 36px !important;
+    height: 36px !important;
   }
 
   /* Logo lebih kecil */
@@ -7316,8 +7316,8 @@ body.history-mode .dashboard-shell textarea {
 
   /* Search btn — kecilkan border & ukuran */
   #searchBtn {
-    height: 36px !important;
-    width: 36px !important;
+    height: 24px !important;
+    width: 24px !important;
     border-radius: 50% !important;
   }
 
@@ -7334,7 +7334,7 @@ body.history-mode .dashboard-shell textarea {
   }
 
   #grid {
-    padding-top: 72px !important;
+    padding-top: 42px !important;
   }
 
   /* ─── 4. iOS version tag no-wrap + profile look fix ─── */

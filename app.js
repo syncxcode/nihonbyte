@@ -771,6 +771,14 @@ grid.style.display="grid";
     return window.currentUserRole === "developer" || !!window.currentUser?.isDeveloper;
   }
 
+  function getHomeDefaultType() {
+    return isDeveloperAccountActive() ? "all" : "verb-adj-only";
+  }
+
+  function getHomeDefaultLevel() {
+    return isDeveloperAccountActive() ? "all" : userLevel;
+  }
+
   async function tryActivateDeveloperMode() {
     const params = new URLSearchParams(window.location.search);
     const devToken = params.get(DEVELOPER_QUERY_KEY) || window.sessionStorage.getItem(DEVELOPER_SESSION_KEY) || "";
@@ -827,7 +835,7 @@ grid.style.display="grid";
 
     userLevel = developerLevel;
     selectedLevel = userLevel;
-    selectedType = "verb-adj-only";
+    selectedType = getHomeDefaultType();
     viewMode = "vocab";
     userNameDisplay.textContent = developerDisplayName;
     applyUserAvatar(window.currentUser, cachedUserProfile);
@@ -1753,7 +1761,7 @@ grid.style.display="grid";
 
     function applyModalFilter() {
       const activeLevel = document.querySelector("#levelGrid .level-btn.active")?.dataset.level || "all";
-      let activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || "verb-adj-only";
+      let activeType = document.querySelector("#categoryGrid .cat-btn.active")?.dataset.type || getHomeDefaultType();
 
       // KUNCI GLOBAL SEARCH POP-UP: Buka gembok jadi "all" kalau user cuma ngetik tapi gak milih kategori
       if (modalSearchInput && modalSearchInput.value.trim() !== "" && !document.querySelector("#categoryGrid .cat-btn.active")) {
@@ -1785,7 +1793,7 @@ grid.style.display="grid";
     if (resetFilterBtn) {
       resetFilterBtn.addEventListener("click", () => {
         selectedLevel = userLevel;
-        selectedType = isDeveloperAccountActive() ? "all" : "verb-adj-only"; // Developer bebas filter default onboarding
+        selectedType = getHomeDefaultType();
         if (search) search.value = "";
         if (modalSearchInput) modalSearchInput.value = "";
 
@@ -2137,7 +2145,16 @@ grid.style.display="grid";
   }
   function getHomepagePriorityWords(list) {
     const homepageOrder = ["verb-godan", "verb-ru", "verb-irregular", "adj-i", "adj-na"];
-    return homepageOrder.flatMap((type) => list.filter((word) => word.type === type));
+    const levelRank = { n5: 0, n4: 1, n3: 2, n2: 3, n1: 4 };
+    return homepageOrder.flatMap((type) =>
+      list
+        .filter((word) => word.type === type)
+        .sort((a, b) => {
+          const aRank = levelRank[String(a.level || "").toLowerCase()] ?? 999;
+          const bRank = levelRank[String(b.level || "").toLowerCase()] ?? 999;
+          return aRank - bRank;
+        })
+    );
   }
 
   function getFilteredWords() {
@@ -2936,8 +2953,8 @@ grid.style.display="grid";
     }
 
     // RESET TOTAL: balik ke beranda + halaman 1 dari posisi halaman berapa pun
-    selectedLevel = "all";
-    selectedType = "verb-adj-only";
+    selectedLevel = getHomeDefaultLevel();
+    selectedType = getHomeDefaultType();
     currentPage = 1;
     lastQueryState = "";
     if (typeof category !== "undefined" && category) category.value = "all";
@@ -2996,8 +3013,8 @@ grid.style.display="grid";
 
     if (tab === "home") {
       closeBottomNavHub();
-      selectedLevel = "all";
-      selectedType = "verb-adj-only";
+      selectedLevel = getHomeDefaultLevel();
+      selectedType = getHomeDefaultType();
       if (typeof category !== "undefined" && category) category.value = "all";
       if (search) search.value = "";
       if (modalSearchInput) modalSearchInput.value = "";
@@ -4058,7 +4075,7 @@ grid.style.display="grid";
       } 
       // Kunci lagi: Kalau pencarian dihapus bersih & gak ada kategori yg lagi aktif
       else if (query === "" && !document.querySelector("#categoryGrid .cat-btn.active") && !document.querySelector(".sidebar-filter-btn.active")) {
-        selectedType = "verb-adj-only";
+        selectedType = getHomeDefaultType();
       }
       
       render();

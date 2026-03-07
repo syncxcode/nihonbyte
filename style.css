@@ -7489,57 +7489,42 @@ body.history-mode .dashboard-shell textarea {
 
 /* === Mobile fix only (tanpa sentuh desktop): favorit + jarak header + warna pola === */
 @media (max-width: 767px) {
-  /* Semua kartu utama rapat ke header tapi tetap ada napas (tidak nabrak) */
+  /* Semua kartu utama mulai rapat tepat di bawah header */
   #grid,
   #grid.support-mode,
   #grid.pattern-grid-layout,
   #grid.hub-mode {
-    padding-top: calc(var(--topbar-height, 50px) + 6px) !important;
+    padding-top: 0 !important;
   }
 
-  /* Halaman favorit: judul poster kasih jarak aman dari header mobile */
-  .favorit-hub-screen {
-    padding-top: 4px !important;
-  }
-
-  .favorit-hub-header {
-    margin-top: 0 !important;
-  }
-
-  /* Halaman favorit: mini card tetap 3 kolom, lebih kecil, tidak bertumpuk */
+  /* Halaman favorit: 3 mini card pas layar, tanpa horizontal scroll */
   .favorit-card-section {
     overflow-x: hidden !important;
-    padding-bottom: 12px !important;
+    padding-bottom: 10px !important;
   }
 
   .favorit-cards-row {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-    padding: 8px 2px 12px !important;
-  }
-
-  .favorit-mini-card:hover {
-    transform: none !important;
-    box-shadow: none !important;
+    gap: 8px !important;
+    padding: 6px 0 12px !important;
   }
 
   .favorit-mini-inner {
     width: 100% !important;
-    height: 92px !important;
-    border-radius: 12px !important;
-    padding: 10px 6px 8px !important;
+    height: 102px !important;
+    border-radius: 14px !important;
+    padding: 12px 8px 10px !important;
   }
 
   .favorit-mini-kanji {
-    font-size: clamp(16px, 5vw, 22px) !important;
+    font-size: clamp(18px, 5.5vw, 26px) !important;
   }
 
   .favorit-mini-meaning {
-    font-size: 9px !important;
-    line-height: 1.25 !important;
+    font-size: 10px !important;
   }
 
-  /* Kotoba / Aktivitas / Ungkapan: jarak antarkartu lebih rapat seperti acuan pola kalimat */
+  /* Kotoba / Aktivitas / Ungkapan: hilangkan jarak renggang antarkartu */
   .expression-wide-grid {
     margin: 0 !important;
     padding-top: 0 !important;

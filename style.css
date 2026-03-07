@@ -5165,7 +5165,7 @@ body {
   #logged-in-view .logout-floating-btn {
     width: 32px !important;
     height: 32px !important;
-    border-radius: 10px !important;
+    border-radius: 999px !important;
     position: static !important;
     top: auto !important;
     right: auto !important;
@@ -5226,7 +5226,7 @@ body.guest-mode .download-card-btn.guest-restricted {
   }
 
   .header-identity img {
-    margin-left: -6px !important;
+    margin-left: -1px !important;
   }
 }
 
@@ -6178,8 +6178,8 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--menu .bottom-nav-hub__chip,
   .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
     border-color: rgba(100, 116, 139, 0.28);
-    background: rgba(255, 255, 255, 0.9);
-    color: #334155;
+    background: #242526;
+    color: #ffffff;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
@@ -6384,10 +6384,10 @@ body.review-mode-active .bottom-nav {
   #searchBtn,
   .search-icon-btn {
     width: 40px !important;
-    min-width: 40px !important;
+    min-width: 34px !important;
     max-width: 40px !important;
     height: 40px !important;
-    min-height: 40px !important;
+    min-height: 34px !important;
     max-height: 40px !important;
     border-radius: 999px !important;
     padding: 0 !important;
@@ -6521,8 +6521,8 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip,
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(1) .bottom-nav-hub__chip,
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(2) .bottom-nav-hub__chip {
-    background: #ffffff !important;
-    color: #334155 !important;
+    background: #242526 !important;
+    color: #ffffff !important;
     border-color: rgba(100, 116, 139, 0.28) !important;
   }
 
@@ -7339,8 +7339,8 @@ body.history-mode .dashboard-shell textarea {
 
   /* ─── 3. Topbar lebih kecil dan kompak ─── */
   .topbar {
-    min-height: 50px !important;
-    height: 50px !important;
+    min-height: 30px !important;
+    height: 45px !important;
     padding: 0 10px !important;
   }
 
@@ -7353,8 +7353,8 @@ body.history-mode .dashboard-shell textarea {
   }
 
   #hamburger .hamburger-svg {
-    width: 22px !important;
-    height: 22px !important;
+    width: 34px !important;
+    height: 34px !important;
     color: #ffffff !important;
   }
 
@@ -7449,7 +7449,7 @@ body.history-mode .dashboard-shell textarea {
   /* ─── 5. Language switch di sidebar-head tampil di mobile ─── */
   #languageSwitch.sidebar-language-switch {
     display: flex !important;
-    width: 100% !important;
+    width: fit-content !important;
     margin-bottom: 8px !important;
   }
 }
@@ -7511,7 +7511,7 @@ body.history-mode .dashboard-shell textarea {
   /* Profile card warna gelap di atas sidebar terang */
   #logged-in-view {
     background: #242526 !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 1500px !important
     color: #ffffff !important;
   }
 

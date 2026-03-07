@@ -2771,7 +2771,7 @@ body.history-mode #grid {
 .dashboard-cover {
   position: relative;
   min-height: 170px;
-  background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 35%), linear-gradient(135deg, #ff4d6d, #ff8fa3);
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.25), transparent 35%), linear-gradient(135deg, #2f3031 0%, #242526 50%, #1d1e1f 100%);
 }
 
 .dashboard-profile-card {
@@ -3047,7 +3047,7 @@ body.history-mode #grid {
 
 .dashboard-history-item {
   background: #fff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #B5BAC0;
   border-radius: 14px;
   padding: 12px;
   display: grid;

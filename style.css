@@ -7675,3 +7675,106 @@ body.history-mode .dashboard-shell textarea {
         top: 0 !important;
     }
 }
+
+/* =========================================
+   MOBILE LANDSCAPE OVERRIDE
+   (hover:none + pointer:coarse = pasti HP/tablet sentuh)
+========================================= */
+@media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+
+  /* 1. Paksa body tetap scroll normal (bukan overflow:hidden desktop) */
+  html, body {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+  }
+
+  /* 2. Sembunyiin sidebar desktop, tampilkan hamburger */
+  #hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  #overlay {
+    display: block !important;
+  }
+
+  /* 3. Sidebar balik ke mode drawer (slide dari kiri) */
+  #sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100dvh !important;
+    width: min(86vw, 300px) !important;
+    transform: translateX(-100%) !important;
+    z-index: 1300 !important;
+    background: #D3D3D3 !important;
+  }
+
+  #sidebar.active {
+    transform: translateX(0) !important;
+  }
+
+  /* 4. App shell balik ke column (bukan grid kiri-kanan desktop) */
+  .app-body-shell {
+    display: block !important;
+    margin-top: var(--topbar-height) !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 5. Topbar full width */
+  .topbar {
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  .topbar .branding {
+    display: block !important;
+  }
+
+  /* 6. Grid: 4 kolom di landscape */
+  #grid {
+    position: relative !important;
+    top: auto !important; left: auto !important;
+    right: auto !important; bottom: auto !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-top: 8px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow: visible !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  /* 7. Content panel balik normal */
+  .content-panel {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    border-left: none !important;
+  }
+
+  /* 8. Pagination & footer balik static */
+  .pagination-container {
+    position: static !important;
+    left: auto !important; right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    margin: 0 0 calc(var(--bottom-nav-height) + 10px) !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  /* 9. Bottom nav tetap muncul di landscape */
+  .bottom-nav {
+    display: flex !important;
+  }
+
+  /* 10. Topbar heading greeting hide di landscape (hemat ruang) */
+  #header-greeting {
+    display: none !important;
+  }
+}

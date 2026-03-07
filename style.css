@@ -7707,9 +7707,10 @@ body.history-mode .dashboard-shell textarea {
     left: 0 !important;
     height: 100dvh !important;
     width: min(86vw, 300px) !important;
-    transform: translateX(-100%) !important;
+    transform: translateX(-100%) !important; /* PAKSA TUTUP */
     z-index: 1300 !important;
     background: #D3D3D3 !important;
+    transition: transform 0.35s ease-in-out !important;
   }
 
   #sidebar.active {
@@ -7723,6 +7724,10 @@ body.history-mode .dashboard-shell textarea {
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
+  }
+
+  .app-body-shell {
+    grid-template-columns: none !important; 
   }
 
   /* 5. Topbar full width */
@@ -7771,10 +7776,15 @@ body.history-mode .dashboard-shell textarea {
   /* 9. Bottom nav tetap muncul di landscape */
   .bottom-nav {
     display: flex !important;
+    z-index: 1005 !important;
   }
 
   /* 10. Topbar heading greeting hide di landscape (hemat ruang) */
   #header-greeting {
     display: none !important;
+  }
+  
+  body:not(.training-session):not(.review-mode-active) .content-panel {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 18px) !important;
   }
 }

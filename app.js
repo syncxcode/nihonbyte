@@ -66,21 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let savedScrollPosition = 0;
 
   const DESKTOP_LAYOUT_QUERY = "(min-width: 768px)";
-  const MOBILE_HANDHELD_UA_REGEX = /iPhone|iPod|Android.+Mobile/i;
-
-  function isMobileHandheldDevice() {
-    const userAgent = navigator.userAgent || "";
-    const isTouchCapable = navigator.maxTouchPoints > 0;
-    return MOBILE_HANDHELD_UA_REGEX.test(userAgent) && isTouchCapable;
-  }
-
-  function updateMobileViewportClasses() {
-    const isHandheld = isMobileHandheldDevice();
-    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-
-    document.documentElement.classList.toggle("mobile-handheld", isHandheld);
-    document.documentElement.classList.toggle("mobile-handheld-landscape", isHandheld && isLandscape);
-  }
 
   const FLAG_SVG = {
     id: '<defs><clipPath id="flagCircleId"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleId)"><rect x="8" y="8" width="48" height="24" fill="#e11d48"/><rect x="8" y="32" width="48" height="24" fill="#ffffff"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/>',
@@ -235,7 +220,6 @@ grid.style.display="grid";
   }
 
   function isDesktopLayout() {
-    if (isMobileHandheldDevice()) return false;
     return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
   }
 
@@ -4121,12 +4105,11 @@ grid.style.display="grid";
     });
   }
   window.addEventListener("resize", () => {
-    updateMobileViewportClasses();
     syncMobileTopbarLayout();
     applyResponsiveSidebarLayout();
     if (duoNavInitialized) renderDuoSidebarNav();
     if (viewMode.startsWith("patterns:")) {
-      grid.style.setProperty("grid-template-columns", isDesktopLayout() ? "repeat(2, minmax(0, 1fr))" : "1fr", "important");
+      grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
   });
   if (document.documentElement.classList.contains('ios-device')) {
@@ -4140,7 +4123,6 @@ grid.style.display="grid";
     document.documentElement.style.overflow = '';
   }
 
-  updateMobileViewportClasses();
   applyResponsiveSidebarLayout();
   setupDuoSidebarNav();
   

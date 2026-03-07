@@ -1733,7 +1733,7 @@ body.training-session #resultInfo {
 /* Responsif HP */
 @media (max-width: 900px) {
   #grid.quiz-active-mode {
-    padding: 10px 12px 14px !important;
+    padding: 52px 12px 14px !important;
     justify-content: flex-start !important;
     align-items: flex-start !important;
     overflow-y: auto !important;
@@ -1867,7 +1867,7 @@ body.review-mode-active #hamburger {
     #grid.review-active-mode {
         justify-content: flex-start !important;
         align-items: flex-start !important;
-        padding: 86px 12px 12px !important;
+        padding: 52px 12px 12px !important;
     }
 
     .review-wrapper {

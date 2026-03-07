@@ -1792,7 +1792,7 @@ body.training-session #resultInfo {
 .review-wrapper {
     width: 95% !important;
     max-width: 1200px !important; 
-    height: calc(100vh - 130px) !important; /* KUNCI: Kurangi tinggi biar gak nembus taskbar */
+    height: calc(100vh - 120px) !important; /* KUNCI: Kurangi tinggi biar gak nembus taskbar */
     margin: 0 auto !important; 
     background: #ffffff;
     border-radius: 16px;
@@ -5927,7 +5927,7 @@ body.review-mode-active .bottom-nav {
 
 @media (max-width: 767px) {
   :root {
-    --topbar-height: 50px;
+    --topbar-height: 20px;
     --bottom-nav-height: 62px;
   }
 

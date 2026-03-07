@@ -1168,7 +1168,7 @@ grid.style.display="grid";
 
   function startExercise(mainType, section, level) {
     if (!isLoggedInUser()) {
-      openInfoModal("<h3>Mode Latihan Wajib Login 🔒</h3><p>Silakan masuk dengan Google dulu untuk membuka fitur latihan.</p>");
+      openInfoModal("<h3>Mode Latihan Wajib Login 🔒</h3><p>Silakan masuk dengan Google atau Email dulu untuk membuka fitur latihan.</p>");
       return;
     }
     const sectionKey = section || (mainType === "bunpou" ? "bunpou-form" : "goi-kanji-reading");
@@ -2708,7 +2708,7 @@ grid.style.display="grid";
   document.querySelectorAll(".sidebar-filter-btn").forEach((button) => {
     button.addEventListener("click", () => {
       if (accessMode === "guest") {
-        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Filter kategori sidebar khusus pengguna login Google.</p>");
+        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Filter kategori sidebar khusus pengguna yang sudah login.</p>");
         return;
       }
       viewMode = "vocab";
@@ -3233,7 +3233,7 @@ grid.style.display="grid";
         <section class="bottom-nav-hub__screen bottom-nav-hub__screen--practice" aria-label="Latihan cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Latihan</h2>
-            <p>Pilih level JLPT. N5–N4 aktif; N3–N1 masih coming soon.</p>
+            <p>Halaman ini berisi pilihan latihan JLPT per kategori agar kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
           </header>
           <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">
@@ -3474,7 +3474,7 @@ grid.style.display="grid";
 
   function ensureLoginForMenu() {
     if (accessMode === "guest") {
-      openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu ini hanya terbuka untuk pengguna login Google.</p>");
+      openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu ini hanya terbuka untuk pengguna login, Silakan Masuk Dengan Google atau Email.</p>");
       return false;
     }
     return true;

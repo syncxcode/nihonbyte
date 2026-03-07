@@ -7550,18 +7550,18 @@ body.history-mode .dashboard-shell textarea {
   #grid.pattern-grid-layout,
   #grid.hub-mode,
   .expression-wide-grid {
-    padding-top: calc(var(--topbar-height) + 16px) !important;
+    padding-top: calc(var(--topbar-height) + 1px) !important;
   }
 
   /* Beri jarak juga untuk poster title favorit */
   .favorit-hub-header {
-    margin-top: 4px !important;
+    margin-top: 1px !important;
     margin-bottom: 16px !important;
   }
 
   /* Jarak antar kartu Ungkapan & Aktivitas */
   .expression-wide-grid {
-    gap: 10px !important;
+    gap: 1px !important;
   }
 
   /* 2. Perbaikan Kartu Mini Favorit (Native 3 Kolom & Anti Tumpuk) */

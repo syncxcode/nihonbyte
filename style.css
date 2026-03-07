@@ -7264,28 +7264,37 @@ body.history-mode .dashboard-shell textarea {
 }
 
 .menu-hub-screen .menu-hub-section-card.favorit-card-section {
-    width: 100%;
-    max-width: none;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
   .favorit-cards-row {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    width: 100%;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .favorit-mini-card {
-    width: 100%;
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   .favorit-mini-inner {
-    width: auto !important;
-    height: 100px;
-    padding: 10px 8px;
+    width: 100% !important;
+    height: 90px !important;
+    padding: 8px 6px !important;
+    box-sizing: border-box !important;
   }
 
   .favorit-mini-kanji {
-    font-size: clamp(18px, 2vw, 24px);
+    font-size: 18px !important;
+  }
+
+  .favorit-mini-meaning {
+    font-size: 10px !important;
   }
 
 @media (max-width: 480px) {

@@ -7263,20 +7263,26 @@ body.history-mode .dashboard-shell textarea {
   background: rgba(255,77,109,0.35);
 }
 
-/* Desktop only: poster mini favorit full-width seperti header favorit,
-   tetap 6 kartu per baris, spacing disesuaikan tanpa ubah efek lain */
-@media (min-width: 768px) {
-  .menu-hub-screen .menu-hub-section-card.favorit-card-section {
+.menu-hub-screen .menu-hub-section-card.favorit-card-section {
     width: 100%;
     max-width: none;
   }
 
   .favorit-cards-row {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
     width: 100%;
-    grid-template-columns: repeat(6, minmax(118px, 132px));
-    justify-content: space-between;
   }
-}
+
+  .favorit-mini-inner {
+    width: 100%;
+    height: 100px;
+    padding: 10px 8px;
+  }
+
+  .favorit-mini-kanji {
+    font-size: clamp(18px, 2vw, 24px);
+  }
 
 @media (max-width: 480px) {
   .favorit-mini-inner { width: 100px; height: 115px; }
@@ -7330,7 +7336,7 @@ body.history-mode .dashboard-shell textarea {
     width: 42px !important;
     min-width: 42px !important;
     height: 42px !important;
-    margin-right: 2px !important;
+    margin-right: 1px !important;
   }
 
   #hamburger .hamburger-svg {

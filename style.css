@@ -1573,6 +1573,14 @@ nested-latihan-list {
   overflow: hidden !important;
 }
 
+@media (max-width: 768px) {
+  body.training-session #grid.quiz-active-mode {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+    min-height: calc(100dvh - 50px) !important;
+  }
+}
+
 .quiz-wrapper-pro {
   position: relative;
   max-width: 1000px !important; /* Dikecilin dikit dari 1200px biar proporsinya manis */

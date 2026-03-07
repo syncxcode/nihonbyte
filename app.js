@@ -2098,13 +2098,13 @@ grid.style.display="grid";
       return;
     }
 
-    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    // 🚀 MANTRA JATAH KARTU (Desktop: 12, HP: 10)
     const currentState = "ekspresi-poster";
     if (lastQueryState !== currentState) {
       currentPage = 1;
       lastQueryState = currentState;
     }
-    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const itemsPerPage = window.innerWidth > 768 ? 12 : 10;
     const totalPages = Math.ceil(expressions.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     
@@ -2161,13 +2161,13 @@ grid.style.display="grid";
       return;
     }
     
-    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    // 🚀 MANTRA JATAH KARTU (Desktop: 12, HP: 10)
     const currentState = "activity-poster";
     if (lastQueryState !== currentState) {
       currentPage = 1;
       lastQueryState = currentState;
     }
-    const itemsPerPage = window.innerWidth > 768 ? 6 : 4;
+    const itemsPerPage = window.innerWidth > 768 ? 12 : 10;
     const totalPages = Math.ceil(activities.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     
@@ -2438,13 +2438,13 @@ grid.style.display="grid";
       return;
     }
 
-    // 🚀 MANTRA JATAH KARTU (Desktop: 6, HP: 4)
+    // 🚀 MANTRA JATAH KARTU (Desktop: 12, HP: 10)
     const currentState = `pattern-${level}`;
     if (lastQueryState !== currentState) {
       currentPage = 1;
       lastQueryState = currentState;
     }
-    const itemsPerPage = window.innerWidth >= 768 ? 6 : 4;
+    const itemsPerPage = window.innerWidth >= 768 ? 12 : 10;
     const totalPages = Math.ceil(patterns.length / itemsPerPage);
     if (currentPage > totalPages) currentPage = totalPages || 1;
     

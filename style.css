@@ -7550,7 +7550,7 @@ body.history-mode .dashboard-shell textarea {
   #grid.support-mode,
   #grid.pattern-grid-layout,
   #grid.hub-mode {
-    padding-top: 5px !important; 
+    padding-top: 10px !important; 
     margin-top: 0 !important;
   }
 
@@ -7564,7 +7564,7 @@ body.history-mode .dashboard-shell textarea {
   /* 3. Poster & Jarak Halaman Favorit */
   .favorit-hub-header {
     margin-top: 0 !important; 
-    margin-bottom: 5px !important;
+    margin-bottom: 10px !important;
   }
 
   /* 4. Kartu Mini Favorit (Tetap 3 Kolom Native & Rapi) */

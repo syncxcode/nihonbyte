@@ -1928,7 +1928,7 @@ grid.style.display="grid";
   function openInfoModal(message) {
     expandedCard.innerHTML = `<div class="info-poster">${message}</div>`;
     modalSubtitle.style.display = "none";
-    recommendationRow.style.display = "none";
+    recommendationRow.style.setProperty("display", "none", "important");
     recommendationRow.innerHTML = "";
     kanjiModal.classList.add("active");
     kanjiModal.setAttribute("aria-hidden", "false");

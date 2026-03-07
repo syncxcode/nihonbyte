@@ -1732,7 +1732,12 @@ body.training-session #resultInfo {
 
 /* Responsif HP */
 @media (max-width: 900px) {
-  #grid.quiz-active-mode { padding: 12px !important; }
+  #grid.quiz-active-mode {
+    padding: 10px 12px 14px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+  }
   .quiz-wrapper-pro {
     height: auto !important; 
     max-height: calc(100dvh - 90px) !important;
@@ -1755,13 +1760,13 @@ body.training-session #resultInfo {
     font-size: 1rem !important;
   }
   #finishBtnManual {
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    right: 14px;
     padding: 6px 14px;
     font-size: 0.75rem;
   }
   .quiz-section-title {
-    padding-top: 18px;
+    padding-top: 34px;
   }
 }
 
@@ -1859,10 +1864,16 @@ body.review-mode-active #hamburger {
 
 /* RESPONSIF HP (Mobile) - Jadi Atas Bawah */
 @media (max-width: 768px) {
+    #grid.review-active-mode {
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        padding: 86px 12px 12px !important;
+    }
+
     .review-wrapper {
         width: 100%;
-        height: 100vh;
-        border-radius: 0;
+        height: calc(100dvh - 98px);
+        border-radius: 18px;
         margin: 0;
     }
     

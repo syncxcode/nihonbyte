@@ -7663,3 +7663,15 @@ body.history-mode .dashboard-shell textarea {
     line-height: 1.25 !important;
   }
 }
+
+@media (max-width: 768px) {
+    .review-wrapper {
+        width: 90% !important;
+        max-width: 90% !important;
+        margin: 10px auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        position: relative !important;
+        top: 0 !important;
+    }
+}

@@ -5356,12 +5356,6 @@ body.guest-mode .download-card-btn.guest-restricted {
     bottom: 6px !important;
     margin: 0 !important;
   }
-
-  /* 2. FIX POLA KALIMAT N5-N1 (MEPET HEADER) */
-  body #grid.pattern-grid-layout {
-    padding-top: 19px !important; 
-    margin-top: 0 !important;
-  }
 }
 
 .language-switch {
@@ -6162,11 +6156,13 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--menu .bottom-nav-hub__header {
     background: #ffffff !important;
     border-color: rgba(236, 72, 153, 0.24);
+    margin-top: 40px !important;
   }
 
   .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
     background: linear-gradient(140deg, #eff6ff, #e0e7ff);
     border-color: rgba(59, 130, 246, 0.25);
+    margin-top: 40px !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 1) {
@@ -7603,8 +7599,7 @@ body.history-mode .dashboard-shell textarea {
   #grid.support-mode,
   #grid.pattern-grid-layout,
   #grid.hub-mode {
-    padding-top: 20px !important; 
-    margin-top: 0 !important;
+    margin-top: 40px !important;
   }
 
   /* 2. Kartu Ungkapan Umum & Aktivitas */

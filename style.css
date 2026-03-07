@@ -1576,7 +1576,7 @@ nested-latihan-list {
 @media (max-width: 768px) {
   body.training-session #grid.quiz-active-mode {
     margin-top: 0 !important;
-    padding-top: calc(var(--topbar-height) + 8px) !important;
+    padding-top: calc(var(--topbar-height) + 20px) !important;
     min-height: calc(100dvh - var(--topbar-height)) !important;
   }
 }
@@ -1875,7 +1875,7 @@ body.review-mode-active #hamburger {
     #grid.review-active-mode {
         justify-content: flex-start !important;
         align-items: flex-start !important;
-        padding: 52px 12px 12px !important;
+        padding: 50px 0px 0px !important;
     }
 
     .review-wrapper {

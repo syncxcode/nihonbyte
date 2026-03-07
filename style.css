@@ -7544,29 +7544,32 @@ body.history-mode .dashboard-shell textarea {
       0 8px 20px rgba(0,0,0,0.38) !important;
   }
 
+  /* 1. KUNCI UTAMA: Potong habis padding dobel!
+     (Karena sistem udah ngedorong 50px, kita cuma butuh 10px biar pas) */
   #grid,
   #grid.support-mode,
   #grid.pattern-grid-layout,
   #grid.hub-mode {
-    padding-top: 68px !important; 
+    padding-top: 10px !important; 
+    margin-top: 0 !important;
   }
 
-  /* 2. KARTU UNGKAPAN UMUM & AKTIVITAS BIAR GAK DEMPET */
+  /* 2. Kartu Ungkapan Umum & Aktivitas */
   .expression-wide-grid {
-    padding-top: 0 !important; /* Hapus padding dobel biar gak kejauhan */
-    gap: 14px !important; /* Memberi jarak antar kartu atas-bawah biar gak nyentuh */
-    padding-bottom: 16px !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    gap: 12px !important; /* Jarak antar kartunya aja biar gak nempel */
   }
 
-  /* 3. Poster Title Favorit */
+  /* 3. Poster & Jarak Halaman Favorit */
   .favorit-hub-header {
-    margin-top: 0 !important; /* Biar gak makin turun dari header */
-    margin-bottom: 16px !important;
+    margin-top: 0 !important; 
+    margin-bottom: 12px !important;
   }
 
-  /* 4. KARTU MINI FAVORIT (Native 3 Kolom & Gak Nempel) */
+  /* 4. Kartu Mini Favorit (Tetap 3 Kolom Native & Rapi) */
   .favorit-card-section {
-    padding: 0 12px 20px !important;
+    padding: 0 10px 16px !important;
     overflow-x: hidden !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -7574,8 +7577,8 @@ body.history-mode .dashboard-shell textarea {
 
   .favorit-cards-row {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important; /* Pasti rata bagi 3 */
-    gap: 12px !important; /* Jarak antar kartu favorit biar gak nyentuh */
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
     padding: 0 !important; 
     width: 100% !important;
   }
@@ -7588,7 +7591,7 @@ body.history-mode .dashboard-shell textarea {
 
   .favorit-mini-inner {
     width: 100% !important;
-    height: 100px !important; 
+    height: 105px !important; /* Dikecilin biar gak tumpuk */
     border-radius: 12px !important;
     padding: 10px 4px !important; 
     box-sizing: border-box !important;
@@ -7597,10 +7600,10 @@ body.history-mode .dashboard-shell textarea {
     justify-content: center !important;
   }
 
-  /* Perkecil teks di kartu favorit sedikit biar pas di kotak */
+  /* Perkecil teks kartu mini favorit */
   .favorit-mini-kanji {
     font-size: clamp(16px, 4.5vw, 22px) !important; 
-    margin-bottom: 4px !important;
+    margin-bottom: 2px !important;
     line-height: 1.1 !important;
   }
 

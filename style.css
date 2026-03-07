@@ -7145,7 +7145,7 @@ body.history-mode .dashboard-shell textarea {
 /* Row kartu favorit — 3 kolom grid */
 .favorit-cards-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 12px;
   padding: 8px 4px 16px;
 }
@@ -7550,7 +7550,7 @@ body.history-mode .dashboard-shell textarea {
   #grid.support-mode,
   #grid.pattern-grid-layout,
   #grid.hub-mode {
-    padding-top: 10px !important; 
+    padding-top: 20px !important; 
     margin-top: 0 !important;
   }
 
@@ -7564,7 +7564,7 @@ body.history-mode .dashboard-shell textarea {
   /* 3. Poster & Jarak Halaman Favorit */
   .favorit-hub-header {
     margin-top: 0 !important; 
-    margin-bottom: 10px !important;
+    margin-bottom: 5px !important;
   }
 
   /* 4. Kartu Mini Favorit (Tetap 3 Kolom Native & Rapi) */

@@ -7569,12 +7569,16 @@ body.history-mode .dashboard-shell textarea {
 
   /* 4. Kartu Mini Favorit (Tetap 3 Kolom Native & Rapi) */
   .favorit-card-section {
-    padding: 0 10px 16px !important;
-    overflow-x: hidden !important;
+    background: #ffffff !important; 
+    border-radius: 20px !important; 
+    padding: 16px 12px 20px !important; 
+    margin-bottom: 20px !important; 
+    overflow: hidden !important; 
     width: 100% !important;
     box-sizing: border-box !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06) !important; 
   }
-
+  
   .favorit-cards-row {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -7591,8 +7595,8 @@ body.history-mode .dashboard-shell textarea {
 
   .favorit-mini-inner {
     width: 100% !important;
-    height: 105px !important; /* Dikecilin biar gak tumpuk */
-    border-radius: 12px !important;
+    height: 105px !important; 
+    border-radius: 14px !important; 
     padding: 10px 4px !important; 
     box-sizing: border-box !important;
     display: flex !important;
@@ -7600,7 +7604,6 @@ body.history-mode .dashboard-shell textarea {
     justify-content: center !important;
   }
 
-  /* Perkecil teks kartu mini favorit */
   .favorit-mini-kanji {
     font-size: clamp(16px, 4.5vw, 22px) !important; 
     margin-bottom: 2px !important;

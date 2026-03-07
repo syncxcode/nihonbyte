@@ -7543,4 +7543,66 @@ body.history-mode .dashboard-shell textarea {
       inset 0 1px 0 rgba(255,255,255,0.07),
       0 8px 20px rgba(0,0,0,0.38) !important;
   }
+
+  /* 1. Berikan nafas dari header untuk Kanji Utama, Aktivitas, Ungkapan & Poster */
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  #grid.hub-mode,
+  .expression-wide-grid {
+    padding-top: calc(var(--topbar-height) + 16px) !important;
+  }
+
+  /* Beri jarak juga untuk poster title favorit */
+  .favorit-hub-header {
+    margin-top: 4px !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Jarak antar kartu Ungkapan & Aktivitas */
+  .expression-wide-grid {
+    gap: 10px !important;
+  }
+
+  /* 2. Perbaikan Kartu Mini Favorit (Native 3 Kolom & Anti Tumpuk) */
+  .favorit-card-section {
+    padding: 0 2px 16px !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .favorit-cards-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* Paksa 3 kolom presisi */
+    gap: 10px !important; /* Jarak antar kartu mini */
+    padding: 4px 0 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .favorit-mini-card {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .favorit-mini-inner {
+    width: 100% !important;
+    height: 96px !important; /* Tinggi disesuaikan agar proporsional */
+    border-radius: 12px !important;
+    padding: 10px 4px !important; /* Padding dalam dikurangi agar konten muat */
+    box-sizing: border-box !important;
+  }
+
+  /* Perkecil teks di kartu mini agar tidak keluar kotak */
+  .favorit-mini-kanji {
+    font-size: clamp(16px, 4.5vw, 22px) !important; 
+    margin-bottom: 4px !important;
+  }
+
+  .favorit-mini-meaning {
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+    padding: 0 2px !important;
+  }
 }

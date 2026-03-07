@@ -5895,7 +5895,7 @@ body.review-mode-active .bottom-nav {
   gap: 10px;
   padding: 10px 12px;
   border-color: rgba(255,255,255,0.24);
-  background: rgba(255,255,255,0.14);
+  background: #242526 !important;
   color: #fff;
   font-weight: 700;
 }
@@ -7511,7 +7511,7 @@ body.history-mode .dashboard-shell textarea {
   /* Profile card warna gelap di atas sidebar terang */
   #logged-in-view {
     background: #242526 !important;
-    border-radius: 1500px !important
+    border-radius: 999px !important;
     color: #ffffff !important;
   }
 

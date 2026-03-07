@@ -7677,154 +7677,449 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =========================================
-   MOBILE LANDSCAPE OVERRIDE
-   (hover:none + pointer:coarse = pasti HP/tablet sentuh)
-========================================= */
+   🔥 LANDSCAPE MOBILE FIX (STRONGEST PRIORITY)
+   Rule ini HARUS di-paste PALING BAWAH CSS!
+   ========================================= */
+
+/* ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+   ┃ LANDSCAPE MOBILE: TETAP MOBILE, BUKAN DESKTOP
+   ┃ - 4 kolom card (bukan 3)
+   ┃ - Sidebar drawer (bukan fixed kiri)
+   ┃ - Hamburger + overlay visible
+   ┃ - Bottom nav tetap ada
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
 @media (hover: none) and (pointer: coarse) and (orientation: landscape) {
 
-  /* 1. Paksa body tetap scroll normal (bukan overflow:hidden desktop) */
+  /* 🚀 LEVEL 0: Reset global — override semua rule desktop */
   html, body {
     overflow-y: auto !important;
     overflow-x: hidden !important;
     height: auto !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
   }
 
-  /* 2. Sembunyiin sidebar desktop, tampilkan hamburger */
-  #hamburger {
-    display: inline-flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  #overlay {
-    display: block !important;
-  }
-
-  /* 3. Sidebar balik ke mode drawer (slide dari kiri) */
+  /* 🚀 LEVEL 1: Sidebar WAJIB drawer, BUKAN fixed desktop */
   #sidebar {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     height: 100dvh !important;
-    width: min(86vw, 300px) !important;
-    transform: translateX(-100%) !important; /* PAKSA TUTUP */
+    width: min(85vw, 300px) !important;
+    
+    /* 🔑 TRANSFORM PAKSA TUTUP */
+    transform: translateX(-100%) !important;
+    transition: transform 0.35s ease-in-out !important;
+    
     z-index: 1300 !important;
     background: #D3D3D3 !important;
-    transition: transform 0.35s ease-in-out !important;
+    border-radius: 0 20px 20px 0 !important;
+    
+    /* Anti-desktop padding */
+    padding: 16px 12px 120px 12px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    
+    /* Buang rule desktop */
+    width: auto !important;
   }
 
+  /* Buka sidebar saat active */
   #sidebar.active {
     transform: translateX(0) !important;
   }
 
-  /* 4. App shell balik ke column (bukan grid kiri-kanan desktop) */
+  /* 🚀 LEVEL 2: Hamburger & overlay WAJIB visible */
+  #hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 42px !important;
+    height: 42px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    z-index: 1200 !important;
+  }
+
+  #hamburger .hamburger-svg {
+    width: 28px !important;
+    height: 28px !important;
+    display: block !important;
+    color: #ffffff !important;
+  }
+
+  #overlay {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.35s ease-in-out !important;
+    z-index: 999 !important;
+    pointer-events: none !important;
+  }
+
+  #overlay.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  /* 🚀 LEVEL 3: App shell balik jadi BLOCK (bukan grid desktop) */
   .app-body-shell {
     display: block !important;
-    margin-top: var(--topbar-height) !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
     height: auto !important;
     min-height: auto !important;
-    overflow: visible !important;
   }
 
-  .app-body-shell {
-    grid-template-columns: none !important; 
-  }
-
-  /* 5. Topbar full width */
-  .topbar {
-    left: 0 !important;
-    width: 100% !important;
-  }
-
-  .topbar .branding {
-    display: block !important;
-  }
-
-  /* 6. Grid: 4 kolom di landscape */
-  #grid {
-    position: relative !important;
-    top: auto !important; left: auto !important;
-    right: auto !important; bottom: auto !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    padding-top: 8px !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    overflow: visible !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-
-  /* 7. Content panel balik normal */
+  /* Content panel buang border-left & min-height desktop */
   .content-panel {
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
     border-left: none !important;
+    margin-left: 0 !important;
   }
 
-  /* 8. Pagination & footer balik static */
+  /* 🚀 LEVEL 4: Topbar FULL WIDTH mobile (bukan left offset desktop) */
+  .topbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1100 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 8px 10px !important;
+    box-sizing: border-box !important;
+    
+    /* Buang rule desktop */
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+  }
+
+  /* Branding tampil mobile */
+  .topbar .branding {
+    display: block !important;
+    order: 2 !important;
+    margin: 0 2px 0 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .topbar .branding img {
+    height: 36px !important;
+  }
+
+  /* 🚀 LEVEL 5: Grid MOBILE LANDSCAPE (4 kolom, bukan desktop grid) */
+  #grid {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    
+    width: 100% !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    
+    padding-top: 8px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: calc(var(--bottom-nav-height, 66px) + 10px) !important;
+    
+    /* 🔑 4 KOLOM DI LANDSCAPE */
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    
+    overflow: visible !important;
+    box-sizing: border-box !important;
+    
+    /* Buang rule desktop auto-fill */
+    grid-auto-flow: none !important;
+  }
+
+  /* 🚀 LEVEL 6: Pagination & footer balik STATIC (bukan fixed desktop) */
   .pagination-container {
     position: static !important;
-    left: auto !important; right: auto !important;
+    left: auto !important;
+    right: auto !important;
     bottom: auto !important;
     width: 100% !important;
-    margin: 0 0 calc(var(--bottom-nav-height) + 10px) !important;
+    margin: 0 0 10px 0 !important;
     background: transparent !important;
     backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 8px 10px !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    z-index: auto !important;
   }
 
-  /* 9. Bottom nav tetap muncul di landscape */
+  /* Footer tetap tampil di landscape mobile */
+  .app-footer {
+    display: flex !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    z-index: auto !important;
+  }
+
+  /* 🚀 LEVEL 7: Bottom nav TETAP muncul di landscape */
   .bottom-nav {
     display: flex !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     z-index: 1005 !important;
+    width: 100% !important;
+    height: calc(var(--bottom-nav-height, 66px) + env(safe-area-inset-bottom)) !important;
+    padding: 6px 10px calc(6px + env(safe-area-inset-bottom)) !important;
+    box-sizing: border-box !important;
   }
 
-  /* 10. Topbar heading greeting hide di landscape (hemat ruang) */
+  /* 🚀 LEVEL 8: Card & special containers tetap mobile */
+  .card {
+    border: none !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    background-color: transparent !important;
+  }
+
+  .card-image {
+    height: 160px !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  .card-overlay {
+    padding: 12px !important;
+  }
+
+  .card-overlay .kanji {
+    font-size: clamp(28px, 5vw, 42px) !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* Pattern & expression grid mobile landscape */
+  .expression-wide-grid {
+    grid-column: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  .pattern-grid-layout {
+    grid-column: none !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    margin: 0 !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Support poster tetap center mobile */
+  #grid.support-mode {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: calc(100dvh - 100px) !important;
+    padding: 10px !important;
+  }
+
+  /* 🚀 LEVEL 9: Recommendation row mobile landscape (horizontal scroll) */
+  #kanjiModal #recommendationRow,
+  #kanjiModal .recommendation-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 12px !important;
+    padding: 5px 0px 15px !important;
+    height: 125px !important;
+  }
+
+  #kanjiModal .recommendation-item {
+    flex: 0 0 calc(50% - 6px) !important;
+    width: calc(50% - 6px) !important;
+    height: 95px !important;
+  }
+
+  /* 🚀 LEVEL 10: Letter poster balik mobile */
+  .letter-poster {
+    grid-column: none !important;
+    width: calc(100% - 20px) !important;
+    margin: 12px auto 18px !important;
+    padding: 16px 12px 20px !important;
+  }
+
+  .letter-grid-desktop,
+  .letter-grid-mobile {
+    gap: 8px !important;
+  }
+
+  /* 🚀 LEVEL 11: Modal & expanded card tetap mobile */
+  .kanji-modal,
+  #kanjiModal {
+    padding: 12px !important;
+  }
+
+  .kanji-modal-content {
+    width: 100% !important;
+    max-width: 90vw !important;
+  }
+
+  .expanded-card .kanji {
+    font-size: clamp(80px, 14vw, 140px) !important;
+  }
+
+  /* 🚀 LEVEL 12: Filter modal mobile */
+  .filter-modal-content {
+    width: 100% !important;
+    max-width: 95vw !important;
+    max-height: 85vh !important;
+  }
+
+  /* 🚀 LEVEL 13: Special modes tetap mobile landscape */
+  body.training-session #grid.quiz-active-mode {
+    margin-top: 0 !important;
+    padding: 16px 10px !important;
+  }
+
+  body.review-mode-active #grid.review-active-mode {
+    padding: 10px !important;
+  }
+
+  .dokkai-wrapper-pro {
+    flex-direction: column !important;
+    max-width: 100% !important;
+    max-height: calc(100dvh - 100px) !important;
+    padding: 12px !important;
+  }
+
+  .dokkai-passage-side {
+    height: 40vh !important;
+    max-height: 40vh !important;
+  }
+
+  /* 🚀 LEVEL 14: Menu & hub screens mobile landscape */
+  .bottom-nav-hub {
+    padding-top: 52px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: calc(var(--bottom-nav-height, 66px) + 10px) !important;
+  }
+
+  .menu-hub-screen {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .menu-hub-screen .menu-panel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)) !important;
+  }
+
+  /* 🚀 LEVEL 15: Dashboard landscape mobile */
+  body.history-mode #grid {
+    padding: 8px 10px calc(var(--bottom-nav-height, 66px) + 10px) !important;
+    align-items: flex-start !important;
+  }
+
+  .dashboard-shell {
+    width: calc(100% - 10px) !important;
+  }
+
+  /* 🚀 OVERRIDE AGGRESSIVE: Buang semua rule desktop yang conflict */
+
+  /* Buang fixed topbar left offset desktop */
+  .topbar[style*="left: var(--sidebar-width)"] {
+    left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Buang fixed grid left offset desktop */
+  #grid[style*="left: var(--sidebar-width)"] {
+    left: auto !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* Buang pagination fixed bottom */
+  .pagination-container[style*="left: var(--sidebar-width)"] {
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    position: static !important;
+  }
+
+  /* Sembunyikan header-greeting di landscape (hemat ruang) */
   #header-greeting {
     display: none !important;
   }
-  
-  html, body {
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    height: auto !important;
-  }
 
-  html body .app-body-shell {
-    display: block !important;
-    grid-template-columns: none !important;
-    height: auto !important;
-  }
-
-  /* KUNCI UTAMA: transform paksa tutup */
-  html body #sidebar {
+  /* 🔑 MANTRA: Anti-desktop cascades */
+  :is(html, body) #sidebar {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     height: 100dvh !important;
-    width: min(86vw, 300px) !important;
+    width: min(85vw, 300px) !important;
     transform: translateX(-100%) !important;
     transition: transform 0.35s ease-in-out !important;
     z-index: 1300 !important;
   }
 
-  html body #sidebar.active {
+  :is(html, body) #sidebar.active {
     transform: translateX(0) !important;
   }
 
-  html body #hamburger {
+  :is(html, body) #hamburger {
     display: inline-flex !important;
     visibility: visible !important;
     opacity: 1 !important;
   }
 
-  html body .content-panel {
+  :is(html, body) .app-body-shell {
+    display: block !important;
+    grid-template-columns: none !important;
+    height: auto !important;
+  }
+
+  :is(html, body) .content-panel {
     height: auto !important;
     overflow: visible !important;
     border-left: none !important;
   }
 
-  html body #grid {
+  :is(html, body) #grid {
     position: relative !important;
     top: auto !important;
     left: auto !important;
@@ -7833,22 +8128,136 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 
-  html body .bottom-nav {
+  :is(html, body) .bottom-nav {
     display: flex !important;
   }
 
-  html body .pagination-container {
+  :is(html, body) .pagination-container {
     position: static !important;
     width: 100% !important;
     background: transparent !important;
-    margin-bottom: calc(var(--bottom-nav-height) + 10px) !important;
+    margin-bottom: calc(var(--bottom-nav-height, 66px) + 10px) !important;
   }
 
-  body .bottom-nav {
+  :is(body) .bottom-nav {
     display: flex !important;
   }
 
-  body:not(.training-session):not(.review-mode-active) .content-panel {
-    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 18px) !important;
+  :is(body:not(.training-session):not(.review-mode-active)) .content-panel {
+    padding-bottom: calc(var(--bottom-nav-height, 66px) + env(safe-area-inset-bottom) + 10px) !important;
+  }
+}
+
+/* =========================================
+   LANDSCAPE MODE: Training & Review
+   (Tetap mobile landscape, jangan jadi desktop)
+========================================= */
+
+@media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+  
+  /* Training mode tetap mobile landscape */
+  body.training-session {
+    overflow: hidden !important;
+    height: auto !important;
+  }
+
+  body.training-session .app-body-shell {
+    display: block !important;
+    height: auto !important;
+  }
+
+  body.training-session #grid.quiz-active-mode {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Review mode tetap mobile landscape */
+  body.review-mode-active #grid.review-active-mode {
+    position: relative !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .review-wrapper {
+    width: 95% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* =========================================
+   LANDSCAPE: Sesuaikan ukuran elemen untuk landscape screen
+========================================= */
+
+@media (hover: none) and (pointer: coarse) and (orientation: landscape) {
+  
+  /* Card lebih kecil sesuai landscape */
+  .card-image {
+    height: 140px !important;
+  }
+
+  .card-overlay .kanji {
+    font-size: clamp(24px, 4.5vw, 36px) !important;
+    margin-bottom: 6px !important;
+  }
+
+  .card-overlay .kana {
+    font-size: 12px !important;
+  }
+
+  .card-overlay .romaji {
+    font-size: 11px !important;
+  }
+
+  .card-overlay .meaning {
+    font-size: 12px !important;
+  }
+
+  /* Recommendation item lebih kecil */
+  #kanjiModal .recommendation-item {
+    height: 85px !important;
+  }
+
+  /* Pattern card lebih compact */
+  .pattern-card {
+    min-height: 140px !important;
+    padding: 12px 10px 36px !important;
+  }
+
+  .pattern-title {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
+  }
+
+  /* Quiz wrapper compact */
+  .quiz-wrapper-pro {
+    padding: 16px !important;
+    gap: 12px !important;
+  }
+
+  .quiz-qcard-pro {
+    min-height: 120px !important;
+    padding: 16px !important;
+  }
+
+  .quiz-question-main {
+    font-size: clamp(1.2rem, 3vw, 1.8rem) !important;
+  }
+
+  /* Dokkai compact landscape */
+  .dokkai-wrapper-pro {
+    padding: 12px !important;
+  }
+
+  .dokkai-passage-content {
+    font-size: 1.1rem !important;
   }
 }

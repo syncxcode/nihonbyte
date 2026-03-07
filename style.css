@@ -6162,7 +6162,7 @@ body.review-mode-active .bottom-nav {
   .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
     background: linear-gradient(140deg, #eff6ff, #e0e7ff);
     border-color: rgba(59, 130, 246, 0.25);
-    margin-top: 40px !important;
+    margin-top: 0px !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(3n + 1) {
@@ -6388,7 +6388,7 @@ body.review-mode-active .bottom-nav {
   }
 
   .dashboard-shell {
-    margin-top: 0px !important;
+    margin-top: -10px !important;
   }
 
   .bottom-nav-hub,

@@ -4270,7 +4270,7 @@ body {
 
 .app-body-shell {
   margin-top: var(--topbar-height);
-  min-height: calc(100vh - var(--topbar-height));
+  min-height: calc(100dvh - var(--topbar-height));
 }
 
 .content-panel {
@@ -4312,27 +4312,23 @@ body {
   }
 
   #sidebar {
-    position: relative !important;
+    position: sticky !important;
     top: 0 !important;
     left: auto !important;
     transform: none !important;
     width: var(--body-sidebar-width) !important;
-    height: auto !important;
-    min-height: 100% !important;
-    max-height: calc(100vh - var(--topbar-height)) !important; /* jangan melampaui viewport */
+    height: calc(100dvh - var(--topbar-height)) !important;
+    min-height: 0 !important;
+    align-self: flex-start !important;
     border-radius: 0 !important;
     z-index: 20 !important;
-    overflow: visible !important;
-    overflow-y: auto !important;  /* sidebar bisa scroll konten panjang */
+    overflow-y: auto !important;
     overflow-x: hidden !important;
-    position: sticky !important;  /* tetap di tempat saat konten kanan di-scroll */
-    top: 0 !important;
-    align-self: flex-start !important;
     background: linear-gradient(180deg, #9f2f56 0%, #7b1a3e 68%, #d3d3d3 100%) !important;
   }
 
   .content-panel {
-    min-height: calc(100vh - var(--topbar-height));
+    min-height: calc(100dvh - var(--topbar-height));
   }
 
   #grid,
@@ -4397,7 +4393,7 @@ body {
 
   #sidebar {
     top: var(--topbar-height) !important;
-    height: calc(100vh - var(--topbar-height)) !important;
+    height: calc(100dvh - var(--topbar-height)) !important;
     z-index: 1000;
   }
 }
@@ -4463,19 +4459,19 @@ body {
   }
 
   .app-body-shell {
-    height: calc(100vh - var(--topbar-height));
-    min-height: calc(100vh - var(--topbar-height));
+    height: calc(100dvh - var(--topbar-height));
+    min-height: calc(100dvh - var(--topbar-height));
     overflow: hidden;
   }
 
   #sidebar {
-    height: 100% !important;
+    height: calc(100dvh - var(--topbar-height)) !important;
     min-height: 0 !important;
     overflow-y: auto !important;
     overflow-x: hidden;
     border-right: 1px solid rgba(255, 255, 255, 0.18);
-    scrollbar-width: none; /* Firefox: scrollbar sidebar tidak terlihat */
-    -ms-overflow-style: none; /* IE/Edge lama */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   #sidebar::-webkit-scrollbar {
@@ -4485,10 +4481,10 @@ body {
 
   .content-panel {
     min-height: 0;
-    height: 100%;
+    height: calc(100dvh - var(--topbar-height));
     overflow-y: auto;
     overflow-x: hidden;
-    border-left: 1px solid rgba(148, 21, 78, 0.24); /* pembatas body vs sidebar */
+    border-left: 1px solid rgba(148, 21, 78, 0.24);
   }
 }
 

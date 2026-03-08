@@ -7814,3 +7814,228 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.74rem !important;
   }
 }
+
+/* =========================================
+   MOBILE LANDSCAPE HOTFIX (PHONE)
+   - lanjut perbaikan compact + layout latihan/support
+========================================= */
+@media (orientation: landscape) and (max-width: 1024px) and (max-height: 600px) {
+  :root {
+    --topbar-height: 64px;
+    --sidebar-width: 224px;
+    --body-sidebar-width: 224px;
+  }
+
+  .topbar {
+    height: var(--topbar-height) !important;
+    min-height: var(--topbar-height) !important;
+    padding: 6px 10px !important;
+  }
+
+  .app-body-shell {
+    margin-top: var(--topbar-height) !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+  }
+
+  #sidebar {
+    width: var(--sidebar-width) !important;
+    padding: 6px 8px 10px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  #grid.history-mode {
+    padding-top: 6px !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+    overflow-y: auto !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    max-height: none !important;
+    align-content: start !important;
+  }
+
+  .content-panel {
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    overflow: auto !important;
+  }
+
+  .sidebar-section-title {
+    margin: 6px 0 8px !important;
+    padding: 3px 10px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .duo-nav-item,
+  .duo-nav-subitem,
+  .duo-nav-support,
+  .menu-btn {
+    min-height: 42px !important;
+    padding: 0.5rem 0.64rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  #resultInfo {
+    max-width: 40vw !important;
+    padding: 4px 10px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .pagination-container {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 1100 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    padding: 4px 0 2px !important;
+    background: #d3d3d3 !important;
+  }
+
+  /* Auth gate compact ekstra (biar tidak tenggelam) */
+  .auth-gate {
+    align-items: flex-start !important;
+    padding: 8px !important;
+    overflow-y: auto !important;
+  }
+
+  .auth-gate-card {
+    width: min(640px, 100%) !important;
+    margin: 4px auto !important;
+    border-radius: 14px !important;
+    padding: 12px 12px 10px !important;
+  }
+
+  .auth-gate-logo {
+    width: 42px !important;
+    height: 42px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .auth-gate-card h1 {
+    margin: 2px 0 6px !important;
+    font-size: clamp(1.08rem, 2.4vw, 1.44rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .auth-gate-subtext {
+    margin-bottom: 8px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .auth-gate-google-btn,
+  .auth-gate-email-btn,
+  .auth-gate-guest-btn,
+  .guest-btn,
+  .email-auth-form button[type="submit"] {
+    min-height: 36px !important;
+    margin-top: 6px !important;
+    padding: 7px 10px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .email-auth-form input {
+    min-height: 34px !important;
+    padding: 7px 9px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* Support page bisa scroll normal */
+  #grid.support-mode {
+    display: block !important;
+    padding: 6px 10px 16px !important;
+    overflow-y: auto !important;
+  }
+
+  .support-poster {
+    min-height: auto !important;
+    margin: 0 auto 10px !important;
+    padding: 14px 12px 16px !important;
+    border-radius: 14px !important;
+  }
+
+  .support-poster h2 {
+    margin: 0 0 8px !important;
+    font-size: clamp(1.2rem, 3vw, 1.6rem) !important;
+  }
+
+  .support-poster p {
+    font-size: 0.86rem !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Latihan mode jangan rusak di landscape */
+  body.training-session {
+    overflow: auto !important;
+    touch-action: auto !important;
+  }
+
+  body.training-session .topbar {
+    min-height: var(--topbar-height) !important;
+  }
+
+  body.training-session #grid.quiz-active-mode {
+    margin-top: 0 !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    padding: calc(var(--topbar-height) + 8px) 10px 8px !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+  }
+
+  .quiz-wrapper-pro {
+    max-height: none !important;
+    min-height: auto !important;
+    padding: 12px !important;
+    gap: 8px !important;
+    border-radius: 14px !important;
+  }
+
+  .quiz-head-pro {
+    padding: 6px 10px !important;
+  }
+
+  .quiz-qcard-pro {
+    min-height: 110px !important;
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .quiz-question-main {
+    font-size: clamp(1.2rem, 3.6vw, 1.8rem) !important;
+    line-height: 1.35 !important;
+  }
+
+  .quiz-options-pro {
+    gap: 8px !important;
+  }
+
+  .quiz-opt-btn-pro {
+    min-height: 40px !important;
+    font-size: 0.92rem !important;
+    padding: 8px 10px !important;
+  }
+
+  #finishBtnManual {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px 10px !important;
+    font-size: 0.68rem !important;
+  }
+
+  #grid.review-active-mode {
+    align-items: flex-start !important;
+    padding: calc(var(--topbar-height) + 8px) 8px 8px !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    overflow-y: auto !important;
+  }
+
+  .review-wrapper {
+    height: auto !important;
+    max-height: none !important;
+    min-height: auto !important;
+  }
+}

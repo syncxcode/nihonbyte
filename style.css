@@ -4519,7 +4519,8 @@ body {
     contain: none !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
-    padding-bottom: 0 !important;
+    /* clearance untuk browser bottom toolbar HP (Chrome ~56px, Firefox ~72px, iOS ~83px) */
+    padding-bottom: max(80px, env(safe-area-inset-bottom, 0px) + 80px) !important;
   }
 
   body:not(.training-session):not(.review-mode-active) #grid {

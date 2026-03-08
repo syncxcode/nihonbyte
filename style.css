@@ -8205,3 +8205,390 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.8rem !important;
   }
 }
+
+
+/* =========================================
+   📱 MOBILE LANDSCAPE — BUG FIX ROUND 2
+   Semua perbaikan dari feedback screenshot:
+   kanji acak, resultInfo, profil, latihan, quiz popup,
+   expand kanji, rekomendasi, poster huruf, foto profil
+========================================= */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  /* ══ 1. KANJI GRID — pastikan seragam & tidak berantakan ══ */
+  #grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    align-content: start !important;
+  }
+
+  .card-image {
+    height: 130px !important;
+    min-height: 0 !important;
+  }
+
+  .card-overlay .kanji {
+    font-size: clamp(1.6rem, 5vw, 2.4rem) !important;
+    margin-bottom: 6px !important;
+    margin-top: -4px !important;
+  }
+
+  .card-overlay .kana {
+    font-size: 0.7rem !important;
+  }
+
+  .card-overlay .romaji {
+    font-size: 0.65rem !important;
+  }
+
+  .card-overlay .meaning {
+    font-size: 0.75rem !important;
+  }
+
+  /* ══ 2. RESULT INFO — center vertikal dalam topbar ══ */
+  #resultInfo {
+    align-self: center !important;
+    margin: 0 6px !important;
+    height: auto !important;
+    line-height: 1 !important;
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+    max-width: calc(100vw - 290px) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  /* ══ 3. PROFIL SIDEBAR — border tidak terpeped logout btn ══ */
+  #logged-in-view {
+    padding: 6px 8px 6px 8px !important;
+    padding-right: 46px !important;
+    min-height: 44px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  .logout-floating-btn {
+    position: absolute !important;
+    top: 50% !important;
+    right: 8px !important;
+    transform: translateY(-50%) !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 8px !important;
+    z-index: 5 !important;
+  }
+
+  /* ══ 4. HALAMAN LATIHAN — hub practice tidak offside ══ */
+  #grid.hub-mode {
+    overflow-y: auto !important;
+    padding: 10px !important;
+  }
+
+  .hub-screen--practice .hub-practice-shell {
+    background: rgba(255,255,255,0.95) !important;
+    border-radius: 16px !important;
+    padding: 12px !important;
+    margin: 0 0 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hub-screen--practice .hub-header--practice {
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .practice-hub-title-pill {
+    font-size: 1.1rem !important;
+  }
+
+  .hub-screen--practice .hub-header--practice p {
+    font-size: 0.78rem !important;
+  }
+
+  .hub-section {
+    margin-top: 8px !important;
+  }
+
+  /* ══ 5. TAMPILAN MULAI LATIHAN (quiz wrapper) — tidak tenggelam ══ */
+  body.training-session .app-body-shell {
+    display: block !important;
+    height: calc(100vh - var(--topbar-height)) !important;
+    overflow: hidden !important;
+  }
+
+  body.training-session .content-panel {
+    height: calc(100vh - var(--topbar-height)) !important;
+    overflow: auto !important;
+    display: block !important;
+  }
+
+  #grid.quiz-active-mode {
+    position: relative !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    overflow-y: auto !important;
+    min-height: auto !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .quiz-wrapper-pro {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    padding: 12px !important;
+    gap: 8px !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+
+  .quiz-qcard-pro {
+    min-height: 70px !important;
+    padding: 10px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .quiz-question-main {
+    font-size: clamp(1rem, 4vw, 1.6rem) !important;
+  }
+
+  .quiz-options-pro {
+    gap: 6px !important;
+    margin-top: 4px !important;
+  }
+
+  .quiz-opt-btn-pro {
+    min-height: 36px !important;
+    font-size: 0.82rem !important;
+    padding: 5px 8px !important;
+  }
+
+  .quiz-head-pro {
+    padding: 5px 12px !important;
+  }
+
+  .quiz-progress-text,
+  .quiz-timer-text {
+    font-size: 0.78rem !important;
+  }
+
+  #finishBtnManual {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 5px 10px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* ══ 6. POPUP NILAI AKHIRI LATIHAN — compact & bisa diklik ══ */
+  /* Result/score popup setelah quiz selesai */
+  body.training-session {
+    touch-action: auto !important; /* izinkan klik di result popup */
+  }
+
+  /* Target semua fixed overlay/modal yang mungkin muncul setelah latihan */
+  .filter-modal,
+  .kanji-modal,
+  #kanjiModal,
+  [class*="result"],
+  [class*="score"],
+  [class*="finish"],
+  [id*="result"],
+  [id*="score"],
+  [id*="finish"] {
+    z-index: 99999 !important;
+  }
+
+  /* Pastikan semua modal/overlay full-screen bisa diklik */
+  .filter-modal.active,
+  .kanji-modal.active,
+  #kanjiModal.active {
+    display: flex !important;
+    pointer-events: auto !important;
+    touch-action: auto !important;
+  }
+
+  /* Popup dengan backdrop gelap (termasuk quiz result) */
+  [style*="position: fixed"][style*="inset"],
+  [style*="position:fixed"][style*="inset"] {
+    pointer-events: auto !important;
+    touch-action: auto !important;
+    z-index: 99999 !important;
+  }
+
+  /* ══ 7. EXPAND KANJI MODAL — compact & tidak oversized ══ */
+  .kanji-modal,
+  #kanjiModal {
+    padding: 8px !important;
+  }
+
+  .kanji-modal-content {
+    width: min(90vw, 420px) !important;
+    max-width: 90vw !important;
+    max-height: calc(100vh - 20px) !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+  }
+
+  #kanjiModal .kanji-modal-content {
+    padding: 10px !important;
+  }
+
+  .card-image.expanded {
+    min-height: 140px !important;
+    padding: 16px !important;
+  }
+
+  .expanded-card .kanji {
+    font-size: clamp(56px, 12vw, 90px) !important;
+    line-height: 0.9 !important;
+  }
+
+  .expanded-card .kana {
+    font-size: clamp(14px, 2.5vw, 18px) !important;
+  }
+
+  .expanded-card .romaji {
+    font-size: clamp(12px, 2vw, 15px) !important;
+  }
+
+  .expanded-card .meaning {
+    font-size: clamp(13px, 2.2vw, 16px) !important;
+  }
+
+  /* ══ 8. REKOMENDASI KANJI — tidak tenggelam ══ */
+  #kanjiModal #recommendationRow,
+  #kanjiModal .recommendation-row {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding: 8px !important;
+    gap: 8px !important;
+    min-height: 72px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .recommendation-item {
+    min-width: 70px !important;
+    padding: 6px 6px 28px !important;
+    border-radius: 10px !important;
+  }
+
+  .rec-kanji {
+    font-size: 20px !important;
+  }
+
+  .rec-kana {
+    font-size: 10px !important;
+  }
+
+  /* ══ 9. POSTER HURUF — tidak offside ══ */
+  .letter-poster {
+    margin: 8px 8px 12px !important;
+    padding: 12px 10px 14px !important;
+    border-radius: 14px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .letter-poster h2 {
+    font-size: 0.95rem !important;
+    margin-bottom: 8px !important;
+    text-align: center !important;
+  }
+
+  .letter-poster-body {
+    overflow-x: auto !important;
+    gap: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .letter-grid-desktop {
+    gap: 5px 6px !important;
+  }
+
+  .letter-grid-mobile {
+    gap: 5px !important;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    height: 32px !important;
+    border-radius: 7px !important;
+    font-size: 0.9rem !important;
+    min-width: 0 !important;
+  }
+
+  .letter-cell {
+    font-size: 1rem !important;
+  }
+
+  .letter-label {
+    font-size: 0.7rem !important;
+  }
+
+  .letter-row {
+    gap: 5px !important;
+    grid-template-columns: 50px repeat(calc(var(--cols, 6) - 1), 1fr) !important;
+  }
+
+  /* ══ 10. FOTO PROFIL USER — tidak nabrak topbar ══ */
+  .dashboard-avatar-wrap {
+    transform: translateY(-30px) !important;
+    margin-bottom: -20px !important;
+    width: 72px !important;
+  }
+
+  .dashboard-avatar-frame {
+    width: 72px !important;
+    height: 72px !important;
+    border: 4px solid #fff !important;
+  }
+
+  .dashboard-cover {
+    min-height: 65px !important;
+  }
+
+  .dashboard-profile-card {
+    padding: 0 12px 12px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .dashboard-profile-card h2 {
+    font-size: 1.1rem !important;
+    margin-top: 0 !important;
+  }
+
+  .dashboard-email {
+    font-size: 0.72rem !important;
+  }
+
+  .dashboard-settings-btn {
+    top: 8px !important;
+    right: 8px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  body.history-mode #grid {
+    padding: 8px !important;
+    overflow-y: auto !important;
+  }
+
+  .dashboard-shell {
+    border-radius: 12px !important;
+    width: 100% !important;
+  }
+
+}

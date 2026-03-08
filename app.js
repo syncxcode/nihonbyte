@@ -1704,7 +1704,22 @@ grid.style.display="grid";
       document.documentElement.style.display = 'none';
       document.documentElement.offsetHeight; // trigger reflow
       document.documentElement.style.display = '';
-    }, 200);
+      // Re-render langsung setelah rotate agar layout portrait/landscape sinkron
+      if (typeof render === 'function') render();
+    }, 300);
+  });
+
+  // Fallback: deteksi orientasi via resize (Android & browser modern)
+  let _lastOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+  window.addEventListener('resize', () => {
+    const _nowOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+    if (_nowOrientation !== _lastOrientation) {
+      _lastOrientation = _nowOrientation;
+      document.body.style.height = window.innerHeight + 'px';
+      setTimeout(() => {
+        if (typeof render === 'function') render();
+      }, 150);
+    }
   });
 
   let selectedLevel = "all";

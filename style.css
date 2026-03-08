@@ -9720,6 +9720,7 @@ body.history-mode .dashboard-shell textarea {
     font-weight: 700 !important;
     box-shadow: none !important;
     border-radius: 999px !important;
+    white-space: nowrap !important;
   }
 
   .reset-filter-btn {
@@ -9763,7 +9764,7 @@ body.history-mode .dashboard-shell textarea {
 
   .filter-modal-content {
     position: fixed !important;
-    top: var(--topbar-height, 52px) !important;
+    top: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
     left: auto !important;
@@ -9771,7 +9772,7 @@ body.history-mode .dashboard-shell textarea {
     max-width: 480px !important;
     max-height: none !important;
     height: auto !important;
-    border-radius: 0 !important;
+    border-radius: 0 0 0 16px !important;
     background: #D3D3D3 !important;
     box-shadow: -10px 0 40px rgba(0,0,0,0.25) !important;
     transform: translateX(100%) !important;
@@ -9953,6 +9954,7 @@ body.history-mode .dashboard-shell textarea {
     font-weight: 700 !important;
     box-shadow: none !important;
     border-radius: 999px !important;
+    white-space: nowrap !important;
   }
 
   .reset-filter-btn {

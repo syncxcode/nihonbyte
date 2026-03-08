@@ -9352,7 +9352,7 @@ body.history-mode .dashboard-shell textarea {
     margin: 12px auto 8px !important;
     padding: 11px 16px !important;
     font-size: 0.88rem !important;
-    border: 1.5px solid #d1cfc8 !important;
+    border: 1.5px solid #242526 !important;
     border-radius: 999px !important;
     background: #ffffff !important;
     color: #1f2937 !important;
@@ -9394,7 +9394,7 @@ body.history-mode .dashboard-shell textarea {
     border-radius: 999px !important;
     font-size: 0.8rem !important;
     font-weight: 700 !important;
-    border: 1.5px solid #d1cfc8 !important;
+    border: 1.5px solid #242526 !important;
     background: #D3D3D3 !important;
     color: #1f2937 !important;
     cursor: pointer !important;
@@ -9420,7 +9420,7 @@ body.history-mode .dashboard-shell textarea {
     border-radius: 999px !important;
     font-size: 0.78rem !important;
     font-weight: 700 !important;
-    border: 1.5px solid #d1cfc8 !important;
+    border: 1.5px solid #242526 !important;
     background: #D3D3D3 !important;
     color: #1f2937 !important;
     cursor: pointer !important;
@@ -9447,7 +9447,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.7rem !important;
     border-radius: 10px !important;
     line-height: 1.3 !important;
-    border: 1.5px solid #d1cfc8 !important;
+    border: 1.5px solid #242526 !important;
     background: #D3D3D3 !important;
     color: #1f2937 !important;
     cursor: pointer !important;
@@ -9490,7 +9490,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.82rem !important;
     background: #D3D3D3 !important;
     color: #6b7280 !important;
-    border: 1.5px solid #d1cfc8 !important;
+    border: 1.5px solid #242526 !important;
   }
 
   .reset-filter-btn:hover {

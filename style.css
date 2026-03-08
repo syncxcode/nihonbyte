@@ -7830,9 +7830,10 @@ body.history-mode .dashboard-shell textarea {
     border-radius: 12px !important;
     background: #242526 !important;
     border: 1px solid rgba(255,255,255,0.14) !important;
+    /* ── version tag nempel di bawah border, tetap di atas garis MENU ── */
     position: relative !important;
     overflow: visible !important;
-    margin-bottom: -10px !important;
+    margin-bottom: 4px !important;
   }
 
   #logged-in-view .user-name {
@@ -9229,4 +9230,301 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: 40px !important;
   }
 
+}
+
+/* =====================================================
+   🔍 FILTER MODAL — MOBILE PORTRAIT ROMBAK UX
+   Berlaku: max-width 767px (portrait only)
+   JANGAN SENTUH RULE LAIN DI LUAR BLOK INI
+===================================================== */
+@media (max-width: 767px) and (orientation: portrait) {
+
+  /* ── Overlay backdrop lebih rapat ── */
+  .filter-modal {
+    padding: 10px 10px !important;
+    align-items: flex-end !important;
+  }
+
+  /* ── Card modal: naik dari bawah, compact, tidak segede layer ── */
+  .filter-modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 82dvh !important;
+    border-radius: 22px 22px 16px 16px !important;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.45) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  /* ── Header: warna gelap #242526 ── */
+  .filter-modal-header {
+    background: #242526 !important;
+    padding: 13px 16px 13px 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    flex-shrink: 0 !important;
+  }
+
+  .filter-modal-header h3 {
+    font-size: 0.95rem !important;
+    color: #f3f4f6 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+  }
+
+  /* Search icon di header lebih besar */
+  .filter-modal-header h3 svg,
+  .filter-modal-header h3 .search-svg-icon {
+    width: 20px !important;
+    height: 20px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ── Close button menyesuaikan header gelap ── */
+  #filterModalClose {
+    position: static !important;
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(255,255,255,0.12) !important;
+    color: #f3f4f6 !important;
+    font-size: 18px !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* ── Body: scrollable, kompak ── */
+  .filter-modal-body {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    flex: 1 !important;
+    padding: 0 !important;
+  }
+
+  /* ── Search input: lebih kecil & rapat ── */
+  .modal-search-input {
+    width: calc(100% - 24px) !important;
+    margin: 12px auto 10px !important;
+    padding: 11px 16px !important;
+    font-size: 0.9rem !important;
+    border: 1.5px solid #e5e7eb !important;
+    border-radius: 999px !important;
+    display: block !important;
+  }
+
+  /* ── Section label kompak ── */
+  .filter-section h4 {
+    font-size: 0.78rem !important;
+    margin: 10px 0 8px 12px !important;
+    color: #6b7280 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  /* ── Level grid: lebih kecil ── */
+  .level-grid {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 6px !important;
+    padding: 0 12px !important;
+  }
+
+  .level-btn {
+    padding: 9px 6px !important;
+    font-size: 0.78rem !important;
+    border-radius: 10px !important;
+  }
+
+  /* ── Category grid: 3 kolom, compact ── */
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    padding: 0 12px 4px !important;
+  }
+
+  .cat-btn {
+    padding: 9px 6px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ── Actions: kompak, tombol gelap ── */
+  .filter-actions {
+    padding: 12px 14px 16px !important;
+    gap: 7px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Tombol tampilkan hasil: warna #242526 */
+  .apply-filter-btn {
+    background: #242526 !important;
+    color: #f3f4f6 !important;
+    padding: 13px !important;
+    font-size: 0.95rem !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25) !important;
+    border-radius: 999px !important;
+  }
+
+  .apply-filter-btn:active {
+    background: #3a3b3c !important;
+  }
+
+  .reset-filter-btn {
+    padding: 10px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* ── Search icon di dalam header filter modal: lebih besar ── */
+  .filter-modal-header h3 svg {
+    width: 22px !important;
+    height: 22px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* =====================================================
+   🔍 FILTER MODAL — MOBILE LANDSCAPE COMPACT
+   Berlaku: landscape + max-height 520px
+===================================================== */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  .filter-modal {
+    padding: 6px !important;
+    align-items: center !important;
+  }
+
+  .filter-modal-content {
+    width: min(94vw, 560px) !important;
+    max-height: calc(100dvh - 12px) !important;
+    border-radius: 16px !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  /* Header landscape: gelap + kompak */
+  .filter-modal-header {
+    background: #242526 !important;
+    padding: 8px 12px 8px 14px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+  }
+
+  .filter-modal-header h3 {
+    font-size: 0.82rem !important;
+    color: #f3f4f6 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  #filterModalClose {
+    position: static !important;
+    width: 28px !important;
+    height: 28px !important;
+    background: rgba(255,255,255,0.12) !important;
+    color: #f3f4f6 !important;
+    font-size: 15px !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Body landscape: split kiri-kanan */
+  .filter-modal-body {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow: hidden !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+  }
+
+  /* Kiri: search + level */
+  .filter-modal-body > .filter-section:first-child {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    border-right: 1px solid #e5e7eb !important;
+  }
+
+  /* Kanan: kategori */
+  .filter-modal-body > .filter-section:last-child {
+    flex: 1 !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-search-input {
+    width: calc(100% - 20px) !important;
+    margin: 8px auto 6px !important;
+    padding: 8px 13px !important;
+    font-size: 0.82rem !important;
+    display: block !important;
+  }
+
+  .filter-section h4 {
+    font-size: 0.7rem !important;
+    margin: 7px 0 5px 10px !important;
+  }
+
+  .level-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+    padding: 0 10px !important;
+  }
+
+  .level-btn {
+    padding: 7px 4px !important;
+    font-size: 0.72rem !important;
+    border-radius: 8px !important;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 5px !important;
+    padding: 0 10px 6px !important;
+  }
+
+  .cat-btn {
+    padding: 7px 5px !important;
+    font-size: 0.7rem !important;
+    border-radius: 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  .filter-actions {
+    padding: 8px 12px 10px !important;
+    gap: 6px !important;
+    flex-direction: row !important;
+    flex-shrink: 0 !important;
+  }
+
+  .apply-filter-btn {
+    background: #242526 !important;
+    color: #f3f4f6 !important;
+    padding: 9px 14px !important;
+    font-size: 0.82rem !important;
+    box-shadow: none !important;
+    flex: 1 !important;
+  }
+
+  .reset-filter-btn {
+    padding: 9px 14px !important;
+    font-size: 0.78rem !important;
+    flex: 1 !important;
+  }
 }

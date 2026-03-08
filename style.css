@@ -9534,7 +9534,7 @@ body.history-mode .dashboard-shell textarea {
     max-width: 58% !important;
     max-height: none !important;
     height: auto !important;
-    border-radius: 25px 0 0 25px !important;
+    border-radius: 0 0 0 14px !important;
     background: #D3D3D3 !important;
     box-shadow: -8px 0 32px rgba(0,0,0,0.3) !important;
     transform: translateX(100%) !important;
@@ -9559,7 +9559,6 @@ body.history-mode .dashboard-shell textarea {
     align-items: center !important;
     justify-content: space-between !important;
     flex-shrink: 0 !important;
-    border-radius: 25px 0 0 0 !important;
   }
 
   .filter-modal-header h3 {
@@ -9770,13 +9769,13 @@ body.history-mode .dashboard-shell textarea {
   /* Panel mulai tepat di bawah topbar */
   .filter-modal-content {
     position: fixed !important;
-    top: var(--topbar-height, 78px) !important;
+    top: 50px !important;
     right: 0 !important;
-    bottom: 0 !important;
+    bottom: auto !important;
     left: auto !important;
-    width: 38% !important;
+    width: 50% !important;
     max-width: 420px !important;
-    max-height: none !important;
+    max-height: 90vh !important;
     height: auto !important;
     border-radius: 25px 0 0 25px !important;
     background: #D3D3D3 !important;

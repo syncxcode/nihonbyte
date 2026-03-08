@@ -3387,7 +3387,7 @@ body::before {
   transform: translateY(-50%);
   width: 34px !important;
   height: 34px !important;
-  border-radius: 11px !important;
+  border-radius: 999px !important;
   border: 1px solid rgba(255, 255, 255, 0.38) !important;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.1)) !important;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.24) !important;
@@ -5907,7 +5907,7 @@ body.review-mode-active .bottom-nav {
 
 /* === Mobile UX cleanup (topbar, sidebar, footer, bottom-nav) === */
 .sidebar-language-switch {
-  width: 100%;
+  width: fit-content !important;
   border-radius: 12px;
   justify-content: flex-start;
   gap: 10px;
@@ -6770,7 +6770,7 @@ body.review-mode-active .bottom-nav {
   #logged-in-view {
     background: #242526 !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
-    border-radius: 14px !important;
+    border-radius: 999px !important;
   }
 
   #logged-in-view .user-name,
@@ -6784,7 +6784,7 @@ body.review-mode-active .bottom-nav {
 
   #logged-in-view .logout-floating-btn,
   .logout-floating-btn {
-    color: #7dd3fc !important;
+    color: #ffffff !important;
     border-color: rgba(125, 211, 252, 0.42) !important;
     background: rgba(3, 7, 18, 0.55) !important;
     box-shadow: none !important;
@@ -7833,7 +7833,7 @@ body.history-mode .dashboard-shell textarea {
     /* ── version tag nempel di bawah border, tetap di atas garis MENU ── */
     position: relative !important;
     overflow: visible !important;
-    margin-bottom: 4px !important;
+    margin-bottom: -10px !important;
   }
 
   #logged-in-view .user-name {
@@ -9399,15 +9399,14 @@ body.history-mode .dashboard-shell textarea {
   .level-btn-row {
     display: flex !important;
     gap: 10px !important;
-    justify-content: center !important;
+    width: 100% !important;
   }
 
   .level-btn-row .level-btn {
-    flex: 0 0 auto !important;
-    width: 40px !important;
+    flex: 1 !important; 
     height: 40px !important;
     padding: 0 !important;
-    border-radius: 50% !important;
+    border-radius: 20px !important; 
     font-size: 0.76rem !important;
     font-weight: 700 !important;
     border: 1px solid #242526 !important;
@@ -9980,5 +9979,6 @@ body.history-mode .dashboard-shell textarea {
     border: 1.5px solid #242526 !important;
     border-radius: 999px !important;
     white-space: nowrap !important;
+    width: fit-content !important;
   }
 }

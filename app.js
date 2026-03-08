@@ -1566,6 +1566,16 @@ grid.style.display="grid";
       if (modalSearchInput && window.innerWidth > 768) {
         modalSearchInput.focus();
       }
+
+      // ── Mobile: pasang readonly agar keyboard tidak muncul saat modal buka ──
+      // Keyboard baru muncul kalau user sengaja tap input
+      if (modalSearchInput && window.innerWidth <= 767) {
+        modalSearchInput.setAttribute('readonly', 'readonly');
+        modalSearchInput.addEventListener('touchstart', function _removeMobileReadonly() {
+          modalSearchInput.removeAttribute('readonly');
+          modalSearchInput.removeEventListener('touchstart', _removeMobileReadonly);
+        }, { once: true });
+      }
     });
   
     function closeFilterModal() {

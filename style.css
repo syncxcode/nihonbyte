@@ -4319,9 +4319,15 @@ body {
     width: var(--body-sidebar-width) !important;
     height: auto !important;
     min-height: 100% !important;
+    max-height: calc(100vh - var(--topbar-height)) !important; /* jangan melampaui viewport */
     border-radius: 0 !important;
     z-index: 20 !important;
     overflow: visible !important;
+    overflow-y: auto !important;  /* sidebar bisa scroll konten panjang */
+    overflow-x: hidden !important;
+    position: sticky !important;  /* tetap di tempat saat konten kanan di-scroll */
+    top: 0 !important;
+    align-self: flex-start !important;
     background: linear-gradient(180deg, #9f2f56 0%, #7b1a3e 68%, #d3d3d3 100%) !important;
   }
 
@@ -4537,12 +4543,13 @@ body {
     right: auto !important;
     bottom: auto !important;
     z-index: 2 !important;
-    margin: 0 0 40px 0 !important;
-    padding: 8px 10px 14px !important;
+    margin: 0 !important;
+    padding: 8px 10px calc(env(safe-area-inset-bottom, 0px) + 56px) !important;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border-top: 1px solid rgba(148, 163, 184, 0.3) !important;
+    flex-shrink: 0 !important;
   }
 
   body:not(.training-session):not(.review-mode-active) .app-footer {

@@ -5114,8 +5114,6 @@ body {
 }
 
 #logged-in-view .logout-floating-btn {
-  position: static !important;
-  transform: none !important;
   align-self: center;
   justify-self: end;
   margin: 0;

@@ -9037,3 +9037,13 @@ body.history-mode .dashboard-shell textarea {
     width: auto !important;
   }
 }
+
+/* ── QUIZ RESULT: blokir klik backdrop & hide close btn ── */
+#kanjiModal.quiz-result-active #modalBackdrop {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+#kanjiModal.quiz-result-active .kanji-modal-content {
+  pointer-events: auto !important;
+}

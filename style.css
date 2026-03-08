@@ -4312,23 +4312,18 @@ body {
   }
 
   #sidebar {
-    position: sticky !important;
-    top: 0 !important;
+    position: relative !important;
+    top: auto !important;
     left: auto !important;
     transform: none !important;
     width: var(--body-sidebar-width) !important;
-    height: calc(100dvh - var(--topbar-height)) !important;
-    min-height: 0 !important;
-    align-self: flex-start !important;
     border-radius: 0 !important;
     z-index: 20 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
     background: linear-gradient(180deg, #9f2f56 0%, #7b1a3e 68%, #d3d3d3 100%) !important;
   }
 
   .content-panel {
-    min-height: calc(100dvh - var(--topbar-height));
+    min-height: unset;
   }
 
   #grid,
@@ -4447,44 +4442,49 @@ body {
 
 /* =========================================
    Desktop split-scroll: sidebar + content independen
+   FIX FINAL: position:fixed pada shell — reliable di semua browser mobile
 ========================================= */
 @media (min-width: 768px) {
-  html,
-  body {
+  html, body {
     height: 100%;
-  }
-
-  body {
     overflow: hidden !important;
   }
 
+  /* Shell menempel dari bawah topbar sampai benar-benar dasar layar,
+     tidak peduli browser chrome — ini paling andal di semua browser */
   .app-body-shell {
-    height: calc(100dvh - var(--topbar-height));
-    min-height: calc(100dvh - var(--topbar-height));
-    overflow: hidden;
+    position: fixed !important;
+    top: var(--topbar-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    overflow: hidden !important;
   }
 
   #sidebar {
-    height: calc(100dvh - var(--topbar-height)) !important;
-    min-height: 0 !important;
+    width: var(--body-sidebar-width) !important;
+    height: 100% !important;
+    flex-shrink: 0 !important;
     overflow-y: auto !important;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
     border-right: 1px solid rgba(255, 255, 255, 0.18);
-    scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   #sidebar::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+    display: none !important;
   }
 
   .content-panel {
-    min-height: 0;
-    height: calc(100dvh - var(--topbar-height));
-    overflow-y: auto;
-    overflow-x: hidden;
+    flex: 1 !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     border-left: 1px solid rgba(148, 21, 78, 0.24);
+    padding-bottom: 60px !important; /* clearance untuk browser bottom bar */
   }
 }
 

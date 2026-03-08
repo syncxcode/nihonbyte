@@ -8594,44 +8594,70 @@ body.history-mode .dashboard-shell textarea {
 }
 
 
+
 /* =========================================
    📱 MOBILE LANDSCAPE — FIX ROUND 3
-   1. Quiz result popup → compact & centered, no scroll
-   2. Expand kanji → font lebih kecil, tidak offside
-   3. Recommendation row → tampilkan 2 item saja
+   1. Quiz result popup → lebih kecil, fit center, no scroll, blokir backdrop
+   2. Expand kanji → font kecil, tidak offside vertikal
+   3. Recommendation → 2 per view, scroll horizontal invisible
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ══ A. QUIZ RESULT POPUP ══ */
+  /* ══ A. QUIZ RESULT POPUP ══
+     Blokir klik ke backdrop, compact card fit layar landscape. */
 
-  /* Semua fixed overlay di training session → force flex center */
-  body.training-session [class*="result"],
-  body.training-session [class*="score-"],
-  body.training-session [id*="result"],
-  body.training-session [id*="score"],
-  body.training-session [class*="quiz-end"],
-  body.training-session [class*="end-screen"] {
+  body.training-session [class*="result"][style*="position"],
+  body.training-session [class*="score"][style*="position"],
+  body.training-session [id*="result"][style*="position"],
+  body.training-session [id*="score"][style*="position"] {
     pointer-events: auto !important;
     touch-action: auto !important;
     z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    background: rgba(0, 0, 0, 0.82) !important;
   }
 
-  /* Card konten popup nilai → diperkecil compact */
-  body.training-session [class*="result-card"],
-  body.training-session [class*="score-card"],
-  body.training-session [class*="result-box"],
-  body.training-session [class*="score-box"],
-  body.training-session [class*="result-content"],
-  body.training-session [class*="end-card"],
-  body.training-session [class*="quiz-end-card"] {
-    max-width: 320px !important;
-    width: 88vw !important;
+  body.training-session [class*="result"] > [style*="background"],
+  body.training-session [class*="score"] > [style*="background"],
+  body.training-session [id*="result"] > [style*="background"],
+  body.training-session [id*="score"] > [style*="background"] {
+    max-width: 280px !important;
+    width: 84vw !important;
     max-height: calc(100vh - 20px) !important;
     overflow: hidden !important;
     border-radius: 16px !important;
-    padding: 14px 16px !important;
+    padding: 12px 14px !important;
     box-sizing: border-box !important;
-    margin: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  body.training-session [class*="result"] > [style*="background"] h1,
+  body.training-session [class*="result"] > [style*="background"] h2,
+  body.training-session [class*="result"] > [style*="background"] h3,
+  body.training-session [class*="score"] > [style*="background"] h1,
+  body.training-session [class*="score"] > [style*="background"] h2 {
+    font-size: 0.95rem !important;
+    margin: 0 0 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  body.training-session [class*="result"] > [style*="background"] p,
+  body.training-session [class*="score"] > [style*="background"] p {
+    font-size: 0.74rem !important;
+    margin: 3px 0 !important;
+    line-height: 1.3 !important;
+  }
+
+  body.training-session [class*="result"] > [style*="background"] button,
+  body.training-session [class*="score"] > [style*="background"] button,
+  body.training-session [id*="result"] > [style*="background"] button {
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+    margin-top: 5px !important;
   }
 
   /* ══ B. EXPAND KANJI MODAL — teks tidak offside vertikal ══ */
@@ -8639,20 +8665,19 @@ body.history-mode .dashboard-shell textarea {
   #kanjiModal .card-image.expanded,
   .kanji-modal .card-image.expanded {
     min-height: 0 !important;
-    max-height: 165px !important;
-    height: 155px !important;
+    max-height: 148px !important;
+    height: 142px !important;
     padding: 10px 14px !important;
     overflow: hidden !important;
   }
 
-  /* Kanji besar → paksa lebih kecil, tidak meluber */
   #kanjiModal .expanded-card .kanji,
   #kanjiModal #expandedCard .kanji,
   #expandedCard .kanji {
-    font-size: clamp(36px, 8vw, 58px) !important;
+    font-size: clamp(32px, 7vw, 52px) !important;
     line-height: 1 !important;
     margin-top: 0 !important;
-    margin-bottom: 6px !important;
+    margin-bottom: 5px !important;
     letter-spacing: 0 !important;
   }
 
@@ -8674,7 +8699,6 @@ body.history-mode .dashboard-shell textarea {
     margin: 2px 0 0 !important;
   }
 
-  /* Modal container ukuran */
   #kanjiModal .kanji-modal-content {
     max-height: calc(100vh - 12px) !important;
     overflow-y: auto !important;
@@ -8682,31 +8706,44 @@ body.history-mode .dashboard-shell textarea {
     padding: 8px !important;
   }
 
-  /* ══ C. RECOMMENDATION ROW — paksa hanya 2 item ══ */
+  /* ══ C. RECOMMENDATION ROW ══
+     Semua item tetap tampil. Scroll horizontal invisible.
+     Setiap item lebar 50%-3px = selalu tepat 2 per viewport.
+     scroll-snap berhenti per pasangan 2 item. */
 
   #kanjiModal #recommendationRow,
   #kanjiModal .recommendation-row {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    overflow: hidden !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
     padding: 6px !important;
     gap: 6px !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
   }
 
-  /* Sembunyikan item ke-3 dan seterusnya */
-  #kanjiModal #recommendationRow .recommendation-item:nth-child(n+3),
-  #kanjiModal .recommendation-row .recommendation-item:nth-child(n+3) {
+  #kanjiModal #recommendationRow::-webkit-scrollbar,
+  #kanjiModal .recommendation-row::-webkit-scrollbar {
     display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 
-  #kanjiModal .recommendation-item {
-    min-width: 0 !important;
-    width: 100% !important;
+  #kanjiModal #recommendationRow .recommendation-item,
+  #kanjiModal .recommendation-row .recommendation-item {
+    flex: 0 0 calc(50% - 3px) !important;
+    min-width: calc(50% - 3px) !important;
+    max-width: calc(50% - 3px) !important;
+    scroll-snap-align: start !important;
     padding: 8px 8px 30px !important;
     border-radius: 10px !important;
     box-sizing: border-box !important;
+    display: grid !important;
   }
 
   #kanjiModal .rec-kanji {
@@ -8724,7 +8761,6 @@ body.history-mode .dashboard-shell textarea {
     bottom: 5px !important;
   }
 
-  /* Label "Rekomendasi terkait" */
   #kanjiModal h4 {
     font-size: 0.76rem !important;
     margin: 4px 0 4px !important;

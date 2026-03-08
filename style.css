@@ -7675,3 +7675,533 @@ body.history-mode .dashboard-shell textarea {
         top: 0 !important;
     }
 }
+
+
+/* =========================================
+   📱 MOBILE LANDSCAPE — Native Desktop-Feel Layout
+   Target: perangkat sentuh yang diputar horizontal
+   (max-height: 520px = identifikasi paling andal utk HP landscape)
+   JANGAN SENTUH RULES DI LUAR BLOK INI
+========================================= */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  /* ── 0. Override CSS variables khusus landscape ── */
+  :root {
+    --topbar-height: 44px !important;
+    --body-sidebar-width: 200px !important;
+    --sidebar-width: 200px !important;
+    --bottom-nav-height: 0px !important;
+  }
+
+  /* ── 1. Topbar: ramping & rapat ── */
+  .topbar {
+    height: var(--topbar-height) !important;
+    min-height: var(--topbar-height) !important;
+    padding: 0 10px !important;
+    gap: 8px !important;
+  }
+
+  /* Hamburger disembunyikan (sidebar sudah tampil permanen) */
+  #hamburger {
+    display: none !important;
+  }
+
+  .header-identity img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  #searchBtn,
+  .search-icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+  }
+
+  #searchBtn svg,
+  .search-icon-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  #resultInfo {
+    height: 26px !important;
+    font-size: 11px !important;
+    padding: 0 10px !important;
+    max-width: calc(100vw - 300px) !important;
+    display: inline-flex !important;
+  }
+
+  /* ── 2. App body shell: desktop split layout ── */
+  body {
+    overflow: hidden !important;
+  }
+
+  .app-body-shell {
+    display: grid !important;
+    grid-template-columns: var(--body-sidebar-width) minmax(0, 1fr) !important;
+    align-items: stretch !important;
+    height: calc(100vh - var(--topbar-height)) !important;
+    min-height: calc(100vh - var(--topbar-height)) !important;
+    margin-top: var(--topbar-height) !important;
+    overflow: hidden !important;
+  }
+
+  /* ── 3. Sidebar: permanen di kiri seperti desktop ── */
+  #overlay {
+    display: none !important;
+  }
+
+  #sidebar {
+    position: relative !important;
+    top: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    width: var(--body-sidebar-width) !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    z-index: 20 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 8px 8px 16px !important;
+    border-right: 1px solid rgba(15, 23, 42, 0.14) !important;
+    background: #D3D3D3 !important;
+    box-shadow: none !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  #sidebar::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Sidebar nav items: compact */
+  .duo-nav-item,
+  .duo-nav-subitem,
+  .duo-nav-support {
+    padding: 0.46rem 0.7rem !important;
+    font-size: 0.8rem !important;
+    background: #242526 !important;
+    color: #ffffff !important;
+  }
+
+  .duo-nav-item svg,
+  .duo-nav-subitem svg,
+  .duo-nav-support svg {
+    width: 15px !important;
+    height: 15px !important;
+    flex: 0 0 15px !important;
+  }
+
+  .sidebar-section-title {
+    font-size: 0.68rem !important;
+    padding: 3px 10px !important;
+    margin: 4px 0 6px !important;
+    background: #242526 !important;
+    color: #f5f6f7 !important;
+  }
+
+  .sidebar-duo-nav {
+    gap: 5px !important;
+  }
+
+  .sidebar-head {
+    grid-template-columns: 1fr !important;
+    gap: 5px !important;
+    margin: 0 0 6px !important;
+  }
+
+  #logged-in-view {
+    padding: 5px 8px !important;
+    padding-right: 40px !important;
+    min-height: 40px !important;
+    border-radius: 12px !important;
+    background: #242526 !important;
+    border: 1px solid rgba(255,255,255,0.14) !important;
+  }
+
+  #logged-in-view .user-name {
+    font-size: 0.75rem !important;
+    color: #e8eaed !important;
+  }
+
+  #logged-in-view .profile-version {
+    font-size: 0.62rem !important;
+    color: rgba(232,234,237,0.72) !important;
+  }
+
+  .logout-floating-btn {
+    width: 26px !important;
+    height: 26px !important;
+    right: 8px !important;
+    border-radius: 7px !important;
+  }
+
+  .sidebar-language-switch {
+    padding: 5px 10px !important;
+    font-size: 0.78rem !important;
+    border-radius: 999px !important;
+  }
+
+  #sidebar-greeting,
+  #sidebar-greeting .greet-jp,
+  #sidebar-greeting .greet-user {
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* ── 4. Content panel: scrollable kanan ── */
+  .content-panel {
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    border-left: 1px solid rgba(148, 21, 78, 0.18) !important;
+    display: block !important;
+  }
+
+  /* ── 5. Grid utama: 3 kolom compact ── */
+  #grid {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    padding-bottom: 10px !important;
+    overflow: visible !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .card-image {
+    height: 135px !important;
+  }
+
+  /* ── 6. Bottom nav: hilangkan (sidebar sudah tampil) ── */
+  .bottom-nav {
+    display: none !important;
+  }
+
+  .bottom-nav-hub {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    min-height: auto !important;
+  }
+
+  /* ── 7. Pagination: tampil & tidak tenggelam ── */
+  .pagination-container {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 6px 0 8px !important;
+    border-top: 1px solid rgba(148, 163, 184, 0.3) !important;
+  }
+
+  /* ── 8. Halaman Latihan (practice hub) ── */
+  #grid.hub-mode {
+    padding: 10px !important;
+  }
+
+  .menu-hub-header {
+    padding: 10px 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .menu-hub-header h2 {
+    font-size: 1rem !important;
+  }
+
+  .menu-hub-header p {
+    font-size: 0.8rem !important;
+  }
+
+  .menu-panel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .menu-panel-card {
+    padding: 10px !important;
+    min-height: 70px !important;
+    gap: 8px !important;
+  }
+
+  .menu-panel-card svg {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .menu-panel-card strong {
+    font-size: 0.86rem !important;
+  }
+
+  .menu-panel-card span {
+    font-size: 0.72rem !important;
+  }
+
+  .hub-section-capsule {
+    font-size: 0.78rem !important;
+    padding: 5px 10px !important;
+  }
+
+  .hub-level-btn {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .hub-levels {
+    gap: 6px !important;
+  }
+
+  /* ── 9. Flashcard / Review mode ── */
+  #grid.review-active-mode {
+    padding: 10px !important;
+    min-height: auto !important;
+    align-items: flex-start !important;
+  }
+
+  .review-wrapper {
+    height: calc(100vh - var(--topbar-height) - 16px) !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* ── 10. Quiz active mode ── */
+  #grid.quiz-active-mode {
+    padding: 10px !important;
+    overflow-y: auto !important;
+  }
+
+  .quiz-wrapper-pro {
+    max-height: calc(100vh - var(--topbar-height) - 20px) !important;
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+
+  .quiz-qcard-pro {
+    min-height: 80px !important;
+    padding: 10px !important;
+  }
+
+  .quiz-question-main {
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem) !important;
+  }
+
+  .quiz-opt-btn-pro {
+    min-height: 38px !important;
+    font-size: 0.88rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .quiz-options-pro {
+    gap: 8px !important;
+  }
+
+  /* ── 11. Support / Dukung Pengembang page ── */
+  #grid.support-mode {
+    padding: 10px 14px !important;
+    min-height: auto !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  .support-poster {
+    min-height: auto !important;
+    padding: 18px 22px !important;
+    border-radius: 18px !important;
+  }
+
+  .support-poster h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .support-poster p {
+    font-size: 0.88rem !important;
+  }
+
+  /* ── 12. Favorit page ── */
+  .favorit-cards-row {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .favorit-mini-inner {
+    height: 88px !important;
+    padding: 8px 5px !important;
+  }
+
+  .favorit-mini-kanji {
+    font-size: clamp(14px, 3vw, 22px) !important;
+  }
+
+  /* ── 13. Footer: sembunyikan ── */
+  .app-footer {
+    display: none !important;
+  }
+
+  /* ── 14. Dashboard / History ── */
+  body.history-mode #grid {
+    padding: 12px !important;
+    align-items: flex-start !important;
+    align-content: flex-start !important;
+  }
+
+  .dashboard-shell {
+    width: 100% !important;
+    border-radius: 14px !important;
+  }
+
+  .dashboard-cover {
+    min-height: 80px !important;
+  }
+
+  /* ── 15. Expression / Aktivitas grid ── */
+  .expression-wide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* ── 16. Sidebar body-mode #grid (landscape fix) ── */
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  #grid.hub-mode {
+    margin-top: 0 !important;
+  }
+
+  /* ── 17. Training session (quiz full-page) landscape ── */
+  body.training-session .topbar {
+    height: var(--topbar-height) !important;
+    min-height: var(--topbar-height) !important;
+  }
+
+  body.training-session .content-panel {
+    height: calc(100vh - var(--topbar-height)) !important;
+    overflow: auto !important;
+  }
+}
+
+
+/* =========================================
+   📱 LOGIN POPUP — Compact Mode untuk Mobile Landscape
+========================================= */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  .auth-gate {
+    padding: 6px 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .auth-gate-card {
+    width: min(680px, 100%) !important;
+    border-radius: 16px !important;
+    padding: 14px 20px !important;
+    display: grid !important;
+    grid-template-columns: 60px 1fr !important;
+    grid-template-rows: auto !important;
+    column-gap: 16px !important;
+    row-gap: 0 !important;
+    text-align: left !important;
+    align-items: start !important;
+    max-height: calc(100vh - 16px) !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.35) !important;
+  }
+
+  /* Logo kolom kiri — span semua baris */
+  .auth-gate-logo {
+    grid-column: 1 !important;
+    grid-row: 1 / 7 !important;
+    width: 52px !important;
+    height: 52px !important;
+    margin: 0 !important;
+    align-self: center !important;
+  }
+
+  /* Semua child lain masuk kolom kanan */
+  .auth-gate-badge,
+  .auth-gate-card h1,
+  .auth-gate-subtext,
+  .auth-gate-google-btn,
+  .auth-gate-guest-btn,
+  .auth-gate-email-btn,
+  .email-auth-form {
+    grid-column: 2 !important;
+  }
+
+  .auth-gate-badge {
+    margin: 0 0 4px !important;
+    font-size: 0.68rem !important;
+    padding: 3px 10px !important;
+  }
+
+  .auth-gate-card h1 {
+    margin: 2px 0 4px !important;
+    font-size: 1rem !important;
+    line-height: 1.15 !important;
+  }
+
+  .auth-gate-subtext {
+    margin: 0 0 8px !important;
+    font-size: 0.76rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .auth-gate-google-btn {
+    padding: 8px 12px !important;
+    font-size: 0.82rem !important;
+    gap: 8px !important;
+  }
+
+  .auth-gate-google-btn img {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .auth-gate-guest-btn,
+  .guest-btn,
+  .auth-gate-email-btn {
+    margin-top: 5px !important;
+    padding: 7px 12px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .email-auth-form {
+    gap: 5px !important;
+    margin-top: 5px !important;
+  }
+
+  .email-auth-form input {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+    border-radius: 10px !important;
+  }
+
+  .email-auth-form button[type="submit"] {
+    padding: 7px 12px !important;
+    font-size: 0.8rem !important;
+  }
+}

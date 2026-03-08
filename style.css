@@ -9150,3 +9150,62 @@ body.history-mode .dashboard-shell textarea {
   }
 
 }
+
+
+/* =====================================================
+   🖥️ TABLET + DESKTOP — FIX KONTEN TENGGELAM DI BAWAH
+   Layout sidebar aktif (min-width: 768px).
+   content-panel sudah overflow-y:auto, tapi #grid dan
+   konten di dalamnya kekurangan padding-bottom sehingga
+   elemen terakhir terpotong oleh parent overflow:hidden.
+===================================================== */
+@media (min-width: 768px) {
+
+  /* ── 1. GRID UTAMA — padding bawah cukup ── */
+  body:not(.training-session):not(.review-mode-active) #grid {
+    padding-bottom: 40px !important;
+  }
+
+  /* ── 2. PAGINATION — selalu muncul di bawah konten ── */
+  body:not(.training-session):not(.review-mode-active) .pagination-container {
+    padding-bottom: 24px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* ── 3. HUB BELAJAR / MENU / LATIHAN ──
+     Konten hub di dalam content-panel perlu clearance bawah */
+  .bottom-nav-hub,
+  .menu-hub-container,
+  .hub-screen--practice,
+  .hub-screen--menu {
+    padding-bottom: 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── 4. CONTENT-PANEL — pastikan bisa scroll sampai bawah ── */
+  body:not(.training-session):not(.review-mode-active) .content-panel {
+    overflow-y: auto !important;
+    /* hapus contain agar padding-bottom child terbaca */
+    contain: none !important;
+  }
+
+  /* ── 5. GRID DALAM HUB MODE ── */
+  #grid.hub-mode,
+  #grid.expression-grid,
+  #grid.activity-grid,
+  #grid.pattern-grid-layout,
+  #grid.support-mode {
+    padding-bottom: 40px !important;
+  }
+
+  /* ── 6. HISTORY / DASBOR ── */
+  body.history-mode .content-panel,
+  body.dashboard-mode .content-panel {
+    overflow-y: auto !important;
+  }
+
+  body.history-mode #grid {
+    padding-bottom: 40px !important;
+  }
+
+}

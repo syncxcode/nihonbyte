@@ -9897,17 +9897,14 @@ body.history-mode .dashboard-shell textarea {
 
   .level-btn-row {
     display: flex !important;
-    gap: 8px !important;
-    justify-content: space-between !important;
+    gap: 6px !important;
     width: 100% !important;
   }
 
   .level-btn-row .level-btn {
     flex: 1 !important;
-    width: auto !important;
-    height: 34px !important;
-    padding: 0 !important;
-    border-radius: 50% !important;
+    padding: 7px 4px !important;
+    border-radius: 999px !important;
     font-size: 0.7rem !important;
     font-weight: 700 !important;
     border: 1px solid #242526 !important;
@@ -9915,10 +9912,7 @@ body.history-mode .dashboard-shell textarea {
     color: #1f2937 !important;
     cursor: pointer !important;
     text-align: center !important;
-    line-height: 34px !important;
     transition: all 0.15s !important;
-    aspect-ratio: 1 !important;
-    max-width: 34px !important;
   }
 
 

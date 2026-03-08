@@ -7853,6 +7853,7 @@ body.history-mode .dashboard-shell textarea {
     padding: 5px 10px !important;
     font-size: 0.78rem !important;
     border-radius: 999px !important;
+    width: fit-content;
   }
 
   #sidebar-greeting,
@@ -8271,7 +8272,7 @@ body.history-mode .dashboard-shell textarea {
     padding: 6px 8px 6px 8px !important;
     padding-right: 46px !important;
     min-height: 44px !important;
-    border-radius: 12px !important;
+    border-radius: 999px !important;
     box-sizing: border-box !important;
     overflow: visible !important;
     position: relative !important;
@@ -8284,7 +8285,7 @@ body.history-mode .dashboard-shell textarea {
     transform: translateY(-50%) !important;
     width: 28px !important;
     height: 28px !important;
-    border-radius: 8px !important;
+    border-radius: 999px !important;
     z-index: 5 !important;
   }
 

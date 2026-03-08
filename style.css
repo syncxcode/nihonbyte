@@ -3185,7 +3185,7 @@ body::before {
   }
 
   body:not(.training-session):not(.review-mode-active) .app-body-shell {
-    position: relative !important;
+    /* position managed by fixed layout block below */
   }
 
   /* Ruang scroll disesuaikan agar pas dengan tinggi footer baru */
@@ -4454,6 +4454,7 @@ body {
      tidak peduli browser chrome — ini paling andal di semua browser */
   .app-body-shell {
     position: fixed !important;
+    margin-top: 0 !important;      /* reset base margin-top, pakai top: langsung */
     top: var(--topbar-height) !important;
     left: 0 !important;
     right: 0 !important;
@@ -6638,8 +6639,8 @@ body.review-mode-active .bottom-nav {
   }
 
   .app-body-shell {
-    margin-top: 56px !important;
-    min-height: calc(100vh - 56px) !important;
+    margin-top: 0 !important;
+    top: 56px !important;
   }
 
   #sidebar {
@@ -6755,8 +6756,8 @@ body.review-mode-active .bottom-nav {
   }
 
   .app-body-shell {
-    margin-top: 52px !important;
-    min-height: calc(100vh - 52px) !important;
+    margin-top: 0 !important;
+    top: 52px !important;
   }
 }
 
@@ -7745,12 +7746,15 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .app-body-shell {
-    display: grid !important;
-    grid-template-columns: var(--body-sidebar-width) minmax(0, 1fr) !important;
-    align-items: stretch !important;
-    height: calc(100vh - var(--topbar-height)) !important;
-    min-height: calc(100vh - var(--topbar-height)) !important;
-    margin-top: var(--topbar-height) !important;
+    position: fixed !important;
+    display: flex !important;
+    top: var(--topbar-height) !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    margin-top: 0 !important;
+    height: auto !important;
+    min-height: unset !important;
     overflow: hidden !important;
   }
 

@@ -1373,7 +1373,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   }
 
   #grid {
-    contain: layout style;
+    contain: none;
   }
 
   .card,
@@ -4515,8 +4515,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0;
-    padding-bottom: 0 !important;
-    contain: layout paint;
+    padding-bottom: 40px !important;
+    contain: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
   }
 
   body:not(.training-session):not(.review-mode-active) #grid {
@@ -4524,9 +4526,9 @@ body {
     inset: auto !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 16px 14px 14px !important;
+    padding: 16px 14px 40px !important;
     overflow: visible !important;
-    contain: layout paint;
+    contain: none !important;
   }
 
   body:not(.training-session):not(.review-mode-active) .pagination-container {

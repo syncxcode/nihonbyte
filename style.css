@@ -9769,18 +9769,18 @@ body.history-mode .dashboard-shell textarea {
   /* Panel mulai tepat di bawah topbar */
   .filter-modal-content {
     position: fixed !important;
-    top: var(--topbar-height, 78px) !important;
+    top: 50px !important;
     right: 0 !important;
-    bottom: 0 !important;
+    bottom: auto !important;
     left: auto !important;
-    width: 38% !important;
+    width: 50% !important;
     max-width: 420px !important;
-    max-height: none !important;
+    max-height: 90vh !important;
     height: auto !important;
-    border-radius: 0 0 0 16px !important;
+    border-radius: 25px 0 0 25px !important;
     background: #D3D3D3 !important;
     box-shadow: -10px 0 40px rgba(0,0,0,0.25) !important;
-    transform: translateX(100%) !important;
+    transform: translateX(110%) !important;
     opacity: 0 !important;
     transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1),
                 opacity 0.2s ease !important;
@@ -9802,6 +9802,7 @@ body.history-mode .dashboard-shell textarea {
     align-items: center !important;
     justify-content: space-between !important;
     flex-shrink: 0 !important;
+    border-radius: 25px 0 0 0 !important;
   }
 
   .filter-modal-header h3 {
@@ -9897,13 +9898,13 @@ body.history-mode .dashboard-shell textarea {
   .level-btn-row {
     display: flex !important;
     gap: 8px !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
   }
 
-  /* N chips — bulat sempurna, centered */
   .level-btn-row .level-btn {
-    flex: 0 0 auto !important;
-    width: 34px !important;
+    flex: 1 !important;
+    width: auto !important;
     height: 34px !important;
     padding: 0 !important;
     border-radius: 50% !important;
@@ -9916,7 +9917,10 @@ body.history-mode .dashboard-shell textarea {
     text-align: center !important;
     line-height: 34px !important;
     transition: all 0.15s !important;
+    aspect-ratio: 1 !important;
+    max-width: 34px !important;
   }
+
 
   .level-btn-row .level-btn.active {
     background: #242526 !important;

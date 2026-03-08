@@ -7675,3 +7675,142 @@ body.history-mode .dashboard-shell textarea {
         top: 0 !important;
     }
 }
+
+/* =========================================
+   MOBILE LANDSCAPE (COARSE POINTER) OVERRIDES
+========================================= */
+@media (orientation: landscape) and (hover: none) and (pointer: coarse) {
+  :root {
+    --sidebar-width: 242px;
+  }
+
+  #sidebar {
+    padding: 8px 10px 14px !important;
+  }
+
+  .sidebar-section-title {
+    margin: 8px 0 10px !important;
+    padding: 4px 12px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .sidebar-duo-nav,
+  .sidebar-tree,
+  .sidebar-actions {
+    gap: 7px !important;
+  }
+
+  .duo-nav-item,
+  .duo-nav-subitem,
+  .duo-nav-support,
+  .menu-btn {
+    min-height: 46px;
+    padding: 0.58rem 0.7rem !important;
+    border-radius: 999px !important;
+    font-size: 0.74rem !important;
+    gap: 8px !important;
+  }
+
+  .duo-nav-item svg,
+  .duo-nav-subitem svg,
+  .inline-menu-icon {
+    width: 16px !important;
+    height: 16px !important;
+    flex-basis: 16px !important;
+  }
+
+  #grid {
+    margin-left: var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    padding-top: 88px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    gap: 10px !important;
+  }
+
+  .topbar {
+    height: 70px !important;
+    min-height: 70px !important;
+    padding: 10px 14px !important;
+  }
+
+  #resultInfo {
+    right: 76px !important;
+    max-width: 46vw !important;
+    padding: 5px 12px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .pagination-container {
+    margin: 4px 0 8px var(--sidebar-width) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    padding-top: 6px !important;
+    padding-bottom: 0 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 1100 !important;
+    background: #d3d3d3 !important;
+  }
+
+  .auth-gate {
+    padding: 12px !important;
+    align-items: flex-start !important;
+    overflow-y: auto;
+  }
+
+  .auth-gate-card {
+    width: min(620px, 100%) !important;
+    margin-top: 8px !important;
+    border-radius: 18px !important;
+    padding: 16px 16px 14px !important;
+  }
+
+  .auth-gate-logo {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .auth-gate-badge {
+    margin-bottom: 6px !important;
+    font-size: 0.7rem !important;
+    padding: 4px 12px !important;
+  }
+
+  .auth-gate-card h1 {
+    margin: 4px 0 8px !important;
+    font-size: clamp(1.18rem, 2.6vw, 1.64rem) !important;
+    line-height: 1.24 !important;
+  }
+
+  .auth-gate-subtext {
+    margin-bottom: 10px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .auth-gate-google-btn,
+  .auth-gate-email-btn,
+  .auth-gate-guest-btn,
+  .guest-btn,
+  .email-auth-form button[type="submit"] {
+    margin-top: 8px !important;
+    min-height: 40px !important;
+    padding: 9px 12px !important;
+    font-size: 0.86rem !important;
+  }
+
+  .email-auth-form {
+    gap: 6px !important;
+    margin-top: 8px !important;
+  }
+
+  .email-auth-form input {
+    padding: 8px 10px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .email-auth-links button {
+    font-size: 0.74rem !important;
+  }
+}

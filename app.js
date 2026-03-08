@@ -2585,9 +2585,16 @@ grid.style.display="grid";
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
-  modalClose.addEventListener("click", closeModal);
-  modalBackdrop.addEventListener("click", closeModal);
+  modalClose.addEventListener("click", () => {
+    if (kanjiModal.classList.contains("quiz-result-active")) return;
+    closeModal();
+  });
+  modalBackdrop.addEventListener("click", () => {
+    if (kanjiModal.classList.contains("quiz-result-active")) return;
+    closeModal();
+  });
   kanjiModal.addEventListener("click", (e) => {
+    if (kanjiModal.classList.contains("quiz-result-active")) return;
     if (!e.target.closest(".kanji-modal-content")) {
       closeModal();
     }
@@ -2595,6 +2602,7 @@ grid.style.display="grid";
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      if (kanjiModal.classList.contains("quiz-result-active")) return;
       closeModal();
       closeSidebar();
     }

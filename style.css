@@ -9047,3 +9047,106 @@ body.history-mode .dashboard-shell textarea {
 #kanjiModal.quiz-result-active .kanji-modal-content {
   pointer-events: auto !important;
 }
+
+
+/* =====================================================
+   📱 MOBILE PORTRAIT — FIX KONTEN TENGGELAM
+   Target: semua halaman di layar HP vertikal
+   Penyebab: padding-bottom tidak cukup memberi ruang
+   dari bottom nav yang fixed (62px + safe-area)
+   JANGAN SENTUH DESKTOP (sudah dijaga oleh max-width)
+===================================================== */
+@media (max-width: 767px) {
+
+  /* ── 1. KANJI GRID UTAMA + SEMUA MODE GRID ──
+     Semua variant #grid butuh padding bawah agar
+     kartu + pagination tidak tertutup bottom nav */
+  #grid,
+  #grid.support-mode,
+  #grid.pattern-grid-layout,
+  #grid.hub-mode,
+  #grid.expression-grid,
+  #grid.activity-grid {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 24px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* ── 2. PAGINATION ──
+     Harus muncul di atas bottom nav */
+  .pagination-container {
+    position: relative !important;
+    z-index: 10 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 10px) !important;
+  }
+
+  /* ── 3. CONTENT PANEL (umum) ──
+     Wrapper scrollable semua halaman non-quiz */
+  body:not(.training-session):not(.review-mode-active) .content-panel {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 20px) !important;
+  }
+
+  /* ── 4. MODE LATIHAN (QUIZ) ──
+     quiz-active-mode: grid perlu scroll agar
+     pilihan jawaban di bawah tidak terpotong */
+  body.training-session #grid.quiz-active-mode {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    align-items: flex-start !important;
+    padding-top: calc(var(--topbar-height) + 12px) !important;
+    padding-bottom: 28px !important;
+  }
+
+  /* quiz-wrapper-pro: biarkan tinggi otomatis, tidak di-cap */
+  .quiz-wrapper-pro {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Jawaban quiz: tidak boleh terpotong */
+  .quiz-options-pro {
+    overflow: visible !important;
+  }
+
+  /* ── 5. MODE TINJAU LATIHAN (REVIEW) ──
+     Tinggi wrapper pas dengan layar minus topbar */
+  .review-wrapper {
+    height: calc(100dvh - var(--topbar-height) - 8px) !important;
+    max-height: calc(100dvh - var(--topbar-height) - 8px) !important;
+    overflow: hidden !important;
+  }
+
+  /* Area scroll dalam review */
+  .review-content {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 20px !important;
+  }
+
+  /* ── 6. HISTORY / DASBOR ──
+     Riwayat latihan butuh ruang bawah */
+  body.history-mode #grid,
+  body.dashboard-mode #grid {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 32px) !important;
+    overflow-y: auto !important;
+  }
+
+  /* ── 7. FAVORIT / BELAJAR ──
+     Grid kosakata kategori */
+  body.favorit-mode #grid,
+  body.belajar-mode #grid {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 24px) !important;
+  }
+
+  /* ── 8. HUB MENU & LATIHAN (bottom nav hub) ──
+     Panel hub juga perlu clearance */
+  .bottom-nav-hub {
+    padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
+  }
+
+}

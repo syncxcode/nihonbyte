@@ -3394,6 +3394,14 @@ grid.style.display="grid";
     bottomNavHub.hidden = false;
     document.body.classList.add("bottom-nav-hub-open");
 
+    // ── Reset scroll ke atas setiap pindah tab (mobile portrait only) ──
+    if (window.innerWidth <= 767) {
+      bottomNavHub.scrollTop = 0;
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      const contentPanel = document.querySelector('.content-panel');
+      if (contentPanel) contentPanel.scrollTop = 0;
+    }
+
     bottomNavHub.querySelectorAll("[data-practice]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const mainType = btn.dataset.practice || "";

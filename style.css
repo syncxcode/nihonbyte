@@ -8597,14 +8597,14 @@ body.history-mode .dashboard-shell textarea {
 
 /* =========================================
    📱 MOBILE LANDSCAPE — FIX ROUND 3
-   1. Quiz result popup → layout HORIZONTAL, fit landscape, no scroll
-   2. Recommendation → 2 per snap, invisible scroll, no peeking 3rd item
+   1. Quiz result popup → lebih kecil, fit center, no scroll, blokir backdrop
+   2. Expand kanji → font kecil, tidak offside vertikal
+   3. Recommendation → 2 per view, scroll horizontal invisible
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ══ A. QUIZ RESULT POPUP — HORIZONTAL LAYOUT ══
-     Backdrop: blokir klik tembus, center konten.
-     Card: layout baris (kiri = info, kanan = actions) agar fit landscape. */
+  /* ══ A. QUIZ RESULT POPUP ══
+     Blokir klik ke backdrop, compact card fit layar landscape. */
 
   body.training-session [class*="result"][style*="position"],
   body.training-session [class*="score"][style*="position"],
@@ -8613,105 +8613,54 @@ body.history-mode .dashboard-shell textarea {
     pointer-events: auto !important;
     touch-action: auto !important;
     z-index: 99999 !important;
-    position: fixed !important;
-    inset: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 8px 12px !important;
+    padding: 8px !important;
     box-sizing: border-box !important;
-    background: rgba(0, 0, 0, 0.86) !important;
+    background: rgba(0, 0, 0, 0.82) !important;
   }
 
-  /* Card putih/gelap popup — lebar penuh horizontal, tinggi dibatasi */
   body.training-session [class*="result"] > [style*="background"],
   body.training-session [class*="score"] > [style*="background"],
   body.training-session [id*="result"] > [style*="background"],
   body.training-session [id*="score"] > [style*="background"] {
-    /* Layout HORIZONTAL: konten berjejer kiri-kanan */
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 14px !important;
-    /* Ukuran: lebar maksimal, tinggi compact fit layar */
-    width: min(92vw, 560px) !important;
-    max-width: 92vw !important;
+    max-width: 280px !important;
+    width: 84vw !important;
     max-height: calc(100vh - 20px) !important;
-    min-height: 0 !important;
     overflow: hidden !important;
     border-radius: 16px !important;
-    padding: 14px 18px !important;
+    padding: 12px 14px !important;
     box-sizing: border-box !important;
     flex-shrink: 0 !important;
-    flex-wrap: nowrap !important;
   }
 
-  /* Kolom kiri: judul + skor — ambil ruang sesuai konten */
-  body.training-session [class*="result"] > [style*="background"] > *:first-child,
-  body.training-session [class*="score"] > [style*="background"] > *:first-child {
-    flex: 0 0 auto !important;
-    text-align: center !important;
-    min-width: 0 !important;
-  }
-
-  /* Kolom kanan: teks + tombol — isi sisa ruang */
-  body.training-session [class*="result"] > [style*="background"] > *:not(:first-child),
-  body.training-session [class*="score"] > [style*="background"] > *:not(:first-child) {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-  }
-
-  /* Heading (GAGAL / LULUS) */
   body.training-session [class*="result"] > [style*="background"] h1,
   body.training-session [class*="result"] > [style*="background"] h2,
   body.training-session [class*="result"] > [style*="background"] h3,
   body.training-session [class*="score"] > [style*="background"] h1,
-  body.training-session [class*="score"] > [style*="background"] h2,
-  body.training-session [id*="result"] > [style*="background"] h1,
-  body.training-session [id*="result"] > [style*="background"] h2 {
-    font-size: 1rem !important;
-    margin: 0 0 3px !important;
-    line-height: 1.15 !important;
-    white-space: nowrap !important;
+  body.training-session [class*="score"] > [style*="background"] h2 {
+    font-size: 0.95rem !important;
+    margin: 0 0 4px !important;
+    line-height: 1.2 !important;
   }
 
-  /* Paragraf teks */
   body.training-session [class*="result"] > [style*="background"] p,
-  body.training-session [class*="score"] > [style*="background"] p,
-  body.training-session [id*="result"] > [style*="background"] p {
-    font-size: 0.72rem !important;
-    margin: 2px 0 !important;
+  body.training-session [class*="score"] > [style*="background"] p {
+    font-size: 0.74rem !important;
+    margin: 3px 0 !important;
     line-height: 1.3 !important;
   }
 
-  /* Tombol aksi (Tinjau / Kembali) — berjejer horizontal */
   body.training-session [class*="result"] > [style*="background"] button,
   body.training-session [class*="score"] > [style*="background"] button,
   body.training-session [id*="result"] > [style*="background"] button {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 7px 11px !important;
-    font-size: 0.76rem !important;
-    margin: 4px 4px 0 0 !important;
-    border-radius: 999px !important;
-    white-space: nowrap !important;
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+    margin-top: 5px !important;
   }
 
-  /* Wrapper tombol (jika ada div pembungkus) — horizontal */
-  body.training-session [class*="result"] > [style*="background"] [class*="btn-wrap"],
-  body.training-session [class*="result"] > [style*="background"] [class*="actions"],
-  body.training-session [class*="result"] > [style*="background"] [class*="button"],
-  body.training-session [class*="score"] > [style*="background"] [class*="btn-wrap"],
-  body.training-session [class*="score"] > [style*="background"] [class*="actions"] {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 5px !important;
-    margin-top: 6px !important;
-  }
-
-  /* ══ B. EXPAND KANJI MODAL — sudah bagus, pertahankan ══ */
+  /* ══ B. EXPAND KANJI MODAL — teks tidak offside vertikal ══ */
 
   #kanjiModal .card-image.expanded,
   .kanji-modal .card-image.expanded {
@@ -8758,9 +8707,9 @@ body.history-mode .dashboard-shell textarea {
   }
 
   /* ══ C. RECOMMENDATION ROW ══
-     2 item per snap, scroll invisible, TIDAK ada item ke-3 yang mengintip.
-     Kunci: padding-right pada container = 0, item lebar tepat 50%-3px,
-     overflow: hidden pada wrapper kanji-modal-content untuk potong overflow. */
+     Semua item tetap tampil. Scroll horizontal invisible.
+     Setiap item lebar 50%-3px = selalu tepat 2 per viewport.
+     scroll-snap berhenti per pasangan 2 item. */
 
   #kanjiModal #recommendationRow,
   #kanjiModal .recommendation-row {
@@ -8770,12 +8719,10 @@ body.history-mode .dashboard-shell textarea {
     overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     -webkit-overflow-scrolling: touch !important;
-    /* padding 0 kiri-kanan agar item tidak melebihi lebar container */
-    padding: 4px 0 6px !important;
+    padding: 6px !important;
     gap: 6px !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    /* invisible scrollbar */
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
   }
@@ -8787,33 +8734,24 @@ body.history-mode .dashboard-shell textarea {
     height: 0 !important;
   }
 
-  /* Setiap item: tepat 50% - setengah gap = 2 item selalu pas per viewport */
   #kanjiModal #recommendationRow .recommendation-item,
   #kanjiModal .recommendation-row .recommendation-item {
     flex: 0 0 calc(50% - 3px) !important;
     min-width: calc(50% - 3px) !important;
     max-width: calc(50% - 3px) !important;
-    width: calc(50% - 3px) !important;
     scroll-snap-align: start !important;
     padding: 8px 8px 30px !important;
     border-radius: 10px !important;
     box-sizing: border-box !important;
     display: grid !important;
-    overflow: hidden !important;
   }
 
   #kanjiModal .rec-kanji {
     font-size: 20px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
   }
 
   #kanjiModal .rec-kana {
     font-size: 10px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
   }
 
   #kanjiModal .rec-audio-btn {
@@ -8828,4 +8766,274 @@ body.history-mode .dashboard-shell textarea {
     margin: 4px 0 4px !important;
   }
 
+}
+
+
+/* =========================================
+   🏆 QUIZ RESULT POPUP — DEDICATED DESIGN
+   Target: #kanjiModal.quiz-result-active
+   Berlaku: mobile portrait + landscape
+   TIDAK menyentuh desktop (min-width: 769px)
+========================================= */
+
+/* ── Backdrop ── */
+#kanjiModal.quiz-result-active {
+  background: rgba(3, 7, 18, 0.92) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* ── Modal container (card putih) → ganti jadi card gelap custom ── */
+#kanjiModal.quiz-result-active .kanji-modal-content {
+  background: linear-gradient(145deg, #1e1b4b 0%, #1a1a2e 60%, #0f172a 100%) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+
+/* ── Sembunyikan close button di quiz result ── */
+#kanjiModal.quiz-result-active .modal-close-btn,
+#kanjiModal.quiz-result-active [class*="modal-close"] {
+  display: none !important;
+}
+
+/* ── Hapus padding expandedCard bawaan ── */
+#kanjiModal.quiz-result-active #expandedCard {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+#kanjiModal.quiz-result-active .info-poster {
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+/* ════════════════════════════════════════
+   LAYOUT: .qr-wrap — wrapper utama
+   Portrait  → kolom vertikal
+   Landscape → baris horizontal
+════════════════════════════════════════ */
+#kanjiModal.quiz-result-active .qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Kolom kiri: skor panel ── */
+#kanjiModal.quiz-result-active .qr-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Status label (GAGAL ❌ / LULUS ✅) */
+#kanjiModal.quiz-result-active .qr-status {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Angka skor besar */
+#kanjiModal.quiz-result-active .qr-score {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  margin: 4px 0;
+}
+
+#kanjiModal.quiz-result-active .qr-denom {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* Benar/Total soal */
+#kanjiModal.quiz-result-active .qr-stats {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+#kanjiModal.quiz-result-active .qr-stats strong {
+  color: #4ade80;
+  font-weight: 700;
+}
+
+/* ── Divider antara kiri & kanan ── */
+#kanjiModal.quiz-result-active .qr-left::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  margin-top: 12px;
+  border-radius: 999px;
+}
+
+/* ── Kolom kanan: kutipan + tombol ── */
+#kanjiModal.quiz-result-active .qr-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 20px 24px;
+  flex: 1;
+  gap: 12px;
+}
+
+/* Quote motivasi */
+#kanjiModal.quiz-result-active .qr-msg {
+  font-size: 0.82rem;
+  color: #d1d5db;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+}
+
+/* Tombol aksi */
+#kanjiModal.quiz-result-active .qr-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#kanjiModal.quiz-result-active .qr-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 20px;
+  width: 100%;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#kanjiModal.quiz-result-active .qr-btn:active {
+  opacity: 0.8;
+  transform: scale(0.97);
+}
+
+#kanjiModal.quiz-result-active .qr-btn--review {
+  background: rgba(255,255,255,0.1);
+  color: #f3f4f6;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+#kanjiModal.quiz-result-active .qr-btn--menu {
+  background: linear-gradient(135deg, #ff4d6d, #e11d48);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(255, 77, 109, 0.4);
+}
+
+/* ════════════════════════════════
+   MOBILE PORTRAIT — ukuran card
+════════════════════════════════ */
+@media (max-width: 768px) {
+  #kanjiModal.quiz-result-active .kanji-modal-content {
+    width: min(88vw, 340px) !important;
+    max-height: 90dvh !important;
+    border-radius: 20px !important;
+    overflow-y: auto !important;
+  }
+
+  #kanjiModal.quiz-result-active .qr-score {
+    font-size: 3.6rem;
+  }
+}
+
+/* ════════════════════════════════
+   MOBILE LANDSCAPE — layout horizontal
+   Left: status + skor | Right: quote + tombol
+════════════════════════════════ */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  #kanjiModal.quiz-result-active .kanji-modal-content {
+    width: min(90vw, 580px) !important;
+    max-width: 90vw !important;
+    max-height: calc(100vh - 16px) !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+
+  /* Ubah wrap jadi baris horizontal */
+  #kanjiModal.quiz-result-active .qr-wrap {
+    flex-direction: row !important;
+    align-items: stretch !important;
+  }
+
+  /* Kiri: skor panel — lebar fixed, ada border kanan */
+  #kanjiModal.quiz-result-active .qr-left {
+    flex: 0 0 180px !important;
+    width: 180px !important;
+    padding: 16px 16px 16px !important;
+    border-right: 1px solid rgba(255,255,255,0.07) !important;
+    background: rgba(0,0,0,0.15) !important;
+    justify-content: center !important;
+  }
+
+  /* Hapus divider bawah (pakai border kanan) */
+  #kanjiModal.quiz-result-active .qr-left::after {
+    display: none !important;
+  }
+
+  /* Skor lebih kecil biar fit */
+  #kanjiModal.quiz-result-active .qr-score {
+    font-size: 3rem !important;
+  }
+
+  #kanjiModal.quiz-result-active .qr-status {
+    font-size: 0.88rem !important;
+  }
+
+  #kanjiModal.quiz-result-active .qr-stats {
+    font-size: 0.72rem !important;
+  }
+
+  /* Kanan: quote + tombol — isi sisa */
+  #kanjiModal.quiz-result-active .qr-right {
+    flex: 1 !important;
+    padding: 14px 18px !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  #kanjiModal.quiz-result-active .qr-msg {
+    font-size: 0.76rem !important;
+    text-align: left !important;
+  }
+
+  /* Tombol berjejer horizontal */
+  #kanjiModal.quiz-result-active .qr-actions {
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+
+  #kanjiModal.quiz-result-active .qr-btn {
+    font-size: 0.76rem !important;
+    padding: 9px 14px !important;
+    flex: 1 !important;
+    width: auto !important;
+  }
 }

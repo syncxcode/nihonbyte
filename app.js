@@ -1695,6 +1695,18 @@ grid.style.display="grid";
     });
   }
 
+  // ===== ORIENTATION CHANGE FIX (iOS + Android blank screen on rotate) =====
+  window.addEventListener('orientationchange', () => {
+    // Delay karena iOS butuh waktu sebelum innerHeight ter-update
+    setTimeout(() => {
+      document.body.style.height = window.innerHeight + 'px';
+      // Force repaint: hentikan blank screen setelah rotate
+      document.documentElement.style.display = 'none';
+      document.documentElement.offsetHeight; // trigger reflow
+      document.documentElement.style.display = '';
+    }, 200);
+  });
+
   let selectedLevel = "all";
   let selectedType = "verb-adj-only";
   let viewMode = "menu";

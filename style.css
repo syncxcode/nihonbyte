@@ -4512,13 +4512,11 @@ body {
 
   /* pastikan footer & pagination tidak tenggelam/ketiban */
   body:not(.training-session):not(.review-mode-active) .content-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding-bottom: 40px !important;
+    display: block !important;
     contain: none !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
+    padding-bottom: 0 !important;
   }
 
   body:not(.training-session):not(.review-mode-active) #grid {
@@ -4526,23 +4524,25 @@ body {
     inset: auto !important;
     width: 100% !important;
     margin: 0 !important;
-    padding: 16px 14px 40px !important;
+    padding: 16px 14px 16px !important;
     overflow: visible !important;
     contain: none !important;
+    flex: 0 0 auto !important; /* KUNCI: jangan expand, biarkan pagination tampil di bawah */
   }
 
   body:not(.training-session):not(.review-mode-active) .pagination-container {
     position: relative !important;
+    display: flex !important;
     left: auto !important;
     right: auto !important;
     bottom: auto !important;
     z-index: 2 !important;
-    margin: 0 !important;
+    margin: 0 0 40px 0 !important;
     padding: 8px 10px 14px !important;
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    border-top: 0 !important;
+    border-top: 1px solid rgba(148, 163, 184, 0.3) !important;
   }
 
   body:not(.training-session):not(.review-mode-active) .app-footer {
@@ -9072,6 +9072,7 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 24px) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
+    flex: 0 0 auto !important; /* jangan expand, biarkan pagination tampil */
   }
 
   /* ── 2. PAGINATION ──

@@ -1432,19 +1432,23 @@ grid.style.display="grid";
     }
 
     const message = `
-      <div style="text-align: center; padding: 15px;">
-        <h2 style="color: ${colorTheme}; margin-bottom: 5px;">${statusLabel}</h2>
-        <div style="font-size: 4.5rem; font-weight: 800; margin: 15px 0; color: #ffffff; line-height: 1;">${percentage}<span style="font-size: 1.8rem; color: #9ca3af;">/100</span></div>
-        <p style="font-size: 1.1rem; font-weight: 600; color: #f3f4f6; margin-bottom: 10px;">${gradeMsg}</p>
-        <p style="color: #9ca3af; margin-top: 10px; font-size: 0.95rem; margin-bottom: 25px;">Benar: <strong style="color: #4ade80;">${score}</strong> | Total Soal: ${totalSoal}</p>
-        
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <button onclick="window.renderReview()" style="background: #ffffff; color: #1e293b; border: 2px solid #cbd5e1; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; width: 100%; transition: all 0.2s ease;">🔍 Tinjau Latihan</button>
-          <button onclick="location.reload()" style="background: #ff4d6d; color: white; border: none; padding: 14px 30px; border-radius: 999px; cursor: pointer; font-size: 1.05rem; font-weight: bold; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); width: 100%;">🏠 KEMBALI KE MENU</button>
+      <div class="qr-wrap">
+        <div class="qr-left">
+          <div class="qr-status" style="color:${colorTheme}">${statusLabel}</div>
+          <div class="qr-score">${percentage}<span class="qr-denom">/100</span></div>
+          <div class="qr-stats">Benar: <strong>${score}</strong> / ${totalSoal} soal</div>
+        </div>
+        <div class="qr-right">
+          <p class="qr-msg">${gradeMsg}</p>
+          <div class="qr-actions">
+            <button class="qr-btn qr-btn--review" onclick="window.renderReview()">🔍 Tinjau</button>
+            <button class="qr-btn qr-btn--menu" onclick="location.reload()">🏠 Kembali</button>
+          </div>
         </div>
       </div>
     `;
     openInfoModal(message);
+    kanjiModal.classList.add("quiz-result-active");
   }
 
   function confirmEndQuiz() {
@@ -1942,6 +1946,7 @@ grid.style.display="grid";
   function closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
+    kanjiModal.classList.remove("quiz-result-active");
     kanjiModal.setAttribute("aria-hidden", "true");
     if (window.speechSynthesis) window.speechSynthesis.cancel();
 
@@ -2574,6 +2579,7 @@ grid.style.display="grid";
   function closeModal() {
     stopTestTimer();
     kanjiModal.classList.remove("active");
+    kanjiModal.classList.remove("quiz-result-active");
     kanjiModal.setAttribute("aria-hidden", "true");
     unlockPageScrollForKanjiModal();
     if (window.speechSynthesis) window.speechSynthesis.cancel();

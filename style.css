@@ -7820,7 +7820,7 @@ body.history-mode .dashboard-shell textarea {
   .sidebar-head {
     grid-template-columns: 1fr !important;
     gap: 5px !important;
-    margin: 0 0 6px !important;
+    margin: 0 0 2px !important; /* ── garis batas naik: kurangi jarak ── */
   }
 
   #logged-in-view {
@@ -7830,10 +7830,10 @@ body.history-mode .dashboard-shell textarea {
     border-radius: 12px !important;
     background: #242526 !important;
     border: 1px solid rgba(255,255,255,0.14) !important;
-    /* ── version tag perlu keluar dari border ── */
+    /* ── version tag nempel di bawah border, tetap di atas garis MENU ── */
     position: relative !important;
     overflow: visible !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
   }
 
   #logged-in-view .user-name {
@@ -7841,17 +7841,16 @@ body.history-mode .dashboard-shell textarea {
     color: #e8eaed !important;
   }
 
-  /* version tag: di luar border profile, di bawah border, di atas garis MENU */
+  /* version tag: di bawah border profil, di atas garis MENU, nempel ke garis batas */
   #logged-in-view .profile-version {
     position: absolute !important;
-    top: calc(100% + 5px) !important;
-    left: 0 !important;
+    top: calc(100% + 3px) !important;
+    left: 4px !important;
     right: 0 !important;
-    font-size: 0.60rem !important;
-    color: rgba(232, 234, 237, 0.55) !important;
+    font-size: 0.58rem !important;
+    color: rgba(232, 234, 237, 0.50) !important;
     background: transparent !important;
     line-height: 1.2 !important;
-    padding-left: 4px !important;
     z-index: 1 !important;
     white-space: nowrap !important;
     overflow: hidden !important;

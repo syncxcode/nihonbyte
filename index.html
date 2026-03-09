@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NihonByte</title>
+  <link rel="icon" type="image/png" href="./assets/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<section id="auth-gate" class="auth-gate active" aria-live="polite">
+  <div class="auth-gate-card">
+    <img src="./assets/logo.webp" alt="NihonByte Logo" class="auth-gate-logo">
+    <p class="auth-gate-badge">NihonByte Access</p>
+    <h1>Belajar Bahasa Jepang Lebih Fokus</h1>
+    <p class="auth-gate-subtext">Masuk dengan Google atau, gunakan alamat email untuk masuk atau buat akun baru untuk membuka semua fitur, progres cloud, kategori lengkap, dan mode latihan tanpa batas.</p>
+    <button id="auth-gate-google-btn" class="auth-gate-google-btn">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+      <span>Lanjutkan dengan Google</span>
+    </button>
+    <button id="auth-gate-email-toggle" class="auth-gate-email-btn">Masuk / Daftar dengan Email</button>
+
+    <form id="email-auth-form" class="email-auth-form" style="display:none;" novalidate>
+      <input id="email-auth-input" type="email" placeholder="email@contoh.com" required>
+      <input id="email-auth-password" type="password" placeholder="Password minimal 6 karakter" required>
+      <button id="email-auth-submit" type="submit">Masuk dengan Email</button>
+      <div class="email-auth-links">
+        <button id="email-auth-switch-mode" type="button">Belum punya akun? Daftar</button>
+        <button id="email-auth-reset" type="button">Lupa password</button>
+      </div>
+    </form>
+
+    <button id="continue-guest-btn" class="auth-gate-guest-btn">Masuk sebagai tamu (akses terbatas)</button>
+    <div id="verification-hold-note" class="verification-hold-note" style="display:none;"></div>
+  </div>
+</section>
+
+<div id="overlay"></div>
+
+<header class="topbar">
+  <div class="header-identity">
+    <img class="js-reset-logo" src="./assets/logo.webp" alt="NihonByte" title="Klik untuk reset filter">
+    <img class="topbar-side-logo js-reset-logo" src="./assets/top.png" alt="NihonByte Top Mark" title="Klik untuk reset filter">
+  </div>
+
+  <button id="hamburger" class="hamburger" aria-label="Buka menu" aria-expanded="false">
+    <svg class="hamburger-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <path d="M4 6H10M14 6H20M4 12H20M4 18H8M12 18H20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <button id="searchBtn" class="search-icon-btn" aria-label="Buka pencarian & filter">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </button>
+
+  <p id="resultInfo" aria-live="polite"></p>
+</header>
+
+<div class="app-body-shell">
+<aside id="sidebar" aria-label="Menu samping">
+  <div class="sidebar-head">
+    <div class="sidebar-logo-wrap">
+      <img id="logo" class="js-reset-logo" src="./assets/logo.webp" alt="NihonByte" title="Klik untuk reset filter">
+    </div>
+    <button id="languageSwitch" class="language-switch sidebar-language-switch" aria-label="Ganti bahasa" title="Ganti bahasa">
+      <svg id="languageSwitchIcon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><defs><clipPath id="flagCircleInit"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleInit)"><rect x="8" y="8" width="48" height="24" fill="#e11d48"/><rect x="8" y="32" width="48" height="24" fill="#ffffff"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/></svg>
+      <span>Ganti Bahasa</span>
+    </button>
+  </div>
+  <div id="user-profile-section" class="user-profile-section">
+        <div id="logged-out-view">
+          <button id="login-google-btn" class="login-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+            <span>Masuk dengan Google</span>
+          </button>
+          <button id="login-email-btn" class="guest-btn">Masuk / Daftar Email</button>
+          <button id="guest-sidebar-btn" class="guest-btn">Lanjut sebagai tamu</button>
+          <p class="login-desc">Silahkan Login untuk akses tanpa batas!</p>
+        </div>
+
+        <div id="logged-in-view" style="display: none;">
+          <img id="user-avatar" src="" alt="Avatar" class="user-avatar">
+          <div class="user-info">
+            <span id="user-name" class="user-name">Nama User</span>
+            <span class="profile-version">© 2026 NihonByte • v2.0.0</span>
+            <div class="user-actions">
+               <button id="account-btn" class="history-link" style="display:none;">
+                 <svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true" focusable="false">
+                   <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.1-3.5c0-.36-.03-.71-.08-1.05l2.04-1.59-1.92-3.33-2.46.78a7.83 7.83 0 0 0-1.82-1.05L14.5 2h-5l-.36 2.76c-.65.24-1.26.6-1.82 1.05l-2.46-.78L2.94 8.36l2.04 1.59c-.05.34-.08.69-.08 1.05s.03.71.08 1.05l-2.04 1.59 1.92 3.33 2.46-.78c.56.45 1.17.8 1.82 1.05L9.5 22h5l.36-2.76c.65-.24 1.26-.6 1.82-1.05l2.46.78 1.92-3.33-2.04-1.59c.05-.34.08-.69.08-1.05Z" />
+                 </svg>
+                 Akun
+               </button>
+               <button id="logout-btn" class="logout-btn" style="display:none;">Keluar</button>
+            </div>
+          </div>
+          <button id="logout-floating-btn" class="logout-floating-btn" type="button" aria-label="Keluar" style="display:none;">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <hr class="sidebar-divider">
+  <p class="sidebar-section-title">Menu</p>
+  <!-- Duolingo-ish primary navigation (desktop). Dibangun via app.js -->
+  <nav id="sidebar-duo-nav" class="sidebar-duo-nav" aria-label="Navigasi utama"></nav>
+  <div class="sidebar-tree">    <button class="menu-btn verb-form-menu-btn"><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 12a8 8 0 1 0 8-8v8Z"/><path d="M13 4a8 8 0 0 1 7 7h-7Z"/></svg> BENTUK KATA KERJA</button>
+
+    <button class="menu-btn adjective-form-menu-btn"><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/></svg> BENTUK KATA SIFAT</button>
+
+    <!-- POLA KALIMAT -->
+    <details>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Zm8-2h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/></svg> POLA KALIMAT</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn pattern-btn" data-level="N5">N5</button>
+        <button class="menu-btn pattern-btn" data-level="N4">N4</button>
+        <button class="menu-btn pattern-btn" data-level="N3">N3</button>
+        <button class="menu-btn pattern-btn" data-level="N2">N2</button>
+        <button class="menu-btn pattern-btn" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <!-- UNGKAPAN UMUM -->
+    <details>
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/></svg> UNGKAPAN UMUM</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn sidebar-filter-btn" data-type="ekspresi" data-level="all">Ungkapan Umum</button>
+      </div>
+    </details>
+
+    <!-- KOTOBA -->
+    <details class="kotoba-dropdown">
+      <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2V5Zm9-2h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5V3Z"/></svg> KOTOBA</summary>
+      <div class="subfolder-list">
+        <button class="menu-btn sidebar-filter-btn" data-type="noun" data-level="all">KOSAKATA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="activity" data-level="all">KOSAKATA AKTIVITAS</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-number-counter" data-level="all">KOSAKATA ANGKA & SATUAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-work" data-level="all">KOSAKATA DUNIA KERJA UMUM</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-hobby" data-level="all">KOSAKATA HOBI</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="question" data-level="all">KOSAKATA KATA TANYA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-vehicle" data-level="all">KOSAKATA KENDARAAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-caregiving" data-level="all">KOSAKATA KEPERAWATAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="adv" data-level="all">KOSAKATA KETERANGAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-animal" data-level="all">KOSAKATA NAMA BINATANG</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-sports" data-level="all">KOSAKATA OLAHRAGA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-factory" data-level="all">KOSAKATA PABRIK & MANUFAKTUR</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-agriculture" data-level="all">KOSAKATA PERTANIAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-profession" data-level="all">KOSAKATA PROFESI</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-restaurant" data-level="all">KOSAKATA RESTORAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-house-family" data-level="all">KOSAKATA RUMAH & KELUARGA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-school" data-level="all">KOSAKATA SEKOLAH</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-place" data-level="all">KOSAKATA TEMPAT & BANGUNAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-body-medical" data-level="all">KOSAKATA TUBUH & KESEHATAN</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-time-weather" data-level="all">KOSAKATA WAKTU & CUACA</button>
+        <button class="menu-btn sidebar-filter-btn" data-type="noun-color" data-level="all">KOSAKATA WARNA</button>
+      </div>
+    </details>
+
+    <!-- LATIHAN -->
+    <details class="latihan-dropdown">
+  <summary><svg viewBox="0 0 24 24" class="inline-menu-icon" aria-hidden="true"><path d="M5 3h10l4 4v14H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm9 1.5V8h3.5"/><path d="M8 12h8M8 16h8"/></svg> LATIHAN</summary>
+  <div class="subfolder-list">
+    
+    <details class="sub-details">
+      <summary>言語知識（文字・語彙）<br>Pengetahuan Bahasa (Kosakata)</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-type="goi" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>言語知識（文法）<br>Pengetahuan Bahasa (Tata Bahasa)</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-main="bunpou" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>読解<br>Dokkai Membaca</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-main="dokkai" data-section="dokkai-reading" data-level="N1">N1</button>
+      </div>
+    </details>
+
+    <details class="sub-details">
+      <summary>聴解<br>Choukai Mendengarkan</summary>
+      <div class="level-list">
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N5">N5</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N4">N4</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N3">N3</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N2">N2</button>
+        <button class="menu-btn exercise-btn" data-type="listening" data-level="N1">N1</button>
+      </div>
+    </details>
+
+  </div>
+</details>
+
+    <button class="support-btn" id="supportBtn"><svg viewBox="0 0 24 24" class="support-dev-icon" aria-hidden="true" focusable="false"><path d="M8 10a4 4 0 1 1 8 0a4 4 0 0 1-8 0Z"/><path d="M4 20a8 8 0 0 1 16 0"/><path d="M3 8l3 3-3 3"/><path d="M21 8l-3 3 3 3"/></svg> DUKUNG PENGEMBANG</button>
+  </div>
+</aside>
+
+<div class="content-panel">
+  <section id="bottomNavHub" class="bottom-nav-hub" hidden></section>
+<main id="grid"></main>
+
+  <section id="menuHubContainer" class="menu-hub-container"></section>
+  
+  <div id="pagination-container" class="pagination-container"></div>
+</div>
+</div>
+  
+  
+  <!-- Mobile Bottom Navigation (Facebook-ish, tapi versi NihonByte) -->
+  <nav id="bottomNav" class="bottom-nav" aria-label="Navigasi bawah">
+    <!-- Flashcard (was: Beranda) -->
+    <button type="button" class="bottom-nav__item is-active" data-tab="home" aria-current="page">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M8 4h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-1"/>
+        <path d="M5 7h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/>
+        <path d="M7.5 12h6"/>
+      </svg>
+      <span>Flashcard</span>
+    </button>
+
+    <!-- Belajar (was: Menu) -->
+    <button type="button" class="bottom-nav__item" data-tab="menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 6.5a5 5 0 0 0-4-2H4v13.5h4a5 5 0 0 1 4 2a5 5 0 0 1 4-2h4V4.5h-4a5 5 0 0 0-4 2Z"/>
+        <path d="M12 6.5V20"/>
+      </svg>
+      <span>Belajar</span>
+    </button>
+
+    <!-- Latihan -->
+    <button type="button" class="bottom-nav__item" data-tab="practice">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"></path>
+        <path d="M17 3v6h6"></path>
+        <path d="M8 13h8"></path>
+        <path d="M8 17h5"></path>
+      </svg>
+      <span>Latihan</span>
+    </button>
+
+    <!-- Dasbor (pindah ke ujung kanan) -->
+    <button type="button" class="bottom-nav__item" data-tab="dashboard">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20 21a8 8 0 1 0-16 0"></path>
+        <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path>
+      </svg>
+      <span>Dasbor</span>
+    </button>
+  </nav>
+
+<!-- ELEMEN TERSEMBUNYI (PENTING! biar JS tidak crash) -->
+  <div style="display: none !important;">
+    <select id="category">
+      <option value="all">Semua</option>
+      <optgroup label="KATA KERJA">
+        <option value="verb-godan">KATA KERJA GODAN</option>
+        <option value="verb-ru">KATA KERJA ICHIDAN</option>
+        <option value="verb-irregular">KATA KERJA SURU</option>
+      </optgroup>
+      <optgroup label="KATA SIFAT">
+        <option value="adj-i">KATA SIFAT い</option>
+        <option value="adj-na">KATA SIFAT な</option>
+      </optgroup>
+    </select>
+    <input id="search" value="">
+  </div>
+
+<!-- KANJI MODAL (lama) -->
+<section id="kanjiModal" class="kanji-modal" aria-hidden="true">
+  <div class="kanji-modal-backdrop" id="modalBackdrop"></div>
+  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Detail Kanji">
+    <button id="modalClose" class="modal-close" aria-label="Tutup detail">✕</button>
+    <article id="expandedCard" class="expanded-card"></article>
+    <h4 id="modalSubtitle">Rekomendasi terkait</h4>
+    <div id="recommendationRow" class="recommendation-row"></div>
+  </div>
+</section>
+
+<!-- MODAL FILTER BARU (popup besar) -->
+<section id="filterModal" class="filter-modal" aria-hidden="true">
+  <div class="filter-modal-backdrop" id="filterBackdrop"></div>
+  <div class="filter-modal-content">
+    <div class="filter-modal-header">
+      <h3>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Cari &amp; Filter
+      </h3>
+      <button id="filterModalClose" class="modal-close" aria-label="Tutup">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="filter-modal-body">
+      <input type="text" id="modalSearchInput" class="modal-search-input" placeholder="Cari kanji / kana / romaji / arti..." autocomplete="off">
+
+      <div class="filter-section">
+        <h4>Level JLPT</h4>
+        <div class="level-grid" id="levelGrid">
+          <button class="level-btn level-btn--all active" data-level="all">SEMUA</button>
+          <div class="level-btn-row">
+            <button class="level-btn" data-level="N5">N5</button>
+            <button class="level-btn" data-level="N4">N4</button>
+            <button class="level-btn" data-level="N3">N3</button>
+            <button class="level-btn" data-level="N2">N2</button>
+            <button class="level-btn" data-level="N1">N1</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h4>Kategori Khusus</h4>
+        <div class="category-grid" id="categoryGrid">
+          <button class="cat-btn" data-type="verb-godan">KATA KERJA GODAN</button>
+          <button class="cat-btn" data-type="verb-ru">KATA KERJA ICHIDAN</button>
+          <button class="cat-btn" data-type="verb-irregular">KATA KERJA SURU</button>
+          <button class="cat-btn" data-type="adj-i">KATA SIFAT い</button>
+          <button class="cat-btn" data-type="adj-na">KATA SIFAT な</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button id="applyFilterBtn" class="apply-filter-btn">Tampilkan Hasil</button>
+      <button id="resetFilterBtn" class="reset-filter-btn">Reset Semua</button>
+    </div>
+  </div>
+</section>
+  
+
+<section id="accountModal" class="kanji-modal" aria-hidden="true">
+  <div class="kanji-modal-backdrop" id="accountModalBackdrop"></div>
+  <div class="kanji-modal-content" role="dialog" aria-modal="true" aria-label="Pengaturan akun">
+    <button id="accountModalClose" class="modal-close" aria-label="Tutup">✕</button>
+    <article class="expanded-card">
+      <div class="info-poster" style="background:#fff; color:#0f172a;">
+        <h3 style="margin-top:0;">Pengaturan Akun Email</h3>
+        <p id="account-email-status" style="font-weight:700; margin:8px 0 16px;">Status verifikasi: -</p>
+        <button id="resend-verification-btn" class="auth-gate-email-btn" style="margin-bottom:12px;">Kirim ulang verifikasi email</button>
+        <p style="margin:0; color:#64748b; font-size:0.85rem;">Fitur ganti email dinonaktifkan untuk menjaga kestabilan akun.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script src="./firebase-config.js"></script>
+<script type="module">
+  // 1. Import Senjata Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateEmail, updateProfile, applyActionCode, confirmPasswordReset, verifyPasswordResetCode } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+  // 2. Ambil Config Firebase dari file lokal `firebase-config.js` (di-ignore Git)
+  const firebaseConfig = window.NIHONBYTE_FIREBASE_CONFIG;
+
+  if (!firebaseConfig || !firebaseConfig.apiKey || !firebaseConfig.projectId) {
+    console.warn("⚠️ Firebase config belum ditemukan. Salin firebase-config.example.js jadi firebase-config.js lalu isi config project Anda.");
+    window.firebaseAuth = null;
+    window.firebaseDb = null;
+    window.firebaseProvider = null;
+    window.signInWithPopup = null;
+    window.signOut = null;
+    window.onAuthStateChanged = null;
+    window.createUserWithEmailAndPassword = null;
+    window.signInWithEmailAndPassword = null;
+    window.sendEmailVerification = null;
+    window.sendPasswordResetEmail = null;
+    window.updateEmail = null;
+    window.updateProfile = null;
+    window.applyActionCode = null;
+    window.confirmPasswordReset = null;
+    window.verifyPasswordResetCode = null;
+    window.doc = null;
+    window.setDoc = null;
+    window.getDoc = null;
+  } else {
+    // 3. Nyalain Mesinnya!
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    // 4. JADIKAN GLOBAL BIAR BISA DIPAKE DI app.js
+    window.firebaseAuth = auth;
+    window.firebaseDb = db;
+    window.firebaseProvider = provider;
+    window.signInWithPopup = signInWithPopup;
+    window.signOut = signOut;
+    window.onAuthStateChanged = onAuthStateChanged;
+    window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+    window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    window.sendEmailVerification = sendEmailVerification;
+    window.sendPasswordResetEmail = sendPasswordResetEmail;
+    window.updateEmail = updateEmail;
+    window.updateProfile = updateProfile;
+    window.applyActionCode = applyActionCode;
+    window.confirmPasswordReset = confirmPasswordReset;
+    window.verifyPasswordResetCode = verifyPasswordResetCode;
+    window.doc = doc;
+    window.setDoc = setDoc;
+    window.getDoc = getDoc;
+
+    console.log("🔥 Mesin Firebase Sukses Dinyalakan!");
+  }
+</script>
+
+<script src="./data.js"></script>
+<script src="./verb-forms-data.js"></script>
+<script src="./adjective-forms-data.js"></script>
+<script src="./verb-forms-logic.js"></script>
+<script src="./adjective-forms-logic.js"></script>
+<script src="./latihan/data-goi.js"></script>
+<script src="./latihan/data-dokkai.js"></script>
+<script src="./latihan/data-bunpou.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="./i18n-meaning-en.js"></script>
+<script src="./i18n.js"></script>
+<link rel="stylesheet" href="./flashcard/flashcard.css">
+<script src="./flashcard/data-flashcard-examples.js"></script>
+<script src="./flashcard/flashcard.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

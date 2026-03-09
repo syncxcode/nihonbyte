@@ -4041,17 +4041,24 @@ grid.style.display="grid";
 
     if (viewMode === "kanji-card") {
       grid.classList.remove("hub-mode", "support-mode", "pattern-grid-layout");
+      grid.classList.add("kc-grid-mode");
       grid.style.removeProperty("grid-template-columns");
+      setHistoryMode(false);
       if (window.kanjiCardUI) {
         window.kanjiCardUI.render({
           grid,
-          onBackToMenu: () => { viewMode = "menu"; render(); }
+          onBackToMenu: () => {
+            grid.classList.remove("kc-grid-mode");
+            viewMode = "menu";
+            render();
+          }
         });
       } else {
-        grid.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#94a3b8;">Kanji Card sedang dimuat... Pastikan file flashcard.js sudah diupload.</div>';
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#e11d48;font-weight:700;font-size:1rem;">
+          Kanji Card belum siap. Pastikan file <code>assets/flashcard/flashcard.js</code> sudah diupload ke repo.
+        </div>`;
       }
       if (resultInfo) resultInfo.textContent = "Kanji Card";
-      setHistoryMode(false);
       return;
     }
 

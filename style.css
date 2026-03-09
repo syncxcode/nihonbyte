@@ -1215,6 +1215,15 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
 }
 
 #grid.support-mode { display: block !important; padding-top: 120px !important; padding-bottom: 0 !important; }
+
+/* Kanji Card: override grid layout biar poster tidak terpecah jadi 4 kolom */
+#grid.kc-grid-mode {
+  display: block !important;
+  grid-template-columns: none !important;
+  padding: var(--topbar-height, 78px) 0 0 0 !important;
+  gap: 0 !important;
+  overflow-y: auto;
+}
 .support-poster { min-height: calc(100vh - 140px); display: flex; flex-direction: column; justify-content: center; align-items: center; width: 90%; max-width: 1300px; margin: 0 auto; padding: 40px 60px; border-radius: 28px; background: linear-gradient(135deg, rgba(255,107,129,0.9), rgba(162,155,254,0.9)); backdrop-filter: blur(10px); box-shadow: 0 30px 80px rgba(0,0,0,0.35); color: white; text-align: center; box-sizing: border-box; }
 .support-poster h2 { font-size: clamp(3rem, 3.5vw, 3.8rem); margin-bottom: 23px; margin-top: -15px; }
 .support-poster p { font-size: clamp(1.3rem, 1.2vw, 1.6rem); line-height: 1.5; max-width: 900px; margin: 0 auto 10px auto; }
@@ -1973,118 +1982,28 @@ body.review-mode-active #hamburger {
 
 /* --- 2. RESPONSIF KHUSUS HP (MOBILE) --- */
 
-/* Portrait: tumpuk atas-bawah, compact */
-@media (max-width: 900px) and (orientation: portrait) {
+@media (max-width: 900px) {
   .dokkai-wrapper-pro {
-    flex-direction: column;
+    flex-direction: column; /* Ditumpuk atas bawah */
     height: auto;
     max-height: calc(100dvh - 90px);
-    padding: 10px !important;
-    gap: 10px;
+    padding: 15px !important;
   }
-
+  
   .dokkai-passage-side {
-    flex: none;
-    height: 30vh;
-    min-height: 160px;
-    padding: 12px 14px;
-    border-width: 2px;
-    overflow-y: auto;
+    flex: none; /* Buang sifat flex Kiri-Kanan */
+    height: 35vh; /* Tinggi fix 35% layar HP */
+    min-height: 200px;
+    padding: 15px 20px;
+    border-width: 2px; /* Border ditipisin dikit di HP */
   }
-
+  
   .dokkai-passage-content {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.1rem; /* Font agak dikecilin di HP */
   }
 
   .dokkai-question-side {
-    flex: 1;
-    padding-top: 0;
-    gap: 8px;
-    overflow-y: auto;
-  }
-}
-
-/* Landscape: split kiri-kanan */
-@media (max-width: 900px) and (orientation: landscape) {
-  .dokkai-wrapper-pro {
-    flex-direction: row;
-    height: calc(100dvh - 78px);
-    max-height: calc(100dvh - 78px);
-    padding: 10px !important;
-    gap: 10px;
-    align-items: stretch;
-  }
-
-  .dokkai-passage-side {
-    flex: 0 0 42%;
-    width: 42%;
-    height: 100%;
-    min-height: unset;
-    padding: 10px 12px;
-    border-width: 2px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .dokkai-passage-content {
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-
-  .dokkai-question-side {
-    flex: 1;
-    width: 0;
-    min-width: 0;
-    height: 100%;
-    padding-top: 0;
-    gap: 6px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .dokkai-question-side .quiz-section-title {
-    font-size: 0.82rem;
-    padding-top: 0 !important;
-    margin: 0;
-  }
-
-  .dokkai-question-side .quiz-subtitle {
-    font-size: 0.75rem;
-    margin: 0;
-  }
-
-  .dokkai-question-side .quiz-head-pro {
-    padding: 6px 10px;
-    min-height: unset;
-  }
-
-  .dokkai-question-side .quiz-qcard-pro {
-    padding: 10px 14px !important;
-    min-height: unset !important;
-  }
-
-  .dokkai-question-side .quiz-question-main {
-    font-size: clamp(0.95rem, 2.5vw, 1.3rem) !important;
-    line-height: 1.4;
-  }
-
-  .dokkai-question-side .quiz-options-pro {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px !important;
-  }
-
-  .dokkai-question-side .quiz-opt-btn-pro {
-    min-height: 38px !important;
-    font-size: 0.82rem !important;
-    padding: 6px 8px;
-  }
-
-  #finishBtnManual {
-    top: 10px !important;
-    right: 10px !important;
-    padding: 5px 10px !important;
-    font-size: 0.7rem !important;
+    padding-top: 5px;
   }
 }
 

@@ -1,0 +1,520 @@
+/* ============================================================
+   NihonByte — Kanji Card CSS
+   Semua class pakai prefix kc- (zero collision)
+   ============================================================ */
+
+/* ── Poster wrapper ── */
+.kc-poster {
+  width: min(980px, calc(100% - 16px));
+  margin: 0 auto;
+  padding: 20px 20px 28px;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', 'Shippori Mincho', sans-serif;
+}
+
+/* ── Header ── */
+.kc-poster-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.kc-poster-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.kc-title-pill {
+  background: #e11d48;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 5px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.kc-counter {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ── Level dropdown ── */
+.kc-level-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.kc-level-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'/%3E%3C/svg%3E") no-repeat right 12px center;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 36px 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 160px;
+}
+
+.kc-level-select:focus {
+  border-color: #e11d48;
+}
+
+/* ── Back button (landscape mobile) ── */
+.kc-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.kc-back-btn:hover {
+  border-color: #e11d48;
+  color: #e11d48;
+}
+
+.kc-back-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Body layout ── */
+.kc-poster-body {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Portrait: kiri = full width kartu, kanan = examples di bawah */
+.kc-portrait .kc-poster-body {
+  flex-direction: column;
+}
+
+.kc-portrait .kc-left-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.kc-portrait .kc-right-col {
+  width: 100%;
+}
+
+/* Landscape: kiri = kartu, kanan = examples */
+.kc-landscape .kc-poster-body {
+  flex-direction: row;
+  align-items: stretch;
+  height: calc(100dvh - 78px - 80px); /* 78px topbar, 80px header poster */
+}
+
+.kc-landscape .kc-left-col {
+  flex: 0 0 auto;
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.kc-landscape .kc-right-col {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ── Desktop layout ── */
+@media (min-width: 901px) {
+  .kc-poster-body {
+    flex-direction: row !important;
+    align-items: flex-start;
+  }
+
+  .kc-left-col {
+    flex: 0 0 auto;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .kc-right-col {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* ── Card area (wrapper nav + card) ── */
+.kc-card-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Kartu ── */
+.kc-card {
+  width: 260px;
+  height: 370px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  transition: box-shadow 0.2s;
+}
+
+.kc-card:active { cursor: grabbing; }
+
+/* Mobile portrait compact */
+@media (max-width: 900px) and (orientation: portrait) {
+  .kc-card {
+    width: 240px;
+    height: 340px;
+  }
+}
+
+/* Mobile landscape compact */
+@media (max-width: 900px) and (orientation: landscape) {
+  .kc-card {
+    width: 180px;
+    height: 254px;
+  }
+}
+
+/* ── Card inner ── */
+.kc-card-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  text-align: center;
+  gap: 4px;
+}
+
+.kc-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+}
+
+.kc-card-kanji {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.kc-card-kana {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.kc-card-divider {
+  width: 40px;
+  height: 2px;
+  background: #e11d48;
+  border-radius: 999px;
+  margin: 10px auto;
+}
+
+.kc-card-romaji {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.kc-card-meaning {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.kc-card-underdev {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.65rem;
+  color: #cbd5e1;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Landscape kartu font compact */
+@media (max-width: 900px) and (orientation: landscape) {
+  .kc-card-kanji  { font-size: 2.2rem; }
+  .kc-card-kana   { font-size: 0.8rem; }
+  .kc-card-romaji { font-size: 0.72rem; }
+  .kc-card-meaning { font-size: 0.85rem; }
+  .kc-card-divider { margin: 6px auto; }
+  .kc-card-inner  { gap: 2px; padding: 14px 12px; }
+}
+
+/* ── Flip animations ── */
+@keyframes kc-flip-out-left {
+  from { transform: perspective(600px) rotateY(0deg);   opacity: 1; }
+  to   { transform: perspective(600px) rotateY(90deg);  opacity: 0; }
+}
+@keyframes kc-flip-out-right {
+  from { transform: perspective(600px) rotateY(0deg);   opacity: 1; }
+  to   { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+}
+@keyframes kc-flip-in-right {
+  from { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+  to   { transform: perspective(600px) rotateY(0deg);   opacity: 1; }
+}
+@keyframes kc-flip-in-left {
+  from { transform: perspective(600px) rotateY(90deg);  opacity: 0; }
+  to   { transform: perspective(600px) rotateY(0deg);   opacity: 1; }
+}
+
+.kc-flip-out-left  { animation: kc-flip-out-left  0.15s ease-in  forwards; }
+.kc-flip-out-right { animation: kc-flip-out-right 0.15s ease-in  forwards; }
+.kc-flip-in-right  { animation: kc-flip-in-right  0.18s ease-out forwards; }
+.kc-flip-in-left   { animation: kc-flip-in-left   0.18s ease-out forwards; }
+
+/* ── Nav buttons desktop ── */
+.kc-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e293b;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.kc-nav-btn:hover:not(:disabled) {
+  border-color: #e11d48;
+  color: #e11d48;
+}
+
+.kc-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ── Mobile nav row (portrait) ── */
+.kc-mobile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.kc-mobile-nav .kc-counter {
+  min-width: 60px;
+  text-align: center;
+}
+
+/* ── Examples panel ── */
+.kc-examples-panel {
+  background: #fff;
+  border-radius: 18px;
+  border: 1.5px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Portrait: height auto */
+.kc-portrait .kc-examples-panel {
+  height: auto;
+}
+
+/* Landscape: examples panel ikut tinggi kiri */
+.kc-landscape .kc-examples-panel {
+  height: 100%;
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+  .kc-examples-panel {
+    height: auto;
+    max-height: 430px;
+  }
+}
+
+.kc-examples-header {
+  padding: 12px 18px 10px;
+  border-bottom: 1.5px solid #f1f5f9;
+  flex-shrink: 0;
+}
+
+.kc-examples-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.kc-examples-body {
+  padding: 8px 12px 12px;
+  overflow-y: auto;       /* scroll HANYA di sini */
+  overflow-x: hidden;     /* zero horizontal scroll */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Example item ── */
+.kc-example-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: 1px solid #f1f5f9;
+  background: #fafafa;
+  transition: background 0.15s;
+}
+
+.kc-example-item:hover {
+  background: #f8f0f3;
+}
+
+.kc-example-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kc-example-jp {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1rem;
+  color: #0f172a;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.kc-example-romaji {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.kc-example-id {
+  font-size: 0.82rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Under development states */
+.kc-underdev {
+  color: #cbd5e1 !important;
+  font-style: italic;
+  font-size: 0.8rem !important;
+}
+
+.kc-underdev-sub {
+  display: none;
+}
+
+/* ── Play button ── */
+.kc-play-btn {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e11d48;
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: 2px;
+}
+
+.kc-play-btn:hover:not(:disabled) {
+  background: #fef2f2;
+  border-color: #e11d48;
+}
+
+.kc-play-btn:disabled {
+  color: #cbd5e1;
+  cursor: default;
+  border-color: #f1f5f9;
+}
+
+/* Landscape examples compact */
+@media (max-width: 900px) and (orientation: landscape) {
+  .kc-example-jp     { font-size: 0.88rem; }
+  .kc-example-romaji { font-size: 0.7rem; }
+  .kc-example-id     { font-size: 0.72rem; }
+  .kc-example-item   { padding: 7px 8px; }
+  .kc-play-btn       { width: 28px; height: 28px; }
+  .kc-play-btn svg   { width: 14px; height: 14px; }
+  .kc-examples-header { padding: 8px 14px; }
+  .kc-examples-body  { padding: 6px 10px 10px; gap: 1px; }
+}
+
+/* ── Card empty state ── */
+.kc-card-empty {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
+}

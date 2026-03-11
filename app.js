@@ -1236,6 +1236,11 @@ grid.style.display="grid";
   let choukaiPlaying  = false;
   let choukaiAnswered = false;
   let isChoukaiMode   = false; // flag khusus buat deteksi di _refreshQuizLayout
+  let choukaiTimer_   = null;  // interval timer choukai
+  let choukaiTimeLeft_ = 0;   // sisa waktu dalam detik
+
+  // Durasi per level (dalam menit)
+  const CHOUKAI_DURATION = { N5: 30, N4: 35, N3: 40, N2: 50, N1: 55 };
 
   // Simpan jawaban user tiap soal untuk review
   let choukaiUserAnswers = [];
@@ -1458,7 +1463,28 @@ grid.style.display="grid";
         .choukai-options { grid-template-columns: 1fr; }
       }
 
-      /* ── Confirm popup ── */
+      .choukai-topbar-timer {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #475569;
+        background: #f1f5f9;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.05em;
+        transition: color 0.3s, border-color 0.3s, background 0.3s;
+      }
+      .choukai-topbar-timer.warning {
+        color: #b45309; background: #fef3c7; border-color: #fbbf24;
+      }
+      .choukai-topbar-timer.danger {
+        color: #dc2626; background: #fee2e2; border-color: #fca5a5;
+        animation: timerPulse 1s ease-in-out infinite;
+      }
+      @keyframes timerPulse {
+        0%, 100% { opacity: 1; } 50% { opacity: 0.6; }
+      }
       .choukai-confirm-overlay {
         position: fixed; inset: 0;
         background: rgba(0,0,0,0.5);
@@ -1583,6 +1609,7 @@ grid.style.display="grid";
         <div class="choukai-topbar">
           <span class="choukai-topbar-title">聴解 &bull; ${choukaiLevel_}</span>
           <span class="choukai-topbar-progress">Soal ${choukaiIndex + 1} / ${total}</span>
+          <span class="choukai-topbar-timer" id="choukaiTimerDisplay">${formatSessionTime(choukaiTimeLeft_)}</span>
           <button class="choukai-finish-btn" id="choukaiFinishBtn">Akhiri Test</button>
         </div>
 
@@ -1785,6 +1812,7 @@ grid.style.display="grid";
   // ── Akhiri sesi, tampilkan hasil via openInfoModal ──
   function _endChoukai(finished) {
     window.speechSynthesis.cancel();
+    _stopChoukaiTimer();
     isTesting       = false;
     isChoukaiMode   = false;
     document.body.classList.remove("training-session");
@@ -1910,6 +1938,33 @@ grid.style.display="grid";
     grid.innerHTML = html;
   };
 
+  function _startChoukaiTimer() {
+    clearInterval(choukaiTimer_);
+    choukaiTimer_ = setInterval(() => {
+      choukaiTimeLeft_ = Math.max(0, choukaiTimeLeft_ - 1);
+
+      // Update display (hanya kalau DOM soal ini masih ada)
+      const display = document.getElementById("choukaiTimerDisplay");
+      if (display) {
+        display.textContent = formatSessionTime(choukaiTimeLeft_);
+        // Warna: warning < 5 menit, danger < 2 menit
+        const mins = choukaiTimeLeft_ / 60;
+        display.className = "choukai-topbar-timer" +
+          (mins < 2 ? " danger" : mins < 5 ? " warning" : "");
+      }
+
+      if (choukaiTimeLeft_ <= 0) {
+        clearInterval(choukaiTimer_);
+        _endChoukai(true); // waktu habis → akhiri otomatis
+      }
+    }, 1000);
+  }
+
+  function _stopChoukaiTimer() {
+    clearInterval(choukaiTimer_);
+    choukaiTimer_ = null;
+  }
+
   function startChoukai(level) {
     if (!isLoggedInUser()) {
       openInfoModal("<h3>Mode Latihan Wajib Login</h3><p>Silakan masuk dengan Google atau Email dulu untuk membuka fitur latihan.</p>");
@@ -1936,8 +1991,13 @@ grid.style.display="grid";
     isTesting          = true;
     isChoukaiMode      = true;
 
+    // Set durasi timer sesuai level
+    const durationMins  = CHOUKAI_DURATION[level] || 30;
+    choukaiTimeLeft_    = durationMins * 60;
+
     lockQuizScroll();
     renderChoukai();
+    _startChoukaiTimer();
   }
 
   // ==========================================
@@ -5330,9 +5390,9 @@ grid.style.display="grid";
   const latihanCategoryLabelMap = {
     goi: "言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)",
     bunpou: "言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)",
-    dokkai: "読解 Dokkai Membaca",
-    listening: "聴解 Mendengarkan",
-    choukai: "聴解 Mendengarkan",
+    dokkai: "読解 Dokkai (Membaca)",
+    listening: "聴解 Choukai (Mendengarkan)",
+    choukai: "聴解 Choukai (Mendengarkan)",
   };
 
   function getLatihanCategoryLabel(rawCategory = "") {
@@ -5740,7 +5800,7 @@ grid.style.display="grid";
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
   // Membaca dari 2 koleksi: "history" (baru) & "history_latihan" (lama) lalu merge
   async function fetchHistoryData(uid) {
-    const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
+    const { collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
 
     const allItems = [];
 
@@ -5758,17 +5818,37 @@ grid.style.display="grid";
       snap.forEach(doc => allItems.push(doc.data()));
     } catch (e) { /* koleksi lama mungkin tidak ada, abaikan */ }
 
-    // Sort manual berdasarkan tanggal/waktu (string locale) — terbaru dulu
-    allItems.sort((a, b) => {
-      const tA = a.tanggal || a.waktu || "";
-      const tB = b.tanggal || b.waktu || "";
-      return tB.localeCompare(tA);
+    // Filter: buang record yang tidak punya kategori valid atau data kosong
+    const VALID_KATEGORI = ["goi", "bunpou", "dokkai", "choukai", "listening"];
+    const filtered = allItems.filter(d => {
+      const kat = String(d.kategori || "").toLowerCase().trim();
+      return VALID_KATEGORI.includes(kat);
     });
 
-    // Return objek duck-typed agar kompatibel dengan kode openDashboard
+    // Helper: parse tanggal dari locale string ID (contoh: "12/3/2026 10:30:00") ke timestamp
+    function parseLocaleDate(str = "") {
+      // Format ID: "dd/mm/yyyy, hh:mm:ss" atau "dd/mm/yyyy hh:mm:ss" atau "dd/mm/yyyy"
+      const cleaned = str.replace(/\./g, "/").replace(",", "");
+      const parts   = cleaned.split(/[\s,]+/); // ["12/3/2026", "10:30:00"]
+      const datePart = parts[0] || "";
+      const timePart = parts[1] || "00:00:00";
+      const [d, m, y] = datePart.split("/").map(Number);
+      if (!d || !m || !y) return 0;
+      // Buat Date pakai UTC agar tidak ada offset timezone aneh
+      const dt = new Date(y, m - 1, d, ...timePart.split(":").map(Number));
+      return isNaN(dt.getTime()) ? 0 : dt.getTime();
+    }
+
+    // Sort terbaru di atas (descending timestamp)
+    filtered.sort((a, b) => {
+      const tA = parseLocaleDate(a.tanggal || a.waktu || "");
+      const tB = parseLocaleDate(b.tanggal || b.waktu || "");
+      return tB - tA;
+    });
+
     return {
-      empty: allItems.length === 0,
-      forEach: (cb) => allItems.forEach(item => cb({ data: () => item }))
+      empty: filtered.length === 0,
+      forEach: (cb) => filtered.forEach(item => cb({ data: () => item }))
     };
   }
 

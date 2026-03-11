@@ -976,6 +976,7 @@ grid.style.display="grid";
   let choukaiTimer_    = null;
   let choukaiTimeLeft_ = 0;
   const CHOUKAI_DURATION = { N5: 30, N4: 35, N3: 40, N2: 50, N1: 55 };
+  let choukaiSession_  = "tugas"; // session type yang sedang berjalan
   let currentQuizData = [];
   let quizIndex = 0;
   let score = 0;
@@ -1234,52 +1235,80 @@ grid.style.display="grid";
     const s = document.createElement("style");
     s.id = "_choukai_css";
     s.textContent = `
-      .choukai-shell{display:flex;flex-direction:column;width:100%;min-height:100%;background:#f8fafc;box-sizing:border-box;overflow:hidden}
-      .choukai-topbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0;flex-wrap:nowrap}
-      .choukai-topbar-title{font-size:.9rem;font-weight:700;color:#7c3aed;flex-shrink:0}
-      .choukai-topbar-progress{font-size:.82rem;color:#64748b;font-weight:600;flex:1;text-align:center}
-      .choukai-topbar-timer{font-size:.82rem;font-weight:700;color:#475569;background:#f1f5f9;border:1.5px solid #e2e8f0;border-radius:8px;padding:3px 9px;font-variant-numeric:tabular-nums;flex-shrink:0;transition:color .3s,border-color .3s,background .3s}
+      /* ── Shell ── */
+      .choukai-shell{display:flex;flex-direction:column;width:100%;min-height:100%;background:linear-gradient(145deg,#f8fafc 0%,#f0f4ff 100%);box-sizing:border-box;overflow:hidden}
+
+      /* ── Topbar ── */
+      .choukai-topbar{display:flex;align-items:center;gap:10px;padding:11px 18px;background:#fff;border-bottom:1.5px solid #e8edf5;box-shadow:0 1px 6px rgba(0,0,0,.06);flex-shrink:0;flex-wrap:nowrap}
+      .choukai-topbar-brand{display:flex;flex-direction:column;min-width:0;flex-shrink:0}
+      .choukai-topbar-title{font-size:.88rem;font-weight:800;color:#7c3aed;line-height:1.1;white-space:nowrap;letter-spacing:-.01em}
+      .choukai-topbar-sub{font-size:.68rem;color:#a78bfa;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+      .choukai-topbar-prog{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;font-size:.76rem;font-weight:700;padding:4px 12px;border-radius:99px;flex-shrink:0;margin:0 auto;white-space:nowrap;letter-spacing:.01em}
+      .choukai-topbar-timer{font-size:.82rem;font-weight:800;color:#475569;background:#f1f5f9;border:1.5px solid #e2e8f0;border-radius:10px;padding:4px 10px;font-variant-numeric:tabular-nums;flex-shrink:0;transition:color .3s,border-color .3s,background .3s;letter-spacing:.04em}
       .choukai-topbar-timer.warn{color:#b45309;background:#fef3c7;border-color:#fbbf24}
       .choukai-topbar-timer.danger{color:#dc2626;background:#fee2e2;border-color:#fca5a5;animation:_ctPulse 1s infinite}
-      @keyframes _ctPulse{0%,100%{opacity:1}50%{opacity:.55}}
-      .choukai-finish-btn{padding:5px 13px;border-radius:20px;background:#fee2e2;color:#dc2626;border:1.5px solid #fca5a5;font-weight:700;font-size:.78rem;cursor:pointer;flex-shrink:0}
-      .choukai-finish-btn:hover{background:#fecaca}
+      @keyframes _ctPulse{0%,100%{opacity:1}50%{opacity:.5}}
+      .choukai-finish-btn{padding:7px 14px;border-radius:20px;background:#fee2e2;color:#dc2626;border:1.5px solid #fca5a5;font-weight:800;font-size:.76rem;cursor:pointer;flex-shrink:0;transition:background .15s,transform .1s;white-space:nowrap}
+      .choukai-finish-btn:hover{background:#fecaca;transform:scale(1.03)}
+
+      /* ── Body ── */
       .choukai-body{display:flex;flex-direction:column;flex:1;overflow:hidden}
-      .choukai-player-col{padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0}
-      .choukai-stage{width:100%;max-width:320px;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f1f5f9;border-radius:16px;border:2px solid #e2e8f0;gap:8px;padding:14px;transition:border-color .3s,background .3s}
-      .choukai-stage.playing{border-color:#a855f7;background:#faf5ff}
-      .choukai-stage .ck-spk{color:#94a3b8;transition:color .3s}
-      .choukai-stage.playing .ck-spk{color:#a855f7}
-      .choukai-waveform{display:flex;gap:3px;align-items:flex-end;height:26px}
-      .choukai-wave-bar{width:4px;background:#cbd5e1;border-radius:2px;height:5px;transition:height .15s}
-      .choukai-stage.playing .choukai-wave-bar{animation:_ckWave .6s ease-in-out infinite alternate}
-      .choukai-wave-bar:nth-child(2n){animation-delay:.15s!important}
-      .choukai-wave-bar:nth-child(3n){animation-delay:.3s!important}
-      @keyframes _ckWave{from{height:4px;background:#a855f7}to{height:22px;background:#7c3aed}}
-      .choukai-idle-hint{font-size:.76rem;color:#94a3b8;text-align:center}
-      .choukai-status{font-size:.84rem;color:#64748b;text-align:center;min-height:18px;font-weight:500;padding:3px 10px;border-radius:8px;display:flex;align-items:center;gap:5px}
-      .choukai-status.ok{background:#dcfce7;color:#16a34a}
-      .choukai-status.err{background:#fee2e2;color:#dc2626}
-      .choukai-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
-      .ck-btn-play{display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:#7c3aed;color:#fff;border:none;font-weight:700;font-size:.88rem;cursor:pointer;transition:background .15s,opacity .15s}
-      .ck-btn-play:disabled{opacity:.45;cursor:not-allowed}
-      .ck-btn-play:hover:not(:disabled){background:#6d28d9}
-      .ck-btn-slow{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:24px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:600;font-size:.8rem;cursor:pointer;transition:background .15s}
-      .ck-btn-slow:disabled{opacity:.45;cursor:not-allowed}
-      .ck-btn-slow.active{background:#ede9fe;color:#7c3aed;border-color:#a78bfa}
-      .ck-replay-counter{display:flex;gap:5px;align-items:center}
-      .ck-dot{width:9px;height:9px;border-radius:50%;background:#a855f7;transition:background .3s}
-      .ck-dot.used{background:#e2e8f0}
-      .choukai-answer-col{flex:1;overflow-y:auto;padding:14px}
-      .choukai-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-      .choukai-opt-btn{padding:11px 9px;border-radius:12px;border:2px solid #e2e8f0;background:#fff;font-size:.88rem;font-weight:600;cursor:pointer;text-align:left;line-height:1.4;transition:border-color .15s,background .15s;color:#1e293b}
-      .choukai-opt-btn:hover:not(:disabled){border-color:#a855f7;background:#faf5ff}
-      .choukai-options.locked .choukai-opt-btn{cursor:not-allowed;opacity:.6}
-      .choukai-opt-btn.correct{border-color:#22c55e!important;background:#dcfce7!important;color:#15803d!important;opacity:1!important}
-      .choukai-opt-btn.wrong{border-color:#ef4444!important;background:#fee2e2!important;color:#b91c1c!important;opacity:1!important}
-      @media (max-height:500px) and (orientation:landscape){
+
+      /* ── Player column ── */
+      .choukai-player-col{padding:18px 20px 14px;display:flex;flex-direction:column;align-items:center;gap:12px;background:#fff;border-bottom:1.5px solid #e8edf5;flex-shrink:0}
+
+      /* ── Stage ── */
+      .choukai-stage{width:100%;max-width:400px;background:linear-gradient(145deg,#f5f3ff,#ede9fe);border-radius:22px;border:2.5px solid #ddd6fe;padding:22px 18px 18px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:border-color .3s,box-shadow .3s,background .3s}
+      .choukai-stage.playing{border-color:#a855f7;background:linear-gradient(145deg,#faf5ff,#ede9fe);box-shadow:0 0 0 5px rgba(168,85,247,.1),0 8px 24px rgba(124,58,237,.12)}
+      .ck-spk{color:#c4b5fd;transition:color .3s}
+      .choukai-stage.playing .ck-spk{color:#7c3aed}
+      .choukai-waveform{display:flex;gap:3px;align-items:flex-end;height:32px}
+      .choukai-wave-bar{width:5px;background:#e9d5ff;border-radius:3px;height:5px;transition:height .12s}
+      .choukai-stage.playing .choukai-wave-bar{animation:_ckWv .55s ease-in-out infinite alternate}
+      .choukai-wave-bar:nth-child(2n){animation-delay:.12s!important}
+      .choukai-wave-bar:nth-child(3n){animation-delay:.27s!important}
+      .choukai-wave-bar:nth-child(5n){animation-delay:.45s!important}
+      .choukai-wave-bar:nth-child(7n){animation-delay:.18s!important}
+      @keyframes _ckWv{from{height:4px;background:#c4b5fd}to{height:28px;background:#7c3aed}}
+      .choukai-idle-hint{font-size:.8rem;color:#a78bfa;text-align:center;font-weight:500}
+
+      /* ── Status label ── */
+      .choukai-status{font-size:.86rem;color:#64748b;text-align:center;font-weight:600;padding:7px 16px;border-radius:12px;display:flex;align-items:center;gap:6px;width:100%;max-width:400px;justify-content:center;min-height:36px;box-sizing:border-box}
+      .choukai-status.ok{background:#f0fdf4;color:#16a34a;border:1.5px solid #bbf7d0}
+      .choukai-status.err{background:#fef2f2;color:#dc2626;border:1.5px solid #fecaca}
+
+      /* ── Controls ── */
+      .choukai-controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center}
+      .ck-btn-play{display:flex;align-items:center;gap:7px;padding:10px 22px;border-radius:99px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border:none;font-weight:800;font-size:.9rem;cursor:pointer;box-shadow:0 4px 14px rgba(124,58,237,.38);transition:transform .15s,box-shadow .15s,opacity .15s;letter-spacing:.01em}
+      .ck-btn-play:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 18px rgba(124,58,237,.48)}
+      .ck-btn-play:active:not(:disabled){transform:translateY(0)}
+      .ck-btn-play:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+      .ck-btn-slow{display:flex;align-items:center;gap:6px;padding:9px 14px;border-radius:99px;background:#f8fafc;color:#64748b;border:1.5px solid #e2e8f0;font-weight:700;font-size:.82rem;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+      .ck-btn-slow:hover:not(:disabled){background:#f1f5f9;border-color:#c4b5fd}
+      .ck-btn-slow.active{background:#ede9fe;color:#7c3aed;border-color:#c4b5fd}
+      .ck-btn-slow:disabled{opacity:.4;cursor:not-allowed}
+      .ck-replay-counter{display:flex;gap:6px;align-items:center;padding:0 2px}
+      .ck-dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#7c3aed);transition:background .3s,transform .3s,opacity .3s}
+      .ck-dot.used{background:#e2e8f0;transform:scale(.8);opacity:.6}
+
+      /* ── Answer column ── */
+      .choukai-answer-col{flex:1;overflow-y:auto;padding:16px 20px 20px}
+
+      /* ── Options ── */
+      .choukai-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:0 auto}
+      .choukai-opt-btn{padding:13px 14px;border-radius:16px;border:2px solid #e8edf5;background:#fff;font-size:.93rem;font-weight:700;cursor:pointer;text-align:left;line-height:1.45;transition:border-color .15s,background .15s,box-shadow .15s,transform .1s;color:#1e293b;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+      .choukai-opt-btn:hover:not(:disabled){border-color:#a855f7;background:#faf5ff;box-shadow:0 4px 12px rgba(124,58,237,.12);transform:translateY(-1px)}
+      .choukai-opt-btn:active:not(:disabled){transform:translateY(0)}
+      .choukai-options.locked .choukai-opt-btn{cursor:not-allowed}
+      .choukai-options.locked .choukai-opt-btn:not(.correct):not(.wrong){opacity:.55}
+      .choukai-options.locked .choukai-opt-btn:hover{transform:none;box-shadow:0 1px 4px rgba(0,0,0,.05);border-color:#e8edf5;background:#fff}
+      .choukai-opt-btn.correct{border-color:#22c55e!important;background:linear-gradient(135deg,#f0fdf4,#dcfce7)!important;color:#15803d!important;opacity:1!important;box-shadow:0 4px 12px rgba(34,197,94,.18)!important;transform:none!important}
+      .choukai-opt-btn.wrong{border-color:#ef4444!important;background:linear-gradient(135deg,#fef2f2,#fee2e2)!important;color:#b91c1c!important;opacity:1!important;transform:none!important}
+
+      /* ── Landscape ── */
+      @media(max-height:500px) and (orientation:landscape){
         .choukai-body{flex-direction:row}
-        .choukai-player-col{width:46%;border-bottom:none;border-right:1px solid #e2e8f0;overflow-y:auto}
+        .choukai-player-col{width:46%;border-bottom:none;border-right:1.5px solid #e8edf5;overflow-y:auto}
         .choukai-answer-col{width:54%;overflow-y:auto}
         .choukai-options{grid-template-columns:1fr}
       }
@@ -1334,14 +1363,21 @@ grid.style.display="grid";
     _injectChoukaiCSS();
     const item   = choukaiData_[choukaiIndex];
     const total  = choukaiData_.length;
-    const isN5   = choukaiLevel_ === "N5";
     const labels = ["A","B","C","D"];
-    const waveBars = Array.from({length:10}, () => `<div class="choukai-wave-bar"></div>`).join("");
+    const waveBars = Array.from({length:12}, () => `<div class="choukai-wave-bar"></div>`).join("");
     const optBtns  = item.options.map((opt,i) =>
-      `<button class="choukai-opt-btn" data-ci="${i}"><strong>${labels[i]}.</strong> ${opt}</button>`
+      `<button class="choukai-opt-btn" data-ci="${i}">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(124,58,237,.08);color:#7c3aed;font-size:.75rem;font-weight:800;flex-shrink:0;margin-right:8px">${labels[i]}</span>
+        <span>${opt}</span>
+      </button>`
     ).join("");
-    const slowBtnHtml = isN5
-      ? `<button class="ck-btn-slow" id="_ckSlow">${_CHOUKAI_SVG.slow} Lambat</button>` : "";
+
+    // Session label — ambil dari soal saat ini (setiap soal punya _sessionKey)
+    const sessionSub = item._sessionKanji
+      ? `${item._sessionKanji} • ${item._sessionLabel}`
+      : (item._sessionLabel || "");
+
+    const slowBtnHtml = `<button class="ck-btn-slow" id="_ckSlow">${_CHOUKAI_SVG.slow} Lambat</button>`;
 
     grid.className = "";
     grid.classList.add("quiz-active-mode");
@@ -1352,8 +1388,11 @@ grid.style.display="grid";
     grid.innerHTML = `
       <div class="choukai-shell">
         <div class="choukai-topbar">
-          <span class="choukai-topbar-title">聴解 &bull; ${choukaiLevel_}</span>
-          <span class="choukai-topbar-progress">Soal ${choukaiIndex+1} / ${total}</span>
+          <div class="choukai-topbar-brand">
+            <span class="choukai-topbar-title">聴解 Choukai (Mendengarkan)</span>
+            <span class="choukai-topbar-sub">${sessionSub || choukaiLevel_}</span>
+          </div>
+          <span class="choukai-topbar-prog">Soal ${choukaiIndex+1} / ${total}</span>
           <span class="choukai-topbar-timer" id="_ckTimer">${formatSessionTime(choukaiTimeLeft_)}</span>
           <button class="choukai-finish-btn" id="_ckFinish">Akhiri Test</button>
         </div>
@@ -1364,7 +1403,9 @@ grid.style.display="grid";
               <div class="choukai-waveform">${waveBars}</div>
               <span class="choukai-idle-hint">Tekan Putar untuk memulai</span>
             </div>
-            <div class="choukai-status" id="_ckStatus">Siap diputar</div>
+            <div class="choukai-status" id="_ckStatus">
+              ${_CHOUKAI_SVG.bell}&nbsp;Siap diputar
+            </div>
             <div class="choukai-controls">
               <button class="ck-btn-play" id="_ckPlay">${_CHOUKAI_SVG.play} Putar</button>
               ${slowBtnHtml}
@@ -1579,21 +1620,45 @@ grid.style.display="grid";
     grid.innerHTML = html;
   }
 
+  // ── Bangun soal choukai gabungan semua sesi (mirip buildGoiSessionQuestions) ──
+  function buildChoukaiSessionQuestions(level) {
+    const levelData  = (typeof choukaiData !== "undefined" && choukaiData[level]) ? choukaiData[level] : {};
+    const available  = (typeof CHOUKAI_AVAILABILITY !== "undefined") ? (CHOUKAI_AVAILABILITY[level] || []) : Object.keys(levelData);
+    const sessions   = (typeof CHOUKAI_SESSIONS !== "undefined") ? CHOUKAI_SESSIONS : {};
+    const all        = [];
+
+    available.forEach((key, idx) => {
+      const pool = levelData[key];
+      if (!pool || pool.length === 0) return;
+
+      // Ambil maks 3 soal per sesi agar sesi seimbang & tidak terlalu panjang
+      const picked = shuffleArray([...pool]).slice(0, 3);
+      picked.forEach(q => {
+        all.push({
+          ...q,
+          _sessionKey:   key,
+          _sessionLabel: sessions[key]?.label || key,
+          _sessionKanji: sessions[key]?.kanji || "",
+          _sessionIdx:   idx + 1,
+          _sessionTotal: available.length,
+        });
+      });
+    });
+
+    return all;
+  }
+
   function startChoukai(level) {
     if (!isLoggedInUser()) {
       openInfoModal("<h3>Mode Latihan Wajib Login</h3><p>Silakan masuk dengan Google atau Email untuk membuka fitur latihan.</p>");
       return;
     }
-    const pool = (choukaiData && choukaiData[level]) ? [...choukaiData[level]] : [];
+    const pool = buildChoukaiSessionQuestions(level);
     if (!pool.length) {
-      openInfoModal("<h3>Data Belum Tersedia</h3><p>Data Choukai belum ada untuk level "+level+".</p>");
+      openInfoModal("<h3>Data Belum Tersedia</h3><p>Data Choukai belum ada untuk level " + level + ".</p>");
       return;
     }
-    for (let i = pool.length-1; i > 0; i--) {
-      const j = Math.floor(Math.random()*(i+1));
-      [pool[i],pool[j]] = [pool[j],pool[i]];
-    }
-    choukaiData_ = pool; choukaiLevel_ = level;
+    choukaiData_ = pool; choukaiLevel_ = level; choukaiSession_ = "all";
     choukaiIndex = 0; choukaiScore = 0; choukaiReplay = 2;
     choukaiUserAnswers = []; isTesting = true; isChoukaiMode = true;
     choukaiTimeLeft_ = (CHOUKAI_DURATION[level] || 30) * 60;
@@ -3536,15 +3601,14 @@ grid.style.display="grid";
       const section  = button.dataset.section || mainType;
       const level    = button.dataset.level;
 
-      const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+      const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2","N1"].includes(level)) || (["bunpou","dokkai"].includes(mainType) && ["N3","N2","N1"].includes(level));
 
       // Choukai N5 aktif, N4-N1 masih dev
       const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
       const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
 
       if (isChoukaiActive) {
-        startChoukai(level);
-        closeSidebar();
+        startChoukai(level); closeSidebar();
         return;
       }
 
@@ -3907,7 +3971,7 @@ grid.style.display="grid";
 
         closeBottomNavHub();
 
-        const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+        const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2","N1"].includes(level)) || (["bunpou","dokkai"].includes(mainType) && ["N3","N2","N1"].includes(level));
         const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
         const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
 
@@ -4323,7 +4387,7 @@ grid.style.display="grid";
     const section  = button.dataset.section || mainType;
     const level    = button.dataset.level;
 
-    const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
+    const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2","N1"].includes(level)) || (["bunpou","dokkai"].includes(mainType) && ["N3","N2","N1"].includes(level));
     const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
     const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
 

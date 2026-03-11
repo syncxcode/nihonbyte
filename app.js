@@ -961,6 +961,21 @@ grid.style.display="grid";
 
   let isTesting = false;
   let currentExerciseMeta = { type: "", level: "" };
+
+  // ── CHOUKAI STATE ──
+  let isChoukaiMode    = false;
+  let choukaiIndex     = 0;
+  let choukaiScore     = 0;
+  let choukaiData_     = [];
+  let choukaiLevel_    = "N5";
+  let choukaiReplay    = 2;
+  let choukaiSlow      = false;
+  let choukaiPlaying   = false;
+  let choukaiAnswered  = false;
+  let choukaiUserAnswers = [];
+  let choukaiTimer_    = null;
+  let choukaiTimeLeft_ = 0;
+  const CHOUKAI_DURATION = { N5: 30, N4: 35, N3: 40, N2: 50, N1: 55 };
   let currentQuizData = [];
   let quizIndex = 0;
   let score = 0;
@@ -1174,6 +1189,420 @@ grid.style.display="grid";
     return shuffleArray([question.answer, ...wrongChoices]);
   }
 
+  // ==========================================
+  // 🎧 CHOUKAI — LISTENING COMPREHENSION
+  // ==========================================
+
+  const _CHOUKAI_SVG = {
+    speaker: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`,
+    play:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+    replay:  `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>`,
+    slow:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    bell:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>`,
+    check:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+    cross:   `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+    stop:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>`,
+    search:  `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+    home:    `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  };
+
+  // Shared confirm overlay (dipakai choukai & quiz)
+  function _showConfirmOverlay(title, desc, onYes) {
+    const existing = document.getElementById("_confirmOverlay");
+    if (existing) existing.remove();
+
+    const el = document.createElement("div");
+    el.id = "_confirmOverlay";
+    el.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px";
+    el.innerHTML = `
+      <div style="background:#fff;border-radius:20px;padding:32px 28px 24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center">
+        <h3 style="margin:0 0 10px;font-size:1.15rem;color:#0f172a">${title}</h3>
+        <p style="margin:0 0 24px;color:#64748b;font-size:.9rem;line-height:1.5">${desc}</p>
+        <div style="display:flex;gap:10px;justify-content:center">
+          <button id="_confirmYes" style="padding:10px 24px;border-radius:999px;background:#dc2626;color:#fff;border:none;font-weight:700;cursor:pointer;font-size:.9rem">Ya, Akhiri</button>
+          <button id="_confirmNo"  style="padding:10px 24px;border-radius:999px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:700;cursor:pointer;font-size:.9rem">Lanjutkan</button>
+        </div>
+      </div>`;
+    document.body.appendChild(el);
+    document.getElementById("_confirmYes").addEventListener("click", () => { el.remove(); onYes(); });
+    document.getElementById("_confirmNo").addEventListener("click",  () => el.remove());
+    el.addEventListener("click", e => { if (e.target === el) el.remove(); });
+  }
+
+  function _injectChoukaiCSS() {
+    if (document.getElementById("_choukai_css")) return;
+    const s = document.createElement("style");
+    s.id = "_choukai_css";
+    s.textContent = `
+      .choukai-shell{display:flex;flex-direction:column;width:100%;min-height:100%;background:#f8fafc;box-sizing:border-box;overflow:hidden}
+      .choukai-topbar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0;flex-wrap:nowrap}
+      .choukai-topbar-title{font-size:.9rem;font-weight:700;color:#7c3aed;flex-shrink:0}
+      .choukai-topbar-progress{font-size:.82rem;color:#64748b;font-weight:600;flex:1;text-align:center}
+      .choukai-topbar-timer{font-size:.82rem;font-weight:700;color:#475569;background:#f1f5f9;border:1.5px solid #e2e8f0;border-radius:8px;padding:3px 9px;font-variant-numeric:tabular-nums;flex-shrink:0;transition:color .3s,border-color .3s,background .3s}
+      .choukai-topbar-timer.warn{color:#b45309;background:#fef3c7;border-color:#fbbf24}
+      .choukai-topbar-timer.danger{color:#dc2626;background:#fee2e2;border-color:#fca5a5;animation:_ctPulse 1s infinite}
+      @keyframes _ctPulse{0%,100%{opacity:1}50%{opacity:.55}}
+      .choukai-finish-btn{padding:5px 13px;border-radius:20px;background:#fee2e2;color:#dc2626;border:1.5px solid #fca5a5;font-weight:700;font-size:.78rem;cursor:pointer;flex-shrink:0}
+      .choukai-finish-btn:hover{background:#fecaca}
+      .choukai-body{display:flex;flex-direction:column;flex:1;overflow:hidden}
+      .choukai-player-col{padding:14px;display:flex;flex-direction:column;align-items:center;gap:10px;background:#fff;border-bottom:1px solid #e2e8f0;flex-shrink:0}
+      .choukai-stage{width:100%;max-width:320px;min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f1f5f9;border-radius:16px;border:2px solid #e2e8f0;gap:8px;padding:14px;transition:border-color .3s,background .3s}
+      .choukai-stage.playing{border-color:#a855f7;background:#faf5ff}
+      .choukai-stage .ck-spk{color:#94a3b8;transition:color .3s}
+      .choukai-stage.playing .ck-spk{color:#a855f7}
+      .choukai-waveform{display:flex;gap:3px;align-items:flex-end;height:26px}
+      .choukai-wave-bar{width:4px;background:#cbd5e1;border-radius:2px;height:5px;transition:height .15s}
+      .choukai-stage.playing .choukai-wave-bar{animation:_ckWave .6s ease-in-out infinite alternate}
+      .choukai-wave-bar:nth-child(2n){animation-delay:.15s!important}
+      .choukai-wave-bar:nth-child(3n){animation-delay:.3s!important}
+      @keyframes _ckWave{from{height:4px;background:#a855f7}to{height:22px;background:#7c3aed}}
+      .choukai-idle-hint{font-size:.76rem;color:#94a3b8;text-align:center}
+      .choukai-status{font-size:.84rem;color:#64748b;text-align:center;min-height:18px;font-weight:500;padding:3px 10px;border-radius:8px;display:flex;align-items:center;gap:5px}
+      .choukai-status.ok{background:#dcfce7;color:#16a34a}
+      .choukai-status.err{background:#fee2e2;color:#dc2626}
+      .choukai-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+      .ck-btn-play{display:flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:#7c3aed;color:#fff;border:none;font-weight:700;font-size:.88rem;cursor:pointer;transition:background .15s,opacity .15s}
+      .ck-btn-play:disabled{opacity:.45;cursor:not-allowed}
+      .ck-btn-play:hover:not(:disabled){background:#6d28d9}
+      .ck-btn-slow{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:24px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:600;font-size:.8rem;cursor:pointer;transition:background .15s}
+      .ck-btn-slow:disabled{opacity:.45;cursor:not-allowed}
+      .ck-btn-slow.active{background:#ede9fe;color:#7c3aed;border-color:#a78bfa}
+      .ck-replay-counter{display:flex;gap:5px;align-items:center}
+      .ck-dot{width:9px;height:9px;border-radius:50%;background:#a855f7;transition:background .3s}
+      .ck-dot.used{background:#e2e8f0}
+      .choukai-answer-col{flex:1;overflow-y:auto;padding:14px}
+      .choukai-options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+      .choukai-opt-btn{padding:11px 9px;border-radius:12px;border:2px solid #e2e8f0;background:#fff;font-size:.88rem;font-weight:600;cursor:pointer;text-align:left;line-height:1.4;transition:border-color .15s,background .15s;color:#1e293b}
+      .choukai-opt-btn:hover:not(:disabled){border-color:#a855f7;background:#faf5ff}
+      .choukai-options.locked .choukai-opt-btn{cursor:not-allowed;opacity:.6}
+      .choukai-opt-btn.correct{border-color:#22c55e!important;background:#dcfce7!important;color:#15803d!important;opacity:1!important}
+      .choukai-opt-btn.wrong{border-color:#ef4444!important;background:#fee2e2!important;color:#b91c1c!important;opacity:1!important}
+      @media (max-height:500px) and (orientation:landscape){
+        .choukai-body{flex-direction:row}
+        .choukai-player-col{width:46%;border-bottom:none;border-right:1px solid #e2e8f0;overflow-y:auto}
+        .choukai-answer-col{width:54%;overflow-y:auto}
+        .choukai-options{grid-template-columns:1fr}
+      }
+    `;
+    document.head.appendChild(s);
+  }
+
+  function _removeChoukaiCSS() {
+    document.getElementById("_choukai_css")?.remove();
+  }
+
+  function getJaVoices() {
+    return window.speechSynthesis.getVoices().filter(v => v.lang.startsWith("ja"));
+  }
+
+  function playBell(cb) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const gain = ctx.createGain();
+      gain.connect(ctx.destination);
+      const t = ctx.currentTime;
+      [[1047, t, .9],[784, t+.65, 1.1]].forEach(([f,s,d]) => {
+        const o = ctx.createOscillator();
+        o.type = "sine"; o.frequency.value = f; o.connect(gain);
+        gain.gain.setValueAtTime(.35,s); gain.gain.exponentialRampToValueAtTime(.001,s+d);
+        o.start(s); o.stop(s+d);
+      });
+      setTimeout(cb, 1900);
+    } catch(e) { setTimeout(cb, 200); }
+  }
+
+  function _startChoukaiTimer() {
+    clearInterval(choukaiTimer_);
+    choukaiTimer_ = setInterval(() => {
+      choukaiTimeLeft_ = Math.max(0, choukaiTimeLeft_ - 1);
+      const el = document.getElementById("_ckTimer");
+      if (el) {
+        el.textContent = formatSessionTime(choukaiTimeLeft_);
+        const m = choukaiTimeLeft_ / 60;
+        el.className = "choukai-topbar-timer" + (m < 2 ? " danger" : m < 5 ? " warn" : "");
+      }
+      if (choukaiTimeLeft_ <= 0) { clearInterval(choukaiTimer_); _endChoukai(true); }
+    }, 1000);
+  }
+
+  function _stopChoukaiTimer() {
+    clearInterval(choukaiTimer_);
+    choukaiTimer_ = null;
+  }
+
+  function renderChoukai() {
+    _injectChoukaiCSS();
+    const item   = choukaiData_[choukaiIndex];
+    const total  = choukaiData_.length;
+    const isN5   = choukaiLevel_ === "N5";
+    const labels = ["A","B","C","D"];
+    const waveBars = Array.from({length:10}, () => `<div class="choukai-wave-bar"></div>`).join("");
+    const optBtns  = item.options.map((opt,i) =>
+      `<button class="choukai-opt-btn" data-ci="${i}"><strong>${labels[i]}.</strong> ${opt}</button>`
+    ).join("");
+    const slowBtnHtml = isN5
+      ? `<button class="ck-btn-slow" id="_ckSlow">${_CHOUKAI_SVG.slow} Lambat</button>` : "";
+
+    grid.className = "";
+    grid.classList.add("quiz-active-mode");
+    document.body.classList.add("training-session");
+    const pc = document.getElementById("pagination-container");
+    if (pc) { pc.innerHTML = ""; pc.style.display = "none"; }
+
+    grid.innerHTML = `
+      <div class="choukai-shell">
+        <div class="choukai-topbar">
+          <span class="choukai-topbar-title">聴解 &bull; ${choukaiLevel_}</span>
+          <span class="choukai-topbar-progress">Soal ${choukaiIndex+1} / ${total}</span>
+          <span class="choukai-topbar-timer" id="_ckTimer">${formatSessionTime(choukaiTimeLeft_)}</span>
+          <button class="choukai-finish-btn" id="_ckFinish">Akhiri Test</button>
+        </div>
+        <div class="choukai-body">
+          <div class="choukai-player-col">
+            <div class="choukai-stage" id="_ckStage">
+              <span class="ck-spk">${_CHOUKAI_SVG.speaker}</span>
+              <div class="choukai-waveform">${waveBars}</div>
+              <span class="choukai-idle-hint">Tekan Putar untuk memulai</span>
+            </div>
+            <div class="choukai-status" id="_ckStatus">Siap diputar</div>
+            <div class="choukai-controls">
+              <button class="ck-btn-play" id="_ckPlay">${_CHOUKAI_SVG.play} Putar</button>
+              ${slowBtnHtml}
+              <div class="ck-replay-counter">
+                <div class="ck-dot" id="_ckDot1"></div>
+                <div class="ck-dot" id="_ckDot2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="choukai-answer-col">
+            <div class="choukai-options locked" id="_ckOpts">${optBtns}</div>
+          </div>
+        </div>
+      </div>`;
+
+    choukaiPlaying = false; choukaiAnswered = false; choukaiSlow = false;
+    _ckUpdateDots();
+
+    document.getElementById("_ckPlay")?.addEventListener("click", () => {
+      if (!choukaiPlaying && !choukaiAnswered) _playChoukaiAudio();
+    });
+    document.getElementById("_ckSlow")?.addEventListener("click", () => {
+      choukaiSlow = !choukaiSlow;
+      document.getElementById("_ckSlow")?.classList.toggle("active", choukaiSlow);
+    });
+    document.querySelectorAll(".choukai-opt-btn").forEach(btn =>
+      btn.addEventListener("click", () => _checkChoukaiAnswer(parseInt(btn.dataset.ci, 10)))
+    );
+    document.getElementById("_ckFinish")?.addEventListener("click", () =>
+      _showConfirmOverlay("Akhiri Sesi Choukai?", "Skor saat ini akan dihitung dan disimpan. Soal belum terjawab dianggap salah.", () => _endChoukai(false))
+    );
+  }
+
+  function _playChoukaiAudio() {
+    if (choukaiPlaying || choukaiAnswered) return;
+    const item   = choukaiData_[choukaiIndex];
+    const rate   = choukaiSlow ? 0.6 : 0.9;
+    const voices = getJaVoices();
+    const mV = voices.find(v => /male/i.test(v.name))   || voices[0] || null;
+    const fV = voices.find(v => /female/i.test(v.name)) || voices[1] || voices[0] || null;
+
+    choukaiPlaying = true;
+    choukaiReplay  = Math.max(0, choukaiReplay - 1);
+    _ckUpdateDots();
+
+    const stage  = document.getElementById("_ckStage");
+    const status = document.getElementById("_ckStatus");
+    const playBtn= document.getElementById("_ckPlay");
+    const slowBtn= document.getElementById("_ckSlow");
+
+    if (stage)   stage.classList.add("playing");
+    if (status)  { status.innerHTML = `${_CHOUKAI_SVG.bell} Sedang diputar&hellip;`; status.className = "choukai-status"; }
+    if (playBtn) { playBtn.innerHTML = `${_CHOUKAI_SVG.stop} Stop`; }
+    if (slowBtn) slowBtn.disabled = true;
+
+    window.speechSynthesis.cancel();
+    const utters = item.script.map(line => {
+      const u = new SpeechSynthesisUtterance(line.text);
+      u.lang = "ja-JP"; u.rate = rate;
+      u.pitch = line.gender === "female" ? 1.4 : 0.75;
+      if (line.gender === "female" && fV) u.voice = fV;
+      if (line.gender === "male"   && mV) u.voice = mV;
+      return u;
+    });
+
+    utters[utters.length - 1].onend = () => {
+      if (stage) stage.classList.remove("playing");
+      if (status) status.innerHTML = `${_CHOUKAI_SVG.bell} Dengarkan pertanyaan&hellip;`;
+      playBell(() => {
+        const q = new SpeechSynthesisUtterance(item.question);
+        q.lang = "ja-JP"; q.rate = 0.85; q.pitch = 1.0;
+        if (fV) q.voice = fV;
+        q.onend = () => {
+          choukaiPlaying = false;
+          document.getElementById("_ckOpts")?.classList.remove("locked");
+          if (status) { status.innerHTML = "Pilih jawaban yang tepat"; status.className = "choukai-status"; }
+          if (playBtn) { playBtn.innerHTML = `${_CHOUKAI_SVG.replay} Ulangi`; playBtn.disabled = choukaiReplay <= 0; }
+          if (slowBtn) slowBtn.disabled = false;
+        };
+        window.speechSynthesis.speak(q);
+      });
+    };
+    utters.forEach(u => window.speechSynthesis.speak(u));
+  }
+
+  function _ckUpdateDots() {
+    document.getElementById("_ckDot1")?.classList.toggle("used", choukaiReplay < 2);
+    document.getElementById("_ckDot2")?.classList.toggle("used", choukaiReplay < 1);
+  }
+
+  function _checkChoukaiAnswer(idx) {
+    if (choukaiAnswered) return;
+    choukaiAnswered = true;
+    const item = choukaiData_[choukaiIndex];
+    const btns = document.querySelectorAll(".choukai-opt-btn");
+    document.getElementById("_ckOpts")?.classList.add("locked");
+    window.speechSynthesis.cancel();
+
+    const ok = idx === item.answer;
+    if (ok) choukaiScore++;
+    choukaiUserAnswers[choukaiIndex] = idx;
+
+    btns.forEach((b, i) => {
+      b.disabled = true;
+      if (i === item.answer) b.classList.add("correct");
+      else if (i === idx)    b.classList.add("wrong");
+    });
+
+    const status = document.getElementById("_ckStatus");
+    if (status) {
+      status.innerHTML = ok
+        ? `${_CHOUKAI_SVG.check} Benar! ${item.explanation}`
+        : `${_CHOUKAI_SVG.cross} Salah. ${item.explanation}`;
+      status.className = "choukai-status " + (ok ? "ok" : "err");
+    }
+
+    setTimeout(() => {
+      choukaiIndex++;
+      if (choukaiIndex < choukaiData_.length) {
+        choukaiReplay = 2; choukaiAnswered = false;
+        renderChoukai();
+      } else {
+        _endChoukai(true);
+      }
+    }, 2200);
+  }
+
+  function _endChoukai(finished) {
+    window.speechSynthesis.cancel();
+    _stopChoukaiTimer();
+    isTesting = false; isChoukaiMode = false;
+    document.body.classList.remove("training-session");
+    unlockQuizScroll();
+    _removeChoukaiCSS();
+
+    const total = choukaiData_.length;
+    const pct   = total > 0 ? Math.round((choukaiScore / total) * 100) : 0;
+    saveScoreToCloud("choukai", choukaiLevel_, choukaiScore, total, pct);
+
+    const isLulus = pct >= 60;
+    const color   = isLulus ? "#16a34a" : "#dc2626";
+    const status  = isLulus ? "LULUS" : "BELUM LULUS";
+    const msgs    = isLulus
+      ? ["Telinga yang terlatih! Pertahankan semangat mendengarkan!","Choukai makin mantap. Lanjut ke level berikutnya!","Luar biasa, kemampuan mendengarmu meningkat pesat!"]
+      : ["Latih lagi pendengaranmu, yuk review tiap dialog!","Belum lulus bukan akhir — dengarkan lagi, pasti ada peningkatan!","Ganbatte! Listening butuh latihan rutin, jangan menyerah!"];
+    const msg = msgs[Math.floor(Math.random() * msgs.length)];
+
+    const html = `
+      <div class="qr-wrap">
+        <div class="qr-left">
+          <div class="qr-status" style="color:${color}">${status}</div>
+          <div class="qr-score">${pct}<span class="qr-denom">/100</span></div>
+          <div class="qr-stats">Benar: <strong>${choukaiScore}</strong> / ${total} soal</div>
+          <div style="margin-top:6px;font-size:.78rem;color:#94a3b8">Choukai ${choukaiLevel_}</div>
+        </div>
+        <div class="qr-right">
+          <p class="qr-msg">${msg}</p>
+          <div class="qr-actions">
+            <button class="qr-btn qr-btn--review" id="_ckTinjau">${_CHOUKAI_SVG.search} Tinjau</button>
+            <button class="qr-btn qr-btn--menu"   id="_ckKembali">${_CHOUKAI_SVG.home} Kembali</button>
+          </div>
+        </div>
+      </div>`;
+    openInfoModal(html);
+    kanjiModal.classList.add("quiz-result-active");
+    requestAnimationFrame(() => {
+      document.getElementById("_ckTinjau")?.addEventListener("click", () => _renderChoukaiReview());
+      document.getElementById("_ckKembali")?.addEventListener("click", () => location.reload());
+    });
+  }
+
+  function _renderChoukaiReview() {
+    closeModal();
+    document.body.classList.add("review-mode-active");
+    grid.className = ""; grid.classList.add("review-active-mode");
+    document.body.style.overflow = "hidden";
+    const labels = ["A","B","C","D"];
+    let html = `<div class="review-wrapper"><div class="review-header">
+      <h2 style="margin:0;color:#1e293b;font-size:1.4rem">Evaluasi Choukai</h2>
+      <button onclick="location.reload()" style="background:#ef4444;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-weight:bold">Tutup &amp; Selesai</button>
+    </div><div class="review-content">`;
+
+    choukaiData_.forEach((q, idx) => {
+      const ua  = choukaiUserAnswers[idx] ?? -1;
+      const ok  = ua === q.answer;
+      const uc  = ok ? "#16a34a" : "#dc2626";
+      html += `
+        <div class="review-card ${ok?'benar':'salah'}">
+          <div class="review-left-col">
+            <div style="margin-bottom:8px;font-weight:bold;color:#64748b;display:flex;justify-content:space-between">
+              <span>Soal ${idx+1} &bull; ${choukaiLevel_}</span>
+              <span style="color:${uc}">${ok?'BENAR':'SALAH'}</span>
+            </div>
+            <h3 style="font-size:1.05rem;margin:0 0 12px;color:#0f172a;line-height:1.5">${q.question}</h3>
+            <div style="background:#f8fafc;padding:10px;border-radius:8px;border:1px solid #e2e8f0">
+              <div style="font-size:.8rem;color:#64748b;margin-bottom:4px">Jawabanmu:</div>
+              <div style="font-size:.95rem;font-weight:bold;color:${uc}">
+                ${ua>=0 ? labels[ua]+". "+q.options[ua] : "<i style='color:#94a3b8'>Tidak dijawab</i>"}
+              </div>
+            </div>
+          </div>
+          <div class="review-right-col">
+            <div style="margin-bottom:12px">
+              <div style="font-size:.8rem;color:#64748b;margin-bottom:4px">Kunci Jawaban:</div>
+              <div style="font-size:.95rem;font-weight:bold;color:#16a34a">${labels[q.answer]}. ${q.options[q.answer]}</div>
+            </div>
+            <div class="explanation-box"><strong>Penjelasan:</strong><br>${q.explanation||'-'}</div>
+          </div>
+        </div>`;
+    });
+    html += `</div></div>`;
+    grid.innerHTML = html;
+  }
+
+  function startChoukai(level) {
+    if (!isLoggedInUser()) {
+      openInfoModal("<h3>Mode Latihan Wajib Login</h3><p>Silakan masuk dengan Google atau Email untuk membuka fitur latihan.</p>");
+      return;
+    }
+    const pool = (choukaiData && choukaiData[level]) ? [...choukaiData[level]] : [];
+    if (!pool.length) {
+      openInfoModal("<h3>Data Belum Tersedia</h3><p>Data Choukai belum ada untuk level "+level+".</p>");
+      return;
+    }
+    for (let i = pool.length-1; i > 0; i--) {
+      const j = Math.floor(Math.random()*(i+1));
+      [pool[i],pool[j]] = [pool[j],pool[i]];
+    }
+    choukaiData_ = pool; choukaiLevel_ = level;
+    choukaiIndex = 0; choukaiScore = 0; choukaiReplay = 2;
+    choukaiUserAnswers = []; isTesting = true; isChoukaiMode = true;
+    choukaiTimeLeft_ = (CHOUKAI_DURATION[level] || 30) * 60;
+    lockQuizScroll();
+    renderChoukai();
+    _startChoukaiTimer();
+  }
+
+  // ==========================================
   function startExercise(mainType, section, level) {
     if (!isLoggedInUser()) {
       openInfoModal("<h3>Mode Latihan Wajib Login 🔒</h3><p>Silakan masuk dengan Google atau Email dulu untuk membuka fitur latihan.</p>");
@@ -1222,812 +1651,9 @@ grid.style.display="grid";
   }
 
   // ==========================================
-  // ==========================================
-  // 🎧 CHOUKAI — LISTENING COMPREHENSION
-  // ==========================================
-
-  // State choukai
-  let choukaiIndex    = 0;
-  let choukaiScore    = 0;
-  let choukaiData_    = [];
-  let choukaiLevel_   = "N5";
-  let choukaiReplay   = 2;
-  let choukaiSlow     = false;
-  let choukaiPlaying  = false;
-  let choukaiAnswered = false;
-  let isChoukaiMode   = false; // flag khusus buat deteksi di _refreshQuizLayout
-  let choukaiTimer_   = null;  // interval timer choukai
-  let choukaiTimeLeft_ = 0;   // sisa waktu dalam detik
-
-  // Durasi per level (dalam menit)
-  const CHOUKAI_DURATION = { N5: 30, N4: 35, N3: 40, N2: 50, N1: 55 };
-
-  // Simpan jawaban user tiap soal untuk review
-  let choukaiUserAnswers = [];
-
-  // SVG icons — tidak pakai emoji
-  const SVG_SPEAKER = `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
-  const SVG_PLAY    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
-  const SVG_REPLAY  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>`;
-  const SVG_SLOW    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-  const SVG_BELL    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>`;
-  const SVG_CHECK   = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-  const SVG_CROSS   = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-  const SVG_REVIEW  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`;
-  const SVG_HOME    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`;
-  const SVG_STOP    = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>`;
-
-  // ── CSS injeksi khusus choukai (landscape-aware) ──
-  function _injectChoukaiCSS() {
-    if (document.getElementById("choukai-injected-css")) return;
-    const s = document.createElement("style");
-    s.id = "choukai-injected-css";
-    s.textContent = `
-      /* ── CHOUKAI WRAPPER: Portrait default ── */
-      .choukai-pro-shell {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        min-height: 100%;
-        background: #f8fafc;
-        position: relative;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
-      .choukai-topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 16px;
-        background: #fff;
-        border-bottom: 1px solid #e2e8f0;
-        flex-shrink: 0;
-        gap: 10px;
-      }
-      .choukai-topbar-title {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: #7c3aed;
-        letter-spacing: 0.03em;
-      }
-      .choukai-topbar-progress {
-        font-size: 0.85rem;
-        color: #64748b;
-        font-weight: 600;
-      }
-      .choukai-finish-btn {
-        padding: 6px 14px;
-        border-radius: 20px;
-        background: #fee2e2;
-        color: #dc2626;
-        border: 1.5px solid #fca5a5;
-        font-weight: 700;
-        font-size: 0.8rem;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background 0.15s;
-      }
-      .choukai-finish-btn:hover { background: #fecaca; }
-
-      /* ── Portrait: player atas, opsi bawah ── */
-      .choukai-body {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        overflow: hidden;
-      }
-      .choukai-player-col {
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        background: #fff;
-        border-bottom: 1px solid #e2e8f0;
-        flex-shrink: 0;
-      }
-      .choukai-stage {
-        width: 100%;
-        max-width: 340px;
-        min-height: 110px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #f1f5f9;
-        border-radius: 16px;
-        border: 2px solid #e2e8f0;
-        gap: 8px;
-        padding: 16px;
-        transition: border-color 0.3s, background 0.3s;
-      }
-      .choukai-stage.is-playing {
-        border-color: #a855f7;
-        background: #faf5ff;
-      }
-      .choukai-stage .choukai-speaker-svg { color: #94a3b8; transition: color 0.3s; }
-      .choukai-stage.is-playing .choukai-speaker-svg { color: #a855f7; }
-      .choukai-waveform { display:flex; gap:3px; align-items:flex-end; height:28px; }
-      .choukai-wave-bar {
-        width: 4px; background: #cbd5e1; border-radius: 2px; height: 6px;
-        transition: height 0.15s;
-      }
-      .choukai-stage.is-playing .choukai-wave-bar {
-        animation: choukaiPulse 0.6s ease-in-out infinite alternate;
-      }
-      .choukai-wave-bar:nth-child(2n) { animation-delay: 0.15s !important; }
-      .choukai-wave-bar:nth-child(3n) { animation-delay: 0.3s !important; }
-      @keyframes choukaiPulse {
-        from { height: 4px; background: #a855f7; }
-        to   { height: 24px; background: #7c3aed; }
-      }
-      .choukai-idle-hint { font-size: 0.78rem; color: #94a3b8; text-align: center; }
-      .choukai-status-label {
-        font-size: 0.85rem;
-        color: #64748b;
-        text-align: center;
-        min-height: 20px;
-        font-weight: 500;
-        padding: 4px 12px;
-        border-radius: 8px;
-        background: transparent;
-        transition: background 0.2s, color 0.2s;
-        display: flex; align-items: center; gap: 6px;
-      }
-      .choukai-status-label.correct { background: #dcfce7; color: #16a34a; }
-      .choukai-status-label.wrong   { background: #fee2e2; color: #dc2626; }
-      .choukai-controls {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .choukai-btn-play {
-        display: flex; align-items: center; gap: 7px;
-        padding: 9px 20px;
-        border-radius: 24px;
-        background: #7c3aed;
-        color: #fff;
-        border: none;
-        font-weight: 700;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: background 0.15s, opacity 0.15s;
-      }
-      .choukai-btn-play:disabled { opacity: 0.45; cursor: not-allowed; }
-      .choukai-btn-play:hover:not(:disabled) { background: #6d28d9; }
-      .choukai-btn-slow {
-        display: flex; align-items: center; gap: 6px;
-        padding: 8px 14px;
-        border-radius: 24px;
-        background: #f1f5f9;
-        color: #475569;
-        border: 1.5px solid #cbd5e1;
-        font-weight: 600;
-        font-size: 0.82rem;
-        cursor: pointer;
-        transition: background 0.15s, color 0.15s;
-      }
-      .choukai-btn-slow:disabled { opacity: 0.45; cursor: not-allowed; }
-      .choukai-btn-slow.is-active { background: #ede9fe; color: #7c3aed; border-color: #a78bfa; }
-      .choukai-replay-counter { display:flex; gap:6px; align-items:center; }
-      .choukai-replay-dot {
-        width: 10px; height: 10px; border-radius: 50%;
-        background: #a855f7;
-        transition: background 0.3s;
-      }
-      .choukai-replay-dot.used { background: #e2e8f0; }
-
-      /* ── Options ── */
-      .choukai-answer-col {
-        flex: 1;
-        overflow-y: auto;
-        padding: 16px;
-      }
-      .choukai-options {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .choukai-opt-btn {
-        padding: 12px 10px;
-        border-radius: 12px;
-        border: 2px solid #e2e8f0;
-        background: #fff;
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        text-align: left;
-        line-height: 1.4;
-        transition: border-color 0.15s, background 0.15s;
-        color: #1e293b;
-      }
-      .choukai-opt-btn:hover:not(:disabled) { border-color: #a855f7; background: #faf5ff; }
-      .choukai-options.locked .choukai-opt-btn { cursor: not-allowed; opacity: 0.6; }
-      .choukai-opt-btn.correct { border-color: #22c55e !important; background: #dcfce7 !important; color: #15803d !important; opacity: 1 !important; }
-      .choukai-opt-btn.wrong   { border-color: #ef4444 !important; background: #fee2e2 !important; color: #b91c1c !important; opacity: 1 !important; }
-
-      /* ── Landscape: side-by-side ── */
-      @media (max-height: 500px) and (orientation: landscape) {
-        .choukai-pro-shell { flex-direction: column; }
-        .choukai-body { flex-direction: row; overflow: hidden; }
-        .choukai-player-col {
-          width: 48%;
-          border-bottom: none;
-          border-right: 1px solid #e2e8f0;
-          overflow-y: auto;
-        }
-        .choukai-answer-col { width: 52%; overflow-y: auto; }
-        .choukai-stage { min-height: 80px; }
-        .choukai-options { grid-template-columns: 1fr; }
-      }
-
-      .choukai-topbar-timer {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #475569;
-        background: #f1f5f9;
-        border: 1.5px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 4px 10px;
-        font-variant-numeric: tabular-nums;
-        letter-spacing: 0.05em;
-        transition: color 0.3s, border-color 0.3s, background 0.3s;
-      }
-      .choukai-topbar-timer.warning {
-        color: #b45309; background: #fef3c7; border-color: #fbbf24;
-      }
-      .choukai-topbar-timer.danger {
-        color: #dc2626; background: #fee2e2; border-color: #fca5a5;
-        animation: timerPulse 1s ease-in-out infinite;
-      }
-      @keyframes timerPulse {
-        0%, 100% { opacity: 1; } 50% { opacity: 0.6; }
-      }
-      .choukai-confirm-overlay {
-        position: fixed; inset: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 9999;
-        display: flex; align-items: center; justify-content: center;
-        padding: 20px;
-      }
-      .choukai-confirm-box {
-        background: #fff;
-        border-radius: 20px;
-        padding: 32px 28px 24px;
-        max-width: 360px;
-        width: 100%;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        text-align: center;
-      }
-      .choukai-confirm-box h3 {
-        margin: 0 0 10px;
-        font-size: 1.2rem;
-        color: #0f172a;
-      }
-      .choukai-confirm-box p {
-        margin: 0 0 24px;
-        color: #64748b;
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-      .choukai-confirm-actions {
-        display: flex; gap: 10px; justify-content: center;
-      }
-      .choukai-confirm-yes {
-        padding: 10px 24px;
-        border-radius: 999px;
-        background: #dc2626;
-        color: #fff;
-        border: none;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 0.9rem;
-      }
-      .choukai-confirm-no {
-        padding: 10px 24px;
-        border-radius: 999px;
-        background: #f1f5f9;
-        color: #475569;
-        border: 1.5px solid #cbd5e1;
-        font-weight: 700;
-        cursor: pointer;
-        font-size: 0.9rem;
-      }
-    `;
-    document.head.appendChild(s);
-  }
-
-  function _removeChoukaiCSS() {
-    document.getElementById("choukai-injected-css")?.remove();
-  }
-
-  // Ambil semua voice Jepang yang tersedia di browser
-  function getJaVoices() {
-    const all = window.speechSynthesis.getVoices();
-    return all.filter(v => v.lang.startsWith("ja"));
-  }
-
-  // Putar bel "ting… tong…" via Web Audio API (tanpa file)
-  function playBell(cb) {
-    try {
-      const ctx  = new (window.AudioContext || window.webkitAudioContext)();
-      const gain = ctx.createGain();
-      gain.connect(ctx.destination);
-      function tone(freq, start, dur) {
-        const osc = ctx.createOscillator();
-        osc.type = "sine"; osc.frequency.value = freq; osc.connect(gain);
-        gain.gain.setValueAtTime(0.35, start);
-        gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
-        osc.start(start); osc.stop(start + dur);
-      }
-      const t = ctx.currentTime;
-      tone(1047, t, 0.9); tone(784, t + 0.65, 1.1);
-      setTimeout(cb, 1900);
-    } catch (e) { setTimeout(cb, 200); }
-  }
-
-  // ── Render HTML choukai ke #grid ──
-  function renderChoukai() {
-    _injectChoukaiCSS();
-
-    const item   = choukaiData_[choukaiIndex];
-    const total  = choukaiData_.length;
-    const isN5   = choukaiLevel_ === "N5";
-    const labels = ["A", "B", "C", "D"];
-
-    const waveBars = Array.from({ length: 10 }, () =>
-      `<div class="choukai-wave-bar"></div>`
-    ).join("");
-
-    const optBtns = item.options.map((opt, i) => `
-      <button class="choukai-opt-btn" data-choukai-index="${i}">
-        <strong>${labels[i]}.</strong> ${opt}
-      </button>`
-    ).join("");
-
-    const slowBtnHtml = isN5
-      ? `<button class="choukai-btn-slow" id="choukaiSlowBtn" title="Putar lebih lambat">
-           ${SVG_SLOW} Lambat
-         </button>`
-      : "";
-
-    grid.className = "";
-    grid.classList.add("quiz-active-mode");
-    document.body.classList.add("training-session");
-
-    const paginationContainer = document.getElementById("pagination-container");
-    if (paginationContainer) {
-      paginationContainer.innerHTML = "";
-      paginationContainer.style.display = "none";
-    }
-
-    grid.innerHTML = `
-      <div class="choukai-pro-shell">
-
-        <div class="choukai-topbar">
-          <span class="choukai-topbar-title">聴解 &bull; ${choukaiLevel_}</span>
-          <span class="choukai-topbar-progress">Soal ${choukaiIndex + 1} / ${total}</span>
-          <span class="choukai-topbar-timer" id="choukaiTimerDisplay">${formatSessionTime(choukaiTimeLeft_)}</span>
-          <button class="choukai-finish-btn" id="choukaiFinishBtn">Akhiri Test</button>
-        </div>
-
-        <div class="choukai-body">
-
-          <div class="choukai-player-col">
-            <div class="choukai-stage" id="choukaiStage">
-              <span class="choukai-speaker-svg">${SVG_SPEAKER}</span>
-              <div class="choukai-waveform">${waveBars}</div>
-              <span class="choukai-idle-hint">Tekan Putar untuk memulai</span>
-            </div>
-
-            <div class="choukai-status-label" id="choukaiStatus">Siap diputar</div>
-
-            <div class="choukai-controls">
-              <button class="choukai-btn-play" id="choukaiPlayBtn">
-                ${SVG_PLAY} Putar
-              </button>
-              ${slowBtnHtml}
-              <div class="choukai-replay-counter" id="choukaiReplayCounter">
-                <div class="choukai-replay-dot" id="choukaiDot1"></div>
-                <div class="choukai-replay-dot" id="choukaiDot2"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="choukai-answer-col">
-            <div class="choukai-options locked" id="choukaiOptions">
-              ${optBtns}
-            </div>
-          </div>
-
-        </div>
-      </div>
-    `;
-
-    choukaiPlaying  = false;
-    choukaiAnswered = false;
-    choukaiSlow     = false;
-    _updateReplayDots();
-
-    document.getElementById("choukaiPlayBtn")?.addEventListener("click", () => {
-      if (choukaiPlaying || choukaiAnswered) return;
-      _playChoukaiAudio();
-    });
-
-    document.getElementById("choukaiSlowBtn")?.addEventListener("click", () => {
-      choukaiSlow = !choukaiSlow;
-      document.getElementById("choukaiSlowBtn")?.classList.toggle("is-active", choukaiSlow);
-    });
-
-    document.querySelectorAll(".choukai-opt-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        _checkChoukaiAnswer(parseInt(btn.dataset.choukaiIndex, 10));
-      });
-    });
-
-    document.getElementById("choukaiFinishBtn")?.addEventListener("click", _confirmEndChoukai);
-  }
-
-  // ── Konfirmasi akhiri test (popup internal, bukan native confirm) ──
-  function _confirmEndChoukai() {
-    const overlay = document.createElement("div");
-    overlay.className = "choukai-confirm-overlay";
-    overlay.innerHTML = `
-      <div class="choukai-confirm-box">
-        <h3>Akhiri Sesi Choukai?</h3>
-        <p>Skor saat ini akan dihitung dan disimpan. Soal yang belum dijawab dianggap salah.</p>
-        <div class="choukai-confirm-actions">
-          <button class="choukai-confirm-yes" id="choukaiConfirmYes">Ya, Akhiri</button>
-          <button class="choukai-confirm-no"  id="choukaiConfirmNo">Lanjutkan</button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-    document.getElementById("choukaiConfirmYes").addEventListener("click", () => {
-      overlay.remove();
-      _endChoukai(false);
-    });
-    document.getElementById("choukaiConfirmNo").addEventListener("click", () => overlay.remove());
-    overlay.addEventListener("click", e => { if (e.target === overlay) overlay.remove(); });
-  }
-
-  // ── Putar dialog → bel → soal TTS → unlock pilihan ──
-  function _playChoukaiAudio() {
-    if (choukaiPlaying || choukaiAnswered) return;
-
-    const item   = choukaiData_[choukaiIndex];
-    const rate   = choukaiSlow ? 0.6 : 0.9;
-    const voices = getJaVoices();
-
-    const maleVoice   = voices.find(v => /male/i.test(v.name))   || voices[0] || null;
-    const femaleVoice = voices.find(v => /female/i.test(v.name)) || voices[1] || voices[0] || null;
-
-    choukaiPlaying = true;
-    choukaiReplay  = Math.max(0, choukaiReplay - 1);
-    _updateReplayDots();
-
-    const stage   = document.getElementById("choukaiStage");
-    const status  = document.getElementById("choukaiStatus");
-    const playBtn = document.getElementById("choukaiPlayBtn");
-    const slowBtn = document.getElementById("choukaiSlowBtn");
-
-    if (stage)   stage.classList.add("is-playing");
-    if (status)  { status.innerHTML = `${SVG_SPEAKER} Sedang diputar&hellip;`; status.className = "choukai-status-label"; }
-    if (playBtn) { playBtn.innerHTML = `${SVG_STOP} Stop`; playBtn.disabled = false; }
-    if (slowBtn) slowBtn.disabled = true;
-
-    window.speechSynthesis.cancel();
-
-    const utterances = item.script.map(line => {
-      const u = new SpeechSynthesisUtterance(line.text);
-      u.lang  = "ja-JP"; u.rate = rate;
-      u.pitch = line.gender === "female" ? 1.4 : 0.75;
-      if (line.gender === "female" && femaleVoice) u.voice = femaleVoice;
-      if (line.gender === "male"   && maleVoice)   u.voice = maleVoice;
-      return u;
-    });
-
-    utterances[utterances.length - 1].onend = () => {
-      if (stage)  stage.classList.remove("is-playing");
-      if (status) { status.innerHTML = `${SVG_BELL} Dengarkan pertanyaan&hellip;`; }
-
-      playBell(() => {
-        const qUtter = new SpeechSynthesisUtterance(item.question);
-        qUtter.lang = "ja-JP"; qUtter.rate = 0.85; qUtter.pitch = 1.0;
-        if (femaleVoice) qUtter.voice = femaleVoice;
-        qUtter.onend = () => {
-          choukaiPlaying = false;
-          _unlockChoukaiOptions();
-          if (status) { status.innerHTML = "Pilih jawaban yang tepat"; status.className = "choukai-status-label"; }
-          if (playBtn) {
-            playBtn.innerHTML = `${SVG_REPLAY} Ulangi`;
-            playBtn.disabled = choukaiReplay <= 0;
-          }
-          if (slowBtn) slowBtn.disabled = false;
-        };
-        window.speechSynthesis.speak(qUtter);
-      });
-    };
-
-    utterances.forEach(u => window.speechSynthesis.speak(u));
-  }
-
-  function _unlockChoukaiOptions() {
-    document.getElementById("choukaiOptions")?.classList.remove("locked");
-  }
-
-  function _updateReplayDots() {
-    document.getElementById("choukaiDot1")?.classList.toggle("used", choukaiReplay < 2);
-    document.getElementById("choukaiDot2")?.classList.toggle("used", choukaiReplay < 1);
-  }
-
-  function _checkChoukaiAnswer(selectedIdx) {
-    if (choukaiAnswered) return;
-    choukaiAnswered = true;
-
-    const item = choukaiData_[choukaiIndex];
-    const btns = document.querySelectorAll(".choukai-opt-btn");
-    const opts = document.getElementById("choukaiOptions");
-
-    if (opts) opts.classList.add("locked");
-    window.speechSynthesis.cancel();
-
-    const isCorrect = selectedIdx === item.answer;
-    if (isCorrect) choukaiScore++;
-
-    // Simpan jawaban user untuk review
-    choukaiUserAnswers[choukaiIndex] = selectedIdx;
-
-    btns.forEach((btn, i) => {
-      btn.disabled = true;
-      if (i === item.answer)   btn.classList.add("correct");
-      else if (i === selectedIdx) btn.classList.add("wrong");
-    });
-
-    const status = document.getElementById("choukaiStatus");
-    if (status) {
-      if (isCorrect) {
-        status.innerHTML = `${SVG_CHECK} Benar! ${item.explanation}`;
-        status.className = "choukai-status-label correct";
-      } else {
-        status.innerHTML = `${SVG_CROSS} Salah. ${item.explanation}`;
-        status.className = "choukai-status-label wrong";
-      }
-    }
-
-    setTimeout(() => {
-      choukaiIndex++;
-      if (choukaiIndex < choukaiData_.length) {
-        choukaiReplay   = 2;
-        choukaiAnswered = false;
-        renderChoukai();
-      } else {
-        _endChoukai(true);
-      }
-    }, 2200);
-  }
-
-  // ── Akhiri sesi, tampilkan hasil via openInfoModal ──
-  function _endChoukai(finished) {
-    window.speechSynthesis.cancel();
-    _stopChoukaiTimer();
-    isTesting       = false;
-    isChoukaiMode   = false;
-    document.body.classList.remove("training-session");
-    unlockQuizScroll();
-    _removeChoukaiCSS();
-
-    const total = choukaiData_.length;
-    const pct   = total > 0 ? Math.round((choukaiScore / total) * 100) : 0;
-
-    saveScoreToCloud("choukai", choukaiLevel_, choukaiScore, total, pct);
-
-    const isLulus    = pct >= 60;
-    const colorTheme = isLulus ? "#16a34a" : "#dc2626";
-    const statusLabel= isLulus ? "LULUS" : "BELUM LULUS";
-
-    const passQuotes = [
-      "Telinga yang terlatih! Pertahankan semangat mendengarkan. Subarashii!",
-      "Choukai N5 takluk! Langkah berikutnya makin terbuka. Ganbatte!",
-      "Luar biasa, kemampuan mendengarmu meningkat pesat!"
-    ];
-    const failQuotes = [
-      "Latih lagi pendengaranmu, yuk review tiap dialog dengan seksama!",
-      "Belum lulus bukan akhir — dengarkan lagi, pasti ada peningkatan!",
-      "Ganbatte! Listening butuh latihan rutin, jangan menyerah ya!"
-    ];
-    const gradeMsg = isLulus
-      ? passQuotes[Math.floor(Math.random() * passQuotes.length)]
-      : failQuotes[Math.floor(Math.random() * failQuotes.length)];
-
-    const message = `
-      <div class="qr-wrap">
-        <div class="qr-left">
-          <div class="qr-status" style="color:${colorTheme}">${statusLabel}</div>
-          <div class="qr-score">${pct}<span class="qr-denom">/100</span></div>
-          <div class="qr-stats">Benar: <strong>${choukaiScore}</strong> / ${total} soal</div>
-          <div style="margin-top:6px;font-size:0.8rem;color:#94a3b8;">Choukai ${choukaiLevel_}</div>
-        </div>
-        <div class="qr-right">
-          <p class="qr-msg">${gradeMsg}</p>
-          <div class="qr-actions">
-            <button class="qr-btn qr-btn--review" id="choukaiTinjauBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Tinjau
-            </button>
-            <button class="qr-btn qr-btn--menu" id="choukaiKembaliBtn">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              Kembali
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    openInfoModal(message);
-    kanjiModal.classList.add("quiz-result-active");
-
-    // Pasang event listener SETELAH openInfoModal memasang HTML ke DOM
-    // Jangan pakai inline onclick karena bisa gagal di beberapa browser/konteks
-    requestAnimationFrame(() => {
-      document.getElementById("choukaiTinjauBtn")?.addEventListener("click", () => {
-        window.renderChoukaiReview();
-      });
-      document.getElementById("choukaiKembaliBtn")?.addEventListener("click", () => {
-        location.reload();
-      });
-    });
-  }
-
-  // ── Review page choukai ──
-  window.renderChoukaiReview = function() {
-    closeModal();
-    document.body.classList.add("review-mode-active");
-    grid.className = "";
-    grid.classList.add("review-active-mode");
-    document.body.style.overflow = "hidden";
-
-    const labels = ["A", "B", "C", "D"];
-
-    let html = `
-      <div class="review-wrapper">
-        <div class="review-header">
-          <h2 style="margin:0;color:#1e293b;font-size:1.4rem;">Evaluasi Choukai</h2>
-          <button onclick="location.reload()" style="background:#ef4444;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-weight:bold;">Tutup &amp; Selesai</button>
-        </div>
-        <div class="review-content">
-    `;
-
-    choukaiData_.forEach((q, idx) => {
-      const userAns  = choukaiUserAnswers[idx] ?? -1;
-      const correct  = q.answer;
-      const isRight  = userAns === correct;
-      const userColor= isRight ? "#16a34a" : "#dc2626";
-      const statusTxt= isRight ? "BENAR" : "SALAH";
-
-      html += `
-        <div class="review-card ${isRight ? 'benar' : 'salah'}">
-          <div class="review-left-col">
-            <div style="margin-bottom:8px;font-weight:bold;color:#64748b;display:flex;justify-content:space-between;">
-              <span>Soal ${idx + 1} &bull; ${choukaiLevel_}</span>
-              <span style="color:${userColor}">${statusTxt}</span>
-            </div>
-            <h3 style="font-size:1.1rem;margin:0 0 12px;color:#0f172a;line-height:1.5;">${q.question}</h3>
-            <div style="background:#f8fafc;padding:10px;border-radius:8px;border:1px solid #e2e8f0;">
-              <div style="font-size:0.8rem;color:#64748b;margin-bottom:4px;">Jawabanmu:</div>
-              <div style="font-size:1rem;font-weight:bold;color:${userColor};">
-                ${userAns >= 0 ? labels[userAns] + ". " + q.options[userAns] : "<i style='color:#94a3b8'>Tidak dijawab</i>"}
-              </div>
-            </div>
-          </div>
-          <div class="review-right-col">
-            <div style="margin-bottom:12px;">
-              <div style="font-size:0.8rem;color:#64748b;margin-bottom:4px;">Kunci Jawaban:</div>
-              <div style="font-size:1rem;font-weight:bold;color:#16a34a;">${labels[correct]}. ${q.options[correct]}</div>
-            </div>
-            <div class="explanation-box">
-              <strong>Penjelasan:</strong><br>${q.explanation || "Tidak ada penjelasan tambahan."}
-            </div>
-          </div>
-        </div>
-      `;
-    });
-
-    html += `</div></div>`;
-    grid.innerHTML = html;
-  };
-
-  function _startChoukaiTimer() {
-    clearInterval(choukaiTimer_);
-    choukaiTimer_ = setInterval(() => {
-      choukaiTimeLeft_ = Math.max(0, choukaiTimeLeft_ - 1);
-
-      // Update display (hanya kalau DOM soal ini masih ada)
-      const display = document.getElementById("choukaiTimerDisplay");
-      if (display) {
-        display.textContent = formatSessionTime(choukaiTimeLeft_);
-        // Warna: warning < 5 menit, danger < 2 menit
-        const mins = choukaiTimeLeft_ / 60;
-        display.className = "choukai-topbar-timer" +
-          (mins < 2 ? " danger" : mins < 5 ? " warning" : "");
-      }
-
-      if (choukaiTimeLeft_ <= 0) {
-        clearInterval(choukaiTimer_);
-        _endChoukai(true); // waktu habis → akhiri otomatis
-      }
-    }, 1000);
-  }
-
-  function _stopChoukaiTimer() {
-    clearInterval(choukaiTimer_);
-    choukaiTimer_ = null;
-  }
-
-  function startChoukai(level) {
-    if (!isLoggedInUser()) {
-      openInfoModal("<h3>Mode Latihan Wajib Login</h3><p>Silakan masuk dengan Google atau Email dulu untuk membuka fitur latihan.</p>");
-      return;
-    }
-
-    const pool = (choukaiData && choukaiData[level]) ? [...choukaiData[level]] : [];
-    if (pool.length === 0) {
-      openInfoModal("<h3>Data Belum Tersedia</h3><p>Data Choukai belum tersedia untuk level " + level + ".</p>");
-      return;
-    }
-
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-
-    choukaiData_       = pool;
-    choukaiLevel_      = level;
-    choukaiIndex       = 0;
-    choukaiScore       = 0;
-    choukaiReplay      = 2;
-    choukaiUserAnswers = [];
-    isTesting          = true;
-    isChoukaiMode      = true;
-
-    // Set durasi timer sesuai level
-    const durationMins  = CHOUKAI_DURATION[level] || 30;
-    choukaiTimeLeft_    = durationMins * 60;
-
-    lockQuizScroll();
-    renderChoukai();
-    _startChoukaiTimer();
-  }
-
-  // ==========================================
   // FITUR NERBANGIN SKOR KE FIREBASE CLOUD
   // ==========================================
-  async function saveScoreToCloud(exerciseType, level, correctCount, totalCount, percentage) {
-    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) {
-      console.log("User belum login, skor cuma tampil di layar.");
-      return;
-    }
-
-    try {
-      const uid = window.currentUser.uid;
-      const timeId = new Date().getTime().toString();
-      // Koleksi "history" — konsisten dengan fetchHistoryData & renderDashboard
-      const scoreRef = window.doc(window.firebaseDb, "users", uid, "history", timeId);
-
-      await window.setDoc(scoreRef, {
-        kategori:    exerciseType,
-        level:       level,
-        skor_benar:  correctCount,   // field yg dipakai renderDashboard
-        total_soal:  totalCount,
-        nilai:       percentage,      // field yg dipakai renderDashboard
-        tanggal:     new Date().toLocaleString("id-ID") // field yg dipakai renderDashboard + query orderBy
-      });
-      console.log("✅ Skor berhasil diterbangkan ke Cloud!");
-    } catch (err) {
-      console.error("❌ Waduh, gagal nyimpen skor ke Cloud:", err);
-    }
-  }
+  // (Fungsi kedua di bawah akan override ini — sengaja dibiarkan untuk kompatibilitas)
 
   // TIMPA FUNGSI INI FULL DARI ATAS SAMPAI BAWAH DI APP.JS
   function renderQuiz() {
@@ -2186,7 +1812,6 @@ grid.style.display="grid";
     unlockQuizScroll();
 
     const totalSoal = currentQuizData.length;
-    // Hitung persentase skala 100
     const percentage = totalSoal > 0 ? Math.round((score / totalSoal) * 100) : 0;
     saveScoreToCloud(currentExerciseMeta.type, currentExerciseMeta.level, score, totalSoal, percentage);
 
@@ -2194,23 +1819,22 @@ grid.style.display="grid";
     let colorTheme = "";
     let gradeMsg = "";
 
-    // 🚀 LOGIKA LULUS / GAGAL (Batas 75)
     if (percentage >= 75) {
       statusLabel = "LULUS";
-      colorTheme = "#4ade80"; 
+      colorTheme = "#4ade80";
       const passQuotes = [
-        "Kerja kerasmu tidak mengkhianati hasil! Pertahankan semangat ini, Bosku! 🔥",
-        "Sugoii! Jalan menuju skor N1 semakin terbuka lebar. Gas terus! 🚀",
-        "Luar biasa! Sensei bangga padamu wkwkwk. Jangan cepat puas ya! ✨"
+        "Kerja kerasmu tidak mengkhianati hasil! Pertahankan semangat ini, Bosku!",
+        "Sugoii! Jalan menuju skor N1 semakin terbuka lebar. Gas terus!",
+        "Luar biasa! Sensei bangga padamu. Jangan cepat puas ya!"
       ];
       gradeMsg = passQuotes[Math.floor(Math.random() * passQuotes.length)];
     } else {
       statusLabel = "BELUM LULUS";
-      colorTheme = "#fb7185"; 
+      colorTheme = "#fb7185";
       const failQuotes = [
-        "Jangan putus asa! Kegagalan adalah bumbu penyedap kesuksesan. Yuk review lagi! 💪",
-        "Belum lulus bukan berarti gak bisa. Tarik napas, pelajari salahnya, hajar lagi! 💥",
-        "Ganbatte! Samurai yang kuat adalah yang paling sering bangkit dari kekalahan! 🎌"
+        "Jangan putus asa! Kegagalan adalah bumbu penyedap kesuksesan. Yuk review lagi!",
+        "Belum lulus bukan berarti gak bisa. Tarik napas, pelajari salahnya, hajar lagi!",
+        "Ganbatte! Samurai yang kuat adalah yang paling sering bangkit dari kekalahan!"
       ];
       gradeMsg = failQuotes[Math.floor(Math.random() * failQuotes.length)];
     }
@@ -2239,62 +1863,18 @@ grid.style.display="grid";
     `;
     openInfoModal(message);
     kanjiModal.classList.add("quiz-result-active");
-    // Pasang event listener setelah DOM terupdate
     requestAnimationFrame(() => {
-      document.getElementById("quizTinjauBtn")?.addEventListener("click", () => {
-        if (typeof window.renderReview === "function") window.renderReview();
-      });
-      document.getElementById("quizKembaliBtn")?.addEventListener("click", () => {
-        location.reload();
-      });
+      document.getElementById("quizTinjauBtn")?.addEventListener("click", () => { if (typeof window.renderReview === "function") window.renderReview(); });
+      document.getElementById("quizKembaliBtn")?.addEventListener("click", () => location.reload());
     });
   }
 
   function confirmEndQuiz() {
-    // Gunakan DOM overlay agar tidak bertabrakan dengan openInfoModal yang dibuka oleh endQuiz
-    const overlay = document.createElement("div");
-    overlay.className = "choukai-confirm-overlay";
-    overlay.innerHTML = `
-      <div class="choukai-confirm-box">
-        <h3>Akhiri Sesi Latihan?</h3>
-        <p>Skor saat ini akan dihitung dan disimpan ke cloud.<br>Soal yang belum terjawab dianggap salah.</p>
-        <div class="choukai-confirm-actions">
-          <button class="choukai-confirm-yes" id="quizConfirmYes">Ya, Akhiri</button>
-          <button class="choukai-confirm-no"  id="quizConfirmNo">Lanjutkan</button>
-        </div>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-    // Inject CSS confirm box jika belum ada (bisa terjadi di mode Goi/Bunpou/Dokkai)
-    if (!document.getElementById("choukai-injected-css")) {
-      const s = document.createElement("style");
-      s.id = "quiz-confirm-temp-css";
-      s.textContent = `
-        .choukai-confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
-        .choukai-confirm-box{background:#fff;border-radius:20px;padding:32px 28px 24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
-        .choukai-confirm-box h3{margin:0 0 10px;font-size:1.2rem;color:#0f172a}
-        .choukai-confirm-box p{margin:0 0 24px;color:#64748b;font-size:.9rem;line-height:1.5}
-        .choukai-confirm-actions{display:flex;gap:10px;justify-content:center}
-        .choukai-confirm-yes{padding:10px 24px;border-radius:999px;background:#dc2626;color:#fff;border:none;font-weight:700;cursor:pointer;font-size:.9rem}
-        .choukai-confirm-no{padding:10px 24px;border-radius:999px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:700;cursor:pointer;font-size:.9rem}
-      `;
-      document.head.appendChild(s);
-    }
-    document.getElementById("quizConfirmYes").addEventListener("click", () => {
-      overlay.remove();
-      document.getElementById("quiz-confirm-temp-css")?.remove();
-      endQuiz(); // endQuiz akan buka openInfoModal sendiri — jangan closeModal di sini
-    });
-    document.getElementById("quizConfirmNo").addEventListener("click", () => {
-      overlay.remove();
-      document.getElementById("quiz-confirm-temp-css")?.remove();
-    });
-    overlay.addEventListener("click", e => {
-      if (e.target === overlay) {
-        overlay.remove();
-        document.getElementById("quiz-confirm-temp-css")?.remove();
-      }
-    });
+    _showConfirmOverlay(
+      "Akhiri Sesi Latihan?",
+      "Skor saat ini akan dihitung dan disimpan. Soal belum terjawab dianggap salah.",
+      () => endQuiz()
+    );
   }
 
   // ==========================================
@@ -2312,7 +1892,7 @@ grid.style.display="grid";
     let reviewHTML = `
       <div class="review-wrapper">
         <div class="review-header">
-          <h2 style="margin:0; color:#1e293b; font-size:1.5rem;">Evaluasi Latihan</h2>
+          <h2 style="margin:0; color:#1e293b; font-size:1.5rem;">🔍 Evaluasi Latihan</h2>
           <button onclick="location.reload()" style="background:#ef4444; color:white; border:none; padding:8px 20px; border-radius:8px; cursor:pointer; font-weight:bold;">Tutup & Selesai</button>
         </div>
         
@@ -2321,7 +1901,7 @@ grid.style.display="grid";
 
     currentQuizData.forEach((q, index) => {
       const isCorrect = q.userAnswer === q.answer;
-      const statusText = isCorrect ? "BENAR" : "SALAH";
+      const statusText = isCorrect ? "✅ BENAR" : "❌ SALAH";
       const statusClass = isCorrect ? "benar" : "salah";
       const userColor = isCorrect ? "#16a34a" : "#dc2626";
 
@@ -2352,7 +1932,7 @@ grid.style.display="grid";
              </div>
 
              <div class="explanation-box">
-                <strong>Penjelasan / Arti:</strong><br>
+                <strong>💡 Penjelasan / Arti:</strong><br>
                 ${q.translation || "Tidak ada penjelasan tambahan."}
              </div>
           </div>
@@ -2566,25 +2146,18 @@ grid.style.display="grid";
   //
   // Fungsi helper: layout-only refresh saat sedang latihan
   function _refreshQuizLayout() {
-    // Update tinggi body agar vh unit akurat di iOS
     document.body.style.height = window.innerHeight + 'px';
     document.documentElement.style.height = window.innerHeight + 'px';
-
-    // Pastikan class training-session & quiz-active-mode masih terpasang
     document.body.classList.add('training-session');
-    if (grid) {
-      grid.className = '';
-      grid.classList.add('quiz-active-mode');
-    }
+    if (grid) { grid.className = ''; grid.classList.add('quiz-active-mode'); }
 
-    // Choukai punya renderer sendiri — jangan campur dengan renderQuiz
-    if (isChoukaiMode && typeof renderChoukai === 'function') {
+    // Choukai pakai renderer sendiri
+    if (isChoukaiMode) {
       renderChoukai();
     } else if (typeof renderQuiz === 'function') {
       renderQuiz();
     }
 
-    // Force repaint ringan agar CSS media query landscape/portrait aktif
     requestAnimationFrame(() => {
       document.documentElement.style.display = 'none';
       void document.documentElement.offsetHeight;
@@ -2892,9 +2465,6 @@ grid.style.display="grid";
     document.body.style.overflow = "";
     window.scrollTo(0, bodyScrollY);
   }
-  // Expose buat inline onclick di modal buttons
-  window.closeModal = () => closeModal();
-  window.endQuiz    = () => endQuiz();
 
   function matchType(wordType, targetType) {
     if (targetType === "all") return true;
@@ -3191,7 +2761,7 @@ grid.style.display="grid";
     const total = testState.questions.length || 0;
     const correct = testState.correctCount;
     const percentage = total ? Math.round((correct / total) * 100) : 0;
-    const status = percentage >= 75 ? "LULUS" : "TIDAK LULUS";
+    const status = percentage >= 75 ? "LULUS ✅" : "TIDAK LULUS ❌";
     openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> • <strong>${percentage}%</strong><br>${status}`);
     testState.active = false;
     viewMode = "vocab";
@@ -3963,14 +3533,12 @@ grid.style.display="grid";
   document.querySelectorAll(".exercise-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const mainType = button.dataset.main || button.dataset.type || "";
-      const section = button.dataset.section || mainType;
-      const level = button.dataset.level;
+      const section  = button.dataset.section || mainType;
+      const level    = button.dataset.level;
 
-      // 🚀 KUNCI FIX: Buka gembok Dokkai untuk N5 dan N4! 
-      // Jadi Goi, Bunpou, dan Dokkai kalau N5/N4 bakal lolos. Kalau N3-N1 baru masuk Dev Mode.
       const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
-      
-      // Choukai N5 sudah tersedia, N4-N1 masih dev mode
+
+      // Choukai N5 aktif, N4-N1 masih dev
       const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
       const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
 
@@ -4334,8 +3902,8 @@ grid.style.display="grid";
     bottomNavHub.querySelectorAll("[data-practice]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const mainType = btn.dataset.practice || "";
-        const section = btn.dataset.section || mainType;
-        const level = btn.dataset.level || "N5";
+        const section  = btn.dataset.section || mainType;
+        const level    = btn.dataset.level || "N5";
 
         closeBottomNavHub();
 
@@ -4343,10 +3911,7 @@ grid.style.display="grid";
         const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
         const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
 
-        if (isChoukaiActive) {
-          startChoukai(level);
-          return;
-        }
+        if (isChoukaiActive) { startChoukai(level); return; }
 
         if (isGoiBunpouDokkaiDev || isChoukaiDev) {
           const devTitleMap = {
@@ -4755,8 +4320,8 @@ grid.style.display="grid";
 
   function launchExerciseFromHub(button) {
     const mainType = button.dataset.main || button.dataset.type || "";
-    const section = button.dataset.section || mainType;
-    const level = button.dataset.level;
+    const section  = button.dataset.section || mainType;
+    const level    = button.dataset.level;
 
     const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
     const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
@@ -5419,24 +4984,23 @@ grid.style.display="grid";
     const displayName = profile?.displayName || defaultDisplayName(user);
     const historyMarkup = historyItems.length
       ? historyItems.map((d) => {
-          // Kompatibel dengan field lama (nilai_persen, benar, waktu) & baru (nilai, skor_benar, tanggal)
-          const nilaiVal    = d.nilai    ?? d.nilai_persen ?? 0;
-          const skor_benar  = d.skor_benar ?? d.benar ?? 0;
-          const totalSoal   = d.total_soal ?? 0;
-          const tanggalStr  = d.tanggal  || d.waktu || '-';
-          const isLulus = nilaiVal >= 60;
+          const nilaiVal   = d.nilai    ?? d.nilai_persen ?? 0;
+          const skorBenar  = d.skor_benar ?? d.benar ?? 0;
+          const totalSoal  = d.total_soal ?? 0;
+          const tanggalStr = (d.tanggal || d.waktu || '-').split(',')[0];
+          const isLulus    = nilaiVal >= 60;
           const statusClass = isLulus ? "status-lulus" : "status-remidi";
           const kategoriLabel = getLatihanCategoryLabel(d.kategori);
           return `
             <article class="dashboard-history-item">
               <div>
-                <p class="dashboard-history-date">${tanggalStr ? tanggalStr.split(',')[0] : '-'}</p>
+                <p class="dashboard-history-date">${tanggalStr}</p>
                 <h4>${kategoriLabel}</h4>
                 <span class="dashboard-level">Level ${d.level || '-'}</span>
               </div>
               <div class="dashboard-history-score ${statusClass}">${nilaiVal}%</div>
               <div class="dashboard-history-meta">
-                <p>${skor_benar}/${totalSoal} benar</p>
+                <p>${skorBenar}/${totalSoal} benar</p>
                 <strong class="${statusClass}">${isLulus ? 'LULUS' : 'BELUM LULUS'}</strong>
               </div>
             </article>
@@ -5478,7 +5042,7 @@ grid.style.display="grid";
         <div id="dashboard-modal-backdrop" class="dashboard-modal-backdrop" hidden></div>
 
         <section id="dashboard-settings-modal" class="dashboard-modal" role="dialog" aria-modal="true" aria-label="Pengaturan profil" hidden>
-          <button type="button" class="dashboard-modal-close" data-close-modal><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+          <button type="button" class="dashboard-modal-close" data-close-modal>✕</button>
           <h4>Pengaturan Profil</h4>
           <form id="dashboard-name-form" class="dashboard-profile-form">
             <label for="dashboard-name-input">Nama tampilan</label>
@@ -5489,7 +5053,7 @@ grid.style.display="grid";
         </section>
 
         <section id="dashboard-avatar-modal" class="dashboard-modal" role="dialog" aria-modal="true" aria-label="Ganti avatar" hidden>
-          <button type="button" class="dashboard-modal-close" data-close-modal><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+          <button type="button" class="dashboard-modal-close" data-close-modal>✕</button>
           <h4>Ganti Avatar</h4>
           <div class="dashboard-avatar-tools">
             <p>Pilih avatar default</p>
@@ -5502,7 +5066,7 @@ grid.style.display="grid";
         </section>
 
         <section id="dashboard-crop-modal" class="dashboard-modal crop-modal" role="dialog" aria-modal="true" aria-label="Crop avatar" hidden>
-          <button type="button" class="dashboard-modal-close" data-close-crop><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+          <button type="button" class="dashboard-modal-close" data-close-crop>✕</button>
           <h4>Sesuaikan Foto Profil (Square)</h4>
           <div class="crop-square-wrap">
             <canvas id="dashboard-crop-canvas" width="320" height="320"></canvas>
@@ -5515,10 +5079,10 @@ grid.style.display="grid";
         </section>
 
         <div class="dashboard-history-panel">
-          <h3>Riwayat Latihan</h3>
+          <h3>📊 Riwayat Latihan</h3>
           <p class="dashboard-history-sub">Rekap berdasarkan kategori latihan yang dijalani.</p>
           <div class="dashboard-history-list">${historyMarkup}</div>
-          ${options.error ? '<p class="dashboard-error">Gagal memuat sebagian data riwayat.</p>' : ''}
+          ${options.error ? '<p class="dashboard-error">⚠️ Gagal memuat sebagian data riwayat.</p>' : ''}
         </div>
       </section>
     `;
@@ -5766,7 +5330,7 @@ grid.style.display="grid";
       return;
     }
 
-    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>Menyiapkan dashboard&hellip;</p></div>';
+    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>⏳ Menyiapkan dashboard...</p></div>';
     if (resultInfo) resultInfo.textContent = "Dasbor saya";
     if (typeof setHistoryMode === "function") setHistoryMode(true);
     if (typeof closeSidebar === "function") closeSidebar();
@@ -5798,57 +5362,45 @@ grid.style.display="grid";
   }
 
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
-  // Membaca dari 2 koleksi: "history" (baru) & "history_latihan" (lama) lalu merge
   async function fetchHistoryData(uid) {
     const { collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
 
+    const VALID_KATEGORI = ["goi", "bunpou", "dokkai", "choukai", "listening"];
     const allItems = [];
 
-    // Koleksi BARU — "history" dengan field tanggal, nilai, skor_benar
+    // Koleksi utama "history"
     try {
       const histRef = collection(window.firebaseDb, "users", uid, "history");
       const snap    = await getDocs(histRef);
-      snap.forEach(doc => allItems.push(doc.data()));
-    } catch (e) { console.warn("fetchHistory(history) error:", e); }
+      snap.forEach(doc => {
+        const d = doc.data();
+        d._docId = doc.id; // doc.id = timestamp milidetik — gunakan untuk sort
+        if (VALID_KATEGORI.includes(String(d.kategori || "").toLowerCase())) {
+          allItems.push(d);
+        }
+      });
+    } catch (e) { console.warn("fetchHistory error:", e); }
 
-    // Koleksi LAMA — "history_latihan" dengan field waktu, nilai_persen, benar
+    // Koleksi lama "history_latihan" (backward compat)
     try {
       const oldRef = collection(window.firebaseDb, "users", uid, "history_latihan");
       const snap   = await getDocs(oldRef);
-      snap.forEach(doc => allItems.push(doc.data()));
-    } catch (e) { /* koleksi lama mungkin tidak ada, abaikan */ }
+      snap.forEach(doc => {
+        const d = doc.data();
+        d._docId = doc.id;
+        if (VALID_KATEGORI.includes(String(d.kategori || "").toLowerCase())) {
+          allItems.push(d);
+        }
+      });
+    } catch (e) { /* koleksi lama mungkin tidak ada */ }
 
-    // Filter: buang record yang tidak punya kategori valid atau data kosong
-    const VALID_KATEGORI = ["goi", "bunpou", "dokkai", "choukai", "listening"];
-    const filtered = allItems.filter(d => {
-      const kat = String(d.kategori || "").toLowerCase().trim();
-      return VALID_KATEGORI.includes(kat);
-    });
-
-    // Helper: parse tanggal dari locale string ID (contoh: "12/3/2026 10:30:00") ke timestamp
-    function parseLocaleDate(str = "") {
-      // Format ID: "dd/mm/yyyy, hh:mm:ss" atau "dd/mm/yyyy hh:mm:ss" atau "dd/mm/yyyy"
-      const cleaned = str.replace(/\./g, "/").replace(",", "");
-      const parts   = cleaned.split(/[\s,]+/); // ["12/3/2026", "10:30:00"]
-      const datePart = parts[0] || "";
-      const timePart = parts[1] || "00:00:00";
-      const [d, m, y] = datePart.split("/").map(Number);
-      if (!d || !m || !y) return 0;
-      // Buat Date pakai UTC agar tidak ada offset timezone aneh
-      const dt = new Date(y, m - 1, d, ...timePart.split(":").map(Number));
-      return isNaN(dt.getTime()) ? 0 : dt.getTime();
-    }
-
-    // Sort terbaru di atas (descending timestamp)
-    filtered.sort((a, b) => {
-      const tA = parseLocaleDate(a.tanggal || a.waktu || "");
-      const tB = parseLocaleDate(b.tanggal || b.waktu || "");
-      return tB - tA;
-    });
+    // Sort: doc.id adalah string timestamp 13 digit, panjangnya sama → lex sort = numeric sort
+    // Terbesar (terbaru) di atas
+    allItems.sort((a, b) => (b._docId || "0").localeCompare(a._docId || "0"));
 
     return {
-      empty: filtered.length === 0,
-      forEach: (cb) => filtered.forEach(item => cb({ data: () => item }))
+      empty: allItems.length === 0,
+      forEach: (cb) => allItems.forEach(item => cb({ data: () => item }))
     };
   }
 

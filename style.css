@@ -10283,3 +10283,528 @@ body.history-mode .dashboard-shell textarea {
     height: calc(100vh - var(--topbar-height, 44px) - 20px) !important;
   }
 }
+
+
+/* =====================================================
+   🎧 CHOUKAI — LISTENING COMPREHENSION
+   Layout terpisah: Desktop · Mobile Portrait · Landscape
+   Rule ini BERDIRI SENDIRI, tidak ada kaitan dengan
+   dokkai maupun quiz-wrapper-pro
+===================================================== */
+
+/* ─── DESKTOP BASE ─────────────────────────────────── */
+.choukai-wrapper-pro {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 20px 50px rgba(20, 24, 30, 0.2);
+  padding: 28px 30px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Header: judul + progress + tombol selesai */
+.choukai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid #d7dfea;
+}
+
+.choukai-title {
+  font-weight: 800;
+  color: #1e293b;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.choukai-progress-text {
+  font-weight: 700;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+#choukai-finish-btn {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  background: #ff4d6d;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.35);
+  z-index: 10;
+  letter-spacing: 0.5px;
+}
+
+#choukai-finish-btn:hover {
+  background: #e11d48;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
+}
+
+/* ─── STAGE AUDIO ──────────────────────────────────── */
+.choukai-stage {
+  flex: 1;
+  min-height: 160px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #f8fafc, #eef2ff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+/* Icon speaker */
+.choukai-speaker-icon {
+  font-size: 2.4rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.choukai-stage.is-playing .choukai-speaker-icon {
+  opacity: 1;
+}
+
+/* Hint teks saat idle */
+.choukai-idle-hint {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.choukai-stage.is-playing .choukai-idle-hint {
+  display: none;
+}
+
+/* ─── WAVEFORM ANIMASI ─────────────────────────────── */
+.choukai-waveform {
+  display: none;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+
+.choukai-stage.is-playing .choukai-waveform {
+  display: flex;
+}
+
+.choukai-stage.is-playing .choukai-idle-hint {
+  display: none;
+}
+
+.choukai-wave-bar {
+  width: 5px;
+  border-radius: 3px;
+  background: linear-gradient(to top, #f472b6, #a855f7);
+  animation: choukai-wave 0.9s ease-in-out infinite;
+}
+
+.choukai-wave-bar:nth-child(1)  { height: 12px; animation-delay: 0.0s; }
+.choukai-wave-bar:nth-child(2)  { height: 28px; animation-delay: 0.1s; }
+.choukai-wave-bar:nth-child(3)  { height: 20px; animation-delay: 0.2s; }
+.choukai-wave-bar:nth-child(4)  { height: 36px; animation-delay: 0.15s; }
+.choukai-wave-bar:nth-child(5)  { height: 24px; animation-delay: 0.05s; }
+.choukai-wave-bar:nth-child(6)  { height: 40px; animation-delay: 0.25s; }
+.choukai-wave-bar:nth-child(7)  { height: 28px; animation-delay: 0.1s; }
+.choukai-wave-bar:nth-child(8)  { height: 18px; animation-delay: 0.3s; }
+.choukai-wave-bar:nth-child(9)  { height: 32px; animation-delay: 0.2s; }
+.choukai-wave-bar:nth-child(10) { height: 14px; animation-delay: 0.05s; }
+
+@keyframes choukai-wave {
+  0%, 100% { transform: scaleY(0.5); opacity: 0.6; }
+  50%       { transform: scaleY(1.2); opacity: 1; }
+}
+
+/* ─── KONTROL PLAYER ───────────────────────────────── */
+.choukai-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.choukai-btn-play {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f472b6, #a855f7);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 28px;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+  letter-spacing: 0.3px;
+}
+
+.choukai-btn-play:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.45);
+}
+
+.choukai-btn-play:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Tombol Lambat — hanya N5, disembunyikan di N4-N1 via JS */
+.choukai-btn-slow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #475569;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choukai-btn-slow:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.choukai-btn-slow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.choukai-btn-slow.is-active {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+/* Counter replay ●● */
+.choukai-replay-counter {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.choukai-replay-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #a855f7;
+  transition: background 0.3s;
+}
+
+.choukai-replay-dot.used {
+  background: #e2e8f0;
+}
+
+/* ─── PILIHAN JAWABAN ──────────────────────────────── */
+.choukai-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.choukai-opt-btn {
+  min-height: 52px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1.5px solid #cbd5e1;
+  background: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  text-align: left;
+  line-height: 1.4;
+}
+
+.choukai-opt-btn:hover:not(:disabled) {
+  background: #f8f0ff;
+  border-color: #a855f7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.12);
+}
+
+/* State: LOCKED — audio belum selesai */
+.choukai-opt-btn:disabled,
+.choukai-options.locked .choukai-opt-btn {
+  opacity: 0.38;
+  cursor: not-allowed;
+  pointer-events: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* State: jawaban benar */
+.choukai-opt-btn.correct {
+  background: #dcfce7;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+/* State: jawaban salah */
+.choukai-opt-btn.wrong {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #b91c1c;
+}
+
+/* ─── STATUS LABEL (Memutar... / Dengarkan dengan seksama) */
+.choukai-status-label {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+
+.choukai-status-label.active {
+  color: #a855f7;
+}
+
+
+/* ─── PLAYER SIDE & ANSWER SIDE (base) ────────────── */
+.choukai-player-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.choukai-answer-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* =====================================================
+   🎧 CHOUKAI — MOBILE PORTRAIT
+   Full width kiri ke kanan, layout kolom
+===================================================== */
+@media (max-width: 767px) and (orientation: portrait) {
+  .choukai-wrapper-pro {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 12px;
+    gap: 12px;
+    border-radius: 16px;
+  }
+
+  .choukai-stage {
+    min-height: 120px;
+    padding: 18px;
+    gap: 10px;
+  }
+
+  .choukai-speaker-icon {
+    font-size: 2rem;
+  }
+
+  #choukai-finish-btn {
+    top: 14px;
+    right: 14px;
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  .choukai-controls {
+    gap: 8px;
+  }
+
+  .choukai-btn-play {
+    padding: 10px 22px;
+    font-size: 0.92rem;
+  }
+
+  .choukai-btn-slow {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+
+  .choukai-opt-btn {
+    min-height: 46px;
+    font-size: 0.92rem;
+    padding: 10px 12px;
+  }
+
+  .choukai-header {
+    padding: 7px 12px;
+  }
+
+  .choukai-title {
+    font-size: 0.85rem;
+  }
+
+  .choukai-progress-text {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* =====================================================
+   🎧 CHOUKAI — MOBILE LANDSCAPE
+   Split kiri-kanan: player | pilihan jawaban
+   Full horizontal kiri ke kanan
+===================================================== */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .choukai-wrapper-pro {
+    flex-direction: row;
+    max-width: 100%;
+    width: 100%;
+    height: calc(100vh - var(--topbar-height, 44px) - 16px);
+    max-height: calc(100vh - var(--topbar-height, 44px) - 16px);
+    padding: 10px 12px;
+    gap: 10px;
+    border-radius: 12px;
+    align-items: stretch;
+  }
+
+  /* Sisi kiri: stage + kontrol */
+  .choukai-player-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .choukai-stage {
+    flex: 1;
+    min-height: unset;
+    padding: 12px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .choukai-speaker-icon {
+    font-size: 1.8rem;
+  }
+
+  .choukai-waveform {
+    height: 28px;
+  }
+
+  .choukai-wave-bar:nth-child(6) { height: 28px; }
+
+  .choukai-controls {
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+
+  .choukai-btn-play {
+    padding: 8px 16px;
+    font-size: 0.82rem;
+  }
+
+  .choukai-btn-slow {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  .choukai-replay-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Sisi kanan: pilihan jawaban */
+  .choukai-answer-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .choukai-options {
+    gap: 6px;
+    flex: 1;
+    align-content: center;
+  }
+
+  .choukai-opt-btn {
+    min-height: 36px;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+
+  .choukai-header {
+    padding: 5px 10px;
+  }
+
+  .choukai-title {
+    font-size: 0.78rem;
+  }
+
+  .choukai-progress-text {
+    font-size: 0.75rem;
+  }
+
+  #choukai-finish-btn {
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .choukai-status-label {
+    font-size: 0.72rem;
+  }
+}
+
+
+/* =====================================================
+   🎧 CHOUKAI — TRAINING SESSION STABILITY
+   Pastikan layout stabil saat orientasi berubah
+===================================================== */
+@media (max-width: 767px) and (orientation: portrait) {
+  body.training-session .choukai-wrapper-pro {
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  body.training-session .choukai-wrapper-pro {
+    display: flex !important;
+    flex-direction: row !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: calc(100vh - var(--topbar-height, 44px) - 16px) !important;
+  }
+}

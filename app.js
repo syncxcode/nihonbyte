@@ -1222,6 +1222,334 @@ grid.style.display="grid";
   }
 
   // ==========================================
+  // 🎧 CHOUKAI — LISTENING COMPREHENSION
+  // ==========================================
+
+  // State choukai
+  let choukaiIndex    = 0;
+  let choukaiScore    = 0;
+  let choukaiData_    = [];   // soal aktif (sudah diacak)
+  let choukaiLevel_   = "N5";
+  let choukaiReplay   = 2;    // max replay
+  let choukaiSlow     = false;
+  let choukaiPlaying  = false;
+  let choukaiAnswered = false;
+
+  // Ambil semua voice Jepang yang tersedia di browser
+  function getJaVoices() {
+    const all = window.speechSynthesis.getVoices();
+    const ja  = all.filter(v => v.lang.startsWith("ja"));
+    return ja;
+  }
+
+  // Putar bel "ting… tong…" via Web Audio API (tanpa file)
+  function playBell(cb) {
+    try {
+      const ctx  = new (window.AudioContext || window.webkitAudioContext)();
+      const gain = ctx.createGain();
+      gain.connect(ctx.destination);
+
+      function tone(freq, start, dur) {
+        const osc = ctx.createOscillator();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        osc.connect(gain);
+        gain.gain.setValueAtTime(0.35, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + dur);
+        osc.start(start);
+        osc.stop(start + dur);
+      }
+
+      const t = ctx.currentTime;
+      tone(1047, t,        0.9);  // ting — C6
+      tone(784,  t + 0.65, 1.1);  // tong — G5
+
+      setTimeout(cb, 1900);
+    } catch (e) {
+      // fallback: langsung lanjut tanpa bel
+      setTimeout(cb, 200);
+    }
+  }
+
+  // Render HTML choukai ke #grid
+  function renderChoukai() {
+    const item    = choukaiData_[choukaiIndex];
+    const total   = choukaiData_.length;
+    const isN5    = choukaiLevel_ === "N5";
+    const labels  = ["A", "B", "C", "D"];
+
+    const waveBars = Array.from({ length: 10 }, () =>
+      `<div class="choukai-wave-bar"></div>`
+    ).join("");
+
+    const optBtns = item.options.map((opt, i) => `
+      <button class="choukai-opt-btn" data-choukai-index="${i}">
+        ${labels[i]}. ${opt}
+      </button>`
+    ).join("");
+
+    const slowBtn = isN5
+      ? `<button class="choukai-btn-slow" id="choukaiSlowBtn" title="Putar lebih lambat">🐢 Lambat</button>`
+      : "";
+
+    grid.className = "";
+    grid.classList.add("quiz-active-mode");
+    document.body.classList.add("training-session");
+
+    const paginationContainer = document.getElementById("pagination-container");
+    if (paginationContainer) {
+      paginationContainer.innerHTML = "";
+      paginationContainer.style.display = "none";
+    }
+
+    grid.innerHTML = `
+      <div class="choukai-wrapper-pro">
+        <button id="choukai-finish-btn">Akhiri Test</button>
+
+        <div class="choukai-header">
+          <span class="choukai-title">聴解 &bull; ${choukaiLevel_}</span>
+          <span class="choukai-progress-text">Soal ${choukaiIndex + 1}/${total}</span>
+        </div>
+
+        <div class="choukai-player-side">
+          <div class="choukai-stage" id="choukaiStage">
+            <span class="choukai-speaker-icon">🔊</span>
+            <div class="choukai-waveform">${waveBars}</div>
+            <span class="choukai-idle-hint">Tekan Putar untuk memulai</span>
+          </div>
+
+          <div class="choukai-status-label" id="choukaiStatus">Siap diputar</div>
+
+          <div class="choukai-controls">
+            <button class="choukai-btn-play" id="choukaiPlayBtn">▶&nbsp; Putar</button>
+            ${slowBtn}
+            <div class="choukai-replay-counter" id="choukaiReplayCounter">
+              <div class="choukai-replay-dot" id="choukaiDot1"></div>
+              <div class="choukai-replay-dot" id="choukaiDot2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="choukai-answer-side">
+          <div class="choukai-options locked" id="choukaiOptions">
+            ${optBtns}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // reset state visual
+    choukaiPlaying  = false;
+    choukaiAnswered = false;
+    choukaiSlow     = false;
+    _updateReplayDots();
+
+    // Event: Putar
+    document.getElementById("choukaiPlayBtn")?.addEventListener("click", () => {
+      if (choukaiPlaying) return;
+      if (choukaiAnswered) return;
+      _playChoukaiAudio();
+    });
+
+    // Event: Lambat (N5 only)
+    document.getElementById("choukaiSlowBtn")?.addEventListener("click", () => {
+      choukaiSlow = !choukaiSlow;
+      const btn = document.getElementById("choukaiSlowBtn");
+      if (btn) btn.classList.toggle("is-active", choukaiSlow);
+    });
+
+    // Event: Jawaban
+    document.querySelectorAll(".choukai-opt-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const idx = parseInt(btn.dataset.choukaiIndex, 10);
+        _checkChoukaiAnswer(idx);
+      });
+    });
+
+    // Event: Akhiri Test
+    document.getElementById("choukai-finish-btn")?.addEventListener("click", _endChoukai);
+  }
+
+  // Putar dialog → bel → soal TTS → unlock pilihan
+  function _playChoukaiAudio() {
+    if (choukaiPlaying || choukaiAnswered) return;
+
+    const item   = choukaiData_[choukaiIndex];
+    const rate   = choukaiSlow ? 0.6 : 0.9;
+    const voices = getJaVoices();
+
+    const maleVoice   = voices.find(v => /male/i.test(v.name))   || voices[0] || null;
+    const femaleVoice = voices.find(v => /female/i.test(v.name)) || voices[1] || voices[0] || null;
+
+    choukaiPlaying = true;
+    choukaiReplay  = Math.max(0, choukaiReplay - 1);
+    _updateReplayDots();
+
+    const stage  = document.getElementById("choukaiStage");
+    const status = document.getElementById("choukaiStatus");
+    const playBtn = document.getElementById("choukaiPlayBtn");
+
+    if (stage)  stage.classList.add("is-playing");
+    if (status) { status.textContent = "Sedang diputar…"; status.classList.add("active"); }
+    if (playBtn) { playBtn.textContent = "⏹ Stop"; playBtn.disabled = false; }
+
+    // Tombol replay dinonaktifkan selama audio berjalan
+    const slowBtn = document.getElementById("choukaiSlowBtn");
+    if (slowBtn) slowBtn.disabled = true;
+
+    window.speechSynthesis.cancel();
+
+    const utterances = item.script.map(line => {
+      const u   = new SpeechSynthesisUtterance(line.text);
+      u.lang    = "ja-JP";
+      u.rate    = rate;
+      u.pitch   = line.gender === "female" ? 1.4 : 0.75;
+      if (line.gender === "female" && femaleVoice) u.voice = femaleVoice;
+      if (line.gender === "male"   && maleVoice)   u.voice = maleVoice;
+      return u;
+    });
+
+    // Setelah semua dialog selesai → bel → baca soal → unlock
+    utterances[utterances.length - 1].onend = () => {
+      if (stage)  stage.classList.remove("is-playing");
+      if (status) { status.textContent = "🔔 Dengarkan pertanyaan…"; }
+
+      playBell(() => {
+        // Baca soal via TTS
+        const qUtter   = new SpeechSynthesisUtterance(item.question);
+        qUtter.lang    = "ja-JP";
+        qUtter.rate    = 0.85;
+        qUtter.pitch   = 1.0;
+        if (femaleVoice) qUtter.voice = femaleVoice;
+
+        qUtter.onend = () => {
+          choukaiPlaying = false;
+          _unlockChoukaiOptions();
+          if (status) { status.textContent = "Pilih jawaban yang tepat"; status.classList.remove("active"); }
+          if (playBtn) {
+            playBtn.textContent = "🔁 Ulangi";
+            playBtn.disabled = choukaiReplay <= 0;
+          }
+          if (slowBtn) slowBtn.disabled = false;
+        };
+
+        window.speechSynthesis.speak(qUtter);
+      });
+    };
+
+    utterances.forEach(u => window.speechSynthesis.speak(u));
+  }
+
+  function _unlockChoukaiOptions() {
+    const opts = document.getElementById("choukaiOptions");
+    if (opts) opts.classList.remove("locked");
+  }
+
+  function _updateReplayDots() {
+    const d1 = document.getElementById("choukaiDot1");
+    const d2 = document.getElementById("choukaiDot2");
+    if (d1) d1.classList.toggle("used", choukaiReplay < 2);
+    if (d2) d2.classList.toggle("used", choukaiReplay < 1);
+  }
+
+  function _checkChoukaiAnswer(selectedIdx) {
+    if (choukaiAnswered) return;
+    choukaiAnswered = true;
+
+    const item  = choukaiData_[choukaiIndex];
+    const btns  = document.querySelectorAll(".choukai-opt-btn");
+    const opts  = document.getElementById("choukaiOptions");
+
+    if (opts) opts.classList.add("locked");
+    window.speechSynthesis.cancel();
+
+    if (selectedIdx === item.answer) choukaiScore++;
+
+    btns.forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === item.answer) {
+        btn.classList.add("correct");
+      } else if (i === selectedIdx) {
+        btn.classList.add("wrong");
+      }
+    });
+
+    const status = document.getElementById("choukaiStatus");
+    if (status) {
+      status.textContent = selectedIdx === item.answer
+        ? "✅ Benar! " + item.explanation
+        : "❌ Salah. " + item.explanation;
+      status.classList.toggle("active", selectedIdx === item.answer);
+    }
+
+    setTimeout(() => {
+      choukaiIndex++;
+      if (choukaiIndex < choukaiData_.length) {
+        choukaiReplay   = 2;
+        choukaiAnswered = false;
+        renderChoukai();
+      } else {
+        _endChoukai(true);
+      }
+    }, 2200);
+  }
+
+  function _endChoukai(finished) {
+    window.speechSynthesis.cancel();
+    isTesting = false;
+    document.body.classList.remove("training-session");
+    unlockQuizScroll();
+
+    const total = choukaiData_.length;
+    const pct   = total > 0 ? Math.round((choukaiScore / total) * 100) : 0;
+
+    grid.className = "";
+    grid.classList.add("hub-mode");
+    grid.innerHTML = `
+      <div class="quiz-result-container" style="text-align:center;padding:40px 20px;">
+        <h2 style="font-size:2rem;margin-bottom:8px;">聴解 結果</h2>
+        <p style="font-size:1.1rem;color:#475569;margin-bottom:20px;">Choukai ${choukaiLevel_}</p>
+        <div style="font-size:3rem;font-weight:900;color:${pct>=60?'#16a34a':'#dc2626'};">${pct}%</div>
+        <p style="font-size:1.1rem;margin-top:8px;">${choukaiScore} / ${total} benar</p>
+        <button onclick="location.reload()" style="margin-top:28px;padding:12px 32px;border-radius:999px;background:#a855f7;color:#fff;border:none;font-weight:800;font-size:1rem;cursor:pointer;">
+          Kembali ke Menu
+        </button>
+      </div>
+    `;
+
+    saveScoreToCloud("choukai", choukaiLevel_, choukaiScore, total, pct);
+  }
+
+  function startChoukai(level) {
+    if (!isLoggedInUser()) {
+      openInfoModal("<h3>Mode Latihan Wajib Login 🔒</h3><p>Silakan masuk dengan Google atau Email dulu untuk membuka fitur latihan.</p>");
+      return;
+    }
+
+    const pool = (choukaiData && choukaiData[level]) ? [...choukaiData[level]] : [];
+    if (pool.length === 0) {
+      alert("Data Choukai belum tersedia untuk level " + level + ".");
+      return;
+    }
+
+    // Acak soal
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    choukaiData_  = pool;
+    choukaiLevel_ = level;
+    choukaiIndex  = 0;
+    choukaiScore  = 0;
+    choukaiReplay = 2;
+    isTesting     = true;
+
+    lockQuizScroll();
+    renderChoukai();
+  }
+
+  // ==========================================
   // FITUR NERBANGIN SKOR KE FIREBASE CLOUD
   // ==========================================
   async function saveScoreToCloud(exerciseType, level, correctCount, totalCount, percentage) {
@@ -3131,8 +3459,15 @@ grid.style.display="grid";
       // Jadi Goi, Bunpou, dan Dokkai kalau N5/N4 bakal lolos. Kalau N3-N1 baru masuk Dev Mode.
       const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
       
-      // Choukai (Listening) masih digembok total karena kita belum masukin audio
-      const isChoukaiDev = ["choukai", "listening"].includes(mainType);
+      // Choukai N5 sudah tersedia, N4-N1 masih dev mode
+      const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
+      const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+
+      if (isChoukaiActive) {
+        startChoukai(level);
+        closeSidebar();
+        return;
+      }
 
       if (isGoiBunpouDokkaiDev || isChoukaiDev) {
         const devTitleMap = {
@@ -3494,7 +3829,14 @@ grid.style.display="grid";
         closeBottomNavHub();
 
         const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
-        const isChoukaiDev = ["choukai", "listening"].includes(mainType);
+        const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
+        const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+
+        if (isChoukaiActive) {
+          startChoukai(level);
+          return;
+        }
+
         if (isGoiBunpouDokkaiDev || isChoukaiDev) {
           const devTitleMap = {
             goi: "Pengetahuan Bahasa (Kosakata)",
@@ -3906,7 +4248,13 @@ grid.style.display="grid";
     const level = button.dataset.level;
 
     const isGoiBunpouDokkaiDev = ["goi", "bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level);
-    const isChoukaiDev = ["choukai", "listening"].includes(mainType);
+    const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
+    const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+
+    if (isChoukaiActive) {
+      startChoukai(level);
+      return;
+    }
 
     if (isGoiBunpouDokkaiDev || isChoukaiDev) {
       const devTitleMap = {

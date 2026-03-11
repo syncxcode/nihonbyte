@@ -1825,11 +1825,13 @@ grid.style.display="grid";
         <div class="qr-right">
           <p class="qr-msg">${gradeMsg}</p>
           <div class="qr-actions">
-            <button class="qr-btn qr-btn--review" onclick="window.renderChoukaiReview()">
-              ${SVG_REVIEW} Tinjau
+            <button class="qr-btn qr-btn--review" id="choukaiTinjauBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Tinjau
             </button>
-            <button class="qr-btn qr-btn--menu" onclick="location.reload()">
-              ${SVG_HOME} Kembali
+            <button class="qr-btn qr-btn--menu" id="choukaiKembaliBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Kembali
             </button>
           </div>
         </div>
@@ -1837,6 +1839,17 @@ grid.style.display="grid";
     `;
     openInfoModal(message);
     kanjiModal.classList.add("quiz-result-active");
+
+    // Pasang event listener SETELAH openInfoModal memasang HTML ke DOM
+    // Jangan pakai inline onclick karena bisa gagal di beberapa browser/konteks
+    requestAnimationFrame(() => {
+      document.getElementById("choukaiTinjauBtn")?.addEventListener("click", () => {
+        window.renderChoukaiReview();
+      });
+      document.getElementById("choukaiKembaliBtn")?.addEventListener("click", () => {
+        location.reload();
+      });
+    });
   }
 
   // ── Review page choukai ──
@@ -2152,41 +2165,76 @@ grid.style.display="grid";
         <div class="qr-right">
           <p class="qr-msg">${gradeMsg}</p>
           <div class="qr-actions">
-            <button class="qr-btn qr-btn--review" onclick="window.renderReview()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                Tinjau
-              </button>
-            <button class="qr-btn qr-btn--menu" onclick="location.reload()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                Kembali
-              </button>
+            <button class="qr-btn qr-btn--review" id="quizTinjauBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Tinjau
+            </button>
+            <button class="qr-btn qr-btn--menu" id="quizKembaliBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Kembali
+            </button>
           </div>
         </div>
       </div>
     `;
     openInfoModal(message);
     kanjiModal.classList.add("quiz-result-active");
+    // Pasang event listener setelah DOM terupdate
+    requestAnimationFrame(() => {
+      document.getElementById("quizTinjauBtn")?.addEventListener("click", () => {
+        if (typeof window.renderReview === "function") window.renderReview();
+      });
+      document.getElementById("quizKembaliBtn")?.addEventListener("click", () => {
+        location.reload();
+      });
+    });
   }
 
   function confirmEndQuiz() {
-    openInfoModal(`
-      <div style="text-align:center;padding:10px 0;">
-        <h3 style="margin:0 0 10px;color:#0f172a;">Akhiri Sesi Latihan?</h3>
-        <p style="color:#64748b;margin:0 0 24px;font-size:0.95rem;line-height:1.5;">
-          Skor saat ini akan dihitung dan disimpan ke cloud.<br>Soal yang belum terjawab dianggap salah.
-        </p>
-        <div style="display:flex;gap:10px;justify-content:center;">
-          <button onclick="endQuiz(); closeModal();"
-            style="padding:10px 24px;border-radius:999px;background:#dc2626;color:#fff;border:none;font-weight:700;cursor:pointer;font-size:0.9rem;">
-            Ya, Akhiri
-          </button>
-          <button onclick="closeModal();"
-            style="padding:10px 24px;border-radius:999px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:700;cursor:pointer;font-size:0.9rem;">
-            Lanjutkan
-          </button>
+    // Gunakan DOM overlay agar tidak bertabrakan dengan openInfoModal yang dibuka oleh endQuiz
+    const overlay = document.createElement("div");
+    overlay.className = "choukai-confirm-overlay";
+    overlay.innerHTML = `
+      <div class="choukai-confirm-box">
+        <h3>Akhiri Sesi Latihan?</h3>
+        <p>Skor saat ini akan dihitung dan disimpan ke cloud.<br>Soal yang belum terjawab dianggap salah.</p>
+        <div class="choukai-confirm-actions">
+          <button class="choukai-confirm-yes" id="quizConfirmYes">Ya, Akhiri</button>
+          <button class="choukai-confirm-no"  id="quizConfirmNo">Lanjutkan</button>
         </div>
       </div>
-    `);
+    `;
+    document.body.appendChild(overlay);
+    // Inject CSS confirm box jika belum ada (bisa terjadi di mode Goi/Bunpou/Dokkai)
+    if (!document.getElementById("choukai-injected-css")) {
+      const s = document.createElement("style");
+      s.id = "quiz-confirm-temp-css";
+      s.textContent = `
+        .choukai-confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+        .choukai-confirm-box{background:#fff;border-radius:20px;padding:32px 28px 24px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25);text-align:center}
+        .choukai-confirm-box h3{margin:0 0 10px;font-size:1.2rem;color:#0f172a}
+        .choukai-confirm-box p{margin:0 0 24px;color:#64748b;font-size:.9rem;line-height:1.5}
+        .choukai-confirm-actions{display:flex;gap:10px;justify-content:center}
+        .choukai-confirm-yes{padding:10px 24px;border-radius:999px;background:#dc2626;color:#fff;border:none;font-weight:700;cursor:pointer;font-size:.9rem}
+        .choukai-confirm-no{padding:10px 24px;border-radius:999px;background:#f1f5f9;color:#475569;border:1.5px solid #cbd5e1;font-weight:700;cursor:pointer;font-size:.9rem}
+      `;
+      document.head.appendChild(s);
+    }
+    document.getElementById("quizConfirmYes").addEventListener("click", () => {
+      overlay.remove();
+      document.getElementById("quiz-confirm-temp-css")?.remove();
+      endQuiz(); // endQuiz akan buka openInfoModal sendiri — jangan closeModal di sini
+    });
+    document.getElementById("quizConfirmNo").addEventListener("click", () => {
+      overlay.remove();
+      document.getElementById("quiz-confirm-temp-css")?.remove();
+    });
+    overlay.addEventListener("click", e => {
+      if (e.target === overlay) {
+        overlay.remove();
+        document.getElementById("quiz-confirm-temp-css")?.remove();
+      }
+    });
   }
 
   // ==========================================
@@ -5311,19 +5359,24 @@ grid.style.display="grid";
     const displayName = profile?.displayName || defaultDisplayName(user);
     const historyMarkup = historyItems.length
       ? historyItems.map((d) => {
-          const isLulus = d.nilai >= 60;
+          // Kompatibel dengan field lama (nilai_persen, benar, waktu) & baru (nilai, skor_benar, tanggal)
+          const nilaiVal    = d.nilai    ?? d.nilai_persen ?? 0;
+          const skor_benar  = d.skor_benar ?? d.benar ?? 0;
+          const totalSoal   = d.total_soal ?? 0;
+          const tanggalStr  = d.tanggal  || d.waktu || '-';
+          const isLulus = nilaiVal >= 60;
           const statusClass = isLulus ? "status-lulus" : "status-remidi";
           const kategoriLabel = getLatihanCategoryLabel(d.kategori);
           return `
             <article class="dashboard-history-item">
               <div>
-                <p class="dashboard-history-date">${d.tanggal ? d.tanggal.split(',')[0] : '-'}</p>
+                <p class="dashboard-history-date">${tanggalStr ? tanggalStr.split(',')[0] : '-'}</p>
                 <h4>${kategoriLabel}</h4>
                 <span class="dashboard-level">Level ${d.level || '-'}</span>
               </div>
-              <div class="dashboard-history-score ${statusClass}">${d.nilai || 0}%</div>
+              <div class="dashboard-history-score ${statusClass}">${nilaiVal}%</div>
               <div class="dashboard-history-meta">
-                <p>${d.skor_benar || 0}/${d.total_soal || 0} benar</p>
+                <p>${skor_benar}/${totalSoal} benar</p>
                 <strong class="${statusClass}">${isLulus ? 'LULUS' : 'BELUM LULUS'}</strong>
               </div>
             </article>
@@ -5685,12 +5738,38 @@ grid.style.display="grid";
   }
 
   // Fungsi helper buat ngambil data (pake modul firebase yang udah kita pasang)
+  // Membaca dari 2 koleksi: "history" (baru) & "history_latihan" (lama) lalu merge
   async function fetchHistoryData(uid) {
-    const { collection, getDocs, query, orderBy } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
-    const historyRef = collection(window.firebaseDb, "users", uid, "history");
-    const q = query(historyRef, orderBy("tanggal", "desc"));
-    const querySnapshot = await getDocs(q);
-    return querySnapshot;
+    const { collection, getDocs, query, orderBy, limit } = await import("https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js");
+
+    const allItems = [];
+
+    // Koleksi BARU — "history" dengan field tanggal, nilai, skor_benar
+    try {
+      const histRef = collection(window.firebaseDb, "users", uid, "history");
+      const snap    = await getDocs(histRef);
+      snap.forEach(doc => allItems.push(doc.data()));
+    } catch (e) { console.warn("fetchHistory(history) error:", e); }
+
+    // Koleksi LAMA — "history_latihan" dengan field waktu, nilai_persen, benar
+    try {
+      const oldRef = collection(window.firebaseDb, "users", uid, "history_latihan");
+      const snap   = await getDocs(oldRef);
+      snap.forEach(doc => allItems.push(doc.data()));
+    } catch (e) { /* koleksi lama mungkin tidak ada, abaikan */ }
+
+    // Sort manual berdasarkan tanggal/waktu (string locale) — terbaru dulu
+    allItems.sort((a, b) => {
+      const tA = a.tanggal || a.waktu || "";
+      const tB = b.tanggal || b.waktu || "";
+      return tB.localeCompare(tA);
+    });
+
+    // Return objek duck-typed agar kompatibel dengan kode openDashboard
+    return {
+      empty: allItems.length === 0,
+      forEach: (cb) => allItems.forEach(item => cb({ data: () => item }))
+    };
   }
 
   // Panggil render saat pertama kali dimuat

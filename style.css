@@ -10034,8 +10034,8 @@ body.history-mode .dashboard-shell textarea {
 
   /* ── Tombol selesai ── */
   #finishBtnManual {
-    top: 14px !important;
-    right: 14px !important;
+    top: 20px !important;
+    right: 23px !important;
     padding: 6px 14px !important;
     font-size: 0.75rem !important;
   }
@@ -10271,6 +10271,7 @@ body.history-mode .dashboard-shell textarea {
     box-sizing: border-box !important;
     visibility: visible !important;
     opacity: 1 !important;
+    margin-top: 13px !important;
   }
 
   /* Pastikan dokkai split-screen tetap kiri-kanan saat rotasi */

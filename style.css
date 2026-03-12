@@ -11630,44 +11630,43 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* ═══════════════════════════════════════════════════════
-   📱 MOBILE PORTRAIT — Ikutin style GOI/Bunpou
-   - grid: padding atas pas, align flex-start (bukan center)
-   - wrapper: height auto, ada margin samping biar corner keliatan
+   📱 MOBILE PORTRAIT — Choukai v3
+   Fix: wrapper ter-center vertikal, tidak ada gray space bawah
    ═══════════════════════════════════════════════════════ */
 @media (max-width: 767px) and (orientation: portrait) {
 
-  /* Grid: reset semua override yang bikin terlalu bawah */
+  /* Grid: isi penuh viewport, wrapper di-center vertikal */
   body.training-session #grid.quiz-active-mode {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    justify-content: flex-start !important;
-    margin-top: 0 !important;          /* ← hapus margin-top: 40px dari rule global */
-    padding: 10px 10px 20px !important;
-    min-height: auto !important;
-    height: auto !important;
+    justify-content: center !important;     /* ← center vertikal, hapus gray space */
+    margin-top: 0 !important;
+    padding: 64px 10px 14px !important;     /* 64px = ruang topbar training */
+    height: 100dvh !important;
+    min-height: 100dvh !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     box-sizing: border-box !important;
   }
 
-  /* Wrapper: auto height, margin samping 2px biar corner visible */
+  /* Wrapper: auto height, rounded corner, tidak stretch penuh */
   .choukai-wrapper-pro {
-    flex: 0 0 auto !important;         /* ← jangan stretch ke bawah */
+    flex: 0 0 auto !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    border-radius: 20px !important;    /* ← pastikan rounded */
+    border-radius: 20px !important;
     padding: 14px 14px 16px !important;
     gap: 11px !important;
     box-shadow: 0 8px 30px rgba(20, 24, 30, 0.18) !important;
   }
 
-  /* Stage: ukuran yang pas, tidak terlalu tinggi */
+  /* Stage audio */
   .choukai-stage {
-    min-height: 110px !important;
+    min-height: 100px !important;
     border-radius: 14px !important;
-    padding: 14px 12px !important;
+    padding: 12px 12px !important;
     gap: 8px !important;
   }
 
@@ -11677,10 +11676,7 @@ body.history-mode .dashboard-shell textarea {
 
   /* Header bar */
   .choukai-header {
-    padding-right: 84px !important;
-    padding-left: 12px !important;
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+    padding: 6px 84px 6px 12px !important;
   }
 
   .choukai-title          { font-size: 0.78rem !important; }
@@ -11694,7 +11690,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.74rem !important;
   }
 
-  /* Kontrol */
+  /* Kontrol player */
   .choukai-controls { gap: 8px !important; }
 
   .choukai-btn-play {
@@ -11709,8 +11705,12 @@ body.history-mode .dashboard-shell textarea {
 
   .choukai-replay-dot { width: 8px !important; height: 8px !important; }
 
-  /* Pilihan jawaban */
-  .choukai-options { gap: 8px !important; }
+  /* Pilihan jawaban 2×2 */
+  .choukai-options {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
 
   .choukai-opt-btn {
     min-height: 44px !important;
@@ -11733,7 +11733,8 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* ═══════════════════════════════════════════════════════
-   🖥️ DESKTOP — Centered, spacious, mirip GOI
+   🖥️ DESKTOP — Choukai v3
+   Center vertikal, max-width 680px, spacious
    ═══════════════════════════════════════════════════════ */
 @media (min-width: 768px) {
 
@@ -11741,11 +11742,12 @@ body.history-mode .dashboard-shell textarea {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: calc(100vh - var(--topbar-height, 56px)) !important;
+    min-height: calc(100dvh - var(--topbar-height, 78px)) !important;
+    height: calc(100dvh - var(--topbar-height, 78px)) !important;
     padding: 20px 24px !important;
+    margin-top: var(--topbar-height, 78px) !important;
     box-sizing: border-box !important;
     overflow-y: auto !important;
-    margin-top: 0 !important;
   }
 
   .choukai-wrapper-pro {
@@ -11782,21 +11784,22 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* ═══════════════════════════════════════════════════════
-   📱 MOBILE LANDSCAPE — Split kiri | kanan
+   📱 MOBILE LANDSCAPE — Choukai v3
+   Split layout kiri (player) | kanan (jawaban), fit viewport
    ═══════════════════════════════════════════════════════ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
   body.training-session #grid.quiz-active-mode {
     display: flex !important;
-    align-items: stretch !important;
+    align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
-    height: calc(100dvh - var(--topbar-height, 44px)) !important;
+    height: calc(100dvh - var(--topbar-height, 36px)) !important;
     min-height: unset !important;
-    padding: 8px !important;
+    padding: 6px 8px !important;
+    margin-top: var(--topbar-height, 36px) !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
-    margin-top: 0 !important;
   }
 
   .choukai-wrapper-pro {
@@ -11807,9 +11810,9 @@ body.history-mode .dashboard-shell textarea {
     max-height: 100% !important;
     flex: 1 !important;
     margin: 0 !important;
-    padding: 10px 12px !important;
+    padding: 8px 10px !important;
     gap: 10px !important;
-    border-radius: 16px !important;
+    border-radius: 14px !important;
     align-items: stretch !important;
     overflow: hidden !important;
   }
@@ -11826,74 +11829,77 @@ body.history-mode .dashboard-shell textarea {
   .choukai-stage {
     flex: 1 !important;
     min-height: 0 !important;
-    border-radius: 12px !important;
-    padding: 10px 12px !important;
-    gap: 6px !important;
+    border-radius: 10px !important;
+    padding: 8px 10px !important;
+    gap: 5px !important;
   }
 
-  .choukai-speaker-icon { font-size: 1.6rem !important; }
-  .choukai-idle-hint    { font-size: 0.7rem !important; }
-  .choukai-status-label { font-size: 0.68rem !important; }
-  .choukai-waveform     { height: 24px !important; }
+  .choukai-speaker-icon { font-size: 1.5rem !important; }
+  .choukai-idle-hint    { font-size: 0.68rem !important; }
+  .choukai-status-label { font-size: 0.66rem !important; }
+  .choukai-waveform     { height: 22px !important; }
 
   .choukai-header {
     border-radius: 10px !important;
-    padding: 5px 10px !important;
-    padding-right: 76px !important;
+    padding: 5px 76px 5px 10px !important;
   }
 
-  .choukai-title         { font-size: 0.72rem !important; }
-  .choukai-progress-text { font-size: 0.7rem !important; }
+  .choukai-title         { font-size: 0.7rem !important; }
+  .choukai-progress-text { font-size: 0.68rem !important; }
 
-  .choukai-controls { gap: 6px !important; flex-shrink: 0 !important; }
+  .choukai-controls {
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
 
   .choukai-btn-play {
-    padding: 8px 16px !important;
-    font-size: 0.78rem !important;
+    padding: 7px 14px !important;
+    font-size: 0.76rem !important;
   }
 
   .choukai-btn-slow {
-    padding: 6px 12px !important;
-    font-size: 0.74rem !important;
+    padding: 5px 10px !important;
+    font-size: 0.72rem !important;
   }
 
   .choukai-replay-dot { width: 7px !important; height: 7px !important; }
 
   .choukai-answer-side {
-    flex: 1.1 !important;
+    flex: 1.2 !important;
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     gap: 6px !important;
     min-width: 0 !important;
     padding-left: 10px !important;
-    border-left: 1px solid rgba(139, 92, 246, 0.15) !important;
+    border-left: 1px solid rgba(139, 92, 246, 0.18) !important;
   }
 
   .choukai-options {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 6px !important;
-    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
   }
 
   .choukai-opt-btn {
-    min-height: 36px !important;
-    font-size: 0.78rem !important;
-    padding: 6px 10px !important;
-    border-radius: 10px !important;
+    min-height: 34px !important;
+    font-size: 0.76rem !important;
+    padding: 5px 8px !important;
+    border-radius: 9px !important;
     gap: 6px !important;
   }
 
   .choukai-opt-btn::before {
     min-width: 20px !important;
     height: 20px !important;
-    font-size: 0.6rem !important;
+    font-size: 0.58rem !important;
   }
 
   #choukai-finish-btn {
-    top: 9px !important;
-    right: 9px !important;
-    padding: 5px 11px !important;
-    font-size: 0.68rem !important;
+    top: 8px !important;
+    right: 8px !important;
+    padding: 4px 10px !important;
+    font-size: 0.66rem !important;
   }
 }
 
@@ -11920,5 +11926,17 @@ body.training-session #resultInfo {
 }
 
 /* ═══════════════════════════════════════════════════════
-   END CHOUKAI PATCH v2
+   🎧 CHOUKAI — Allow vertical scroll on grid (portrait)
+   body.training-session { touch-action: none } global → override
+   khusus untuk choukai grid agar bisa scroll jika konten tinggi
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 767px) and (orientation: portrait) {
+  body.training-session #grid.quiz-active-mode {
+    touch-action: pan-y !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   END CHOUKAI PATCH v3
    ═══════════════════════════════════════════════════════ */

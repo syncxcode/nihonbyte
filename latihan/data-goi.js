@@ -1,0 +1,8084 @@
+window.latihanGoiReal = {
+    "N5": {
+        "goi-kanji-reading": [{
+                question: "<u>明日</u>、学校へ行きます。",
+                options: ["きのう", "あした", "あさって", "きょう"],
+                answer: "あした",
+                translation: "Besok, saya pergi ke sekolah."
+            }, {
+                question: "つくえの上に <u>時計</u>が あります。",
+                options: ["とけい", "ときけい", "じけい", "じだい"],
+                answer: "とけい",
+                translation: "Di atas meja ada jam."
+            }, {
+                question: "わたしの <u>先生</u>は やさしいです。",
+                options: ["せんせ", "せんせい", "さんせい", "しんせい"],
+                answer: "せんせい",
+                translation: "Guru saya baik hati."
+            }, {
+                question: "この <u>水</u>は つめたいです。",
+                options: ["みず", "すい", "おゆ", "みつ"],
+                answer: "みず",
+                translation: "Air ini dingin."
+            }, {
+                question: "あの <u>大きい</u> かばんを とって ください。",
+                options: ["おおきい", "ちいさい", "おきい", "だいきい"],
+                answer: "おおきい",
+                translation: "Tolong ambilkan tas yang besar itu."
+            }, {
+                question: "えきまで <u>歩いて</u> 行きます。",
+                options: ["はしって", "あるいて", "あゆいて", "ほいて"],
+                answer: "あるいて",
+                translation: "Pergi berjalan kaki sampai stasiun."
+            }, {
+                question: "<u>毎日</u> 日本語を 勉強します。",
+                options: ["まいにち", "まいひ", "まいじつ", "まいとし"],
+                answer: "まいにち",
+                translation: "Setiap hari belajar bahasa Jepang."
+            }, {
+                question: "<u>新しい</u> くるまを 買いました。",
+                options: ["ふるい", "あたらしい", "あらたしい", "あらしい"],
+                answer: "あたらしい",
+                translation: "Saya telah membeli mobil baru."
+            }, {
+                question: "<u>左</u>に まがって ください。",
+                options: ["みぎ", "ひだり", "きた", "みなみ"],
+                answer: "ひだり",
+                translation: "Tolong belok ke kiri."
+            }, {
+                question: "あの <u>男</u>の 人は だれですか。",
+                options: ["おんな", "おとこ", "ひと", "だん"],
+                answer: "おとこ",
+                translation: "Laki-laki itu siapa?"
+            }, {
+                question: "<u>山</u>の 上に 雪が あります。",
+                options: ["やま", "かわ", "うみ", "さん"],
+                answer: "やま",
+                translation: "Di atas gunung ada salju."
+            }, {
+                question: "<u>今日</u>は いい 天気ですね。",
+                options: ["きのう", "あした", "きょう", "こんにち"],
+                answer: "きょう",
+                translation: "Hari ini cuacanya bagus ya."
+            }, {
+                question: "<u>南</u>から かぜが ふきます。",
+                options: ["きた", "ひがし", "にし", "みなみ"],
+                answer: "みなみ",
+                translation: "Angin bertiup dari selatan."
+            }, {
+                question: "<u>百</u>円玉が ありますか。",
+                options: ["ひゃく", "ひやく", "びゃく", "はく"],
+                answer: "ひゃく",
+                translation: "Apakah kamu punya koin seratus yen?"
+            }, {
+                question: "この <u>魚</u>は とても おいしいです。",
+                options: ["にく", "さかな", "たまご", "やさい"],
+                answer: "さかな",
+                translation: "Ikan ini sangat enak."
+            }, {
+                question: "この <u>川</u>は とても きれいです。",
+                options: ["かわ", "やま", "うみ", "いけ"],
+                answer: "かわ",
+                translation: "Sungai ini sangat bersih."
+            }, {
+                question: "あそこに <u>車</u>が とまっています。",
+                options: ["くるま", "じてんしゃ", "でんしゃ", "くろま"],
+                answer: "くるま",
+                translation: "Di sana ada mobil berhenti."
+            }, {
+                question: "あなたの <u>名前</u>を 教えて ください。",
+                options: ["なまえ", "なまい", "なめえ", "みょうじ"],
+                answer: "なまえ",
+                translation: "Tolong beritahu namamu."
+            }, {
+                question: "少し <u>休んで</u> ください。",
+                options: ["あそんで", "やすんで", "よんで", "のんで"],
+                answer: "やすんで",
+                translation: "Tolong istirahat sebentar."
+            }, {
+                question: "あした <u>学校</u>は 休みです。",
+                options: ["がこう", "がっこう", "がこ", "がっこ"],
+                answer: "がっこう",
+                translation: "Besok sekolah libur."
+            }, {
+                question: "かばんの 中に <u>本</u>が あります。",
+                options: ["ほん", "はん", "ほこ", "もと"],
+                answer: "ほん",
+                translation: "Di dalam tas ada buku."
+            }, {
+                question: "これは <u>何</u>ですか。",
+                options: ["なん", "なに", "だれ", "いつ"],
+                answer: "なん",
+                translation: "Ini apa?"
+            }, {
+                question: "毎朝 ごはんを <u>食べます</u>。",
+                options: ["のみます", "たべます", "だべます", "たばます"],
+                answer: "たべます",
+                translation: "Setiap pagi makan nasi."
+            }, {
+                question: "きのう、えいがを <u>見ました</u>。",
+                options: ["みめした", "みました", "ききました", "みましだ"],
+                answer: "みました",
+                translation: "Kemarin, (saya) telah menonton film."
+            }, {
+                question: "ラジオを <u>聞きます</u>。",
+                options: ["かきます", "ききます", "ひきます", "いきます"],
+                answer: "ききます",
+                translation: "Mendengarkan radio."
+            }, {
+                question: "<u>電車</u>で 会社へ 行きます。",
+                options: ["でんしゃ", "でんしゃう", "てんしゃ", "でんじゃ"],
+                answer: "でんしゃ",
+                translation: "Pergi ke kantor dengan kereta."
+            }, {
+                question: "この カメラは <u>高い</u>です。",
+                options: ["ひくい", "やすい", "たかい", "だかい"],
+                answer: "たかい",
+                translation: "Kamera ini mahal."
+            }, {
+                question: "その パソコンは <u>安い</u>ですね。",
+                options: ["たかい", "やすい", "ひくい", "あすい"],
+                answer: "やすい",
+                translation: "Laptop itu murah ya."
+            }, {
+                question: "かみのけが <u>長い</u>ですね。",
+                options: ["ながい", "みじかい", "おもい", "なかい"],
+                answer: "ながい",
+                translation: "Rambutnya panjang ya."
+            }, {
+                question: "公園に 人が <u>多い</u>です。",
+                options: ["すくない", "おおきい", "おおい", "おいい"],
+                answer: "おおい",
+                translation: "Di taman banyak orang."
+            }, {
+                question: "今日は じかんが <u>少ない</u>です。",
+                options: ["すくない", "ちいさい", "おおい", "すかない"],
+                answer: "すくない",
+                translation: "Hari ini waktunya sedikit."
+            }, {
+                question: "<u>白い</u> シャツを 買いました。",
+                options: ["あかい", "くろい", "あおい", "しろい"],
+                answer: "しろい",
+                translation: "Telah membeli kemeja putih."
+            }, {
+                question: "あの <u>黒い</u> かばんは わたしのです。",
+                options: ["あおい", "くろい", "しろい", "あかい"],
+                answer: "くろい",
+                translation: "Tas hitam itu adalah milik saya."
+            }, {
+                question: "<u>赤い</u> りんごを 食べました。",
+                options: ["あかい", "あおい", "しろい", "くろい"],
+                answer: "あかい",
+                translation: "Makan apel merah."
+            }, {
+                question: "空が <u>青い</u>ですね。",
+                options: ["あかい", "あおい", "くろい", "あいい"],
+                answer: "あおい",
+                translation: "Langitnya biru ya."
+            }, {
+                question: "そこを <u>右</u>に まがって ください。",
+                options: ["ひだり", "みぎ", "まえ", "うしろ"],
+                answer: "みぎ",
+                translation: "Tolong belok ke kanan di sana."
+            }, {
+                question: "えきの <u>前</u>で 会いましょう。",
+                options: ["うしろ", "まえ", "なか", "みぎ"],
+                answer: "まえ",
+                translation: "Mari bertemu di depan stasiun."
+            }, {
+                question: "家の <u>後ろ</u>に 木が あります。",
+                options: ["うしろ", "まえ", "となり", "よこ"],
+                answer: "うしろ",
+                translation: "Di belakang rumah ada pohon."
+            }, {
+                question: "はこの <u>中</u>に なにが ありますか。",
+                options: ["うえ", "そと", "なか", "した"],
+                answer: "なか",
+                translation: "Di dalam kotak ada apa?"
+            }, {
+                question: "<u>外</u>は さむいですか。",
+                options: ["そと", "なか", "うえ", "した"],
+                answer: "そと",
+                translation: "Apakah di luar dingin?"
+            }, {
+                question: "太陽は <u>東</u>から のぼります。",
+                options: ["にし", "きた", "ひがし", "みなみ"],
+                answer: "ひがし",
+                translation: "Matahari terbit dari timur."
+            }, {
+                question: "<u>西</u>の 空が 赤いです。",
+                options: ["ひがし", "にし", "きた", "みなみ"],
+                answer: "にし",
+                translation: "Langit di barat berwarna merah."
+            }, {
+                question: "<u>北</u>の かぜが ふいています。",
+                options: ["きた", "にし", "みなみ", "ひがし"],
+                answer: "きた",
+                translation: "Angin utara sedang bertiup."
+            }, {
+                question: "あの <u>人</u>を 知っていますか。",
+                options: ["じん", "にん", "ひと", "おとこ"],
+                answer: "ひと",
+                translation: "Apakah (kamu) kenal orang itu?"
+            }, {
+                question: "あの <u>女</u>の人は やさしいです。",
+                options: ["おとこ", "おんな", "め", "じょ"],
+                answer: "おんな",
+                translation: "Perempuan itu baik hati."
+            }, {
+                question: "<u>子</u>どもが あそんでいます。",
+                options: ["こ", "し", "おんな", "おとこ"],
+                answer: "こ",
+                translation: "Anak-anak sedang bermain."
+            }, {
+                question: "わたしの <u>父</u>は 医者です。",
+                options: ["はは", "あに", "ちち", "あね"],
+                answer: "ちち",
+                translation: "Ayah saya adalah seorang dokter."
+            }, {
+                question: "<u>母</u>は りょうりが じょうずです。",
+                options: ["ちち", "あね", "はは", "あに"],
+                answer: "はは",
+                translation: "Ibu pintar memasak."
+            }, {
+                question: "<u>目</u>が いたいです。",
+                options: ["みみ", "め", "くち", "て"],
+                answer: "め",
+                translation: "Matanya sakit."
+            }, {
+                question: "大きく <u>口</u>を あけて ください。",
+                options: ["め", "みみ", "くち", "あし"],
+                answer: "くち",
+                translation: "Tolong buka mulut dengan lebar."
+            }, {
+                question: "<u>耳</u>が よく きこえません。",
+                options: ["め", "みみ", "くち", "て"],
+                answer: "みみ",
+                translation: "Telinganya tidak bisa mendengar dengan baik."
+            }, {
+                question: "<u>手</u>を あらって ください。",
+                options: ["あし", "め", "て", "くち"],
+                answer: "て",
+                translation: "Tolong cuci tangan."
+            }, {
+                question: "<u>足</u>が つかれました。",
+                options: ["て", "め", "あし", "みみ"],
+                answer: "あし",
+                translation: "Kakinya lelah."
+            }, {
+                question: "今日は いい <u>天気</u>ですね。",
+                options: ["てんき", "でんき", "てんぎ", "てんけ"],
+                answer: "てんき",
+                translation: "Hari ini cuacanya bagus ya."
+            }, {
+                question: "午後から <u>雨</u>が 降ります。",
+                options: ["ゆき", "あめ", "かぜ", "くも"],
+                answer: "あめ",
+                translation: "Dari siang turun hujan."
+            }, {
+                question: "冬は <u>雪</u>が 降ります。",
+                options: ["あめ", "ゆき", "かぜ", "そら"],
+                answer: "ゆき",
+                translation: "Musim dingin turun salju."
+            }, {
+                question: "<u>風</u>が つよいです。",
+                options: ["あめ", "かぜ", "ゆき", "そら"],
+                answer: "かぜ",
+                translation: "Anginnya kuat."
+            }, {
+                question: "<u>空</u>に 鳥が います。",
+                options: ["あめ", "ゆき", "そら", "かぜ"],
+                answer: "そら",
+                translation: "Di langit ada burung."
+            }, {
+                question: "本を <u>読んだり</u>、音楽を 聞いたり します。",
+                options: ["のんだり", "よんだり", "あそんだり", "よだり"],
+                answer: "よんだり",
+                translation: "Melakukan hal seperti membaca buku, mendengarkan musik."
+            }, {
+                question: "ここに なまえを <u>書いて</u> ください。",
+                options: ["きいて", "かいて", "あるいて", "がいて"],
+                answer: "かいて",
+                translation: "Tolong tulis nama di sini."
+            }, {
+                question: "もう 一度 <u>言って</u> ください。",
+                options: ["まって", "いって", "もって", "たって"],
+                answer: "いって",
+                translation: "Tolong katakan sekali lagi."
+            }, {
+                question: "先生と <u>話します</u>。",
+                options: ["よみます", "はなします", "ききます", "はちます"],
+                answer: "はなします",
+                translation: "Berbicara dengan guru."
+            }, {
+                question: "デパートで くつを <u>買って</u> 帰ります。",
+                options: ["まって", "かって", "いって", "あって"],
+                answer: "かって",
+                translation: "Beli sepatu di departemen store lalu pulang."
+            }, {
+                question: "そこに <u>立って</u> ください。",
+                options: ["すわって", "たって", "まって", "だて"],
+                answer: "たって",
+                translation: "Tolong berdiri di sana."
+            }, {
+                question: "わたしは 大学の <u>学生</u>です。",
+                options: ["がくせい", "がっせい", "かくせい", "せんせい"],
+                answer: "がくせい",
+                translation: "Saya adalah mahasiswa universitas."
+            }, {
+                question: "<u>友だち</u>と あそびに 行きます。",
+                options: ["ともだち", "こども", "きょうだい", "かぞく"],
+                answer: "ともだち",
+                translation: "Pergi bermain bersama teman."
+            }, {
+                question: "デパートへ <u>買い物</u>に 行きます。",
+                options: ["かいもの", "たべもの", "のみもの", "のりもの"],
+                answer: "かいもの",
+                translation: "Pergi ke departemen store untuk berbelanja."
+            }, {
+                question: "わたしは <u>お金</u>が ありません。",
+                options: ["おかね", "おきん", "おかな", "あかね"],
+                answer: "おかね",
+                translation: "Saya tidak punya uang."
+            }, {
+                question: "いちばん ちかい <u>銀行</u>は どこですか。",
+                options: ["ぎんこう", "ぎんごう", "きんこう", "きんごう"],
+                answer: "ぎんこう",
+                translation: "Bank yang paling dekat ada di mana?"
+            }, {
+                question: "あした <u>病院</u>へ 行きます。",
+                options: ["びょういん", "びょうき", "びょいん", "いしゃ"],
+                answer: "びょういん",
+                translation: "Besok (saya) pergi ke rumah sakit."
+            }, {
+                question: "ペットの 犬が <u>病気</u>に なりました。",
+                options: ["びょうき", "びょういん", "げんき", "びょき"],
+                answer: "びょうき",
+                translation: "Anjing peliharaanku jatuh sakit."
+            }, {
+                question: "わたしの あには <u>医者</u>です。",
+                options: ["いしゃ", "いさ", "えしゃ", "いしゃう"],
+                answer: "いしゃ",
+                translation: "Kakak laki-laki saya adalah dokter."
+            }, {
+                question: "へやで <u>音楽</u>を 聞きます。",
+                options: ["おんがく", "おんかく", "えんがく", "いんがく"],
+                answer: "おんがく",
+                translation: "Mendengarkan musik di kamar."
+            }, {
+                question: "きれいな <u>花</u>ですね。",
+                options: ["はな", "そら", "くさ", "き"],
+                answer: "はな",
+                translation: "Bunga yang cantik ya."
+            }, {
+                question: "わたしは 日本の アニメが <u>好き</u>です。",
+                options: ["すき", "すきい", "つき", "ずき"],
+                answer: "すき",
+                translation: "Saya suka anime Jepang."
+            }, {
+                question: "日本は <u>春</u>に なりました。",
+                options: ["はる", "なつ", "あき", "ふゆ"],
+                answer: "はる",
+                translation: "Jepang sudah memasuki musim semi."
+            }, {
+                question: "今年の <u>夏</u>は とても あついです。",
+                options: ["なつ", "はる", "あき", "ふゆ"],
+                answer: "なつ",
+                translation: "Musim panas tahun ini sangat panas."
+            }, {
+                question: "<u>秋</u>は すずしいです。",
+                options: ["あき", "はる", "なつ", "ふゆ"],
+                answer: "あき",
+                translation: "Musim gugur itu sejuk."
+            }, {
+                question: "<u>冬</u>は 毎日 さむいです。",
+                options: ["ふゆ", "はる", "なつ", "あき"],
+                answer: "ふゆ",
+                translation: "Musim dingin setiap hari dingin."
+            }, {
+                question: "<u>今</u>、何時ですか。",
+                options: ["いま", "きょう", "あさ", "よる"],
+                answer: "いま",
+                translation: "Sekarang jam berapa?"
+            }, {
+                question: "<u>朝</u>ごはんを 食べましたか。",
+                options: ["あさ", "ひる", "よる", "ばん"],
+                answer: "あさ",
+                translation: "Apakah sudah makan sarapan (pagi)?"
+            }, {
+                question: "<u>昼</u>ごはんは パンです。",
+                options: ["ひる", "あさ", "よる", "ばん"],
+                answer: "ひる",
+                translation: "Makan siang saya roti."
+            }, {
+                question: "<u>夜</u>、テレビを 見ます。",
+                options: ["よる", "あさ", "ひる", "ばん"],
+                answer: "よる",
+                translation: "Malam hari menonton TV."
+            }, {
+                question: "いっしょに <u>晩</u>ごはんを 食べましょう。",
+                options: ["ばん", "よる", "あさ", "ひる"],
+                answer: "ばん",
+                translation: "Mari makan malam bersama."
+            }, {
+                question: "<u>午後</u> 3時に 会いましょう。",
+                options: ["ごご", "ごぜん", "ごあご", "ごごう"],
+                answer: "ごご",
+                translation: "Mari bertemu pada jam 3 sore (PM)."
+            }, {
+                question: "明日の <u>午前</u>中、勉強します。",
+                options: ["ごぜん", "ごご", "ごぜ", "ごせん"],
+                answer: "ごぜん",
+                translation: "Besok pagi (AM), saya akan belajar."
+            }, {
+                question: "夜の 10時<u>半</u>に 寝ます。",
+                options: ["はん", "さん", "ばん", "ほん"],
+                answer: "はん",
+                translation: "Saya tidur pada jam 10 setengah (10:30) malam."
+            }, {
+                question: "この <u>道</u>を まっすぐ 行って ください。",
+                options: ["みち", "まち", "えき", "はし"],
+                answer: "みち",
+                translation: "Tolong jalan lurus terus di jalan ini."
+            }, {
+                question: "わたしの <u>町</u>は にぎやかです。",
+                options: ["まち", "みち", "むら", "くに"],
+                answer: "まち",
+                translation: "Kota saya ramai."
+            }, {
+                question: "あの <u>店</u>で 買いましょう。",
+                options: ["みせ", "えき", "いえ", "まち"],
+                answer: "みせ",
+                translation: "Mari membeli di toko itu."
+            }, {
+                question: "<u>駅</u>の まえで 待ちます。",
+                options: ["えき", "みせ", "いえ", "まち"],
+                answer: "えき",
+                translation: "Saya akan menunggu di depan stasiun."
+            }, {
+                question: "部屋の <u>電気</u>を つけて ください。",
+                options: ["でんき", "てんき", "てんき", "げんき"],
+                answer: "でんき",
+                translation: "Tolong nyalakan lampu (listrik) kamar."
+            }, {
+                question: "毎日 <u>会社</u>まで バスで 行きます。",
+                options: ["かいしゃ", "かいしゃう", "しゃかい", "がっこう"],
+                answer: "かいしゃ",
+                translation: "Setiap hari pergi ke kantor (perusahaan) menggunakan bus."
+            }, {
+                question: "これは 100<u>円</u>です。",
+                options: ["えん", "いん", "あん", "おん"],
+                answer: "えん",
+                translation: "Ini (harganya) 100 yen."
+            }, {
+                question: "今年は 良い <u>年</u>でした。",
+                options: ["とし", "ねん", "としゅう", "ね"],
+                answer: "とし",
+                translation: "Tahun ini adalah tahun yang baik."
+            }, {
+                question: "明日は <u>休み</u>です。",
+                options: ["やすみ", "あそび", "たのみ", "のみ"],
+                answer: "やすみ",
+                translation: "Besok adalah hari libur."
+            }, {
+                question: "<u>外国</u>へ 行きたいです。",
+                options: ["がいこく", "そとくに", "がこく", "がいごく"],
+                answer: "がいこく",
+                translation: "Saya ingin pergi ke luar negeri."
+            }, {
+                question: "あなたの <u>国</u>は どこですか。",
+                options: ["くに", "まち", "むら", "いえ"],
+                answer: "くに",
+                translation: "Negaramu di mana?"
+            }, {
+                question: "つめたい <u>飲み物</u>が ほしいです。",
+                options: ["のみもの", "たべもの", "かいもの", "のりもの"],
+                answer: "のみもの",
+                translation: "Saya ingin minuman yang dingin."
+            }, {
+                question: "スーパーへ <u>食べ物</u>を 買いに 行きます。",
+                options: ["たべもの", "のみもの", "かいもの", "のりもの"],
+                answer: "たべもの",
+                translation: "Pergi ke supermarket untuk membeli makanan."
+            }
+        ],
+        "goi-orthography": [{
+                question: "わたしは <u>にほんご</u>を 勉強します。",
+                options: ["日本語", "日木語", "日国語", "日本話"],
+                answer: "日本語",
+                translation: "Saya belajar bahasa Jepang."
+            }, {
+                question: "あしたは <u>やすみ</u>です。",
+                options: ["休み", "体み", "木み", "本み"], // Tricky: 休 (Libur/Istirahat) vs 体 (Tubuh)
+                answer: "休み",
+                translation: "Besok adalah hari libur."
+            }, {
+                question: "そこを <u>みぎ</u>に まがってください。",
+                options: ["右", "石", "古", "口"], // Tricky: 右 (Kanan) vs 石 (Batu)
+                answer: "右",
+                translation: "Tolong belok ke kanan di sana."
+            }, {
+                question: "つくえの <u>うえ</u>に ほんが あります。",
+                options: ["上", "下", "土", "止"],
+                answer: "上",
+                translation: "Di atas meja ada buku."
+            }, {
+                question: "えきまで <u>くるま</u>で 行きます。",
+                options: ["車", "東", "重", "申"],
+                answer: "車",
+                translation: "Pergi ke stasiun menggunakan mobil."
+            }, {
+                question: "この りんごは <u>おおきい</u>です。",
+                options: ["大きい", "太きい", "犬きい", "天きい"], // Tricky: 大 (Besar) vs 太 (Gemuk) vs 犬 (Anjing)
+                answer: "大きい",
+                translation: "Apel ini besar."
+            }, {
+                question: "あの <u>ひと</u>は だれですか。",
+                options: ["人", "入", "八", "丁"], // Tricky: 人 (Orang) vs 入 (Masuk) vs 八 (Delapan)
+                answer: "人",
+                translation: "Orang itu siapa?"
+            }, {
+                question: "かばんの <u>なか</u>に かぎが あります。",
+                options: ["中", "虫", "申", "串"],
+                answer: "中",
+                translation: "Di dalam tas ada kunci."
+            }, {
+                question: "毎日 <u>みず</u>を 飲みます。",
+                options: ["水", "氷", "木", "小"], // Tricky: 水 (Air) vs 氷 (Es)
+                answer: "水",
+                translation: "Setiap hari minum air."
+            }, {
+                question: "えいがを <u>み</u>ます。",
+                options: ["見", "貝", "買", "頁"], // Tricky: 見 (Melihat) vs 貝 (Kerang)
+                answer: "見",
+                translation: "Menonton film."
+            }, {
+                question: "スーパーで パンを <u>か</u>います。",
+                options: ["買", "貝", "見", "員"], // Tricky: 買 (Beli) vs 員 (Anggota)
+                answer: "買",
+                translation: "Membeli roti di supermarket."
+            }, {
+                question: "ラジオを <u>き</u>きます。",
+                options: ["聞", "間", "開", "閉"], // Tricky: 聞 (Mendengar) vs 間 (Di antara) vs 開 (Buka)
+                answer: "聞",
+                translation: "Mendengarkan radio."
+            }, {
+                question: "ノートに なまえを <u>か</u>きます。",
+                options: ["書", "画", "昼", "筆"], // Tricky: 書 (Menulis) vs 画 (Gambar) vs 昼 (Siang)
+                answer: "書",
+                translation: "Menulis nama di buku catatan."
+            }, {
+                question: "ともだちと <u>はな</u>します。",
+                options: ["話", "語", "言", "活"],
+                answer: "話",
+                translation: "Berbicara dengan teman."
+            }, {
+                question: "日本語の ほんを <u>よ</u>みます。",
+                options: ["読", "語", "話", "言"],
+                answer: "読",
+                translation: "Membaca buku bahasa Jepang."
+            }, {
+                question: "<u>いち</u>ばん 好きな 食べ物は なんですか。",
+                options: ["一", "二", "十", "七"],
+                answer: "一",
+                translation: "Makanan yang paling disukai apa?"
+            }, {
+                question: "<u>ひゃく</u>円の 切手を 買いました。",
+                options: ["百", "白", "自", "日"], // Tricky: 百 (100) vs 白 (Putih) vs 自 (Diri)
+                answer: "百",
+                translation: "Membeli prangko seharga 100 yen."
+            }, {
+                question: "ここに <u>き</u>が あります。",
+                options: ["木", "本", "休", "体"], // Tricky: 木 (Pohon) vs 本 (Buku)
+                answer: "木",
+                translation: "Di sini ada pohon."
+            }, {
+                question: "あの <u>おとこ</u>の人は 先生です。",
+                options: ["男", "田", "力", "町"],
+                answer: "男",
+                translation: "Laki-laki itu adalah guru."
+            }, {
+                question: "<u>おんな</u>の人が ３人 います。",
+                options: ["女", "母", "姉", "妹"],
+                answer: "女",
+                translation: "Ada 3 orang perempuan."
+            }, {
+                question: "ここは <u>がっこう</u>です。",
+                options: ["学校", "栄校", "学効", "覚校"],
+                answer: "学校",
+                translation: "Ini adalah sekolah."
+            }, {
+                question: "わたしの <u>ちち</u>は 50歳です。",
+                options: ["父", "交", "文", "又"],
+                answer: "父",
+                translation: "Ayah saya berumur 50 tahun."
+            }, {
+                question: "<u>はは</u>は 料理が 上手です。",
+                options: ["母", "毎", "海", "毒"], // Tricky: 母 (Ibu) vs 毎 (Setiap)
+                answer: "母",
+                translation: "Ibu pintar memasak."
+            }, {
+                question: "<u>そら</u>が 青いです。",
+                options: ["空", "穴", "突", "窓"],
+                answer: "空",
+                translation: "Langitnya biru."
+            }, {
+                question: "きょうは <u>てんき</u>が いいです。",
+                options: ["天気", "夫気", "大気", "矢気"], // Tricky: 天 (Langit) vs 夫 (Suami) vs 矢 (Panah)
+                answer: "天気",
+                translation: "Hari ini cuacanya bagus."
+            }, {
+                question: "<u>しろい</u> シャツを 着ています。",
+                options: ["白い", "百い", "自い", "日い"],
+                answer: "白い",
+                translation: "Sedang memakai kemeja putih."
+            }, {
+                question: "新しい <u>ほん</u>を 買いました。",
+                options: ["本", "木", "休", "体"],
+                answer: "本",
+                translation: "Membeli buku baru."
+            }, {
+                question: "<u>ひだり</u>に まがってください。",
+                options: ["左", "右", "在", "友"], // Tricky: 左 (Kiri) vs 右 (Kanan) vs 友 (Teman)
+                answer: "左",
+                translation: "Tolong belok ke kiri."
+            }, {
+                question: "<u>せんせい</u>、おはようございます。",
+                options: ["先生", "先星", "失生", "洗生"], // Tricky: 先 (Duluan) vs 失 (Hilang)
+                answer: "先生",
+                translation: "Guru, selamat pagi."
+            }, {
+                question: "<u>がくせい</u>が 勉強しています。",
+                options: ["学生", "覚生", "学性", "学牛"],
+                answer: "学生",
+                translation: "Siswa sedang belajar."
+            }, {
+                question: "<u>あした</u>、東京へ 行きます。",
+                options: ["明日", "日日", "明目", "朋日"],
+                answer: "明日",
+                translation: "Besok, pergi ke Tokyo."
+            }, {
+                question: "<u>きょう</u>は あついです。",
+                options: ["今日", "今回", "会日", "令日"], // Tricky: 今 (Sekarang) vs 令 (Perintah)
+                answer: "今日",
+                translation: "Hari ini panas."
+            }, {
+                question: "この じしょは <u>せん</u>円です。",
+                options: ["千", "十", "干", "于"], // Tricky: 千 (1000) vs 干 (Kering)
+                answer: "千",
+                translation: "Kamus ini (harganya) 1000 yen."
+            }, {
+                question: "えきまで <u>あるいて</u> 行きます。",
+                options: ["歩いて", "走いて", "止いて", "少いて"],
+                answer: "歩いて",
+                translation: "Pergi berjalan kaki sampai stasiun."
+            }, {
+                question: "毎日 しんぶんを <u>よ</u>みます。",
+                options: ["読", "語", "話", "言"],
+                answer: "読",
+                translation: "Setiap hari membaca koran."
+            }, {
+                question: "<u>やま</u>の 上に 行きます。",
+                options: ["山", "川", "出", "仙"],
+                answer: "山",
+                translation: "Pergi ke atas gunung."
+            }, {
+                question: "この <u>かわ</u>で およがないで ください。",
+                options: ["川", "山", "州", "順"],
+                answer: "川",
+                translation: "Tolong jangan berenang di sungai ini."
+            }, {
+                question: "<u>にちようび</u>に デパートへ 行きます。",
+                options: ["日曜日", "目曜日", "白曜日", "百曜日"],
+                answer: "日曜日",
+                translation: "Pergi ke departemen store pada hari Minggu."
+            }, {
+                question: "<u>げつようび</u>から がっこうが はじまります。",
+                options: ["月曜日", "目曜日", "日曜日", "用曜日"],
+                answer: "月曜日",
+                translation: "Sekolah dimulai dari hari Senin."
+            }, {
+                question: "わたしの かばんは <u>ちいさい</u>です。",
+                options: ["小さい", "少さい", "水さい", "木さい"], // Tricky: 小 (Kecil) vs 少 (Sedikit)
+                answer: "小さい",
+                translation: "Tas saya kecil."
+            }, {
+                question: "あそこに <u>でんしゃ</u>が あります。",
+                options: ["電車", "雷車", "雪車", "雲車"], // Tricky: 電 (Listrik) vs 雷 (Petir) vs 雪 (Salju)
+                answer: "電車",
+                translation: "Di sana ada kereta listrik."
+            }, {
+                question: "きのう、あたらしい <u>とし</u>に なりました。",
+                options: ["年", "半", "手", "午"],
+                answer: "年",
+                translation: "Kemarin, telah menjadi tahun yang baru."
+            }, {
+                question: "<u>はん</u>ぶん 食べて ください。",
+                options: ["半", "平", "本", "年"],
+                answer: "半",
+                translation: "Tolong makan setengahnya."
+            }, {
+                question: "この りんごは <u>たかい</u>です。",
+                options: ["高い", "亭い", "長い", "安い"],
+                answer: "高い",
+                translation: "Apel ini mahal."
+            }, {
+                question: "わたしの かみは <u>ながい</u>です。",
+                options: ["長い", "髪い", "高い", "食い"],
+                answer: "長い",
+                translation: "Rambut saya panjang."
+            }, {
+                question: "<u>そと</u>で あそびましょう。",
+                options: ["外", "多", "名", "夕"],
+                answer: "外",
+                translation: "Mari bermain di luar."
+            }, {
+                question: "<u>きた</u>から かぜが ふきます。",
+                options: ["北", "比", "化", "死"],
+                answer: "北",
+                translation: "Angin bertiup dari utara."
+            }, {
+                question: "<u>みなみ</u>へ 行きます。",
+                options: ["南", "幸", "東", "西"],
+                answer: "南",
+                translation: "Pergi ke selatan."
+            }, {
+                question: "お<u>かね</u>が ありません。",
+                options: ["金", "全", "今", "傘"], // Tricky: 金 (Emas/Uang) vs 全 (Semua)
+                answer: "金",
+                translation: "Tidak punya uang."
+            }, {
+                question: "この ごはんは <u>やすい</u>です。",
+                options: ["安い", "案い", "家い", "高い"],
+                answer: "安い",
+                translation: "Makanan ini murah."
+            }, {
+                question: "えきの <u>まえ</u>で まちます。",
+                options: ["前", "剪", "首", "煎"], // Tricky: 前 vs 剪 (Gunting)
+                answer: "前",
+                translation: "Menunggu di depan stasiun."
+            }, {
+                question: "家の <u>うしろ</u>に 木が あります。",
+                options: ["後ろ", "俊ろ", "夏ろ", "復ろ"], // Tricky: 後 vs 俊 vs 夏
+                answer: "後ろ",
+                translation: "Di belakang rumah ada pohon."
+            }, {
+                question: "明日の <u>ごぜん</u>、勉強します。",
+                options: ["午前", "牛前", "午剪", "年前"], // Tricky: 午 (Siang) vs 牛 (Sapi)
+                answer: "午前",
+                translation: "Besok pagi, saya akan belajar."
+            }, {
+                question: "<u>ごご</u> ３時に 会いましょう。",
+                options: ["午後", "牛後", "年後", "干後"], // Tricky: 午 (Siang) vs 牛 (Sapi)
+                answer: "午後",
+                translation: "Mari bertemu pada jam 3 sore."
+            }, {
+                question: "<u>まいあさ</u> パンを 食べます。",
+                options: ["毎朝", "海朝", "毒朝", "梅朝"], // Tricky: 毎 (Setiap) vs 海 (Laut)
+                answer: "毎朝",
+                translation: "Setiap pagi makan roti."
+            }, {
+                question: "<u>まいばん</u> テレビを 見ます。",
+                options: ["毎晩", "海晩", "毎免", "海免"], // Tricky: 晩 (Malam) vs 免 (Bebas)
+                answer: "毎晩",
+                translation: "Setiap malam menonton TV."
+            }, {
+                question: "<u>まいにち</u> 日本語を 勉強します。",
+                options: ["毎日", "海日", "毎月", "母日"], // Tricky: 毎 vs 母 (Ibu)
+                answer: "毎日",
+                translation: "Setiap hari belajar bahasa Jepang."
+            }, {
+                question: "<u>らいねん</u> 日本へ 行きたいです。",
+                options: ["来年", "未年", "末年", "木年"], // Tricky: 来 (Datang) vs 未 (Belum) vs 末 (Akhir)
+                answer: "来年",
+                translation: "Tahun depan ingin pergi ke Jepang."
+            }, {
+                question: "<u>らいしゅう</u> テストが あります。",
+                options: ["来週", "未週", "末週", "来周"],
+                answer: "来週",
+                translation: "Minggu depan ada ujian."
+            }, {
+                question: "<u>せんげつ</u> パソコンを 買いました。",
+                options: ["先月", "失月", "洗月", "光月"], // Tricky: 先 (Lalu/Duluan) vs 失 (Kehilangan)
+                answer: "先月",
+                translation: "Bulan lalu membeli laptop."
+            }, {
+                question: "<u>こんげつ</u>は いそがしいです。",
+                options: ["今月", "令月", "会月", "念月"], // Tricky: 今 (Sekarang) vs 令 (Perintah)
+                answer: "今月",
+                translation: "Bulan ini sibuk."
+            }, {
+                question: "<u>ことし</u>の 夏は あついです。",
+                options: ["今年", "令年", "会年", "念年"],
+                answer: "今年",
+                translation: "Musim panas tahun ini panas."
+            }, {
+                question: "朝ごはんを <u>たべる</u> 時間が ありません。",
+                options: ["食べる", "飲べる", "会べる", "良べる"], // Tricky: 食 (Makan) vs 良 (Bagus)
+                answer: "食べる",
+                translation: "Tidak ada waktu untuk makan sarapan."
+            }, {
+                question: "つめたい 水を <u>のむ</u>。",
+                options: ["飲む", "飯む", "飼む", "飢む"], // Tricky: 飲 (Minum) vs 飯 (Nasi/Makan)
+                answer: "飲む",
+                translation: "Minum air dingin."
+            }, {
+                question: "明日、学校へ <u>いく</u>。",
+                options: ["行く", "待く", "彳く", "行る"], // Tricky: 行 (Pergi) vs 待 (Tunggu)
+                answer: "行く",
+                translation: "Besok, pergi ke sekolah."
+            }, {
+                question: "友だちが 家に <u>くる</u>。",
+                options: ["来る", "未る", "末る", "木る"],
+                answer: "来る",
+                translation: "Teman datang ke rumah."
+            }, {
+                question: "６時に うちへ <u>かえる</u>。",
+                options: ["帰る", "帚る", "帯る", "滞る"], // Tricky: 帰 (Pulang) vs 帯 (Sabuk)
+                answer: "帰る",
+                translation: "Pulang ke rumah pada jam 6."
+            }, {
+                question: "駅で 先生に <u>あう</u>。",
+                options: ["会う", "合う", "今う", "令う"], // Tricky: 会 (Bertemu) vs 合 (Cocok)
+                answer: "会う",
+                translation: "Bertemu guru di stasiun."
+            }, {
+                question: "木の下で <u>やすむ</u>。",
+                options: ["休む", "体む", "本む", "木む"], // Tricky: 休 (Istirahat) vs 体 (Tubuh)
+                answer: "休む",
+                translation: "Beristirahat di bawah pohon."
+            }, {
+                question: "日本語で <u>はなす</u> ことが できますか。",
+                options: ["話す", "語す", "言す", "活す"], // Tricky: 話 (Berbicara) vs 語 (Bahasa) vs 言 (Berkata)
+                answer: "話す",
+                translation: "Apakah bisa berbicara dalam bahasa Jepang?"
+            }, {
+                question: "てがみを <u>かく</u>。",
+                options: ["書く", "画く", "昼く", "筆く"], // Tricky: 書 (Tulis) vs 画 (Gambar) vs 昼 (Siang)
+                answer: "書く",
+                translation: "Menulis surat."
+            }, {
+                question: "毎晩、本を <u>よむ</u>。",
+                options: ["読む", "語む", "話む", "詰む"],
+                answer: "読む",
+                translation: "Setiap malam membaca buku."
+            }, {
+                question: "新しい くつを <u>かう</u>。",
+                options: ["買う", "貝う", "見う", "員う"], // Tricky: 買 (Beli) vs 貝 (Kerang) vs 員 (Anggota)
+                answer: "買う",
+                translation: "Membeli sepatu baru."
+            }, {
+                question: "あの 人の 名前を <u>しる</u>。",
+                options: ["知る", "和る", "智る", "矢る"], // Tricky: 知 (Tahu) vs 和 (Harmoni)
+                answer: "知る",
+                translation: "Mengetahui nama orang itu."
+            }, {
+                question: "かばんを <u>もつ</u>。",
+                options: ["持つ", "待つ", "侍つ", "特つ"], // Tricky: 持 (Bawa) vs 待 (Tunggu) vs 侍 (Samurai)
+                answer: "持つ",
+                translation: "Membawa tas."
+            }, {
+                question: "ここで 友だちを <u>まつ</u>。",
+                options: ["待つ", "持つ", "侍つ", "特つ"], // Tricky: 待 (Tunggu) vs 持 (Bawa)
+                answer: "待つ",
+                translation: "Menunggu teman di sini."
+            }, {
+                question: "そこに <u>たつ</u>。",
+                options: ["立つ", "音つ", "泣つ", "位つ"], // Tricky: 立 (Berdiri) vs 音 (Suara)
+                answer: "立つ",
+                translation: "Berdiri di sana."
+            }, {
+                question: "部屋に <u>はいって</u> ください。",
+                options: ["入って", "人って", "八って", "丁って"],
+                answer: "入って",
+                translation: "Tolong masuk ke kamar."
+            }, {
+                question: "そとへ <u>でる</u>。",
+                options: ["出る", "山る", "仙る", "凸る"], // Tricky: 出 (Keluar) vs 山 (Gunung)
+                answer: "出る",
+                translation: "Keluar."
+            }, {
+                question: "この 荷物は <u>おもい</u>です。",
+                options: ["重い", "動い", "童い", "車い"], // Tricky: 重 (Berat) vs 動 (Bergerak)
+                answer: "重い",
+                translation: "Barang bawaan ini berat."
+            }, {
+                question: "わたしの かばんは <u>かるい</u>です。",
+                options: ["軽い", "車い", "転い", "斬い"], // Tricky: 軽 (Ringan) vs 車 (Mobil) vs 転 (Berguling)
+                answer: "軽い",
+                translation: "Tas saya ringan."
+            }, {
+                question: "<u>あたらしい</u> くるまを 買いました。",
+                options: ["新しい", "親しい", "薪しい", "折しい"], // Tricky: 新 (Baru) vs 親 (Orang tua/Akrab)
+                answer: "新しい",
+                translation: "Telah membeli mobil baru."
+            }, {
+                question: "この パソコンは もう <u>ふるい</u>です。",
+                options: ["古い", "右い", "石い", "占い"], // Tricky: 古 (Lama) vs 右 (Kanan) vs 石 (Batu)
+                answer: "古い",
+                translation: "Laptop ini sudah lama/kuno."
+            }, {
+                question: "川は とても <u>ながい</u>です。",
+                options: ["長い", "髪い", "展い", "帳い"],
+                answer: "長い",
+                translation: "Sungainya sangat panjang."
+            }, {
+                question: "えんぴつが <u>みじかい</u>です。",
+                options: ["短い", "知い", "矩い", "豆い"], // Tricky: 短 (Pendek) vs 知 (Tahu)
+                answer: "短い",
+                translation: "Pensilnya pendek."
+            }, {
+                question: "富士山は <u>たかい</u> 山です。",
+                options: ["高い", "亭い", "亮い", "豪い"],
+                answer: "高い",
+                translation: "Gunung Fuji adalah gunung yang tinggi."
+            }, {
+                question: "その ケーキは <u>やすい</u>ですね。",
+                options: ["安い", "案い", "家い", "宴い"], // Tricky: 安 (Murah) vs 案 (Ide) vs 家 (Rumah)
+                answer: "安い",
+                translation: "Kue itu murah ya."
+            }, {
+                question: "わたしの 背は <u>ひくい</u>です。",
+                options: ["低い", "底い", "抵い", "邸い"], // Tricky: 低 (Rendah) vs 底 (Dasar)
+                answer: "低い",
+                translation: "Tinggi badan saya rendah (pendek)."
+            }, {
+                question: "この 部屋は <u>ひろい</u>ですね。",
+                options: ["広い", "広告い", "拡い", "鉱い"], // Tricky: 広 (Luas) vs 拡 (Memperluas)
+                answer: "広い",
+                translation: "Kamar ini luas ya."
+            }, {
+                question: "公園に 人が <u>おおい</u>です。",
+                options: ["多い", "夕い", "外い", "名い"], // Tricky: 多 (Banyak) vs 夕 (Sore) vs 外 (Luar)
+                answer: "多い",
+                translation: "Di taman ada banyak orang."
+            }, {
+                question: "きょうは 車が <u>すくない</u>です。",
+                options: ["少ない", "小ない", "水ない", "氷ない"], // Tricky: 少 (Sedikit) vs 小 (Kecil)
+                answer: "少ない",
+                translation: "Hari ini mobilnya sedikit."
+            }, {
+                question: "<u>すこし</u> 待って ください。",
+                options: ["少し", "小し", "劣し", "炒し"], // Tricky: 少 (Sedikit) vs 小 (Kecil)
+                answer: "少し",
+                translation: "Tolong tunggu sedikit/sebentar."
+            }, {
+                question: "<u>あかい</u> りんごを 食べました。",
+                options: ["赤い", "亦い", "跡い", "赦い"],
+                answer: "赤い",
+                translation: "Makan apel merah."
+            }, {
+                question: "海は <u>あおい</u>です。",
+                options: ["青い", "晴い", "責い", "麦い"], // Tricky: 青 (Biru) vs 晴 (Cerah)
+                answer: "青い",
+                translation: "Lautnya biru."
+            }, {
+                question: "<u>くろい</u> かばんが ほしいです。",
+                options: ["黒い", "墨い", "里い", "熏い"], // Tricky: 黒 (Hitam) vs 里 (Desa)
+                answer: "黒い",
+                translation: "Saya ingin tas hitam."
+            }, {
+                question: "この 部屋は とても <u>あかるい</u>です。",
+                options: ["明るい", "朋るい", "明白るい", "盟るい"], // Tricky: 明 (Terang) vs 朋 (Teman)
+                answer: "明るい",
+                translation: "Kamar ini sangat terang."
+            }, {
+                question: "夜の 道は <u>くらい</u>です。",
+                options: ["暗い", "音い", "闇い", "韻い"], // Tricky: 暗 (Gelap) vs 音 (Suara)
+                answer: "暗い",
+                translation: "Jalanan malam hari itu gelap."
+            }, {
+                question: "わたしの <u>いえ</u>は 駅の 近くです。",
+                options: ["家", "族", "塚", "稼"],
+                answer: "家",
+                translation: "Rumah saya ada di dekat stasiun."
+            }, {
+                question: "あなたの <u>くに</u>は どこですか。",
+                options: ["国", "園", "囲", "固"], // Tricky: 国 (Negara) vs 園 (Taman) vs 囲 (Mengelilingi)
+                answer: "国",
+                translation: "Negaramu di mana?"
+            }, {
+                question: "この <u>みち</u>を まっすぐ 行って ください。",
+                options: ["道", "導", "首", "通"], // Tricky: 道 (Jalan) vs 導 (Memandu) vs 通 (Melewati)
+                answer: "道",
+                translation: "Tolong lurus terus di jalan ini."
+            }
+        ],
+        "goi-context-expression": [{
+                question: "朝ごはんを ______ 。",
+                options: ["みます", "たべます", "ききます", "のみます"],
+                answer: "たべます",
+                translation: "Makan sarapan."
+            }, {
+                question: "夜、ベッドで ______ 。",
+                options: ["ねます", "おきます", "すわります", "たちます"],
+                answer: "ねます",
+                translation: "Tidur di kasur pada malam hari."
+            }, {
+                question: "毎日、学校へ ______ 。",
+                options: ["きます", "かえります", "いきます", "はしります"],
+                answer: "いきます",
+                translation: "Pergi ke sekolah setiap hari."
+            }, {
+                question: "のどが かわきました。つめたい 水を ______ 。",
+                options: ["たべます", "のみます", "あびます", "すいます"],
+                answer: "のみます",
+                translation: "Tenggorokan haus. Minum air dingin."
+            }, {
+                question: "毎日、テレビを ______ 。",
+                options: ["よみます", "かきます", "みます", "ききます"],
+                answer: "みます",
+                translation: "Menonton TV setiap hari."
+            }, {
+                question: "へやで ラジオを ______ 。",
+                options: ["よみます", "ききます", "みます", "はなします"],
+                answer: "ききます",
+                translation: "Mendengarkan radio di kamar."
+            }, {
+                question: "ノートに なまえを ______ 。",
+                options: ["かきます", "ききます", "よみます", "みます"],
+                answer: "かきます",
+                translation: "Menulis nama di buku catatan."
+            }, {
+                question: "図書館で 本を ______ 。",
+                options: ["かきます", "よみます", "はなします", "ききます"],
+                answer: "よみます",
+                translation: "Membaca buku di perpustakaan."
+            }, {
+                question: "電話で 友だちと ______ 。",
+                options: ["はなします", "よみます", "かきます", "ききます"],
+                answer: "はなします",
+                translation: "Berbicara dengan teman lewat telepon."
+            }, {
+                question: "デパートで 新しい くつを ______ 。",
+                options: ["うります", "かいます", "もちます", "まちます"],
+                answer: "かいます",
+                translation: "Membeli sepatu baru di departemen store."
+            }, {
+                question: "さむいですね。まどを ______ ください。",
+                options: ["あけて", "しめて", "つけて", "けして"],
+                answer: "しめて",
+                translation: "Dingin ya. Tolong tutup jendelanya."
+            }, {
+                question: "あついですね。エアコンを ______ ください。",
+                options: ["あけて", "しめて", "つけて", "けして"],
+                answer: "つけて",
+                translation: "Panas ya. Tolong nyalakan AC-nya."
+            }, {
+                question: "くらいですね。電気を ______ ください。",
+                options: ["あけて", "しめて", "つけて", "けして"],
+                answer: "つけて",
+                translation: "Gelap ya. Tolong nyalakan lampunya."
+            }, {
+                question: "駅まで バスに ______ 行きます。",
+                options: ["のって", "おりて", "のりかえて", "あるいて"],
+                answer: "のって",
+                translation: "Pergi sampai stasiun dengan naik bus."
+            }, {
+                question: "あしたは 日曜日ですから、学校は ______ です。",
+                options: ["やすみ", "しごと", "べんきょう", "あそび"],
+                answer: "やすみ",
+                translation: "Karena besok hari Minggu, sekolah libur."
+            }, {
+                question: "わからない ときは、先生に ______ ください。",
+                options: ["はなして", "よんで", "きいて", "こたえて"],
+                answer: "きいて",
+                translation: "Saat tidak mengerti, tolong tanyakan (dengarkan) kepada guru."
+            }, {
+                question: "わたしの しゅみは しゃしんを ______ ことです。",
+                options: ["かく", "みる", "とる", "する"],
+                answer: "とる",
+                translation: "Hobi saya adalah mengambil foto."
+            }, {
+                question: "毎日、日本語を ______ します。",
+                options: ["べんきょう", "しごと", "そうじ", "せんたく"],
+                answer: "べんきょう",
+                translation: "Belajar bahasa Jepang setiap hari."
+            }, {
+                question: "この ケーキは とても ______ です。",
+                options: ["おいしい", "たのしい", "おもしろい", "いそがしい"],
+                answer: "おいしい",
+                translation: "Kue ini sangat enak."
+            }, {
+                question: "日本語の テストは とても ______ です。",
+                options: ["あまい", "むずかしい", "からい", "うすい"],
+                answer: "むずかしい",
+                translation: "Ujian bahasa Jepang sangat sulit."
+            }, {
+                question: "わたしの 部屋は とても ______ です。",
+                options: ["せまい", "わかい", "あまい", "いたい"],
+                answer: "せまい",
+                translation: "Kamar saya sangat sempit."
+            }, {
+                question: "あの 人は いつも ______ ですね。",
+                options: ["げんき", "べんり", "ふべん", "しずか"],
+                answer: "げんき",
+                translation: "Orang itu selalu sehat/semangat ya."
+            }, {
+                question: "いま、______ ですか。",
+                options: ["なんじ", "なんようび", "なんにち", "なんがつ"],
+                answer: "なんじ",
+                translation: "Sekarang jam berapa?"
+            }, {
+                question: "きょうは ______ ですか。",
+                options: ["なんじ", "なんようび", "なんぷん", "いくつ"],
+                answer: "なんようび",
+                translation: "Hari ini hari apa?"
+            }, {
+                question: "夏休みは ______ で およぎます。",
+                options: ["やま", "うみ", "まち", "とし"],
+                answer: "うみ",
+                translation: "Berenang di laut pada libur musim panas."
+            }, {
+                question: "わたしの たんじょうびは ５______ です。",
+                options: ["がつ", "にち", "じ", "ふん"],
+                answer: "がつ",
+                translation: "Ulang tahun saya bulan Mei (Bulan 5)."
+            }, {
+                question: "１______ は ６０分です。",
+                options: ["じかん", "にち", "しゅうかん", "かげつ"],
+                answer: "じかん",
+                translation: "1 jam adalah 60 menit."
+            }, {
+                question: "１______ に ７日 あります。",
+                options: ["じかん", "しゅうかん", "かげつ", "ねん"],
+                answer: "しゅうかん",
+                translation: "Dalam 1 minggu ada 7 hari."
+            }, {
+                question: "わたしは ______ が 好きです。よく うたいます。",
+                options: ["えいが", "おんがく", "りょこう", "しゃしん"],
+                answer: "おんがく",
+                translation: "Saya suka musik. Saya sering bernyanyi."
+            }, {
+                question: "わたしは ______ が 好きです。よく 映画館へ 行きます。",
+                options: ["えいが", "おんがく", "さんぽ", "スポーツ"],
+                answer: "えいが",
+                translation: "Saya suka film. Sering pergi ke bioskop."
+            }, {
+                question: "______ で 手を あらいます。",
+                options: ["せっけん", "シャンプー", "タオル", "ハンカチ"],
+                answer: "せっけん",
+                translation: "Mencuci tangan dengan sabun."
+            }, {
+                question: "______ で かみを きります。",
+                options: ["はさみ", "ナイフ", "はし", "フォーク"],
+                answer: "はさみ",
+                translation: "Memotong kertas dengan gunting."
+            }, {
+                question: "あめが ふっていますから、______ を さします。",
+                options: ["かさ", "くつ", "ぼうし", "めがね"],
+                answer: "かさ",
+                translation: "Karena hujan turun, memakai (membuka) payung."
+            }, {
+                question: "あしが いたいですから、______ を はきません。",
+                options: ["くつ", "ぼうし", "シャツ", "めがね"],
+                answer: "くつ",
+                translation: "Karena kaki saya sakit, saya tidak memakai sepatu."
+            }, {
+                question: "目が わるいですから、______ を かけます。",
+                options: ["めがね", "ぼうし", "くつ", "シャツ"],
+                answer: "めがね",
+                translation: "Karena mata saya buruk, saya memakai kacamata."
+            }, {
+                question: "あたまが いたいですから、______ を のみます。",
+                options: ["くすり", "おちゃ", "コーヒー", "ジュース"],
+                answer: "くすり",
+                translation: "Karena sakit kepala, saya meminum obat."
+            }, {
+                question: "かぜを ひきましたから、______ へ 行きます。",
+                options: ["びょういん", "ぎんこう", "ゆうびんきょく", "えき"],
+                answer: "びょういん",
+                translation: "Karena masuk angin/flu, saya pergi ke rumah sakit."
+            }, {
+                question: "お金が ありませんから、______ へ 行きます。",
+                options: ["ぎんこう", "びょういん", "がっこう", "えき"],
+                answer: "ぎんこう",
+                translation: "Karena tidak punya uang, saya pergi ke bank."
+            }, {
+                question: "手紙を だしますから、______ へ 行きます。",
+                options: ["ゆうびんきょく", "ぎんこう", "びょういん", "えき"],
+                answer: "ゆうびんきょく",
+                translation: "Karena akan mengirim surat, pergi ke kantor pos."
+            }, {
+                question: "おなかが すきましたから、______ を たべます。",
+                options: ["ごはん", "みず", "おちゃ", "ジュース"],
+                answer: "ごはん",
+                translation: "Karena lapar, memakan nasi (makanan)."
+            }, {
+                question: "あしたは ______ ですから、会社へ 行きません。",
+                options: ["やすみ", "しごと", "べんきょう", "かいぎ"],
+                answer: "やすみ",
+                translation: "Karena besok libur, tidak pergi ke kantor."
+            }, {
+                question: "わたしの へやは ２______ に あります。",
+                options: ["かい", "ばん", "だい", "まい"],
+                answer: "かい",
+                translation: "Kamar saya ada di lantai 2."
+            }, {
+                question: "テーブルの ______ に ねこが います。",
+                options: ["した", "うえ", "なか", "そと"],
+                answer: "した",
+                translation: "Di bawah meja ada kucing."
+            }, {
+                question: "いすの ______ に かばんが あります。",
+                options: ["うえ", "した", "なか", "そと"],
+                answer: "うえ",
+                translation: "Di atas kursi ada tas."
+            }, {
+                question: "銀行の ______ に 郵便局が あります。",
+                options: ["となり", "なか", "した", "うえ"],
+                answer: "となり",
+                translation: "Di sebelah bank ada kantor pos."
+            }, {
+                question: "家の ______ に 大きな 木が あります。",
+                options: ["まえ", "なか", "した", "あとなか"],
+                answer: "まえ",
+                translation: "Di depan rumah ada pohon besar."
+            }, {
+                question: "本屋は 駅と 銀行の ______ に あります。",
+                options: ["あいだ", "となり", "まえ", "うしろ"],
+                answer: "あいだ",
+                translation: "Toko buku ada di antara stasiun dan bank."
+            }, {
+                question: "朝起きて、顔を ______ 。",
+                options: ["あらいます", "みがきます", "あびます", "ぬぎます"],
+                answer: "あらいます",
+                translation: "Bangun pagi, lalu mencuci wajah."
+            }, {
+                question: "ごはんを 食べる 前に、手を ______ 。",
+                options: ["あらいます", "みがきます", "あびます", "ふきます"],
+                answer: "あらいます",
+                translation: "Sebelum makan, mencuci tangan."
+            }, {
+                question: "毎朝、シャワーを ______ 。",
+                options: ["あびます", "あらいます", "みがきます", "のみます"],
+                answer: "あびます",
+                translation: "Setiap pagi mandi dengan shower."
+            }, {
+                question: "ごはんを 食べた あとで、はを ______ 。",
+                options: ["あらいます", "みがきます", "あびます", "ふきます"],
+                answer: "みがきます",
+                translation: "Setelah makan nasi, menggosok gigi."
+            }, {
+                question: "部屋に 入る とき、くつを ______ 。",
+                options: ["ぬぎます", "はきます", "きます", "かぶります"],
+                answer: "ぬぎます",
+                translation: "Saat masuk kamar/ruangan, melepas sepatu."
+            }, {
+                question: "さむいですから、コートを ______ 。",
+                options: ["はきます", "かぶります", "きます", "ぬぎます"],
+                answer: "きます",
+                translation: "Karena dingin, memakai mantel (di badan)."
+            }, {
+                question: "新しい ズボンを ______ 。",
+                options: ["きます", "かぶります", "かけます", "はきます"],
+                answer: "はきます",
+                translation: "Memakai celana baru (dipakai dari bawah)."
+            }, {
+                question: "そとは あついですから、ぼうしを ______ 。",
+                options: ["かぶります", "きます", "はきます", "かけます"],
+                answer: "かぶります",
+                translation: "Karena di luar panas, memakai topi (di kepala)."
+            }, {
+                question: "ねる 前に、部屋の 電気を ______ 。",
+                options: ["つけます", "けします", "あけます", "しめます"],
+                answer: "けします",
+                translation: "Sebelum tidur, mematikan lampu kamar."
+            }, {
+                question: "いすが ありませんから、ここに ______ 。",
+                options: ["たちます", "ねます", "すわります", "おきます"],
+                answer: "すわります",
+                translation: "Karena tidak ada kursi, duduk di sini."
+            }, {
+                question: "のどが いたいですから、くすりを ______ 。",
+                options: ["のみます", "たべます", "かみます", "すいます"],
+                answer: "のみます",
+                translation: "Karena tenggorokan sakit, minum obat."
+            }, {
+                question: "毎朝、６時に ______ 。",
+                options: ["ねます", "おきます", "やすみます", "はたらきます"],
+                answer: "おきます",
+                translation: "Setiap pagi, bangun jam 6."
+            }, {
+                question: "きょうは とても つかれましたから、はやく ______ 。",
+                options: ["おきます", "たちます", "ねます", "すわります"],
+                answer: "ねます",
+                translation: "Karena hari ini sangat lelah, akan cepat tidur."
+            }, {
+                question: "駅の 前で 友だちを ______ 。",
+                options: ["まちます", "もちます", "たちます", "あいます"],
+                answer: "まちます",
+                translation: "Menunggu teman di depan stasiun."
+            }, {
+                question: "荷物が おもいですから、わたしが ______ 。",
+                options: ["まちます", "もちます", "たちます", "あいます"],
+                answer: "もちます",
+                translation: "Karena barang bawaannya berat, biar saya yang membawanya."
+            }, {
+                question: "先生が わたしの なまえを ______ 。",
+                options: ["なきます", "はなします", "よびます", "いいます"],
+                answer: "よびます",
+                translation: "Guru memanggil nama saya."
+            }, {
+                question: "ドアを ______ ください。",
+                options: ["あけて", "しめて", "つけて", "けして"],
+                answer: "あけて",
+                translation: "Tolong buka pintunya."
+            }, {
+                question: "まどを ______ ください。",
+                options: ["あけて", "しめて", "つけて", "けして"],
+                answer: "しめて",
+                translation: "Tolong tutup jendelanya."
+            }, {
+                question: "かばんに 本を ______ 。",
+                options: ["いれます", "だします", "おきます", "わすれます"],
+                answer: "いれます",
+                translation: "Memasukkan buku ke dalam tas."
+            }, {
+                question: "かばんから じしょを ______ 。",
+                options: ["いれます", "だします", "おきます", "わすれます"],
+                answer: "だします",
+                translation: "Mengeluarkan kamus dari dalam tas."
+            }, {
+                question: "きのう、公園で しゃしんを ______ 。",
+                options: ["とりました", "かきました", "みました", "しました"],
+                answer: "とりました",
+                translation: "Kemarin, mengambil foto di taman."
+            }, {
+                question: "えんぴつで 手紙を ______ 。",
+                options: ["よみます", "かきます", "ききます", "みます"],
+                answer: "かきます",
+                translation: "Menulis surat dengan pensil."
+            }, {
+                question: "大きい こえで ______ ください。",
+                options: ["はなして", "よんで", "きいて", "かいて"],
+                answer: "はなして",
+                translation: "Tolong bicara dengan suara besar (keras)."
+            }, {
+                question: "毎日 音楽を ______ 。",
+                options: ["ききます", "よみます", "はなします", "かきます"],
+                answer: "ききます",
+                translation: "Setiap hari mendengarkan musik."
+            }, {
+                question: "日本語が ______ か。",
+                options: ["わかります", "あります", "います", "できます"],
+                answer: "わかります",
+                translation: "Apakah mengerti bahasa Jepang?"
+            }, {
+                question: "わたしは くるまが ______ 。",
+                options: ["います", "あります", "わかります", "なります"],
+                answer: "あります",
+                translation: "Saya punya (ada) mobil."
+            }, {
+                question: "あそこに いぬが ______ 。",
+                options: ["います", "あります", "わかります", "なります"],
+                answer: "います",
+                translation: "Di sana ada anjing."
+            }, {
+                question: "きょうは いそがしいですから、あした ______ 。",
+                options: ["いきます", "きます", "かえります", "でます"],
+                answer: "きます",
+                translation: "Karena hari ini sibuk, akan datang besok."
+            }, {
+                question: "郵便局で きってを ______ 。",
+                options: ["かいます", "うります", "かります", "かします"],
+                answer: "かいます",
+                translation: "Membeli prangko di kantor pos."
+            }, {
+                question: "友だちに プレゼントを ______ 。",
+                options: ["あげます", "もらいます", "くれます", "かします"],
+                answer: "あげます",
+                translation: "Memberikan hadiah kepada teman."
+            }, {
+                question: "誕生日に 父から とけいを ______ 。",
+                options: ["あげます", "もらいます", "くれます", "かします"],
+                answer: "もらいます",
+                translation: "Pada hari ulang tahun, menerima jam tangan dari ayah."
+            }, {
+                question: "ここで たばこを ______ でください。",
+                options: ["のまない", "たべない", "すわない", "かまない"],
+                answer: "すわない",
+                translation: "Tolong jangan mengisap rokok di sini."
+            }, {
+                question: "あしたは ______ ですから、あそびましょう。",
+                options: ["ひま", "げんき", "べんり", "にぎやか"],
+                answer: "ひま",
+                translation: "Karena besok luang, ayo bermain."
+            }, {
+                question: "この 町は ______ で、いい ところです。",
+                options: ["しずか", "にぎやか", "ゆうめい", "げんき"],
+                answer: "しずか",
+                translation: "Kota ini tenang dan tempat yang bagus."
+            }, {
+                question: "東京は 人が 多くて、とても ______ です。",
+                options: ["しずか", "にぎやか", "べんり", "ひま"],
+                answer: "にぎやか",
+                translation: "Tokyo banyak orang dan sangat ramai."
+            }, {
+                question: "わたしの 部屋は きれいですが、______ です。",
+                options: ["せまい", "ひろい", "たかい", "ひくい"],
+                answer: "せまい",
+                translation: "Kamar saya bersih tetapi sempit."
+            }, {
+                question: "きょうは ______ ですから、コートを きます。",
+                options: ["あつい", "さむい", "あたたかい", "すずしい"],
+                answer: "さむい",
+                translation: "Karena hari ini dingin, saya memakai mantel."
+            }, {
+                question: "夏は ______ ですから、海へ 行きます。",
+                options: ["あつい", "さむい", "あたたかい", "すずしい"],
+                answer: "あつい",
+                translation: "Karena musim panas itu panas, pergi ke laut."
+            }, {
+                question: "この かばんは ______ ですから、かいます。",
+                options: ["たかい", "やすい", "おもい", "かるい"],
+                answer: "やすい",
+                translation: "Karena tas ini murah, saya membelinya."
+            }, {
+                question: "あの くるまは とても ______ です。",
+                options: ["たかい", "ひくい", "やすい", "みじかい"],
+                answer: "たかい",
+                translation: "Mobil itu sangat mahal."
+            }, {
+                question: "この ケーキは とても ______ です。",
+                options: ["おいしい", "まずい", "からい", "あまい"],
+                answer: "おいしい",
+                translation: "Kue ini sangat enak."
+            }, {
+                question: "きのうの テストは ______ ありませんでした。",
+                options: ["むずかしく", "やさしく", "たのしく", "あたらしく"],
+                answer: "むずかしく",
+                translation: "Ujian kemarin tidak sulit."
+            }, {
+                question: "この りんごは ______ ですね。",
+                options: ["あまい", "からい", "しおからい", "すっぱい"],
+                answer: "あまい",
+                translation: "Apel ini manis ya."
+            }, {
+                question: "わたしの かみは ______ です。",
+                options: ["ながい", "みじかい", "たかい", "ひくい"],
+                answer: "ながい",
+                translation: "Rambut saya panjang."
+            }, {
+                question: "きのうの 映画は とても ______ です。",
+                options: ["おもしろかった", "つまらなかった", "たのしかった", "よかった"],
+                answer: "おもしろかった",
+                translation: "Film kemarin sangat menarik."
+            }, {
+                question: "______ は あたたかいです。",
+                options: ["はる", "なつ", "あき", "ふゆ"],
+                answer: "はる",
+                translation: "Musim semi itu hangat."
+            }, {
+                question: "______ は ゆきが ふります。",
+                options: ["ふゆ", "あき", "なつ", "はる"],
+                answer: "ふゆ",
+                translation: "Musim dingin turun salju."
+            }, {
+                question: "いつも ______ で 会社へ 行きます。",
+                options: ["バス", "ラジオ", "テレビ", "カメラ"],
+                answer: "バス",
+                translation: "Selalu pergi ke kantor dengan bus."
+            }, {
+                question: "______ で 空を とびます。",
+                options: ["ひこうき", "ふね", "ちかてつ", "でんしゃ"],
+                answer: "ひこうき",
+                translation: "Terbang di langit dengan pesawat terbang."
+            }, {
+                question: "毎日 ______ で 学校へ 行きます。",
+                options: ["じてんしゃ", "ふね", "ひこうき", "しんかんせん"],
+                answer: "じてんしゃ",
+                translation: "Setiap hari pergi ke sekolah dengan sepeda."
+            }, {
+                question: "海で ______ に のります。",
+                options: ["ふね", "くるま", "じてんしゃ", "でんしゃ"],
+                answer: "ふね",
+                translation: "Naik kapal di laut."
+            }, {
+                question: "______ で 肉と やさいを かいます。",
+                options: ["スーパー", "ゆうびんきょく", "ぎんこう", "びょういん"],
+                answer: "スーパー",
+                translation: "Membeli daging dan sayuran di supermarket."
+            }, {
+                question: "本を かりに ______ へ 行きます。",
+                options: ["としょかん", "えいがかん", "たいしかん", "びじゅつかん"],
+                answer: "としょかん",
+                translation: "Pergi ke perpustakaan untuk meminjam buku."
+            }
+        ],
+        "goi-paraphrase": [{
+                question: "<u>けさ</u>、コーヒーを 飲みました。",
+                options: ["きのうの あさ", "きょうの あさ", "あしたの あさ", "きょうの よる"],
+                answer: "きょうの あさ",
+                translation: "'Kesa' berarti pagi ini (hari ini pagi)."
+            }, {
+                question: "<u>ゆうべ</u>、テレビを 見ました。",
+                options: ["きのうの あさ", "きのうの よる", "きょうの よる", "あしたの よる"],
+                answer: "きのうの よる",
+                translation: "'Yuube' berarti tadi malam (malam kemarin)."
+            }, {
+                question: "<u>おととい</u>、買い物を しました。",
+                options: ["きのうの あさ", "あしたの つぎの 日", "きのうの まえの 日", "きょうの まえの 日"],
+                answer: "きのうの まえの 日",
+                translation: "'Ototoi' berarti hari sebelum kemarin (dua hari yang lalu)."
+            }, {
+                question: "<u>あさって</u>、日本へ 行きます。",
+                options: ["あしたの つぎの 日", "きのうの つぎの 日", "きのうの まえの 日", "きょうの つぎの 日"],
+                answer: "あしたの つぎの 日",
+                translation: "'Asatte' berarti lusa (sehari setelah besok)."
+            }, {
+                question: "この テストは <u>むずかしい</u>です。",
+                options: ["やさしくないです", "おもしろくないです", "よくないです", "あたらしくないです"],
+                answer: "やさしくないです",
+                translation: "Sulit (muzukashii) sama maknanya dengan tidak mudah (yasashikunai)."
+            }, {
+                question: "わたしの 部屋は <u>せまい</u>です。",
+                options: ["ひろくないです", "おおきくないです", "あかるくないです", "きれいではありません"],
+                answer: "ひろくないです",
+                translation: "Sempit (semai) sama maknanya dengan tidak luas (hirokunai)."
+            }, {
+                question: "この りんごは <u>高い</u>です。",
+                options: ["おいしくないです", "やすくないです", "あまくないです", "おおきくないです"],
+                answer: "やすくないです",
+                translation: "Mahal (takai) sama maknanya dengan tidak murah (yasukunai)."
+            }, {
+                question: "わたしの かばんは <u>重い</u>です。",
+                options: ["ふるくないです", "おおきくないです", "かるくないです", "あたらしくないです"],
+                answer: "かるくないです",
+                translation: "Berat (omoi) sama maknanya dengan tidak ringan (karukunai)."
+            }, {
+                question: "ここは とても <u>静か</u>です。",
+                options: ["にぎやかではありません", "ひろくありません", "きれいでありません", "あかるくありません"],
+                answer: "にぎやかではありません",
+                translation: "Tenang (shizuka) sama maknanya dengan tidak ramai (nigiyaka dewa arimasen)."
+            }, {
+                question: "きょうは <u>ひま</u>です。",
+                options: ["時間が ありません", "時間が あります", "お金が ありません", "お金が あります"],
+                answer: "時間が あります",
+                translation: "Senggang/luang (hima) berarti memiliki waktu (jikan ga arimasu)."
+            }, {
+                question: "教室に <u>だれも いません</u>。",
+                options: ["人が います", "人が いません", "先生が います", "学生が います"],
+                answer: "人が いません",
+                translation: "Tidak ada siapa pun (daremo imasen) berarti tidak ada orang."
+            }, {
+                question: "冷蔵庫に <u>何も ありません</u>。",
+                options: ["食べ物が あります", "飲み物が あります", "何かが あります", "食べ物や 飲み物が ありません"],
+                answer: "食べ物や 飲み物が ありません",
+                translation: "Tidak ada apa-apa (nanimo arimasen) berarti kosong tidak ada makanan/minuman."
+            }, {
+                question: "えきから 学校まで <u>ちかい</u>です。",
+                options: ["とおくないです", "ひろくないです", "せまくないです", "おおきくないです"],
+                answer: "とおくないです",
+                translation: "Dekat (chikai) berarti tidak jauh (tookunai)."
+            }, {
+                question: "かみが <u>みじかい</u>です。",
+                options: ["ながくないです", "くろくないです", "しろくないです", "きれいではありません"],
+                answer: "ながくないです",
+                translation: "Pendek (mijikai) berarti tidak panjang (nagakunai)."
+            }, {
+                question: "その 話は <u>しっています</u>。",
+                options: ["わかりません", "わかります", "ききません", "ききませんでした"],
+                answer: "わかります",
+                translation: "Mengetahui (shitteimasu) memiliki nuansa makna yang dekat dengan mengerti/paham (wakarimasu)."
+            }, {
+                question: "<u>とても</u> おもしろかったです。",
+                options: ["すこし", "ぜんぜん", "あまり", "たいへん"],
+                answer: "たいへん",
+                translation: "Sangat (totemo) sama maknanya dengan sangat/amat (taihen)."
+            }, {
+                question: "<u>たくさん</u> 食べました。",
+                options: ["すこし", "ちょっと", "いっぱい", "あまり"],
+                answer: "いっぱい",
+                translation: "Banyak (takusan) bersinonim dengan penuh/banyak (ippai)."
+            }, {
+                question: "<u>すこし</u> 疲れました。",
+                options: ["たくさん", "いっぱい", "ちょっと", "たいへん"],
+                answer: "ちょっと",
+                translation: "Sedikit (sukoshi) memiliki makna yang sama dengan agak/sedikit (chotto)."
+            }, {
+                question: "<u>いつも</u> 勉強します。",
+                options: ["毎日", "ときどき", "ぜんぜん", "あまり"],
+                answer: "毎日",
+                translation: "Selalu (itsumo) dalam rutinitas sering disamakan maknanya dengan setiap hari (mainichi)."
+            }, {
+                question: "<u>だんだん</u> 暗くなりました。",
+                options: ["すぐに", "すこしずつ", "ぜんぜん", "とても"],
+                answer: "すこしずつ",
+                translation: "Berangsur-angsur (dandan) memiliki makna sedikit demi sedikit (sukoshi zutsu)."
+            }, {
+                question: "<u>もういちど</u> 言ってください。",
+                options: ["または", "また", "まだ", "ずっと"],
+                answer: "また",
+                translation: "Sekali lagi (mou ichido) bermakna lagi (mata)."
+            }, {
+                question: "<u>すぐ</u> 行きます。",
+                options: ["いまから", "あとで", "あした", "きのう"],
+                answer: "いまから",
+                translation: "Segera (sugu) memiliki makna dari sekarang (ima kara)."
+            }, {
+                question: "道を <u>まっすぐ</u> 行きます。",
+                options: ["みぎに まがります", "ひだりに まがります", "まがりません", "とまります"],
+                answer: "まがりません",
+                translation: "Lurus terus (massugu) berarti tidak berbelok (magarimasen)."
+            }, {
+                question: "駅の <u>そば</u>で 会いましょう。",
+                options: ["なか", "そと", "ちかく", "とおく"],
+                answer: "ちかく",
+                translation: "Di samping/sebelah (soba) bermakna di dekat (chikaku)."
+            }, {
+                question: "銀行の <u>となり</u>に あります。",
+                options: ["よこ", "なか", "うしろ", "まえ"],
+                answer: "よこ",
+                translation: "Di sebelah (tonari) bersinonim dengan di samping (yoko)."
+            }, {
+                question: "わたしの <u>りょうしん</u>は アメリカに います。",
+                options: ["兄と 姉", "父と 母", "祖父と 祖母", "弟と 妹"],
+                answer: "父と 母",
+                translation: "Kedua orang tua (ryoushin) adalah ayah dan ibu (chichi to haha)."
+            }, {
+                question: "わたしの <u>きょうだい</u>は ３人です。",
+                options: ["父と 母", "祖父と 祖母", "兄や 弟", "友だち"],
+                answer: "兄や 弟",
+                translation: "Saudara kandung (kyoudai) adalah kakak/adik laki-laki atau perempuan."
+            }, {
+                question: "あの 人は わたしの <u>そふ</u>です。",
+                options: ["父の 父", "父の 母", "母の 母", "父の 兄"],
+                answer: "父の 父",
+                translation: "Kakek (sofu) adalah ayah dari ayah atau ibu."
+            }, {
+                question: "あの 人は わたしの <u>そぼ</u>です。",
+                options: ["父の 父", "母の 母", "母の 兄", "父の 弟"],
+                answer: "母の 母",
+                translation: "Nenek (sobo) adalah ibu dari ayah atau ibu."
+            }, {
+                question: "日本語が <u>じょうず</u>です。",
+                options: ["よく できません", "よく できます", "わかりません", "へたです"],
+                answer: "よく できます",
+                translation: "Pintar/Mahir (jouzu) bermakna bisa melakukan dengan baik (yoku dekimasu)."
+            }, {
+                question: "うたが <u>へた</u>です。",
+                options: ["じょうずです", "じょうずではありません", "よく できます", "すきです"],
+                answer: "じょうずではありません",
+                translation: "Kurang pandai (heta) bermakna tidak mahir (jouzu dewa arimasen)."
+            }, {
+                question: "<u>いそいで</u> ください。",
+                options: ["はやく して", "ゆっくり して", "やすんで", "まって"],
+                answer: "はやく して",
+                translation: "Buru-buru (isoide) bermakna lakukan dengan cepat (hayaku shite)."
+            }, {
+                question: "じゅぎょうが <u>はじまります</u>。",
+                options: ["おわります", "いまから します", "やすみます", "しません"],
+                answer: "いまから します",
+                translation: "Dimulai (hajimarimasu) bermakna melakukan dari sekarang (ima kara shimasu)."
+            }, {
+                question: "しごとが <u>おわりました</u>。",
+                options: ["いまから します", "ぜんぶ しました", "しませんでした", "はじまります"],
+                answer: "ぜんぶ しました",
+                translation: "Selesai (owarimashita) bermakna sudah melakukan semuanya (zenbu shimashita)."
+            }, {
+                question: "お金を <u>なくしました</u>。",
+                options: ["お金が あります", "お金が ありません", "お金を もらいました", "お金を か借りました"],
+                answer: "お金が ありません",
+                translation: "Menghilangkan uang (nakushimashita) berarti uangnya tidak ada (arimasen)."
+            }, {
+                question: "友だちから 手紙を <u>もらいました</u>。",
+                options: ["友だちに 手紙を だしました", "友だちが 手紙を くれました", "友だちに 手紙を かきました", "友だちが 手紙を よみました"],
+                answer: "友だちが 手紙を くれました",
+                translation: "Menerima dari teman bermakna teman memberikan kepada saya (kuremashita)."
+            }, {
+                question: "この くつは <u>小さい</u>です。",
+                options: ["おおきくないです", "ふるくないです", "あたらしくないです", "きれいでありません"],
+                answer: "おおきくないです",
+                translation: "Kecil (chiisai) berarti tidak besar (ookikunai)."
+            }, {
+                question: "あの 人は <u>有名な</u> 人です。",
+                options: ["だれも しりません", "みんな しっています", "お金が ありません", "お金が あります"],
+                answer: "みんな しっています",
+                translation: "Terkenal (yuumei) berarti semua orang mengenalnya (minna shitteimasu)."
+            }, {
+                question: "明日は <u>休み</u>です。",
+                options: ["学校が あります", "学校が ありません", "テストが あります", "しごとを します"],
+                answer: "学校が ありません",
+                translation: "Libur (yasumi) berarti tidak ada sekolah/pekerjaan."
+            }, {
+                question: "きのうは <u>あめ</u>でした。",
+                options: ["いい 天気でした", "いい 天気ではありませんでした", "あつかったです", "さむかったです"],
+                answer: "いい 天気ではありませんでした",
+                translation: "Hujan (ame) bermakna cuacanya tidak bagus (ii tenki dewa arimasendeshita)."
+            }, {
+                question: "わたしは <u>かぜ</u>を ひきました。",
+                options: ["げんきに なりました", "びょうきに なりました", "いそがしく なりました", "ひまに なりました"],
+                answer: "びょうきに なりました",
+                translation: "Masuk angin/flu (kaze wo hiku) berarti jatuh sakit (byouki ni narimashita)."
+            }, {
+                question: "あした、<u>さんぽ</u>します。",
+                options: ["あるきます", "はしります", "およぎます", "ねます"],
+                answer: "あるきます",
+                translation: "Jalan-jalan santai (sanpo) bersinonim dengan berjalan kaki (arukimasu)."
+            }, {
+                question: "あそこに <u>いぬ</u>が います。",
+                options: ["人が います", "車が あります", "動物が います", "建物が あります"],
+                answer: "動物が います",
+                translation: "Anjing (inu) adalah bagian dari hewan peliharaan/hewan (doubutsu)."
+            }, {
+                question: "トイレは <u>あちら</u>です。",
+                options: ["ここです", "そこです", "あそこです", "どこですか"],
+                answer: "あそこです",
+                translation: "'Achira' adalah bentuk sopan dari 'Asoko' (di sana)."
+            }, {
+                question: "<u>どちら</u>へ 行きますか。",
+                options: ["だれと 行きますか", "どこへ 行きますか", "いつ 行きますか", "どうやって 行きますか"],
+                answer: "どこへ 行きますか",
+                translation: "'Dochira' dalam konteks arah bermakna 'ke mana' (doko)."
+            }, {
+                question: "<u>あたたかい</u> お茶を 飲みます。",
+                options: ["つめたくない お茶", "あまくない お茶", "おいしくない お茶", "やすくない お茶"],
+                answer: "つめたくない お茶",
+                translation: "Hangat (atatakai) bermakna tidak dingin (tsumetakunai)."
+            }, {
+                question: "<u>ゆうがた</u>、家に 帰りました。",
+                options: ["あさの まえに", "ひるの まえに", "よるの まえに", "よなかに"],
+                answer: "よるの まえに",
+                translation: "Sore hari (yuugata) adalah waktu sebelum malam hari (yoru no mae ni)."
+            }, {
+                question: "へやを <u>きれいに</u> しました。",
+                options: ["あかるく しました", "そうじ しました", "ひろく しました", "しずかに しました"],
+                answer: "そうじ しました",
+                translation: "Membuat kamar menjadi bersih bermakna melakukan bersih-bersih (souji shimasu)."
+            }, {
+                question: "あした <u>テスト</u>が あります。",
+                options: ["じゅぎょう", "やすみ", "しけん", "しゅくだい"],
+                answer: "しけん",
+                translation: "Test (tesuto) bersinonim dengan ujian (shiken)."
+            }, {
+                question: "<u>じゅぎょう</u>を します。",
+                options: ["べんきょう", "あそび", "やすみ", "スポーツ"],
+                answer: "べんきょう",
+                translation: "Pelajaran/kelas (jugyou) bersinonim dengan belajar (benkyou)."
+            }, {
+                question: "わたしは <u>兄</u>が います。",
+                options: ["男の きょうだいが います", "女の きょうだいが います", "父と 母が います", "男の 友だちが います"],
+                answer: "男の きょうだいが います",
+                translation: "Kakak laki-laki (ani) berarti saudara laki-laki."
+            }, {
+                question: "わたしは <u>姉</u>が います。",
+                options: ["男の きょうだいが います", "女の きょうだいが います", "父と 母が います", "女の 友だちが います"],
+                answer: "女の きょうだいが います",
+                translation: "Kakak perempuan (ane) berarti saudara perempuan."
+            }, {
+                question: "きのうは <u>休みでした</u>。",
+                options: ["しごとを しませんでした", "しごとを しました", "いそがしかったです", "ひまではありませんでした"],
+                answer: "しごとを しませんでした",
+                translation: "Libur bermakna tidak bekerja/sekolah."
+            }, {
+                question: "デパートで <u>買い物を します</u>。",
+                options: ["ものを かいます", "ものを うります", "ごはんを たべます", "えいがを みます"],
+                answer: "ものを かいます",
+                translation: "Berbelanja (kaimono) berarti membeli barang (mono wo kaimasu)."
+            }, {
+                question: "きょうは 父の <u>たんじょうび</u>です。",
+                options: ["父が うまれた 日です", "父が しんだ 日です", "父が けっこんした 日です", "父が はたらく 日です"],
+                answer: "父が うまれた 日です",
+                translation: "Ulang tahun (tanjoubi) adalah hari kelahiran (umareta hi)."
+            }, {
+                question: "わたしの 家は <u>ちかいです</u>。",
+                options: ["えきから とおくありません", "えきから とおいです", "とても ひろいです", "とても せまいです"],
+                answer: "えきから とおくありません",
+                translation: "Dekat berarti tidak jauh (tooku arimasen)."
+            }, {
+                question: "その くつは <u>いくらですか</u>。",
+                options: ["ねだんは なんえんですか", "いくつ ありますか", "いつ かいましたか", "どこで かいましたか"],
+                answer: "ねだんは なんえんですか",
+                translation: "Berapa harganya (ikura) sama dengan menanyakan harga (nedan)."
+            }, {
+                question: "あしたは <u>はれ</u>です。",
+                options: ["いい 天気です", "あめが ふります", "ゆきが ふります", "わるい 天気です"],
+                answer: "いい 天気です",
+                translation: "Cerah (hare) berarti cuacanya bagus (ii tenki)."
+            }, {
+                question: "ここに 車を <u>とめないで</u> ください。",
+                options: ["おかないで ください", "のらないで ください", "かわないで ください", "うらないで ください"],
+                answer: "おかないで ください",
+                translation: "Jangan memarkir/menghentikan mobil bermakna jangan meletakkan (okanai) mobil di sini."
+            }, {
+                question: "テーブルを <u>ふいて</u> ください。",
+                options: ["きれいに して ください", "あらって ください", "よごして ください", "すてて ください"],
+                answer: "きれいに して ください",
+                translation: "Mengelap meja berarti membuatnya menjadi bersih (kirei ni shite)."
+            }, {
+                question: "パーティーは <u>たのしかったです</u>。",
+                options: ["よかったです", "よくなかったです", "つまらなかったです", "わるかったです"],
+                answer: "よかったです",
+                translation: "Menyenangkan (tanoshikatta) memiliki nuansa yang bagus (yokatta)."
+            }, {
+                question: "図書館で 本を <u>かりました</u>。",
+                options: ["わたしの 本ではありません", "わたしの 本です", "としょかんに かえしました", "としょかんで かいました"],
+                answer: "わたしの 本ではありません",
+                translation: "Meminjam buku berarti buku tersebut bukan milik sendiri."
+            }, {
+                question: "テストは <u>やさしかったです</u>。",
+                options: ["むずかしくありませんでした", "とても むずかしかったです", "よく わかりませんでした", "わるかったです"],
+                answer: "むずかしくありませんでした",
+                translation: "Mudah (yasashii) berarti tidak sulit (muzukashiku arimasen)."
+            }, {
+                question: "学生が <u>たくさん</u> います。",
+                options: ["いっぱい います", "すこし います", "だれも いません", "あまり いません"],
+                answer: "いっぱい います",
+                translation: "Banyak (takusan) sama maknanya dengan banyak/penuh (ippai)."
+            }, {
+                question: "ごはんを <u>食べましょう</u>。",
+                options: ["食べませんか", "食べて ください", "食べないで ください", "食べたいです"],
+                answer: "食べませんか",
+                translation: "Mari makan (~mashou) adalah bentuk ajakan, sama dengan maukah makan (~masen ka)."
+            }, {
+                question: "窓を <u>しめて</u> ください。",
+                options: ["あけないで ください", "あけて ください", "ふいて ください", "あらって ください"],
+                answer: "あけないで ください",
+                translation: "Tutup jendela berarti jangan buka jendela (akenai de kudasai)."
+            }, {
+                question: "きのうは <u>さむくなかったです</u>。",
+                options: ["あたたかかったです", "つめたかったです", "あきでした", "ふゆでした"],
+                answer: "あたたかかったです",
+                translation: "Tidak dingin berarti cuacanya hangat (atatakakatta)."
+            }, {
+                question: "あの じしょは <u>べんりです</u>。",
+                options: ["つかいやすいです", "つかいにくいです", "とても おもいです", "よくないです"],
+                answer: "つかいやすいです",
+                translation: "Praktis (benri) bermakna mudah digunakan (tsukai yasui)."
+            }, {
+                question: "しごとが <u>たくさん あります</u>。",
+                options: ["とても いそがしいです", "とても ひまです", "しごとが ありません", "おわりました"],
+                answer: "とても いそがしいです",
+                translation: "Banyak pekerjaan berarti sangat sibuk (isogashii)."
+            }, {
+                question: "ペンを <u>かして</u> ください。",
+                options: ["つかっても いいですか", "かりても いいですか", "もらっても いいですか", "かっても いいですか"],
+                answer: "つかっても いいですか",
+                translation: "Tolong pinjamkan bermakna bolehkah saya menggunakannya (tsukatte mo ii desu ka)."
+            }, {
+                question: "かれは <u>会社員</u>です。",
+                options: ["会社で はたらいています", "学校で べんきょうしています", "病院で はたらいています", "レストランで はたらいています"],
+                answer: "会社で はたらいています",
+                translation: "Pegawai perusahaan berarti bekerja di perusahaan."
+            }, {
+                question: "タクシーで <u>行きましょう</u>。",
+                options: ["タクシーに のって 行きましょう", "タクシーを おりて 行きましょう", "タクシーを よびましょう", "タクシーを かいましょう"],
+                answer: "タクシーに のって 行きましょう",
+                translation: "Pergi dengan taksi berarti pergi dengan menaiki (notte) taksi."
+            }, {
+                question: "<u>かぜを ひきました</u>。",
+                options: ["びょうきに なりました", "げんきに なりました", "いそがしく なりました", "ひまに なりました"],
+                answer: "びょうきに なりました",
+                translation: "Masuk angin/flu berarti jatuh sakit."
+            }, {
+                question: "母は 料理が <u>じょうずです</u>。",
+                options: ["おいしい ごはんを つくります", "ごはんを つくりません", "へたです", "りょうりが すきではありません"],
+                answer: "おいしい ごはんを つくります",
+                translation: "Pintar memasak berarti membuat makanan yang enak."
+            }, {
+                question: "わたしの 部屋は <u>２階</u>です。",
+                options: ["１階の うえです", "３階の うえです", "１階の したです", "となりの 部屋です"],
+                answer: "１階の うえです",
+                translation: "Lantai 2 berarti di atasnya lantai 1."
+            }, {
+                question: "この 町は <u>にぎやかです</u>。",
+                options: ["人が おおいです", "人が すくないです", "とても しずかです", "なにも ありません"],
+                answer: "人が おおいです",
+                translation: "Ramai (nigiyaka) berarti banyak orang."
+            }, {
+                question: "あの ホテルは <u>有名です</u>。",
+                options: ["みんな しっています", "だれも しりません", "とても たかいです", "とても やすいです"],
+                answer: "みんな しっています",
+                translation: "Terkenal berarti semua orang mengetahuinya (minna shitte imasu)."
+            }, {
+                question: "いま <u>８時半</u>です。",
+                options: ["８時 ３０分です", "８時 １５分です", "９時 ３０分です", "７時 ３０分です"],
+                answer: "８時 ３０分です",
+                translation: "Setengah (han) berarti 30 menit."
+            }, {
+                question: "<u>午後</u> 行きます。",
+                options: ["ひるの あとで 行きます", "ひるの まえに 行きます", "あさ 行きます", "よなかに 行きます"],
+                answer: "ひるの あとで 行きます",
+                translation: "Sore/PM (gogo) berarti setelah siang (hiru no ato de)."
+            }, {
+                question: "あの 人は <u>若いです</u>。",
+                options: ["おじいさんでは ありません", "とても ふるいです", "としを とっています", "おばあさんです"],
+                answer: "おじいさんでは ありません",
+                translation: "Muda (wakai) berarti belum kakek-kakek/tua."
+            }, {
+                question: "<u>はじめまして</u>。",
+                options: ["はじめて あいましたね", "また あいましょう", "ひさしぶりですね", "さようなら"],
+                answer: "はじめて あいましたね",
+                translation: "Hajimemashite diucapkan saat pertama kali bertemu."
+            }, {
+                question: "いっしょに <u>帰りましょう</u>。",
+                options: ["いっしょに うちへ 行きましょう", "いっしょに べんきょうしましょう", "いっしょに あそびましょう", "いっしょに 食べましょう"],
+                answer: "いっしょに うちへ 行きましょう",
+                translation: "Mari pulang berarti mari pergi ke rumah bersama."
+            }, {
+                question: "<u>どんな</u> 食べ物が 好きですか。",
+                options: ["なにを 食べるのが すきですか", "いつ 食べますか", "どこで 食べますか", "だれと 食べますか"],
+                answer: "なにを 食べるのが すきですか",
+                translation: "'Makanan yang seperti apa' menanyakan 'Apa yang suka dimakan'."
+            }, {
+                question: "<u>どの</u> かさですか。",
+                options: ["どれですか", "だれですか", "どこですか", "いつですか"],
+                answer: "どれですか",
+                translation: "'Yang mana' (dono + Noun) bersinonim dengan 'yang mana' (dore)."
+            }, {
+                question: "りんごを <u>みっつ</u> ください。",
+                options: ["３こ", "２こ", "４こ", "５こ"],
+                answer: "３こ",
+                translation: "Mittsu adalah cara menghitung buah untuk jumlah 3."
+            }, {
+                question: "<u>どうして</u> おくれましたか。",
+                options: ["なぜ", "どこで", "いつ", "だれが"],
+                answer: "なぜ",
+                translation: "'Doushite' (kenapa) bersinonim dengan 'Naze'."
+            }, {
+                question: "わたしは <u>おんがく</u>が 好きです。",
+                options: ["よく うたを ききます", "よく えいがを みます", "よく ほんを よみます", "よく えを かきます"],
+                answer: "よく うたを ききます",
+                translation: "Suka musik berarti sering mendengarkan lagu."
+            }, {
+                question: "あの 映画は <u>つまらなかったです</u>。",
+                options: ["おもしろくなかったです", "おもしろかったです", "よかったです", "たのしかったです"],
+                answer: "おもしろくなかったです",
+                translation: "Membosankan (tsumaranai) berarti tidak menarik (omoshirokunai)."
+            }, {
+                question: "ここに <u>じゅうしょ</u>を 書いてください。",
+                options: ["いえの ばしょ", "なまえ", "でんわばんごう", "たんじょうび"],
+                answer: "いえの ばしょ",
+                translation: "Alamat (juusho) adalah tempat tinggal rumah."
+            }, {
+                question: "あの レストランは <u>安いです</u>。",
+                options: ["お金が あまり かかりません", "とても たかいです", "とても おいしいです", "とても まずいです"],
+                answer: "お金が あまり かかりません",
+                translation: "Murah berarti tidak memakan banyak uang."
+            }, {
+                question: "けさ、<u>洗濯</u>を しました。",
+                options: ["ふくを あらいました", "へやを きれいに しました", "ごはんを つくりました", "くつを みがきました"],
+                answer: "ふくを あらいました",
+                translation: "Mencuci pakaian (sentaku) berarti mencuci baju (fuku wo arau)."
+            }, {
+                question: "<u>料理</u>を しています。",
+                options: ["ごはんを つくっています", "ふくを あらっています", "へやを そうじしています", "おんがくを きいています"],
+                answer: "ごはんを つくっています",
+                translation: "Memasak (ryouri) berarti membuat makanan (gohan wo tsukuru)."
+            }, {
+                question: "この 本は <u>わたしのです</u>。",
+                options: ["わたしの ほんです", "わたしの ほんではありません", "あなたの ほんです", "としょかんの ほんです"],
+                answer: "わたしの ほんです",
+                translation: "Ini milik saya (watashi no desu) berarti buku saya."
+            }, {
+                question: "部屋を <u>そうじしました</u>。",
+                options: ["きれいに しました", "よごしました", "あかるく しました", "くらくなりました"],
+                answer: "きれいに しました",
+                translation: "Membersihkan (souji) berarti membuat menjadi bersih (kirei ni suru)."
+            }, {
+                question: "かれは <u>けっこんしていません</u>。",
+                options: ["おくさんが いません", "おくさんが います", "こどもが います", "かぞくが おおいです"],
+                answer: "おくさんが いません",
+                translation: "Belum menikah berarti belum punya istri (okusan)."
+            }, {
+                question: "<u>おととし</u>、日本へ 行きました。",
+                options: ["きょねんの まえの 年", "らいねん", "きょねん", "ことし"],
+                answer: "きょねんの まえの 年",
+                translation: "Dua tahun lalu (ototoshi) adalah tahun sebelum tahun lalu."
+            }, {
+                question: "<u>少し</u> わかりました。",
+                options: ["ぜんぶは わかりませんでした", "ぜんぶ わかりました", "ぜんぜん わかりませんでした", "よく わかりました"],
+                answer: "ぜんぶは わかりませんでした",
+                translation: "Mengerti sedikit berarti tidak mengerti semuanya (zenbu wa wakarimasendeshita)."
+            }, {
+                question: "<u>だれも</u> 来ませんでした。",
+                options: ["人は 来ませんでした", "みんな 来ました", "一人が 来ました", "男の 人だけ 来ました"],
+                answer: "人は 来ませんでした",
+                translation: "Tidak ada siapa pun (daremo) berarti orang tidak datang."
+            }, {
+                question: "<u>右</u>を 見て ください。",
+                options: ["ひだりではない ほう", "うえの ほう", "したの ほう", "うしろの ほう"],
+                answer: "ひだりではない ほう",
+                translation: "Kanan adalah arah yang bukan kiri."
+            }, {
+                question: "もう <u>おそい</u>です。",
+                options: ["はやくないです", "はやくしてください", "いそいでください", "すぐです"],
+                answer: "はやくないです",
+                translation: "Sudah telat/larut (osoi) bermakna tidak cepat/awal (hayakunai)."
+            }
+        ]
+    },
+
+    "N4": {
+        "goi-kanji-reading": [{
+                question: "その 言葉の <u>意味</u>が わかりません。",
+                options: ["いみ", "いんみ", "いめ", "ちみ"],
+                answer: "いみ",
+                translation: "Saya tidak mengerti arti kata itu."
+            }, {
+                question: "来週、テニスの <u>試合</u>が あります。",
+                options: ["しあい", "じあい", "しやい", "しごう"],
+                answer: "しあい",
+                translation: "Minggu depan ada pertandingan tenis."
+            }, {
+                question: "あぶないから、<u>注意</u>して ください。",
+                options: ["ちゅい", "ちゅうい", "しゅうい", "じゅうい"],
+                answer: "ちゅうい",
+                translation: "Karena berbahaya, tolong berhati-hati."
+            }, {
+                question: "くるまの <u>運転</u>が できますか。",
+                options: ["うんてん", "うんでん", "うんて", "えんてん"],
+                answer: "うんてん",
+                translation: "Apakah kamu bisa mengemudi mobil?"
+            }, {
+                question: "旅行の <u>計画</u>を たてましょう。",
+                options: ["けいがく", "けいかく", "げいかく", "けんかく"],
+                answer: "けいかく",
+                translation: "Mari kita buat rencana perjalanan."
+            }, {
+                question: "子どもの <u>世話</u>を します。",
+                options: ["せいわ", "せわ", "しょうわ", "せいは"],
+                answer: "せわ",
+                translation: "Mengurus (merawat) anak."
+            }, {
+                question: "英語の <u>発音</u>は むずかしいです。",
+                options: ["はつおん", "はっおん", "はつね", "ほつおん"],
+                answer: "はつおん",
+                translation: "Pelafalan bahasa Inggris itu sulit."
+            }, {
+                question: "どうして 休んだか、<u>理由</u>を 教えて ください。",
+                options: ["りゆ", "りゆう", "じゆう", "りゅう"],
+                answer: "りゆう",
+                translation: "Tolong beri tahu alasan kenapa kamu libur (absen)."
+            }, {
+                question: "テストの <u>準備</u>は できましたか。",
+                options: ["じゅんび", "しゅんび", "じゅんひ", "じゅうび"],
+                answer: "じゅんび",
+                translation: "Apakah persiapan ujiannya sudah selesai?"
+            }, {
+                question: "わたしは <u>特別</u>な 人では ありません。",
+                options: ["とくべつ", "とっべつ", "とくへつ", "とっへつ"],
+                answer: "とくべつ",
+                translation: "Saya bukanlah orang yang spesial."
+            }, {
+                question: "えきで <u>特急</u>電車に のりかえます。",
+                options: ["とっきゅう", "とっくう", "とくきゅう", "とくきゅ"],
+                answer: "とっきゅう",
+                translation: "Berganti kereta ekspres terbatas di stasiun."
+            }, {
+                question: "この 機械は とても <u>複雑</u>です。",
+                options: ["ふくさつ", "ふくざつ", "ふっさつ", "ふくしゃ"],
+                answer: "ふくざつ",
+                translation: "Mesin ini sangat rumit."
+            }, {
+                question: "明日の <u>予定</u>を 知らせて ください。",
+                options: ["よてい", "ようてい", "よて", "よでい"],
+                answer: "よてい",
+                translation: "Tolong beri tahu jadwal besok."
+            }, {
+                question: "日本へ 行く <u>目的</u>は なんですか。",
+                options: ["もくでき", "もくてき", "めくてき", "めくでき"],
+                answer: "もくてき",
+                translation: "Apa tujuan pergi ke Jepang?"
+            }, {
+                question: "この もんだいは <u>簡単</u>です。",
+                options: ["かんたん", "かんたい", "かんだん", "かんらん"],
+                answer: "かんたん",
+                translation: "Soal ini mudah."
+            }, {
+                question: "あなたの <u>住所</u>を 教えて ください。",
+                options: ["じゅうしょ", "じゅしょ", "じゅうそう", "じゅっしょ"],
+                answer: "じゅうしょ",
+                translation: "Tolong beritahu alamat Anda."
+            }, {
+                question: "わたしの <u>趣味</u>は 映画を 見る ことです。",
+                options: ["しゅみ", "すみ", "しゅうみ", "じゅみ"],
+                answer: "しゅみ",
+                translation: "Hobi saya adalah menonton film."
+            }, {
+                question: "この 仕事には <u>経験</u>が ひつようです。",
+                options: ["けいけん", "けいかん", "げいけん", "けけん"],
+                answer: "けいけん",
+                translation: "Pekerjaan ini membutuhkan pengalaman."
+            }, {
+                question: "車を うんてんする ときは、<u>事故</u>に 気を つけて ください。",
+                options: ["じこ", "じご", "しこ", "ちこ"],
+                answer: "じこ",
+                translation: "Saat mengemudi mobil, tolong berhati-hati terhadap kecelakaan."
+            }, {
+                question: "きのう、大きい <u>地震</u>が ありました。",
+                options: ["じしん", "じじん", "ちしん", "じせん"],
+                answer: "じしん",
+                translation: "Kemarin ada gempa bumi yang besar."
+            }, {
+                question: "<u>火事</u>の ときは、119番に 電話します。",
+                options: ["かじ", "かち", "がじ", "はなび"],
+                answer: "かじ",
+                translation: "Saat terjadi kebakaran, telepon ke nomor 119."
+            }, {
+                question: "道が わからないので、<u>警察</u>に 聞きました。",
+                options: ["けいさつ", "けっさつ", "けいさい", "けいさ"],
+                answer: "けいさつ",
+                translation: "Karena tidak tahu jalan, saya bertanya kepada polisi."
+            }, {
+                question: "この 川でおよぐのは <u>危険</u>です。",
+                options: ["きけん", "ぎけん", "きげん", "ぎげん"],
+                answer: "きけん",
+                translation: "Berenang di sungai ini berbahaya."
+            }, {
+                question: "ここは <u>安全</u>な 場所です。",
+                options: ["あんぜん", "あんせん", "あぜん", "あんぜい"],
+                answer: "あんぜん",
+                translation: "Ini adalah tempat yang aman."
+            }, {
+                question: "テストに ごうかくできるか <u>心配</u>です。",
+                options: ["しんぱい", "しんばい", "しんはい", "じんぱい"],
+                answer: "しんぱい",
+                translation: "Saya khawatir apakah bisa lulus ujian atau tidak."
+            }, {
+                question: "りょうりに <u>失敗</u>しました。",
+                options: ["しっぱい", "しつぱい", "しっはい", "しっばい"],
+                answer: "しっぱい",
+                translation: "Saya gagal dalam memasak."
+            }, {
+                question: "明日の 会議に <u>出席</u>します。",
+                options: ["しゅっせき", "しゅせき", "しゅうせき", "じゅっせき"],
+                answer: "しゅっせき",
+                translation: "Saya akan hadir di rapat besok."
+            }, {
+                question: "熱が あるので、授業を <u>欠席</u>します。",
+                options: ["けっせき", "けせき", "けっせぎ", "けいせき"],
+                answer: "けっせき",
+                translation: "Karena demam, saya akan absen dari pelajaran."
+            }, {
+                question: "わたしは その 意見に <u>賛成</u>です。",
+                options: ["さんせい", "ざんせい", "さんぜい", "さっせい"],
+                answer: "さんせい",
+                translation: "Saya setuju dengan pendapat itu."
+            }, {
+                question: "兄は わたしの 留学に <u>反対</u>しました。",
+                options: ["はんたい", "ばんたい", "はんだい", "ぱんたい"],
+                answer: "はんたい",
+                translation: "Kakak laki-laki menentang (tidak setuju) saya belajar ke luar negeri."
+            }, {
+                question: "後で 先生に <u>連絡</u>します。",
+                options: ["れんらく", "れんろく", "れんがく", "りんらく"],
+                answer: "れんらく",
+                translation: "Nanti saya akan menghubungi guru."
+            }, {
+                question: "なやみが あるので、友だちに <u>相談</u>しました。",
+                options: ["そうだん", "そだん", "ぞうだん", "そうたん"],
+                answer: "そうだん",
+                translation: "Karena ada masalah, saya berkonsultasi dengan teman."
+            }, {
+                question: "わからない ことは 先生に <u>質問</u>を します。",
+                options: ["しつもん", "しちもん", "しつも", "しっもん"],
+                answer: "しつもん",
+                translation: "Hal yang tidak dimengerti akan saya tanyakan kepada guru."
+            }, {
+                question: "友だちから 手紙の <u>返事</u>が 来ました。",
+                options: ["へんじ", "へんし", "へんち", "べんじ"],
+                answer: "へんじ",
+                translation: "Balasan surat dari teman sudah datang."
+            }, {
+                question: "誕生日の パーティーに 友だちを <u>招待</u>します。",
+                options: ["しょうたい", "しょたい", "じょうたい", "しゅうたい"],
+                answer: "しょうたい",
+                translation: "Saya mengundang teman ke pesta ulang tahun."
+            }, {
+                question: "駅で お客さんを <u>案内</u>します。",
+                options: ["あんない", "あない", "あんらい", "あんな"],
+                answer: "あんない",
+                translation: "Memandu (mengantar) tamu di stasiun."
+            }, {
+                question: "みんなの 前で 自己<u>紹介</u>を します。",
+                options: ["しょうかい", "しょかい", "じょうかい", "しゅうかい"],
+                answer: "しょうかい",
+                translation: "Saya melakukan perkenalan diri di depan semua orang."
+            }, {
+                question: "けんこうの ために、毎日 <u>運動</u>を しています。",
+                options: ["うんどう", "うんど", "うんと", "うんとう"],
+                answer: "うんどう",
+                translation: "Demi kesehatan, setiap hari saya berolahraga."
+            }, {
+                question: "毎日 ピアノの <u>練習</u>を します。",
+                options: ["れんしゅう", "れんしゅ", "れいしゅう", "れんじゅう"],
+                answer: "れんしゅう",
+                translation: "Setiap hari berlatih main piano."
+            }, {
+                question: "9時から 日本語の <u>授業</u>が はじまります。",
+                options: ["じゅぎょう", "じゅきょう", "しゅぎょう", "じゅうぎょう"],
+                answer: "じゅぎょう",
+                translation: "Pelajaran bahasa Jepang dimulai dari jam 9."
+            }, {
+                question: "来年、大学を <u>卒業</u>します。",
+                options: ["そつぎょう", "そつきょう", "ぞつぎょう", "そっぎょう"],
+                answer: "そつぎょう",
+                translation: "Tahun depan saya lulus dari universitas."
+            }, {
+                question: "妹が 小学校に <u>入学</u>しました。",
+                options: ["にゅうがく", "にゅがく", "にゅうかく", "にゅうがぐ"],
+                answer: "にゅうがく",
+                translation: "Adik perempuan (telah) masuk sekolah dasar."
+            }, {
+                question: "病気で 祖父が <u>入院</u>しました。",
+                options: ["にゅういん", "にゅいん", "にゅうえん", "にゅうい"],
+                answer: "にゅういん",
+                translation: "Karena sakit, kakek masuk rumah sakit."
+            }, {
+                question: "あした 病院を <u>退院</u>します。",
+                options: ["たいいん", "たいん", "だいいん", "たえん"],
+                answer: "たいいん",
+                translation: "Besok saya keluar dari rumah sakit."
+            }, {
+                question: "ごはんを 食べた 後で、この <u>薬</u>を 飲んで ください。",
+                options: ["くすり", "くずり", "ぐすり", "くるし"],
+                answer: "くすり",
+                translation: "Setelah makan nasi, tolong minum obat ini."
+            }, {
+                question: "かぜで のどが <u>痛い</u>です。",
+                options: ["いたい", "いだい", "あいたい", "えたい"],
+                answer: "いたい",
+                translation: "Tenggorokan saya sakit karena flu."
+            }, {
+                question: "きのうから <u>熱</u>が あります。",
+                options: ["ねつ", "ねづ", "のつ", "めつ"],
+                answer: "ねつ",
+                translation: "Sejak kemarin saya demam."
+            }, {
+                question: "ビザをもらいに <u>大使館</u>へ 行きます。",
+                options: ["たいしかん", "だいしかん", "たいじかん", "たいしか"],
+                answer: "たいしかん",
+                translation: "Saya pergi ke kedutaan besar untuk mengambil visa."
+            }, {
+                question: "<u>美術館</u>で ピカソの 絵を 見ました。",
+                options: ["びじゅつかん", "びしゅつかん", "びじゅかん", "びじゅつがん"],
+                answer: "びじゅつかん",
+                translation: "Saya melihat lukisan Picasso di museum seni."
+            }, {
+                question: "<u>図書館</u>で 本を 3さつ 借りました。",
+                options: ["としょかん", "としょがん", "どしょかん", "とじょかん"],
+                answer: "としょかん",
+                translation: "Saya meminjam 3 buku di perpustakaan."
+            }, {
+                question: "日曜日に <u>映画館</u>へ 行きましょう。",
+                options: ["えいがかん", "えいかかん", "えがかん", "えいががん"],
+                answer: "えいがかん",
+                translation: "Ayo pergi ke bioskop pada hari Minggu."
+            }, {
+                question: "<u>動物園</u>に パンダが います。",
+                options: ["どうぶつえん", "とうぶつえん", "どうぶつえ", "どうぶっえん"],
+                answer: "どうぶつえん",
+                translation: "Di kebun binatang ada panda."
+            }, {
+                question: "毎日 <u>地下鉄</u>で 会社へ 行きます。",
+                options: ["ちかてつ", "ちがてつ", "じかてつ", "ちかでつ"],
+                answer: "ちかてつ",
+                translation: "Setiap hari pergi ke kantor menggunakan kereta bawah tanah."
+            }, {
+                question: "はやく 着くために <u>特急</u>に 乗ります。",
+                options: ["とっきゅう", "とくきゅう", "とっきゅ", "どっきゅう"],
+                answer: "とっきゅう",
+                translation: "Naik kereta ekspres khusus (limited express) agar cepat sampai."
+            }, {
+                question: "この <u>急行</u>は 次の 駅に 止まります。",
+                options: ["きゅうこう", "きゅこう", "ぎゅうこう", "きゅうごう"],
+                answer: "きゅうこう",
+                translation: "Kereta ekspres ini berhenti di stasiun berikutnya."
+            }, {
+                question: "ここは 車の <u>駐車場</u>です。",
+                options: ["ちゅうしゃじょう", "ちゅしゃじょう", "ちゅうしゃしょう", "ちゅうさじょう"],
+                answer: "ちゅうしゃじょう",
+                translation: "Ini adalah tempat parkir mobil."
+            }, {
+                question: "日本へ <u>飛行機</u>で 行きます。",
+                options: ["ひこうき", "ひごうき", "びこうき", "ひこき"],
+                answer: "ひこうき",
+                translation: "Pergi ke Jepang dengan pesawat terbang."
+            }, {
+                question: "<u>港</u>に 大きい 船が 止まっています。",
+                options: ["みなと", "みなど", "めなと", "まなと"],
+                answer: "みなと",
+                translation: "Di pelabuhan ada kapal besar yang berhenti."
+            }, {
+                question: "父は 自動車の <u>工場</u>で 働いて います。",
+                options: ["こうじょう", "こじょう", "ごうじょう", "こうしょう"],
+                answer: "こうじょう",
+                translation: "Ayah bekerja di pabrik mobil."
+            }, {
+                question: "あの 白い <u>建物</u>は 新しいです。",
+                options: ["たてもの", "だてもの", "たでもの", "たてものう"],
+                answer: "たてもの",
+                translation: "Bangunan putih itu adalah bangunan baru."
+            }, {
+                question: "デパートの <u>屋上</u>に あがりましょう。",
+                options: ["おくじょう", "おくしょう", "おぐじょう", "おくじょ"],
+                answer: "おくじょう",
+                translation: "Mari naik ke atap (rooftop) departemen store."
+            }, {
+                question: "わたしの 部屋は 2<u>階</u>に あります。",
+                options: ["かい", "がい", "はい", "けい"],
+                answer: "かい",
+                translation: "Kamar saya ada di lantai 2."
+            }, {
+                question: "<u>階段</u>を 上がると、右に トイレが あります。",
+                options: ["かいだん", "がいだん", "かいたん", "かいどん"],
+                answer: "かいだん",
+                translation: "Jika naik tangga, di sebelah kanan ada toilet."
+            }, {
+                question: "日本の 家は <u>玄関</u>で くつを ぬぎます。",
+                options: ["げんかん", "けんかん", "げんがん", "げっかん"],
+                answer: "げんかん",
+                translation: "Di rumah orang Jepang, kita melepas sepatu di pintu masuk (genkan)."
+            }, {
+                question: "あぶないですから、<u>廊下</u>を 走らないで ください。",
+                options: ["ろうか", "ろか", "ろうが", "ろっか"],
+                answer: "ろうか",
+                translation: "Karena berbahaya, tolong jangan berlari di lorong."
+            }, {
+                question: "手紙を 出しに <u>郵便局</u>へ 行きます。",
+                options: ["ゆうびんきょく", "ゆびんきょく", "ゆうびんきょ", "ゆうびんごく"],
+                answer: "ゆうびんきょく",
+                translation: "Pergi ke kantor pos untuk mengirim surat."
+            }, {
+                question: "道を わすれたので、<u>交番</u>で 聞きました。",
+                options: ["こうばん", "ごうばん", "こうぱん", "こばん"],
+                answer: "こうばん",
+                translation: "Karena lupa jalan, saya bertanya di pos polisi."
+            }, {
+                question: "新しい <u>洗濯機</u>を 買いました。",
+                options: ["せんたくき", "せんだくき", "せんたっき", "せんたくぎ"],
+                answer: "せんたくき",
+                translation: "Saya (telah) membeli mesin cuci baru."
+            }, {
+                question: "ジュースは <u>冷蔵庫</u>に あります。",
+                options: ["れいぞうこ", "れぞうこ", "れいそうこ", "れいじょうこ"],
+                answer: "れいぞうこ",
+                translation: "Jus ada di dalam kulkas."
+            }, {
+                question: "週末は 部屋の <u>掃除</u>を します。",
+                options: ["そうじ", "そじ", "そうち", "しょうじ"],
+                answer: "そうじ",
+                translation: "Akhir pekan saya melakukan pembersihan kamar (bersih-bersih)."
+            }, {
+                question: "<u>教室</u>に 学生が たくさん います。",
+                options: ["きょうしつ", "きょしつ", "きょうしっ", "ぎょうしつ"],
+                answer: "きょうしつ",
+                translation: "Di ruang kelas ada banyak siswa."
+            }, {
+                question: "先生が <u>黒板</u>に 字を 書きます。",
+                options: ["こくばん", "ごくばん", "こくぱん", "こうばん"],
+                answer: "こくばん",
+                translation: "Guru menulis huruf di papan tulis hitam."
+            }, {
+                question: "手紙を <u>封筒</u>に 入れます。",
+                options: ["ふうとう", "ふとう", "ぶうとう", "ふんとう"],
+                answer: "ふうとう",
+                translation: "Memasukkan surat ke dalam amplop."
+            }, {
+                question: "はがきに <u>切手</u>を はります。",
+                options: ["きって", "きて", "ぎって", "きっで"],
+                answer: "きって",
+                translation: "Menempelkan prangko di kartu pos."
+            }, {
+                question: "コンビニで <u>雑誌</u>を 買いました。",
+                options: ["ざっし", "ざし", "さっし", "ざっち"],
+                answer: "ざっし",
+                translation: "Saya membeli majalah di minimarket."
+            }, {
+                question: "わからない 言葉は <u>辞書</u>で しらべます。",
+                options: ["じしょ", "じしょう", "ししょ", "ししょう"],
+                answer: "じしょ",
+                translation: "Kata yang tidak dimengerti akan dicari di kamus."
+            }, {
+                question: "京都の <u>旅館</u>に とまります。",
+                options: ["りょかん", "りょうかん", "ろかん", "りょがん"],
+                answer: "りょかん",
+                translation: "Menginap di penginapan tradisional (ryokan) di Kyoto."
+            }, {
+                question: "休みの 日に <u>温泉</u>へ 行きたいです。",
+                options: ["おんせん", "おんぜん", "おうせん", "おんせ"],
+                answer: "おんせん",
+                translation: "Di hari libur, saya ingin pergi ke pemandian air panas (onsen)."
+            }, {
+                question: "ここから 見える <u>景色</u>は すばらしいです。",
+                options: ["けしき", "げしき", "けっしき", "けじき"],
+                answer: "けしき",
+                translation: "Pemandangan yang terlihat dari sini sangat luar biasa."
+            }, {
+                question: "日本には 四つの <u>季節</u>が あります。",
+                options: ["きせつ", "ぎせつ", "きぜつ", "きせっ"],
+                answer: "きせつ",
+                translation: "Di Jepang ada empat musim."
+            }, {
+                question: "毎日 寝る 前に <u>日記</u>を 書きます。",
+                options: ["にっき", "にき", "にっぎ", "にちき"],
+                answer: "にっき",
+                translation: "Setiap hari sebelum tidur saya menulis buku harian."
+            }, {
+                question: "テストの 前に しっかり <u>復習</u>を してください。",
+                options: ["ふくしゅう", "ふくしゅ", "ぶくしゅう", "ふぐしゅう"],
+                answer: "ふくしゅう",
+                translation: "Sebelum ujian, tolong lakukan ulasan/mengulang pelajaran dengan baik."
+            }, {
+                question: "明日の 授業の <u>予習</u>を 終わりました。",
+                options: ["よしゅう", "ようしゅう", "よしゅ", "ゆしゅう"],
+                answer: "よしゅう",
+                translation: "Saya telah menyelesaikan persiapan belajar untuk pelajaran besok."
+            }, {
+                question: "<u>両親</u>と いっしょに ごはんを 食べます。",
+                options: ["りょうしん", "りょしん", "りょうじん", "ろうしん"],
+                answer: "りょうしん",
+                translation: "Makan nasi bersama kedua orang tua."
+            }, {
+                question: "わたしの <u>祖父</u>は 80歳です。",
+                options: ["そふ", "そうふ", "ぞふ", "そぶ"],
+                answer: "そふ",
+                translation: "Kakek saya berumur 80 tahun."
+            }, {
+                question: "<u>祖母</u>は 料理が 上手です。",
+                options: ["そぼ", "そうぼ", "ぞぼ", "そほ"],
+                answer: "そぼ",
+                translation: "Nenek saya pandai memasak."
+            }, {
+                question: "<u>息子</u>は 今、中学生です。",
+                options: ["むすこ", "むずこ", "むすご", "もうすこ"],
+                answer: "むすこ",
+                translation: "Anak laki-laki (saya) sekarang adalah siswa SMP."
+            }, {
+                question: "<u>娘</u>は ピアノを 習っています。",
+                options: ["むすめ", "むずめ", "もうすめ", "むすね"],
+                answer: "むすめ",
+                translation: "Anak perempuan (saya) sedang belajar piano."
+            }, {
+                question: "わたしの <u>夫</u>は 会社員です。",
+                options: ["おっと", "おと", "おっど", "おつと"],
+                answer: "おっと",
+                translation: "Suami saya adalah pegawai perusahaan."
+            }, {
+                question: "<u>妻</u>と デパートへ 買い物に 行きます。",
+                options: ["つま", "づま", "すま", "ずま"],
+                answer: "つま",
+                translation: "Saya pergi berbelanja ke departemen store bersama istri saya."
+            }, {
+                question: "この 写真の 人は とても <u>若い</u>ですね。",
+                options: ["わかい", "わがい", "ばかい", "あかい"],
+                answer: "わかい",
+                translation: "Orang di foto ini sangat muda ya."
+            }, {
+                question: "きのう あまり 寝ていないので、今日は <u>眠い</u>です。",
+                options: ["ねむい", "ねまい", "なむい", "のむい"],
+                answer: "ねむい",
+                translation: "Karena kemarin kurang tidur, hari ini mengantuk."
+            }, {
+                question: "ペットが 死んで、とても <u>悲しい</u>です。",
+                options: ["かなしい", "がなしい", "かなじい", "からしい"],
+                answer: "かなしい",
+                translation: "Hewan peliharaan saya mati, saya sangat sedih."
+            }, {
+                question: "一人で 住んでいるので、ときどき <u>寂しい</u>です。",
+                options: ["さびしい", "ざびしい", "さひしい", "さぴしい"],
+                answer: "さびしい",
+                translation: "Karena tinggal sendirian, kadang-kadang merasa kesepian."
+            }, {
+                question: "わたしの 父は <u>厳しい</u>です。",
+                options: ["きびしい", "ぎびしい", "きぴしい", "きひしい"],
+                answer: "きびしい",
+                translation: "Ayah saya tegas/galak."
+            }, {
+                question: "この アプリは とても <u>便利</u>です。",
+                options: ["べんり", "べんりい", "ぺんり", "べんりゅ"],
+                answer: "べんり",
+                translation: "Aplikasi ini sangat praktis/nyaman."
+            }, {
+                question: "駅が 遠くて <u>不便</u>です。",
+                options: ["ふべん", "ふぺん", "ぶべん", "ふべい"],
+                answer: "ふべん",
+                translation: "Stasiunnya jauh dan tidak praktis."
+            }, {
+                question: "あの 店の 人は とても <u>親切</u>です。",
+                options: ["しんせつ", "じんせつ", "しんぜつ", "しんせっ"],
+                answer: "しんせつ",
+                translation: "Orang di toko itu sangat ramah/baik hati."
+            }, {
+                question: "先生は <u>丁寧</u>に 教えて くれます。",
+                options: ["ていねい", "てねい", "でいねい", "ていね"],
+                answer: "ていねい",
+                translation: "Guru mengajar dengan sopan/teliti."
+            }, {
+                question: "週末は <u>自由</u>な 時間が たくさん あります。",
+                options: ["じゆう", "しゆう", "じゆ", "じゅう"],
+                answer: "じゆう",
+                translation: "Akhir pekan ada banyak waktu luang (bebas)."
+            }
+        ],
+        "goi-orthography": [{
+                question: "わたしの <u>あに</u>は 大学生です。",
+                options: ["兄", "弟", "児", "況"],
+                answer: "兄",
+                translation: "Kakak laki-laki saya adalah mahasiswa."
+            }, {
+                question: "<u>おとうと</u>は ゲームが 好きです。",
+                options: ["弟", "兄", "第", "弓"], // Tricky: 弟 (Adik laki-laki) vs 第 (Awalan nomor)
+                answer: "弟",
+                translation: "Adik laki-laki suka bermain game."
+            }, {
+                question: "<u>あね</u>は 東京に 住んでいます。",
+                options: ["姉", "妹", "姑", "婦"],
+                answer: "姉",
+                translation: "Kakak perempuan saya tinggal di Tokyo."
+            }, {
+                question: "<u>いもうと</u>と ケーキを 食べました。",
+                options: ["妹", "姉", "味", "未"], // Tricky: 妹 (Adik perempuan) vs 味 (Rasa)
+                answer: "妹",
+                translation: "Makan kue bersama adik perempuan."
+            }, {
+                question: "毎朝、公園を <u>はしり</u>ます。",
+                options: ["走り", "歩り", "赴り", "起り"], // Tricky: 走 (Lari) vs 歩 (Jalan)
+                answer: "走り",
+                translation: "Setiap pagi berlari di taman."
+            }, {
+                question: "朝、6時に <u>おき</u>ます。",
+                options: ["起き", "走き", "越き", "記き"], // Tricky: 起 (Bangun) vs 越 (Melewati)
+                answer: "起き",
+                translation: "Bangun pada jam 6 pagi."
+            }, {
+                question: "夜、10時に <u>ね</u>ます。",
+                options: ["寝", "覚", "夢", "宴"],
+                answer: "寝",
+                translation: "Tidur pada jam 10 malam."
+            }, {
+                question: "父は 銀行で <u>はたらいて</u> います。",
+                options: ["働いて", "動いて", "重いて", "勲いて"], // Tricky: 働 (Bekerja) vs 動 (Bergerak)
+                answer: "働いて",
+                translation: "Ayah bekerja di bank."
+            }, {
+                question: "日本語を <u>べんきょう</u>します。",
+                options: ["勉強", "免強", "勉教", "免教"], // Tricky: 勉 (Belajar) vs 免 (Bebas)
+                answer: "勉強",
+                translation: "Belajar bahasa Jepang."
+            }, {
+                question: "<u>かんじ</u>は むずかしいです。",
+                options: ["漢字", "漢宇", "嘆字", "漢学"], // Tricky: 字 (Huruf) vs 宇 (Semesta/Atap)
+                answer: "漢字",
+                translation: "Kanji itu sulit."
+            }, {
+                question: "この 言葉の <u>いみ</u>が わからないです。",
+                options: ["意味", "意未", "意見", "注味"],
+                answer: "意味",
+                translation: "Saya tidak mengerti arti kata ini."
+            }, {
+                question: "週末、<u>えいが</u>を 見に 行きます。",
+                options: ["映画", "影画", "映書", "映両"], // Tricky: 画 (Gambar) vs 書 (Tulis) vs 両 (Dua)
+                answer: "映画",
+                translation: "Akhir pekan, pergi menonton film."
+            }, {
+                question: "スマホで <u>しゃしん</u>を とります。",
+                options: ["写真", "写直", "与真", "車真"], // Tricky: 真 (Kebenaran) vs 直 (Lurus)
+                answer: "写真",
+                translation: "Mengambil foto dengan smartphone."
+            }, {
+                question: "クラシックの <u>おんがく</u>が 好きです。",
+                options: ["音楽", "昔楽", "音薬", "音学"], // Tricky: 楽 (Musik/Senang) vs 薬 (Obat)
+                answer: "音楽",
+                translation: "Saya suka musik klasik."
+            }, {
+                question: "パーティーは とても <u>たのしかった</u>です。",
+                options: ["楽しかった", "薬しかった", "学しかった", "業しかった"],
+                answer: "楽しかった",
+                translation: "Pestanya sangat menyenangkan."
+            }, {
+                question: "カラオケで <u>うた</u>を うたいます。",
+                options: ["歌", "飲", "歓", "欠"],
+                answer: "歌",
+                translation: "Menyanyikan lagu di karaoke."
+            }, {
+                question: "あの <u>とけい</u>は こわれています。",
+                options: ["時計", "時針", "侍計", "時言"], // Tricky: 時 (Waktu) vs 侍 (Samurai)
+                answer: "時計",
+                translation: "Jam itu rusak."
+            }, {
+                question: "旅行の <u>けいかく</u>を たてます。",
+                options: ["計画", "計書", "記画", "計両"], // Tricky: 画 (Rencana/Gambar) vs 書 (Buku/Tulis)
+                answer: "計画",
+                translation: "Menyusun rencana perjalanan."
+            }, {
+                question: "熱が あるので <u>びょういん</u>へ 行きます。",
+                options: ["病院", "病完", "疾院", "病員"],
+                answer: "病院",
+                translation: "Karena demam, saya pergi ke rumah sakit."
+            }, {
+                question: "わたしの 夢は <u>いしゃ</u>に なることです。",
+                options: ["医者", "矢者", "区者", "巨者"], // Tricky: 医 (Dokter) vs 矢 (Panah) vs 区 (Distrik)
+                answer: "医者",
+                translation: "Mimpi saya adalah menjadi seorang dokter."
+            }, {
+                question: "スーパーへ <u>かいもの</u>に 行きます。",
+                options: ["買い物", "貝物", "買牛", "見物"],
+                answer: "買い物",
+                translation: "Pergi ke supermarket untuk berbelanja."
+            }, {
+                question: "母の <u>りょうり</u>は おいしいです。",
+                options: ["料理", "料里", "科理", "斜理"], // Tricky: 料 (Bahan) vs 科 (Departemen)
+                answer: "料理",
+                translation: "Masakan ibu enak."
+            }, {
+                question: "毎<u>あさ</u>、コーヒーを 飲みます。",
+                options: ["朝", "潮", "幹", "車"],
+                answer: "朝",
+                translation: "Setiap pagi, saya minum kopi."
+            }, {
+                question: "<u>ひる</u>ごはんは カレーです。",
+                options: ["昼", "星", "旦", "尺"], // Tricky: 昼 (Siang) vs 星 (Bintang)
+                answer: "昼",
+                translation: "Makan siangnya adalah kari."
+            }, {
+                question: "昨日の <u>ばん</u>、テレビを 見ました。",
+                options: ["晩", "暁", "晴", "免"],
+                answer: "晩",
+                translation: "Malam kemarin, saya menonton TV."
+            }, {
+                question: "<u>よる</u>は さむいですね。",
+                options: ["夜", "液", "夕", "変"],
+                answer: "夜",
+                translation: "Malam hari dingin ya."
+            }, {
+                question: "<u>ゆうがた</u>に 雨が 降りました。",
+                options: ["夕方", "夜方", "名方", "多方"], // Tricky: 夕 (Sore) vs 名 (Nama) vs 多 (Banyak)
+                answer: "夕方",
+                translation: "Hujan turun pada sore hari."
+            }, {
+                question: "<u>ひるやすみ</u>に ごはんを 食べます。",
+                options: ["昼休み", "昼体み", "星休み", "昼本み"],
+                answer: "昼休み",
+                translation: "Makan nasi pada jam istirahat siang."
+            }, {
+                question: "約束の <u>じかん</u>に おくれました。",
+                options: ["時間", "寺間", "時門", "時開"], // Tricky: 間 (Interval) vs 門 (Gerbang) vs 開 (Buka)
+                answer: "時間",
+                translation: "Terlambat pada waktu yang dijanjikan."
+            }, {
+                question: "日本の <u>きせつ</u>は ４つ あります。",
+                options: ["季節", "秀節", "季節目", "委節"], // Tricky: 季 (Musim) vs 秀 (Unggul) vs 委 (Komite)
+                answer: "季節",
+                translation: "Musim di Jepang ada empat."
+            }, {
+                question: "<u>はる</u>は 花が 咲きます。",
+                options: ["春", "奏", "泰", "奉"], // Tricky: 春 (Musim semi) vs 奏 (Bermain musik)
+                answer: "春",
+                translation: "Musim semi bunga bermekaran."
+            }, {
+                question: "<u>なつ</u>は 海へ 行きたいです。",
+                options: ["夏", "麦", "復", "愛"], // Tricky: 夏 (Musim panas) vs 麦 (Gandum)
+                answer: "夏",
+                translation: "Musim panas saya ingin pergi ke laut."
+            }, {
+                question: "<u>あき</u>は すずしいです。",
+                options: ["秋", "愁", "和", "科"],
+                answer: "秋",
+                translation: "Musim gugur itu sejuk."
+            }, {
+                question: "<u>ふゆ</u>は 雪が 降ります。",
+                options: ["冬", "寒", "氷", "各"],
+                answer: "冬",
+                translation: "Musim dingin salju turun."
+            }, {
+                question: "きょうは いい <u>てんき</u>です。",
+                options: ["天気", "夫気", "矢気", "天汽"],
+                answer: "天気",
+                translation: "Hari ini cuacanya bagus."
+            }, {
+                question: "<u>あめ</u>が 降って います。",
+                options: ["雨", "両", "雲", "雪"],
+                answer: "雨",
+                translation: "Sedang turun hujan."
+            }, {
+                question: "山に <u>ゆき</u>が あります。",
+                options: ["雪", "雲", "雨", "電"], // Tricky: 雪 (Salju) vs 雲 (Awan)
+                answer: "雪",
+                translation: "Di gunung ada salju."
+            }, {
+                question: "夏休みに <u>うみ</u>へ 行きます。",
+                options: ["海", "毎", "梅", "毒"], // Tricky: 海 (Laut) vs 梅 (Plum) vs 毒 (Racun)
+                answer: "海",
+                translation: "Pergi ke laut saat libur musim panas."
+            }, {
+                question: "来週、京都へ <u>りょこう</u>します。",
+                options: ["旅行", "旅効", "族行", "遊行"], // Tricky: 旅 (Perjalanan) vs 族 (Keluarga/Suku)
+                answer: "旅行",
+                translation: "Minggu depan, saya akan berwisata ke Kyoto."
+            }, {
+                question: "<u>ぎんこう</u>で お金をおろします。",
+                options: ["銀行", "銀効", "根行", "恨行"], // Tricky: 銀 (Perak/Bank) vs 根 (Akar)
+                answer: "銀行",
+                translation: "Menarik uang di bank."
+            }, {
+                question: "あの <u>みせ</u>で ケーキを 買いましょう。",
+                options: ["店", "広", "床", "度"], // Tricky: 店 (Toko) vs 広 (Luas) vs 床 (Lantai)
+                answer: "店",
+                translation: "Mari beli kue di toko itu."
+            }, {
+                question: "スーパーで パンを <u>うって</u> います。",
+                options: ["売って", "買って", "読って", "続って"], // Tricky: 売 (Jual) vs 買 (Beli) vs 読 (Baca)
+                answer: "売って",
+                translation: "Menjual roti di supermarket."
+            }, {
+                question: "この 映画は とても <u>ゆうめい</u>です。",
+                options: ["有名", "存名", "右名", "友名"], // Tricky: 有 (Ada/Punya) vs 存 (Eksis) vs 右 (Kanan)
+                answer: "有名",
+                translation: "Film ini sangat terkenal."
+            }, {
+                question: "テストに <u>なまえ</u>を 書いて ください。",
+                options: ["名前", "名剪", "各前", "名煎"], // Tricky: 前 (Depan/Sebelum) vs 剪 (Gunting)
+                answer: "名前",
+                translation: "Tolong tulis nama di ujian."
+            }, {
+                question: "わたしの <u>しごと</u>は 教師です。",
+                options: ["仕事", "仕言", "代事", "仕重"], // Tricky: 事 (Hal/Pekerjaan) vs 言 (Kata) vs 重 (Berat)
+                answer: "仕事",
+                translation: "Pekerjaan saya adalah guru."
+            }, {
+                question: "今日は とても <u>いそがしい</u>です。",
+                options: ["忙しい", "忘しい", "亡しい", "決しい"], // Tricky: 忙 (Sibuk) vs 忘 (Lupa) vs 亡 (Meninggal)
+                answer: "忙しい",
+                translation: "Hari ini sangat sibuk."
+            }, {
+                question: "たくさん 歩いたので、<u>つかれ</u>ました。",
+                options: ["疲れ", "病れ", "痛れ", "疫れ"], // Tricky: 疲 (Lelah) vs 病 (Sakit) vs 痛 (Nyeri)
+                answer: "疲れ",
+                translation: "Karena banyak berjalan, saya kelelahan."
+            }, {
+                question: "あの 鳥は 空を <u>とんで</u> います。",
+                options: ["飛んで", "跳んで", "非んで", "悲んで"], // Tricky: 飛 (Terbang) vs 跳 (Lompat) vs 非 (Bukan)
+                answer: "飛んで",
+                translation: "Burung itu sedang terbang di langit."
+            }, {
+                question: "あの 人を <u>しって</u> いますか。",
+                options: ["知って", "和って", "智って", "科って"], // Tricky: 知 (Tahu) vs 和 (Harmoni)
+                answer: "知って",
+                translation: "Apakah (kamu) kenal/tahu orang itu?"
+            }, {
+                question: "この 荷物は <u>おもい</u>です。",
+                options: ["重い", "動い", "種い", "車い"], // Tricky: 重 (Berat) vs 動 (Gerak) vs 車 (Mobil)
+                answer: "重い",
+                translation: "Barang bawaan ini berat."
+            }, {
+                question: "ペンを <u>かして</u> ください。",
+                options: ["貸して", "借して", "貨して", "資して"], // Tricky: 貸 (Meminjamkan) vs 借 (Meminjam)
+                answer: "貸して",
+                translation: "Tolong pinjamkan pulpen."
+            }, {
+                question: "図書館で 本を <u>かりる</u>。",
+                options: ["借りる", "貸りる", "昔りる", "惜りる"], // Tricky: 借 (Meminjam) vs 貸 (Meminjamkan) vs 昔 (Zaman dulu)
+                answer: "借りる",
+                translation: "Meminjam buku di perpustakaan."
+            }, {
+                question: "先生に 日本語を <u>おしえて</u> もらいます。",
+                options: ["教えて", "孝えて", "考えて", "老えて"], // Tricky: 教 (Mengajar) vs 考 (Berpikir) vs 老 (Tua)
+                answer: "教えて",
+                translation: "Mendapat pelajaran (diajari) bahasa Jepang oleh guru."
+            }, {
+                question: "ピアノを <u>ならう</u>。",
+                options: ["習う", "羽う", "翌う", "翠う"], // Tricky: 習 (Belajar) vs 羽 (Bulu/Sayap)
+                answer: "習う",
+                translation: "Belajar (les) piano."
+            }, {
+                question: "切手を <u>あつめて</u> います。",
+                options: ["集めて", "進めて", "雑めて", "焦めて"], // Tricky: 集 (Mengumpulkan) vs 進 (Maju)
+                answer: "集めて",
+                translation: "Sedang mengumpulkan prangko."
+            }, {
+                question: "旅行の 日を <u>きめる</u>。",
+                options: ["決める", "快める", "欠める", "氷める"], // Tricky: 決 (Memutuskan) vs 快 (Nyaman) vs 氷 (Es)
+                answer: "決める",
+                translation: "Memutuskan hari perjalanan."
+            }, {
+                question: "9時から 会議が <u>はじまる</u>。",
+                options: ["始まる", "姉まる", "治まる", "怠まる"], // Tricky: 始 (Mulai) vs 姉 (Kakak perempuan) vs 治 (Sembuh)
+                answer: "始まる",
+                translation: "Rapat dimulai dari jam 9."
+            }, {
+                question: "仕事が <u>おわる</u>。",
+                options: ["終わる", "冬わる", "降わる", "修わる"], // Tricky: 終 (Selesai) vs 冬 (Musim dingin)
+                answer: "終わる",
+                translation: "Pekerjaan selesai."
+            }, {
+                question: "わからない ことを <u>しらべる</u>。",
+                options: ["調べる", "週べる", "訓べる", "問べる"], // Tricky: 調 (Mencari tahu) vs 週 (Minggu)
+                answer: "調べる",
+                translation: "Mencari tahu hal yang tidak dimengerti."
+            }, {
+                question: "質問に <u>こたえる</u>。",
+                options: ["答える", "等える", "筒える", "筆える"], // Tricky: 答 (Menjawab) vs 等 (Dll/Sama)
+                answer: "答える",
+                translation: "Menjawab pertanyaan."
+            }, {
+                question: "将来の ことを <u>かんがえる</u>。",
+                options: ["考える", "老える", "教える", "者える"], // Tricky: 考 (Berpikir) vs 老 (Tua)
+                answer: "考える",
+                translation: "Memikirkan masa depan."
+            }, {
+                question: "時間がないので <u>いそいで</u> ください。",
+                options: ["急いで", "息いで", "心いで", "思いで"], // Tricky: 急 (Buru-buru) vs 息 (Napas)
+                answer: "急いで",
+                translation: "Karena tidak ada waktu, tolong buru-buru."
+            }, {
+                question: "友だちに 荷物を <u>おくる</u>。",
+                options: ["送る", "達る", "道る", "通る"], // Tricky: 送 (Kirim) vs 達 (Mencapai) vs 道 (Jalan)
+                answer: "送る",
+                translation: "Mengirim barang ke teman."
+            }, {
+                question: "レジで お金を <u>はらう</u>。",
+                options: ["払う", "打う", "広う", "仏う"], // Tricky: 払 (Membayar) vs 打 (Memukul) vs 広 (Luas)
+                answer: "払う",
+                translation: "Membayar uang di kasir."
+            }, {
+                question: "手と 顔を <u>あらう</u>。",
+                options: ["洗う", "先う", "決う", "流う"], // Tricky: 洗 (Mencuci) vs 先 (Duluan) vs 決 (Memutuskan)
+                answer: "洗う",
+                translation: "Mencuci tangan dan wajah."
+            }, {
+                question: "パソコンを <u>つかう</u>。",
+                options: ["使う", "便う", "更う", "史う"], // Tricky: 使 (Menggunakan) vs 便 (Praktis/Surat)
+                answer: "使う",
+                translation: "Menggunakan laptop."
+            }, {
+                question: "ケーキを <u>つくる</u>。",
+                options: ["作る", "昨る", "住る", "待る"], // Tricky: 作 (Membuat) vs 昨 (Kemarin)
+                answer: "作る",
+                translation: "Membuat kue."
+            }, {
+                question: "これは いい アイデアだと <u>おもう</u>。",
+                options: ["思う", "恩う", "息う", "悪う"], // Tricky: 思 (Berpikir) vs 恩 (Budi) vs 息 (Napas)
+                answer: "思う",
+                translation: "Saya pikir ini ide yang bagus."
+            }, {
+                question: "新しい 単語を <u>おぼえて</u> ください。",
+                options: ["覚えて", "学べて", "見えて", "視えて"], // Tricky: 覚 (Mengingat) vs 学 (Belajar)
+                answer: "覚えて",
+                translation: "Tolong ingat kosakata baru."
+            }, {
+                question: "かさを <u>わすれる</u>。",
+                options: ["忘れる", "忙れる", "亡れる", "妄れる"], // Tricky: 忘 (Lupa) vs 忙 (Sibuk)
+                answer: "忘れる",
+                translation: "Lupa payung."
+            }, {
+                question: "子どもの ころを <u>おもいだす</u>。",
+                options: ["思い出す", "恩い出す", "思山す", "息い出す"],
+                answer: "思い出す",
+                translation: "Mengingat masa kecil."
+            }, {
+                question: "駅の 前に バスが <u>とまる</u>。",
+                options: ["止まる", "正まる", "上まる", "企まる"], // Tricky: 止 (Berhenti) vs 正 (Benar)
+                answer: "止まる",
+                translation: "Bus berhenti di depan stasiun."
+            }, {
+                question: "この 道を <u>とおる</u>。",
+                options: ["通る", "道る", "送る", "速る"], // Tricky: 通 (Melewati) vs 道 (Jalan)
+                answer: "通る",
+                translation: "Melewati jalan ini."
+            }, {
+                question: "新しい 家を <u>たてる</u>。",
+                options: ["建てる", "健てる", "連てる", "律てる"], // Tricky: 建 (Membangun) vs 健 (Sehat)
+                answer: "建てる",
+                translation: "Membangun rumah baru."
+            }, {
+                question: "電車に <u>のる</u>。",
+                options: ["乗る", "剰る", "座る", "垂る"],
+                answer: "乗る",
+                translation: "Naik kereta."
+            }, {
+                question: "次の 駅で <u>おりる</u>。",
+                options: ["降りる", "終りる", "隆りる", "落ちる"], // Tricky: 降 (Turun) vs 終 (Selesai) vs 隆 (Makmur)
+                answer: "降りる",
+                translation: "Turun di stasiun berikutnya."
+            }, {
+                question: "ここで 地下鉄に <u>のりかえる</u>。",
+                options: ["乗り換える", "乗り変える", "乗り替える", "乗り帰える"], // Tricky: 換 vs 変 vs 替
+                answer: "乗り換える",
+                translation: "Berganti ke kereta bawah tanah di sini."
+            }, {
+                question: "今日の <u>しゅくだい</u>は むずかしいです。",
+                options: ["宿題", "縮題", "宿顔", "宿泊"], // Tricky: 題 (Topik/Tugas) vs 顔 (Wajah)
+                answer: "宿題",
+                translation: "PR hari ini sulit."
+            }, {
+                question: "<u>じゅぎょう</u>を はじめます。",
+                options: ["授業", "授行", "受業", "従業"], // Tricky: 授 (Memberi pelajaran) vs 受 (Menerima)
+                answer: "授業",
+                translation: "Akan memulai pelajaran."
+            }, {
+                question: "<u>きょうしつ</u>を そうじします。",
+                options: ["教室", "教空", "孝室", "教屋"], // Tricky: 室 (Ruang) vs 空 (Kosong)
+                answer: "教室",
+                translation: "Membersihkan ruang kelas."
+            }, {
+                question: "先生に <u>しつもん</u>を します。",
+                options: ["質問", "質門", "貝問", "質間"], // Tricky: 問 (Pertanyaan) vs 門 (Gerbang) vs 間 (Di antara)
+                answer: "質問",
+                translation: "Mengajukan pertanyaan kepada guru."
+            }, {
+                question: "この <u>もんだい</u>が わかりません。",
+                options: ["問題", "門題", "問顔", "悶題"], // Tricky: 問 (Pertanyaan) vs 門 (Gerbang)
+                answer: "問題",
+                translation: "Saya tidak mengerti soal ini."
+            }, {
+                question: "車に <u>ちゅうい</u>して ください。",
+                options: ["注意", "注味", "住意", "主意"], // Tricky: 意 (Pikiran/Arti) vs 味 (Rasa)
+                answer: "注意",
+                translation: "Tolong berhati-hati terhadap mobil."
+            }, {
+                question: "レストランで <u>しょくじ</u>を します。",
+                options: ["食事", "食言", "食重", "飲事"], // Tricky: 事 (Hal/Kegiatan) vs 言 (Kata) vs 重 (Berat)
+                answer: "食事",
+                translation: "Makan di restoran."
+            }, {
+                question: "犬の <u>せわ</u>を します。",
+                options: ["世話", "世語", "正話", "世言"], // Tricky: 話 (Cerita/Bicara) vs 語 (Bahasa)
+                answer: "世話",
+                translation: "Merawat (mengurus) anjing."
+            }, {
+                question: "<u>くすり</u>を 飲んで 寝ます。",
+                options: ["薬", "楽", "草", "茶"], // Tricky: 薬 (Obat) vs 楽 (Nyaman/Musik) vs 草 (Rumput)
+                answer: "薬",
+                translation: "Minum obat lalu tidur."
+            }, {
+                question: "おなかが <u>いたい</u>です。",
+                options: ["痛い", "病い", "疲い", "疫い"], // Tricky: 痛 (Sakit/Nyeri) vs 病 (Penyakit)
+                answer: "痛い",
+                translation: "Perutnya sakit."
+            }, {
+                question: "かぜで <u>ねつ</u>が あります。",
+                options: ["熱", "熟", "勢", "態"], // Tricky: 熱 (Panas/Demam) vs 熟 (Matang)
+                answer: "熱",
+                translation: "Karena flu, ada demam."
+            }, {
+                question: "好きな <u>いろ</u>は 赤です。",
+                options: ["色", "巴", "危", "包"], // Tricky: 色 (Warna) vs 巴 (Lambang Tomoe)
+                answer: "色",
+                translation: "Warna yang disukai adalah merah."
+            }, {
+                question: "この スープは いい <u>あじ</u>が します。",
+                options: ["味", "妹", "未", "朱"], // Tricky: 味 (Rasa) vs 妹 (Adik perempuan)
+                answer: "味",
+                translation: "Sup ini rasanya enak."
+            }, {
+                question: "ここに <u>じゅうしょ</u>を 書いてください。",
+                options: ["住所", "住署", "重所", "柱所"], // Tricky: 所 (Tempat) vs 署 (Kantor/Polisi)
+                answer: "住所",
+                translation: "Tolong tulis alamat di sini."
+            }, {
+                question: "わたしの <u>しゅみ</u>は 読書です。",
+                options: ["趣味", "趣未", "種味", "集味"], // Tricky: 趣 (Hobi/Minat) vs 種 (Benih/Macam)
+                answer: "趣味",
+                translation: "Hobi saya adalah membaca buku."
+            }, {
+                question: "仕事の <u>けいけん</u>が あります。",
+                options: ["経験", "軽験", "経険", "経検"], // Tricky: 験 (Ujian/Efek) vs 険 (Bahaya) vs 検 (Pemeriksaan)
+                answer: "経験",
+                translation: "Memiliki pengalaman kerja."
+            }, {
+                question: "車の <u>じこ</u>に 気をつけてください。",
+                options: ["事故", "事古", "仕事", "事己"], // Tricky: 故 (Alasan/Kecelakaan) vs 古 (Lama)
+                answer: "事故",
+                translation: "Tolong berhati-hati terhadap kecelakaan mobil."
+            }, {
+                question: "日本は <u>じしん</u>が 多いです。",
+                options: ["地震", "地神", "池震", "地振"], // Tricky: 震 (Gemetar) vs 振 (Mengayunkan)
+                answer: "地震",
+                translation: "Jepang banyak gempa bumi."
+            }, {
+                question: "ここは <u>あんぜん</u>な 場所です。",
+                options: ["安全", "安然", "安金", "案件"], // Tricky: 全 (Semua/Utuh) vs 然 (Demikian)
+                answer: "安全",
+                translation: "Ini adalah tempat yang aman."
+            }, {
+                question: "夜、一人で 歩くのは <u>きけん</u>です。",
+                options: ["危険", "危検", "危験", "機険"], // Tricky: 険 (Bahaya/Terjal) vs 検 (Periksa)
+                answer: "危険",
+                translation: "Berjalan sendirian di malam hari itu berbahaya."
+            }, {
+                question: "その 意見に <u>さんせい</u>です。",
+                options: ["賛成", "讃成", "賛星", "賛生"], // Tricky: 成 (Menjadi) vs 星 (Bintang)
+                answer: "賛成",
+                translation: "Saya setuju dengan pendapat itu."
+            }, {
+                question: "わたしは その 計画に <u>はんたい</u>です。",
+                options: ["反対", "反体", "坂対", "返対"], // Tricky: 対 (Melawan) vs 体 (Tubuh) vs 坂 (Tanjakan)
+                answer: "反対",
+                translation: "Saya menentang (tidak setuju) dengan rencana itu."
+            }, {
+                question: "後で 先生に <u>れんらく</u>します。",
+                options: ["連絡", "連落", "連格", "連楽"], // Tricky: 絡 (Terhubung) vs 落 (Jatuh) vs 格 (Status)
+                answer: "連絡",
+                translation: "Nanti saya akan menghubungi guru."
+            }
+        ],
+        "goi-context-expression": [{
+                question: "あした、国へ ______ します。",
+                options: ["しゅっぱつ", "よやく", "はつおん", "ほうそう"],
+                answer: "しゅっぱつ",
+                translation: "Besok, saya akan (berangkat) ke negara saya."
+            }, {
+                question: "しけんが 終わって、______ しました。",
+                options: ["あんしん", "しんぱい", "びっくり", "がっかり"],
+                answer: "あんしん",
+                translation: "Ujian telah selesai, dan saya merasa (lega)."
+            }, {
+                question: "この パソコンは 使い方が ______ です。",
+                options: ["ふくざつ", "かんたん", "べんり", "ふべん"],
+                answer: "ふくざつ",
+                translation: "Laptop ini cara penggunaannya (rumit/kompleks)."
+            }, {
+                question: "けがを したので、病院で ______ を してもらいました。",
+                options: ["ちゅうしゃ", "しゅじゅつ", "にゅういん", "たいいん"],
+                answer: "ちゅうしゃ",
+                translation: "Karena terluka, saya mendapat (suntikan) di rumah sakit."
+            }, {
+                question: "こんやは ______ に とまります。",
+                options: ["りょかん", "びょういん", "けいさつ", "こうじょう"],
+                answer: "りょかん",
+                translation: "Malam ini saya menginap di (penginapan tradisional/ryokan)."
+            }, {
+                question: "しょうらいの ______ は 医者に なることです。",
+                options: ["ゆめ", "よてい", "やくそく", "しゅみ"],
+                answer: "ゆめ",
+                translation: "(Mimpi/Cita-cita) masa depan saya adalah menjadi dokter."
+            }, {
+                question: "かいぎの ______ は 10時からです。",
+                options: ["よてい", "やくそく", "じゅぎょう", "しけん"],
+                answer: "よてい",
+                translation: "(Jadwal) rapat dimulai dari jam 10."
+            }, {
+                question: "______ が よいので、遠くまで よく見えます。",
+                options: ["けしき", "てんき", "きせつ", "くうき"],
+                answer: "けしき",
+                translation: "Karena (pemandangannya) bagus, terlihat jelas sampai jauh."
+            }, {
+                question: "おゆを わかして、______ を いれます。",
+                options: ["おちゃ", "おさけ", "ジュース", "ぎゅうにゅう"],
+                answer: "おちゃ",
+                translation: "Mendidihkan air panas, lalu menyeduh (teh hijau)."
+            }, {
+                question: "つかれたので、少し ______ ましょう。",
+                options: ["きゅうけいし", "べんきょうし", "しんぱいし", "そつぎょうし"],
+                answer: "きゅうけいし",
+                translation: "Karena lelah, mari (beristirahat) sebentar."
+            }, {
+                question: "先生に わからないところを ______ します。",
+                options: ["しつもん", "そうだん", "れんらく", "へんじ"],
+                answer: "しつもん",
+                translation: "Saya (bertanya) kepada guru bagian yang tidak saya mengerti."
+            }, {
+                question: "毎日、漢字を ______ します。",
+                options: ["ふくしゅう", "よしゅう", "じゅんび", "せいわ"],
+                answer: "ふくしゅう",
+                translation: "Setiap hari, (mengulang/me-review) kanji."
+            }, {
+                question: "新しい 車を 買うために お金を ______ います。",
+                options: ["ためて", "あつめて", "かりて", "はらって"],
+                answer: "ためて",
+                translation: "Saya sedang (menabung/mengumpulkan) uang untuk membeli mobil baru."
+            }, {
+                question: "じしょを ______、意味を しらべます。",
+                options: ["つかって", "つくって", "かって", "はらって"],
+                answer: "つかって",
+                translation: "(Menggunakan) kamus untuk mencari tahu artinya."
+            }, {
+                question: "今週の 日曜日は ______ が あります。",
+                options: ["ようじ", "じこ", "じしん", "かじ"],
+                answer: "ようじ",
+                translation: "Hari Minggu minggu ini ada (urusan/keperluan)."
+            }, {
+                question: "この にもつは とても ______ です。",
+                options: ["おもい", "かるい", "ふとい", "ほそい"],
+                answer: "おもい",
+                translation: "Barang bawaan ini sangat (berat)."
+            }, {
+                question: "わたしの 住んでいる 町は ______ です。",
+                options: ["あんぜん", "きけん", "ふべん", "ざんねん"],
+                answer: "あんぜん",
+                translation: "Kota tempat tinggal saya (aman)."
+            }, {
+                question: "時間が ないので、______ かえりましょう。",
+                options: ["いそいで", "おくれて", "さわいで", "あるいて"],
+                answer: "いそいで",
+                translation: "Karena tidak ada waktu, mari pulang dengan (terburu-buru)."
+            }, {
+                question: "雨が 降っているので、______ 運転してください。",
+                options: ["ちゅういして", "あんしんして", "びっくりして", "しんぱいして"],
+                answer: "ちゅういして",
+                translation: "Karena sedang turun hujan, tolong mengemudi dengan (hati-hati)."
+            }, {
+                question: "この 肉は とても ______ ですね。",
+                options: ["やわらかい", "かたい", "あまい", "からい"],
+                answer: "やわらかい",
+                translation: "Daging ini sangat (lembut/empuk) ya."
+            }, {
+                question: "ねぼうしたので、学校に ______ しまいました。",
+                options: ["おくれて", "わすれて", "なくして", "まちがえて"],
+                answer: "おくれて",
+                translation: "Karena bangun kesiangan, saya (terlambat) ke sekolah."
+            }, {
+                question: "電車の中に かばんを ______ しまいました。",
+                options: ["わすれて", "おとして", "なくして", "こわして"],
+                answer: "わすれて",
+                translation: "Saya tidak sengaja (ketinggalan/lupa) tas di dalam kereta."
+            }, {
+                question: "えんぴつを ______ ください。",
+                options: ["かして", "かりて", "かって", "かえして"],
+                answer: "かして",
+                translation: "Tolong (pinjamkan) saya pensil."
+            }, {
+                question: "明日、図書館に 本を ______ 。",
+                options: ["かえします", "かします", "かります", "かいます"],
+                answer: "かえします",
+                translation: "Besok, saya akan (mengembalikan) buku ke perpustakaan."
+            }, {
+                question: "その ニュースを 聞いて、______ しました。",
+                options: ["びっくり", "あんしん", "がっかり", "はっきり"],
+                answer: "びっくり",
+                translation: "Mendengar berita itu, saya (terkejut)."
+            }, {
+                question: "あの 人は ______ 怒ります。",
+                options: ["すぐに", "だんだん", "どんどん", "そろそろ"],
+                answer: "すぐに",
+                translation: "Orang itu (segera/cepat) marah."
+            }, {
+                question: "夕方になって、______ 暗く なりました。",
+                options: ["だんだん", "ぜんぜん", "あまり", "とても"],
+                answer: "だんだん",
+                translation: "Masuk waktu sore, menjadi (berangsur-angsur) gelap."
+            }, {
+                question: "お茶が ______ なりました。",
+                options: ["ぬるく", "あまく", "からく", "しおからく"],
+                answer: "ぬるく",
+                translation: "Tehnya menjadi (hangat kuku/tidak panas lagi)."
+            }, {
+                question: "風で ドアが ______ います。",
+                options: ["あいて", "しまって", "ついて", "けして"],
+                answer: "あいて",
+                translation: "Pintu (terbuka) karena angin."
+            }, {
+                question: "窓ガラスが ______ います。",
+                options: ["われて", "おれて", "やぶれて", "たおれて"],
+                answer: "われて",
+                translation: "Kaca jendela (pecah)."
+            }, {
+                question: "パソコンが ______ います。",
+                options: ["こわれて", "やぶれて", "われて", "おれて"],
+                answer: "こわれて",
+                translation: "Laptopnya (rusak)."
+            }, {
+                question: "台風で 木の枝が ______ います。",
+                options: ["おれて", "われて", "やぶれて", "こわれて"],
+                answer: "おれて",
+                translation: "Dahan pohon (patah) karena angin topan."
+            }, {
+                question: "この 本は ページが ______ います。",
+                options: ["やぶれて", "おれて", "われて", "こわれて"],
+                answer: "やぶれて",
+                translation: "Buku ini halamannya (sobek)."
+            }, {
+                question: "きのう、電車で さいふを ______ 。",
+                options: ["ぬすまれました", "おとしました", "わすれました", "なくしました"],
+                answer: "ぬすまれました",
+                translation: "Kemarin, dompet saya (dicuri) di kereta."
+            }, {
+                question: "道が わからないので、______ で 聞きました。",
+                options: ["こうばん", "ゆうびんきょく", "ぎんこう", "としょかん"],
+                answer: "こうばん",
+                translation: "Karena tidak tahu jalan, saya bertanya di (pos polisi)."
+            }, {
+                question: "友だちの 引っ越しを ______ 。",
+                options: ["てつだいました", "おしえました", "ならいました", "はたらきました"],
+                answer: "てつだいました",
+                translation: "Saya (membantu) kepindahan teman."
+            }, {
+                question: "えきまで 友だちを ______ に 行きました。",
+                options: ["むかえ", "みおくり", "あんない", "しょうたい"],
+                answer: "むかえ",
+                translation: "Saya pergi untuk (menjemput) teman di stasiun."
+            }, {
+                question: "友だちを パーティーに ______ します。",
+                options: ["しょうたい", "しょうかい", "あんない", "ほうこく"],
+                answer: "しょうたい",
+                translation: "Saya (mengundang) teman ke pesta."
+            }, {
+                question: "新しい 先生を みんなに ______ します。",
+                options: ["しょうかい", "しょうたい", "あんない", "あいさつ"],
+                answer: "しょうかい",
+                translation: "Saya (memperkenalkan) guru baru kepada semuanya."
+            }, {
+                question: "夏は あついので、______ を つけます。",
+                options: ["れいぼう", "だんぼう", "せんぷうき", "れいぞうこ"],
+                answer: "れいぼう",
+                translation: "Karena musim panas itu panas, saya menyalakan (pendingin ruangan/AC)."
+            }, {
+                question: "冬は さむいので、______ を つけます。",
+                options: ["だんぼう", "れいぼう", "れいぞうこ", "すいどう"],
+                answer: "だんぼう",
+                translation: "Karena musim dingin itu dingin, saya menyalakan (pemanas ruangan)."
+            }, {
+                question: "ごみを ______ に すてます。",
+                options: ["ごみばこ", "れいぞうこ", "せんたくき", "そうじき"],
+                answer: "ごみばこ",
+                translation: "Membuang sampah ke (tempat sampah)."
+            }, {
+                question: "日曜日、部屋の ______ を します。",
+                options: ["そうじ", "せんたく", "しごと", "べんきょう"],
+                answer: "そうじ",
+                translation: "Hari Minggu, melakukan (bersih-bersih) kamar."
+            }, {
+                question: "ふくが よごれたので、______ を します。",
+                options: ["せんたく", "そうじ", "しゅくだい", "りょうり"],
+                answer: "せんたく",
+                translation: "Karena pakaian kotor, saya melakukan (cucian)."
+            }, {
+                question: "わたしは 肉より 魚の ほうが ______ です。",
+                options: ["すき", "きらい", "じょうず", "へた"],
+                answer: "すき",
+                translation: "Saya lebih (suka) ikan daripada daging."
+            }, {
+                question: "日本語を 話すのが ______ に なりました。",
+                options: ["じょうず", "へた", "すき", "きらい"],
+                answer: "じょうず",
+                translation: "Telah menjadi (pintar/mahir) berbicara bahasa Jepang."
+            }, {
+                question: "食べすぎたので、おなかが ______ です。",
+                options: ["いっぱい", "すいて", "いたい", "わるい"],
+                answer: "いっぱい",
+                translation: "Karena makan terlalu banyak, perut saya (penuh/kenyang)."
+            }, {
+                question: "あしたは テストなので、______ 勉強してください。",
+                options: ["しっかり", "ぜんぜん", "あまり", "たいてい"],
+                answer: "しっかり",
+                translation: "Karena besok ujian, tolong belajar dengan (sungguh-sungguh)."
+            }, {
+                question: "かれは ______ 約束を 守ります。",
+                options: ["かならず", "たぶん", "きっと", "ぜひ"],
+                answer: "かならず",
+                translation: "Dia (pasti/selalu) menepati janji."
+            }, {
+                question: "日本へ 行ったら、______ 富士山に 登りたいです。",
+                options: ["ぜひ", "かならず", "たぶん", "きっと"],
+                answer: "ぜひ",
+                translation: "Jika pergi ke Jepang, (bagaimanapun juga / harus) ingin mendaki Gunung Fuji."
+            }, {
+                question: "部屋が ______ なりました。",
+                options: ["あかるく", "まるく", "しかくく", "こまかく"],
+                answer: "あかるく",
+                translation: "Kamarnya menjadi (terang)."
+            }, {
+                question: "お金が 足りないので、銀行で ______ きました。",
+                options: ["おろして", "あずけて", "かりて", "かして"],
+                answer: "おろして",
+                translation: "Karena uangnya tidak cukup, saya pergi (menarik/mengambil) uang di bank."
+            }, {
+                question: "友だちを １時間も ______ が、来ませんでした。",
+                options: ["まちました", "もちました", "たちました", "さそいました"],
+                answer: "まちました",
+                translation: "Saya sudah (menunggu) teman sampai 1 jam, tapi dia tidak datang."
+            }, {
+                question: "この 部屋は ______ から、よく 勉強できます。",
+                options: ["しずかだ", "にぎやかだ", "ひまだ", "あんぜんだ"],
+                answer: "しずかだ",
+                translation: "Karena kamar ini (tenang), saya bisa belajar dengan baik."
+            }, {
+                question: "毎日 ______ 運動するのは 体に いいです。",
+                options: ["つづけて", "はじめて", "おわって", "やめて"],
+                answer: "つづけて",
+                translation: "(Terus-menerus/Melanjutkan) berolahraga setiap hari itu baik untuk tubuh."
+            }, {
+                question: "じしょを ______、漢字の 意味を しらべました。",
+                options: ["ひいて", "おして", "とって", "みて"],
+                answer: "ひいて",
+                translation: "(Menarik/Membuka) kamus, lalu mencari arti kanji."
+            }, {
+                question: "先生に ______ 、「おはようございます」と 言いました。",
+                options: ["あいさつして", "おじぎして", "あやまって", "おれいして"],
+                answer: "あいさつして",
+                translation: "Saya (memberi salam) kepada guru dan berkata 'Selamat pagi'."
+            }, {
+                question: "しけんは ______ 終わりました。",
+                options: ["やっと", "ずっと", "ぜったい", "ぜひ"],
+                answer: "やっと",
+                translation: "Ujiannya (akhirnya) selesai."
+            }, {
+                question: "コーヒーに さとうを ______ 飲みます。",
+                options: ["いれて", "だして", "かけて", "つけて"],
+                answer: "いれて",
+                translation: "(Memasukkan) gula ke dalam kopi lalu meminumnya."
+            }, {
+                question: "この りょうりは ______ すぎて、食べられません。",
+                options: ["から", "あま", "にが", "すっぱ"],
+                answer: "から",
+                translation: "Masakan ini terlalu (pedas), jadi tidak bisa dimakan."
+            }, {
+                question: "かぜを ひいたときは、______ 休んだほうがいいですよ。",
+                options: ["ゆっくり", "はっきり", "びっくり", "がっかり"],
+                answer: "ゆっくり",
+                translation: "Saat masuk angin, lebih baik istirahat dengan (santai/penuh)."
+            }, {
+                question: "わたしは 毎朝、はを ______ から ごはんを 食べます。",
+                options: ["みがいて", "あらって", "ふいて", "そうじして"],
+                answer: "みがいて",
+                translation: "Setiap pagi, setelah (menggosok) gigi saya makan nasi."
+            }, {
+                question: "びょうきの ときは、病院で もらった くすりを ______ 。",
+                options: ["のみます", "たべます", "かみます", "すいます"],
+                answer: "のみます",
+                translation: "Saat sakit, (meminum) obat yang didapat dari rumah sakit."
+            }, {
+                question: "約束の 時間に ______ そうです。",
+                options: ["おくれ", "わすれ", "まちがえ", "なくし"],
+                answer: "おくれ",
+                translation: "Sepertinya akan (terlambat) di waktu yang dijanjikan."
+            }, {
+                question: "日本語の ______ が じょうずに なりました。",
+                options: ["はつおん", "はつめい", "はっけん", "はったつ"],
+                answer: "はつおん",
+                translation: "(Pelafalan/Pengucapan) bahasa Jepangnya menjadi pintar."
+            }, {
+                question: "きのう、スーパーで 肉や 野菜を ______ 買いました。",
+                options: ["たくさん", "たいへん", "とても", "いつも"],
+                answer: "たくさん",
+                translation: "Kemarin, saya membeli (banyak) daging dan sayuran di supermarket."
+            }, {
+                question: "わたしの ______ は、切手を あつめる ことです。",
+                options: ["しゅみ", "きょうみ", "ゆめ", "しゅうかん"],
+                answer: "しゅみ",
+                translation: "(Hobi) saya adalah mengumpulkan prangko."
+            }, {
+                question: "あの 人は いつも ______ 服を 着ていますね。",
+                options: ["はでな", "じょうぶな", "だいじな", "てきとうな"],
+                answer: "はでな",
+                translation: "Orang itu selalu memakai pakaian yang (mencolok) ya."
+            }, {
+                question: "大切な しるしを つけるために、______ を 使います。",
+                options: ["あかえんぴつ", "くろえんぴつ", "ボールペン", "けしゴム"],
+                answer: "あかえんぴつ",
+                translation: "Untuk memberi tanda yang penting, menggunakan (pensil merah)."
+            }, {
+                question: "じてんしゃが ______ しまったので、歩いて 帰りました。",
+                options: ["こしょう", "しゅうり", "けが", "びょうき"],
+                answer: "こしょう",
+                translation: "Karena sepedanya (rusak), saya pulang berjalan kaki."
+            }, {
+                question: "毎日、______ の ニュースを 見ます。",
+                options: ["せかい", "こくさい", "ちきゅう", "うちゅう"],
+                answer: "せかい",
+                translation: "Setiap hari menonton berita (dunia)."
+            }, {
+                question: "ここは 車の ______ が 多いので あぶないです。",
+                options: ["じこ", "こうつう", "うんてん", "こしょう"],
+                answer: "じこ",
+                translation: "Di sini banyak (kecelakaan) mobil, jadi berbahaya."
+            }, {
+                question: "______ が わるくて、学校を 休みました。",
+                options: ["きぶん", "けしき", "きせつ", "きもち"],
+                answer: "きぶん",
+                translation: "Karena (perasaan/kondisi badan) buruk, saya libur sekolah."
+            }, {
+                question: "あしたの ______ は 晴れでしょう。",
+                options: ["てんき", "きせつ", "くうき", "けしき"],
+                answer: "てんき",
+                translation: "(Cuaca) besok mungkin akan cerah."
+            }, {
+                question: "かぜが つよくて、______ が われています。",
+                options: ["まどガラス", "コップ", "おさら", "びん"],
+                answer: "まどガラス",
+                translation: "Anginnya kencang, dan (kaca jendela) pecah."
+            }, {
+                question: "わたしは えを ______ のが すきです。",
+                options: ["かく", "みる", "とる", "する"],
+                answer: "かく",
+                translation: "Saya suka (menggambar) lukisan."
+            }, {
+                question: "さいふを ______ しまって、こまっています。",
+                options: ["なくして", "おとして", "わすれて", "ぬすんで"],
+                answer: "なくして",
+                translation: "Saya tidak sengaja (menghilangkan) dompet, jadi saya sedang kesulitan."
+            }, {
+                question: "ともだちの 誕生日 ______ に 時計を 買いました。",
+                options: ["プレゼント", "おいわい", "おみやげ", "おれい"],
+                answer: "プレゼント",
+                translation: "Saya membeli jam tangan sebagai (hadiah) ulang tahun teman."
+            }, {
+                question: "テストが むずかしくて、______ が わかりませんでした。",
+                options: ["こたえ", "しつもん", "いみ", "もんだい"],
+                answer: "こたえ",
+                translation: "Ujiannya sulit, dan saya tidak tahu (jawabannya)."
+            }, {
+                question: "あの 店は いつも お客さんが ______ います。",
+                options: ["ならんで", "すわって", "たって", "まって"],
+                answer: "ならんで",
+                translation: "Toko itu pelanggannya selalu (berbaris/mengantre)."
+            }, {
+                question: "りょうりが できたので、机に ______ ください。",
+                options: ["ならべて", "ならんで", "おいて", "ついて"],
+                answer: "ならべて",
+                translation: "Makanannya sudah jadi, tolong (bariskan/susun) di meja."
+            }, {
+                question: "電気が ______ いますから、だれか 部屋に いるでしょう。",
+                options: ["ついて", "けして", "あいて", "しまって"],
+                answer: "ついて",
+                translation: "Karena lampunya (menyala), mungkin ada orang di kamar."
+            }, {
+                question: "あぶないですから、きかいに ______ ないで ください。",
+                options: ["さわら", "とら", "おさ", "ひか"],
+                answer: "さわら",
+                translation: "Karena berbahaya, tolong jangan (menyentuh) mesin."
+            }, {
+                question: "くつが きたないので、______ ください。",
+                options: ["あらって", "みがいて", "ふいて", "はいて"],
+                answer: "あらって",
+                translation: "Karena sepatunya kotor, tolong (cuci)."
+            }, {
+                question: "あかちゃんが 大きな 声で ______ います。",
+                options: ["ないて", "わらって", "おこって", "よろこんで"],
+                answer: "ないて",
+                translation: "Bayi sedang (menangis) dengan suara keras."
+            }, {
+                question: "コンサートの ______ を 2まい 買いました。",
+                options: ["チケット", "パスポート", "ビザ", "レシート"],
+                answer: "チケット",
+                translation: "Saya membeli 2 lembar (tiket) konser."
+            }, {
+                question: "にもつは はやい ______ で 送りました。",
+                options: ["こうくうびん", "ふなびん", "たっきゅうびん", "ゆうびん"],
+                answer: "こうくうびん",
+                translation: "Saya mengirim barang lewat (pos udara) yang cepat."
+            }, {
+                question: "コーヒーを 飲んだら、カップを ______ ください。",
+                options: ["かたづけて", "そうじして", "あらって", "ふいて"],
+                answer: "かたづけて",
+                translation: "Kalau sudah minum kopi, tolong (bereskan/rapikan) cangkirnya."
+            }, {
+                question: "道で 先生に 偶然 ______ 。",
+                options: ["あいました", "みました", "ききました", "はなしました"],
+                answer: "あいました",
+                translation: "Tidak sengaja (bertemu) guru di jalan."
+            }, {
+                question: "朝 おきて、せっけんで 顔を ______ 。",
+                options: ["あらいます", "みがきます", "ふきます", "あびます"],
+                answer: "あらいます",
+                translation: "Bangun pagi, lalu (mencuci) muka dengan sabun."
+            }, {
+                question: "旅行の ______ を しましょう。",
+                options: ["じゅんび", "そうじ", "せんたく", "しごと"],
+                answer: "じゅんび",
+                translation: "Mari lakukan (persiapan) perjalanan."
+            }, {
+                question: "この バスは つぎの ______ に とまります。",
+                options: ["バスてい", "えき", "くうこう", "みなと"],
+                answer: "バスてい",
+                translation: "Bus ini berhenti di (halte bus) selanjutnya."
+            }, {
+                question: "にほんの ______ に ついて べんきょうします。",
+                options: ["ぶんか", "しゅうかん", "れきし", "しゃかい"],
+                answer: "ぶんか",
+                translation: "Belajar tentang (budaya) Jepang."
+            }, {
+                question: "かみが 長くなったので、______ に 行って 切ってもらいます。",
+                options: ["びよういん", "びょういん", "ぎんこう", "ゆうびんきょく"],
+                answer: "びよういん",
+                translation: "Karena rambut sudah panjang, saya pergi ke (salon kecantikan) untuk minta dipotong."
+            }, {
+                question: "この ほんは とても ______ ですから、読んでみてください。",
+                options: ["おもしろい", "つまらない", "むずかしい", "かんたん"],
+                answer: "おもしろい",
+                translation: "Buku ini sangat (menarik), jadi silakan coba baca."
+            }, {
+                question: "インターネットで ホテルを ______ しました。",
+                options: ["よやく", "やくそく", "じゅんび", "そうだん"],
+                answer: "よやく",
+                translation: "Saya telah (memesan/booking) hotel di internet."
+            }, {
+                question: "かのじょは いつも ______ を しています。",
+                options: ["おしゃれ", "おしゃべり", "おせわ", "おれい"],
+                answer: "おしゃれ",
+                translation: "Dia selalu tampil (bergaya/modis)."
+            }, {
+                question: "おなかが ______ から、なにか 食べましょう。",
+                options: ["すいた", "いっぱい", "いたい", "わるい"],
+                answer: "すいた",
+                translation: "Karena perut (kosong/lapar), mari makan sesuatu."
+            }, {
+                question: "太ったので、この ズボンは 少し ______ です。",
+                options: ["きつい", "ゆるい", "いたい", "わるい"],
+                answer: "きつい",
+                translation: "Karena bertambah gemuk, celana ini sedikit (sempit/ketat)."
+            }, {
+                question: "この くつは 大きすぎて ______ です。",
+                options: ["ゆるい", "きつい", "ながい", "みじかい"],
+                answer: "ゆるい",
+                translation: "Sepatu ini terlalu besar dan (longgar)."
+            }
+        ],
+        "goi-paraphrase": [{
+                question: "ニュースを <u>知らせます</u>。",
+                options: ["見ます", "聞きます", "教えます", "考えます"],
+                answer: "教えます",
+                translation: "知らせる (memberi tahu) bersinonim dengan 教える (mengajar/memberi tahu/menginformasikan)."
+            }, {
+                question: "先生に <u>謝りました</u>。",
+                options: ["「ありがとうございます」と 言いました", "「ごめんなさい」と 言いました", "「おはようございます」と 言いました", "「さようなら」と 言いました"],
+                answer: "「ごめんなさい」と 言いました",
+                translation: "謝る (meminta maaf) berarti mengatakan 'Gomennasai'."
+            }, {
+                question: "<u>さっき</u> 山田さんに 会いました。",
+                options: ["少し 前に", "ずっと 前に", "あした", "あとで"],
+                answer: "少し 前に",
+                translation: "さっき (tadi/baru saja) bermakna beberapa saat yang lalu (sukoshi mae ni)."
+            }, {
+                question: "<u>たまに</u> 映画を 見ます。",
+                options: ["毎日", "いつも", "ときどき", "ぜんぜん"],
+                answer: "ときどき",
+                translation: "たまに (kadang-kadang/sesekali) bersinonim dengan ときどき (kadang-kadang)."
+            }, {
+                question: "休みの 日は <u>たいてい</u> 家に います。",
+                options: ["いつも", "だいたい", "ときどき", "ぜんぜん"],
+                answer: "だいたい",
+                translation: "たいてい (biasanya/sebagian besar) memiliki makna yang mirip dengan だいたい (hampir selalu/rata-rata)."
+            }, {
+                question: "この 本は <u>ちっとも</u> おもしろくないです。",
+                options: ["ぜんぜん", "とても", "すこし", "たいへん"],
+                answer: "ぜんぜん",
+                translation: "ちっとも (sama sekali tidak) adalah sinonim dari ぜんぜん (sama sekali tidak)."
+            }, {
+                question: "この 機械の 使い方は <u>複雑です</u>。",
+                options: ["簡単ではありません", "安全ではありません", "便利ではありません", "丈夫ではありません"],
+                answer: "簡単ではありません",
+                translation: "複雑 / Fukuzatsu (rumit) bermakna tidak mudah/gampang (kantan dewa arimasen)."
+            }, {
+                question: "友だちに <u>お祝い</u>を あげました。",
+                options: ["おめでとうと 言うための プレゼント", "ありがとうと 言うための プレゼント", "ごめんなさいと 言うための プレゼント", "さようならと 言うための プレゼント"],
+                answer: "おめでとうと 言うための プレゼント",
+                translation: "お祝い (perayaan/kado selamat) adalah hadiah untuk mengucapkan selamat."
+            }, {
+                question: "新しい 星を <u>発見しました</u>。",
+                options: ["作りました", "見つけました", "失くしました", "買いました"],
+                answer: "見つけました",
+                translation: "発見する / Hakken suru (menemukan sesuatu yang baru) bersinonim dengan 見つける (menemukan)."
+            }, {
+                question: "テストの <u>準備</u>を します。",
+                options: ["勉強", "復習", "用意", "練習"],
+                answer: "用意",
+                translation: "準備 / Junbi (persiapan) bersinonim dengan 用意 / Youi (persiapan)."
+            }, {
+                question: "学校を 休んだ <u>理由</u>を 教えてください。",
+                options: ["どうして 休んだか", "いつ 休んだか", "だれが 休んだか", "どこで 休んだか"],
+                answer: "どうして 休んだか",
+                translation: "理由 / Riyuu (alasan) menjelaskan 'kenapa/mengapa' (doushite)."
+            }, {
+                question: "明日の <u>予定</u>を 教えてください。",
+                options: ["明日 何を するか", "明日 どこへ 行くか", "明日 だれに 会うか", "明日 いつ 起きるか"],
+                answer: "明日 何を するか",
+                translation: "予定 / Yotei (jadwal/rencana) adalah apa yang akan dilakukan nanti."
+            }, {
+                question: "たばこを <u>やめました</u>。",
+                options: ["すうことに しました", "すわないことに しました", "買うことに しました", "買わないことに しました"],
+                answer: "すわないことに しました",
+                translation: "やめる (berhenti) bermakna memutuskan untuk tidak melakukannya lagi (suwanai koto ni shimashita)."
+            }, {
+                question: "この 川で 泳ぐのは <u>危険です</u>。",
+                options: ["安全です", "あぶないです", "便利です", "きれいです"],
+                answer: "あぶないです",
+                translation: "危険 / Kiken (berbahaya) bersinonim dengan あぶない / Abunai."
+            }, {
+                question: "テストに 合格できるか <u>心配です</u>。",
+                options: ["安心できません", "安心です", "自信が あります", "がっかりです"],
+                answer: "安心できません",
+                translation: "心配 / Shinpai (khawatir) berarti tidak bisa tenang/lega (anshin dekimasen)."
+            }, {
+                question: "ここは <u>安全な</u> 町です。",
+                options: ["あぶない", "あぶなくない", "にぎやかな", "しずかな"],
+                answer: "あぶなくない",
+                translation: "安全 / Anzen (aman) berarti tidak berbahaya (abunakunai)."
+            }, {
+                question: "この パソコンは とても <u>役に立ちます</u>。",
+                options: ["高くて 買えません", "便利で よく 使います", "複雑で 使えません", "古くて 壊れています"],
+                answer: "便利で よく 使います",
+                translation: "役に立つ / Yaku ni tatsu (berguna) berarti praktis dan sering digunakan."
+            }, {
+                question: "友だちを パーティーに <u>招待しました</u>。",
+                options: ["来てくださいと 言いました", "行かないでくださいと 言いました", "おめでとうと 言いました", "ありがとうと 言いました"],
+                answer: "来てくださいと 言いました",
+                translation: "招待する / Shoutai suru (mengundang) berarti meminta seseorang untuk datang."
+            }, {
+                question: "友だちを 映画に <u>誘いました</u>。",
+                options: ["いっしょに 行きましょうと 言いました", "ひとりで 行ってくださいと 言いました", "行かないでくださいと 言いました", "来ないでくださいと 言いました"],
+                answer: "いっしょに 行きましょうと 言いました",
+                translation: "誘う / Sasou (mengajak) berarti berkata 'mari pergi bersama'."
+            }, {
+                question: "わからない ことを 先生に <u>尋ねました</u>。",
+                options: ["答えました", "質問しました", "お願いしました", "教えました"],
+                answer: "質問しました",
+                translation: "尋ねる / Tazuneru (bertanya) bersinonim dengan 質問する / Shitsumon suru (mengajukan pertanyaan)."
+            }, {
+                question: "きのう、友だちの 家を <u>訪ねました</u>。",
+                options: ["行きました", "見ました", "帰りました", "出ました"],
+                answer: "行きました",
+                translation: "訪ねる / Tazuneru (mengunjungi) bermakna pergi (ke tempat seseorang)."
+            }, {
+                question: "好きな ケーキを <u>選んで</u> ください。",
+                options: ["どれが いいか 決めて", "ぜんぶ 食べて", "だれかに あげて", "じぶんで 作って"],
+                answer: "どれが いいか 決めて",
+                translation: "選ぶ / Erabu (memilih) berarti memutuskan mana yang bagus/diinginkan."
+            }, {
+                question: "<u>床屋</u>へ 行きました。",
+                options: ["服を 買う 店", "靴を 買う 店", "髪を 切る 店", "薬を 買う 店"],
+                answer: "髪を 切る 店",
+                translation: "床屋 / Tokoya (tempat cukur) adalah toko tempat memotong rambut."
+            }, {
+                question: "８時に <u>出発しました</u>。",
+                options: ["出かけました", "着きました", "終わりました", "始まりました"],
+                answer: "出かけました",
+                translation: "出発する / Shuppatsu suru (berangkat) bersinonim dengan 出かける (pergi keluar/berangkat)."
+            }, {
+                question: "10時に <u>到着しました</u>。",
+                options: ["出かけました", "着きました", "終わりました", "始まりました"],
+                answer: "着きました",
+                translation: "到着する / Touchaku suru (tiba) bersinonim dengan 着く / Tsuku (sampai)."
+            }, {
+                question: "子どもの ころを <u>思い出しました</u>。",
+                options: ["忘れていた ことが わかりました", "新しい ことを 覚えました", "忘れることに しました", "考えないことに しました"],
+                answer: "忘れていた ことが わかりました",
+                translation: "思い出す / Omoidasu (teringat) berarti menyadari kembali hal yang sempat terlupakan."
+            }, {
+                question: "テストの 答えを <u>間違えました</u>。",
+                options: ["正しかったです", "正しく ありませんでした", "ぜんぶ 書きました", "ぜんぶ わかりました"],
+                answer: "正しく ありませんでした",
+                translation: "間違える / Machigaeru (salah) berarti tidak benar (tadashiku arimasen)."
+            }, {
+                question: "日本の 生活に <u>慣れました</u>。",
+                options: ["経験して、普通に なりました", "まだ わかりません", "いやに なりました", "好きに なりました"],
+                answer: "経験して、普通に なりました",
+                translation: "慣れる / Nareru (terbiasa) berarti menjadi hal yang biasa karena sudah dialami."
+            }, {
+                question: "教室で <u>騒がないで</u> ください。",
+                options: ["大きな 声を 出さないで", "走らないで", "寝ないで", "食べないで"],
+                answer: "大きな 声を 出さないで",
+                translation: "騒ぐ / Sawagu (membuat keributan) bermakna mengeluarkan suara besar/berisik."
+            }, {
+                question: "日本へ 行ったら <u>ぜひ</u> 富士山に 登りたいです。",
+                options: ["たぶん", "きっと", "かならず", "ぜんぜん"],
+                answer: "かならず",
+                translation: "ぜひ (bagaimanapun juga / pastikan) memiliki nuansa yang kuat seperti かならず (pasti/harus)."
+            }, {
+                question: "大きな 音が して <u>びっくりしました</u>。",
+                options: ["安心しました", "がっかりしました", "おどろきました", "怒りました"],
+                answer: "おどろきました",
+                translation: "びっくりする (terkejut) bersinonim dengan おどろく (terkejut)."
+            }, {
+                question: "試合に 負けて <u>がっかりしました</u>。",
+                options: ["残念に 思いました", "安心しました", "びっくりしました", "喜びました"],
+                answer: "残念に 思いました",
+                translation: "がっかりする (kecewa) bermakna merasa sayang/kecewa (zannen ni omou)."
+            }, {
+                question: "これは <u>すばらしい</u> 絵ですね。",
+                options: ["とても いい", "とても 悪い", "とても 高い", "とても 古い"],
+                answer: "とても いい",
+                translation: "すばらしい (luar biasa/hebat) berarti sangat bagus."
+            }, {
+                question: "きのうは <u>ひどい</u> 雨でした。",
+                options: ["とても 強い", "とても 弱い", "とても きれいな", "とても 静かな"],
+                answer: "とても 強い",
+                translation: "ひどい (parah/hebat dalam hal negatif) jika digunakan untuk cuaca/hujan berarti sangat kuat."
+            }, {
+                question: "これは <u>珍しい</u> 鳥です。",
+                options: ["あまり 見ない", "よく 見る", "どこにでも いる", "とても 大きな"],
+                answer: "あまり 見ない",
+                translation: "珍しい / Mezurashii (langka) berarti jarang / tidak sering dilihat."
+            }, {
+                question: "駅まで 友だちを <u>迎えに行きました</u>。",
+                options: ["来るのを 待って、いっしょに 帰るために 行きました", "「さようなら」を 言うために 行きました", "さがすために 行きました", "案内するために 行きました"],
+                answer: "来るのを 待って、いっしょに 帰るために 行きました",
+                translation: "迎えに行く (pergi menjemput) berarti pergi menunggu orang datang lalu pulang bersama."
+            }, {
+                question: "空港へ 友だちを <u>見送りに行きました</u>。",
+                options: ["帰る 友だちに「さようなら」を 言うために 行きました", "来るのを 待って、いっしょに 帰るために 行きました", "さがすために 行きました", "案内するために 行きました"],
+                answer: "帰る 友だちに「さようなら」を 言うために 行きました",
+                translation: "見送る (mengantar kepergian) berarti pergi untuk mengucapkan selamat jalan."
+            }, {
+                question: "旅行の <u>計画</u>を たてます。",
+                options: ["どこへ 行くか、どうするか 考えます", "荷物を かばんに 入れます", "ホテルに 電話します", "きっぷを 買います"],
+                answer: "どこへ 行くか、どうするか 考えます",
+                translation: "計画 / Keikaku (rencana) adalah memikirkan apa yang akan dilakukan dan ke mana."
+            }, {
+                question: "時計を <u>探しています</u>。",
+                options: ["見つけるために 見ています", "買うために お金を 払っています", "直すために 店に 持っていきます", "捨てるために ごみ箱に 入れます"],
+                answer: "見つけるために 見ています",
+                translation: "探す / Sagasu (mencari) berarti melihat sekeliling untuk menemukan sesuatu."
+            }, {
+                question: "パソコンが <u>故障しました</u>。",
+                options: ["壊れて 動かなく なりました", "古く なりました", "新しく なりました", "直りました"],
+                answer: "壊れて 動かなく なりました",
+                translation: "故障する / Koshou suru (rusak) berarti rusak dan tidak bisa bergerak/berfungsi."
+            }, {
+                question: "自転車を <u>修理しました</u>。",
+                options: ["直しました", "壊しました", "買いました", "捨てました"],
+                answer: "直しました",
+                translation: "修理する / Shuuri suru (memperbaiki) bersinonim dengan 直す / Naosu."
+            }, {
+                question: "先生に <u>連絡しました</u>。",
+                options: ["電話や メールで 知らせました", "会って 話しました", "質問しました", "謝りました"],
+                answer: "電話や メールで 知らせました",
+                translation: "連絡する / Renraku suru (menghubungi) biasanya melalui telepon, email, atau surat untuk mengabarkan sesuatu."
+            }, {
+                question: "友だちに <u>相談しました</u>。",
+                options: ["どうしたら いいか 話しました", "いっしょに 遊びました", "お金を 借りました", "謝りました"],
+                answer: "どうしたら いいか 話しました",
+                translation: "相談する / Soudan suru (berkonsultasi) berarti membicarakan apa yang sebaiknya dilakukan."
+            }, {
+                question: "明日の 会議に <u>出席します</u>。",
+                options: ["出ます", "休みます", "遅れます", "終わります"],
+                answer: "出ます",
+                translation: "出席する / Shusseki suru (hadir) bersinonim dengan 出る / Deru (hadir/keluar)."
+            }, {
+                question: "風邪で 授業を <u>欠席しました</u>。",
+                options: ["休みました", "出ました", "遅れました", "終わりました"],
+                answer: "休みました",
+                translation: "欠席する / Kesseki suru (absen/tidak hadir) bersinonim dengan 休む / Yasumu (libur/absen)."
+            }, {
+                question: "宿題を <u>すっかり</u> 忘れました。",
+                options: ["ぜんぶ", "すこし", "だいたい", "ぜんぜん"],
+                answer: "ぜんぶ",
+                translation: "すっかり (sepenuhnya/total) bersinonim dengan ぜんぶ (semuanya)."
+            }, {
+                question: "<u>しっかり</u> 勉強して ください。",
+                options: ["がんばって 十分に", "すこしだけ", "ゆっくり", "急いで"],
+                answer: "がんばって 十分に",
+                translation: "しっかり (dengan sungguh-sungguh/kuat) bermakna berusaha keras dan cukup."
+            }, {
+                question: "富士山が <u>はっきり</u> 見えます。",
+                options: ["きれいに よく", "少しだけ", "ぜんぜん", "だんだん"],
+                answer: "きれいに よく",
+                translation: "はっきり (dengan jelas) bermakna terlihat dengan baik dan bersih."
+            }, {
+                question: "花を <u>育てています</u>。",
+                options: ["大きく するために 世話を しています", "店で 売っています", "部屋に 飾っています", "ごみ箱に 捨てています"],
+                answer: "大きく するために 世話を しています",
+                translation: "育てる / Sodateru (membesarkan/merawat) bermakna mengurus agar menjadi besar."
+            }, {
+                question: "先生に <u>しかられました</u>。",
+                options: ["「だめです」と 強く 言われました", "「いいですね」と ほめられました", "「ありがとう」と 言われました", "「ごめんなさい」と 謝られました"],
+                answer: "「だめです」と 強く 言われました",
+                translation: "しかられる (dimarahi) berarti ditegur dengan keras karena melakukan kesalahan."
+            }, {
+                question: "先生に <u>ほめられました</u>。",
+                options: ["「いいですね」と 言われました", "「だめです」と 言われました", "「ありがとう」と 言われました", "「ごめんなさい」と 言われました"],
+                answer: "「いいですね」と 言われました",
+                translation: "褒める (homeru) berarti memuji (mengatakan hal yang baik)."
+            }, {
+                question: "友だちに 仕事を <u>頼みました</u>。",
+                options: ["お願いしました", "手伝いました", "教えました", "謝りました"],
+                answer: "お願いしました",
+                translation: "頼む (tanomu) bersinonim dengan お願いする (meminta tolong)."
+            }, {
+                question: "<u>とうとう</u> 富士山に 登りました。",
+                options: ["やっと", "すぐに", "だんだん", "ちっとも"],
+                answer: "やっと",
+                translation: "とうとう (pada akhirnya/akhirnya) bersinonim dengan やっと (akhirnya)."
+            }, {
+                question: "<u>そろそろ</u> 帰りましょう。",
+                options: ["もうすぐ", "ずっと", "いつでも", "まだ"],
+                answer: "もうすぐ",
+                translation: "そろそろ (sebentar lagi) bermakna waktunya sudah hampir tiba (mou sugu)."
+            }, {
+                question: "<u>まず</u>、名前を 書いて ください。",
+                options: ["さいしょに", "さいごに", "すぐに", "ゆっくり"],
+                answer: "さいしょに",
+                translation: "まず (pertama-tama) bermakna di awal (saisho ni)."
+            }, {
+                question: "宿題は <u>ほとんど</u> 終わりました。",
+                options: ["だいたい", "ぜんぜん", "ぜんぶ", "すこし"],
+                answer: "だいたい",
+                translation: "ほとんど (hampir semua) bersinonim dengan だいたい (sebagian besar)."
+            }, {
+                question: "あの 人は <u>めったに</u> 怒りません。",
+                options: ["ほとんど 怒りません", "いつも 怒ります", "ぜったいに 怒りません", "よく 怒ります"],
+                answer: "ほとんど 怒りません",
+                translation: "めったに～ない (jarang sekali) bermakna hampir tidak pernah (hotondo~nai)."
+            }, {
+                question: "<u>このあいだ</u>、山田さんに 会いました。",
+                options: ["少し 前に", "あした", "ずっと 前に", "あとで"],
+                answer: "少し 前に",
+                translation: "このあいだ (baru-baru ini / tempo hari) bermakna beberapa waktu yang lalu."
+            }, {
+                question: "きのうは <u>ぐっすり</u> 寝ました。",
+                options: ["よく", "少しだけ", "ぜんぜん", "だんだん"],
+                answer: "よく",
+                translation: "ぐっすり (terlelap) berarti tidur dengan sangat baik (yoku nemashita)."
+            }, {
+                question: "彼女は 英語が <u>ぺらぺらです</u>。",
+                options: ["上手に 話します", "ぜんぜん 話せません", "少し 話します", "話すのが 下手です"],
+                answer: "上手に 話します",
+                translation: "ぺらぺら (fasih) berarti berbicara dengan sangat pintar/lancar."
+            }, {
+                question: "くつを <u>きちんと</u> 並べて ください。",
+                options: ["きれいに", "早く", "すぐに", "ゆっくり"],
+                answer: "きれいに",
+                translation: "きちんと (dengan rapi/pantas) bersinonim dengan きれいに (dengan rapi/bersih)."
+            }, {
+                question: "<u>うっかり</u> して、かさを 忘れました。",
+                options: ["まちがえて", "急いで", "気をつけて", "わざと"],
+                answer: "まちがえて",
+                translation: "うっかり (ceroboh/tidak sengaja) bermakna melakukan kesalahan tanpa sadar."
+            }, {
+                question: "時間に <u>ぎりぎり</u> 間に合いました。",
+                options: ["ちょうど", "早く", "遅れて", "すっかり"],
+                answer: "ちょうど",
+                translation: "ぎりぎり (pas-pasan / nyaris) berarti waktunya sangat mepet tapi pas."
+            }, {
+                question: "駅で <u>たまたま</u> 先生に 会いました。",
+                options: ["ぐうぜん", "いつも", "ぜったいに", "かならず"],
+                answer: "ぐうぜん",
+                translation: "たまたま (kebetulan) bersinonim dengan 偶然 / guuzen."
+            }, {
+                question: "ここで 写真を 撮っても <u>かまいません</u>。",
+                options: ["いいです", "だめです", "いけません", "いりません"],
+                answer: "いいです",
+                translation: "かまわない (tidak apa-apa / boleh) bermakna diizinkan (ii desu)."
+            }, {
+                question: "雨だから、行けなくても <u>仕方がないです</u>。",
+                options: ["ほかの 方法が ないです", "とても 残念です", "行く はずです", "行く つもりです"],
+                answer: "ほかの 方法が ないです",
+                translation: "仕方がない (tidak ada cara lain / mau bagaimana lagi)."
+            }, {
+                question: "<u>もちろん</u>、パーティーに 行きます。",
+                options: ["ぜったい", "たぶん", "もしかしたら", "ぜんぜん"],
+                answer: "ぜったい",
+                translation: "もちろん (tentu saja) menegaskan kepastian (zettai)."
+            }, {
+                question: "<u>わざわざ</u> 来てくれて、ありがとうございます。",
+                options: ["特別に", "急いで", "ついでに", "ぐうぜん"],
+                answer: "特別に",
+                translation: "わざわざ (menyempatkan diri / bersusah payah) berarti melakukan sesuatu secara khusus untuk orang lain."
+            }, {
+                question: "お酒は <u>遠慮します</u>。",
+                options: ["やめて おきます", "たくさん 飲みます", "ぜひ 飲みます", "買います"],
+                answer: "やめて おきます",
+                translation: "遠慮する (sungkan/menolak dengan halus) berarti memutuskan untuk tidak melakukannya."
+            }, {
+                question: "先生に <u>お礼を 言いました</u>。",
+                options: ["「ありがとう」と 言いました", "「ごめんなさい」と 言いました", "「さようなら」と 言いました", "「おはよう」と 言いました"],
+                answer: "「ありがとう」と 言いました",
+                translation: "お礼を言う (mengucapkan terima kasih)."
+            }, {
+                question: "出かける <u>支度</u>を します。",
+                options: ["準備", "掃除", "洗濯", "連絡"],
+                answer: "準備",
+                translation: "支度 / shitaku (persiapan) bersinonim dengan 準備 / junbi."
+            }, {
+                question: "友だちと <u>けんかしました</u>。",
+                options: ["怒って 言い合いました", "いっしょに 遊びました", "楽しく 話しました", "食事を しました"],
+                answer: "怒って 言い合いました",
+                translation: "けんかする (bertengkar) berarti saling marah dan adu mulut."
+            }, {
+                question: "この 二つの かばんは よく <u>似ています</u>。",
+                options: ["同じようです", "違います", "新しいです", "高いです"],
+                answer: "同じようです",
+                translation: "似ている (mirip) berarti terlihat sama (onaji you desu)."
+            }, {
+                question: "わたしの 祖父は 去年の 冬に <u>亡くなりました</u>。",
+                options: ["死にました", "病気に なりました", "生まれました", "退院しました"],
+                answer: "死にました",
+                translation: "亡くなる / nakunaru adalah bentuk sopan dari 死ぬ / shinu (meninggal)."
+            }, {
+                question: "電車で かばんを <u>ぬすまれました</u>。",
+                options: ["ほかの 人に 取られました", "自分で 捨てました", "忘れて きました", "落としました"],
+                answer: "ほかの 人に 取られました",
+                translation: "盗まれる (dicuri) berarti diambil oleh orang lain."
+            }, {
+                question: "最近、少し <u>やせました</u>。",
+                options: ["体が 細く なりました", "体が 大きく なりました", "病気に なりました", "元気に なりました"],
+                answer: "体が 細く なりました",
+                translation: "やせる (menjadi kurus) berarti badan menjadi kecil/langsing."
+            }, {
+                question: "おいしいものを たくさん 食べて、<u>太りました</u>。",
+                options: ["体が 大きく なりました", "体が 細く なりました", "病気に なりました", "きれいに なりました"],
+                answer: "体が 大きく なりました",
+                translation: "太る (menjadi gemuk) berarti badan menjadi besar."
+            }, {
+                question: "カメラの 値段が <u>下がりました</u>。",
+                options: ["安く なりました", "高く なりました", "良く なりました", "悪く なりました"],
+                answer: "安く なりました",
+                translation: "下がる (turun) jika digunakan untuk harga berarti menjadi murah."
+            }, {
+                question: "ガソリンの 値段が <u>上がりました</u>。",
+                options: ["高く なりました", "安く なりました", "多く なりました", "少なく なりました"],
+                answer: "高く なりました",
+                translation: "上がる (naik) jika digunakan untuk harga berarti menjadi mahal."
+            }, {
+                question: "お湯を <u>沸かします</u>。",
+                options: ["水を 熱く します", "お茶を 飲みます", "水を 冷たく します", "コップを 洗います"],
+                answer: "水を 熱く します",
+                translation: "沸かす (mendidihkan) berarti memanaskan air."
+            }, {
+                question: "洗濯物が <u>乾きました</u>。",
+                options: ["水が なくなりました", "水が つきました", "よごれました", "きれいになりました"],
+                answer: "水が なくなりました",
+                translation: "乾く (kering) berarti airnya sudah hilang."
+            }, {
+                question: "雨に 降られて、服が <u>濡れました</u>。",
+                options: ["水が つきました", "水が なくなりました", "よごれました", "破れました"],
+                answer: "水が つきました",
+                translation: "濡れる (basah) berarti terkena air."
+            }, {
+                question: "大学へ 行くのを <u>諦めました</u>。",
+                options: ["やめる ことに しました", "行く ことに しました", "準備を しました", "約束 しました"],
+                answer: "やめる ことに しました",
+                translation: "諦める (menyerah) berarti memutuskan untuk berhenti/tidak melakukan."
+            }, {
+                question: "道で お金を <u>拾いました</u>。",
+                options: ["下に あるものを 取りました", "上から 落としました", "ごみ箱に 捨てました", "ほかの 人に あげました"],
+                answer: "下に あるものを 取りました",
+                translation: "拾う (memungut/mengambil) berarti mengambil barang yang ada di bawah."
+            }, {
+                question: "ボールを <u>投げました</u>。",
+                options: ["遠くへ 飛ばしました", "下から 取りました", "足で けりました", "手で 打ちました"],
+                answer: "遠くへ 飛ばしました",
+                translation: "投げる (melempar) berarti menerbangkan sesuatu ke tempat jauh (dengan tangan)."
+            }, {
+                question: "逃げた 鳥を <u>捕まえました</u>。",
+                options: ["逃げないように しました", "遠くへ 飛ばしました", "外へ 出しました", "えさを やりました"],
+                answer: "逃げないように しました",
+                translation: "捕まえる (menangkap) berarti menahan agar tidak kabur."
+            }, {
+                question: "どろぼうが <u>逃げました</u>。",
+                options: ["捕まらないように 行きました", "物を 取るために 来ました", "警察に 謝りました", "物を 返しました"],
+                answer: "捕まらないように 行きました",
+                translation: "逃げる (kabur/melarikan diri) berarti pergi agar tidak tertangkap."
+            }, {
+                question: "テストに 合格するように <u>祈りました</u>。",
+                options: ["神に お願いしました", "先生に 質問しました", "友だちに 相談しました", "自分で 勉強しました"],
+                answer: "神に お願いしました",
+                translation: "祈る (berdoa) berarti meminta kepada Tuhan."
+            }, {
+                question: "こわくて <u>叫びました</u>。",
+                options: ["大きな 声を 出しました", "泣きました", "逃げました", "隠れました"],
+                answer: "大きな 声を 出しました",
+                translation: "叫ぶ (berteriak) berarti mengeluarkan suara yang sangat besar."
+            }, {
+                question: "あぶないから、機械に <u>触らないで</u> ください。",
+                options: ["手を 置かないで", "見ないで", "使わないで", "写真を 撮らないで"],
+                answer: "手を 置かないで",
+                translation: "触る (menyentuh) bermakna menaruh tangan pada sesuatu."
+            }, {
+                question: "日本の 料理を <u>味わいました</u>。",
+                options: ["どんな 味か たしかめました", "自分で 作りました", "においを かぎました", "たくさん 食べました"],
+                answer: "どんな 味か たしかめました",
+                translation: "味わう (mencicipi/menikmati) berarti memastikan rasanya seperti apa."
+            }, {
+                question: "ガスが もれている <u>においがします</u>。",
+                options: ["鼻で 感じます", "耳で 聞こえます", "目で 見えます", "口で わかります"],
+                answer: "鼻で 感じます",
+                translation: "においがする (tercium bau) adalah sesuatu yang dirasakan dengan hidung."
+            }, {
+                question: "となりの 部屋から <u>音がします</u>。",
+                options: ["耳で 聞こえます", "目で 見えます", "鼻で 感じます", "口で わかります"],
+                answer: "耳で 聞こえます",
+                translation: "音がする (terdengar suara) adalah sesuatu yang dirasakan dengan telinga."
+            }, {
+                question: "この スープは 変な <u>味がします</u>。",
+                options: ["口で 感じます", "耳で 聞こえます", "目で 見えます", "鼻で 感じます"],
+                answer: "口で 感じます",
+                translation: "味がする (ada rasa) adalah sesuatu yang dirasakan dengan mulut/lidah."
+            }, {
+                question: "だれかが 部屋に いる <u>気がします</u>。",
+                options: ["そんな 気持ちに なります", "はっきり 見えます", "においが します", "音が します"],
+                answer: "そんな 気持ちに なります",
+                translation: "気がする (merasa/sepertinya) berarti memiliki firasat atau perasaan seperti itu."
+            }, {
+                question: "遅れた <u>訳</u>を 話してください。",
+                options: ["理由", "予定", "時間", "意味"],
+                answer: "理由",
+                translation: "訳 / wake (alasan/penyebab) bersinonim dengan 理由 / riyuu."
+            }, {
+                question: "わたしの <u>夢</u>は 医者に なることです。",
+                options: ["将来 したい こと", "昨日 見た こと", "趣味", "仕事"],
+                answer: "将来 したい こと",
+                translation: "夢 (mimpi/cita-cita) adalah hal yang ingin dilakukan di masa depan."
+            }, {
+                question: "ここから 見える <u>景色</u>は きれいです。",
+                options: ["山や 川など 見える もの", "建物の中", "天気", "季節"],
+                answer: "山や 川など 見える もの",
+                translation: "景色 / Keshiki (pemandangan) adalah pemandangan alam seperti gunung dan sungai."
+            }, {
+                question: "この 町は <u>交通</u>が 便利です。",
+                options: ["車や 電車などの 乗り物", "買い物する 店", "病院や 郵便局", "山や 川"],
+                answer: "車や 電車などの 乗り物",
+                translation: "交通 / Koutsuu (lalu lintas/transportasi) merujuk pada kendaraan dan fasilitasnya."
+            }, {
+                question: "これは 学校の <u>規則</u>です。",
+                options: ["みんなが 守る こと", "みんなが 忘れる こと", "みんなが 勉強する こと", "みんなが 休む こと"],
+                answer: "みんなが 守る こと",
+                translation: "規則 / Kisoku (peraturan) adalah hal yang harus dipatuhi oleh semuanya."
+            }
+        ],
+        "goi-usage": [{
+                question: "新しい プロジェクトの _____ を 説明するために、資料を 準備しました。",
+                options: ["目的", "失敗", "困難", "開始"],
+                answer: "目的",
+                translation: "Saya menyiapkan materi untuk menjelaskan tujuan dari proyek baru tersebut."
+            }, {
+                question: "この 商品は 品質が 優れており、_____ が 高いです。",
+                options: ["評判", "失敗", "危険", "簡単"],
+                answer: "評判",
+                translation: "Produk ini berkualitas unggul dan memiliki reputasi yang tinggi."
+            }, {
+                question: "会議中に 重要な _____ が 指摘されたため、計画を 修正する ことになった。",
+                options: ["問題点", "成功", "利益", "喜び"],
+                answer: "問題点",
+                translation: "Karena ada poin penting yang ditunjukkan saat rapat, rencana harus direvisi."
+            }, {
+                question: "彼の _____ は 多くの 人々を 感動させた。",
+                options: ["努力", "怠惰", "無関心", "不満"],
+                answer: "努力",
+                translation: "Usaha kerasnya menggerakkan hati banyak orang."
+            }, {
+                question: "このような _____ が 続いては、事業の 継続は 難しいだろう。",
+                options: ["状況", "喜び", "成功", "活躍"],
+                answer: "状況",
+                translation: "Jika situasi seperti ini terus berlanjut, kelanjutan bisnis akan sulit."
+            }, {
+                question: "部長は チームの _____ を 適切に 管理している。",
+                options: ["能力", "欠点", "疲労", "不安"],
+                answer: "能力",
+                translation: "Kepala departemen mengelola kemampuan tim dengan tepat."
+            }, {
+                question: "その 店の サービスは _____ に 評価されている。",
+                options: ["高く", "低く", "悪く", "簡単に"],
+                answer: "高く",
+                translation: "Layanan toko tersebut dinilai tinggi."
+            }, {
+                question: "毎日 の _____ が 健康維持に 重要だ。",
+                options: ["運動", "睡眠不足", "怠け", "サボり"],
+                answer: "運動",
+                translation: "Olahraga harian penting untuk menjaga kesehatan."
+            }, {
+                question: "学生時代の _____ は、現在の 仕事に 役立っている。",
+                options: ["経験", "失敗", "遊び", "怠惰"],
+                answer: "経験",
+                translation: "Pengalaman zaman sekolah sangat berguna untuk pekerjaan sekarang."
+            }, {
+                question: "彼女は 仕事の _____ を 忍耐強く 対処している。",
+                options: ["ストレス", "喜び", "成功", "便利"],
+                answer: "ストレス",
+                translation: "Dia menghadapi stres pekerjaan dengan sabar."
+            }, {
+                question: "この 地域の _____ は 急速に 発展している。",
+                options: ["経済", "寒さ", "距離", "色"],
+                answer: "経済",
+                translation: "Ekonomi wilayah ini berkembang pesat."
+            }, {
+                question: "申し込み の _____ は 来月末までです。",
+                options: ["期限", "色", "形", "高さ"],
+                answer: "期限",
+                translation: "Batas waktu pendaftaran adalah akhir bulan depan."
+            }, {
+                question: "彼は 複雑な 問題を シンプルに _____ した。",
+                options: ["解説", "隠蔽", "無視", "混乱"],
+                answer: "解説",
+                translation: "Dia menjelaskan masalah kompleks dengan cara yang sederhana."
+            }, {
+                question: "この 計画の _____ は かなり 大きい。",
+                options: ["規模", "色", "名前", "時間"],
+                answer: "規模",
+                translation: "Skala rencana ini cukup besar."
+            }, {
+                question: "従業員の _____ は 企業の 発展に 直結している。",
+                options: ["貢献", "怠惰", "不注意", "違反"],
+                answer: "貢献",
+                translation: "Kontribusi karyawan berhubungan langsung dengan perkembangan perusahaan."
+            }, {
+                question: "この 製品の _____ は 業界の 基準を 超えている。",
+                options: ["品質", "色", "形状", "重さ"],
+                answer: "品質",
+                translation: "Kualitas produk ini melebihi standar industri."
+            }, {
+                question: "長年の _____ により、彼は この 分野の 専門家になった。",
+                options: ["研究", "怠け", "無視", "否定"],
+                answer: "研究",
+                translation: "Melalui penelitian bertahun-tahun, dia menjadi ahli di bidang ini."
+            }, {
+                question: "この 会議の _____ は 次週です。",
+                options: ["予定", "色", "価値", "名前"],
+                answer: "予定",
+                translation: "Jadwal rapat ini adalah minggu depan."
+            }, {
+                question: "新しい 方針の _____ は まだ 不透明だ。",
+                options: ["影響", "色", "形", "臭い"],
+                answer: "影響",
+                translation: "Dampak dari kebijakan baru masih tidak jelas."
+            }, {
+                question: "その 事件の _____ は 警察が 調査中だ。",
+                options: ["原因", "色", "高さ", "名前"],
+                answer: "原因",
+                translation: "Penyebab kejadian itu sedang diselidiki polisi."
+            }, {
+                question: "仕事の _____ を 保つ ことは、キャリア発展に 重要だ。",
+                options: ["質", "色", "形", "重量"],
+                answer: "質",
+                translation: "Menjaga kualitas pekerjaan penting untuk pengembangan karir."
+            }, {
+                question: "この 地方の _____ は 独特で 魅力的だ。",
+                options: ["文化", "色", "距離", "温度"],
+                answer: "文化",
+                translation: "Budaya daerah ini unik dan menarik."
+            }, {
+                question: "プロジェクトの _____ に 全力で 取り組んでいます。",
+                options: ["実行", "失敗", "中止", "否定"],
+                answer: "実行",
+                translation: "Saya sedang menjalankan proyek dengan sepenuh hati."
+            }, {
+                question: "顧客の _____ を 理解する ことが ビジネスの 鍵だ。",
+                options: ["ニーズ", "弱点", "失敗", "無視"],
+                answer: "ニーズ",
+                translation: "Memahami kebutuhan pelanggan adalah kunci bisnis."
+            }, {
+                question: "この 資料は 詳細な _____ が 含まれている。",
+                options: ["分析", "失敗", "怠け", "無視"],
+                answer: "分析",
+                translation: "Materi ini berisi analisis yang terperinci."
+            }, {
+                question: "彼の 提案は _____ が 高く評価されている。",
+                options: ["独創性", "弱点", "失敗", "無視"],
+                answer: "独創性",
+                translation: "Orisinalitas proposalnya sangat dihargai."
+            }, {
+                question: "社会の _____ は 技術の 進歩と ともに 変わっている。",
+                options: ["ニーズ", "色", "高さ", "距離"],
+                answer: "ニーズ",
+                translation: "Kebutuhan masyarakat berubah seiring dengan kemajuan teknologi."
+            }, {
+                question: "この 危機的な _____ を 乗り越えるために、全員の 協力が 必要だ。",
+                options: ["状況", "喜び", "成功", "利益"],
+                answer: "状況",
+                translation: "Untuk mengatasi situasi kritis ini, kerjasama semua orang diperlukan."
+            }, {
+                question: "研究結果の _____ は 非常に 信頼できる。",
+                options: ["信頼性", "色", "形", "温度"],
+                answer: "信頼性",
+                translation: "Reliabilitas hasil penelitian sangat dapat dipercaya."
+            }, {
+                question: "この 施設の _____ は 利便性と 安全性を 考慮して 設計されている。",
+                options: ["構造", "色", "名前", "温度"],
+                answer: "構造",
+                translation: "Struktur fasilitas ini dirancang dengan mempertimbangkan kenyamanan dan keamanan."
+            }, {
+                question: "部下の _____ を 認める ことは、リーダーシップの 一部だ。",
+                options: ["成果", "失敗", "怠け", "不満"],
+                answer: "成果",
+                translation: "Mengakui pencapaian bawahan adalah bagian dari kepemimpinan."
+            }, {
+                question: "この ジャンルの 映画は 独特の _____ を 持っている。",
+                options: ["魅力", "失敗", "欠点", "弱点"],
+                answer: "魅力",
+                translation: "Film genre ini memiliki daya tarik yang unik."
+            }, {
+                question: "市場の _____ を 分析する ことで、戦略を 立てる ことができる。",
+                options: ["動向", "色", "名前", "形"],
+                answer: "動向",
+                translation: "Dengan menganalisis tren pasar, kita bisa membuat strategi."
+            }, {
+                question: "この プログラムの _____ は 参加者の スキル向上に 焦点を 当てている。",
+                options: ["目標", "失敗", "色", "高さ"],
+                answer: "目標",
+                translation: "Tujuan program ini berfokus pada peningkatan keterampilan peserta."
+            }, {
+                question: "彼の 発言の _____ が 曖昧だったため、会議は 長引いた。",
+                options: ["意図", "色", "形", "温度"],
+                answer: "意図",
+                translation: "Karena tujuan perkataannya tidak jelas, rapat menjadi panjang."
+            }, {
+                question: "新製品の _____ は 消費者の 期待を 超えた。",
+                options: ["評価", "失敗", "欠点", "色"],
+                answer: "評価",
+                translation: "Penilaian produk baru melampaui harapan konsumen."
+            }, {
+                question: "このプロジェクトの _____ が 成功の 鍵を 握っている。",
+                options: ["実行力", "失敗", "無視", "怠け"],
+                answer: "実行力",
+                translation: "Daya eksekusi proyek ini memegang kunci kesuksesan."
+            }, {
+                question: "チームの _____ は 個々の メンバーの 協力で 成り立っている。",
+                options: ["成功", "失敗", "解散", "無視"],
+                answer: "成功",
+                translation: "Kesuksesan tim tergantung pada kerja sama anggota individual."
+            }, {
+                question: "この 地域の _____ は 減少傾向にある。",
+                options: ["人口", "色", "形", "高さ"],
+                answer: "人口",
+                translation: "Populasi wilayah ini menunjukkan tren penurunan."
+            }, {
+                question: "規則の _____ を 厳しく 守る ことが 組織の 基本だ。",
+                options: ["遵守", "破壊", "無視", "違反"],
+                answer: "遵守",
+                translation: "Kepatuhan terhadap aturan adalah dasar organisasi."
+            }, {
+                question: "この 提案は 実現性に _____ ため、慎重に 検討する 必要があります。",
+                options: ["欠ける", "優れる", "成功する", "失敗する"],
+                answer: "欠ける",
+                translation: "Proposal ini kurang dalam hal kelayakan pelaksanaan, jadi perlu dipertimbangkan dengan hati-hati."
+            }, {
+                question: "彼の 意見は _____ 根拠に 基づいている。",
+                options: ["確かな", "曖昧な", "不確実な", "弱い"],
+                answer: "確かな",
+                translation: "Pendapatnya didasarkan pada dasar yang pasti."
+            }, {
+                question: "新しい 技術は 業界に _____ 影響を 与えた。",
+                options: ["大きな", "小さな", "ない", "限定的な"],
+                answer: "大きな",
+                translation: "Teknologi baru memberikan dampak besar pada industri."
+            }, {
+                question: "この 結果は 予想を _____ ものになった。",
+                options: ["上回った", "下回った", "同じ", "否定した"],
+                answer: "上回った",
+                translation: "Hasil ini melampaui ekspektasi."
+            }, {
+                question: "彼女の パフォーマンスは 非常に _____ いえる。",
+                options: ["優秀だと", "貧弱だと", "失敗だと", "不適切だと"],
+                answer: "優秀だと",
+                translation: "Performanya dapat dikatakan sangat luar biasa."
+            }, {
+                question: "この 市場は _____ 競争環境にある。",
+                options: ["激しい", "穏やかな", "ない", "限定的な"],
+                answer: "激しい",
+                translation: "Pasar ini berada dalam lingkungan kompetisi yang sengit."
+            }, {
+                question: "その 決定は _____ 有益だと 判断された。",
+                options: ["相互に", "相当に", "限定的に", "部分的に"],
+                answer: "相当に",
+                translation: "Keputusan itu dianggap cukup menguntungkan."
+            }, {
+                question: "プロジェクトの 進行状況は _____ 満足できるレベルだ。",
+                options: ["十分に", "全く", "ほぼ", "僅かに"],
+                answer: "十分に",
+                translation: "Status kemajuan proyek cukup memuaskan."
+            }, {
+                question: "この 条件では、実現は _____ 困難だ。",
+                options: ["極めて", "少し", "わずかに", "ほぼ"],
+                answer: "極めて",
+                translation: "Dalam kondisi ini, realisasinya sangat sulit."
+            }, {
+                question: "彼の 努力は _____ 評価に 値する。",
+                options: ["高い", "低い", "悪い", "否定的な"],
+                answer: "高い",
+                translation: "Usahanya layak mendapat penilaian tinggi."
+            }, {
+                question: "この 情報は _____ 重要であることが 明らかだ。",
+                options: ["極めて", "全く", "ほぼ", "僅かに"],
+                answer: "極めて",
+                translation: "Jelas bahwa informasi ini sangat penting."
+            }, {
+                question: "その 計画は _____ リスクが あると 指摘された。",
+                options: ["かなりの", "ない", "少しの", "わずかな"],
+                answer: "かなりの",
+                translation: "Rencana itu ditunjukkan memiliki risiko yang cukup besar."
+            }, {
+                question: "このサービスの 品質は _____ 改善が 必要だ。",
+                options: ["大きな", "小さな", "ない", "わずかな"],
+                answer: "大きな",
+                translation: "Kualitas layanan ini memerlukan perbaikan besar."
+            }, {
+                question: "彼の 発言は _____ 根拠が あるのか 疑問である。",
+                options: ["どのような", "どんな", "何か", "いかなる"],
+                answer: "どのような",
+                translation: "Membingungkan apakah ada dasar apa pun untuk perkataannya."
+            }, {
+                question: "この 政策の 効果は _____ あるか、まだ 不明だ。",
+                options: ["本当に", "本気で", "本当のところ", "本物の"],
+                answer: "本当に",
+                translation: "Masih tidak jelas apakah kebijakan ini benar-benar efektif."
+            }, {
+                question: "新しい システムは _____ 効率的である。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Sistem baru sangat efisien."
+            }, {
+                question: "この 問題は _____ 複雑で、簡単には 解決できない。",
+                options: ["相当に", "全く", "わずかに", "少し"],
+                answer: "相当に",
+                translation: "Masalah ini cukup kompleks dan tidak mudah diselesaikan."
+            }, {
+                question: "彼女の 提案は _____ 実用的だと 思う。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Saya pikir proposalnya sangat praktis."
+            }, {
+                question: "この 契約の 条件は _____ 厳しい。",
+                options: ["かなり", "全く", "わずかに", "少し"],
+                answer: "かなり",
+                translation: "Syarat kontrak ini cukup ketat."
+            }, {
+                question: "市場の 反応は _____ ポジティブである。",
+                options: ["概ね", "全く", "わずかに", "少し"],
+                answer: "概ね",
+                translation: "Reaksi pasar secara umum positif."
+            }, {
+                question: "この 状況は _____ 対応が 必要だ。",
+                options: ["迅速な", "遅い", "不要な", "無視される"],
+                answer: "迅速な",
+                translation: "Situasi ini memerlukan respons yang cepat."
+            }, {
+                question: "その 結果は _____ 受け入れるべきではない。",
+                options: ["そのままに", "全部", "部分的に", "ほぼ"],
+                answer: "そのままに",
+                translation: "Hasil itu tidak boleh diterima begitu saja."
+            }, {
+                question: "プロジェクトの 進捗は _____ 順調だ。",
+                options: ["概ね", "全く", "わずかに", "少し"],
+                answer: "概ね",
+                translation: "Kemajuan proyek secara umum lancar."
+            }, {
+                question: "この 提案には _____ 妥当性がある。",
+                options: ["十分な", "ない", "少しの", "わずかな"],
+                answer: "十分な",
+                translation: "Proposal ini memiliki validitas yang cukup."
+            }, {
+                question: "彼の 判断は _____ 信頼できる。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Penilaiannya dapat diandalkan."
+            }, {
+                question: "この 資料は _____ 詳細である。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Materi ini sangat detail."
+            }, {
+                question: "その 対応は _____ 適切だったと 思う。",
+                options: ["決して", "全く", "ほぼ", "わずかに"],
+                answer: "決して",
+                translation: "Saya tidak berpikir responsnya sama sekali tepat."
+            }, {
+                question: "新しい ガイドラインは _____ 明確である。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Panduan baru cukup jelas."
+            }, {
+                question: "この 成果は _____ 評価される べきだ。",
+                options: ["高く", "低く", "悪く", "否定的に"],
+                answer: "高く",
+                translation: "Pencapaian ini harus dihargai tinggi."
+            }, {
+                question: "彼の 提言は _____ 検討に 値する。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Sarannya cukup layak untuk dipertimbangkan."
+            }, {
+                question: "この 状況は _____ 深刻だ。",
+                options: ["極めて", "全く", "わずかに", "少し"],
+                answer: "極めて",
+                translation: "Situasi ini sangat serius."
+            }, {
+                question: "その 説明は _____ 納得できるものではない。",
+                options: ["決して", "非常に", "十分に", "完全に"],
+                answer: "決して",
+                translation: "Penjelasan itu tidak pernah memuaskan."
+            }, {
+                question: "新しい プログラムは _____ 有効であると 証明された。",
+                options: ["確かに", "全く", "わずかに", "少し"],
+                answer: "確かに",
+                translation: "Program baru terbukti sangat efektif."
+            }, {
+                question: "上司に 大切な 報告書を 忘れてしまった 場合、最初に すべき _____ は 何ですか？",
+                options: ["上司に 報告し、謝罪する", "報告書を 隠す", "別の 言い訳を する", "何も しない"],
+                answer: "上司に 報告し、謝罪する",
+                translation: "Jika Anda lupa memberikan laporan penting kepada atasan, apa yang pertama harus dilakukan?"
+            }, {
+                question: "同僚が あなたの ミスを 指摘した時、_____ な 対応が 適切ですか？",
+                options: ["感謝し、改善する", "否定する", "怒る", "無視する"],
+                answer: "感謝し、改善する",
+                translation: "Ketika rekan kerja menunjukkan kesalahan Anda, respons apa yang tepat?"
+            }, {
+                question: "顧客からの 苦情を 受けた場合、最初に _____ べきですか？",
+                options: ["話を 聞き、理解する", "すぐに 反論する", "言い訳する", "無視する"],
+                answer: "話を 聞き、理解する",
+                translation: "Saat menerima keluhan dari pelanggan, apa yang pertama harus dilakukan?"
+            }, {
+                question: "重要な 会議で 意見が 対立した 場合、_____ が 最優先ですか？",
+                options: ["冷静に 議論する", "声を 大にする", "退席する", "議論を 避ける"],
+                answer: "冷静に 議論する",
+                translation: "Jika pendapat bertentangan dalam rapat penting, apa prioritas utama?"
+            }, {
+                question: "部下が 困っている のに 気づいた 場合、_____ が 良いリーダーシップですか？",
+                options: ["話を 聞き、助ける", "無視する", "指摘だけする", "説教する"],
+                answer: "話を 聞き、助ける",
+                translation: "Jika Anda melihat bawahan kesulitan, apa kepemimpinan yang baik?"
+            }, {
+                question: "約束した 期限を 守れそうにない 場合、_____ が 職業倫理的ですか？",
+                options: ["早めに 報告する", "期限の 直前に 言う", "黙っている", "言い訳する"],
+                answer: "早めに 報告する",
+                translation: "Jika Anda tidak bisa memenuhi tenggat waktu yang dijanjikan, apa yang etis secara profesional?"
+            }, {
+                question: "チーム内で 不正行為が 発見された 場合、_____ が 正しい 行動ですか？",
+                options: ["上司に 報告する", "隠蔽する", "黙認する", "加担する"],
+                answer: "上司に 報告する",
+                translation: "Jika pelanggaran ditemukan dalam tim, tindakan mana yang benar?"
+            }, {
+                question: "新しい プロジェクトで 自分の 能力を 超えた タスクを 与えられた 場合、_____ が 適切ですか？",
+                options: ["正直に 相談する", "無理に やる", "拒否する", "無視する"],
+                answer: "正直に 相談する",
+                translation: "Jika diberi tugas melampaui kemampuan Anda, respons apa yang tepat?"
+            }, {
+                question: "同僚の ミスを 見つけた 場合、_____ が 最も 建設的ですか？",
+                options: ["私的に 指摘する", "公然と 非難する", "無視する", "上司に だけ 言う"],
+                answer: "私的に 指摘する",
+                translation: "Jika Anda menemukan kesalahan rekan kerja, apa yang paling konstruktif?"
+            }, {
+                question: "緊急時に 上司と 連絡が 取れない 場合、_____ が 妥当ですか？",
+                options: ["状況を 判断し、行動する", "何も しない", "待ち続ける", "同僚に 丸投げする"],
+                answer: "状況を 判断し、行動する",
+                translation: "Jika Anda tidak bisa menghubungi atasan saat darurat, apa yang masuk akal?"
+            }, {
+                question: "機密情報に アクセスした 場合、_____ が 最優先ですか？",
+                options: ["保秘義務を 守る", "誰かに 話す", "SNS で 共有する", "公開する"],
+                answer: "保秘義務を 守る",
+                translation: "Jika Anda mengakses informasi rahasia, apa prioritas utama?"
+            }, {
+                question: "別の 部署から 協力を 求められた 場合、_____ が 善いチームワークですか？",
+                options: ["快く 引き受ける", "拒否する", "条件を つける", "無視する"],
+                answer: "快く 引き受ける",
+                translation: "Jika diminta untuk berkolaborasi dengan departemen lain, apa kerja tim yang baik?"
+            }, {
+                question: "顧客に 不正確な 情報を 提供してしまった 場合、_____ が 誠実な 対応ですか？",
+                options: ["すぐに 訂正する", "黙っている", "別の 言い訳を する", "無視する"],
+                answer: "すぐに 訂正する",
+                translation: "Jika Anda memberikan informasi tidak akurat kepada pelanggan, apa respons yang jujur?"
+            }, {
+                question: "達成が 難しい 目標を 設定された 場合、_____ が 最初の 対応ですか？",
+                options: ["相談し、現実的な 目標に する", "黙って 受ける", "拒否する", "無視する"],
+                answer: "相談し、現実的な 目標に する",
+                translation: "Jika ditetapkan target sulit dicapai, apa respons awal?"
+            }, {
+                question: "部下が 失敗を 報告した 場合、_____ が 良い マネジメントですか？",
+                options: ["原因を 理解し、改善策を 考える", "叱る", "責める", "無視する"],
+                answer: "原因を 理解し、改善策を 考える",
+                translation: "Jika bawahan melaporkan kegagalan, manajemen mana yang baik?"
+            }, {
+                question: "複数の 優先度の 高い タスクが あった 場合、_____ が 効率的ですか？",
+                options: ["優先順位を つけ、計画を 立てる", "すべて 同時に やる", "一番 簡単な もの から やる", "やらない"],
+                answer: "優先順位を つけ、計画を 立てる",
+                translation: "Jika ada beberapa tugas prioritas tinggi, apa yang efisien?"
+            }, {
+                question: "良いアイデアを 持っている 部下が いる 場合、_____ が 人材育成ですか？",
+                options: ["提案を 聞き、試してみる", "却下する", "パクる", "無視する"],
+                answer: "提案を 聞き、試してみる",
+                translation: "Jika ada bawahan dengan ide bagus, pengembangan SDM apa yang baik?"
+            }, {
+                question: "複雑な プロジェクトで 進捗が 遅れている 場合、_____ が 責任のある 行動ですか？",
+                options: ["原因を 調べ、報告する", "隠す", "言い訳を する", "無視する"],
+                answer: "原因を 調べ、報告する",
+                translation: "Jika kemajuan proyek kompleks terhambat, tindakan bertanggung jawab apa?"
+            }, {
+                question: "異なる 意見を 持つ 人と 働く 場合、_____ が 最も 建設的ですか？",
+                options: ["相互の 視点を 尊重する", "意見を 無視する", "対立する", "避ける"],
+                answer: "相互の 視点を 尊重する",
+                translation: "Saat bekerja dengan orang yang memiliki pandangan berbeda, pendekatan apa yang paling konstruktif?"
+            }, {
+                question: "給与や 待遇に 不満がある 場合、_____ が 専門的ですか？",
+                options: ["上司に 相談する", "SNS で 不満を 述べる", "職場を 去る", "無視する"],
+                answer: "上司に 相談する",
+                translation: "Jika tidak puas dengan gaji atau perlakuan, apa pendekatan profesional?"
+            }, {
+                question: "会社の 方針に 同意できない 場合、_____ が 適切ですか？",
+                options: ["管理者と 対話する", "反抗する", "無視する", "公開的に 批判する"],
+                answer: "管理者と 対話する",
+                translation: "Jika tidak setuju dengan kebijakan perusahaan, tindakan apa yang tepat?"
+            }, {
+                question: "成功を 独り占めしようと する 同僚がいる 場合、_____ が 倫理的ですか？",
+                options: ["事実を 記録し、報告する", "競争で 対応する", "無視する", "加担する"],
+                answer: "事実を 記録し、報告する",
+                translation: "Jika ada rekan kerja yang mencoba mengklaim kesuksesan sendiri, apa yang etis?"
+            }, {
+                question: "新しい 技術を 学ぶ 必要がある 場合、_____ が 最高の 専門性 開発ですか？",
+                options: ["積極的に 学ぶ", "外面する", "否定する", "無視する"],
+                answer: "積極的に 学ぶ",
+                translation: "Jika perlu mempelajari teknologi baru, pengembangan keahlian apa yang terbaik?"
+            }, {
+                question: "同期が昇進した時、自分はそうではない場合、_____ が専門的ですか？",
+                options: ["祝福し、学ぶ", "嫉妬する", "批判する", "無視する"],
+                answer: "祝福し、学ぶ",
+                translation: "Jika rekan Anda dipromosikan tetapi Anda tidak, respons profesional apa?"
+            }
+        ]
+    },
+	
+    "N3": {
+        "goi-kanji-reading": [{
+                question: "午後から<u>会議</u>があるので、早めに資料を準備した。",
+                options: ["かいぎ", "かいき", "かいけ", "かいご"],
+                answer: "かいぎ",
+                translation: "Karena ada rapat mulai sore, saya mempersiapkan dokumen lebih awal."
+            }, {
+                question: "海外で働いた<u>経験</u>があると、就職に有利です。",
+                options: ["けいけん", "きょうけん", "けけん", "けいかん"],
+                answer: "けいけん",
+                translation: "Kalau punya pengalaman bekerja di luar negeri, menguntungkan saat melamar kerja."
+            }, {
+                question: "事故の<u>原因</u>を調べています。",
+                options: ["げんいん", "けんいん", "げいいん", "げんにん"],
+                answer: "げんいん",
+                translation: "Sedang menyelidiki penyebab kecelakaan."
+            }, {
+                question: "遅れる<u>場合</u>は、必ず連絡してください。",
+                options: ["ばあい", "じょうあい", "ばかい", "じょうごう"],
+                answer: "ばあい",
+                translation: "Apabila terlambat, harap hubungi tanpa gagal."
+            }, {
+                question: "彼との<u>関係</u>はもう終わりました。",
+                options: ["かんけい", "かんき", "かんけん", "かんきょ"],
+                answer: "かんけい",
+                translation: "Hubungan saya dengan dia sudah berakhir."
+            }, {
+                question: "一人暮らしの<u>生活</u>に慣れてきた。",
+                options: ["せいかつ", "せかつ", "せいかく", "せいがつ"],
+                answer: "せいかつ",
+                translation: "Sudah mulai terbiasa dengan kehidupan tinggal sendiri."
+            }, {
+                question: "先生は図を使って<u>説明</u>してくれた。",
+                options: ["せつめい", "せつみ", "せいめい", "せつべい"],
+                answer: "せつめい",
+                translation: "Guru menjelaskan menggunakan diagram."
+            }, {
+                question: "試験の<u>準備</u>は十分にできていますか。",
+                options: ["じゅんび", "じゅんべ", "しゅんび", "じゅんびょ"],
+                answer: "じゅんび",
+                translation: "Apakah persiapan ujiannya sudah cukup?"
+            }, {
+                question: "車に<u>注意</u>しながら道を渡った。",
+                options: ["ちゅうい", "ちゅい", "ちょうい", "ちゅうに"],
+                answer: "ちゅうい",
+                translation: "Menyeberang jalan sambil berhati-hati terhadap mobil."
+            }, {
+                question: "送る前に内容を<u>確認</u>してください。",
+                options: ["かくにん", "かんにん", "こうにん", "かくにい"],
+                answer: "かくにん",
+                translation: "Tolong periksa isi sebelum mengirim."
+            }, {
+                question: "来週の<u>予定</u>はまだ決まっていない。",
+                options: ["よてい", "よって", "よりてい", "よだい"],
+                answer: "よてい",
+                translation: "Rencana minggu depan belum ditentukan."
+            }, {
+                question: "パスポートが<u>必要</u>な場合があります。",
+                options: ["ひつよう", "ひっよう", "ひようす", "ひようき"],
+                answer: "ひつよう",
+                translation: "Ada kalanya paspor diperlukan."
+            }, {
+                question: "何かあったらすぐに<u>連絡</u>してください。",
+                options: ["れんらく", "れいらく", "れんかく", "れんかい"],
+                answer: "れんらく",
+                translation: "Jika ada apa-apa, segera hubungi."
+            }, {
+                question: "困ったことがあれば先生に<u>相談</u>してみてください。",
+                options: ["そうだん", "さうだん", "そうたん", "そだん"],
+                answer: "そうだん",
+                translation: "Jika ada yang menyulitkan, cobalah berkonsultasi dengan guru."
+            }, {
+                question: "卒業の<u>記念</u>に写真を撮りました。",
+                options: ["きねん", "きけん", "きみん", "きれん"],
+                answer: "きねん",
+                translation: "Berfoto sebagai kenang-kenangan wisuda."
+            },
+
+            // ── 16–30: Penilaian, keputusan, emosi ──
+            {
+                question: "初めて会ったとき、彼女の<u>印象</u>はとても良かった。",
+                options: ["いんしょう", "いんしょ", "いんじょう", "いんぞう"],
+                answer: "いんしょう",
+                translation: "Saat pertama kali bertemu, kesan terhadap dia sangat baik."
+            }, {
+                question: "自分で<u>判断</u>するのが難しい場合もある。",
+                options: ["はんだん", "はんたん", "ほんだん", "はんけつ"],
+                answer: "はんだん",
+                translation: "Ada kalanya sulit untuk memutuskan sendiri."
+            }, {
+                question: "問題を早く<u>解決</u>したいと思っている。",
+                options: ["かいけつ", "かいかつ", "かいせつ", "かいけい"],
+                answer: "かいけつ",
+                translation: "Ingin segera menyelesaikan masalahnya."
+            }, {
+                question: "現在の<u>状況</u>をできるだけ正確に伝えてください。",
+                options: ["じょうきょう", "じょうけい", "じょうこう", "じょうくう"],
+                answer: "じょうきょう",
+                translation: "Tolong sampaikan situasi saat ini seakurat mungkin."
+            }, {
+                question: "自分の行動には<u>責任</u>を持たなければなりません。",
+                options: ["せきにん", "せきねん", "せいきにん", "せけにん"],
+                answer: "せきにん",
+                translation: "Harus bertanggung jawab atas tindakan sendiri."
+            }, {
+                question: "彼はおとなしい<u>性格</u>だが、仕事は速い。",
+                options: ["せいかく", "せいかつ", "せかく", "せいかん"],
+                answer: "せいかく",
+                translation: "Dia berkepribadian pendiam, namun pekerjaannya cepat."
+            }, {
+                question: "<u>感情</u>を表に出さない人だと思われている。",
+                options: ["かんじょう", "かんにょう", "かんしょう", "かんぞう"],
+                answer: "かんじょう",
+                translation: "Dia dianggap sebagai orang yang tidak menunjukkan emosinya."
+            }, {
+                question: "季節の<u>変化</u>に合わせて服を変えます。",
+                options: ["へんか", "へんが", "へんこう", "へいか"],
+                answer: "へんか",
+                translation: "Mengganti pakaian sesuai perubahan musim."
+            }, {
+                question: "毎日<u>努力</u>することが大切だと思います。",
+                options: ["どりょく", "どうりょく", "のりょく", "どりく"],
+                answer: "どりょく",
+                translation: "Saya pikir berusaha setiap hari itu penting."
+            }, {
+                question: "長い練習の末、ついに<u>成功</u>しました。",
+                options: ["せいこう", "せいきょう", "しんこう", "せいごう"],
+                answer: "せいこう",
+                translation: "Setelah latihan panjang, akhirnya berhasil."
+            }, {
+                question: "初めてのことだから<u>失敗</u>しても仕方がない。",
+                options: ["しっぱい", "しつぱい", "しっばい", "しつはい"],
+                answer: "しっぱい",
+                translation: "Karena pertama kali, wajar saja kalau gagal."
+            }, {
+                question: "新しいことに<u>挑戦</u>するのはわくわくします。",
+                options: ["ちょうせん", "ちょうさん", "ちょせん", "ちょうけん"],
+                answer: "ちょうせん",
+                translation: "Mencoba hal baru itu menyenangkan."
+            }, {
+                question: "この旅行の<u>目的</u>は何ですか。",
+                options: ["もくてき", "もくでき", "もくてい", "もくせき"],
+                answer: "もくてき",
+                translation: "Apa tujuan perjalanan ini?"
+            }, {
+                question: "テストの<u>結果</u>は明日発表されます。",
+                options: ["けっか", "けいか", "げっか", "けっけ"],
+                answer: "けっか",
+                translation: "Hasil ujian akan diumumkan besok."
+            }, {
+                question: "親の生き方は子供に大きな<u>影響</u>を与えます。",
+                options: ["えいきょう", "えいこう", "えきょう", "えいぎょう"],
+                answer: "えいきょう",
+                translation: "Cara hidup orang tua memberikan pengaruh besar pada anak."
+            },
+
+            // ── 31–45: Situasi kerja dan sosial ──
+            {
+                question: "みんなの<u>意見</u>を聞いてから決めましょう。",
+                options: ["いけん", "いかん", "いきん", "いっけん"],
+                answer: "いけん",
+                translation: "Mari memutuskan setelah mendengar pendapat semua orang."
+            }, {
+                question: "彼女の<u>提案</u>はとても良いと思います。",
+                options: ["ていあん", "ていかん", "てあん", "ていえん"],
+                answer: "ていあん",
+                translation: "Saya pikir usulan dia sangat bagus."
+            }, {
+                question: "来週、研究の結果を<u>発表</u>する予定です。",
+                options: ["はっぴょう", "はつびょう", "はつひょう", "はっぴょ"],
+                answer: "はっぴょう",
+                translation: "Minggu depan, berencana mempresentasikan hasil penelitian."
+            }, {
+                question: "マラソン大会に<u>参加</u>するのは今年が初めてです。",
+                options: ["さんか", "さんが", "さいか", "さんけい"],
+                answer: "さんか",
+                translation: "Berpartisipasi dalam lomba maraton ini pertama kalinya tahun ini."
+            }, {
+                question: "写真を撮る前に<u>許可</u>をもらってください。",
+                options: ["きょか", "きょうか", "こか", "きょっか"],
+                answer: "きょか",
+                translation: "Tolong minta izin sebelum mengambil foto."
+            }, {
+                question: "電車の中での飲食は<u>禁止</u>されています。",
+                options: ["きんし", "きんじ", "きんち", "きんせい"],
+                answer: "きんし",
+                translation: "Makan dan minum di dalam kereta dilarang."
+            }, {
+                question: "田中さんがこのプロジェクトの<u>担当</u>です。",
+                options: ["たんとう", "たんどう", "だんとう", "たんとく"],
+                answer: "たんとう",
+                translation: "Tanaka-san yang bertanggung jawab atas proyek ini."
+            }, {
+                question: "カードで<u>支払い</u>できますか。",
+                options: ["しはらい", "しばらい", "しはれい", "しはらえ"],
+                answer: "しはらい",
+                translation: "Bisa bayar dengan kartu?"
+            }, {
+                question: "副業で<u>収入</u>を増やしたいと思っている。",
+                options: ["しゅうにゅう", "しゅにゅう", "しゅうにう", "しゅにう"],
+                answer: "しゅうにゅう",
+                translation: "Ingin menambah penghasilan dengan pekerjaan sampingan."
+            }, {
+                question: "修理に必要な<u>費用</u>はいくらですか。",
+                options: ["ひよう", "ひうよ", "ひとう", "ひいよう"],
+                answer: "ひよう",
+                translation: "Berapa biaya yang diperlukan untuk perbaikan?"
+            }, {
+                question: "新しい<u>商品</u>がもうすぐ発売されます。",
+                options: ["しょうひん", "しょひん", "しょうびん", "しょうひ"],
+                answer: "しょうひん",
+                translation: "Produk baru akan segera diluncurkan."
+            }, {
+                question: "まだ<u>注文</u>が決まっていないので、もう少し待ってください。",
+                options: ["ちゅうもん", "ちょうもん", "ちゅもん", "ちゅうもい"],
+                answer: "ちゅうもん",
+                translation: "Pesanannya belum ditentukan, tolong tunggu sebentar lagi."
+            }, {
+                question: "引き出しの中を<u>整理</u>したら、探していたものが見つかった。",
+                options: ["せいり", "せいれ", "せいれい", "せいりょ"],
+                answer: "せいり",
+                translation: "Setelah membereskan laci, barang yang dicari ketemu."
+            }, {
+                question: "世界<u>記録</u>を破った選手がインタビューに答えた。",
+                options: ["きろく", "きれく", "きろう", "きりく"],
+                answer: "きろく",
+                translation: "Atlet yang memecahkan rekor dunia menjawab wawancara."
+            }, {
+                question: "仕事が終わったらすぐに上司に<u>報告</u>します。",
+                options: ["ほうこく", "ほこく", "ほうこう", "ほうごく"],
+                answer: "ほうこく",
+                translation: "Setelah pekerjaan selesai, segera melaporkan kepada atasan."
+            },
+
+            // ── 46–60: Rencana, fakta, dan sifat ──
+            {
+                question: "来年の旅行<u>計画</u>をもう立てましたか。",
+                options: ["けいかく", "けいがく", "けかく", "けいかつ"],
+                answer: "けいかく",
+                translation: "Apakah sudah membuat rencana perjalanan tahun depan?"
+            }, {
+                question: "それは想像ではなく、<u>事実</u>です。",
+                options: ["じじつ", "じしつ", "じんじつ", "じっじつ"],
+                answer: "じじつ",
+                translation: "Itu bukan imajinasi, melainkan fakta."
+            }, {
+                question: "会社を辞めた<u>理由</u>を正直に話してください。",
+                options: ["りゆう", "りよう", "りゅう", "いゆう"],
+                answer: "りゆう",
+                translation: "Tolong ceritakan dengan jujur alasan berhenti dari perusahaan."
+            }, {
+                question: "今の技術では<u>可能</u>かどうかわかりません。",
+                options: ["かのう", "かにょう", "かよう", "かのく"],
+                answer: "かのう",
+                translation: "Tidak tahu apakah memungkinkan dengan teknologi saat ini."
+            }, {
+                question: "彼は<u>真剣</u>な表情で話し始めた。",
+                options: ["しんけん", "しんかん", "しんけい", "しんぐん"],
+                answer: "しんけん",
+                translation: "Dia mulai berbicara dengan ekspresi serius."
+            }, {
+                question: "彼女はいつも<u>丁寧</u>に話してくれる。",
+                options: ["ていねい", "ていてい", "ていれい", "ていのい"],
+                answer: "ていねい",
+                translation: "Dia selalu berbicara dengan sopan."
+            }, {
+                question: "面接の前は誰でも<u>緊張</u>するものです。",
+                options: ["きんちょう", "きんぞう", "ぎんちょう", "きんちょ"],
+                answer: "きんちょう",
+                translation: "Siapa pun pasti gugup sebelum wawancara kerja."
+            }, {
+                question: "家族の声を聞いて<u>安心</u>しました。",
+                options: ["あんしん", "あんじん", "あんせん", "あんし"],
+                answer: "あんしん",
+                translation: "Merasa lega setelah mendengar suara keluarga."
+            }, {
+                question: "もう<u>我慢</u>できない、と彼は叫んだ。",
+                options: ["がまん", "かまん", "がはん", "がまい"],
+                answer: "がまん",
+                translation: "Dia berteriak, 'Aku sudah tidak tahan lagi!'"
+            }, {
+                question: "どちらにするか<u>迷って</u>、なかなか決められない。",
+                options: ["まよって", "みよって", "まいって", "まよて"],
+                answer: "まよって",
+                translation: "Bingung memilih yang mana, tidak bisa segera memutuskan."
+            }, {
+                question: "突然の知らせに<u>驚いた</u>。",
+                options: ["おどろいた", "おとろいた", "おどいた", "おどろた"],
+                answer: "おどろいた",
+                translation: "Terkejut dengan kabar yang tiba-tiba."
+            }, {
+                question: "電車に乗り遅れないように<u>急いで</u>家を出た。",
+                options: ["いそいで", "いぞいで", "いすいで", "いそいに"],
+                answer: "いそいで",
+                translation: "Keluar rumah dengan terburu-buru agar tidak ketinggalan kereta."
+            }, {
+                question: "雨が三日間<u>続いた</u>。",
+                options: ["つづいた", "つずいた", "つつった", "つつぎいた"],
+                answer: "つづいた",
+                translation: "Hujan terus berlanjut selama tiga hari."
+            }, {
+                question: "手紙を直接本人に<u>渡した</u>。",
+                options: ["わたした", "わたった", "あたした", "わたれた"],
+                answer: "わたした",
+                translation: "Menyerahkan surat langsung kepada orangnya."
+            }, {
+                question: "たくさんの中から一つ<u>選ぶ</u>のは難しいです。",
+                options: ["えらぶ", "えらむ", "えろぶ", "えらんぶ"],
+                answer: "えらぶ",
+                translation: "Sulit memilih satu dari banyak pilihan."
+            },
+
+            // ── 61–75: Tindakan dan sikap ──
+            {
+                question: "予定があったので誘いを<u>断った</u>。",
+                options: ["ことわった", "ことたった", "ことろった", "ことわれた"],
+                answer: "ことわった",
+                translation: "Menolak ajakan karena ada rencana lain."
+            }, {
+                question: "自分のミスを素直に<u>認めた</u>。",
+                options: ["みとめた", "みどめた", "みとけた", "みとっめた"],
+                answer: "みとめた",
+                translation: "Dengan jujur mengakui kesalahannya sendiri."
+            }, {
+                question: "<u>正直</u>に言うと、その映画はあまり好きじゃなかった。",
+                options: ["しょうじき", "しょじき", "しょうじぎ", "しょうじけ"],
+                answer: "しょうじき",
+                translation: "Jujur saja, saya kurang suka film itu."
+            }, {
+                question: "今日は<u>特別</u>な日だから、おいしいものを食べよう。",
+                options: ["とくべつ", "とくぼつ", "とくへつ", "とべつ"],
+                answer: "とくべつ",
+                translation: "Hari ini hari istimewa, jadi mari makan yang enak."
+            }, {
+                question: "毎日練習すれば上手くなるのは<u>当然</u>だ。",
+                options: ["とうぜん", "とつぜん", "とうさん", "どうぜん"],
+                answer: "とうぜん",
+                translation: "Sudah wajar kalau berlatih tiap hari pasti menjadi mahir."
+            }, {
+                question: "<u>突然</u>雨が降ってきたので、傘を持っていなくて困った。",
+                options: ["とつぜん", "とうぜん", "とつぞん", "とつぜ"],
+                answer: "とつぜん",
+                translation: "Karena tiba-tiba hujan turun, kerepotan karena tidak bawa payung."
+            }, {
+                question: "彼女の気持ちは<u>複雑</u>で、言葉にするのが難しい。",
+                options: ["ふくざつ", "ふくさつ", "ふくずつ", "ふっくざつ"],
+                answer: "ふくざつ",
+                translation: "Perasaannya rumit, sulit diungkapkan dengan kata-kata."
+            }, {
+                question: "このキャンペーンの<u>期間</u>はいつまでですか。",
+                options: ["きかん", "きがん", "きかい", "きけん"],
+                answer: "きかん",
+                translation: "Sampai kapan periode kampanye ini berlaku?"
+            }, {
+                question: "来週のセミナーに<u>申し込んだ</u>。",
+                options: ["もうしこんだ", "もしこんだ", "もうしごんだ", "もうしこいだ"],
+                answer: "もうしこんだ",
+                translation: "Mendaftar untuk seminar minggu depan."
+            }, {
+                question: "荷物を<u>受け取る</u>ために、家にいる必要があります。",
+                options: ["うけとる", "うけどる", "うけとれる", "うけとろ"],
+                answer: "うけとる",
+                translation: "Perlu berada di rumah untuk menerima paket."
+            }, {
+                question: "彼に気持ちを<u>伝えたい</u>けど、うまく言葉が出ない。",
+                options: ["つたえたい", "つながえたい", "つたてたい", "つたえいたい"],
+                answer: "つたえたい",
+                translation: "Ingin menyampaikan perasaan kepadanya, tapi kata-katanya tidak keluar dengan baik."
+            }, {
+                question: "水曜日<u>以外</u>は、いつでも来てください。",
+                options: ["いがい", "いかい", "いぜん", "いじょう"],
+                answer: "いがい",
+                translation: "Kapan saja boleh datang, kecuali hari Rabu."
+            }, {
+                question: "最近、外国人観光客が<u>増加</u>しています。",
+                options: ["ぞうか", "そうか", "ぞうが", "ぞうかい"],
+                answer: "ぞうか",
+                translation: "Belakangan ini, wisatawan asing mengalami peningkatan."
+            }, {
+                question: "少子化の影響で子供の数が<u>減少</u>しています。",
+                options: ["げんしょう", "けんしょう", "げんそう", "げんしょ"],
+                answer: "げんしょう",
+                translation: "Jumlah anak-anak berkurang akibat pengaruh penurunan angka kelahiran."
+            }, {
+                question: "一人で出かけた子供のことが<u>心配</u>で眠れなかった。",
+                options: ["しんぱい", "しんばい", "しんはい", "しんかい"],
+                answer: "しんぱい",
+                translation: "Khawatir dengan anak yang pergi sendiri, tidak bisa tidur."
+            }, {
+                question: "行けなくて本当に<u>残念</u>です。",
+                options: ["ざんねん", "さんねん", "ざねん", "ざんにん"],
+                answer: "ざんねん",
+                translation: "Sungguh sayang tidak bisa pergi."
+            }, {
+                question: "サービスに対して<u>不満</u>があれば、ご連絡ください。",
+                options: ["ふまん", "ふうまん", "ふわん", "ふまい"],
+                answer: "ふまん",
+                translation: "Jika ada ketidakpuasan terhadap layanan, silakan hubungi kami."
+            }, {
+                question: "今日の食事はとても<u>満足</u>でした。",
+                options: ["まんぞく", "まんそく", "まんしょく", "まんぞう"],
+                answer: "まんぞく",
+                translation: "Makanan hari ini sangat memuaskan."
+            }, {
+                question: "何度失敗しても、夢を<u>諦めない</u>でほしい。",
+                options: ["あきらめない", "あきめない", "あきらわない", "あきらみない"],
+                answer: "あきらめない",
+                translation: "Meski berapa kali gagal, jangan menyerah pada impian."
+            }, {
+                question: "財布をなくしたことに後で<u>気づいた</u>。",
+                options: ["きづいた", "きずいた", "きつけた", "きつけいた"],
+                answer: "きづいた",
+                translation: "Baru belakangan menyadari dompetnya hilang."
+            }, {
+                question: "本当かどうか自分の目で<u>確かめた</u>。",
+                options: ["たしかめた", "たしかけた", "たかしめた", "たしかまた"],
+                answer: "たしかめた",
+                translation: "Memverifikasi sendiri apakah itu benar dengan mata kepala sendiri."
+            }, {
+                question: "二つの値段を<u>比べて</u>から、安い方を選びました。",
+                options: ["くらべて", "くらえて", "くらぶて", "くらえべて"],
+                answer: "くらべて",
+                translation: "Membandingkan kedua harga dulu, lalu memilih yang lebih murah."
+            }, {
+                question: "台風の影響で昨夜<u>停電</u>があった。",
+                options: ["ていでん", "ていてん", "ていれん", "ていえん"],
+                answer: "ていでん",
+                translation: "Semalam ada pemadaman listrik karena pengaruh topan."
+            }, {
+                question: "エレベーターが<u>故障</u>して、階段を使うしかなかった。",
+                options: ["こしょう", "こじょう", "ごしょう", "こしょ"],
+                answer: "こしょう",
+                translation: "Lift rusak, tidak ada pilihan selain menggunakan tangga."
+            }, {
+                question: "車が壊れたので<u>修理</u>に出した。",
+                options: ["しゅうり", "しゅり", "しゅうれい", "しゅりょ"],
+                answer: "しゅうり",
+                translation: "Karena mobil rusak, menitipkannya untuk diperbaiki."
+            }, {
+                question: "来月、新しいアパートに<u>引っ越し</u>する予定です。",
+                options: ["ひっこし", "ひこし", "ひっこい", "ひっこす"],
+                answer: "ひっこし",
+                translation: "Berencana pindah ke apartemen baru bulan depan."
+            }, {
+                question: "荷物が多かったので、隣の人が<u>手伝って</u>くれた。",
+                options: ["てつだって", "てつたって", "てつわって", "てつだいて"],
+                answer: "てつだって",
+                translation: "Karena bawaannya banyak, orang di sebelah membantu."
+            }, {
+                question: "毎日<u>練習</u>しているおかげで、ピアノが上手になってきた。",
+                options: ["れんしゅう", "れんしゅ", "れいしゅう", "れんじゅう"],
+                answer: "れんしゅう",
+                translation: "Berkat berlatih setiap hari, kemampuan pianonya semakin meningkat."
+            }, {
+                question: "最近の<u>経済</u>状況について、専門家の意見を聞きたい。",
+                options: ["けいざい", "けいさい", "けざい", "けいたい"],
+                answer: "けいざい",
+                translation: "Ingin mendengar pendapat ahli mengenai situasi ekonomi belakangan ini."
+            }, {
+                question: "若者も<u>政治</u>に関心を持つことが大切だと思います。",
+                options: ["せいじ", "せいち", "せじ", "せいし"],
+                answer: "せいじ",
+                translation: "Saya pikir penting bagi anak muda untuk menaruh minat pada politik."
+            }, {
+                question: "日本の伝統的な<u>文化</u>を守ることは大切です。",
+                options: ["ぶんか", "ぶんが", "もんか", "ぶんかい"],
+                answer: "ぶんか",
+                translation: "Melestarikan budaya tradisional Jepang itu penting."
+            }, {
+                question: "この城には長い<u>歴史</u>があります。",
+                options: ["れきし", "れいし", "れきじ", "れくし"],
+                answer: "れきし",
+                translation: "Kastil ini memiliki sejarah yang panjang."
+            }, {
+                question: "地球の<u>環境</u>を守るために、プラスチックを減らしましょう。",
+                options: ["かんきょう", "かんこう", "かんきょ", "かんぎょう"],
+                answer: "かんきょう",
+                translation: "Mari mengurangi plastik demi melindungi lingkungan bumi."
+            }, {
+                question: "日本の工業<u>技術</u>は世界でも高く評価されています。",
+                options: ["ぎじゅつ", "ぎしゅつ", "ぎじゅく", "ぎすじつ"],
+                answer: "ぎじゅつ",
+                translation: "Teknologi industri Jepang juga sangat dihargai di dunia."
+            }, {
+                question: "こんな<u>機会</u>は滅多にないので、ぜひ参加してください。",
+                options: ["きかい", "きかん", "きがい", "きけい"],
+                answer: "きかい",
+                translation: "Kesempatan seperti ini jarang ada, jadi silakan ikut."
+            }, {
+                question: "会議に必要な<u>資料</u>を事前に配布します。",
+                options: ["しりょう", "しれい", "じりょう", "しりょ"],
+                answer: "しりょう",
+                translation: "Akan membagikan dokumen yang diperlukan untuk rapat sebelumnya."
+            }, {
+                question: "来月から<u>給料</u>が少し上がるらしい。",
+                options: ["きゅうりょう", "きゅりょう", "きゅうれい", "きゅうりょ"],
+                answer: "きゅうりょう",
+                translation: "Kabarnya gaji akan naik sedikit mulai bulan depan."
+            }, {
+                question: "彼の<u>趣味</u>は写真を撮ることだそうです。",
+                options: ["しゅみ", "しゅうみ", "しゅうむ", "しゅみい"],
+                answer: "しゅみ",
+                translation: "Katanya hobby dia adalah mengambil foto."
+            }, {
+                question: "子供との<u>約束</u>は必ず守らなければなりません。",
+                options: ["やくそく", "やそく", "やくそつ", "やくそこ"],
+                answer: "やくそく",
+                translation: "Harus selalu menepati janji kepada anak."
+            }, {
+                question: "待ち合わせの<u>場所</u>は駅の南口でいいですか。",
+                options: ["ばしょ", "ばしょう", "ばじょ", "ばしょく"],
+                answer: "ばしょ",
+                translation: "Apakah tempat bertemu di pintu selatan stasiun oke?"
+            }
+        ],
+        "goi-orthography": [{
+                question: "この問題についての<u>いしき</u>が低いと思う。",
+                options: ["意識", "意織", "意職", "意畿"],
+                answer: "意識",
+                translation: "Saya rasa kesadaran tentang masalah ini masih rendah."
+            }, {
+                question: "病気から<u>かいふく</u>するのに一週間かかった。",
+                options: ["回腹", "回復", "回複", "快復"],
+                answer: "回復",
+                translation: "Butuh seminggu untuk pulih dari sakit."
+            }, {
+                question: "彼女の気持ちは<u>ふくざつ</u>で、うまく説明できない。",
+                options: ["復雑", "腹雑", "複雑", "複難"],
+                answer: "複雑",
+                translation: "Perasaannya rumit, tidak bisa dijelaskan dengan baik."
+            }, {
+                question: "昨日の夕食は<u>まんぞく</u>だった。",
+                options: ["漫足", "満促", "漫促", "満足"],
+                answer: "満足",
+                translation: "Makan malam kemarin memuaskan."
+            }, {
+                question: "彼の説明を<u>りかい</u>するのに時間がかかった。",
+                options: ["理界", "理壊", "里解", "理解"],
+                answer: "理解",
+                translation: "Butuh waktu untuk memahami penjelasannya."
+            }, {
+                question: "その計画に<u>さんせい</u>します。",
+                options: ["参成", "賛成", "讃成", "賛声"],
+                answer: "賛成",
+                translation: "Saya setuju dengan rencana itu."
+            }, {
+                question: "テストに<u>ごうかく</u>するために毎日勉強している。",
+                options: ["合核", "合格", "合閣", "合骨"],
+                answer: "合格",
+                translation: "Belajar setiap hari agar lulus ujian."
+            }, {
+                question: "ミスの<u>げんいん</u>は何だったのか、まだわからない。",
+                options: ["原因", "元因", "源因", "原困"],
+                answer: "原因",
+                translation: "Belum tahu apa penyebab kesalahannya."
+            }, {
+                question: "部長に進捗を<u>ほうこく</u>した。",
+                options: ["幸告", "豊告", "報告", "服告"],
+                answer: "報告",
+                translation: "Melaporkan perkembangan kepada manajer."
+            }, {
+                question: "自分の行動に<u>せきにん</u>を持ってほしい。",
+                options: ["積任", "績任", "責住", "責任"],
+                answer: "責任",
+                translation: "Ingin kamu bertanggung jawab atas tindakanmu sendiri."
+            }, {
+                question: "彼は怒るどころか、<u>かんどう</u>して泣いていた。",
+                options: ["勘動", "感働", "感動", "感勤"],
+                answer: "感動",
+                translation: "Bukannya marah, dia justru terharu sampai menangis."
+            }, {
+                question: "<u>はんたい</u>の意見があれば、遠慮なく言ってください。",
+                options: ["返対", "版対", "伴対", "反対"],
+                answer: "反対",
+                translation: "Jika ada pendapat yang berbeda, silakan sampaikan tanpa sungkan."
+            }, {
+                question: "この映画のテーマは<u>じゆう</u>と愛についてだ。",
+                options: ["字由", "自曲", "自油", "自由"],
+                answer: "自由",
+                translation: "Tema film ini adalah tentang kebebasan dan cinta."
+            }, {
+                question: "プロジェクトの<u>もくてき</u>を全員で共有した。",
+                options: ["目旨", "目勺", "自的", "目的"],
+                answer: "目的",
+                translation: "Berbagi tujuan proyek bersama seluruh anggota."
+            }, {
+                question: "計画を変更するには上司の<u>きょか</u>が必要だ。",
+                options: ["許可", "許河", "許何", "許呵"],
+                answer: "許可",
+                translation: "Untuk mengubah rencana, diperlukan izin atasan."
+            },
+
+            // ── 16–30: Jebakan 期／機／気／基, 統／筒／桶, 判／半 ──
+            {
+                question: "今回の<u>きかい</u>を絶対に逃したくない。",
+                options: ["機械", "気会", "基会", "機会"],
+                answer: "機会",
+                translation: "Tidak mau melewatkan kesempatan kali ini dengan cara apapun."
+            }, {
+                question: "日本の伝統的な<u>でんとう</u>を守り続けたい。",
+                options: ["電統", "伝桶", "伝筒", "伝統"],
+                answer: "伝統",
+                translation: "Ingin terus melestarikan tradisi Jepang."
+            }, {
+                question: "長い議論の末、<u>はんだん</u>を下した。",
+                options: ["半断", "判絶", "判段", "判断"],
+                answer: "判断",
+                translation: "Setelah diskusi panjang, akhirnya mengambil keputusan."
+            }, {
+                question: "この会社の<u>ぎじゅつ</u>は世界トップレベルだ。",
+                options: ["技術", "枝述", "枝術", "技述"],
+                answer: "技術",
+                translation: "Teknologi perusahaan ini termasuk level teratas di dunia."
+            }, {
+                question: "卒業後は海外で<u>けいけん</u>を積みたいと思っている。",
+                options: ["径験", "経検", "径検", "経験"],
+                answer: "経験",
+                translation: "Setelah lulus, ingin menambah pengalaman di luar negeri."
+            }, {
+                question: "子どもの頃からの<u>しゅうかん</u>は変えにくい。",
+                options: ["羽慣", "習管", "習貫", "習慣"],
+                answer: "習慣",
+                translation: "Kebiasaan dari kecil sulit diubah."
+            }, {
+                question: "環境問題に対する<u>いしき</u>が最近高まっている。",
+                options: ["意職", "意畿", "意識", "意織"],
+                answer: "意識",
+                translation: "Kesadaran terhadap masalah lingkungan semakin meningkat belakangan ini."
+            }, {
+                question: "彼には音楽的な<u>さいのう</u>があると思う。",
+                options: ["財能", "才農", "才脳", "才能"],
+                answer: "才能",
+                translation: "Saya pikir dia punya bakat musikal."
+            }, {
+                question: "今月の<u>しゅうにゅう</u>は先月より少なかった。",
+                options: ["収久", "牧入", "収人", "収入"],
+                answer: "収入",
+                translation: "Penghasilan bulan ini lebih sedikit dari bulan lalu."
+            }, {
+                question: "もっと語学力を<u>こうじょう</u>させたい。",
+                options: ["向上", "向丈", "好上", "孔上"],
+                answer: "向上",
+                translation: "Ingin meningkatkan kemampuan bahasa lebih lagi."
+            }, {
+                question: "親友に悩みを<u>そうだん</u>した。",
+                options: ["想談", "相諮", "相読", "相談"],
+                answer: "相談",
+                translation: "Berkonsultasi tentang kekhawatiran kepada sahabat."
+            }, {
+                question: "景気が悪くなり、物価が<u>ぞうか</u>している。",
+                options: ["憎加", "僧加", "増可", "増加"],
+                answer: "増加",
+                translation: "Ekonomi memburuk dan harga-harga terus meningkat."
+            }, {
+                question: "少子化で日本の人口が<u>げんしょう</u>している。",
+                options: ["滅少", "減小", "滅小", "減少"],
+                answer: "減少",
+                translation: "Akibat penurunan angka kelahiran, populasi Jepang terus berkurang."
+            }, {
+                question: "海外で活躍するために<u>ていきょう</u>できる環境を整えたい。",
+                options: ["堤供", "捏供", "提恭", "提供"],
+                answer: "提供",
+                translation: "Ingin menyiapkan lingkungan yang bisa mendukung aktivitas di luar negeri."
+            }, {
+                question: "駅まで<u>ていきけん</u>を使っています。",
+                options: ["定規券", "定季券", "定期巻", "定期券"],
+                answer: "定期券",
+                translation: "Menggunakan kartu langganan sampai ke stasiun."
+            },
+
+            // ── 31–45: Jebakan 政／正／征, 健／建／堅, 態／能／熊 ──
+            {
+                question: "若者が<u>せいじ</u>に関心を持つことが大切だ。",
+                options: ["正治", "政冶", "征治", "政治"],
+                answer: "政治",
+                translation: "Penting bagi anak muda untuk tertarik pada politik."
+            }, {
+                question: "毎日運動して<u>けんこう</u>を維持している。",
+                options: ["建康", "堅康", "健慷", "健康"],
+                answer: "健康",
+                translation: "Menjaga kesehatan dengan berolahraga setiap hari."
+            }, {
+                question: "この問題に対する彼の<u>たいど</u>が気になった。",
+                options: ["能度", "熊度", "悲度", "態度"],
+                answer: "態度",
+                translation: "Saya terganggu dengan sikapnya terhadap masalah ini."
+            }, {
+                question: "会議の<u>ていあん</u>をまとめた資料を配った。",
+                options: ["堤案", "提安", "捏案", "提案"],
+                answer: "提案",
+                translation: "Membagikan dokumen yang merangkum usulan rapat."
+            }, {
+                question: "毎朝ジョギングで体力の<u>いじ</u>に努めている。",
+                options: ["維待", "維示", "維持", "維痔"],
+                answer: "維持",
+                translation: "Berusaha menjaga stamina dengan jogging setiap pagi."
+            }, {
+                question: "二つの案を<u>ひかく</u>してから決める。",
+                options: ["皮較", "比校", "比効", "比較"],
+                answer: "比較",
+                translation: "Memutuskan setelah membandingkan dua rencana."
+            }, {
+                question: "自然<u>かんきょう</u>を守るために行動しましょう。",
+                options: ["還境", "環鏡", "環竟", "環境"],
+                answer: "環境",
+                translation: "Mari bertindak demi melindungi lingkungan alam."
+            }, {
+                question: "子育ては難しくも、大きな<u>よろこび</u>がある。",
+                options: ["悦び", "喜び", "歓び", "慶び"],
+                answer: "喜び",
+                translation: "Membesarkan anak itu sulit, namun ada kebahagiaan yang besar."
+            }, {
+                question: "面接では<u>しんけん</u>な表情で答えた。",
+                options: ["真険", "新剣", "真倹", "真剣"],
+                answer: "真剣",
+                translation: "Menjawab wawancara kerja dengan ekspresi yang serius."
+            }, {
+                question: "インターネットで新しい<u>じょうほう</u>を調べた。",
+                options: ["情法", "情幸", "情報", "状報"],
+                answer: "情報",
+                translation: "Mencari informasi baru di internet."
+            }, {
+                question: "先月から禁煙に<u>ちょうせん</u>している。",
+                options: ["跳戦", "挑践", "跳践", "挑戦"],
+                answer: "挑戦",
+                translation: "Sedang menantang diri sendiri untuk berhenti merokok sejak bulan lalu."
+            }, {
+                question: "仕事の<u>のうりょく</u>が評価されて昇進した。",
+                options: ["農力", "態力", "脳力", "能力"],
+                answer: "能力",
+                translation: "Dipromosikan karena kemampuan kerjanya dihargai."
+            }, {
+                question: "日本の<u>れきし</u>に興味があって本をよく読む。",
+                options: ["暦史", "歴吏", "暦吏", "歴史"],
+                answer: "歴史",
+                translation: "Sering membaca buku karena tertarik dengan sejarah Jepang."
+            }, {
+                question: "この問題は私が<u>たんとう</u>します。",
+                options: ["担等", "単当", "担当", "探当"],
+                answer: "担当",
+                translation: "Masalah ini saya yang bertanggung jawab."
+            }, {
+                question: "試験の<u>けっか</u>は来週発表されます。",
+                options: ["結化", "結家", "結菓", "結果"],
+                answer: "結果",
+                translation: "Hasil ujian akan diumumkan minggu depan."
+            },
+
+            // ── 46–60: Jebakan 材／財／村, 識／織, 調／超／彫 ──
+            {
+                question: "料理に必要な<u>ざいりょう</u>が足りない。",
+                options: ["財料", "村料", "材粒", "材料"],
+                answer: "材料",
+                translation: "Bahan-bahan yang diperlukan untuk memasak kurang."
+            }, {
+                question: "気持ちを上手く<u>ひょうげん</u>できなかった。",
+                options: ["衷現", "俵現", "表幻", "表現"],
+                answer: "表現",
+                translation: "Tidak bisa mengungkapkan perasaan dengan baik."
+            }, {
+                question: "好きなアイドルの<u>こうえん</u>を見に行った。",
+                options: ["公源", "公演", "公苑", "功演"],
+                answer: "公演",
+                translation: "Pergi menonton pertunjukan idola favorit."
+            }, {
+                question: "彼女の話には<u>きょうみ</u>があった。",
+                options: ["興昧", "凶味", "興未", "興味"],
+                answer: "興味",
+                translation: "Saya tertarik dengan ceritanya."
+            }, {
+                question: "<u>きぼう</u>を持って前に進もう。",
+                options: ["稀朢", "希朢", "稀望", "希望"],
+                answer: "希望",
+                translation: "Mari melangkah maju dengan penuh harapan."
+            }, {
+                question: "仕事で海外に<u>ちょくせつ</u>行く機会が増えた。",
+                options: ["値接", "直摂", "直按", "直接"],
+                answer: "直接",
+                translation: "Kesempatan pergi langsung ke luar negeri untuk pekerjaan semakin bertambah."
+            }, {
+                question: "問題を<u>かいけつ</u>するために知恵を集めた。",
+                options: ["壊決", "解快", "解夬", "解決"],
+                answer: "解決",
+                translation: "Mengumpulkan ide untuk menyelesaikan masalah."
+            }, {
+                question: "ここは観光客が多い<u>しせつ</u>です。",
+                options: ["旋設", "施説", "枝設", "施設"],
+                answer: "施設",
+                translation: "Ini adalah fasilitas yang banyak dikunjungi wisatawan."
+            }, {
+                question: "この味は何か<u>どくとく</u>な感じがする。",
+                options: ["毒得", "独特", "独得", "毒特"],
+                answer: "独特",
+                translation: "Rasa ini punya kekhasan tersendiri."
+            }, {
+                question: "試合に勝つために強い<u>けっしん</u>が必要だ。",
+                options: ["快心", "決芯", "決必", "決心"],
+                answer: "決心",
+                translation: "Diperlukan tekad yang kuat untuk memenangkan pertandingan."
+            }, {
+                question: "社会への<u>こうけん</u>ができる仕事がしたい。",
+                options: ["功献", "貢揚", "貢獻", "貢献"],
+                answer: "貢献",
+                translation: "Ingin pekerjaan yang bisa berkontribusi pada masyarakat."
+            }, {
+                question: "古い建物を<u>ほぞん</u>するのは大切なことだ。",
+                options: ["保存", "保村", "保蔵", "保全"],
+                answer: "保存",
+                translation: "Melestarikan bangunan tua adalah hal yang penting."
+            }, {
+                question: "彼は今の仕事に<u>ねっちゅう</u>している。",
+                options: ["熟中", "執中", "熱虫", "熱中"],
+                answer: "熱中",
+                translation: "Dia sangat bersemangat dengan pekerjaannya sekarang."
+            }, {
+                question: "田中さんは<u>ていねい</u>な言葉で説明してくれた。",
+                options: ["丁柔", "下寧", "丁宁", "丁寧"],
+                answer: "丁寧",
+                translation: "Tanaka-san menjelaskan dengan bahasa yang sopan."
+            }, {
+                question: "今後の方針について上司と<u>きょうぎ</u>した。",
+                options: ["協技", "協儀", "共議", "協議"],
+                answer: "協議",
+                translation: "Berunding dengan atasan mengenai kebijakan ke depan."
+            },
+
+            // ── 61–75: Jebakan 感／勘, 統／筒, 最／際, 温／湯 ──
+            {
+                question: "難しい試験に<u>ごうかく</u>して家族に連絡した。",
+                options: ["合核", "合閣", "合骨", "合格"],
+                answer: "合格",
+                translation: "Lulus ujian yang sulit dan menghubungi keluarga."
+            }, {
+                question: "あの選手の<u>きろく</u>はまだ誰にも破られていない。",
+                options: ["記路", "期録", "紀録", "記録"],
+                answer: "記録",
+                translation: "Rekor atlet itu belum dipecahkan oleh siapapun."
+            }, {
+                question: "地震が<u>さいきん</u>増えていると感じる。",
+                options: ["際近", "催近", "最沂", "最近"],
+                answer: "最近",
+                translation: "Merasa gempa bumi semakin sering belakangan ini."
+            }, {
+                question: "彼の<u>きおく</u>力はすばらしいと思う。",
+                options: ["記意", "紀憶", "記臆", "記憶"],
+                answer: "記憶",
+                translation: "Saya pikir kemampuan ingatannya luar biasa."
+            }, {
+                question: "温泉旅行で体も心も<u>かいふく</u>できた。",
+                options: ["回腹", "快復", "回複", "回復"],
+                answer: "回復",
+                translation: "Bisa memulihkan badan dan pikiran dengan perjalanan ke onsen."
+            }, {
+                question: "大会では<u>ゆうしょう</u>を狙っている。",
+                options: ["優称", "優賞", "優尚", "優勝"],
+                answer: "優勝",
+                translation: "Membidik juara pertama di kompetisi."
+            }, {
+                question: "彼はいつも<u>どりょく</u>を惜しまない。",
+                options: ["勤力", "怒力", "奴力", "努力"],
+                answer: "努力",
+                translation: "Dia tidak pernah segan untuk berusaha keras."
+            }, {
+                question: "仕事の<u>こうりつ</u>を上げるために工夫した。",
+                options: ["効立", "効率", "功律", "功率"],
+                answer: "効率",
+                translation: "Berusaha meningkatkan efisiensi kerja."
+            }, {
+                question: "夢の<u>じつげん</u>のために努力を続けている。",
+                options: ["実玄", "実現", "実源", "実弦"],
+                answer: "実現",
+                translation: "Terus berusaha demi mewujudkan impian."
+            }, {
+                question: "このアプリは<u>むりょう</u>で使えます。",
+                options: ["無量", "無粒", "無料", "無良"],
+                answer: "無料",
+                translation: "Aplikasi ini bisa digunakan secara gratis."
+            }, {
+                question: "話し合いの<u>けっか</u>、計画は中止になった。",
+                options: ["結化", "結家", "結菓", "結果"],
+                answer: "結果",
+                translation: "Sebagai hasil dari perundingan, rencana dibatalkan."
+            }, {
+                question: "彼女の<u>うんどう</u>神経はすごいと思う。",
+                options: ["運動", "運道", "雲動", "運洞"],
+                answer: "運動",
+                translation: "Saya pikir kemampuan gerak tubuhnya luar biasa."
+            }, {
+                question: "交通渋滞の<u>えいきょう</u>で遅刻してしまった。",
+                options: ["影鏡", "景響", "英響", "影響"],
+                answer: "影響",
+                translation: "Terlambat karena pengaruh kemacetan lalu lintas."
+            }, {
+                question: "仕事の<u>どうりょく</u>をもっと大切にしたい。",
+                options: ["道力", "動力", "同僚", "同料"],
+                answer: "同僚",
+                translation: "Ingin lebih menghargai rekan kerja."
+            }, {
+                question: "商品の<u>かんり</u>をしっかり行っている。",
+                options: ["管里", "感理", "勘理", "管理"],
+                answer: "管理",
+                translation: "Melakukan pengelolaan produk dengan baik."
+            },
+
+            // ── 76–100: Campuran jebakan tingkat N3 ──
+            {
+                question: "社長が従業員に<u>ほうしゅう</u>を払った。",
+                options: ["報収", "報酬", "幸酬", "報愁"],
+                answer: "報酬",
+                translation: "Direktur membayar kompensasi kepada karyawan."
+            }, {
+                question: "授業中に<u>しゅうちゅう</u>できなかった。",
+                options: ["集中", "拾中", "集虫", "習中"],
+                answer: "集中",
+                translation: "Tidak bisa berkonsentrasi selama pelajaran."
+            }, {
+                question: "ゴミの<u>ぶんべつ</u>は忘れずにしてください。",
+                options: ["分別", "文別", "分列", "分例"],
+                answer: "分別",
+                translation: "Tolong jangan lupa memilah sampah."
+            }, {
+                question: "病院で詳しい<u>けんさ</u>を受けた。",
+                options: ["検差", "験査", "検査", "験差"],
+                answer: "検査",
+                translation: "Menjalani pemeriksaan mendetail di rumah sakit."
+            }, {
+                question: "今年の夏は電力が<u>ふそく</u>するかもしれない。",
+                options: ["不促", "不足", "不側", "不捉"],
+                answer: "不足",
+                translation: "Musim panas tahun ini mungkin terjadi kekurangan daya listrik."
+            }, {
+                question: "彼の言葉には<u>せいじつ</u>さが感じられた。",
+                options: ["誠実", "成実", "清実", "誠失"],
+                answer: "誠実",
+                translation: "Dari kata-katanya terasa kesungguhan hatinya."
+            }, {
+                question: "新しい<u>せいさく</u>について議論が続いている。",
+                options: ["性策", "政作", "制作", "政策"],
+                answer: "政策",
+                translation: "Diskusi mengenai kebijakan baru terus berlangsung."
+            }, {
+                question: "この問題は<u>こんなん</u>で解けない人が多い。",
+                options: ["困南", "困難", "困男", "因難"],
+                answer: "困難",
+                translation: "Banyak orang yang tidak bisa memecahkan soal ini karena sulitnya."
+            }, {
+                question: "家族への<u>しんらい</u>は何より大切だと思う。",
+                options: ["信賴", "信来", "信頼", "心頼"],
+                answer: "信頼",
+                translation: "Saya pikir kepercayaan kepada keluarga adalah yang terpenting."
+            }, {
+                question: "授業の<u>もくひょう</u>を最初に説明します。",
+                options: ["目評", "目票", "目標", "目俵"],
+                answer: "目標",
+                translation: "Akan menjelaskan tujuan pembelajaran di awal."
+            }, {
+                question: "彼女は<u>がいこく</u>で暮らした経験がある。",
+                options: ["外国", "外谷", "害国", "外石"],
+                answer: "外国",
+                translation: "Dia punya pengalaman hidup di luar negeri."
+            }, {
+                question: "規則を<u>いはん</u>した場合は退場です。",
+                options: ["意犯", "違犯", "違反", "以反"],
+                answer: "違反",
+                translation: "Apabila melanggar peraturan, akan dikeluarkan."
+            }, {
+                question: "プロジェクトを<u>すいしん</u>するためにチームを作った。",
+                options: ["水進", "推伸", "推進", "推信"],
+                answer: "推進",
+                translation: "Membentuk tim untuk mendorong kemajuan proyek."
+            }, {
+                question: "外国語の<u>ほんやく</u>はとても難しい仕事だ。",
+                options: ["本役", "翻躍", "翻訳", "翻約"],
+                answer: "翻訳",
+                translation: "Menerjemahkan bahasa asing adalah pekerjaan yang sangat sulit."
+            }, {
+                question: "就職活動の<u>めんせつ</u>でうまく話せた。",
+                options: ["面接", "面摂", "面按", "面設"],
+                answer: "面接",
+                translation: "Berhasil berbicara dengan baik saat wawancara kerja."
+            }, {
+                question: "来月から<u>きゅうりょう</u>が上がることになった。",
+                options: ["給料", "急料", "給粒", "急粮"],
+                answer: "給料",
+                translation: "Gaji akan naik mulai bulan depan."
+            }, {
+                question: "野球の試合で見事な<u>かつやく</u>を見せた。",
+                options: ["活躍", "活曜", "活薬", "活耀"],
+                answer: "活躍",
+                translation: "Menunjukkan penampilan yang luar biasa dalam pertandingan bisbol."
+            }, {
+                question: "資料の<u>ないよう</u>を確認してください。",
+                options: ["内容", "内庸", "内踊", "内用"],
+                answer: "内容",
+                translation: "Tolong periksa isi dokumennya."
+            }, {
+                question: "電車が<u>こしょう</u>して遅れた。",
+                options: ["固障", "故障", "個障", "孤障"],
+                answer: "故障",
+                translation: "Kereta mengalami kerusakan dan terlambat."
+            }, {
+                question: "彼女は<u>じぶん</u>の意見をはっきり言える人だ。",
+                options: ["字分", "自分", "自文", "自扮"],
+                answer: "自分",
+                translation: "Dia adalah orang yang bisa menyatakan pendapatnya dengan jelas."
+            }, {
+                question: "このニュースは世界中に大きな<u>しょうげき</u>を与えた。",
+                options: ["衝激", "衝撃", "傷撃", "衝劇"],
+                answer: "衝撃",
+                translation: "Berita ini memberikan guncangan besar ke seluruh dunia."
+            }, {
+                question: "毎日の<u>れんしゅう</u>がいい結果につながった。",
+                options: ["連珠", "練習", "連習", "錬習"],
+                answer: "練習",
+                translation: "Latihan setiap hari menghasilkan hasil yang baik."
+            }, {
+                question: "彼の行動は<u>よそう</u>の範囲を超えていた。",
+                options: ["余想", "予層", "余走", "予想"],
+                answer: "予想",
+                translation: "Tindakannya melampaui perkiraan."
+            }, {
+                question: "新しいシステムに<u>たいおう</u>するのに時間がかかった。",
+                options: ["対央", "対応", "対往", "対押"],
+                answer: "対応",
+                translation: "Butuh waktu untuk menyesuaikan diri dengan sistem baru."
+            }, {
+                question: "部長は今<u>かいぎ</u>中です。",
+                options: ["会技", "会義", "会机", "会議"],
+                answer: "会議",
+                translation: "Manajer sedang dalam rapat sekarang."
+            }
+        ],
+        "goi-context-expression": [{
+                question: "彼女は財布を忘れたことに、駅に着いてから（　　）。",
+                options: ["気づいた", "思い出した", "知らせた", "分かった"],
+                answer: "気づいた",
+                translation: "気づく = menyadari (sesuatu yang sebelumnya tidak disadari). 思い出す = mengingat kembali sesuatu yang sudah diketahui. Di sini baru pertama menyadari, jadi 気づいた yang tepat."
+            }, {
+                question: "昨日のパーティーで昔の友達に（　　）、とても懐かしかった。",
+                options: ["会って", "見て", "知って", "来て"],
+                answer: "会って",
+                translation: "会う = bertemu (dengan seseorang). 見る hanya melihat tanpa interaksi. Konteks 'bernostalgia bersama' mensyaratkan pertemuan dua arah → 会う."
+            }, {
+                question: "電車の中で大きな声で話すのは周りの人に（　　）から、やめてほしい。",
+                options: ["迷惑をかける", "邪魔をする", "心配させる", "驚かせる"],
+                answer: "迷惑をかける",
+                translation: "迷惑をかける = merepotkan/mengganggu orang lain. Ini ungkapan standar untuk perilaku tidak sopan di tempat umum di Jepang."
+            }, {
+                question: "部長は来週の会議まで結論を（　　）と言った。",
+                options: ["保留する", "延長する", "中止する", "取り消す"],
+                answer: "保留する",
+                translation: "保留する = menunda keputusan sementara. 延長する = memperpanjang waktu. 中止・取り消す = membatalkan. Konteks 'sampai rapat minggu depan' berarti ditunda, bukan dibatalkan."
+            }, {
+                question: "申し訳ありませんが、ただ今担当者が席を（　　）おります。",
+                options: ["外して", "抜けて", "離れて", "休んで"],
+                answer: "外して",
+                translation: "席を外す = sedang tidak di tempat (ungkapan sopan di kantor). Ini frasa baku yang digunakan saat menerima telepon atau tamu."
+            }, {
+                question: "彼は約束をいつも（　　）から、今回も信用できない。",
+                options: ["破る", "忘れる", "変える", "断る"],
+                answer: "破る",
+                translation: "約束を破る = mengingkari janji (frasa tetap). 忘れる = lupa, 変える = mengubah, 断る = menolak dari awal. Konteks 'tidak bisa dipercaya' mengarah ke ingkar janji."
+            }, {
+                question: "このプロジェクトは予算が（　　）、続けることが難しくなった。",
+                options: ["不足して", "減少して", "足りなくて", "なくなって"],
+                answer: "不足して",
+                translation: "予算が不足する = anggaran kurang/defisit. Ini kolokasi paling alami untuk konteks bisnis/proyek. 足りない juga bisa tapi 不足する lebih formal dan sesuai."
+            }, {
+                question: "熱が下がらないので、学校を（　　）ことにした。",
+                options: ["休む", "辞める", "止める", "抜ける"],
+                answer: "休む",
+                translation: "学校を休む = tidak masuk sekolah (sementara). 辞める = berhenti permanen. 止める = menghentikan sesuatu. 抜ける = keluar dari kelompok."
+            }, {
+                question: "彼女が泣いているのを見て、何も（　　）なかった。",
+                options: ["言え", "話せ", "伝え", "答え"],
+                answer: "言え",
+                translation: "何も言えなかった = tidak bisa berkata apa-apa. Ini ungkapan alami saat terdiam karena emosi. 言う paling cocok untuk reaksi spontan verbal."
+            }, {
+                question: "このレストランは予約しないと席が（　　）ことが多い。",
+                options: ["取れない", "空かない", "もらえない", "使えない"],
+                answer: "取れない",
+                translation: "席が取れない = tidak bisa mendapatkan tempat duduk. Ini kolokasi natural: 席を取る (mengambil/mendapatkan tempat). 空かない = tidak ada yang kosong, nuansanya sedikit berbeda."
+            }, {
+                question: "長い間悩んでいたが、やっと転職することを（　　）。",
+                options: ["決めた", "選んだ", "認めた", "決定した"],
+                answer: "決めた",
+                translation: "決める = memutuskan (keputusan pribadi). 決定する lebih formal/organisasi. 選ぶ = memilih dari beberapa opsi. Konteks 悩んでいた → akhirnya memutuskan → 決めた paling natural."
+            }, {
+                question: "今朝、電車が遅れて会議に（　　）しまった。",
+                options: ["遅刻して", "間に合わなくて", "欠席して", "遅れて"],
+                answer: "遅刻して",
+                translation: "遅刻する = terlambat (hadir tapi terlambat). 欠席する = absen/tidak hadir sama sekali. 間に合わない = tidak sempat — tapi dengan て-form + しまった, 遅刻して paling natural."
+            }, {
+                question: "子供のころの記憶は薄くなっても、あの日のことだけは（　　）。",
+                options: ["忘れられない", "思い出せない", "覚えていない", "知らない"],
+                answer: "忘れられない",
+                translation: "忘れられない = tidak bisa melupakan. Kontras dengan 記憶が薄くなる → tapi 'hanya hari itu' tidak terlupakan. Ekspresi kenangan kuat yang tertanam."
+            }, {
+                question: "先生は生徒の質問に（　　）丁寧に答えた。",
+                options: ["一つ一つ", "次々と", "少しずつ", "ずいぶん"],
+                answer: "一つ一つ",
+                translation: "一つ一つ = satu per satu. Paling cocok dengan 丁寧に答えた (menjawab dengan teliti). 次々と = terus-menerus cepat, nuansa berlawanan dengan 丁寧."
+            }, {
+                question: "このルールは全員に（　　）されます。",
+                options: ["適用", "利用", "応用", "使用"],
+                answer: "適用",
+                translation: "適用する = menerapkan/memberlakukan (aturan/hukum kepada seseorang). 利用・使用 = menggunakan. 応用 = mengaplikasikan ilmu. Untuk aturan yang diberlakukan ke orang → 適用."
+            }, {
+                question: "この薬は食後に（　　）ください。",
+                options: ["飲んで", "使って", "取って", "つけて"],
+                answer: "飲んで",
+                translation: "薬を飲む = minum obat (dalam bentuk tablet/kapsul). 使う terlalu umum. つける = mengoleskan (salep). 取る = mengambil. 飲む adalah kata yang tepat untuk obat yang ditelan."
+            }, {
+                question: "彼は突然仕事を（　　）、みんなが驚いた。",
+                options: ["辞めて", "休んで", "断って", "やめて"],
+                answer: "辞めて",
+                translation: "仕事を辞める = berhenti bekerja (permanen). 休む = istirahat sementara. 断る = menolak (sebelum mulai). 突然辞める = tiba-tiba resign, yang membuat orang terkejut."
+            }, {
+                question: "試験の日時が変わったことを学生全員に（　　）必要がある。",
+                options: ["知らせる", "教える", "伝える", "話す"],
+                answer: "知らせる",
+                translation: "知らせる = memberitahukan informasi/pengumuman kepada banyak orang. 教える = mengajarkan. 伝える = menyampaikan (lebih personal). 知らせる cocok untuk notifikasi resmi ke semua mahasiswa."
+            }, {
+                question: "彼女のスピーチは会場の全員を（　　）ほど素晴らしかった。",
+                options: ["感動させる", "驚かせる", "笑わせる", "泣かせる"],
+                answer: "感動させる",
+                translation: "感動させる = membuat terharu. Konteks 素晴らしかった (luar biasa) → reaksi terdalam adalah 感動. 驚く = terkejut, 笑う = tertawa, 泣く = menangis saja."
+            }, {
+                question: "毎日少しずつ単語を（　　）おくと、試験前に楽になる。",
+                options: ["覚えて", "勉強して", "練習して", "確認して"],
+                answer: "覚えて",
+                translation: "単語を覚える = menghafal kosakata. て+おく = melakukan sesuatu sebagai persiapan. 勉強する terlalu luas. 覚えておく = menghafal terlebih dahulu sebagai persiapan."
+            },
+
+            // ── 21–40: Nomina yang mudah tertukar konteks ──
+            {
+                question: "道に迷ったとき、近くにいた人に（　　）を聞いた。",
+                options: ["道順", "場所", "住所", "行き方"],
+                answer: "道順",
+                translation: "道順 = petunjuk arah/urutan jalan yang harus diikuti. 場所 = lokasi (sudah tahu tempatnya tapi bingung jalannya). 住所 = alamat. 行き方 juga bisa, tapi 道順 lebih spesifik untuk 'cara jalan'."
+            }, {
+                question: "彼は会議で自分の（　　）をはっきりと述べた。",
+                options: ["意見", "感想", "考え方", "気持ち"],
+                answer: "意見",
+                translation: "意見を述べる = menyampaikan pendapat (frasa baku dalam konteks rapat). 感想 = kesan/perasaan pribadi. 気持ち = perasaan emosional. 考え方 = cara berpikir. 意見 paling formal untuk konteks 会議."
+            }, {
+                question: "新しい仕事に（　　）するまで、少し時間がかかった。",
+                options: ["慣れ", "慣らし", "適応", "馴染み"],
+                answer: "慣れ",
+                translation: "慣れる = terbiasa. 慣れするまで は不自然. 慣れが自然. 適応する juga bisa tapi lebih formal. 慣れるまで時間がかかった = perlu waktu untuk terbiasa."
+            }, {
+                question: "この映画のストーリーには（　　）があって、最後まで飽きなかった。",
+                options: ["引き込まれる力", "面白さ", "工夫", "魅力"],
+                answer: "魅力",
+                translation: "魅力がある = memiliki daya tarik. 面白さ = keseruan (lebih casual). 工夫 = upaya/kreativitas. 魅力 paling tepat untuk mengungkapkan daya tarik cerita yang membuat tidak bosan."
+            }, {
+                question: "彼は仕事でミスをしたが、上司に（　　）することができた。",
+                options: ["謝罪", "説明", "報告", "相談"],
+                answer: "謝罪",
+                translation: "謝罪する = meminta maaf secara resmi. Konteks ミスをした → tindakan yang tepat adalah 謝罪. 説明 = menjelaskan. 報告 = melaporkan. 相談 = berkonsultasi."
+            }, {
+                question: "この薬には眠くなるという（　　）がある。",
+                options: ["副作用", "効果", "影響", "結果"],
+                answer: "副作用",
+                translation: "副作用 = efek samping (obat). Ini adalah kolokasi tetap: 薬の副作用. 効果 = efek/khasiat (positif). 影響 = pengaruh. 結果 = hasil."
+            }, {
+                question: "大学の入学（　　）を払い込む期限は今月末だ。",
+                options: ["金", "費用", "料金", "代金"],
+                answer: "金",
+                translation: "入学金 = biaya masuk universitas (kata benda majemuk tetap). Tidak bisa diganti dengan 費用/料金/代金 karena 入学金 adalah satu kata baku."
+            }, {
+                question: "彼女の話し方にはいつも（　　）がある。",
+                options: ["余裕", "自信", "丁寧さ", "落ち着き"],
+                answer: "余裕",
+                translation: "余裕がある = ada kelonggaran/ketenangan. Konteks cara bicara yang tidak terburu-buru dan tenang → 余裕. 自信 = percaya diri (lebih ke isi). 落ち着き mirip tapi 余裕 lebih natural."
+            }, {
+                question: "昨日、上司に急な（　　）を頼まれて困った。",
+                options: ["残業", "仕事", "お願い", "用事"],
+                answer: "残業",
+                translation: "急な残業を頼まれる = diminta lembur mendadak. Konteks 困った (kesusahan) paling kuat kalau yang diminta adalah lembur mendadak. 急な仕事 juga bisa, tapi 残業 lebih specific dan dramatic."
+            }, {
+                question: "電車の中に傘を（　　）てしまった。",
+                options: ["忘れ", "落とし", "置い", "なくし"],
+                answer: "忘れ",
+                translation: "傘を忘れる = ketinggalan payung (lupa membawa saat turun). 落とす = menjatuhkan (tidak sengaja jatuh). 置く = meletakkan (sengaja). 忘れる paling tepat untuk barang tertinggal di kendaraan."
+            }, {
+                question: "彼女の歌声は聴衆の心を（　　）た。",
+                options: ["つかん", "動かし", "感動させ", "惹きつけ"],
+                answer: "つかん",
+                translation: "心をつかむ = mencuri hati/memikat (frasa idiomatis). 動かす = menggerakkan hati. 感動させる = membuat terharu. 心をつかむ adalah ekspresi paling alami untuk penyanyi yang membuat penonton terpesona."
+            }, {
+                question: "彼とは（　　）が合って、すぐに仲良くなった。",
+                options: ["気", "波長", "性格", "趣味"],
+                answer: "気",
+                translation: "気が合う = cocok/serasi (frasa idiomatis). 波長が合う juga bisa tapi lebih casual/modern. 性格・趣味は名詞単体では合うと組み合わせが不自然。気が合う adalah frasa baku."
+            }, {
+                question: "スポーツ大会の（　　）として、会場の準備をした。",
+                options: ["準備として", "係として", "役割として", "担当として"],
+                answer: "担当として",
+                translation: "担当として = sebagai penanggung jawab. 係 = bagian/seksi. 役割 = peran. 担当 paling alami untuk 'orang yang bertanggung jawab atas persiapan acara'."
+            }, {
+                question: "子供が熱を出したので、急いで（　　）を測った。",
+                options: ["体温", "熱", "温度", "体重"],
+                answer: "体温",
+                translation: "体温を測る = mengukur suhu tubuh (frasa tetap). 熱を測る juga dipakai sehari-hari tapi 体温を測る lebih baku. 温度 = suhu umum (bukan tubuh). 体重 = berat badan."
+            }, {
+                question: "運動不足が（　　）の原因の一つだと言われている。",
+                options: ["生活習慣病", "肥満", "ストレス", "疲れ"],
+                answer: "生活習慣病",
+                translation: "運動不足 → 生活習慣病 (penyakit gaya hidup) adalah kombinasi konteks yang paling kuat secara medis. 肥満 = obesitas (hanya satu akibat). ストレス dan 疲れ tidak langsung disebabkan oleh 運動不足."
+            }, {
+                question: "毎朝ニュースを見て（　　）を確認するのが習慣になった。",
+                options: ["天気予報", "情報", "ニュース", "天候"],
+                answer: "天気予報",
+                translation: "天気予報を確認する = mengecek prakiraan cuaca (kolokasi natural). 天候 = kondisi cuaca aktual. 情報 terlalu luas. 毎朝の習慣として → 天気予報 paling natural."
+            }, {
+                question: "彼女の話はいつも（　　）がなくて、何が言いたいのかわからない。",
+                options: ["要点", "内容", "意味", "結論"],
+                answer: "要点",
+                translation: "要点がない = tidak ada poin utamanya. 内容がない = tidak ada isinya. 意味がない = tidak ada artinya. 何が言いたいかわからない konteks → 要点 paling tepat (intinya tidak jelas)."
+            }, {
+                question: "この工場では１日に１万個の（　　）を生産できる。",
+                options: ["製品", "商品", "品物", "作品"],
+                answer: "製品",
+                translation: "製品 = produk hasil pabrik/manufaktur. 商品 = barang dagangan (setelah dijual). 品物 = barang (umum). 作品 = karya seni. 工場で生産する → 製品."
+            }, {
+                question: "彼は会議で突然（　　）を辞めると言い出した。",
+                options: ["役職", "仕事", "会社", "チーム"],
+                answer: "役職",
+                translation: "役職を辞める = melepaskan jabatan/posisi. 仕事を辞める = berhenti kerja. 会社を辞める = keluar dari perusahaan. 突然の発言で最もドラマチックなのは役職を辞めること."
+            }, {
+                question: "彼の提案は（　　）がよく考えられていて、みんな納得した。",
+                options: ["内容", "説明", "方法", "考え"],
+                answer: "内容",
+                translation: "内容がよく考えられている = isinya sudah dipikirkan matang. みんなが納得した → butuh kata yang menggambarkan kualitas substansi proposal. 内容 paling tepat."
+            },
+
+            // ── 41–60: Kata keterangan dan ekspresi ──
+            {
+                question: "彼女は怒っているはずなのに、（　　）笑顔でいた。",
+                options: ["それでも", "だから", "そのため", "それで"],
+                answer: "それでも",
+                translation: "それでも = meskipun begitu/namun demikian. Kontras: marah tapi tetap tersenyum. だから/そのため = oleh karena itu (sebab-akibat). それでも untuk kontras yang kuat."
+            }, {
+                question: "試験まであと３日（　　）ない。",
+                options: ["しか", "だけ", "ほど", "くらい"],
+                answer: "しか",
+                translation: "しか〜ない = hanya...saja (dengan nuansa 'sayangnya hanya'). あと3日しかない = tinggal 3 hari lagi (terasa kurang). だけ〜ない は不自然. ほど・くらい tidak berpasangan dengan ない."
+            }, {
+                question: "この地域では（　　）地震が起きている。",
+                options: ["頻繁に", "よく", "しばしば", "たびたび"],
+                answer: "頻繁に",
+                translation: "頻繁に = sering/dengan frekuensi tinggi (formal). よく = sering (kasual). しばしば/たびたび = kerap kali. Untuk konteks bencana alam/berita → 頻繁に paling formal dan natural."
+            }, {
+                question: "彼の言葉は（　　）胸に刺さった。",
+                options: ["ぐさっと", "はっきりと", "じっと", "ぼんやりと"],
+                answer: "ぐさっと",
+                translation: "ぐさっと胸に刺さる = menancap di hati (ekspresi idiomatis kata-kata yang menyakitkan). Onomatope ぐさっと paling sesuai untuk menggambarkan rasa sakit dari kata-kata seseorang."
+            }, {
+                question: "体の具合が悪いなら、（　　）無理しないでください。",
+                options: ["くれぐれも", "ぜひ", "なるべく", "できるだけ"],
+                answer: "くれぐれも",
+                translation: "くれぐれも = tolong sungguh-sungguh/mohon dengan sangat. Digunakan saat memberikan peringatan/permohonan dengan penekanan emosional. Pasangan alami: くれぐれも〜ないでください."
+            }, {
+                question: "朝から何も食べていなくて、お腹が（　　）している。",
+                options: ["ぺこぺこ", "ふくふく", "がらがら", "もたもた"],
+                answer: "ぺこぺこ",
+                translation: "お腹がぺこぺこ = perut keroncongan sangat lapar. ふくふく = gembul/berisi. がらがら = kosong melompong (untuk suara/tempat). もたもた = lambat gerakannya."
+            }, {
+                question: "彼女はミスをしたにもかかわらず、（　　）謝ろうとしなかった。",
+                options: ["一向に", "全然", "少しも", "まったく"],
+                answer: "一向に",
+                translation: "一向に〜ない = sama sekali tidak (dengan nuansa tidak ada kemajuan/perubahan). 全然・まったく = sama sekali tidak (lebih umum). 一向に paling natural setelah にもかかわらず."
+            }, {
+                question: "もう少し（　　）話してもらえると、わかりやすいです。",
+                options: ["具体的に", "丁寧に", "正確に", "詳しく"],
+                answer: "具体的に",
+                translation: "具体的に = secara konkret/spesifik. Konteks わかりやすい → butuh contoh konkret. 丁寧に = sopan. 正確に = akurat. 詳しく = mendetail. わかりやすさ → 具体的 paling kuat."
+            }, {
+                question: "この仕事は大変だが、（　　）やりがいがある。",
+                options: ["その分", "だから", "それに", "しかし"],
+                answer: "その分",
+                translation: "その分 = seimbang dengan itu/sebanding dengan beratnya. 大変だが、その分やりがいがある = seberat itu, sebanding pula kepuasannya. Mengungkapkan keseimbangan positif-negatif."
+            }, {
+                question: "締め切りが明日なのに、仕事が（　　）終わらない。",
+                options: ["なかなか", "なかなかで", "ぜんぜん", "まったく"],
+                answer: "なかなか",
+                translation: "なかなか〜ない = tidak mudah/tidak segera (ada usaha tapi tidak berhasil). ぜんぜん/まったく = sama sekali tidak. 締め切りを前に努力しているが終わらない → なかなか."
+            }, {
+                question: "あの先生の授業は難しいが、（　　）力がつく。",
+                options: ["確実に", "絶対に", "必ず", "きっと"],
+                answer: "確実に",
+                translation: "確実に力がつく = pasti dengan jelas kemampuannya bertumbuh. 絶対に・必ず = pasti (nada lebih tegas/janji). 確実に = dapat dipastikan/tidak diragukan lagi. Konteks evaluasi objektif → 確実に."
+            }, {
+                question: "彼はプレゼンの前に（　　）資料を見直していた。",
+                options: ["念入りに", "じっくりと", "しっかりと", "ていねいに"],
+                answer: "念入りに",
+                translation: "念入りに = dengan sangat teliti/tidak melewatkan satu pun. Konteks 資料を見直す sebelum presentasi penting → 念入りに paling natural untuk persiapan mendetail."
+            }, {
+                question: "彼女は悲しくても、（　　）笑って見せた。",
+                options: ["無理に", "わざと", "あえて", "故意に"],
+                answer: "無理に",
+                translation: "無理に笑う = memaksakan senyuman. わざと = sengaja (niat). あえて = dengan sengaja meski ada halangan (nuansa positif). 故意に = dengan sengaja (sering bernuansa negatif). 悲しいのに笑う → 無理に."
+            }, {
+                question: "先輩のアドバイスを（　　）聞いておいたほうがいい。",
+                options: ["素直に", "正直に", "真剣に", "丁寧に"],
+                answer: "素直に",
+                translation: "素直に聞く = mendengar dengan lapang dada/tanpa membantah. 正直に = dengan jujur. 真剣に = dengan serius. 丁寧に = dengan sopan. アドバイスを受け入れる態度 → 素直に."
+            }, {
+                question: "彼は何を聞いても（　　）答えてくれない。",
+                options: ["ろくに", "まともに", "きちんと", "ちゃんと"],
+                answer: "ろくに",
+                translation: "ろくに〜ない = tidak dengan selayaknya/serampangan. Ekspresi frustrasi yang kuat. ろくに答えない = tidak mau menjawab dengan benar. まともに juga bisa tapi ろくに bernuansa lebih frustrasi."
+            }, {
+                question: "急いでいたのに、電車の中で知り合いに会って（　　）話し込んでしまった。",
+                options: ["つい", "わざと", "急いで", "少し"],
+                answer: "つい",
+                translation: "つい〜してしまう = tanpa sadar melakukan sesuatu (melawan niat awal). Konteks: terburu-buru tapi tanpa sadar malah ngobrol panjang. つい paling natural untuk perilaku tak terduga dari diri sendiri."
+            }, {
+                question: "彼はどんな状況でも（　　）している姿が印象的だ。",
+                options: ["落ち着いて", "リラックス", "平静に", "のんびり"],
+                answer: "落ち着いて",
+                translation: "落ち着いている = tenang/tidak panik. 姿が印象的 = gayanya berkesan. のんびり = santai (kurang tepat untuk situasi apapun). 平静に は副詞として後ろに来る形が不自然. 落ち着いている姿 paling natural."
+            }, {
+                question: "昨日は疲れすぎて、ソファに（　　）眠ってしまった。",
+                options: ["そのまま", "すぐに", "ついに", "急に"],
+                answer: "そのまま",
+                translation: "そのまま眠る = tertidur begitu saja (tanpa bergerak/tanpa bersiap). Sangat natural: kelelahan → jatuh di sofa → そのまま眠る. すぐに = segera. ついに = akhirnya. 急に = tiba-tiba."
+            }, {
+                question: "計画通りにいかなかったが、（　　）いい経験になった。",
+                options: ["それなりに", "かえって", "そのうえ", "それでも"],
+                answer: "それなりに",
+                translation: "それなりに = dengan caranya sendiri/sesuai keadaan. 計画通りじゃなかったが、それなりにいい経験 = tidak sempurna tapi ada nilainya. かえって = justru malah (kontras kuat). それなりに = nuansa 'pada akhirnya ada sisi positifnya'."
+            }, {
+                question: "彼女の説明は（　　）わかりやすく、メモを取る必要もなかった。",
+                options: ["非常に", "大変", "ずいぶん", "たいへん"],
+                answer: "非常に",
+                translation: "非常に = sangat (formal/tulisan). Konteks pujian objektif atas penjelasan → 非常に paling formal. 大変・たいへん biasanya untuk 大変だ. ずいぶん lebih kasual. 非常に〜い形容詞 paling natural."
+            },
+
+            // ── 61–80: Adjektiva dan ekspresi sifat ──
+            {
+                question: "彼女の部屋はいつも（　　）整理されている。",
+                options: ["きちんと", "ちゃんと", "はっきりと", "しっかりと"],
+                answer: "きちんと",
+                translation: "きちんと整理されている = tertata rapi dengan teratur. きちんと paling natural dengan 整理. ちゃんと = benar/sebagaimana mestinya. はっきり = jelas. しっかり = dengan kokoh."
+            }, {
+                question: "このゲームは子供にも（　　）楽しめます。",
+                options: ["気軽に", "安心して", "自由に", "素直に"],
+                answer: "気軽に",
+                translation: "気軽に楽しめる = bisa dinikmati dengan santai tanpa beban. 安心して = dengan aman. 自由に = dengan bebas. 子供にも → 気軽に paling pas untuk nuansa 'mudah dan santai'."
+            }, {
+                question: "この問題は私には（　　）すぎて、解けなかった。",
+                options: ["難し", "複雑", "難解", "高度"],
+                answer: "難し",
+                translation: "難しすぎて = terlalu sulit. すぎる berpasangan dengan bentuk stem adjektif. 難しすぎる adalah bentuk yang paling natural dan umum. 複雑すぎる juga bisa tapi 難しい lebih langsung."
+            }, {
+                question: "会議の場で（　　）意見を言える雰囲気ではなかった。",
+                options: ["率直な", "正直な", "素直な", "自由な"],
+                answer: "率直な",
+                translation: "率直な意見 = pendapat yang blak-blakan/tanpa basa-basi. 率直に言う adalah frasa baku untuk menyampaikan pendapat jujur dalam diskusi formal. 正直な juga bisa, tapi 率直 lebih tepat untuk 'ungkapkan apa adanya'."
+            }, {
+                question: "お腹が痛いのに、彼は（　　）顔一つ見せなかった。",
+                options: ["苦しい", "痛い", "辛そうな", "苦しそうな"],
+                answer: "苦しそうな",
+                translation: "苦しそうな顔一つ見せない = tidak menunjukkan wajah kesakitan sedikit pun. 顔一つ見せない は外見の表現なのでそうな形が必要. 苦しそうな = tampak kesakitan."
+            }, {
+                question: "子供の頃から（　　）好奇心を持っていた。",
+                options: ["旺盛な", "強い", "大きな", "深い"],
+                answer: "旺盛な",
+                translation: "旺盛な好奇心 = rasa ingin tahu yang membara/besar sekali (kolokasi tetap). 強い好奇心 juga bisa, tapi 旺盛な好奇心 adalah frasa baku yang sering muncul di N3."
+            }, {
+                question: "彼女は（　　）で、困っている人を見ると放っておけない。",
+                options: ["世話好き", "面倒くさがり", "おせっかい", "親切"],
+                answer: "世話好き",
+                translation: "世話好き = suka membantu/mengurus orang lain (positif). おせっかい = kepo/ikut campur (negatif). 困っている人を放っておけない → nuansa positif → 世話好き paling tepat."
+            }, {
+                question: "この薬を飲むと眠くなるので、運転前の服用は（　　）です。",
+                options: ["危険", "禁止", "注意が必要", "不可"],
+                answer: "危険",
+                translation: "運転前に服用するのは危険 = berbahaya mengonsumsinya sebelum mengemudi. 禁止 = dilarang (terlalu kuat/formal untuk efek samping). 注意が必要 = perlu berhati-hati. 危険 paling natural untuk peringatan obat."
+            }, {
+                question: "あの二人は顔も性格も（　　）いる。",
+                options: ["似て", "同じで", "比べて", "違って"],
+                answer: "似て",
+                translation: "顔も性格も似ている = wajah maupun kepribadian pun mirip. 似ている = mirip (frasa natural). 同じ = sama persis (terlalu absolut). 比べる = membandingkan (beda konteks)."
+            }, {
+                question: "この店の料理は値段の（　　）おいしい。",
+                options: ["わりに", "ために", "せいで", "おかげで"],
+                answer: "わりに",
+                translation: "値段のわりに = mengingat harganya/dibandingkan harganya. わりに = meskipun... tapi (kontras harapan vs kenyataan). Harganya tertentu, tapi rasanya lebih enak dari yang diperkirakan."
+            }, {
+                question: "彼は失敗を（　　）にして、次に活かすことができる人だ。",
+                options: ["糧", "教訓", "反省", "勉強"],
+                answer: "糧",
+                translation: "失敗を糧にする = menjadikan kegagalan sebagai bahan bakar/nutrisi untuk tumbuh. Ini idiom yang sangat natural dan khas bahasa Jepang. 教訓 = pelajaran (lebih pasif). 糧 = sesuatu yang menguatkan."
+            }, {
+                question: "この仕事には（　　）集中力が必要だ。",
+                options: ["高い", "大きな", "強い", "深い"],
+                answer: "高い",
+                translation: "高い集中力 = konsentrasi tinggi (kolokasi tetap). 集中力が高い は日本語として自然. 強い集中力 も使われるが, 高い集中力 の方がより一般的."
+            }, {
+                question: "彼女の歌は技術よりも（　　）が伝わってくる歌だ。",
+                options: ["気持ち", "感情", "心", "思い"],
+                answer: "気持ち",
+                translation: "気持ちが伝わる = perasaan yang tersampaikan. 歌で伝わるもの → 気持ち paling natural dan umum. 心も使えるが、気持ちの方が歌の感情表現として自然."
+            }, {
+                question: "彼の行動はあまりにも（　　）で、みんな呆れてしまった。",
+                options: ["無責任", "無関心", "無意味", "無駄"],
+                answer: "無責任",
+                translation: "無責任な行動 = tindakan tidak bertanggung jawab. みんなが呆れる = semua orang geleng kepala. Konteks perilaku yang mengecewakan orang banyak → 無責任 paling kuat."
+            }, {
+                question: "先生の（　　）な指導のおかげで、成績が上がった。",
+                options: ["丁寧", "熱心", "親切", "優しい"],
+                answer: "熱心",
+                translation: "熱心な指導 = bimbingan yang penuh semangat/tekun. 成績が上がった → butuh kata yang menggambarkan kualitas pengajaran. 熱心 = penuh dedikasi, paling cocok untuk konteks meningkatnya nilai."
+            }, {
+                question: "彼女は仕事が（　　）で、頼りになる存在だ。",
+                options: ["できる", "上手", "得意", "巧み"],
+                answer: "できる",
+                translation: "仕事ができる = kompeten dalam pekerjaan (frasa idiomatis). できる人 = orang yang andal. 仕事が上手 は少し不自然. 仕事ができる は日本語の自然な表現."
+            }, {
+                question: "彼の言い方は（　　）すぎて、相手を傷つけることがある。",
+                options: ["直接的", "率直", "正直", "露骨"],
+                answer: "直接的",
+                translation: "直接的すぎる = terlalu to-the-point/blak-blakan (sampai menyakiti). すぎる + な形容詞 → 直接的すぎる. 率直 も使えるが、人を傷つける文脈 → 直接的 の方が自然."
+            }, {
+                question: "この店のサービスは（　　）で、また来たいと思った。",
+                options: ["行き届いて", "充実して", "丁寧で", "素晴らしく"],
+                answer: "行き届いて",
+                translation: "サービスが行き届いている = pelayanan yang sangat teliti/tidak ada yang terlewat. Ekspresi pujian khas untuk layanan restoran/hotel di Jepang. 丁寧 = sopan (hanya cara, bukan kelengkapan)."
+            }, {
+                question: "彼はいつも（　　）な態度で話してくれるので、話しやすい。",
+                options: ["穏やか", "おとなしい", "落ち着いた", "静か"],
+                answer: "穏やか",
+                translation: "穏やかな態度 = sikap yang tenang dan lembut. 話しやすい → butuh kata yang menggambarkan kehangatan dalam berinteraksi. 穏やか = lembut dan damai, paling natural untuk 話しやすい."
+            }, {
+                question: "目標を（　　）に向かって、毎日練習を続けている。",
+                options: ["ひたすら", "まっすぐ", "一心に", "ひたむきに"],
+                answer: "ひたむきに",
+                translation: "ひたむきに = dengan sepenuh hati/tanpa kenal lelah. 目標に向かってひたむきに練習する = berlatih keras dengan fokus penuh menuju tujuan. Ini kolokasi sangat natural untuk kerja keras."
+            },
+
+            // ── 81–100: Ekspresi gramatikal dan nuansa konteks ──
+            {
+                question: "弟に頼んだが、（　　）やってくれなかった。",
+                options: ["なかなか", "ぜんぜん", "ちっとも", "すこしも"],
+                answer: "なかなか",
+                translation: "なかなかやってくれない = tidak kunjung melakukannya. Nuansa: sudah meminta tapi tidak kunjung dikerjakan. ぜんぜん/ちっとも/すこしも = sama sekali tidak (lebih kuat). なかなか = belum-belum juga."
+            }, {
+                question: "今の仕事に（　　）を感じていて、転職を考えている。",
+                options: ["限界", "疲れ", "不満", "退屈"],
+                answer: "限界",
+                translation: "限界を感じる = merasa sudah di batas kemampuan. Konteks转職を考えている (mempertimbangkan pindah kerja) → 限界 paling kuat sebagai alasan. 不満 juga bisa tapi 限界 lebih final."
+            }, {
+                question: "環境を守るために、私たちは（　　）できることから始めよう。",
+                options: ["自分に", "まず", "小さな", "身近な"],
+                answer: "身近な",
+                translation: "身近なことから始める = mulai dari hal-hal di sekitar kita. 環境保護 + 身近なところから = ekspresi paling alami untuk ajakan tindakan konkret. まず も使えるが、できることを修飾するには身近な が自然."
+            }, {
+                question: "長年の夢が（　　）、感激で言葉が出なかった。",
+                options: ["かなって", "実現して", "達成して", "叶えられて"],
+                answer: "かなって",
+                translation: "夢がかなう = impian terwujud (frasa idiomatis tetap). 言葉が出なかった = tidak bisa berkata-kata. 夢がかなう adalah ekspresi paling natural dan emosional untuk impian yang terwujud."
+            }, {
+                question: "彼は自分の意見を（　　）人だから、信頼できる。",
+                options: ["曲げない", "変えない", "守る", "持つ"],
+                answer: "曲げない",
+                translation: "意見を曲げない = tidak membelokkan/mengubah pendapat karena tekanan. 信頼できる → karena teguh pendirian. 意見を曲げない adalah idiom yang tepat untuk 'berpendirian teguh'."
+            }, {
+                question: "面接で緊張のあまり、準備していたことが（　　）しまった。",
+                options: ["飛んで", "消えて", "忘れて", "抜けて"],
+                answer: "飛んで",
+                translation: "頭が飛ぶ/飛んでしまう = lupa total (pikiran jadi kosong karena panik). 緊張のあまり頭が飛んだ adalah ekspresi natural yang menggambarkan blank karena gugup."
+            }, {
+                question: "この映画は一度見ただけでは（　　）がわからないほど深い。",
+                options: ["意味", "内容", "テーマ", "良さ"],
+                answer: "良さ",
+                translation: "良さがわからない = tidak bisa menangkap kebaikannya. 一度見ただけでは良さがわからない = baru bisa dinikmati setelah menonton berkali-kali. Ini ekspresi untuk karya mendalam."
+            }, {
+                question: "親に心配を（　　）ないように、毎日連絡している。",
+                options: ["かけ", "させ", "し", "与え"],
+                answer: "かけ",
+                translation: "心配をかける = membuat (orang tua) khawatir (frasa idiomatis). 心配をかけないように adalah ekspresi sangat natural di Jepang. 心配させない juga benar tapi 心配をかける lebih idiomatis."
+            }, {
+                question: "料理の腕が上がったのか、最近作るものが（　　）なった。",
+                options: ["おいしく", "うまく", "美味しそうに", "上手に"],
+                answer: "おいしく",
+                translation: "おいしくなった = menjadi enak. 料理 + おいしくなる adalah kombinasi paling natural. うまく なった = menjadi mahir (keterampilan). おいしく は食べ物の味の変化."
+            }, {
+                question: "急いで決める必要はなく、（　　）考えてください。",
+                options: ["じっくり", "ゆっくり", "しっかり", "ゆったり"],
+                answer: "じっくり",
+                translation: "じっくり考える = memikirkan dengan matang/mendalam. 急いで決める必要はない → butuh kata yang menekankan proses berpikir mendalam. じっくり paling tepat untuk 'berpikir dengan teliti tanpa terburu-buru'."
+            }, {
+                question: "彼女は忙しいのに、いつも私の話を（　　）聞いてくれる。",
+                options: ["真剣に", "熱心に", "しっかりと", "きちんと"],
+                answer: "真剣に",
+                translation: "真剣に聞く = mendengarkan dengan serius/sungguh-sungguh. 忙しいのに untuk orang lain → 真剣に menunjukkan kesungguhan dan kepedulian. 熱心に juga bisa, tapi 真剣に lebih personal."
+            }, {
+                question: "この計画には（　　）が多く、実現するのは難しそうだ。",
+                options: ["課題", "問題", "困難", "障害"],
+                answer: "課題",
+                translation: "課題が多い = banyak tantangan/hal yang harus diselesaikan. 課題 = hal yang perlu diatasi (lebih konstruktif). 問題 = masalah (lebih negatif). 計画の実現に関して → 課題が多い lebih natural."
+            }, {
+                question: "こんなに難しい問題が解けるなんて、（　　）。",
+                options: ["たいしたものだ", "すごい", "さすがだ", "すばらしい"],
+                answer: "たいしたものだ",
+                translation: "たいしたものだ = luar biasa/hebat sekali (kagum yang tulus, sedikit informal). こんなに難しい問題 + たいしたものだ adalah ekspresi pujian yang paling natural dan alami dalam percakapan."
+            }, {
+                question: "彼は締め切りに（　　）間に合わなかった。",
+                options: ["あいにく", "残念ながら", "ついに", "とうとう"],
+                answer: "あいにく",
+                translation: "あいにく = sayang sekali/tidak beruntung. 締め切りに間に合わなかった dengan nuansa 'sial/tidak beruntung' → あいにく. とうとう/ついに = akhirnya (lebih untuk sesuatu yang sudah lama dinantikan)."
+            }, {
+                question: "入院している間、友人が毎日（　　）に来てくれた。",
+                options: ["お見舞い", "面会", "訪問", "会い"],
+                answer: "お見舞い",
+                translation: "お見舞いに来る = datang menjenguk orang sakit (frasa baku). 入院 + お見舞い adalah kombinasi tetap. 面会 = pertemuan resmi. 訪問 = kunjungan (umum). お見舞い khusus untuk menjenguk orang sakit/bencana."
+            }, {
+                question: "彼女の言葉が（　　）になって、諦めずに続けることができた。",
+                options: ["支え", "励まし", "力", "助け"],
+                answer: "支え",
+                translation: "言葉が支えになる = kata-katanya menjadi penopang/penyemangat. 諦めずに続けられた → butuh kata yang menggambarkan sesuatu yang menopang dari dalam. 支え = penopang emosional paling tepat."
+            }, {
+                question: "毎日（　　）ことで、少しずつ日本語が上手になっていった。",
+                options: ["積み重ねる", "続ける", "努力する", "練習する"],
+                answer: "積み重ねる",
+                translation: "積み重ねることで少しずつ上手になる = dengan menumpuk (usaha) sedikit demi sedikit menjadi mahir. 積み重ねる = menumpuk/akumulasi usaha sehari-hari. 続ける juga bisa tapi 積み重ねる lebih menggambarkan proses akumulasi."
+            }, {
+                question: "彼女は批判されても（　　）表情を崩さなかった。",
+                options: ["平然と", "当然と", "堂々と", "自然と"],
+                answer: "平然と",
+                translation: "平然と = dengan tenang seolah tidak ada yang terjadi. 批判されても平然としている = dikritik pun tetap tenang tak terusik. 堂々と = dengan gagah/percaya diri. 平然 は動じない冷静さ."
+            }, {
+                question: "試験の直前になって、（　　）不安になってきた。",
+                options: ["急に", "突然", "だんだん", "しだいに"],
+                answer: "急に",
+                translation: "急に不安になる = tiba-tiba jadi cemas. 直前になって急に = tepat saat menjelang ujian tiba-tiba cemas. だんだん/しだいに = lambat laun (bertahap). 急に lebih tepat untuk perubahan perasaan mendadak."
+            }, {
+                question: "彼は（　　）を持って物事に取り組む姿勢がある。",
+                options: ["情熱", "熱意", "やる気", "意欲"],
+                answer: "情熱",
+                translation: "情熱を持って取り組む = mengerjakan sesuatu dengan penuh semangat/passion. 姿勢がある (memiliki sikap) + 情熱 = ekspresi yang menggambarkan dedikasi mendalam. 情熱 adalah kata paling kuat dan emosional di antara pilihannya."
+            }
+        ],
+        "goi-paraphrase": [{
+                question: "彼女はいつも約束を<u>守る</u>人だから、信頼できる。",
+                options: ["約束したことを必ず実行する", "約束したことを忘れない", "約束を大切にする", "約束を変えない"],
+                answer: "約束したことを必ず実行する",
+                translation: "約束を守る = menepati janji, artinya melaksanakan apa yang sudah dijanjikan."
+            }, {
+                question: "彼は昨日、会社を<u>早退した</u>。",
+                options: ["定時より早く会社を出た", "会社に遅れて来た", "会社を一日休んだ", "残業せずに帰った"],
+                answer: "定時より早く会社を出た",
+                translation: "早退する = pulang lebih awal dari jam kerja normal."
+            }, {
+                question: "部長は会議中、ずっと<u>渋い顔をしていた</u>。",
+                options: ["不満そうな表情だった", "真剣な顔つきだった", "疲れた様子だった", "難しい話を聞いていた"],
+                answer: "不満そうな表情だった",
+                translation: "渋い顔をする = menampilkan ekspresi tidak puas/tidak senang."
+            }, {
+                question: "祖母は足が悪くて、<u>歩くのに苦労している</u>。",
+                options: ["歩くことが難しくなっている", "歩くのが嫌いになった", "歩くと痛みがある", "歩けなくなった"],
+                answer: "歩くことが難しくなっている",
+                translation: "苦労する = mengalami kesulitan. 歩くのに苦労 = berjalan menjadi hal yang sulit dilakukan."
+            }, {
+                question: "彼は仕事を<u>引き受けた</u>くせに、何もしなかった。",
+                options: ["やると言ったのに", "頼まれたのに", "手伝うと言ったのに", "できると言ったのに"],
+                answer: "やると言ったのに",
+                translation: "引き受ける = menerima/menyanggupi (tugas/permintaan). くせに = padahal sudah menyanggupi."
+            }, {
+                question: "先生は生徒の間違いを<u>指摘した</u>。",
+                options: ["間違っているところを教えた", "間違いを直してあげた", "間違いを怒った", "間違いを無視した"],
+                answer: "間違っているところを教えた",
+                translation: "指摘する = menunjukkan/memberitahukan bagian yang salah atau perlu diperhatikan."
+            }, {
+                question: "彼女の提案を<u>却下した</u>。",
+                options: ["受け入れなかった", "無視した", "後で考えることにした", "変更を求めた"],
+                answer: "受け入れなかった",
+                translation: "却下する = menolak/tidak menerima (proposal, usul)."
+            }, {
+                question: "彼は自分の非を<u>認めなかった</u>。",
+                options: ["自分が悪かったと言わなかった", "謝らなかった", "反省しなかった", "説明しなかった"],
+                answer: "自分が悪かったと言わなかった",
+                translation: "非を認める = mengakui kesalahan diri sendiri. 認めなかった = tidak mau mengakui."
+            }, {
+                question: "彼女はどんな状況でも<u>冷静を保った</u>。",
+                options: ["慌てずに落ち着いていた", "感情を見せなかった", "怒らなかった", "笑顔を忘れなかった"],
+                answer: "慌てずに落ち着いていた",
+                translation: "冷静を保つ = tetap tenang tidak panik dalam situasi apapun."
+            }, {
+                question: "長い間<u>悩んだ末</u>、留学を決めた。",
+                options: ["ずっと考えてやっと", "急に思い立って", "誰かに相談して", "少し迷ってから"],
+                answer: "ずっと考えてやっと",
+                translation: "悩んだ末 = setelah lama berpikir dan akhirnya (memutuskan). 末 = ujung dari proses panjang."
+            }, {
+                question: "彼は仕事を<u>掛け持ちしている</u>。",
+                options: ["複数の仕事を同時にしている", "残業をよくしている", "仕事を家に持ち帰っている", "仕事を人に任せている"],
+                answer: "複数の仕事を同時にしている",
+                translation: "掛け持ちする = merangkap/menjalani beberapa pekerjaan sekaligus."
+            }, {
+                question: "彼女はそのニュースを聞いて<u>絶句した</u>。",
+                options: ["驚いて何も言えなくなった", "泣き出してしまった", "すぐに怒り出した", "信じられないと言った"],
+                answer: "驚いて何も言えなくなった",
+                translation: "絶句する = terdiam/kehilangan kata-kata karena terkejut atau terkesima."
+            }, {
+                question: "会議で彼の意見に<u>賛同した</u>。",
+                options: ["彼の意見に同意した", "彼の意見を参考にした", "彼の意見を聞いた", "彼の意見に反対した"],
+                answer: "彼の意見に同意した",
+                translation: "賛同する = setuju/mendukung pendapat atau rencana seseorang."
+            }, {
+                question: "このプロジェクトは来月から<u>本格的に始まる</u>。",
+                options: ["正式に本番として動き出す", "少しずつ準備を始める", "計画を立て始める", "テストを開始する"],
+                answer: "正式に本番として動き出す",
+                translation: "本格的に始まる = mulai berjalan sungguh-sungguh/secara penuh (bukan lagi persiapan/uji coba)."
+            }, {
+                question: "彼女の頼みを<u>断れなかった</u>。",
+                options: ["嫌だとは言えなかった", "忙しかったのでできなかった", "やり方がわからなかった", "返事ができなかった"],
+                answer: "嫌だとは言えなかった",
+                translation: "断れない = tidak bisa menolak. Nuansanya: ingin menolak tapi tidak sanggup mengatakannya."
+            }, {
+                question: "彼は仕事で大きなミスをして、上司に<u>こっぴどく叱られた</u>。",
+                options: ["ひどく厳しく怒られた", "長い時間叱られた", "みんなの前で怒られた", "何度も注意された"],
+                answer: "ひどく厳しく怒られた",
+                translation: "こっぴどく叱られる = dimarahi dengan keras/sangat keras sekali."
+            }, {
+                question: "今回の事件の<u>真相を明かした</u>。",
+                options: ["本当のことを話した", "証拠を見せた", "犯人を捕まえた", "事件を解決した"],
+                answer: "本当のことを話した",
+                translation: "真相を明かす = mengungkap kebenaran/apa yang sebenarnya terjadi."
+            }, {
+                question: "彼は困っている人を<u>見捨てる</u>ことができない性格だ。",
+                options: ["助けずにそのままにする", "無視して歩いていく", "気づかないふりをする", "関わろうとしない"],
+                answer: "助けずにそのままにする",
+                translation: "見捨てる = meninggalkan/mengabaikan seseorang yang butuh bantuan tanpa menolong."
+            }, {
+                question: "彼女は頑張っている後輩を<u>陰ながら応援していた</u>。",
+                options: ["直接言わずにこっそり支えていた", "遠くから見守っていた", "何もしないで見ていた", "人知れず批判していた"],
+                answer: "直接言わずにこっそり支えていた",
+                translation: "陰ながら応援する = mendukung secara diam-diam tanpa menunjukkan diri."
+            }, {
+                question: "彼は批判されても<u>動じなかった</u>。",
+                options: ["気にせず落ち着いていた", "怒らなかった", "諦めなかった", "反論しなかった"],
+                answer: "気にせず落ち着いていた",
+                translation: "動じない = tidak terguncang/tetap tenang walau dalam tekanan atau kritikan."
+            },
+
+            // ── 21–40: Nomina dan frasa nominal ──
+            {
+                question: "彼は社内で<u>一目置かれている</u>存在だ。",
+                options: ["みんなから尊重されている", "みんなから好かれている", "みんなから頼りにされている", "みんなから注目されている"],
+                answer: "みんなから尊重されている",
+                translation: "一目置く = menaruh hormat/mengakui keunggulan seseorang. 一目置かれる = dihormati/disegani orang-orang."
+            }, {
+                question: "この地域は<u>治安が悪い</u>ので、夜は一人で出歩かないほうがいい。",
+                options: ["危険なことが起きやすい", "暗くて見えにくい", "知らない人が多い", "道が複雑だ"],
+                answer: "危険なことが起きやすい",
+                translation: "治安が悪い = kondisi keamanan buruk, mudah terjadi kejahatan atau bahaya."
+            }, {
+                question: "彼女の行動は<u>非常識だ</u>と思われた。",
+                options: ["普通の感覚からずれていると思われた", "礼儀がないと思われた", "悪意があると思われた", "子供っぽいと思われた"],
+                answer: "普通の感覚からずれていると思われた",
+                translation: "非常識 = tidak sesuai dengan akal sehat/norma umum masyarakat."
+            }, {
+                question: "今回の失敗は私の<u>不注意</u>が原因だった。",
+                options: ["気をつけていなかったこと", "準備が足りなかったこと", "確認しなかったこと", "集中していなかったこと"],
+                answer: "気をつけていなかったこと",
+                translation: "不注意 = kurang hati-hati/lalai memperhatikan."
+            }, {
+                question: "このレポートには<u>矛盾</u>がある。",
+                options: ["前に言ったことと違うことが書かれている", "間違いが多い", "わかりにくい部分がある", "情報が足りない"],
+                answer: "前に言ったことと違うことが書かれている",
+                translation: "矛盾 = kontradiksi, di mana pernyataan satu sama lain bertentangan."
+            }, {
+                question: "彼女は<u>几帳面な</u>性格で、何でもきちんとする。",
+                options: ["細かいことにも注意して丁寧にする", "早くて正確にできる", "ルールを必ず守る", "物事を計画的に進める"],
+                answer: "細かいことにも注意して丁寧にする",
+                translation: "几帳面 = teliti/cermat, memperhatikan setiap detail dengan rapi."
+            }, {
+                question: "先生の話は<u>的を射ていた</u>。",
+                options: ["ポイントを正確についていた", "わかりやすかった", "説得力があった", "具体的だった"],
+                answer: "ポイントを正確についていた",
+                translation: "的を射る = tepat sasaran/mengenai inti permasalahan dengan akurat."
+            }, {
+                question: "彼は<u>口が固い</u>から、秘密を話しても安心だ。",
+                options: ["秘密を他の人に言わない", "嘘をつかない", "話すのが得意でない", "言葉を選んで話す"],
+                answer: "秘密を他の人に言わない",
+                translation: "口が固い = bisa menjaga rahasia, tidak membocorkan informasi ke orang lain."
+            }, {
+                question: "彼女の説明は<u>要領を得なかった</u>。",
+                options: ["何が言いたいのかよくわからなかった", "内容が難しすぎた", "時間が長すぎた", "声が小さくて聞こえなかった"],
+                answer: "何が言いたいのかよくわからなかった",
+                translation: "要領を得ない = tidak jelas apa intinya/tidak tertangkap poin utamanya."
+            }, {
+                question: "彼はどんなに忙しくても<u>時間を作って</u>来てくれた。",
+                options: ["忙しい中でもわざわざ来てくれた", "早めに仕事を終わらせて来た", "休日を使って来てくれた", "他の予定をキャンセルして来た"],
+                answer: "忙しい中でもわざわざ来てくれた",
+                translation: "時間を作る = menyempatkan diri. 忙しいのに時間を作る = sengaja meluangkan waktu di tengah kesibukan."
+            }, {
+                question: "この仕事は<u>骨が折れる</u>。",
+                options: ["とても大変で苦労する", "時間がかかる", "専門知識が必要だ", "体力が必要だ"],
+                answer: "とても大変で苦労する",
+                translation: "骨が折れる = sangat melelahkan/membutuhkan banyak usaha dan tenaga."
+            }, {
+                question: "彼は<u>口が軽い</u>から、大事なことは話さないほうがいい。",
+                options: ["秘密をすぐに人に話してしまう", "嘘をつくことがある", "話が長い", "思ったことをすぐ言う"],
+                answer: "秘密をすぐに人に話してしまう",
+                translation: "口が軽い = tidak bisa menjaga rahasia, mudah menceritakan ke orang lain. Kebalikan dari 口が固い."
+            }, {
+                question: "試験の<u>合否</u>は来週わかる。",
+                options: ["受かったかどうか", "結果がどうだったか", "点数がいくつだったか", "順位がどうだったか"],
+                answer: "受かったかどうか",
+                translation: "合否 = lulus atau tidak lulus (合格か不合格か)."
+            }, {
+                question: "彼女の言葉には<u>棘がある</u>。",
+                options: ["聞いている人を傷つけるような言い方をする", "直接的すぎる言い方をする", "怒っているように聞こえる", "冷たい雰囲気がある"],
+                answer: "聞いている人を傷つけるような言い方をする",
+                translation: "棘がある = ada duri/tajam, artinya cara bicaranya menyakitkan pendengarnya."
+            }, {
+                question: "その計画は<u>見切り発車だった</u>。",
+                options: ["準備が十分でないまま始めた", "急いで始めた", "失敗すると思って始めた", "反対されながら始めた"],
+                answer: "準備が十分でないまま始めた",
+                translation: "見切り発車 = mulai tanpa persiapan yang cukup/nekat memulai sebelum siap."
+            }, {
+                question: "この問題は<u>一筋縄ではいかない。",
+                options: ["簡単には解決できない", "時間がかかる問題だ", "専門家でないと解けない", "解決策がまだない"],
+                answer: "簡単には解決できない",
+                translation: "一筋縄ではいかない = tidak bisa diselesaikan dengan cara biasa/tidak semudah itu."
+            }, {
+                question: "彼女はいつも<u>機嫌よく</u>仕事をしている。",
+                options: ["いい気持ちで楽しそうに", "真剣に集中して", "素早く効率よく", "丁寧に慎重に"],
+                answer: "いい気持ちで楽しそうに",
+                translation: "機嫌よく = dengan suasana hati yang baik/ceria."
+            }, {
+                question: "この店はいつも<u>盛況だ</u>。",
+                options: ["いつもお客さんで賑わっている", "いつも評判がいい", "いつも新しいものがある", "いつも営業している"],
+                answer: "いつもお客さんで賑わっている",
+                translation: "盛況 = ramai/sibuk dengan pelanggan, suasana yang penuh semangat."
+            }, {
+                question: "彼は仕事に<u>見切りをつけた</u>。",
+                options: ["もうこれ以上続けても無駄だと判断した", "仕事を終わらせた", "仕事の目標を達成した", "仕事の評価を受けた"],
+                answer: "もうこれ以上続けても無駄だと判断した",
+                translation: "見切りをつける = memutuskan untuk menyerah/berhenti karena dirasa sudah tidak ada hasilnya."
+            }, {
+                question: "彼の話は<u>大げさだ</u>。",
+                options: ["実際より大きく話している", "嘘が混じっている", "話が長すぎる", "自分のことばかり話している"],
+                answer: "実際より大きく話している",
+                translation: "大げさ = lebay/melebih-lebihkan dari kenyataan yang sebenarnya."
+            },
+
+            // ── 41–60: Ekspresi idiomatis N3 ──
+            {
+                question: "彼女は<u>面の皮が厚い</u>と言われている。",
+                options: ["恥ずかしいと思わない人だ", "強くてたくましい人だ", "感情を表に出さない人だ", "怒りにくい人だ"],
+                answer: "恥ずかしいと思わない人だ",
+                translation: "面の皮が厚い = tebal muka/tidak punya rasa malu."
+            }, {
+                question: "彼は頼まれると<u>断れない性格だ</u>。",
+                options: ["嫌と言えない人だ", "すぐ承諾する人だ", "人の役に立ちたがる人だ", "優しすぎる人だ"],
+                answer: "嫌と言えない人だ",
+                translation: "断れない性格 = kepribadian yang tidak bisa menolak. Nuansa: ingin menolak tapi tidak bisa."
+            }, {
+                question: "この話は<u>寝耳に水だった</u>。",
+                options: ["全く予想していなかった", "信じられなかった", "聞いていなかった", "知らなかった"],
+                answer: "全く予想していなかった",
+                translation: "寝耳に水 = benar-benar di luar dugaan/kabar yang sama sekali tidak disangka-sangka."
+            }, {
+                question: "彼女は失敗を<u>糧にして</u>成長した。",
+                options: ["失敗から学んで次に活かして", "失敗を乗り越えて", "失敗を忘れないで", "失敗を反省して"],
+                answer: "失敗から学んで次に活かして",
+                translation: "糧にする = menjadikan sesuatu sebagai bahan untuk berkembang. 失敗を糧にする = belajar dari kegagalan dan memanfaatkannya."
+            }, {
+                question: "彼は上司に<u>取り入ろうとしている</u>。",
+                options: ["気に入られようとしている", "意見を伝えようとしている", "認めてもらおうとしている", "近づこうとしている"],
+                answer: "気に入られようとしている",
+                translation: "取り入る = berusaha mencari muka/menyenangkan atasan untuk mendapat perlakuan istimewa."
+            }, {
+                question: "二人の意見が<u>かみ合わなかった</u>。",
+                options: ["話がうまくつながらなかった", "お互いに聞いていなかった", "話題が違いすぎた", "言葉が通じなかった"],
+                answer: "話がうまくつながらなかった",
+                translation: "かみ合わない = tidak nyambung/pembicaraan tidak mengalir karena sudut pandang berbeda."
+            }, {
+                question: "彼は<u>腹を割って</u>話してくれた。",
+                options: ["本音を正直に話してくれた", "感情的になって話してくれた", "長い時間かけて話してくれた", "静かに落ち着いて話してくれた"],
+                answer: "本音を正直に話してくれた",
+                translation: "腹を割って話す = berbicara dari lubuk hati/jujur apa adanya tanpa menyembunyikan perasaan."
+            }, {
+                question: "このプロジェクトは<u>暗礁に乗り上げた。",
+                options: ["進められなくなった", "失敗してしまった", "計画が変わった", "時間がかかるようになった"],
+                answer: "進められなくなった",
+                translation: "暗礁に乗り上げる = kandas/terhambat dan tidak bisa melanjutkan (seperti kapal yang menabrak batu karang)."
+            }, {
+                question: "あの二人は<u>馬が合う</u>ようだ。",
+                options: ["気が合っているようだ", "仲がいいようだ", "よく一緒にいるようだ", "話が合うようだ"],
+                answer: "気が合っているようだ",
+                translation: "馬が合う = serasi/cocok satu sama lain (kepribadian/cara berpikir sejalan)."
+            }, {
+                question: "その問題については<u>触れないでおこう</u>。",
+                options: ["その話をしないでおこう", "その問題を無視しよう", "その問題を後にしよう", "その問題を隠しておこう"],
+                answer: "その話をしないでおこう",
+                translation: "触れない = tidak menyinggung/tidak membahas sesuatu topik."
+            }, {
+                question: "彼女は<u>手を焼いている</u>子供の世話をしている。",
+                options: ["扱いに困っている", "危険な目にあっている", "手間のかかる", "世話が大変な"],
+                answer: "扱いに困っている",
+                translation: "手を焼く = kesulitan menghadapi/kewalahan. 手を焼いている子供 = anak yang sulit diurus."
+            }, {
+                question: "この仕事は<u>水物だ</u>から、安定した収入は期待できない。",
+                options: ["結果が予測できないものだ", "季節によって変わるものだ", "体力が必要なものだ", "運が必要なものだ"],
+                answer: "結果が予測できないものだ",
+                translation: "水物 = sesuatu yang hasilnya tidak bisa diprediksi, tidak pasti."
+            }, {
+                question: "試合前、選手たちは<u>気合いが入っていた</u>。",
+                options: ["やる気が高まっていた", "緊張していた", "集中していた", "準備ができていた"],
+                answer: "やる気が高まっていた",
+                translation: "気合いが入る = semangat membara/motivasi tinggi menjelang sesuatu yang penting."
+            }, {
+                question: "彼は問題から<u>目を背けている</u>。",
+                options: ["問題を直視しようとしていない", "問題を知らないふりをしている", "問題を他人のせいにしている", "問題を解決しようとしていない"],
+                answer: "問題を直視しようとしていない",
+                translation: "目を背ける = memalingkan mata/tidak mau menghadapi kenyataan."
+            }, {
+                question: "今回の件は<u>水に流して</u>、もう一度やり直そう。",
+                options: ["過去のことは忘れて", "反省してから", "きちんと謝ってから", "話し合いをしてから"],
+                answer: "過去のことは忘れて",
+                translation: "水に流す = mengalirkan ke air/melupakan kesalahan atau kejadian buruk di masa lalu."
+            }, {
+                question: "彼女は<u>根に持つ</u>タイプだと思う。",
+                options: ["嫌なことをいつまでも忘れないタイプだ", "すぐ怒るタイプだ", "感情を出さないタイプだ", "人を信用しないタイプだ"],
+                answer: "嫌なことをいつまでも忘れないタイプだ",
+                translation: "根に持つ = menyimpan dendam/tidak bisa melupakan perlakuan buruk orang lain."
+            }, {
+                question: "彼は何があっても<u>動じない</u>人だ。",
+                options: ["何があっても落ち着いている人だ", "何があっても怒らない人だ", "何があっても諦めない人だ", "何があっても笑顔の人だ"],
+                answer: "何があっても落ち着いている人だ",
+                translation: "動じない = tidak terguncang/selalu tenang dalam situasi apapun."
+            }, {
+                question: "彼女は私の気持ちを<u>汲み取って</u>くれた。",
+                options: ["察して理解してくれた", "聞いてくれた", "受け入れてくれた", "共感してくれた"],
+                answer: "察して理解してくれた",
+                translation: "汲み取る = memahami/menangkap perasaan orang lain meski tidak diungkapkan secara langsung."
+            }, {
+                question: "その計画は<u>実を結んだ。",
+                options: ["良い結果が出た", "計画通りに進んだ", "みんなに認められた", "終わりに近づいた"],
+                answer: "良い結果が出た",
+                translation: "実を結ぶ = berbuah hasil, usaha yang selama ini dilakukan akhirnya memberikan hasil yang baik."
+            }, {
+                question: "彼は先輩に<u>頭が上がらない。",
+                options: ["先輩に対して遠慮してしまう", "先輩を怖いと思っている", "先輩に感謝している", "先輩の前では緊張する"],
+                answer: "先輩に対して遠慮してしまう",
+                translation: "頭が上がらない = tidak bisa angkat kepala/selalu merasa sungkan/terhutang budi kepada seseorang."
+            },
+
+            // ── 61–80: Kata sifat dan ekspresi nuansa ──
+            {
+                question: "彼女は<u>手先が器用だ</u>。",
+                options: ["細かい作業が上手だ", "手が大きい", "手が速い", "器械の扱いが上手だ"],
+                answer: "細かい作業が上手だ",
+                translation: "手先が器用 = terampil dengan tangan, pandai melakukan pekerjaan yang membutuhkan ketelitian tangan."
+            }, {
+                question: "この仕事は<u>やりがいがある。",
+                options: ["努力する価値を感じられる仕事だ", "楽しい仕事だ", "得意な仕事だ", "評価される仕事だ"],
+                answer: "努力する価値を感じられる仕事だ",
+                translation: "やりがいがある = ada rasa puas/kepuasan dari usaha yang dilakukan, ada nilai yang dirasakan."
+            }, {
+                question: "彼は<u>顔が広い人だ。",
+                options: ["知り合いがたくさんいる人だ", "有名な人だ", "人気がある人だ", "社交的な人だ"],
+                answer: "知り合いがたくさんいる人だ",
+                translation: "顔が広い = punya banyak kenalan/jaringan pertemanan yang luas."
+            }, {
+                question: "彼女の考えは<u>斬新だ。",
+                options: ["今までにない新しいものだ", "とても正確だ", "実用的で良い", "わかりやすい"],
+                answer: "今までにない新しいものだ",
+                translation: "斬新 = segar/baru sama sekali, ide yang belum pernah ada sebelumnya."
+            }, {
+                question: "この問題は<u>根が深い。",
+                options: ["簡単には解決できない複雑な問題だ", "長い間続いている問題だ", "みんなに関係する問題だ", "原因がわからない問題だ"],
+                answer: "簡単には解決できない複雑な問題だ",
+                translation: "根が深い = berakar dalam, permasalahan yang rumit dan tidak mudah diselesaikan."
+            }, {
+                question: "彼女は<u>鼻が高い。",
+                options: ["誇りに思っている", "自信がある", "自慢している", "嬉しそうにしている"],
+                answer: "誇りに思っている",
+                translation: "鼻が高い = bangga/merasa memiliki kebanggaan (biasanya atas sesuatu yang berkaitan dengan dirinya atau orang yang dicintai)."
+            }, {
+                question: "彼は<u>口が達者だ。",
+                options: ["話すのがとても上手だ", "よくしゃべる人だ", "説得力がある人だ", "うそをうまくつく人だ"],
+                answer: "話すのがとても上手だ",
+                translation: "口が達者 = pandai bicara/fasih dan terampil dalam berbicara."
+            }, {
+                question: "最近、彼女は<u>生き生きしている。",
+                options: ["元気そうで活力がある", "楽しそうにしている", "健康そうに見える", "明るくなった"],
+                answer: "元気そうで活力がある",
+                translation: "生き生きする = tampak bersemangat/penuh vitalitas dan energi."
+            }, {
+                question: "彼の行動は<u>筋が通っている。",
+                options: ["考え方や行動に一貫性がある", "正しいことをしている", "論理的に考えている", "誠実に行動している"],
+                answer: "考え方や行動に一貫性がある",
+                translation: "筋が通る = konsisten/ada benang merahnya, tindakan dan pikiran yang sejalan."
+            }, {
+                question: "彼女は<u>気が利く。",
+                options: ["周りに気を配るのが上手だ", "頭の回転が速い", "感情が豊かだ", "気持ちの切り替えが上手だ"],
+                answer: "周りに気を配るのが上手だ",
+                translation: "気が利く = perhatian/tanggap, pandai membaca situasi dan melakukan hal yang dibutuhkan orang lain."
+            }, {
+                question: "この仕事は<u>時間を問わない。",
+                options: ["いつでもできる仕事だ", "時間通りにしなくていい仕事だ", "短時間でできる仕事だ", "時間のかからない仕事だ"],
+                answer: "いつでもできる仕事だ",
+                translation: "時間を問わない = tidak tergantung waktu/bisa kapan saja tanpa dibatasi oleh waktu tertentu."
+            }, {
+                question: "このチームは<u>まとまりがある。",
+                options: ["みんなが一体となって動いている", "メンバーが仲良しだ", "チームワークがいい", "意見がそろっている"],
+                answer: "みんなが一体となって動いている",
+                translation: "まとまりがある = kompak/solid, semua anggota bergerak sebagai satu kesatuan."
+            }, {
+                question: "彼女は<u>気が短い。",
+                options: ["すぐ怒る人だ", "待てない人だ", "せっかちな人だ", "感情的になりやすい人だ"],
+                answer: "すぐ怒る人だ",
+                translation: "気が短い = cepat marah/tidak sabar sampai mudah tersulut emosi."
+            }, {
+                question: "彼の提案は<u>的外れだった。",
+                options: ["問題の本質とずれていた", "間違っていた", "実用的でなかった", "わかりにくかった"],
+                answer: "問題の本質とずれていた",
+                translation: "的外れ = tidak tepat sasaran, meleset dari inti/poin yang sebenarnya."
+            }, {
+                question: "この店の料理は<u>申し分ない。",
+                options: ["不満な点が何もない", "とても美味しい", "値段が手頃だ", "サービスがいい"],
+                answer: "不満な点が何もない",
+                translation: "申し分ない = tidak ada yang perlu dikeluhkan/sempurna, tidak ada kekurangan."
+            }, {
+                question: "彼は<u>物事を白黒つけたがる。",
+                options: ["はっきりどちらかに決めたがる", "正義感が強い", "曖昧なことが嫌いだ", "判断が速い"],
+                answer: "はっきりどちらかに決めたがる",
+                translation: "白黒つける = memisahkan hitam dan putih/ingin menentukan dengan jelas mana yang benar dan mana yang salah."
+            }, {
+                question: "彼女の言葉は<u>核心をついていた。",
+                options: ["問題の一番大事なところを指摘していた", "正確なことを言っていた", "みんなが思っていたことを言っていた", "厳しいが正しいことを言っていた"],
+                answer: "問題の一番大事なところを指摘していた",
+                translation: "核心をつく = menusuk inti permasalahan, langsung ke bagian terpenting."
+            }, {
+                question: "彼は<u>気が置けない友人だ。",
+                options: ["遠慮しなくていい友人だ", "信頼できる友人だ", "気を使わなくていい友人だ", "長い付き合いの友人だ"],
+                answer: "遠慮しなくていい友人だ",
+                translation: "気が置けない = tidak perlu sungkan/bisa bersikap natural. Sering disalahartikan — ini POSITIF, bukan orang yang perlu diwaspadai."
+            }, {
+                question: "このアイデアは<u>一石二鳥だ。",
+                options: ["一つのことで二つの利益が得られる", "簡単にできる方法だ", "誰でも思いつく方法だ", "効率的な方法だ"],
+                answer: "一つのことで二つの利益が得られる",
+                translation: "一石二鳥 = sekali merengkuh dayung dua tiga pulau terlampaui, satu tindakan menghasilkan dua manfaat."
+            }, {
+                question: "彼は<u>自分の殻に閉じこもっている。",
+                options: ["周りと関わろうとせず内にこもっている", "人見知りをしている", "ストレスを抱えている", "孤独を好んでいる"],
+                answer: "周りと関わろうとせず内にこもっている",
+                translation: "殻に閉じこもる = menarik diri ke dalam cangkang, tidak mau berhubungan dengan dunia luar."
+            },
+
+            // ── 81–100: Ungkapan situasi dan keadaan ──
+            {
+                question: "このプロジェクトは<u>軌道に乗った。",
+                options: ["うまく進むようになった", "完成に近づいた", "予定通りに進んでいる", "評価されるようになった"],
+                answer: "うまく進むようになった",
+                translation: "軌道に乗る = masuk jalur/mulai berjalan dengan baik dan lancar setelah melewati masa sulit."
+            }, {
+                question: "彼女は<u>肩の荷が下りたようだった。",
+                options: ["ずっと感じていた責任やプレッシャーがなくなった", "疲れが取れた", "悩みが解決した", "リラックスできた"],
+                answer: "ずっと感じていた責任やプレッシャーがなくなった",
+                translation: "肩の荷が下りる = beban di pundak terangkat, lega karena tanggung jawab besar sudah selesai."
+            }, {
+                question: "彼は周りから<u>一目置かれている。",
+                options: ["能力や実力を認められている", "人気がある", "信頼されている", "期待されている"],
+                answer: "能力や実力を認められている",
+                translation: "一目置く = mengakui kemampuan seseorang yang lebih dari diri sendiri."
+            }, {
+                question: "二人の関係は<u>冷え切っている。",
+                options: ["お互いに気持ちが全くなくなっている", "仲が悪い", "会話がない", "距離を置いている"],
+                answer: "お互いに気持ちが全くなくなっている",
+                translation: "冷え切る = benar-benar dingin/hubungan yang sudah tidak ada kehangatan sama sekali."
+            }, {
+                question: "彼は問題が起きると<u>逃げ腰になる。",
+                options: ["責任を逃れようとする", "すぐに諦める", "人のせいにする", "一人で抱え込む"],
+                answer: "責任を逃れようとする",
+                translation: "逃げ腰 = setengah kabur/posisi siap melarikan diri dari tanggung jawab."
+            }, {
+                question: "この話は<u>眉唾だ。",
+                options: ["本当かどうか疑わしい", "信じられない内容だ", "誇張されている", "嘘が含まれている"],
+                answer: "本当かどうか疑わしい",
+                translation: "眉唾 = meragukan, tidak bisa dipercaya begitu saja (perlu diverifikasi)."
+            }, {
+                question: "彼は<u>手の内を見せない。",
+                options: ["自分の考えや計画を明かさない", "感情を見せない", "弱みを見せない", "本音を言わない"],
+                answer: "自分の考えや計画を明かさない",
+                translation: "手の内を見せない = tidak memperlihatkan isi tangan/menyembunyikan strategi atau rencana sendiri."
+            }, {
+                question: "彼女はいつも話が<u>横道にそれる。",
+                options: ["本題から外れてしまう", "話が長くなる", "話題が変わる", "まとまりがない"],
+                answer: "本題から外れてしまう",
+                translation: "横道にそれる = keluar jalur/pembicaraan melenceng dari topik utama."
+            }, {
+                question: "今回の結果には<u>納得がいかない。",
+                options: ["結果を受け入れられない", "結果に不満だ", "結果が理解できない", "結果に驚いた"],
+                answer: "結果を受け入れられない",
+                translation: "納得がいかない = tidak bisa menerima/tidak puas dan tidak bisa menyetujui."
+            }, {
+                question: "彼女は<u>二枚舌を使う人だ。",
+                options: ["相手によって違うことを言う人だ", "嘘をつく人だ", "言葉が多い人だ", "言葉が巧みな人だ"],
+                answer: "相手によって違うことを言う人だ",
+                translation: "二枚舌 = bermuka dua/mengatakan hal yang berbeda tergantung kepada siapa berbicara."
+            }, {
+                question: "このチャンスを<u>逃す手はない。",
+                options: ["絶対に利用すべきだ", "利用したほうがいい", "利用できればいい", "逃さないように注意すべきだ"],
+                answer: "絶対に利用すべきだ",
+                translation: "逃す手はない = tidak ada alasan untuk melewatkan ini, harus diambil tanpa ragu."
+            }, {
+                question: "彼は<u>八方美人だと言われている。",
+                options: ["誰にでもいい顔をする人だ", "誰にでも優しい人だ", "誰にでも人気がある人だ", "誰にでも礼儀正しい人だ"],
+                answer: "誰にでもいい顔をする人だ",
+                translation: "八方美人 = sok baik ke semua orang/muka manis ke siapa saja (konotasi negatif: tidak tulus)."
+            }, {
+                question: "彼女の行動は<u>裏目に出た。",
+                options: ["思っていたのとは逆の結果になった", "失敗してしまった", "予想外の結果になった", "悪い結果になった"],
+                answer: "思っていたのとは逆の結果になった",
+                translation: "裏目に出る = berbalik arah/hasil yang didapat berlawanan dengan yang diharapkan."
+            }, {
+                question: "彼はどんな仕事も<u>手を抜かない。",
+                options: ["いつも全力でやる", "いつも丁寧にやる", "いつも最後までやる", "いつも真剣にやる"],
+                answer: "いつも全力でやる",
+                translation: "手を抜かない = tidak setengah-setengah/selalu memberikan usaha penuh dalam pekerjaan apapun."
+            }, {
+                question: "彼女の考え方は<u>柔軟だ。",
+                options: ["状況に合わせて変えられる", "いつもポジティブだ", "開放的だ", "新しいものを受け入れやすい"],
+                answer: "状況に合わせて変えられる",
+                translation: "柔軟 = fleksibel, bisa menyesuaikan cara berpikir atau tindakan sesuai situasi."
+            }, {
+                question: "このアイデアは<u>時代遅れだ。",
+                options: ["今の時代に合っていない", "もう使われていない", "古くてダサい", "現代的でない"],
+                answer: "今の時代に合っていない",
+                translation: "時代遅れ = ketinggalan zaman, tidak sesuai lagi dengan keadaan/kebutuhan masa kini."
+            }, {
+                question: "彼は<u>腰が重いタイプだ。",
+                options: ["なかなか行動しようとしないタイプだ", "慎重に考えてから動くタイプだ", "怠け者なタイプだ", "動くのが遅いタイプだ"],
+                answer: "なかなか行動しようとしないタイプだ",
+                translation: "腰が重い = lambat bergerak/berat untuk memulai tindakan atau keputusan."
+            }, {
+                question: "その事実は<u>見過ごせない。",
+                options: ["そのままにしておくことができない", "無視できない", "知らないふりができない", "忘れることができない"],
+                answer: "そのままにしておくことができない",
+                translation: "見過ごせない = tidak bisa dibiarkan begitu saja/harus ditanggapi."
+            }, {
+                question: "彼は仕事ができる上に、<u>人当たりもいい。",
+                options: ["接する人に良い印象を与える", "みんなに好かれる", "話しかけやすい", "礼儀正しい"],
+                answer: "接する人に良い印象を与える",
+                translation: "人当たりがいい = ramah dan menyenangkan dalam berinteraksi, memberi kesan baik kepada orang yang ditemui."
+            }, {
+                question: "彼女は<u>地に足がついている。",
+                options: ["現実的で安定した考え方をしている", "落ち着いた性格だ", "真面目に生きている", "しっかりした人だ"],
+                answer: "現実的で安定した考え方をしている",
+                translation: "地に足がついている = berpijak di bumi/cara berpikir yang realistis dan tidak mengawang-awang."
+            }
+        ],
+        "goi-usage": [{
+                "question": "彼の提案は革新的だが、実現には多くの _____ がある。",
+                "options": ["障害", "進歩", "成功", "利益"],
+                "answer": "障害",
+                "translation": "Proposalnya inovatif, tetapi ada banyak hambatan untuk merealisasikannya."
+            }, {
+                "question": "この製品の _____ は競合他社を大きく上回っている。",
+                "options": ["競争力", "欠陥", "問題点", "失敗"],
+                "answer": "競争力",
+                "translation": "Daya saing produk ini jauh melampaui pesaing."
+            }, {
+                "question": "新しい方針の導入により、業務の _____ が改善された。",
+                "options": ["効率", "混乱", "複雑さ", "負担"],
+                "answer": "効率",
+                "translation": "Dengan penerapan kebijakan baru, efisiensi operasional meningkat."
+            }, {
+                "question": "その報告書は _____ に欠けており、信頼性が低い。",
+                "options": ["根拠", "詳細", "数字", "理由"],
+                "answer": "根拠",
+                "translation": "Laporan itu kurang berbasis bukti dan kredibilitasnya rendah."
+            }, {
+                "question": "部長は部下の _____ を積極的に評価する姿勢を示している。",
+                "options": ["貢献", "欠点", "怠慢", "無能"],
+                "answer": "貢献",
+                "translation": "Kepala departemen menunjukkan sikap aktif mengevaluasi kontribusi bawahannya."
+            }, {
+                "question": "このプロジェクトの成功は、チーム全体の _____ にかかっている。",
+                "options": ["結束", "衝突", "分裂", "対立"],
+                "answer": "結束",
+                "translation": "Kesuksesan proyek ini tergantung pada solidaritas seluruh tim."
+            }, {
+                "question": "長年の _____ により、彼はこの分野の第一人者となった。",
+                "options": ["経験", "挫折", "失敗", "懈怠"],
+                "answer": "経験",
+                "translation": "Melalui pengalaman bertahun-tahun, dia menjadi pemimpin di bidang ini."
+            }, {
+                "question": "会社の _____ に同意できない場合、対話が必要だ。",
+                "options": ["方針", "成功", "利益", "発展"],
+                "answer": "方針",
+                "translation": "Jika tidak setuju dengan kebijakan perusahaan, dialog sangat penting."
+            }, {
+                "question": "顧客からの _____ を真摯に受け止めることが大切だ。",
+                "options": ["指摘", "称賛", "評価", "信頼"],
+                "answer": "指摘",
+                "translation": "Penting untuk menerima masukan dari pelanggan dengan serius."
+            }, {
+                "question": "その計画の _____ は正確性を欠いており、再検討が必要だ。",
+                "options": ["根拠", "発展", "進展", "成果"],
+                "answer": "根拠",
+                "translation": "Dasar rencana itu kurang akurat dan perlu ditinjau kembali."
+            }, {
+                "question": "子どもの教育には一貫した _____ が不可欠である。",
+                "options": ["方針", "遊び", "自由", "放任"],
+                "answer": "方針",
+                "translation": "Pendekatan konsisten sangat penting dalam pendidikan anak."
+            }, {
+                "question": "その映画は深い _____ を持ち、観客に強い印象を与えた。",
+                "options": ["意味", "喜び", "笑い", "驚き"],
+                "answer": "意味",
+                "translation": "Film itu memiliki makna mendalam dan memberikan kesan kuat pada penonton."
+            }, {
+                "question": "市場調査の _____ なしに新製品を発売することはリスクが大きい。",
+                "options": ["根拠", "費用", "人員", "時間"],
+                "answer": "根拠",
+                "translation": "Meluncurkan produk baru tanpa dasar riset pasar sangat berisiko."
+            }, {
+                "question": "彼の _____ は多くの人々を魅了し、ファンが増えている。",
+                "options": ["個性", "外見", "年齢", "出身地"],
+                "answer": "個性",
+                "translation": "Kepribadiannya menarik banyak orang dan penggemar terus bertambah."
+            }, {
+                "question": "この地域の _____ は独特で、観光客を引き付けている。",
+                "options": ["文化", "天気", "距離", "物価"],
+                "answer": "文化",
+                "translation": "Budaya wilayah ini unik dan menarik perhatian wisatawan."
+            }, {
+                "question": "プロジェクトの _____ は予定より遅れており、改善策が求められている。",
+                "options": ["進捗", "完成", "開始", "終了"],
+                "answer": "進捗",
+                "translation": "Kemajuan proyek tertinggal dari jadwal dan perlu strategi perbaikan."
+            }, {
+                "question": "その決定の _____ を理解することは難しい。",
+                "options": ["背景", "結果", "効果", "影響"],
+                "answer": "背景",
+                "translation": "Sulit memahami latar belakang keputusan tersebut."
+            }, {
+                "question": "彼女の _____ は同僚から高く評価されている。",
+                "options": ["実行力", "見た目", "年収", "学歴"],
+                "answer": "実行力",
+                "translation": "Kemampuan eksekusinya sangat dihargai oleh rekan kerja."
+            }, {
+                "question": "新しい技術の導入には、相応の _____ が必要である。",
+                "options": ["投資", "許可", "同意", "支援"],
+                "answer": "投資",
+                "translation": "Penerapan teknologi baru memerlukan investasi yang sesuai."
+            }, {
+                "question": "その議論の _____ は複雑で、簡単に結論が出ない。",
+                "options": ["本質", "方向", "流れ", "規模"],
+                "answer": "本質",
+                "translation": "Esensi dari argumen tersebut kompleks dan tidak mudah mencapai kesimpulan."
+            }, {
+                "question": "この商品の _____ が他社より優れている理由は何か。",
+                "options": ["品質", "デザイン", "価格", "広告"],
+                "answer": "品質",
+                "translation": "Mengapa kualitas produk ini lebih unggul dari pesaing?"
+            }, {
+                "question": "仕事の _____ が高い人は、昇進の機会に恵まれることが多い。",
+                "options": ["成果", "出席", "学歴", "年齢"],
+                "answer": "成果",
+                "translation": "Orang dengan hasil kerja tinggi sering memiliki banyak kesempatan promosi."
+            }, {
+                "question": "この地震は _____ な被害をもたらし、多くの人々が影響を受けた。",
+                "options": ["甚大", "軽微", "有益", "好意的"],
+                "answer": "甚大",
+                "translation": "Gempa bumi ini membawa kerusakan parah dan banyak orang terpengaruh."
+            }, {
+                "question": "医学の _____ により、多くの病気が治療可能になった。",
+                "options": ["進歩", "停滞", "後退", "衰退"],
+                "answer": "進歩",
+                "translation": "Kemajuan dalam kedokteran membuat banyak penyakit dapat disembuhkan."
+            }, {
+                "question": "その計画の _____ は明確で、実行に移しやすい。",
+                "options": ["筋道", "複雑性", "曖昧性", "矛盾"],
+                "answer": "筋道",
+                "translation": "Logika rencana itu jelas dan mudah untuk diimplementasikan."
+            }, {
+                "question": "社員の _____ は企業の最重要な資産である。",
+                "options": ["能力", "年齢", "容姿", "家族"],
+                "answer": "能力",
+                "translation": "Kemampuan karyawan adalah aset terpenting perusahaan."
+            }, {
+                "question": "その失敗から学んだ _____ は無価値ではない。",
+                "options": ["教訓", "後悔", "罪悪感", "羞恥心"],
+                "answer": "教訓",
+                "translation": "Pelajaran dari kegagalan tersebut sangat berharga."
+            }, {
+                "question": "人間関係の _____ は信頼の上に成り立っている。",
+                "options": ["基礎", "表面", "終わり", "開始"],
+                "answer": "基礎",
+                "translation": "Fondasi hubungan manusia dibangun atas kepercayaan."
+            }, {
+                "question": "その論文の _____ は学界で認められている。",
+                "options": ["価値", "長さ", "言語", "著者"],
+                "answer": "価値",
+                "translation": "Nilai makalah itu diakui oleh komunitas akademis."
+            }, {
+                "question": "新しい制度の導入により、業務の _____ が大幅に向上した。",
+                "options": ["透明性", "神秘性", "隠蔽性", "不確実性"],
+                "answer": "透明性",
+                "translation": "Penerapan sistem baru meningkatkan transparansi operasional secara signifikan."
+            }, {
+                "question": "その組織の _____ はフラットで、意思決定が早い。",
+                "options": ["構造", "規模", "年齢", "地位"],
+                "answer": "構造",
+                "translation": "Struktur organisasi itu datar dan pengambilan keputusan cepat."
+            }, {
+                "question": "困難な状況での彼の _____ は敬意を集めている。",
+                "options": ["対応", "逃亡", "無視", "投降"],
+                "answer": "対応",
+                "translation": "Respons dirinya dalam situasi sulit mendapat hormat dari banyak orang."
+            }, {
+                "question": "これはあくまで _____ であり、最終決定ではない。",
+                "options": ["案", "結論", "決定", "約束"],
+                "answer": "案",
+                "translation": "Ini hanya proposal, bukan keputusan final."
+            }, {
+                "question": "その報告書の _____ には、重要な情報が含まれている。",
+                "options": ["詳細", "タイトル", "作成日", "執筆者"],
+                "answer": "詳細",
+                "translation": "Detail dalam laporan itu berisi informasi penting."
+            }, {
+                "question": "長時間労働は従業員の _____ に悪影響を及ぼす。",
+                "options": ["心身", "容姿", "給与", "出世"],
+                "answer": "心身",
+                "translation": "Jam kerja panjang berdampak negatif pada kesehatan fisik dan mental."
+            }, {
+                "question": "このプロジェクトの _____ は数百万円に達する。",
+                "options": ["予算", "評判", "難易度", "重要性"],
+                "answer": "予算",
+                "translation": "Anggaran untuk proyek ini mencapai jutaan yen."
+            }, {
+                "question": "その商品の _____ は市場で高い評価を受けている。",
+                "options": ["評判", "色", "大きさ", "重さ"],
+                "answer": "評判",
+                "translation": "Reputasi produk itu mendapat penilaian tinggi di pasar."
+            }, {
+                "question": "新しい法律の _____ に対して、多くの議論がある。",
+                "options": ["是非", "文言", "発表", "施行"],
+                "answer": "是非",
+                "translation": "Ada banyak perdebatan tentang pro dan kontra undang-undang baru."
+            }, {
+                "question": "この地域の _____ は年々増加している。",
+                "options": ["人口", "天気", "樹木", "建物"],
+                "answer": "人口",
+                "translation": "Populasi di wilayah ini meningkat dari tahun ke tahun."
+            }, {
+                "question": "その失敗の _____ を調査することが必要だ。",
+                "options": ["原因", "結果", "意味", "教訓"],
+                "answer": "原因",
+                "translation": "Perlu menyelidiki penyebab dari kegagalan tersebut."
+            }, {
+                "question": "相手の _____ を尊重することは、良い人間関係の基本だ。",
+                "options": ["意見", "外見", "身分", "出身"],
+                "answer": "意見",
+                "translation": "Menghormati pendapat pihak lain adalah dasar dari hubungan yang baik."
+            }, {
+                "question": "その契約の _____ については、弁護士と相談する必要がある。",
+                "options": ["条項", "署名", "日付", "作成者"],
+                "answer": "条項",
+                "translation": "Perlu berkonsultasi dengan pengacara tentang klausul dalam kontrak itu."
+            }, {
+                "question": "彼の研究は学問的な _____ に大きく貢献した。",
+                "options": ["発展", "停滞", "衰退", "混乱"],
+                "answer": "発展",
+                "translation": "Penelitiannya berkontribusi besar pada perkembangan akademik."
+            }, {
+                "question": "この問題の解決には、複数の _____ が考えられる。",
+                "options": ["観点", "見方", "角度", "立場"],
+                "answer": "観点",
+                "translation": "Ada beberapa perspektif untuk menyelesaikan masalah ini."
+            }, {
+                "question": "新製品の _____ の成功は、マーケティング戦略に左右される。",
+                "options": ["発表", "発売", "発展", "発生"],
+                "answer": "発表",
+                "translation": "Kesuksesan peluncuran produk baru tergantung pada strategi pemasaran."
+            }, {
+                "question": "組織の _____ は、その組織の価値観を反映している。",
+                "options": ["文化", "規模", "場所", "資金"],
+                "answer": "文化",
+                "translation": "Budaya organisasi mencerminkan nilai-nilai organisasi tersebut."
+            }, {
+                "question": "この提案は _____ 実現不可能であり、再考が必要だ。",
+                "options": ["極めて", "全く", "わずかに", "ほとんど"],
+                "answer": "極めて",
+                "translation": "Proposal ini sangat tidak dapat dilaksanakan dan perlu dipertimbangkan kembali."
+            }, {
+                "question": "その説明は _____ 納得できるものではなく、詳しく知りたい。",
+                "options": ["決して", "非常に", "十分に", "完全に"],
+                "answer": "決して",
+                "translation": "Penjelasan itu tidak pernah memuaskan dan saya ingin tahu lebih detail."
+            }, {
+                "question": "新しいシステムは _____ 効率的であると証明されている。",
+                "options": ["確かに", "全く", "わずかに", "少し"],
+                "answer": "確かに",
+                "translation": "Sistem baru terbukti sangat efisien."
+            }, {
+                "question": "彼の意見は _____ 異なっているため、議論が必要だ。",
+                "options": ["大きく", "少し", "わずかに", "ほぼ"],
+                "answer": "大きく",
+                "translation": "Pendapatnya sangat berbeda sehingga perlu ada diskusi."
+            }, {
+                "question": "このプロジェクトの成功の可能性は _____ 高い。",
+                "options": ["相当", "ほぼ", "わずかに", "かなり"],
+                "answer": "相当",
+                "translation": "Kemungkinan kesuksesan proyek ini cukup tinggi."
+            }, {
+                "question": "その提案は _____ 現実的ではないと思われている。",
+                "options": ["あまり", "決して", "全く", "ほとんど"],
+                "answer": "あまり",
+                "translation": "Proposal itu dianggap kurang realistis."
+            }, {
+                "question": "この方針の導入により、業務は _____ スムーズに進むようになった。",
+                "options": ["格段に", "少し", "わずかに", "ほぼ"],
+                "answer": "格段に",
+                "translation": "Dengan penerapan kebijakan ini, pekerjaan berjalan jauh lebih lancar."
+            }, {
+                "question": "その研究結果は _____ 信頼できるものではなく、再検証が必要だ。",
+                "options": ["決して", "非常に", "十分に", "完全に"],
+                "answer": "決して",
+                "translation": "Hasil penelitian itu tidak dapat dipercaya dan perlu validasi ulang."
+            }, {
+                "question": "彼女は _____ 丁寧に報告書を作成した。",
+                "options": ["細かく", "ざっくり", "ぞんざいに", "大雑把に"],
+                "answer": "細かく",
+                "translation": "Dia membuat laporan dengan sangat cermat dan detail."
+            }, {
+                "question": "この商品の品質は _____ 改善されるべきだ。",
+                "options": ["かなり", "少し", "わずかに", "ほぼ"],
+                "answer": "かなり",
+                "translation": "Kualitas produk ini perlu ditingkatkan cukup signifikan."
+            }, {
+                "question": "新しい法律は _____ 導入され、社会に影響を与えた。",
+                "options": ["速やかに", "ゆっくり", "徐々に", "段階的に"],
+                "answer": "速やかに",
+                "translation": "Undang-undang baru diterapkan dengan cepat dan memberikan dampak."
+            }, {
+                "question": "その計画は _____ 進展しており、期待が高まっている。",
+                "options": ["順調に", "遅々として", "停滞して", "後退して"],
+                "answer": "順調に",
+                "translation": "Rencana itu berkembang dengan lancar dan harapan semakin meningkat."
+            }, {
+                "question": "彼のアプローチは _____ ユニークであり、他とは違う。",
+                "options": ["非常に", "少し", "わずかに", "ほぼ"],
+                "answer": "非常に",
+                "translation": "Pendekatannya sangat unik dan berbeda dari yang lain."
+            }, {
+                "question": "この地域の発展は _____ 目覚ましく、投資が続いている。",
+                "options": ["著しく", "ほぼ", "わずかに", "少し"],
+                "answer": "著しく",
+                "translation": "Perkembangan daerah ini sangat pesat dan investasi terus berlanjut."
+            }, {
+                "question": "その説明は _____ 不正確で、訂正が必要だ。",
+                "options": ["かなり", "少し", "わずかに", "ほぼ"],
+                "answer": "かなり",
+                "translation": "Penjelasan itu cukup tidak akurat dan perlu dikoreksi."
+            }, {
+                "question": "仕事の _____ を整理することで、生産性が向上する。",
+                "options": ["優先順位", "重要度", "難易度", "面白さ"],
+                "answer": "優先順位",
+                "translation": "Mengatur prioritas pekerjaan meningkatkan produktivitas."
+            }, {
+                "question": "顧客満足度の向上は、企業の _____ に直結している。",
+                "options": ["競争力", "規模", "年齢", "所在地"],
+                "answer": "競争力",
+                "translation": "Peningkatan kepuasan pelanggan berhubungan langsung dengan daya saing."
+            }, {
+                "question": "リーダーシップには _____ と透明性が不可欠である。",
+                "options": ["誠実さ", "権力", "知識", "経験"],
+                "answer": "誠実さ",
+                "translation": "Kepemimpinan memerlukan kejujuran dan transparansi."
+            }, {
+                "question": "問題解決には、複数の _____ からのアプローチが有効である。",
+                "options": ["視点", "人", "方法", "時間"],
+                "answer": "視点",
+                "translation": "Pendekatan dari berbagai perspektif efektif dalam pemecahan masalah."
+            }, {
+                "question": "組織の成功は、個人の _____ の積み重ねである。",
+                "options": ["努力", "給与", "学歴", "年齢"],
+                "answer": "努力",
+                "translation": "Kesuksesan organisasi adalah akumulasi upaya individu."
+            }, {
+                "question": "変化への _____ は、現代企業に求められる能力である。",
+                "options": ["適応", "拒否", "無視", "遅延"],
+                "answer": "適応",
+                "translation": "Kemampuan adaptasi terhadap perubahan adalah keterampilan penting."
+            }, {
+                "question": "チームの _____ を高めるには、相互尊重が基本である。",
+                "options": ["結束力", "規模", "年齢", "経験"],
+                "answer": "結束力",
+                "translation": "Untuk meningkatkan kohesi tim, saling menghormati adalah dasar."
+            }, {
+                "question": "その成果は _____ な努力の結果である。",
+                "options": ["長年", "短期", "一瞬", "偶然"],
+                "answer": "長年",
+                "translation": "Prestasi itu adalah hasil dari upaya bertahun-tahun."
+            }, {
+                "question": "会議での _____ は全員の参加が必要だ。",
+                "options": ["議論", "投票", "記録", "告知"],
+                "answer": "議論",
+                "translation": "Diskusi dalam rapat memerlukan partisipasi semua orang."
+            }, {
+                "question": "この問題を解決するには、_____ なアプローチが必要だ。",
+                "options": ["戦略的", "感情的", "直感的", "無視"],
+                "answer": "戦略的",
+                "translation": "Menyelesaikan masalah ini memerlukan pendekatan strategis."
+            }, {
+                "question": "彼は困った状況でも、冷静な _____ を保つ。",
+                "options": ["判断", "感情", "態度", "理由"],
+                "answer": "判断",
+                "translation": "Dia mempertahankan penilaian yang tenang bahkan dalam situasi sulit."
+            }, {
+                "question": "新入社員の _____ は企業の未来に影響する。",
+                "options": ["成長", "給与", "年齢", "学歴"],
+                "answer": "成長",
+                "translation": "Pertumbuhan karyawan baru mempengaruhi masa depan perusahaan."
+            }, {
+                "question": "目標達成には、明確な _____ が必要である。",
+                "options": ["計画", "願望", "祈り", "運"],
+                "answer": "計画",
+                "translation": "Untuk mencapai target, diperlukan rencana yang jelas."
+            }, {
+                "question": "データの _____ なしに判断を下すことはできない。",
+                "options": ["根拠", "解釈", "視点", "理解"],
+                "answer": "根拠",
+                "translation": "Tidak dapat membuat keputusan tanpa dasar data."
+            }, {
+                "question": "顧客の _____ は次の改善へのヒントになる。",
+                "options": ["フィードバック", "賞賛", "沈黙", "不信"],
+                "answer": "フィードバック",
+                "translation": "Umpan balik pelanggan menjadi petunjuk untuk perbaikan."
+            }, {
+                "question": "組織内の _____ は情報共有を促進する。",
+                "options": ["コミュニケーション", "競争", "孤立", "秘密"],
+                "answer": "コミュニケーション",
+                "translation": "Komunikasi dalam organisasi mendorong berbagi informasi."
+            }, {
+                "question": "プロジェクトの _____ を明確にすることが重要だ。",
+                "options": ["目的", "期間", "人数", "場所"],
+                "answer": "目的",
+                "translation": "Penting untuk mengklarifikasi tujuan proyek."
+            }, {
+                "question": "彼の _____ な姿勢は周囲に影響を与える。",
+                "options": ["前向き", "後ろ向き", "曖昧", "無関心"],
+                "answer": "前向き",
+                "translation": "Sikap positifnya mempengaruhi orang-orang di sekitarnya."
+            }, {
+                "question": "市場の _____ に対応することが重要である。",
+                "options": ["変化", "安定", "停滞", "衰退"],
+                "answer": "変化",
+                "translation": "Penting untuk merespons perubahan pasar."
+            }, {
+                "question": "品質管理の _____ を徹底することが必要だ。",
+                "options": ["基準", "目標", "希望", "願望"],
+                "answer": "基準",
+                "translation": "Perlu menerapkan standar manajemen kualitas dengan ketat."
+            }, {
+                "question": "チーム内の信頼を _____ することが成功の鍵だ。",
+                "options": ["築く", "壊す", "無視", "拒否"],
+                "answer": "築く",
+                "translation": "Membangun kepercayaan dalam tim adalah kunci kesuksesan."
+            }, {
+                "question": "新しい環境に _____ することは時間がかかる。",
+                "options": ["適応", "反抗", "拒否", "逃げ"],
+                "answer": "適応",
+                "translation": "Beradaptasi dengan lingkungan baru memerlukan waktu."
+            }, {
+                "question": "プロジェクト全体の _____ を保つことが大切だ。",
+                "options": ["一貫性", "柔軟性", "曖昧性", "矛盾"],
+                "answer": "一貫性",
+                "translation": "Penting untuk mempertahankan konsistensi di seluruh proyek."
+            }, {
+                "question": "その決定には _____ な根拠があった。",
+                "options": ["十分", "不十分", "不明確", "矛盾"],
+                "answer": "十分",
+                "translation": "Keputusan itu memiliki dasar yang cukup."
+            }, {
+                "question": "経験から得られた _____ は貴重である。",
+                "options": ["知見", "後悔", "失敗", "教訓"],
+                "answer": "知見",
+                "translation": "Wawasan yang diperoleh dari pengalaman sangat berharga."
+            }, {
+                "question": "状況の _____ を正確に把握することが重要だ。",
+                "options": ["把握", "分析", "理解", "認識"],
+                "answer": "把握",
+                "translation": "Penting untuk memahami situasi dengan akurat."
+            }, {
+                "question": "職務を _____ する上で、誠実さが必要である。",
+                "options": ["遂行", "放棄", "回避", "無視"],
+                "answer": "遂行",
+                "translation": "Kejujuran diperlukan dalam menjalankan tugas."
+            }, {
+                "question": "新しい情報に _____ して、判断を修正する。",
+                "options": ["基づいて", "反対して", "無視して", "拒否して"],
+                "answer": "基づいて",
+                "translation": "Merevisi penilaian berdasarkan informasi baru."
+            }, {
+                "question": "長期的な _____ を立てることが事業の成功に繋がる。",
+                "options": ["戦略", "願い", "期待", "祈り"],
+                "answer": "戦略",
+                "translation": "Menetapkan strategi jangka panjang mengarah pada kesuksesan bisnis."
+            }, {
+                "question": "トラブルが生じた時、素早い _____ が重要だ。",
+                "options": ["対応", "隠蔽", "無視", "延期"],
+                "answer": "対応",
+                "translation": "Respons cepat penting ketika masalah muncul."
+            }, {
+                "question": "彼の _____ は多くの人々に信頼されている。",
+                "options": ["判断力", "見た目", "言葉", "約束"],
+                "answer": "判断力",
+                "translation": "Penilaiannya dipercaya oleh banyak orang."
+            }, {
+                "question": "仕事の _____ を明確にすることで、効率が向上する。",
+                "options": ["分工", "責任", "内容", "期限"],
+                "answer": "分工",
+                "translation": "Memperjelas pembagian pekerjaan meningkatkan efisiensi."
+            }, {
+                "question": "重要な情報の _____ を厳密に管理する必要がある。",
+                "options": ["管理", "共有", "開示", "配布"],
+                "answer": "管理",
+                "translation": "Perlu mengelola informasi penting dengan ketat."
+            }, {
+                "question": "危機的な状況を _____ するためには、統一が必要だ。",
+                "options": ["乗り切る", "逃げる", "無視", "拒否"],
+                "answer": "乗り切る",
+                "translation": "Diperlukan kesatuan untuk melewati situasi kritis."
+            }, {
+                "question": "会社の _____ を理解することは、仕事の基本だ。",
+                "options": ["文化", "色", "年齢", "名前"],
+                "answer": "文化",
+                "translation": "Memahami budaya perusahaan adalah dasar pekerjaan."
+            }, {
+                "question": "他者の _____ から学ぶことは重要である。",
+                "options": ["成功", "失敗", "意見", "経験"],
+                "answer": "成功",
+                "translation": "Penting untuk belajar dari kesuksesan orang lain."
+            }, {
+                "question": "目標に向かって _____ 努力することが大切だ。",
+                "options": ["継続的に", "時々", "たまに", "稀に"],
+                "answer": "継続的に",
+                "translation": "Penting untuk terus berusaha mencapai tujuan."
+            }, {
+                "question": "その _____ な考え方が成功に繋がった。",
+                "options": ["革新的", "保守的", "否定的", "曖昧"],
+                "answer": "革新的",
+                "translation": "Pemikiran inovatif itu mengarah pada kesuksesan."
+            }, {
+                "question": "チームの全員で _____ 目標を達成する。",
+                "options": ["共通の", "個別の", "隠れた", "不明確な"],
+                "answer": "共通の",
+                "translation": "Tim mencapai target bersama dengan upaya kolektif."
+            }
+        ]
+    },
+
+    "N2": {
+        "goi-kanji-reading": [{
+                question: "上司はチーム全体の状況を<u>把握</u>している。",
+                options: ["はにぎ", "はあく", "ははく", "はかく"],
+                answer: "はあく",
+                translation: "Atasan memahami situasi keseluruhan tim dengan baik."
+            }, {
+                question: "医師は手術前に<u>慎重</u>に検討した。",
+                options: ["しんちゅう", "しんじゅう", "しんちょう", "じんちょう"],
+                answer: "しんちょう",
+                translation: "Dokter mempertimbangkan dengan hati-hati sebelum melakukan operasi."
+            }, {
+                question: "彼は長年の恐怖症を<u>克服</u>した。",
+                options: ["こくふ", "こくぶく", "こっぷく", "こくふく"],
+                answer: "こくふく",
+                translation: "Dia berhasil mengatasi fobia yang sudah bertahun-tahun dideritanya."
+            }, {
+                question: "彼の発言は事実と<u>矛盾</u>している。",
+                options: ["むじゅん", "もじゅん", "むつじゅん", "むしゅん"],
+                answer: "むじゅん",
+                translation: "Pernyataannya bertentangan dengan fakta yang ada."
+            }, {
+                question: "彼女は地域社会に大きく<u>貢献</u>した。",
+                options: ["こうけん", "くけん", "こけん", "くうけん"],
+                answer: "こうけん",
+                translation: "Dia memberikan kontribusi yang besar bagi masyarakat di sekitarnya."
+            }, {
+                question: "幼少期の経験は人格形成に<u>影響</u>を与える。",
+                options: ["かげひびき", "えいきょう", "えいこう", "えいぎょう"],
+                answer: "えいきょう",
+                translation: "Pengalaman di masa kecil berpengaruh besar pada pembentukan karakter seseorang."
+            }, {
+                question: "この機械の構造は非常に<u>複雑</u>だ。",
+                options: ["ふくぞう", "ふうざつ", "ふくざつ", "ふくさつ"],
+                answer: "ふくざつ",
+                translation: "Struktur mesin ini sangat rumit dan tidak mudah dipahami."
+            }, {
+                question: "<u>勤勉</u>な態度が周囲から高く評価された。",
+                options: ["きんべん", "きんめん", "ごんべん", "こんべん"],
+                answer: "きんべん",
+                translation: "Sikap rajin dan tekun dalam bekerja mendapat apresiasi tinggi dari orang-orang sekitar."
+            }, {
+                question: "まず会議の<u>概要</u>を説明してください。",
+                options: ["がいよ", "かいよう", "がいよう", "かいよ"],
+                answer: "がいよう",
+                translation: "Tolong jelaskan terlebih dahulu garis besar agenda rapat hari ini."
+            }, {
+                question: "近年、電気自動車への<u>需要</u>が高まっている。",
+                options: ["じゅよう", "しゅよう", "じゅいよう", "しゅうよう"],
+                answer: "じゅよう",
+                translation: "Belakangan ini permintaan pasar terhadap kendaraan listrik terus meningkat."
+            }, {
+                question: "物資の<u>供給</u>が追いつかない状況だ。",
+                options: ["きょうきゅ", "くうきゅう", "きょうきゅう", "こうきゅう"],
+                answer: "きょうきゅう",
+                translation: "Pasokan barang tidak mampu mengimbangi kebutuhan yang ada."
+            }, {
+                question: "新しい制度への<u>抵抗</u>感を持つ人が多い。",
+                options: ["ていこう", "ていごう", "たいこう", "ていかん"],
+                answer: "ていこう",
+                translation: "Banyak orang yang masih merasa enggan dan sulit menerima sistem yang baru."
+            }, {
+                question: "老後のために毎月<u>貯蓄</u>を続けている。",
+                options: ["ちょちく", "ちょぞく", "ちょく", "ちくちょ"],
+                answer: "ちょちく",
+                translation: "Setiap bulan rutin menabung sebagai persiapan untuk memasuki masa pensiun."
+            }, {
+                question: "祖父が残した<u>遺産</u>を巡って争いが起きた。",
+                options: ["いさん", "えさん", "いざん", "いちょ"],
+                answer: "いさん",
+                translation: "Terjadi perselisihan di antara anggota keluarga soal warisan yang ditinggalkan kakek."
+            }, {
+                question: "テクノロジーの<u>恩恵</u>を受けて生活が便利になった。",
+                options: ["おんけい", "おんめい", "おんぐみ", "おんし"],
+                answer: "おんけい",
+                translation: "Kehidupan sehari-hari semakin praktis berkat manfaat yang diberikan oleh perkembangan teknologi."
+            }, {
+                question: "長年の経験と知識を<u>蓄積</u>してきた。",
+                options: ["ちくせき", "たくせき", "ちくさく", "ちょくせき"],
+                answer: "ちくせき",
+                translation: "Selama bertahun-tahun, pengalaman dan pengetahuan terus ditumpuk dan dikumpulkan."
+            }, {
+                question: "使用期限を過ぎた食品は<u>廃棄</u>しなければならない。",
+                options: ["はいき", "はいぎ", "はいか", "ひきき"],
+                answer: "はいき",
+                translation: "Makanan yang sudah melewati tanggal kedaluwarsa wajib segera dibuang."
+            }, {
+                question: "電気代を<u>節約</u>するために、こまめに電気を消す。",
+                options: ["せつやく", "せつわく", "せちやく", "しゅつやく"],
+                answer: "せつやく",
+                translation: "Rajin mematikan lampu setiap kali keluar ruangan demi menghemat tagihan listrik."
+            }, {
+                question: "危険な要素を事前に<u>排除</u>することが重要だ。",
+                options: ["はいじょ", "はいじゅ", "はいしょ", "はじょ"],
+                answer: "はいじょ",
+                translation: "Sangat penting untuk menyingkirkan unsur-unsur berbahaya sebelum pekerjaan dimulai."
+            }, {
+                question: "健康<u>促進</u>のため、毎日ウォーキングをしている。",
+                options: ["そくしん", "そくせん", "そっしん", "ぞくしん"],
+                answer: "そくしん",
+                translation: "Berjalan kaki setiap hari sebagai upaya menjaga dan meningkatkan kesehatan tubuh."
+            }, {
+                question: "スマートフォンへの<u>依存</u>が社会問題になっている。",
+                options: ["いぞん", "いそん", "えぞん", "いじょん"],
+                answer: "いぞん",
+                translation: "Ketergantungan berlebihan pada smartphone kini menjadi masalah sosial yang serius."
+            }, {
+                question: "その主張には明確な<u>根拠</u>がない。",
+                options: ["こんきょ", "こんぎょ", "こんきょう", "こんくわ"],
+                answer: "こんきょ",
+                translation: "Argumen tersebut tidak didukung oleh bukti atau dasar yang jelas."
+            }, {
+                question: "<u>緊急</u>の場合は、このボタンを押してください。",
+                options: ["きんきゅ", "きんかん", "きゅうきん", "きんきゅう"],
+                answer: "きんきゅう",
+                translation: "Dalam kondisi darurat, segera tekan tombol ini."
+            }, {
+                question: "彼は取引先に<u>誠実</u>に対応することで信頼を得た。",
+                options: ["せいじつ", "せじつ", "しょうじつ", "せいしつ"],
+                answer: "せいじつ",
+                translation: "Dia berhasil mendapat kepercayaan klien karena selalu bersikap jujur dan tulus dalam setiap urusan."
+            }, {
+                question: "<u>軽率</u>な発言が原因でトラブルになった。",
+                options: ["けいそつ", "かるそつ", "けいりつ", "けいさつ"],
+                answer: "けいそつ",
+                translation: "Ucapan yang dilontarkan tanpa dipikir panjang menjadi pemicu masalah yang tidak perlu."
+            }, {
+                question: "<u>過剰</u>なストレスは体に悪影響を与える。",
+                options: ["かじょう", "かじょ", "かいじょう", "かりょう"],
+                answer: "かじょう",
+                translation: "Stres yang berlebihan memberikan dampak buruk baik secara fisik maupun mental."
+            }, {
+                question: "良好な関係を<u>維持</u>するには努力が必要だ。",
+                options: ["いじ", "ゆいじ", "いち", "いし"],
+                answer: "いじ",
+                translation: "Diperlukan usaha yang konsisten untuk mempertahankan hubungan yang baik dengan orang lain."
+            }, {
+                question: "会社は海外市場への<u>拡大</u>を目指している。",
+                options: ["かくだい", "こうだい", "かくだ", "こくだい"],
+                answer: "かくだい",
+                translation: "Perusahaan tengah berupaya memperluas jangkauan bisnisnya ke pasar luar negeri."
+            }, {
+                question: "長年の友情が一夜にして<u>崩壊</u>してしまった。",
+                options: ["ほうかい", "ほうわい", "ほうえ", "ぼうかい"],
+                answer: "ほうかい",
+                translation: "Persahabatan yang sudah terjalin bertahun-tahun hancur berantakan hanya dalam semalam."
+            }, {
+                question: "江戸時代、この町は商業で<u>繁栄</u>していた。",
+                options: ["はんえい", "はんのう", "はんよう", "はんえ"],
+                answer: "はんえい",
+                translation: "Pada zaman Edo, kota ini makmur dan ramai berkat aktivitas perdagangan yang pesat."
+            }, {
+                question: "産業の<u>衰退</u>により、地方の人口が減少している。",
+                options: ["すいたい", "すいてい", "すいたく", "おとろたい"],
+                answer: "すいたい",
+                translation: "Populasi daerah terus berkurang seiring merosotnya industri yang selama ini menjadi tumpuan warga."
+            }, {
+                question: "彼は<u>策略</u>を使って交渉を有利に進めた。",
+                options: ["さくりゃく", "さくりゅく", "さくいく", "さりゃく"],
+                answer: "さくりゃく",
+                translation: "Dia menggunakan berbagai strategi untuk mengarahkan jalannya negosiasi ke pihaknya."
+            }, {
+                question: "リーダーシップの<u>欠如</u>がチームの問題を引き起こした。",
+                options: ["けつじょ", "けつじゅ", "けつにょ", "けじょ"],
+                answer: "けつじょ",
+                translation: "Tidak adanya figur pemimpin yang kuat menjadi akar dari permasalahan yang terjadi di dalam tim."
+            }, {
+                question: "予算削減のため、事業を<u>縮小</u>せざるを得なかった。",
+                options: ["しゅくしょう", "しゅくしょ", "ちぢみしょう", "しょくしょう"],
+                answer: "しゅくしょう",
+                translation: "Akibat pemangkasan anggaran, perusahaan terpaksa memperkecil skala operasionalnya."
+            }, {
+                question: "子どもは大人の行動を<u>模倣</u>して学ぶ。",
+                options: ["もほう", "もぼう", "まほう", "ほもう"],
+                answer: "もほう",
+                translation: "Anak-anak belajar banyak hal dengan cara meniru perilaku orang dewasa di lingkungan sekitarnya."
+            }, {
+                question: "成功しても<u>謙虚</u>な姿勢を忘れないことが大切だ。",
+                options: ["けんきょ", "けんきょう", "けんこ", "かんきょ"],
+                answer: "けんきょ",
+                translation: "Penting untuk tetap menjaga sikap rendah hati meskipun sudah berhasil meraih kesuksesan."
+            }, {
+                question: "両者が少しずつ<u>妥協</u>することで合意に至った。",
+                options: ["だきょう", "たきょう", "だきょ", "だこう"],
+                answer: "だきょう",
+                translation: "Kedua belah pihak akhirnya mencapai kesepakatan setelah masing-masing mau sedikit berkompromi."
+            }, {
+                question: "現在の<u>状況</u>を正確に把握することが先決だ。",
+                options: ["じょうきょう", "じょうほう", "じょうたい", "じょうきょ"],
+                answer: "じょうきょう",
+                translation: "Yang harus dilakukan pertama kali adalah memahami kondisi yang sedang terjadi saat ini secara akurat."
+            }, {
+                question: "不正取引を<u>阻止</u>するため、当局が動いた。",
+                options: ["そし", "そじ", "はばむ", "じゃまし"],
+                answer: "そし",
+                translation: "Pihak berwenang mengambil langkah tegas untuk menghentikan praktik transaksi ilegal."
+            }, {
+                question: "<u>著名</u>な学者がこの大学で講演を行った。",
+                options: ["ちょめい", "じょめい", "ちょみょう", "しょめい"],
+                answer: "ちょめい",
+                translation: "Seorang akademisi ternama diundang untuk memberikan kuliah umum di universitas ini."
+            }, {
+                question: "ダイエット中だが、甘い物の<u>誘惑</u>に負けてしまった。",
+                options: ["ゆいわく", "ゆうわく", "ゆうわ", "ゆわく"],
+                answer: "ゆうわく",
+                translation: "Sedang menjalani program diet, tapi akhirnya kalah dengan godaan makanan manis."
+            }, {
+                question: "転職するかどうか、長い間<u>葛藤</u>していた。",
+                options: ["かくとう", "かっとう", "かつどう", "がくとう"],
+                answer: "かっとう",
+                translation: "Sudah lama bergumul dengan dilema apakah harus berpindah pekerjaan atau tetap bertahan."
+            }, {
+                question: "彼女は過去の失敗に<u>執着</u>するあまり、前に進めない。",
+                options: ["しゅうちゃく", "しっちゃく", "しゅちゃく", "しつじゃく"],
+                answer: "しゅうちゃく",
+                translation: "Karena terlalu terpaku pada kegagalan di masa lalu, dia tidak bisa melangkah maju."
+            }, {
+                question: "海外移住を決めた時、相当の<u>覚悟</u>が必要だった。",
+                options: ["かくご", "かくさ", "かっご", "がくご"],
+                answer: "かくご",
+                translation: "Ketika memutuskan untuk pindah ke luar negeri, dibutuhkan tekad dan kesiapan mental yang sungguh-sungguh."
+            }, {
+                question: "彼は自分の仕事に<u>誇り</u>を持っている。",
+                options: ["ほまれ", "ほこり", "たかぶり", "こうき"],
+                answer: "ほこり",
+                translation: "Dia memiliki rasa bangga yang tulus terhadap pekerjaan yang dia tekuni."
+            }, {
+                question: "彼の才能が<u>羨ましい</u>と思う。",
+                options: ["うらやましい", "ねたましい", "くやしい", "うらめしい"],
+                answer: "うらやましい",
+                translation: "Melihat bakat yang dimilikinya, rasanya benar-benar iri."
+            }, {
+                question: "試験に落ちてとても<u>悔しい</u>思いをした。",
+                options: ["くやしい", "かなしい", "つらしい", "にくらしい"],
+                answer: "くやしい",
+                translation: "Merasa sangat kesal dan menyesal karena tidak berhasil dalam ujian kali ini."
+            }, {
+                question: "複雑な手続きがとても<u>煩わしい</u>と感じる。",
+                options: ["わずらわしい", "めんどわしい", "うるさわしい", "なやわしい"],
+                answer: "わずらわしい",
+                translation: "Prosedur administrasi yang berbelit-belit terasa sangat melelahkan dan merepotkan."
+            }, {
+                question: "<u>無謀</u>な計画を実行しようとして失敗した。",
+                options: ["むぼう", "むもう", "ぶぼう", "むほう"],
+                answer: "むぼう",
+                translation: "Gagal karena nekat mencoba menjalankan rencana tanpa memperhitungkan risiko sama sekali."
+            }, {
+                question: "彼女の<u>大胆</u>な発想が会社を救った。",
+                options: ["だいたん", "おおたん", "だいだん", "たいだん"],
+                answer: "だいたん",
+                translation: "Ide yang berani dan tidak biasa darinya ternyata berhasil menyelamatkan perusahaan."
+            }, {
+                question: "<u>臆病</u>な性格のせいで、なかなか挑戦できない。",
+                options: ["おくびょう", "おくびょ", "おびびょう", "おくへい"],
+                answer: "おくびょう",
+                translation: "Karena sifatnya yang penakut, dia tidak mudah memberanikan diri untuk mencoba hal baru."
+            }, {
+                question: "初対面の人に<u>偏見</u>を持つのは良くない。",
+                options: ["へんけん", "へんみ", "ひんけん", "へいけん"],
+                answer: "へんけん",
+                translation: "Tidaklah baik langsung berprasangka terhadap seseorang yang baru pertama kali ditemui."
+            }, {
+                question: "年齢や性別による<u>差別</u>はあってはならない。",
+                options: ["さべつ", "しゃべつ", "さべち", "さぶつ"],
+                answer: "さべつ",
+                translation: "Diskriminasi berdasarkan usia maupun jenis kelamin tidak boleh ada di tempat kerja manapun."
+            }, {
+                question: "彼は賞を受けても<u>謙遜</u>な態度を崩さなかった。",
+                options: ["けんそん", "けんしん", "けんじょ", "けんとん"],
+                answer: "けんそん",
+                translation: "Bahkan setelah menerima penghargaan pun, sikapnya yang rendah hati tidak berubah sedikit pun."
+            }, {
+                question: "<u>傲慢</u>な態度が周囲の反感を買った。",
+                options: ["ごうまん", "こうまん", "ごうぼう", "ごまん"],
+                answer: "ごうまん",
+                translation: "Sikapnya yang angkuh dan sombong membuat orang-orang di sekitarnya merasa tidak nyaman."
+            }, {
+                question: "彼の発言は<u>欺瞞</u>に満ちていると批判された。",
+                options: ["ぎまん", "きまん", "ぎばん", "ぎいん"],
+                answer: "ぎまん",
+                translation: "Pernyataannya mendapat kritik keras karena dinilai penuh dengan kebohongan dan tipu daya."
+            }, {
+                question: "彼は巧みな言葉で相手を<u>欺いた</u>。",
+                options: ["あざむいた", "だました", "まどわした", "たぶらかした"],
+                answer: "あざむいた",
+                translation: "Dengan rangkaian kata yang halus dan meyakinkan, dia berhasil mengelabui lawannya."
+            }, {
+                question: "実力のある相手を<u>侮って</u>は痛い目に遭う。",
+                options: ["あなどって", "みくだして", "ないがしろにして", "かろんじて"],
+                answer: "あなどって",
+                translation: "Jika meremehkan lawan yang sesungguhnya berkemampuan tinggi, cepat atau lambat kamu akan menyesal."
+            }, {
+                question: "彼女は同僚の昇進を<u>妬んで</u>いる。",
+                options: ["ねたんで", "そねんで", "うらやんで", "にくんで"],
+                answer: "ねたんで",
+                translation: "Dia merasa iri hati melihat rekan kerjanya mendapat promosi jabatan."
+            }, {
+                question: "彼は自分の不運を<u>嘆いて</u>いた。",
+                options: ["なげいて", "うれいて", "かなしんで", "なやんで"],
+                answer: "なげいて",
+                translation: "Dia terus meratapi nasib sialnya sendiri tanpa mau bangkit."
+            }, {
+                question: "泣いている友人を<u>慰めた</u>。",
+                options: ["なぐさめた", "はげました", "いたわった", "あやした"],
+                answer: "なぐさめた",
+                translation: "Berusaha menghibur teman yang sedang menangis."
+            }, {
+                question: "彼の<u>執念</u>の努力がついに実を結んだ。",
+                options: ["しゅうねん", "しつねん", "しゅねん", "しゅうけん"],
+                answer: "しゅうねん",
+                translation: "Kerja keras tanpa henti yang dilandasi kegigihan akhirnya membuahkan hasil yang nyata."
+            }, {
+                question: "新年の<u>抱負</u>として毎日読書すると決めた。",
+                options: ["ほうふ", "ほうふく", "ほふ", "ほうふん"],
+                answer: "ほうふ",
+                translation: "Dia memantapkan hati untuk membaca buku setiap hari sebagai resolusi tahun barunya."
+            }, {
+                question: "医師になるという<u>志</u>を持って勉強した。",
+                options: ["こころざし", "いし", "こころみ", "むね"],
+                answer: "こころざし",
+                translation: "Belajar dengan sungguh-sungguh sambil memelihara cita-cita untuk menjadi dokter."
+            }, {
+                question: "あと少しで合格できたのに、本当に<u>惜しい</u>。",
+                options: ["おしい", "くやしい", "もったいない", "かなしい"],
+                answer: "おしい",
+                translation: "Tinggal selangkah lagi bisa lulus ujian, sungguh sayang sekali."
+            }, {
+                question: "最近この辺は<u>物騒</u>だから夜の一人歩きは危ない。",
+                options: ["ぶっそう", "ものそう", "ぶそう", "ものさわぎ"],
+                answer: "ぶっそう",
+                translation: "Akhir-akhir ini kawasan sekitar sini rawan tindak kejahatan, jadi berjalan sendirian malam hari sangat berbahaya."
+            }, {
+                question: "彼の親切は<u>偽善</u>だと多くの人が気づいていた。",
+                options: ["ぎぜん", "にせぜん", "きぜん", "ぎじゅん"],
+                answer: "ぎぜん",
+                translation: "Banyak orang yang sudah menyadari bahwa kebaikan yang dia tunjukkan hanyalah kemunafikan semata."
+            }, {
+                question: "このポスターは環境問題への関心を<u>喚起</u>している。",
+                options: ["かんき", "かんぎ", "よびおこし", "こうき"],
+                answer: "かんき",
+                translation: "Poster ini dibuat untuk membangkitkan kesadaran masyarakat terhadap isu-isu lingkungan hidup."
+            }, {
+                question: "猛暑の中、室内でも<u>凌ぐ</u>のにエアコンが欠かせない。",
+                options: ["しのぐ", "こえる", "たえる", "ぬけだす"],
+                answer: "しのぐ",
+                translation: "Di tengah musim panas yang menyengat, AC di dalam ruangan pun sudah menjadi kebutuhan mutlak untuk bertahan."
+            }, {
+                question: "古代文明の<u>滅亡</u>には様々な原因があると考えられている。",
+                options: ["めつぼう", "めつほう", "ほろびょう", "めいぼう"],
+                answer: "めつぼう",
+                translation: "Para ahli meyakini bahwa runtuhnya peradaban-peradaban kuno disebabkan oleh berbagai faktor yang saling terkait."
+            }, {
+                question: "優勝を目指して選手たちは必死に<u>奮闘</u>した。",
+                options: ["ふんとう", "ふんどう", "ふんそう", "ふんさん"],
+                answer: "ふんとう",
+                translation: "Para atlet berjuang sekuat tenaga demi merebut gelar juara dalam kompetisi ini."
+            }, {
+                question: "まだ<u>諦める</u>には早すぎる。",
+                options: ["あきらめる", "やめる", "おりる", "あきれる"],
+                answer: "あきらめる",
+                translation: "Sekarang masih jauh terlalu dini untuk menyerah."
+            }, {
+                question: "暗闇への<u>恐怖</u>は子どもの頃から続いている。",
+                options: ["きょうふ", "おそれ", "きょうい", "こわれ"],
+                answer: "きょうふ",
+                translation: "Rasa takutnya terhadap kegelapan sudah ada sejak ia masih kecil."
+            }, {
+                question: "会社は深刻な経営<u>危機</u>に直面している。",
+                options: ["きき", "きぎ", "けいき", "ひき"],
+                answer: "きき",
+                translation: "Perusahaan tengah berhadapan langsung dengan krisis manajemen yang sangat serius."
+            }, {
+                question: "海外留学を通じて語学力を<u>培った</u>。",
+                options: ["つちかった", "そだてた", "きたえた", "みがいた"],
+                answer: "つちかった",
+                translation: "Kemampuan berbahasa asing terbentuk dan diasah selama menempuh studi di luar negeri."
+            }, {
+                question: "若い頃に時間を<u>浪費</u>してしまったと後悔している。",
+                options: ["ろうひ", "むだに", "ろうはい", "ふろう"],
+                answer: "ろうひ",
+                translation: "Dia menyesali banyaknya waktu berharga yang terbuang sia-sia di masa mudanya."
+            }, {
+                question: "祖母は亡くなる前に<u>遺言</u>を残した。",
+                options: ["ゆいごん", "いごん", "いけん", "いちごん"],
+                answer: "ゆいごん",
+                translation: "Nenek meninggalkan surat wasiat sebelum menghembuskan nafas terakhirnya."
+            }, {
+                question: "文化の違いが両国間の<u>摩擦</u>を生んでいる。",
+                options: ["まさつ", "まこつ", "はさつ", "まさく"],
+                answer: "まさつ",
+                translation: "Perbedaan budaya yang mencolok menjadi sumber gesekan dalam hubungan kedua negara."
+            }, {
+                question: "上司は部下に報告を<u>促した</u>。",
+                options: ["うながした", "はげました", "いそいだ", "すすめた"],
+                answer: "うながした",
+                translation: "Atasan mendorong bawahannya untuk segera menyerahkan laporan."
+            }, {
+                question: "騒音が集中力を<u>妨げて</u>いる。",
+                options: ["さまたげて", "じゃまして", "ぼうがいして", "はばんで"],
+                answer: "さまたげて",
+                translation: "Kebisingan dari luar ruangan terus mengganggu dan menghalangi konsentrasi saat belajar."
+            }, {
+                question: "栄養が<u>偏って</u>いると体に良くない。",
+                options: ["かたよって", "よれて", "ずれて", "かがんで"],
+                answer: "かたよって",
+                translation: "Pola makan yang tidak seimbang dan terlalu condong ke satu jenis makanan tidak baik bagi kesehatan."
+            }, {
+                question: "彼女の<u>鋭い</u>観察力に感心した。",
+                options: ["するどい", "はやい", "するい", "とがい"],
+                answer: "するどい",
+                translation: "Sangat terkesan dengan kemampuan observasinya yang tajam dan penuh ketelitian."
+            }, {
+                question: "反応が<u>鈍い</u>と言われることがある。",
+                options: ["にぶい", "おそい", "のろい", "なまい"],
+                answer: "にぶい",
+                translation: "Ada kalanya dia dikatakan lambat dalam menanggapi situasi yang terjadi di sekitarnya."
+            }, {
+                question: "経済的に<u>苦しい</u>時期が続いた。",
+                options: ["くるしい", "つらしい", "かなしい", "きびしい"],
+                answer: "くるしい",
+                translation: "Kondisi keuangan yang berat terus berlanjut tanpa ada tanda-tanda perbaikan."
+            }, {
+                question: "今は<u>辛抱</u>する時だ。きっとよくなる。",
+                options: ["しんぼう", "からぼう", "しんぽう", "しんにん"],
+                answer: "しんぼう",
+                translation: "Sekarang adalah saatnya bersabar dan bertahan. Yakinlah, keadaan pasti akan membaik."
+            }, {
+                question: "成功するには<u>忍耐</u>力が欠かせない。",
+                options: ["にんたい", "にんたく", "しのたい", "にんてい"],
+                answer: "にんたい",
+                translation: "Kemampuan untuk bersabar dan bertahan dalam tekanan adalah bekal yang tidak bisa ditinggalkan demi meraih sukses."
+            }, {
+                question: "故郷の景色を見て<u>懐かしい</u>気持ちになった。",
+                options: ["なつかしい", "なごかしい", "ふるかしい", "むかしい"],
+                answer: "なつかしい",
+                translation: "Begitu melihat pemandangan kampung halaman, muncul rasa rindu yang menghangatkan hati."
+            }, {
+                question: "失敗を<u>恐れて</u>挑戦できない人が多い。",
+                options: ["おそれて", "こわれて", "おびえて", "ふるえて"],
+                answer: "おそれて",
+                translation: "Banyak orang yang akhirnya tidak berani mencoba karena terlalu takut dengan kemungkinan gagal."
+            }, {
+                question: "研究結果は新たな治療法の可能性を<u>示唆</u>している。",
+                options: ["しさ", "じさ", "じしゃ", "ししゃ"],
+                answer: "しさ",
+                translation: "Hasil penelitian ini mengisyaratkan adanya peluang dikembangkannya metode pengobatan baru yang lebih efektif."
+            }, {
+                question: "彼女の言葉には何か<u>暗示</u>が含まれているように感じた。",
+                options: ["あんじ", "あんし", "くらじ", "あんかい"],
+                answer: "あんじ",
+                translation: "Sepertinya ada sesuatu yang tersirat dan tidak diucapkan secara langsung dari kata-katanya."
+            }, {
+                question: "不安を<u>払拭</u>するために、準備を徹底した。",
+                options: ["ふっしょく", "はらしょく", "ふっしき", "ふしょく"],
+                answer: "ふっしょく",
+                translation: "Melakukan persiapan secara sangat matang agar semua rasa cemas dan kekhawatiran benar-benar hilang."
+            }, {
+                question: "不当な扱いに<u>憤慨</u>した社員が抗議した。",
+                options: ["ふんがい", "ふんかい", "いかがい", "ふんぎ"],
+                answer: "ふんがい",
+                translation: "Karyawan yang sangat marah atas perlakuan tidak adil dari pihak manajemen akhirnya angkat bicara dan melakukan protes."
+            }, {
+                question: "規制を<u>緩和</u>することで経済が活性化する可能性がある。",
+                options: ["かんわ", "かんか", "ゆるわ", "かいわ"],
+                answer: "かんわ",
+                translation: "Ada kemungkinan bahwa perekonomian akan kembali bergairah apabila sejumlah regulasi yang ada dilonggarkan."
+            }, {
+                question: "サイバー攻撃は現代社会への大きな<u>脅威</u>だ。",
+                options: ["きょうい", "おどかし", "きょうふ", "きょうはく"],
+                answer: "きょうい",
+                translation: "Serangan siber merupakan ancaman nyata yang semakin mengkhawatirkan bagi keamanan masyarakat modern."
+            }, {
+                question: "<u>虚偽</u>の申告をすることは違法だ。",
+                options: ["きょぎ", "こぎ", "きょぎょ", "こうぎ"],
+                answer: "きょぎ",
+                translation: "Mengajukan laporan yang mengandung informasi palsu kepada pihak berwenang adalah tindakan melanggar hukum."
+            }, {
+                question: "子どもが親に<u>甘えて</u>いる姿はかわいい。",
+                options: ["あまえて", "なついて", "たよって", "よりそって"],
+                answer: "あまえて",
+                translation: "Tingkah anak kecil yang manja dan merengek minta perhatian kepada orang tuanya sungguh menggemaskan."
+            }, {
+                question: "彼女の無神経な言葉に深く<u>傷ついた</u>。",
+                options: ["きずついた", "いたんだ", "こわれた", "おれた"],
+                answer: "きずついた",
+                translation: "Kata-katanya yang tidak berperasaan meninggalkan luka yang cukup dalam di hati."
+            }, {
+                question: "会議の<u>途中</u>で急用ができて退席した。",
+                options: ["とちゅう", "みちなか", "とぐち", "とじゅう"],
+                answer: "とちゅう",
+                translation: "Di tengah jalannya rapat, ada urusan mendadak yang mendesak sehingga terpaksa meninggalkan ruangan lebih awal."
+            }, {
+                question: "<u>素直</u>に謝れば、きっと許してもらえる。",
+                options: ["すなお", "そちょく", "すじゅん", "すっちょく"],
+                answer: "すなお",
+                translation: "Kalau minta maaf dengan tulus dan tidak berbelit-belit, pasti akan dimaafkan."
+            }, {
+                question: "地域の環境問題に<u>貢献</u>するため、ボランティアに参加した。",
+                options: ["こうけん", "くけん", "こけん", "くうけん"],
+                answer: "こうけん",
+                translation: "Ikut bergabung dalam kegiatan sukarela sebagai wujud nyata kepedulian terhadap masalah lingkungan di sekitar tempat tinggal."
+            }
+        ],
+        "goi-orthography": [{
+                question: "警察は事件の<u>ようぎしゃ</u>を追っている。",
+                options: ["容疑者", "要疑者", "容義者", "用疑者"],
+                answer: "容疑者",
+                translation: "Polisi sedang memburu tersangka kasus tersebut."
+            }, {
+                question: "この工場では自動車の部品を<u>せいぞう</u>している。",
+                options: ["生造", "精造", "製造", "製蔵"],
+                answer: "製造",
+                translation: "Di pabrik ini diproduksi suku cadang kendaraan bermotor."
+            }, {
+                question: "試験合格のために<u>かくじつ</u>な方法で勉強した。",
+                options: ["獲実", "穫実", "確実", "核実"],
+                answer: "確実",
+                translation: "Belajar dengan metode yang pasti dan andal demi kelulusan ujian."
+            }, {
+                question: "彼の発言が会議の<u>ふんいき</u>を壊した。",
+                options: ["雰意気", "噴囲気", "雰囲気", "分囲気"],
+                answer: "雰囲気",
+                translation: "Ucapannya merusak suasana rapat."
+            }, {
+                question: "市役所で住所<u>へんこう</u>の手続きをした。",
+                options: ["変行", "変更", "辺更", "返更"],
+                answer: "変更",
+                translation: "Mengurus prosedur perubahan alamat di kantor pemerintahan kota."
+            }, {
+                question: "部長の指示を<u>てっていてき</u>に実行した。",
+                options: ["撤廷的", "徹底的", "撤底的", "徹廷的"],
+                answer: "徹底的",
+                translation: "Melaksanakan instruksi manajer secara menyeluruh dan tuntas."
+            }, {
+                question: "長年の夢をついに<u>じつげん</u>することができた。",
+                options: ["実元", "実現", "実原", "実玄"],
+                answer: "実現",
+                translation: "Akhirnya berhasil mewujudkan impian yang sudah lama dipelihara."
+            }, {
+                question: "彼女の<u>けんちょ</u>な成長に周りが驚いた。",
+                options: ["顕著", "賢著", "懸著", "険著"],
+                answer: "顕著",
+                translation: "Orang-orang di sekitar terkejut melihat kemajuannya yang sangat mencolok."
+            }, {
+                question: "彼は会社の<u>きかく</u>部門で働いている。",
+                options: ["企格", "基格", "企画", "基画"],
+                answer: "企画",
+                translation: "Dia bekerja di divisi perencanaan perusahaan."
+            }, {
+                question: "この地域は観光地として<u>ちゅうもく</u>されている。",
+                options: ["注木", "注目", "注黙", "柱目"],
+                answer: "注目",
+                translation: "Kawasan ini mendapat perhatian sebagai destinasi wisata."
+            }, {
+                question: "問題を解決するための<u>たいさく</u>を考えた。",
+                options: ["対索", "対策", "体策", "対冊"],
+                answer: "対策",
+                translation: "Memikirkan langkah-langkah untuk mengatasi masalah tersebut."
+            }, {
+                question: "新入社員の<u>けんしゅう</u>が今週から始まった。",
+                options: ["研習", "練修", "研修", "練習"],
+                answer: "研修",
+                translation: "Pelatihan karyawan baru dimulai minggu ini."
+            }, {
+                question: "彼女はいつも物事を<u>れいせい</u>に判断できる。",
+                options: ["冷性", "冷静", "令静", "冷精"],
+                answer: "冷静",
+                translation: "Dia selalu bisa menilai segala sesuatu dengan kepala dingin."
+            }, {
+                question: "山の<u>ちょうじょう</u>から見た景色は絶景だった。",
+                options: ["頂状", "頂上", "鳥上", "頂丈"],
+                answer: "頂上",
+                translation: "Pemandangan dari puncak gunung sungguh luar biasa indah."
+            }, {
+                question: "この薬は医師の<u>しょほう</u>なしでは買えない。",
+                options: ["初方", "処方", "所方", "書方"],
+                answer: "処方",
+                translation: "Obat ini tidak bisa dibeli tanpa resep dokter."
+            }, {
+                question: "同僚との<u>いしのつうじょう</u>がうまくいかず悩んでいる。",
+                options: ["意志の通常", "意思の疎通", "意思の通情", "意志の疏通"],
+                answer: "意思の疎通",
+                translation: "Sedang bingung karena komunikasi dengan rekan kerja tidak berjalan lancar."
+            }, {
+                question: "この問題には様々な<u>よういん</u>が絡んでいる。",
+                options: ["要原", "要因", "用因", "養因"],
+                answer: "要因",
+                translation: "Masalah ini melibatkan berbagai faktor yang saling berkaitan."
+            }, {
+                question: "会社の<u>ほうしん</u>に従って行動した。",
+                options: ["方真", "放針", "方針", "法針"],
+                answer: "方針",
+                translation: "Bertindak sesuai dengan kebijakan/arah perusahaan."
+            }, {
+                question: "この映画は社会問題を<u>はいけい</u>にしたストーリーだ。",
+                options: ["背系", "背景", "拝景", "敗景"],
+                answer: "背景",
+                translation: "Film ini mengambil latar belakang isu-isu sosial yang nyata."
+            }, {
+                question: "新しい制度の<u>どうにゅう</u>には時間がかかる。",
+                options: ["動入", "導入", "道入", "働入"],
+                answer: "導入",
+                translation: "Penerapan sistem baru membutuhkan waktu yang tidak singkat."
+            }, {
+                question: "彼女は親の<u>いし</u>に反して海外に留学した。",
+                options: ["遺志", "意地", "意志", "維持"],
+                answer: "意志",
+                translation: "Dia pergi studi ke luar negeri bertentangan dengan keinginan orang tuanya."
+            }, {
+                question: "試験中に携帯を使うのは<u>いはん</u>になる。",
+                options: ["遺反", "違反", "維反", "異反"],
+                answer: "違反",
+                translation: "Menggunakan ponsel saat ujian merupakan pelanggaran."
+            }, {
+                question: "その国との<u>こっきょう</u>付近では紛争が続いている。",
+                options: ["国鏡", "国境", "国競", "告境"],
+                answer: "国境",
+                translation: "Di sekitar perbatasan negara itu konflik masih terus berlangsung."
+            }, {
+                question: "部下の<u>もちべーしょん</u>を高めるのも上司の仕事だ。",
+                options: ["意欲", "士気", "動機", "熱意"],
+                answer: "士気",
+                translation: "Meningkatkan semangat bawahan juga merupakan bagian dari tugas seorang atasan."
+            }, {
+                question: "彼女は舞台での<u>えんぎ</u>が素晴らしい。",
+                options: ["演義", "演技", "演芸", "宴技"],
+                answer: "演技",
+                translation: "Akting/penampilannya di atas panggung sangat memukau."
+            }, {
+                question: "不法な<u>はいき</u>物が川に流されていた。",
+                options: ["廃棄", "排気", "廃気", "排棄"],
+                answer: "廃棄",
+                translation: "Limbah ilegal dibuang ke sungai."
+            }, {
+                question: "先生は生徒の<u>たいど</u>に問題があると感じた。",
+                options: ["大度", "態度", "怠度", "対度"],
+                answer: "態度",
+                translation: "Guru merasa ada masalah dengan sikap murid tersebut."
+            }, {
+                question: "二人の間にある<u>ごかい</u>を解きたい。",
+                options: ["誤会", "語解", "誤解", "語会"],
+                answer: "誤解",
+                translation: "Ingin meluruskan kesalahpahaman yang ada di antara keduanya."
+            }, {
+                question: "彼の<u>こうせき</u>はこの分野で広く知られている。",
+                options: ["好績", "功石", "功績", "工績"],
+                answer: "功績",
+                translation: "Prestasinya dikenal luas di bidang ini."
+            }, {
+                question: "資料を会議の前日までに<u>じゅんびする</u>ように言われた。",
+                options: ["準日する", "準備する", "順備する", "順日する"],
+                answer: "準備する",
+                translation: "Diminta untuk mempersiapkan bahan-bahan sebelum hari rapat."
+            }, {
+                question: "このプロジェクトの<u>かんとく</u>は誰ですか。",
+                options: ["官督", "監督", "感督", "艦督"],
+                answer: "監督",
+                translation: "Siapa yang menjadi pengawas/sutradara proyek ini?"
+            }, {
+                question: "彼は問題を<u>かいけつ</u>する能力が高い。",
+                options: ["解欠", "解結", "快決", "解決"],
+                answer: "解決",
+                translation: "Kemampuannya dalam memecahkan masalah sangat tinggi."
+            }, {
+                question: "今回の<u>じこ</u>で多くの人が怪我をした。",
+                options: ["事古", "事故", "時故", "示故"],
+                answer: "事故",
+                translation: "Banyak orang terluka dalam kecelakaan kali ini."
+            }, {
+                question: "この商品には<u>ほしょう</u>書がついている。",
+                options: ["保障書", "保証書", "補証書", "補障書"],
+                answer: "保証書",
+                translation: "Produk ini dilengkapi dengan kartu garansi."
+            }, {
+                question: "不満があれば<u>えんりょなく</u>言ってください。",
+                options: ["遠慮なく", "援慮なく", "遠考なく", "遠料なく"],
+                answer: "遠慮なく",
+                translation: "Kalau ada ketidakpuasan, silakan sampaikan tanpa sungkan."
+            }, {
+                question: "電車の中でお年寄りに<u>せき</u>を譲った。",
+                options: ["石", "席", "積", "籍"],
+                answer: "席",
+                translation: "Di dalam kereta, memberikan tempat duduk kepada orang tua."
+            }, {
+                question: "今回の失敗から多くのことを<u>まなんだ</u>。",
+                options: ["真んだ", "学んだ", "習んだ", "知んだ"],
+                answer: "学んだ",
+                translation: "Belajar banyak hal dari kegagalan kali ini."
+            }, {
+                question: "政府は経済<u>かっせいか</u>のための政策を打ち出した。",
+                options: ["活生化", "活性化", "括性化", "活精化"],
+                answer: "活性化",
+                translation: "Pemerintah meluncurkan kebijakan untuk mengaktifkan kembali perekonomian."
+            }, {
+                question: "会社が<u>とうさん</u>して多くの社員が職を失った。",
+                options: ["倒算", "盗産", "倒産", "唐産"],
+                answer: "倒産",
+                translation: "Perusahaan bangkrut dan banyak karyawan kehilangan pekerjaan."
+            }, {
+                question: "友人の突然の<u>しきょ</u>にショックを受けた。",
+                options: ["死居", "死去", "死挙", "死拒"],
+                answer: "死去",
+                translation: "Terkejut dengan kepergian mendadak seorang teman."
+            }, {
+                question: "この地域では農業の<u>きかいか</u>が進んでいる。",
+                options: ["機械化", "機会化", "気概化", "奇械化"],
+                answer: "機械化",
+                translation: "Di daerah ini, mekanisasi pertanian terus berkembang pesat."
+            }, {
+                question: "契約書の内容を<u>かくにん</u>してからサインした。",
+                options: ["確人", "確認", "獲認", "核認"],
+                answer: "確認",
+                translation: "Menandatangani setelah mengecek isi kontrak dengan teliti."
+            }, {
+                question: "努力の<u>せいか</u>がテストの点数に表れた。",
+                options: ["成化", "誠果", "成果", "精果"],
+                answer: "成果",
+                translation: "Hasil usaha keras tercermin dari nilai ujian yang diperoleh."
+            }, {
+                question: "彼は幼少期を海外で<u>すごした</u>。",
+                options: ["過した", "過ごした", "通した", "経した"],
+                answer: "過ごした",
+                translation: "Dia menghabiskan masa kecilnya di luar negeri."
+            }, {
+                question: "業務の<u>こうりつ</u>を上げるため、システムを見直した。",
+                options: ["功率", "効立", "効率", "高率"],
+                answer: "効率",
+                translation: "Meninjau ulang sistem demi meningkatkan efisiensi kerja."
+            }, {
+                question: "この薬は副作用が<u>ひんぱん</u>に起こることがある。",
+                options: ["頻繁", "品版", "頻版", "品繁"],
+                answer: "頻繁",
+                translation: "Obat ini terkadang menyebabkan efek samping yang sering muncul."
+            }, {
+                question: "社員全員が会社の<u>りねん</u>を共有している。",
+                options: ["利念", "理念", "理年", "里念"],
+                answer: "理念",
+                translation: "Seluruh karyawan berbagi nilai dan filosofi perusahaan yang sama."
+            }, {
+                question: "彼女は自分の<u>かんがえ</u>を論理的に説明できる。",
+                options: ["感え", "考え", "想え", "思え"],
+                answer: "考え",
+                translation: "Dia mampu menjelaskan pikirannya secara logis."
+            }, {
+                question: "その法案は国会で<u>かけつ</u>された。",
+                options: ["可血", "可欠", "可決", "科決"],
+                answer: "可決",
+                translation: "Rancangan undang-undang itu disahkan di parlemen."
+            }, {
+                question: "新しい環境に<u>てきおう</u>するには時間がかかる。",
+                options: ["摘応", "適応", "敵応", "的応"],
+                answer: "適応",
+                translation: "Perlu waktu untuk beradaptasi dengan lingkungan yang baru."
+            }, {
+                question: "彼の話には<u>かがく</u>的な根拠がある。",
+                options: ["科学", "化学", "加学", "課学"],
+                answer: "科学",
+                translation: "Pembicaraannya memiliki dasar ilmiah yang kuat."
+            }, {
+                question: "駅前に新しいビルが<u>けんせつ</u>されている。",
+                options: ["建節", "建設", "健設", "堅設"],
+                answer: "建設",
+                translation: "Di depan stasiun sedang dibangun gedung baru."
+            }, {
+                question: "会社は若手社員の<u>ていちゃく</u>率を上げたい。",
+                options: ["定着", "停着", "低着", "帝着"],
+                answer: "定着",
+                translation: "Perusahaan ingin meningkatkan tingkat retensi karyawan muda."
+            }, {
+                question: "この商品の<u>ひんしつ</u>は業界トップクラスだ。",
+                options: ["品式", "品質", "品識", "貧質"],
+                answer: "品質",
+                translation: "Kualitas produk ini termasuk kelas teratas di industri."
+            }, {
+                question: "彼は会社で<u>じゅうようなやくわり</u>を担っている。",
+                options: ["重用な役割", "重要な役割", "重様な役割", "従要な役割"],
+                answer: "重要な役割",
+                translation: "Dia memegang peran yang sangat penting di perusahaan."
+            }, {
+                question: "その作業には特別な<u>ぎのう</u>が求められる。",
+                options: ["技農", "機能", "技能", "技脳"],
+                answer: "技能",
+                translation: "Pekerjaan itu menuntut keahlian teknis yang khusus."
+            }, {
+                question: "長年の<u>けんきゅう</u>がついに実を結んだ。",
+                options: ["研球", "研究", "健究", "検球"],
+                answer: "研究",
+                translation: "Penelitian bertahun-tahun akhirnya berhasil membuahkan hasil."
+            }, {
+                question: "選手たちは試合に向けて<u>しゅうちゅう</u>して練習した。",
+                options: ["集中", "収中", "終中", "衆中"],
+                answer: "集中",
+                translation: "Para atlet berlatih dengan penuh konsentrasi menjelang pertandingan."
+            }, {
+                question: "彼女は<u>しめきり</u>に間に合わせるために徹夜した。",
+                options: ["締切り", "示切り", "占切り", "絞切り"],
+                answer: "締切り",
+                translation: "Dia begadang semalaman agar bisa menyelesaikan tugas tepat sebelum batas waktu."
+            }, {
+                question: "この地域の<u>じんこう</u>は年々減少している。",
+                options: ["人工", "人口", "仁口", "人孔"],
+                answer: "人口",
+                translation: "Populasi di daerah ini terus berkurang dari tahun ke tahun."
+            },{
+                question: "この規則を<u>はんようする</u>ことは難しい。",
+                options: ["判用する", "汎用する", "反用する", "帆用する"],
+                answer: "汎用する",
+                translation: "Sulit untuk menerapkan aturan ini secara umum dan luas."
+            }, {
+                question: "彼は<u>せきにんかん</u>が強い人だ。",
+                options: ["積任感", "績任感", "責任感", "責住感"],
+                answer: "責任感",
+                translation: "Dia adalah orang yang memiliki rasa tanggung jawab yang kuat."
+            }, {
+                question: "この事故の<u>げんいん</u>はまだ不明だ。",
+                options: ["現因", "原因", "源因", "元囚"],
+                answer: "原因",
+                translation: "Penyebab kecelakaan ini masih belum diketahui."
+            }, {
+                question: "部長は会議の内容を<u>ぶかに</u>伝えた。",
+                options: ["武下に", "部下に", "部荷に", "歩下に"],
+                answer: "部下に",
+                translation: "Manajer menyampaikan isi rapat kepada para bawahannya."
+            }, {
+                question: "不正を<u>みとめる</u>ことは難しい決断だった。",
+                options: ["見留める", "認める", "見認める", "望める"],
+                answer: "認める",
+                translation: "Mengakui adanya kecurangan adalah keputusan yang sulit."
+            }, {
+                question: "彼は重要な<u>にんむ</u>を任されている。",
+                options: ["認務", "妊務", "任務", "仁務"],
+                answer: "任務",
+                translation: "Dia dipercaya untuk menjalankan tugas yang sangat penting."
+            }, {
+                question: "この作品は世界的に<u>こうひょう</u>を得た。",
+                options: ["好評", "高評", "校評", "口評"],
+                answer: "好評",
+                translation: "Karya ini mendapat penilaian positif dari seluruh dunia."
+            }, {
+                question: "業務の<u>しょり</u>が遅くて上司に叱られた。",
+                options: ["所理", "処里", "処理", "書理"],
+                answer: "処理",
+                translation: "Dimarahi atasan karena lambat dalam menyelesaikan pekerjaan."
+            }, {
+                question: "チームの<u>きょうりょく</u>で難しい仕事を成し遂げた。",
+                options: ["強力", "協力", "共力", "興力"],
+                answer: "協力",
+                translation: "Berhasil menyelesaikan pekerjaan yang sulit berkat kerja sama tim."
+            }, {
+                question: "彼は会議中に<u>いけん</u>を積極的に述べた。",
+                options: ["医見", "意険", "意見", "異見"],
+                answer: "意見",
+                translation: "Dia secara aktif menyampaikan pendapatnya selama rapat berlangsung."
+            }, {
+                question: "社内の<u>ふんそう</u>を早めに解決しなければならない。",
+                options: ["紛聡", "紛争", "粉争", "紛奏"],
+                answer: "紛争",
+                translation: "Konflik internal perusahaan harus segera diselesaikan."
+            }, {
+                question: "プロジェクトの<u>すいしん</u>役として彼が選ばれた。",
+                options: ["推進", "水進", "推真", "遂進"],
+                answer: "推進",
+                translation: "Dia dipilih sebagai penggerak/motor proyek tersebut."
+            }, {
+                question: "経営状況を<u>かいぜん</u>するため、大幅な見直しが必要だ。",
+                options: ["改造", "改善", "改然", "戒善"],
+                answer: "改善",
+                translation: "Diperlukan peninjauan ulang yang besar-besaran untuk memperbaiki kondisi manajemen."
+            }, {
+                question: "新製品の<u>はっぴょう</u>会には多くのメディアが来た。",
+                options: ["発表", "発評", "初表", "発票"],
+                answer: "発表",
+                translation: "Banyak media yang hadir dalam acara peluncuran produk baru tersebut."
+            }, {
+                question: "長時間労働は心身に<u>ふたん</u>をかける。",
+                options: ["富担", "覆担", "負担", "付担"],
+                answer: "負担",
+                translation: "Jam kerja yang panjang memberikan beban pada fisik maupun mental."
+            }, {
+                question: "問題の<u>ほんしつ</u>をしっかり見極めることが大事だ。",
+                options: ["本識", "本質", "本実", "本式"],
+                answer: "本質",
+                translation: "Penting untuk memahami dengan benar esensi/inti dari suatu masalah."
+            }, {
+                question: "彼は自分の<u>あやまり</u>を素直に認めた。",
+                options: ["誤り", "謝り", "曲り", "誤まり"],
+                answer: "誤り",
+                translation: "Dia dengan tulus mengakui kesalahannya sendiri."
+            }, {
+                question: "その提案は現実的では<u>なく</u>、<u>ひじょうしき</u>だと批判された。",
+                options: ["非常識", "否常識", "非上識", "悲常識"],
+                answer: "非常識",
+                translation: "Usulan itu dikritik karena tidak realistis dan tidak masuk akal."
+            }, {
+                question: "新任の部長は社員との<u>しんらい</u>関係を築こうとしている。",
+                options: ["神頼", "信頼", "信類", "芯頼"],
+                answer: "信頼",
+                translation: "Manajer baru berusaha membangun hubungan kepercayaan dengan para karyawan."
+            }, {
+                question: "海外への<u>ゆしゅつ</u>が今年は増加した。",
+                options: ["輸入", "輸出", "諭出", "輪出"],
+                answer: "輸出",
+                translation: "Ekspor ke luar negeri meningkat tahun ini."
+            },
+            {
+                question: "この問題は簡単に<u>かいしょう</u>できないだろう。",
+                options: ["快消", "解消", "回消", "壊消"],
+                answer: "解消",
+                translation: "Masalah ini sepertinya tidak mudah untuk diselesaikan."
+            }, {
+                question: "彼女は仕事上の<u>じんみゃく</u>を大切にしている。",
+                options: ["人眼", "人脈", "仁脈", "人絡"],
+                answer: "人脈",
+                translation: "Dia sangat menjaga jaringan relasi profesionalnya."
+            }, {
+                question: "この地域の経済は<u>いちじるしく</u>発展した。",
+                options: ["著しく", "顕しく", "記しく", "明しく"],
+                answer: "著しく",
+                translation: "Ekonomi di kawasan ini berkembang dengan sangat pesat dan mencolok."
+            }, {
+                question: "彼は自分の行動の<u>けっか</u>を受け入れた。",
+                options: ["欠果", "決果", "結果", "血果"],
+                answer: "結果",
+                translation: "Dia menerima konsekuensi dari tindakannya sendiri."
+            }, {
+                question: "会議では参加者全員の<u>どうい</u>が必要だ。",
+                options: ["道意", "胴意", "同意", "動意"],
+                answer: "同意",
+                translation: "Dalam rapat ini diperlukan persetujuan dari semua peserta."
+            }, {
+                question: "その計画の<u>じつこう</u>は来月からになる。",
+                options: ["実効", "実行", "実向", "実功"],
+                answer: "実行",
+                translation: "Pelaksanaan rencana tersebut akan dimulai dari bulan depan."
+            }, {
+                question: "彼は不満を<u>うちにためて</u>いた。",
+                options: ["内に溜めて", "中に溜めて", "心に留めて", "内に留めて"],
+                answer: "内に溜めて",
+                translation: "Dia selama ini menumpuk rasa tidak puas di dalam hatinya."
+            }, {
+                question: "今回の事件で彼の評判が<u>おちた</u>。",
+                options: ["落ちた", "堕ちた", "墜ちた", "下ちた"],
+                answer: "落ちた",
+                translation: "Reputasinya jatuh akibat kejadian kali ini."
+            }, {
+                question: "会社は不景気で<u>せつやく</u>を迫られている。",
+                options: ["節役", "切約", "節約", "切役"],
+                answer: "節約",
+                translation: "Perusahaan terpaksa melakukan penghematan di tengah kondisi ekonomi yang lesu."
+            }, {
+                question: "今回の取引で大きな<u>りえき</u>を得た。",
+                options: ["利役", "利益", "利億", "利液"],
+                answer: "利益",
+                translation: "Mendapat keuntungan besar dari transaksi kali ini."
+            }, {
+                question: "彼女の<u>ちょうしょ</u>は分析力の高さだ。",
+                options: ["長処", "長所", "帳所", "腸所"],
+                answer: "長所",
+                translation: "Kelebihan/keunggulannya adalah kemampuan analisis yang tinggi."
+            }, {
+                question: "議会で新しい法律が<u>せいてい</u>された。",
+                options: ["制定", "正定", "征定", "整定"],
+                answer: "制定",
+                translation: "Undang-undang baru ditetapkan di parlemen."
+            }, {
+                question: "彼は誰に対しても<u>こうへい</u>な態度で接する。",
+                options: ["公平", "公評", "好平", "功平"],
+                answer: "公平",
+                translation: "Dia bersikap adil kepada siapa pun tanpa membeda-bedakan."
+            }, {
+                question: "業界の<u>どうこう</u>を注意深く観察している。",
+                options: ["動向", "道行", "同向", "働向"],
+                answer: "動向",
+                translation: "Mengamati dengan seksama tren dan pergerakan di industri ini."
+            }, {
+                question: "試験の<u>たいさく</u>として模擬テストを受けた。",
+                options: ["代策", "対策", "体策", "退策"],
+                answer: "対策",
+                translation: "Mengikuti ujian simulasi sebagai persiapan menghadapi ujian sesungguhnya."
+            }, {
+                question: "この商品は特定の<u>そうていしゃ</u>向けに作られている。",
+                options: ["想定者", "相定者", "想停者", "創定者"],
+                answer: "想定者",
+                translation: "Produk ini dibuat untuk target pengguna tertentu yang sudah ditentukan."
+            }, {
+                question: "海外の視察から多くの<u>ちしき</u>を得た。",
+                options: ["地識", "知識", "智識", "値識"],
+                answer: "知識",
+                translation: "Mendapat banyak pengetahuan dari kunjungan observasi ke luar negeri."
+            }, {
+                question: "この建物は<u>たいしん</u>構造になっている。",
+                options: ["耐信", "対震", "耐震", "大震"],
+                answer: "耐震",
+                translation: "Bangunan ini memiliki struktur tahan gempa."
+            }, {
+                question: "問題が起きた時、リーダーの<u>はんのう</u>が試される。",
+                options: ["反応", "判応", "版応", "返能"],
+                answer: "反応",
+                translation: "Saat masalah muncul, respons seorang pemimpin akan benar-benar diuji."
+            }, {
+                question: "今後の<u>みとおし</u>を立てることが大切だ。",
+                options: ["見通し", "未通し", "見透し", "身通し"],
+                answer: "見通し",
+                translation: "Penting untuk menyusun gambaran dan proyeksi ke depan."
+            }
+        ],
+		"goi-context-expression": []
+	}
+
+};

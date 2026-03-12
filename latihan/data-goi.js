@@ -4019,9 +4019,495 @@ window.latihanGoiReal = {
                 translation: "規則 / Kisoku (peraturan) adalah hal yang harus dipatuhi oleh semuanya."
             }
         ],
-        "goi-usage": []
+        "goi-usage": [{
+                question: "新しい プロジェクトの _____ を 説明するために、資料を 準備しました。",
+                options: ["目的", "失敗", "困難", "開始"],
+                answer: "目的",
+                translation: "Saya menyiapkan materi untuk menjelaskan tujuan dari proyek baru tersebut."
+            }, {
+                question: "この 商品は 品質が 優れており、_____ が 高いです。",
+                options: ["評判", "失敗", "危険", "簡単"],
+                answer: "評判",
+                translation: "Produk ini berkualitas unggul dan memiliki reputasi yang tinggi."
+            }, {
+                question: "会議中に 重要な _____ が 指摘されたため、計画を 修正する ことになった。",
+                options: ["問題点", "成功", "利益", "喜び"],
+                answer: "問題点",
+                translation: "Karena ada poin penting yang ditunjukkan saat rapat, rencana harus direvisi."
+            }, {
+                question: "彼の _____ は 多くの 人々を 感動させた。",
+                options: ["努力", "怠惰", "無関心", "不満"],
+                answer: "努力",
+                translation: "Usaha kerasnya menggerakkan hati banyak orang."
+            }, {
+                question: "このような _____ が 続いては、事業の 継続は 難しいだろう。",
+                options: ["状況", "喜び", "成功", "活躍"],
+                answer: "状況",
+                translation: "Jika situasi seperti ini terus berlanjut, kelanjutan bisnis akan sulit."
+            }, {
+                question: "部長は チームの _____ を 適切に 管理している。",
+                options: ["能力", "欠点", "疲労", "不安"],
+                answer: "能力",
+                translation: "Kepala departemen mengelola kemampuan tim dengan tepat."
+            }, {
+                question: "その 店の サービスは _____ に 評価されている。",
+                options: ["高く", "低く", "悪く", "簡単に"],
+                answer: "高く",
+                translation: "Layanan toko tersebut dinilai tinggi."
+            }, {
+                question: "毎日 の _____ が 健康維持に 重要だ。",
+                options: ["運動", "睡眠不足", "怠け", "サボり"],
+                answer: "運動",
+                translation: "Olahraga harian penting untuk menjaga kesehatan."
+            }, {
+                question: "学生時代の _____ は、現在の 仕事に 役立っている。",
+                options: ["経験", "失敗", "遊び", "怠惰"],
+                answer: "経験",
+                translation: "Pengalaman zaman sekolah sangat berguna untuk pekerjaan sekarang."
+            }, {
+                question: "彼女は 仕事の _____ を 忍耐強く 対処している。",
+                options: ["ストレス", "喜び", "成功", "便利"],
+                answer: "ストレス",
+                translation: "Dia menghadapi stres pekerjaan dengan sabar."
+            }, {
+                question: "この 地域の _____ は 急速に 発展している。",
+                options: ["経済", "寒さ", "距離", "色"],
+                answer: "経済",
+                translation: "Ekonomi wilayah ini berkembang pesat."
+            }, {
+                question: "申し込み の _____ は 来月末までです。",
+                options: ["期限", "色", "形", "高さ"],
+                answer: "期限",
+                translation: "Batas waktu pendaftaran adalah akhir bulan depan."
+            }, {
+                question: "彼は 複雑な 問題を シンプルに _____ した。",
+                options: ["解説", "隠蔽", "無視", "混乱"],
+                answer: "解説",
+                translation: "Dia menjelaskan masalah kompleks dengan cara yang sederhana."
+            }, {
+                question: "この 計画の _____ は かなり 大きい。",
+                options: ["規模", "色", "名前", "時間"],
+                answer: "規模",
+                translation: "Skala rencana ini cukup besar."
+            }, {
+                question: "従業員の _____ は 企業の 発展に 直結している。",
+                options: ["貢献", "怠惰", "不注意", "違反"],
+                answer: "貢献",
+                translation: "Kontribusi karyawan berhubungan langsung dengan perkembangan perusahaan."
+            }, {
+                question: "この 製品の _____ は 業界の 基準を 超えている。",
+                options: ["品質", "色", "形状", "重さ"],
+                answer: "品質",
+                translation: "Kualitas produk ini melebihi standar industri."
+            }, {
+                question: "長年の _____ により、彼は この 分野の 専門家になった。",
+                options: ["研究", "怠け", "無視", "否定"],
+                answer: "研究",
+                translation: "Melalui penelitian bertahun-tahun, dia menjadi ahli di bidang ini."
+            }, {
+                question: "この 会議の _____ は 次週です。",
+                options: ["予定", "色", "価値", "名前"],
+                answer: "予定",
+                translation: "Jadwal rapat ini adalah minggu depan."
+            }, {
+                question: "新しい 方針の _____ は まだ 不透明だ。",
+                options: ["影響", "色", "形", "臭い"],
+                answer: "影響",
+                translation: "Dampak dari kebijakan baru masih tidak jelas."
+            }, {
+                question: "その 事件の _____ は 警察が 調査中だ。",
+                options: ["原因", "色", "高さ", "名前"],
+                answer: "原因",
+                translation: "Penyebab kejadian itu sedang diselidiki polisi."
+            }, {
+                question: "仕事の _____ を 保つ ことは、キャリア発展に 重要だ。",
+                options: ["質", "色", "形", "重量"],
+                answer: "質",
+                translation: "Menjaga kualitas pekerjaan penting untuk pengembangan karir."
+            }, {
+                question: "この 地方の _____ は 独特で 魅力的だ。",
+                options: ["文化", "色", "距離", "温度"],
+                answer: "文化",
+                translation: "Budaya daerah ini unik dan menarik."
+            }, {
+                question: "プロジェクトの _____ に 全力で 取り組んでいます。",
+                options: ["実行", "失敗", "中止", "否定"],
+                answer: "実行",
+                translation: "Saya sedang menjalankan proyek dengan sepenuh hati."
+            }, {
+                question: "顧客の _____ を 理解する ことが ビジネスの 鍵だ。",
+                options: ["ニーズ", "弱点", "失敗", "無視"],
+                answer: "ニーズ",
+                translation: "Memahami kebutuhan pelanggan adalah kunci bisnis."
+            }, {
+                question: "この 資料は 詳細な _____ が 含まれている。",
+                options: ["分析", "失敗", "怠け", "無視"],
+                answer: "分析",
+                translation: "Materi ini berisi analisis yang terperinci."
+            }, {
+                question: "彼の 提案は _____ が 高く評価されている。",
+                options: ["独創性", "弱点", "失敗", "無視"],
+                answer: "独創性",
+                translation: "Orisinalitas proposalnya sangat dihargai."
+            }, {
+                question: "社会の _____ は 技術の 進歩と ともに 変わっている。",
+                options: ["ニーズ", "色", "高さ", "距離"],
+                answer: "ニーズ",
+                translation: "Kebutuhan masyarakat berubah seiring dengan kemajuan teknologi."
+            }, {
+                question: "この 危機的な _____ を 乗り越えるために、全員の 協力が 必要だ。",
+                options: ["状況", "喜び", "成功", "利益"],
+                answer: "状況",
+                translation: "Untuk mengatasi situasi kritis ini, kerjasama semua orang diperlukan."
+            }, {
+                question: "研究結果の _____ は 非常に 信頼できる。",
+                options: ["信頼性", "色", "形", "温度"],
+                answer: "信頼性",
+                translation: "Reliabilitas hasil penelitian sangat dapat dipercaya."
+            }, {
+                question: "この 施設の _____ は 利便性と 安全性を 考慮して 設計されている。",
+                options: ["構造", "色", "名前", "温度"],
+                answer: "構造",
+                translation: "Struktur fasilitas ini dirancang dengan mempertimbangkan kenyamanan dan keamanan."
+            }, {
+                question: "部下の _____ を 認める ことは、リーダーシップの 一部だ。",
+                options: ["成果", "失敗", "怠け", "不満"],
+                answer: "成果",
+                translation: "Mengakui pencapaian bawahan adalah bagian dari kepemimpinan."
+            }, {
+                question: "この ジャンルの 映画は 独特の _____ を 持っている。",
+                options: ["魅力", "失敗", "欠点", "弱点"],
+                answer: "魅力",
+                translation: "Film genre ini memiliki daya tarik yang unik."
+            }, {
+                question: "市場の _____ を 分析する ことで、戦略を 立てる ことができる。",
+                options: ["動向", "色", "名前", "形"],
+                answer: "動向",
+                translation: "Dengan menganalisis tren pasar, kita bisa membuat strategi."
+            }, {
+                question: "この プログラムの _____ は 参加者の スキル向上に 焦点を 当てている。",
+                options: ["目標", "失敗", "色", "高さ"],
+                answer: "目標",
+                translation: "Tujuan program ini berfokus pada peningkatan keterampilan peserta."
+            }, {
+                question: "彼の 発言の _____ が 曖昧だったため、会議は 長引いた。",
+                options: ["意図", "色", "形", "温度"],
+                answer: "意図",
+                translation: "Karena tujuan perkataannya tidak jelas, rapat menjadi panjang."
+            }, {
+                question: "新製品の _____ は 消費者の 期待を 超えた。",
+                options: ["評価", "失敗", "欠点", "色"],
+                answer: "評価",
+                translation: "Penilaian produk baru melampaui harapan konsumen."
+            }, {
+                question: "このプロジェクトの _____ が 成功の 鍵を 握っている。",
+                options: ["実行力", "失敗", "無視", "怠け"],
+                answer: "実行力",
+                translation: "Daya eksekusi proyek ini memegang kunci kesuksesan."
+            }, {
+                question: "チームの _____ は 個々の メンバーの 協力で 成り立っている。",
+                options: ["成功", "失敗", "解散", "無視"],
+                answer: "成功",
+                translation: "Kesuksesan tim tergantung pada kerja sama anggota individual."
+            }, {
+                question: "この 地域の _____ は 減少傾向にある。",
+                options: ["人口", "色", "形", "高さ"],
+                answer: "人口",
+                translation: "Populasi wilayah ini menunjukkan tren penurunan."
+            }, {
+                question: "規則の _____ を 厳しく 守る ことが 組織の 基本だ。",
+                options: ["遵守", "破壊", "無視", "違反"],
+                answer: "遵守",
+                translation: "Kepatuhan terhadap aturan adalah dasar organisasi."
+            }, {
+                question: "この 提案は 実現性に _____ ため、慎重に 検討する 必要があります。",
+                options: ["欠ける", "優れる", "成功する", "失敗する"],
+                answer: "欠ける",
+                translation: "Proposal ini kurang dalam hal kelayakan pelaksanaan, jadi perlu dipertimbangkan dengan hati-hati."
+            }, {
+                question: "彼の 意見は _____ 根拠に 基づいている。",
+                options: ["確かな", "曖昧な", "不確実な", "弱い"],
+                answer: "確かな",
+                translation: "Pendapatnya didasarkan pada dasar yang pasti."
+            }, {
+                question: "新しい 技術は 業界に _____ 影響を 与えた。",
+                options: ["大きな", "小さな", "ない", "限定的な"],
+                answer: "大きな",
+                translation: "Teknologi baru memberikan dampak besar pada industri."
+            }, {
+                question: "この 結果は 予想を _____ ものになった。",
+                options: ["上回った", "下回った", "同じ", "否定した"],
+                answer: "上回った",
+                translation: "Hasil ini melampaui ekspektasi."
+            }, {
+                question: "彼女の パフォーマンスは 非常に _____ いえる。",
+                options: ["優秀だと", "貧弱だと", "失敗だと", "不適切だと"],
+                answer: "優秀だと",
+                translation: "Performanya dapat dikatakan sangat luar biasa."
+            }, {
+                question: "この 市場は _____ 競争環境にある。",
+                options: ["激しい", "穏やかな", "ない", "限定的な"],
+                answer: "激しい",
+                translation: "Pasar ini berada dalam lingkungan kompetisi yang sengit."
+            }, {
+                question: "その 決定は _____ 有益だと 判断された。",
+                options: ["相互に", "相当に", "限定的に", "部分的に"],
+                answer: "相当に",
+                translation: "Keputusan itu dianggap cukup menguntungkan."
+            }, {
+                question: "プロジェクトの 進行状況は _____ 満足できるレベルだ。",
+                options: ["十分に", "全く", "ほぼ", "僅かに"],
+                answer: "十分に",
+                translation: "Status kemajuan proyek cukup memuaskan."
+            }, {
+                question: "この 条件では、実現は _____ 困難だ。",
+                options: ["極めて", "少し", "わずかに", "ほぼ"],
+                answer: "極めて",
+                translation: "Dalam kondisi ini, realisasinya sangat sulit."
+            }, {
+                question: "彼の 努力は _____ 評価に 値する。",
+                options: ["高い", "低い", "悪い", "否定的な"],
+                answer: "高い",
+                translation: "Usahanya layak mendapat penilaian tinggi."
+            }, {
+                question: "この 情報は _____ 重要であることが 明らかだ。",
+                options: ["極めて", "全く", "ほぼ", "僅かに"],
+                answer: "極めて",
+                translation: "Jelas bahwa informasi ini sangat penting."
+            }, {
+                question: "その 計画は _____ リスクが あると 指摘された。",
+                options: ["かなりの", "ない", "少しの", "わずかな"],
+                answer: "かなりの",
+                translation: "Rencana itu ditunjukkan memiliki risiko yang cukup besar."
+            }, {
+                question: "このサービスの 品質は _____ 改善が 必要だ。",
+                options: ["大きな", "小さな", "ない", "わずかな"],
+                answer: "大きな",
+                translation: "Kualitas layanan ini memerlukan perbaikan besar."
+            }, {
+                question: "彼の 発言は _____ 根拠が あるのか 疑問である。",
+                options: ["どのような", "どんな", "何か", "いかなる"],
+                answer: "どのような",
+                translation: "Membingungkan apakah ada dasar apa pun untuk perkataannya."
+            }, {
+                question: "この 政策の 効果は _____ あるか、まだ 不明だ。",
+                options: ["本当に", "本気で", "本当のところ", "本物の"],
+                answer: "本当に",
+                translation: "Masih tidak jelas apakah kebijakan ini benar-benar efektif."
+            }, {
+                question: "新しい システムは _____ 効率的である。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Sistem baru sangat efisien."
+            }, {
+                question: "この 問題は _____ 複雑で、簡単には 解決できない。",
+                options: ["相当に", "全く", "わずかに", "少し"],
+                answer: "相当に",
+                translation: "Masalah ini cukup kompleks dan tidak mudah diselesaikan."
+            }, {
+                question: "彼女の 提案は _____ 実用的だと 思う。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Saya pikir proposalnya sangat praktis."
+            }, {
+                question: "この 契約の 条件は _____ 厳しい。",
+                options: ["かなり", "全く", "わずかに", "少し"],
+                answer: "かなり",
+                translation: "Syarat kontrak ini cukup ketat."
+            }, {
+                question: "市場の 反応は _____ ポジティブである。",
+                options: ["概ね", "全く", "わずかに", "少し"],
+                answer: "概ね",
+                translation: "Reaksi pasar secara umum positif."
+            }, {
+                question: "この 状況は _____ 対応が 必要だ。",
+                options: ["迅速な", "遅い", "不要な", "無視される"],
+                answer: "迅速な",
+                translation: "Situasi ini memerlukan respons yang cepat."
+            }, {
+                question: "その 結果は _____ 受け入れるべきではない。",
+                options: ["そのままに", "全部", "部分的に", "ほぼ"],
+                answer: "そのままに",
+                translation: "Hasil itu tidak boleh diterima begitu saja."
+            }, {
+                question: "プロジェクトの 進捗は _____ 順調だ。",
+                options: ["概ね", "全く", "わずかに", "少し"],
+                answer: "概ね",
+                translation: "Kemajuan proyek secara umum lancar."
+            }, {
+                question: "この 提案には _____ 妥当性がある。",
+                options: ["十分な", "ない", "少しの", "わずかな"],
+                answer: "十分な",
+                translation: "Proposal ini memiliki validitas yang cukup."
+            }, {
+                question: "彼の 判断は _____ 信頼できる。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Penilaiannya dapat diandalkan."
+            }, {
+                question: "この 資料は _____ 詳細である。",
+                options: ["非常に", "全く", "わずかに", "少し"],
+                answer: "非常に",
+                translation: "Materi ini sangat detail."
+            }, {
+                question: "その 対応は _____ 適切だったと 思う。",
+                options: ["決して", "全く", "ほぼ", "わずかに"],
+                answer: "決して",
+                translation: "Saya tidak berpikir responsnya sama sekali tepat."
+            }, {
+                question: "新しい ガイドラインは _____ 明確である。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Panduan baru cukup jelas."
+            }, {
+                question: "この 成果は _____ 評価される べきだ。",
+                options: ["高く", "低く", "悪く", "否定的に"],
+                answer: "高く",
+                translation: "Pencapaian ini harus dihargai tinggi."
+            }, {
+                question: "彼の 提言は _____ 検討に 値する。",
+                options: ["十分に", "全く", "わずかに", "少し"],
+                answer: "十分に",
+                translation: "Sarannya cukup layak untuk dipertimbangkan."
+            }, {
+                question: "この 状況は _____ 深刻だ。",
+                options: ["極めて", "全く", "わずかに", "少し"],
+                answer: "極めて",
+                translation: "Situasi ini sangat serius."
+            }, {
+                question: "その 説明は _____ 納得できるものではない。",
+                options: ["決して", "非常に", "十分に", "完全に"],
+                answer: "決して",
+                translation: "Penjelasan itu tidak pernah memuaskan."
+            }, {
+                question: "新しい プログラムは _____ 有効であると 証明された。",
+                options: ["確かに", "全く", "わずかに", "少し"],
+                answer: "確かに",
+                translation: "Program baru terbukti sangat efektif."
+            }, {
+                question: "上司に 大切な 報告書を 忘れてしまった 場合、最初に すべき _____ は 何ですか？",
+                options: ["上司に 報告し、謝罪する", "報告書を 隠す", "別の 言い訳を する", "何も しない"],
+                answer: "上司に 報告し、謝罪する",
+                translation: "Jika Anda lupa memberikan laporan penting kepada atasan, apa yang pertama harus dilakukan?"
+            }, {
+                question: "同僚が あなたの ミスを 指摘した時、_____ な 対応が 適切ですか？",
+                options: ["感謝し、改善する", "否定する", "怒る", "無視する"],
+                answer: "感謝し、改善する",
+                translation: "Ketika rekan kerja menunjukkan kesalahan Anda, respons apa yang tepat?"
+            }, {
+                question: "顧客からの 苦情を 受けた場合、最初に _____ べきですか？",
+                options: ["話を 聞き、理解する", "すぐに 反論する", "言い訳する", "無視する"],
+                answer: "話を 聞き、理解する",
+                translation: "Saat menerima keluhan dari pelanggan, apa yang pertama harus dilakukan?"
+            }, {
+                question: "重要な 会議で 意見が 対立した 場合、_____ が 最優先ですか？",
+                options: ["冷静に 議論する", "声を 大にする", "退席する", "議論を 避ける"],
+                answer: "冷静に 議論する",
+                translation: "Jika pendapat bertentangan dalam rapat penting, apa prioritas utama?"
+            }, {
+                question: "部下が 困っている のに 気づいた 場合、_____ が 良いリーダーシップですか？",
+                options: ["話を 聞き、助ける", "無視する", "指摘だけする", "説教する"],
+                answer: "話を 聞き、助ける",
+                translation: "Jika Anda melihat bawahan kesulitan, apa kepemimpinan yang baik?"
+            }, {
+                question: "約束した 期限を 守れそうにない 場合、_____ が 職業倫理的ですか？",
+                options: ["早めに 報告する", "期限の 直前に 言う", "黙っている", "言い訳する"],
+                answer: "早めに 報告する",
+                translation: "Jika Anda tidak bisa memenuhi tenggat waktu yang dijanjikan, apa yang etis secara profesional?"
+            }, {
+                question: "チーム内で 不正行為が 発見された 場合、_____ が 正しい 行動ですか？",
+                options: ["上司に 報告する", "隠蔽する", "黙認する", "加担する"],
+                answer: "上司に 報告する",
+                translation: "Jika pelanggaran ditemukan dalam tim, tindakan mana yang benar?"
+            }, {
+                question: "新しい プロジェクトで 自分の 能力を 超えた タスクを 与えられた 場合、_____ が 適切ですか？",
+                options: ["正直に 相談する", "無理に やる", "拒否する", "無視する"],
+                answer: "正直に 相談する",
+                translation: "Jika diberi tugas melampaui kemampuan Anda, respons apa yang tepat?"
+            }, {
+                question: "同僚の ミスを 見つけた 場合、_____ が 最も 建設的ですか？",
+                options: ["私的に 指摘する", "公然と 非難する", "無視する", "上司に だけ 言う"],
+                answer: "私的に 指摘する",
+                translation: "Jika Anda menemukan kesalahan rekan kerja, apa yang paling konstruktif?"
+            }, {
+                question: "緊急時に 上司と 連絡が 取れない 場合、_____ が 妥当ですか？",
+                options: ["状況を 判断し、行動する", "何も しない", "待ち続ける", "同僚に 丸投げする"],
+                answer: "状況を 判断し、行動する",
+                translation: "Jika Anda tidak bisa menghubungi atasan saat darurat, apa yang masuk akal?"
+            }, {
+                question: "機密情報に アクセスした 場合、_____ が 最優先ですか？",
+                options: ["保秘義務を 守る", "誰かに 話す", "SNS で 共有する", "公開する"],
+                answer: "保秘義務を 守る",
+                translation: "Jika Anda mengakses informasi rahasia, apa prioritas utama?"
+            }, {
+                question: "別の 部署から 協力を 求められた 場合、_____ が 善いチームワークですか？",
+                options: ["快く 引き受ける", "拒否する", "条件を つける", "無視する"],
+                answer: "快く 引き受ける",
+                translation: "Jika diminta untuk berkolaborasi dengan departemen lain, apa kerja tim yang baik?"
+            }, {
+                question: "顧客に 不正確な 情報を 提供してしまった 場合、_____ が 誠実な 対応ですか？",
+                options: ["すぐに 訂正する", "黙っている", "別の 言い訳を する", "無視する"],
+                answer: "すぐに 訂正する",
+                translation: "Jika Anda memberikan informasi tidak akurat kepada pelanggan, apa respons yang jujur?"
+            }, {
+                question: "達成が 難しい 目標を 設定された 場合、_____ が 最初の 対応ですか？",
+                options: ["相談し、現実的な 目標に する", "黙って 受ける", "拒否する", "無視する"],
+                answer: "相談し、現実的な 目標に する",
+                translation: "Jika ditetapkan target sulit dicapai, apa respons awal?"
+            }, {
+                question: "部下が 失敗を 報告した 場合、_____ が 良い マネジメントですか？",
+                options: ["原因を 理解し、改善策を 考える", "叱る", "責める", "無視する"],
+                answer: "原因を 理解し、改善策を 考える",
+                translation: "Jika bawahan melaporkan kegagalan, manajemen mana yang baik?"
+            }, {
+                question: "複数の 優先度の 高い タスクが あった 場合、_____ が 効率的ですか？",
+                options: ["優先順位を つけ、計画を 立てる", "すべて 同時に やる", "一番 簡単な もの から やる", "やらない"],
+                answer: "優先順位を つけ、計画を 立てる",
+                translation: "Jika ada beberapa tugas prioritas tinggi, apa yang efisien?"
+            }, {
+                question: "良いアイデアを 持っている 部下が いる 場合、_____ が 人材育成ですか？",
+                options: ["提案を 聞き、試してみる", "却下する", "パクる", "無視する"],
+                answer: "提案を 聞き、試してみる",
+                translation: "Jika ada bawahan dengan ide bagus, pengembangan SDM apa yang baik?"
+            }, {
+                question: "複雑な プロジェクトで 進捗が 遅れている 場合、_____ が 責任のある 行動ですか？",
+                options: ["原因を 調べ、報告する", "隠す", "言い訳を する", "無視する"],
+                answer: "原因を 調べ、報告する",
+                translation: "Jika kemajuan proyek kompleks terhambat, tindakan bertanggung jawab apa?"
+            }, {
+                question: "異なる 意見を 持つ 人と 働く 場合、_____ が 最も 建設的ですか？",
+                options: ["相互の 視点を 尊重する", "意見を 無視する", "対立する", "避ける"],
+                answer: "相互の 視点を 尊重する",
+                translation: "Saat bekerja dengan orang yang memiliki pandangan berbeda, pendekatan apa yang paling konstruktif?"
+            }, {
+                question: "給与や 待遇に 不満がある 場合、_____ が 専門的ですか？",
+                options: ["上司に 相談する", "SNS で 不満を 述べる", "職場を 去る", "無視する"],
+                answer: "上司に 相談する",
+                translation: "Jika tidak puas dengan gaji atau perlakuan, apa pendekatan profesional?"
+            }, {
+                question: "会社の 方針に 同意できない 場合、_____ が 適切ですか？",
+                options: ["管理者と 対話する", "反抗する", "無視する", "公開的に 批判する"],
+                answer: "管理者と 対話する",
+                translation: "Jika tidak setuju dengan kebijakan perusahaan, tindakan apa yang tepat?"
+            }, {
+                question: "成功を 独り占めしようと する 同僚がいる 場合、_____ が 倫理的ですか？",
+                options: ["事実を 記録し、報告する", "競争で 対応する", "無視する", "加担する"],
+                answer: "事実を 記録し、報告する",
+                translation: "Jika ada rekan kerja yang mencoba mengklaim kesuksesan sendiri, apa yang etis?"
+            }, {
+                question: "新しい 技術を 学ぶ 必要がある 場合、_____ が 最高の 専門性 開発ですか？",
+                options: ["積極的に 学ぶ", "外面する", "否定する", "無視する"],
+                answer: "積極的に 学ぶ",
+                translation: "Jika perlu mempelajari teknologi baru, pengembangan keahlian apa yang terbaik?"
+            }, {
+                question: "同期が 승진した 時 自分は そうではない 場合、_____ が 専門的ですか？",
+                options: ["祝福し、学ぶ", "嫉妬する", "批判する", "無視する"],
+                answer: "祝福し、学ぶ",
+                translation: "Jika rekan Anda dipromosikan tetapi Anda tidak, respons profesional apa?"
+            }
+        ]
     },
-
+	
     "N3": {
         "goi-kanji-reading": [{
                 question: "午後から<u>会議</u>があるので、早めに資料を準備した。",

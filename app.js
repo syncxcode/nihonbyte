@@ -1004,6 +1004,7 @@ grid.style.display="grid";
   const latihanSectionLabel = {
     "goi-kanji-reading": "Membaca Kanji",
     "goi-orthography": "Ortografi",
+    "goi-word-formation": "Pembentukan Kata",
     "goi-context-expression": "Ekspresi yang didefinisikan secara kontekstual",
     "goi-paraphrase": "Parafrasa",
     "goi-usage": "Penggunaan",
@@ -1073,19 +1074,49 @@ grid.style.display="grid";
     const source = window.latihanGoiReal && window.latihanGoiReal[level] ? window.latihanGoiReal[level] : {};
     const all = [];
 
-    const sessions = [
-      { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
-      { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
-      { key: "goi-context-expression", label: latihanSectionLabel["goi-context-expression"] },
-      { key: "goi-paraphrase", label: latihanSectionLabel["goi-paraphrase"] }
-    ];
+    // CONDITIONAL SESSIONS PER LEVEL
+    let sessions = [];
+    let soalPerSession = 10; // default untuk N5
+
+    if (level === "N5") {
+      // N5: 4 sessions, 10 soal each = 40 total, ~20 menit
+      sessions = [
+        { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
+        { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
+        { key: "goi-context-expression", label: latihanSectionLabel["goi-context-expression"] },
+        { key: "goi-paraphrase", label: latihanSectionLabel["goi-paraphrase"] }
+      ];
+      soalPerSession = 10;
+    } else if (level === "N4") {
+      // N4: 5 sessions (add goi-usage), 8 soal each = 40 total, ~25 menit
+      sessions = [
+        { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
+        { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
+        { key: "goi-context-expression", label: latihanSectionLabel["goi-context-expression"] },
+        { key: "goi-paraphrase", label: latihanSectionLabel["goi-paraphrase"] },
+        { key: "goi-usage", label: latihanSectionLabel["goi-usage"] }
+      ];
+      soalPerSession = 8;
+    } else if (level === "N3") {
+      // N3: 5 sessions (add goi-usage), 9 soal each = 45 total, ~30 menit
+      sessions = [
+        { key: "goi-kanji-reading", label: latihanSectionLabel["goi-kanji-reading"] },
+        { key: "goi-orthography", label: latihanSectionLabel["goi-orthography"] },
+        { key: "goi-context-expression", label: latihanSectionLabel["goi-context-expression"] },
+        { key: "goi-paraphrase", label: latihanSectionLabel["goi-paraphrase"] },
+        { key: "goi-usage", label: latihanSectionLabel["goi-usage"] }
+      ];
+      soalPerSession = 9;
+    } else {
+      // N2, N1: DEVELOPMENT MODE - tidak diubah (skip)
+      return all;
+    }
 
     sessions.forEach((session, idx) => {
       const questionsData = source[session.key] || [];
       
-      // LOGIKA BARU: Acak dulu, terus ambil cuma 10 biji per kategori!
-      // Jadi total soal = 10 x 4 kategori = 40 Soal. Pas buat 20-25 menit.
-      const shuffledData = shuffleArray([...questionsData]).slice(0, 10);
+      // Acak dulu, terus ambil sesuai soalPerSession
+      const shuffledData = shuffleArray([...questionsData]).slice(0, soalPerSession);
       
       const picked = shuffledData.map((q) => ({
         prompt: q.question,

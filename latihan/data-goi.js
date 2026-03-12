@@ -6688,8 +6688,7 @@ window.latihanGoiReal = {
                 options: ["動入", "導入", "道入", "働入"],
                 answer: "導入",
                 translation: "Penerapan sistem baru membutuhkan waktu yang tidak singkat."
-            },
-            {
+            }, {
                 question: "彼女は親の<u>いし</u>に反して海外に留学した。",
                 options: ["遺志", "意地", "意志", "維持"],
                 answer: "意志",
@@ -6789,8 +6788,7 @@ window.latihanGoiReal = {
                 options: ["死居", "死去", "死挙", "死拒"],
                 answer: "死去",
                 translation: "Terkejut dengan kepergian mendadak seorang teman."
-            },
-            {
+            }, {
                 question: "この地域では農業の<u>きかいか</u>が進んでいる。",
                 options: ["機械化", "機会化", "気概化", "奇械化"],
                 answer: "機械化",
@@ -6890,8 +6888,7 @@ window.latihanGoiReal = {
                 options: ["人工", "人口", "仁口", "人孔"],
                 answer: "人口",
                 translation: "Populasi di daerah ini terus berkurang dari tahun ke tahun."
-            },
-            {
+            },{
                 question: "この規則を<u>はんようする</u>ことは難しい。",
                 options: ["判用する", "汎用する", "反用する", "帆用する"],
                 answer: "汎用する",
@@ -7095,4 +7092,6 @@ window.latihanGoiReal = {
             }
         ],
 		"goi-context-expression": []
-    };
+	}
+
+};

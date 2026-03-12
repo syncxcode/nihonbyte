@@ -18,24 +18,24 @@
 const CHOUKAI_SESSIONS = {
   tugas:        { label: "Pemahaman Berbasis Tugas",   kanji: "課題理解" },
   poin:         { label: "Pemahaman Poin Penting",     kanji: "ポイント理解" },
-  garisBesar:   { label: "Pemahaman Garis Besar",      kanji: "概要理解" },
+  garisBesar:   { label: "Pemahaman Garis Besar Umum", kanji: "概要理解" },
   verbal:       { label: "Ekspresi Verbal",             kanji: "発話表現" },
   cepat:        { label: "Respons Cepat",              kanji: "即時応答" },
-  terintegrasi: { label: "Pemahaman Terintegrasi",     kanji: "統合理解" },
+  terintegrasi: { label: "Pemahaman Terpadu",          kanji: "統合理解" },
 };
 
 // ── Ketersediaan sesi per level (urutan = urutan soal) ────
-//   N5: tugas, poin, garisBesar, cepat, terintegrasi
-//   N4: tugas, poin, garisBesar, cepat, terintegrasi
+//   N1: tugas, poin, garisBesar, cepat, terintegrasi
+//   N2: tugas, poin, garisBesar, cepat, terintegrasi
 //   N3: tugas, poin, garisBesar, verbal, cepat
-//   N2: tugas, poin, verbal, cepat
-//   N1: tugas, poin, verbal, cepat
+//   N4: tugas, poin, verbal, cepat
+//   N5: tugas, poin, verbal, cepat
 const CHOUKAI_AVAILABILITY = {
-  N5: ["tugas", "poin", "garisBesar", "cepat", "terintegrasi"],
-  N4: ["tugas", "poin", "garisBesar", "cepat", "terintegrasi"],
+  N1: ["tugas", "poin", "garisBesar", "cepat", "terintegrasi"],
+  N2: ["tugas", "poin", "garisBesar", "cepat", "terintegrasi"],
   N3: ["tugas", "poin", "garisBesar", "verbal", "cepat"],
-  N2: ["tugas", "poin", "verbal", "cepat"],
-  N1: ["tugas", "poin", "verbal", "cepat"],
+  N4: ["tugas", "poin", "verbal", "cepat"],
+  N5: ["tugas", "poin", "verbal", "cepat"],
 };
 
 // ── Data soal ───────────────────────────────────────────────

@@ -10451,6 +10451,7 @@ body.history-mode .dashboard-shell textarea {
   justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .choukai-btn-play {
@@ -10732,6 +10733,7 @@ body.history-mode .dashboard-shell textarea {
   .choukai-controls {
     gap: 6px;
     flex-wrap: nowrap;
+    padding: 20px;
   }
 
   .choukai-btn-play {
@@ -11149,6 +11151,7 @@ body.history-mode .dashboard-shell textarea {
 @media (min-width: 768px) {
   .choukai-player-panel {
     gap: 18px;
+    height: 250px;
   }
   .choukai-player-panel .choukai-stage {
     min-height: 220px;
@@ -11171,6 +11174,7 @@ body.history-mode .dashboard-shell textarea {
   .choukai-player-panel {
     gap: 8px;
     padding: 2px 0;
+    height: 250px;
   }
   .choukai-player-panel .choukai-stage {
     flex: 1;

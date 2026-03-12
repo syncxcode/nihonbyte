@@ -1599,7 +1599,7 @@ nested-latihan-list {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px; 
+  gap: 10px; 
   background: rgba(255, 255, 255, 0.95);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.75);
@@ -6984,7 +6984,7 @@ body.review-mode-active .bottom-nav {
 
   body.training-session #grid.quiz-active-mode {
     margin-top: 0 !important;
-    padding: 28px !important;
+    padding: 10px !important;
     min-height: calc(100vh - var(--topbar-height)) !important;
     max-width: 100% !important;
     width: 100% !important;
@@ -10271,7 +10271,7 @@ body.history-mode .dashboard-shell textarea {
     box-sizing: border-box !important;
     visibility: visible !important;
     opacity: 1 !important;
-    margin-top: 13px !important;
+    margin-top: 0px !important;
   }
 
   /* Pastikan dokkai split-screen tetap kiri-kanan saat rotasi */

@@ -1011,6 +1011,12 @@ grid.style.display="grid";
     "bunpou-form": "Tata bahasa kalimat (Memilih bentuk tata bahasa)",
     "bunpou-composition": "Tata bahasa kalimat (Komposisi kalimat)",
     "bunpou-text": "Tata Bahasa Teks",
+    "dokkai-short": "Pemahaman Bacaan (Pendek)",
+    "dokkai-medium": "Pemahaman Bacaan (Teks berukuran sedang)",
+    "dokkai-long": "Pemahaman Bacaan (Bacaan Panjang)",
+    "dokkai-information": "Pengambilan Informasi",
+    "dokkai-integrated": "Pemahaman Terpadu",
+    "dokkai-thematic": "Pemahaman Tematik (Bacaan panjang)",
     "dokkai-reading": "Dokkai Membaca",
     "choukai-listening": "Choukai Mendengarkan",
   };
@@ -1165,25 +1171,85 @@ grid.style.display="grid";
   }
 
   function buildDokkaiSessionQuestions(level) {
-    const source = window.latihanDokkaiReal && window.latihanDokkaiReal[level] ? window.latihanDokkaiReal[level] : [];
+    const source = window.latihanDokkaiReal && window.latihanDokkaiReal[level] ? window.latihanDokkaiReal[level] : {};
     const all = [];
 
-    // Acak urutan Teks Bacaannya (Biar gak bosen)
-    const shuffledPassages = shuffleArray([...source]).slice(0, 5); // Ambil 5 teks acak per sesi
+    // CONDITIONAL SESSIONS PER LEVEL (dengan waktu yang tepat)
+    let sessions = [];
+    let textPerSession = 5;
 
-    shuffledPassages.forEach((item, passageIndex) => {
-      item.questions.forEach((q) => {
-        all.push({
-          passage: item.passage, // Teks Induk dibawa ke setiap anak soal
-          prompt: q.question,
-          options: q.options,
-          answer: q.answer,
-          translation: q.translation,
-          level: level,
-          section: "dokkai-reading",
-          sectionLabel: "読解 (Dokkai Membaca)",
-          sectionIndex: passageIndex + 1,
-          sectionTotal: shuffledPassages.length
+    if (level === "N5") {
+      // N5: 3 subsesi, 40 menit
+      sessions = [
+        { key: "dokkai-short", label: latihanSectionLabel["dokkai-short"] },
+        { key: "dokkai-medium", label: latihanSectionLabel["dokkai-medium"] },
+        { key: "dokkai-information", label: latihanSectionLabel["dokkai-information"] }
+      ];
+      textPerSession = 5;
+    } else if (level === "N4") {
+      // N4: 3 subsesi, 55 menit
+      sessions = [
+        { key: "dokkai-short", label: latihanSectionLabel["dokkai-short"] },
+        { key: "dokkai-medium", label: latihanSectionLabel["dokkai-medium"] },
+        { key: "dokkai-information", label: latihanSectionLabel["dokkai-information"] }
+      ];
+      textPerSession = 5;
+    } else if (level === "N3") {
+      // N3: 4 subsesi, 70 menit
+      sessions = [
+        { key: "dokkai-short", label: latihanSectionLabel["dokkai-short"] },
+        { key: "dokkai-medium", label: latihanSectionLabel["dokkai-medium"] },
+        { key: "dokkai-long", label: latihanSectionLabel["dokkai-long"] },
+        { key: "dokkai-information", label: latihanSectionLabel["dokkai-information"] }
+      ];
+      textPerSession = 4;
+    } else if (level === "N2") {
+      // N2: 5 subsesi, 70 menit
+      sessions = [
+        { key: "dokkai-short", label: latihanSectionLabel["dokkai-short"] },
+        { key: "dokkai-medium", label: latihanSectionLabel["dokkai-medium"] },
+        { key: "dokkai-integrated", label: latihanSectionLabel["dokkai-integrated"] },
+        { key: "dokkai-thematic", label: latihanSectionLabel["dokkai-thematic"] },
+        { key: "dokkai-information", label: latihanSectionLabel["dokkai-information"] }
+      ];
+      textPerSession = 4;
+    } else if (level === "N1") {
+      // N1: 6 subsesi, 70 menit
+      sessions = [
+        { key: "dokkai-short", label: latihanSectionLabel["dokkai-short"] },
+        { key: "dokkai-medium", label: latihanSectionLabel["dokkai-medium"] },
+        { key: "dokkai-long", label: latihanSectionLabel["dokkai-long"] },
+        { key: "dokkai-integrated", label: latihanSectionLabel["dokkai-integrated"] },
+        { key: "dokkai-thematic", label: latihanSectionLabel["dokkai-thematic"] },
+        { key: "dokkai-information", label: latihanSectionLabel["dokkai-information"] }
+      ];
+      textPerSession = 4;
+    } else {
+      return all;
+    }
+
+    sessions.forEach((session, idx) => {
+      const passagesData = source[session.key] || [];
+      
+      // Acak urutan teks, terus ambil sesuai textPerSession
+      const shuffledPassages = shuffleArray([...passagesData]).slice(0, textPerSession);
+      
+      shuffledPassages.forEach((passage, passageIndex) => {
+        passage.questions.forEach((q) => {
+          all.push({
+            passage: passage.passage,
+            prompt: q.question,
+            options: q.options,
+            answer: q.answer,
+            translation: q.translation,
+            level: level,
+            section: session.key,
+            sectionLabel: session.label,
+            sectionIndex: idx + 1,
+            sectionTotal: sessions.length,
+            passageIndex: passageIndex + 1,
+            passageTotal: shuffledPassages.length
+          });
         });
       });
     });

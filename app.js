@@ -1024,6 +1024,7 @@ grid.style.display="grid";
   const goiSectionOrder = [
     "goi-kanji-reading",
     "goi-orthography",
+    "goi-word-formation",   // N2 only
     "goi-context-expression",
     "goi-paraphrase",
     "goi-usage",
@@ -1119,16 +1120,36 @@ grid.style.display="grid";
         { key: "goi-usage", label: latihanSectionLabel["goi-usage"] }
       ];
       soalPerSession = 9;
+    } else if (level === "N2") {
+      // N2: 5 sessions (add goi-word-formation, no goi-orthography), 9 soal each = 45 total, ~35 menit
+      sessions = [
+        { key: "goi-kanji-reading",        label: latihanSectionLabel["goi-kanji-reading"] },
+        { key: "goi-word-formation",        label: latihanSectionLabel["goi-word-formation"] },
+        { key: "goi-context-expression",    label: latihanSectionLabel["goi-context-expression"] },
+        { key: "goi-paraphrase",            label: latihanSectionLabel["goi-paraphrase"] },
+        { key: "goi-usage",                 label: latihanSectionLabel["goi-usage"] }
+      ];
+      soalPerSession = 9;
+    } else if (level === "N1") {
+      // N1: 4 sessions (no goi-orthography, no goi-word-formation), distribusi 13+13+12+12 = 50 total, ~50 menit
+      const n1Counts = [13, 13, 12, 12];
+      sessions = [
+        { key: "goi-kanji-reading",        label: latihanSectionLabel["goi-kanji-reading"],        count: n1Counts[0] },
+        { key: "goi-context-expression",    label: latihanSectionLabel["goi-context-expression"],    count: n1Counts[1] },
+        { key: "goi-paraphrase",            label: latihanSectionLabel["goi-paraphrase"],            count: n1Counts[2] },
+        { key: "goi-usage",                 label: latihanSectionLabel["goi-usage"],                 count: n1Counts[3] }
+      ];
+      soalPerSession = 13; // akan di-override per sesi via session.count
     } else {
-      // N2, N1: DEVELOPMENT MODE - tidak diubah (skip)
       return all;
     }
 
     sessions.forEach((session, idx) => {
       const questionsData = source[session.key] || [];
       
-      // Acak dulu, terus ambil sesuai soalPerSession
-      const shuffledData = shuffleArray([...questionsData]).slice(0, soalPerSession);
+      // Acak dulu, terus ambil sesuai soalPerSession (atau session.count kalau ada)
+      const take = session.count || soalPerSession;
+      const shuffledData = shuffleArray([...questionsData]).slice(0, take);
       
       const picked = shuffledData.map((q) => ({
         prompt: q.question,
@@ -1312,7 +1333,7 @@ grid.style.display="grid";
     // 🚀 MANTRA BARU: Timer dibedakan antara Kosakata, Tata Bahasa, dan Dokkai
     let defaultMinutes = 20;
     if (mainType === "bunpou") {
-      defaultMinutes = level === "N5" ? 20 : level === "N4" ? 25 : level === "N3" ? 30 : level === "N2" ? 35 : 40; // N1=40
+      defaultMinutes = level === "N5" ? 20 : level === "N4" ? 25 : level === "N3" ? 30 : level === "N2" ? 35 : 50; // N1=50
     } else if (mainType === "dokkai") {
       defaultMinutes = level === "N5" ? 40 : (level === "N4" ? 55 : 40); // 🚀 N5=40m, N4=55m
     } else { // Goi
@@ -3679,10 +3700,10 @@ grid.style.display="grid";
       const section = button.dataset.section || mainType;
       const level = button.dataset.level;
 
-      // Bunpou: semua level aktif (N5-N1). Goi N2/N1 masih dev mode.
-      const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2", "N1"].includes(level));
+      // Semua latihan aktif (N5-N1): Goi, Bunpou, Dokkai, Choukai semua unlocked.
+      const isGoiBunpouDokkaiDev = false; // goi N2/N1 unlocked
       
-      // Choukai N5 sudah tersedia, N4-N1 masih dev mode
+      // Choukai: semua level aktif via data CHOUKAI_AVAILABILITY
       const isChoukaiActive = ["choukai", "listening"].includes(mainType);
       const isChoukaiDev    = false;
 
@@ -4051,7 +4072,7 @@ grid.style.display="grid";
 
         closeBottomNavHub();
 
-        const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2", "N1"].includes(level));
+        const isGoiBunpouDokkaiDev = false; // goi N2/N1 unlocked
         const isChoukaiActive = ["choukai", "listening"].includes(mainType);
         const isChoukaiDev    = false;
 
@@ -4445,15 +4466,10 @@ grid.style.display="grid";
           <div class="hub-section">
             <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="hub-levels">
-              ${levels
-                .map((lvl) => {
-                  const isLocked = lvl !== "N5";
-                  return `<button type="button" class="hub-level-btn hub-level-btn--patterns${isLocked ? ' hub-level-btn--dev' : ''}" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`;
-                })
-                .join("")}
+              ${levels.map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`).join("")}
             </div>
             <div class="hub-note hub-note--choukai">
-              N5 tersedia &bull; N4–N1 segera hadir
+              N5–N1 tersedia
             </div>
           </div>
         </div>
@@ -4473,7 +4489,7 @@ grid.style.display="grid";
     const section = button.dataset.section || mainType;
     const level = button.dataset.level;
 
-    const isGoiBunpouDokkaiDev = (mainType === "goi" && ["N2", "N1"].includes(level));
+    const isGoiBunpouDokkaiDev = false; // goi N2/N1 unlocked
     const isChoukaiActive = ["choukai", "listening"].includes(mainType);
     const isChoukaiDev    = false;
 

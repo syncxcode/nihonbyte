@@ -4440,15 +4440,7 @@ grid.style.display="grid";
           <div class="hub-section">
             <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="hub-levels">
-              ${levels
-                .map((lvl) => {
-                  const isLocked = lvl !== "N5";
-                  return `<button type="button" class="hub-level-btn hub-level-btn--patterns${isLocked ? ' hub-level-btn--dev' : ''}" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`;
-                })
-                .join("")}
-            </div>
-            <div class="hub-note hub-note--choukai">
-              N5 tersedia &bull; N4–N1 segera hadir
+              ${renderLevelButtons("choukai", "listening")}
             </div>
           </div>
         </div>
@@ -4468,9 +4460,9 @@ grid.style.display="grid";
     const section = button.dataset.section || mainType;
     const level = button.dataset.level;
 
-    const isGoiBunpouDokkaiDev = (["bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
-    const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
-    const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+    const isGoiBunpouDokkaiDev = (["bunpou"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
+    const isChoukaiActive = ["choukai", "listening"].includes(mainType);
+    const isChoukaiDev    = false;
 
     if (isChoukaiActive) {
       startChoukai(level);

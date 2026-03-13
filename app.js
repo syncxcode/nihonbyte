@@ -3673,13 +3673,9 @@ grid.style.display="grid";
       const section = button.dataset.section || mainType;
       const level = button.dataset.level;
 
-      // 🚀 KUNCI FIX: Buka gembok Dokkai untuk N5 dan N4! 
-      // Jadi Goi, Bunpou, dan Dokkai kalau N5/N4 bakal lolos. Kalau N3-N1 baru masuk Dev Mode.
-      const isGoiBunpouDokkaiDev = (["bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
-      
-      // Choukai N5 sudah tersedia, N4-N1 masih dev mode
-      const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
-      const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+      const isGoiBunpouDokkaiDev = (["bunpou"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
+      const isChoukaiActive = ["choukai", "listening"].includes(mainType);
+      const isChoukaiDev    = false;
 
       if (isChoukaiActive) {
         startChoukai(level);
@@ -3944,7 +3940,6 @@ grid.style.display="grid";
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N2">N2</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N1">N1</button>
             </div>
-            <div class="bottom-nav-hub__note bottom-nav-hub__note--choukai">Choukai Sedang Dalam pengembangan</div>
           </div>
           </div>
         </section>
@@ -4046,9 +4041,9 @@ grid.style.display="grid";
 
         closeBottomNavHub();
 
-        const isGoiBunpouDokkaiDev = (["bunpou", "dokkai"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
-        const isChoukaiActive = ["choukai", "listening"].includes(mainType) && level === "N5";
-        const isChoukaiDev    = ["choukai", "listening"].includes(mainType) && level !== "N5";
+        const isGoiBunpouDokkaiDev = (["bunpou"].includes(mainType) && ["N3", "N2", "N1"].includes(level)) || (mainType === "goi" && ["N2", "N1"].includes(level));
+        const isChoukaiActive = ["choukai", "listening"].includes(mainType);
+        const isChoukaiDev    = false;
 
         if (isChoukaiActive) {
           startChoukai(level);

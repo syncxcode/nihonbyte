@@ -1263,7 +1263,7 @@ window.grammarData = [
       {jp:"そんなに評判がいいなら、今度行ってみようと思います。",kana:"そんなにひょうばんがいいなら、こんどいってみようとおもいます。",romaji:"Sonna ni hyouban ga ii nara, kondo itte miyou to omoimasu.",meaning:"Kalau memang sebagus itu ulasannya, lain kali mau coba ke sana."},
       {jp:"もう愚痴を言うのをやめようと思う。自分が疲れるだけだし。",kana:"もうぐちをいうのをやめようとおもう。じぶんがつかれるだけだし。",romaji:"Mou guchi o iu no o yameyou to omou. Jibun ga tsukareru dake da shi.",meaning:"Mau berhenti ngeluh. Capek sendiri juga pada akhirnya."},
       {jp:"このまま何もしないのも後悔しそうだから、思い切って応募しようと思います。",kana:"このままなにもしないのもこうかいしそうだから、おもいきっておうぼしようとおもいます。",romaji:"Kono mama nani mo shinai no mo koukai shisou da kara, omoikitte oubo shiyou to omoimasu.",meaning:"Kalau tidak melakukan apa-apa juga rasanya akan menyesal, jadi mau beranikan diri untuk melamar."},
-      {jp:"せっかくだから、帰りに本屋に寄っていこうと思う。",kana:"せっかくだから、かえりにほんやによっていこうとおもう。",romaji:"Sekkaku da kara, kaeri ni hon'ya ni yotte ikou to omou.",meaning:"Sayang kalau tidak, mau mampir ke toko buku waktu pulang nanti.")
+      {jp:"せっかくだから、帰りに本屋に寄っていこうと思う。",kana:"せっかくだから、かえりにほんやによっていこうとおもう。",romaji:"Sekkaku da kara, kaeri ni hon'ya ni yotte ikou to omou.",meaning:"Sayang kalau tidak, mau mampir ke toko buku waktu pulang nanti."}
     ]},
     {name:"〜ようと思っている",description:"Niat yang sudah ada sejak sebelumnya, bukan keputusan baru.",sentences:[
       {jp:"ずっと行きたかった国に、来年こそ旅行しようと思っています。",kana:"ずっといきたかったくにに、らいねんこそりょこうしようとおもっています。",romaji:"Zutto ikitakatta kuni ni, rainen koso ryokou shiyou to omotte imasu.",meaning:"Negara yang sudah lama ingin dikunjungi — tahun depan ini pasti mau ke sana."},

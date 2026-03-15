@@ -1514,7 +1514,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
     z-index: 20 !important;
   }
 
-  /* --- Layout Pola Kalimat Mobile --- */
+  /* --- Layout Pattern Mobile (legacy) --- */
   #grid.pattern-grid-layout {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
@@ -11255,17 +11255,17 @@ body.history-mode .dashboard-shell textarea {
 .status-remidi .dash-icon { color: inherit; }
 
 /* ═══════════════════════════════════════════════════════════
-   SENTENCE PATTERNS STYLES (sp-*)
+   GRAMMAR STYLES (gr-*)
    Modul independen — JANGAN digabung dengan verb-forms (.form-*)
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Hub Container ── */
-.sp-hub,
-.sp-poster {
+.gr-hub,
+.gr-poster {
   grid-column: 1 / -1 !important;
 }
 
-.sp-hub {
+.gr-hub {
   width: min(1240px, calc(100% - 30px));
   margin: 0 auto 24px;
   padding: 20px;
@@ -11275,7 +11275,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* ── Hub Head ── */
-.sp-hub-head {
+.gr-hub-head {
   display: flex;
   justify-content: space-between;
   gap: 14px;
@@ -11287,25 +11287,25 @@ body.history-mode .dashboard-shell textarea {
   margin-bottom: 16px;
 }
 
-.sp-hub-head h2 {
+.gr-hub-head h2 {
   margin: 0;
   color: #0f172a;
   font-size: clamp(1.6rem, 2.2vw, 2rem);
 }
 
-.sp-hub-head p {
+.gr-hub-head p {
   margin: 6px 0 0;
   color: #334155;
 }
 
-.sp-level-filter-wrap {
+.gr-level-filter-wrap {
   display: grid;
   gap: 6px;
   font-weight: 700;
   color: #1e293b;
 }
 
-.sp-level-filter {
+.gr-level-filter {
   min-width: 170px;
   border: 2px solid rgba(148, 163, 184, 0.45);
   border-radius: 12px;
@@ -11316,13 +11316,13 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* ── Brick Grid (Hub Cards) ── */
-.sp-brick-grid {
+.gr-brick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 14px;
 }
 
-.sp-brick {
+.gr-brick {
   min-height: 112px;
   border: 2px solid rgba(190, 24, 93, 0.18);
   border-radius: 16px;
@@ -11336,13 +11336,13 @@ body.history-mode .dashboard-shell textarea {
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
-.sp-brick:hover {
+.gr-brick:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 26px -20px rgba(190, 24, 93, 0.55);
   border-color: rgba(190, 24, 93, 0.45);
 }
 
-.sp-brick-title {
+.gr-brick-title {
   display: block;
   font-size: 1.22rem;
   font-weight: 800;
@@ -11350,7 +11350,7 @@ body.history-mode .dashboard-shell textarea {
   margin-bottom: 6px;
 }
 
-.sp-brick-desc {
+.gr-brick-desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -11363,7 +11363,7 @@ body.history-mode .dashboard-shell textarea {
   line-height: 1.4;
 }
 
-.sp-level-badge {
+.gr-level-badge {
   justify-self: start;
   display: inline-flex;
   padding: 2px 8px;
@@ -11375,7 +11375,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* ── Pagination ── */
-.sp-hub-pagination {
+.gr-hub-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11384,7 +11384,7 @@ body.history-mode .dashboard-shell textarea {
   margin-top: 14px;
 }
 
-.sp-page-btn {
+.gr-page-btn {
   width: 36px;
   height: 36px;
   border-radius: 10px;
@@ -11395,19 +11395,19 @@ body.history-mode .dashboard-shell textarea {
   cursor: pointer;
 }
 
-.sp-page-btn.active {
+.gr-page-btn.active {
   background: #ff4d6d;
   border-color: #ff4d6d;
   color: #fff;
 }
 
-.sp-page-btn:hover {
+.gr-page-btn:hover {
   border-color: #ff8faa;
   color: #be123c;
 }
 
 /* ── Poster (Detail Page) ── */
-.sp-poster {
+.gr-poster {
   width: min(1240px, calc(100% - 30px));
   margin: 0 auto 28px;
   padding: 18px;
@@ -11416,24 +11416,24 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 26px 50px -34px rgba(15, 23, 42, 0.58);
 }
 
-.sp-poster h2 {
+.gr-poster h2 {
   margin: 12px 0 6px;
   color: #0f172a;
   font-size: clamp(1.5rem, 2.6vw, 2rem);
 }
 
-.sp-poster h3 {
+.gr-poster h3 {
   margin: 18px 0 10px;
   color: #1e293b;
 }
 
-.sp-poster-summary {
+.gr-poster-summary {
   margin: 0 0 10px;
   line-height: 1.55;
   color: #334155;
 }
 
-.sp-back-btn {
+.gr-back-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -11447,7 +11447,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* ── Group Panel (setiap group: これ, それ, あれ, dll) ── */
-.sp-group-panel {
+.gr-group-panel {
   border: 1px solid rgba(125, 211, 252, 0.7);
   border-radius: 14px;
   background: linear-gradient(165deg, rgba(239, 246, 255, 0.9), rgba(240, 249, 255, 0.65));
@@ -11455,21 +11455,21 @@ body.history-mode .dashboard-shell textarea {
   margin-bottom: 10px;
 }
 
-.sp-group-panel h4 {
+.gr-group-panel h4 {
   margin: 0;
   color: #1d4ed8;
   font-size: 1.06rem;
   font-weight: 800;
 }
 
-.sp-group-desc {
+.gr-group-desc {
   margin: 6px 0 10px;
   color: #334155;
   line-height: 1.5;
 }
 
 /* ── Sentence Card ── */
-.sp-sentence-card {
+.gr-sentence-card {
   border: 1px solid rgba(191, 219, 254, 0.95);
   border-radius: 12px;
   padding: 12px;
@@ -11477,7 +11477,7 @@ body.history-mode .dashboard-shell textarea {
   margin-top: 10px;
 }
 
-.sp-sentence-box {
+.gr-sentence-box {
   position: relative;
   margin-top: 0;
   border: 1px solid rgba(186, 230, 253, 0.95);
@@ -11486,24 +11486,24 @@ body.history-mode .dashboard-shell textarea {
   background: linear-gradient(155deg, #f8fafc, #f0f9ff);
 }
 
-.sp-sentence-box p {
+.gr-sentence-box p {
   margin: 4px 0;
 }
 
-.sp-sentence-jp {
+.gr-sentence-jp {
   font-size: 1.14rem;
   font-weight: 700;
   color: #0f172a;
   font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
 }
 
-.sp-sentence-card [data-role="sentence-kana"] {
+.gr-sentence-card [data-role="sentence-kana"] {
   font-size: 1.05rem;
   font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
 }
 
 /* ── Play Button ── */
-.sp-play-btn {
+.gr-play-btn {
   position: absolute !important;
   top: 8px !important;
   right: 8px !important;
@@ -11523,21 +11523,21 @@ body.history-mode .dashboard-shell textarea {
   z-index: 2;
 }
 
-.sp-play-btn svg {
+.gr-play-btn svg {
   width: 16px;
   height: 16px;
   fill: currentColor;
 }
 
 /* ── Sentence Actions (Acak Kalimat) ── */
-.sp-sentence-actions {
+.gr-sentence-actions {
   margin-top: 10px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.sp-shuffle-btn {
+.gr-shuffle-btn {
   border: none;
   border-radius: 999px;
   padding: 8px 12px;
@@ -11550,7 +11550,7 @@ body.history-mode .dashboard-shell textarea {
   gap: 7px;
 }
 
-.sp-shuffle-icon {
+.gr-shuffle-icon {
   width: 16px;
   height: 16px;
   display: inline-flex;
@@ -11558,7 +11558,7 @@ body.history-mode .dashboard-shell textarea {
   justify-content: center;
 }
 
-.sp-shuffle-icon svg {
+.gr-shuffle-icon svg {
   width: 16px;
   height: 16px;
   fill: none;
@@ -11570,23 +11570,23 @@ body.history-mode .dashboard-shell textarea {
 
 /* ── Mobile Responsive ── */
 @media (max-width: 767px) {
-  .sp-brick-grid {
+  .gr-brick-grid {
     grid-template-columns: 1fr;
   }
 
-  .sp-hub,
-  .sp-poster {
+  .gr-hub,
+  .gr-poster {
     width: min(100%, calc(100% - 16px));
     padding: 12px;
     border-radius: 16px;
   }
 
-  .sp-hub-head {
+  .gr-hub-head {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .sp-page-btn {
+  .gr-page-btn {
     width: 34px;
     height: 34px;
   }

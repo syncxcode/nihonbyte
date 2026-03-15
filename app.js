@@ -104,7 +104,7 @@ Bentuk Kata Sifat
 </div>
 
 <div class="menu-hub-card" data-mode="pattern">
-Pola Kalimat
+Grammar (文法)
 </div>
 
 <div class="menu-hub-card" data-mode="expression">
@@ -444,7 +444,7 @@ grid.style.display="grid";
       viewMode.startsWith("verb-form:") ||
       viewMode === "adjective-forms" ||
       viewMode.startsWith("adjective-form:") ||
-      viewMode === "sentence-patterns" || viewMode.startsWith("sentence-pattern:") ||
+      viewMode === "grammar" || viewMode.startsWith("grammar:") ||
       viewMode.startsWith("dev:")
     ) {
       activeKey = "menu";
@@ -2401,7 +2401,7 @@ grid.style.display="grid";
     "expression": "Ungkapan Umum",
     "ungkapan umum": "Ungkapan Umum",
     "verb-adj-only": "Kosakata Utama",
-    "pattern": "Pola Kalimat",
+    "pattern": "Grammar (文法)",
     "activity": "Kosakata Aktivitas",
     "noun-hobby": "Kosakata Hobi",
     "noun-sports": "Kosakata Olahraga",
@@ -3117,7 +3117,7 @@ grid.style.display="grid";
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }
   
-  // renderPatternPoster DIHAPUS — diganti oleh modul sentence-patterns-logic.js
+  // renderPatternPoster DIHAPUS — diganti oleh modul grammar-logic.js
 
   function syncMobileTopbarLayout() {
     const topbar = document.querySelector(".topbar");
@@ -3418,13 +3418,13 @@ grid.style.display="grid";
     });
   });
 
-  document.querySelectorAll(".sentence-patterns-menu-btn").forEach((button) => {
+  document.querySelectorAll(".grammar-menu-btn").forEach((button) => {
     button.addEventListener("click", () => {
       if (accessMode === "guest") {
         openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
         return;
       }
-      viewMode = "sentence-patterns";
+      viewMode = "grammar";
       if (search) search.value = "";
       closeModal();
       render();
@@ -3594,7 +3594,7 @@ grid.style.display="grid";
       viewMode.startsWith("verb-form:") ||
       viewMode === "adjective-forms" ||
       viewMode.startsWith("adjective-form:") ||
-      viewMode === "sentence-patterns" || viewMode.startsWith("sentence-pattern:") ||
+      viewMode === "grammar" || viewMode.startsWith("grammar:") ||
       viewMode.startsWith("dev:")
     ) {
       tab = "menu";
@@ -3827,7 +3827,7 @@ grid.style.display="grid";
   }
 
   // Menentukan judul berdasarkan mode
-  const titlePrefix = mode === "exercise" ? "Latihan" : "Pola Kalimat";
+  const titlePrefix = mode === "exercise" ? "Latihan" : "Grammar (文法)";
   
   const container = document.createElement("div");
   container.className = "empty-state";
@@ -3993,7 +3993,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Pola Kalimat</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (文法)</h3>
             <div class="bottom-nav-hub__chips">
               ${patternChips}
             </div>
@@ -4104,7 +4104,7 @@ grid.style.display="grid";
 
         if (action === "patterns") {
           if (!ensureLoginForMenu()) return;
-          viewMode = "sentence-patterns";
+          viewMode = "grammar";
           render();
           return;
         }
@@ -4228,8 +4228,8 @@ grid.style.display="grid";
         icon: '<path d="M4 7h7"/><path d="M4 11h7"/><path d="M4 15h4"/><rect x="14" y="4" width="7" height="16" rx="2"/>'
       },
       {
-        action: "sentence-patterns",
-        title: "Pola Kalimat",
+        action: "grammar",
+        title: "Grammar (文法)",
         description: "Materi + poster",
         icon: '<path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Z"/><path d="M12 3h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/><line x1="8" y1="8" x2="10" y2="8" stroke-linecap="round"/><line x1="8" y1="11" x2="10" y2="11" stroke-linecap="round"/><line x1="14" y1="8" x2="16" y2="8" stroke-linecap="round"/><line x1="14" y1="11" x2="16" y2="11" stroke-linecap="round"/>'
       },
@@ -4343,7 +4343,7 @@ grid.style.display="grid";
 
     if (action === "patterns") {
       if (!ensureLoginForMenu()) return;
-      viewMode = "sentence-patterns";
+      viewMode = "grammar";
       render();
       return;
     }
@@ -4368,9 +4368,9 @@ grid.style.display="grid";
       return;
     }
 
-    if (action === "sentence-patterns") {
+    if (action === "grammar") {
       if (!ensureLoginForMenu()) return;
-      viewMode = "sentence-patterns";
+      viewMode = "grammar";
       if (search) search.value = "";
       closeModal();
       render();
@@ -4635,29 +4635,29 @@ grid.style.display="grid";
       return;
     }
 
-    if (viewMode === "sentence-patterns") {
-      window.sentencePatternsUI?.renderHub({
+    if (viewMode === "grammar") {
+      window.grammarUI?.renderHub({
         grid,
         onOpenPoster: (patternId) => {
-          viewMode = `sentence-pattern:${patternId}`;
+          viewMode = `grammar:${patternId}`;
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = "Materi Pola Kalimat";
+      if (resultInfo) resultInfo.textContent = "Materi Grammar (文法)";
       return;
     }
 
-    if (viewMode.startsWith("sentence-pattern:")) {
+    if (viewMode.startsWith("grammar:")) {
       const patternId = viewMode.split(":")[1];
-      window.sentencePatternsUI?.renderPoster({
+      window.grammarUI?.renderPoster({
         grid,
         patternId,
         onBack: () => {
-          viewMode = "sentence-patterns";
+          viewMode = "grammar";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Pola Kalimat • ${patternId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Grammar (文法) • ${patternId.toUpperCase()}`;
       return;
     }
 
@@ -4868,7 +4868,7 @@ grid.style.display="grid";
     syncMobileTopbarLayout();
     applyResponsiveSidebarLayout();
     if (duoNavInitialized) renderDuoSidebarNav();
-    if (viewMode === "sentence-patterns" || viewMode.startsWith("sentence-pattern:")) {
+    if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {
       grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
   });

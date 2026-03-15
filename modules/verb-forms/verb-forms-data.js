@@ -5135,13 +5135,276 @@
           }]
         }
       ]
+    },
+    {
+      id: "vf-67",
+      level: "N4",
+      order: 67,
+      title: "自動詞 / 他動詞 • Kata Kerja Intransitif vs Transitif",
+      summary: "自動詞 (intransitive) = kejadian terjadi sendiri, tidak butuh objek. 他動詞 (transitive) = seseorang melakukan sesuatu pada objek, ditandai dengan partikel を.",
+      formulas: [
+        { group: "自動詞", rule: "Subjek mengalami perubahan sendiri. Pola: [Subjek]が + 自動詞. Contoh pasangan: 開く・閉まる・入る・出る・消える・起きる・落ちる・壊れる・付く・決まる" },
+        { group: "他動詞", rule: "Seseorang melakukan tindakan pada objek. Pola: [Subjek]が + [Objek]を + 他動詞. Contoh pasangan: 開ける・閉める・入れる・出す・消す・起こす・落とす・壊す・付ける・決める" },
+        { group: "Cara Membedakan", rule: "Kunci: cari apakah ada を. Kalau ada → 他動詞. Kalau tidak ada dan subjeknya benda/kondisi → 自動詞. Pasangan sering berbeda akhiran: ~まる/~める, ~る/~す, ~く/~ける." }
+      ],
+      groups: [
+        {
+          name: "自動詞",
+          examples: [{
+            base: "開く・消える・入る・壊れる・決まる", transformed: "〜が + 自動詞", kana: "あく・きえる・はいる・こわれる・きまる", romaji: "aku / kieru / hairu / kowareru / kimaru", meaning: "terbuka / mati / masuk / rusak / diputuskan (terjadi sendiri)",
+            sentences: [
+              { jp: "朝になると、自動でカーテンが開く仕組みになっている。", kana: "あさになると、じどうでかーてんがあくしくみになっている。", romaji: "Asa ni naru to, jidou de kaaten ga aku shikumi ni natte iru.", meaning: "Saat pagi tiba, ada mekanisme di mana tirai terbuka secara otomatis." },
+              { jp: "電気が消えていたから、もう閉店だと思って引き返した。", kana: "でんきがきえていたから、もうへいてんだとおもってひきかえした。", romaji: "Denki ga kiete ita kara, mou heiten da to omotte hikikaeshita.", meaning: "Lampunya sudah mati jadi saya kira sudah tutup dan balik lagi." },
+              { jp: "財布が見当たらなくて焦ったけど、カバンの内ポケットに入っていた。", kana: "さいふがみあたらなくてあせったけど、かばんのうちぽけっとにはいっていた。", romaji: "Saifu ga miataranakute asetta kedo, kaban no uchi poketto ni haitte ita.", meaning: "Panik karena dompet tidak kelihatan, ternyata sudah masuk ke kantong dalam tas." },
+              { jp: "落としてもいないのに画面が割れていた。もともと壊れていたのかな。", kana: "おとしてもいないのにがめんがわれていた。もともとこわれていたのかな。", romaji: "Otoshite mo inai noni gamen ga warete ita. Motomoto kowarete ita no ka na.", meaning: "Padahal tidak pernah jatuh tapi layarnya sudah retak. Dari awal memang rusak ya." },
+              { jp: "会議の日程がやっと決まったから、早めにカレンダーに入れておこう。", kana: "かいぎのにっていがやっときまったから、はやめにかれんだーにいれておこう。", romaji: "Kaigi no nittei ga yatto kimatta kara, hayame ni karendaa ni irete okou.", meaning: "Jadwal rapat akhirnya sudah ditentukan, yuk segera masukkan ke kalender." },
+              { jp: "さっきまで晴れていたのに、急に空が曇ってきた。", kana: "さっきまではれていたのに、きゅうにそらがくもってきた。", romaji: "Sakki made harete ita noni, kyuu ni sora ga kumotte kita.", meaning: "Tadi masih cerah, tapi tiba-tiba langit mendung." },
+              { jp: "ドアが勝手に開いていたのを見て、誰か入ったのかと焦った。", kana: "どあがかってにあいていたのをみて、だれかはいったのかとあせった。", romaji: "Doa ga katte ni aite ita no o mite, dareka haitta no ka to asetta.", meaning: "Melihat pintu terbuka sendiri, panik siapa yang masuk." },
+              { jp: "パソコンが突然落ちて、保存していなかったデータが全部消えた。", kana: "ぱそこんがとつぜんおちて、ほぞんしていなかったでーたがぜんぶきえた。", romaji: "Pasokon ga totsuzen ochite, hozon shite inakatta deeta ga zenbu kieta.", meaning: "Komputer tiba-tiba mati dan semua data yang belum disimpan hilang." },
+              { jp: "話し合いの結果、イベントの開催場所が変わることになった。", kana: "はなしあいのけっか、いべんとのかいさいばしょがかわることになった。", romaji: "Hanashiai no kekka, ibento no kaisai basho ga kawaru koto ni natta.", meaning: "Dari hasil diskusi, tempat penyelenggaraan acara berubah." },
+              { jp: "冷蔵庫のドアが開きっぱなしになっていたから、中のものが全部温くなっていた。", kana: "れいぞうこのどあがあきっぱなしになっていたから、なかのものがぜんぶぬるくなっていた。", romaji: "Reizouko no doa ga akippanashi ni natte ita kara, naka no mono ga zenbu nuruku natte ita.", meaning: "Pintu kulkas terbuka terus, jadinya semua isi di dalamnya jadi hangat." }
+            ]
+          }]
+        },
+        {
+          name: "他動詞",
+          examples: [{
+            base: "開ける・消す・入れる・壊す・決める", transformed: "[を] + 他動詞", kana: "あける・けす・いれる・こわす・きめる", romaji: "akeru / kesu / ireru / kowasu / kimeru", meaning: "membuka / mematikan / memasukkan / merusak / memutuskan (seseorang melakukan)",
+            sentences: [
+              { jp: "暑いから窓を開けてもいいですか。", kana: "あついからまどをあけてもいいですか。", romaji: "Atsui kara mado o akete mo ii desu ka.", meaning: "Karena panas, boleh saya buka jendelanya?" },
+              { jp: "会議が始まるから、スマホの音を消しておいてね。", kana: "かいぎがはじまるから、すまほのおとをけしておいてね。", romaji: "Kaigi ga hajimaru kara, sumaho no oto o keshite oite ne.", meaning: "Rapat mau mulai, tolong matikan suara HP-nya ya." },
+              { jp: "冷蔵庫に入れておいたプリン、誰か食べた？", kana: "れいぞうこにいれておいたぷりん、だれかたべた？", romaji: "Reizouko ni irete oita purin, dareka tabeta?", meaning: "Pudding yang sudah dimasukin kulkas, ada yang makan?" },
+              { jp: "子供が誤ってお気に入りのコップを壊してしまった。", kana: "こどもがあやまっておきにいりのこっぷをこわしてしまった。", romaji: "Kodomo ga ayamatte okiniri no koppu o kowashite shimatta.", meaning: "Anak saya tidak sengaja merusak cangkir kesayangan saya." },
+              { jp: "どのルートで行くか早めに決めておかないと、当日バタバタするよ。", kana: "どのるーとでいくかはやめにきめておかないと、とうじつばたばたするよ。", romaji: "Dono ruuto de iku ka hayame ni kimete okanai to, tounichi batabata suru yo.", meaning: "Kalau tidak cepat-cepat tentukan jalurnya, nanti hari-H pasti panik." },
+              { jp: "帰るときは必ず電気を消して鍵をかけてください。", kana: "かえるときはかならずでんきをけしてかぎをかけてください。", romaji: "Kaeru toki wa kanarazu denki o keshite kagi o kakete kudasai.", meaning: "Waktu pulang, pastikan selalu matikan lampu dan kunci pintunya." },
+              { jp: "ゴミ袋にまとめて入れておいたから、あとは捨てるだけだよ。", kana: "ごみぶくろにまとめていれておいたから、あとはすてるだけだよ。", romaji: "Gomi bukuro ni matomete irete oita kara, ato wa suteru dake da yo.", meaning: "Sudah saya kumpulkan dan masukkan ke kantong sampah, tinggal buang saja." },
+              { jp: "どっちのプランにするか、今週中に決めてもらえると助かります。", kana: "どっちのぷらんにするか、こんしゅうちゅうにきめてもらえるとたすかります。", romaji: "Docchi no puran ni suru ka, konshuu chuu ni kimete moraeru to tasukarimasu.", meaning: "Kalau bisa tentukan mau pilih rencana yang mana sebelum akhir minggu ini, akan sangat membantu." },
+              { jp: "大事な書類を間違えて捨ててしまったかもしれない。", kana: "だいじなしょるいをまちがえてすててしまったかもしれない。", romaji: "Daiji na shorui o machigaete sutete shimatta kamo shirenai.", meaning: "Mungkin sudah tidak sengaja membuang dokumen penting." },
+              { jp: "部屋を暗くして映画を見ると、集中できて気分が上がる。", kana: "へやをくらくしてえいがをみると、しゅうちゅうできてきぶんがあがる。", romaji: "Heya o kuraku shite eiga o miru to, shuuchuu dekite kibun ga agaru.", meaning: "Kalau nonton film sambil gelapin kamar, bisa fokus dan suasananya jadi seru." }
+            ]
+          }]
+        }
+      ]
+    }
+  ,
+    {
+      id: "vf-68",
+      level: "N3",
+      order: 68,
+      title: "〜出す • Tiba-Tiba Mulai",
+      summary: "Dipakai untuk menyatakan sesuatu mulai terjadi secara mendadak atau spontan, terutama gerakan, emosi, atau aksi yang meledak keluar.",
+      formulas: [
+        { group: "Umum", rule: "Tambahkan 出す setelah bentuk masu, misalnya 話す → 話し出す, 降る → 降り出す." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "話す", transformed: "話し出す", kana: "はなす → はなしだす", romaji: "Hanasu → hanashidasu", meaning: "mulai bicara tiba-tiba",
+            sentences: [
+              { jp: "彼は静かだったのに、その話題になると急に話し出した。", kana: "かれ は しずか だった のに、その わだい に なる と きゅう に はなしだした。", romaji: "Kare wa shizuka datta noni,sono wadai ni naru to kyuu ni hanashidashita.", meaning: "Dia tadinya diam, tapi begitu topiknya itu muncul dia langsung mulai bicara." },
+              { jp: "空を見上げたとたん、細かい雨が降り出した。", kana: "そら を みあげた とたん、こまかい あめ が ふりだした。", romaji: "Sora o miageta totan,komakai ame ga furidashita.", meaning: "Begitu melihat ke langit, gerimis halus langsung mulai turun." },
+              { jp: "映画の最後で急に泣き出して、自分でも驚いた。", kana: "えいが の さいご で きゅう に なきだして、じぶん で も おどろいた。", romaji: "Eiga no saigo de kyuu ni nakidashite,jibun de mo odoroita.", meaning: "Di akhir film saya tiba-tiba mulai menangis, sampai saya sendiri kaget." },
+              { jp: "止まっていた電車がゆっくり動き出した。", kana: "とまっていた でんしゃ が ゆっくり うごきだした。", romaji: "Tomatteita densha ga yukkuri ugokidashita.", meaning: "Kereta yang tadi berhenti pelan-pelan mulai bergerak." },
+              { jp: "会議が終わったとたん、みんな一斉に帰り支度をし出した。", kana: "かいぎ が おわった とたん、みんな いっせい に かえりじたく を しだした。", romaji: "Kaigi ga owatta totan,minna issei ni kaerijitaku o shidashita.", meaning: "Begitu rapat selesai, semua orang sekaligus mulai bersiap pulang." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-69",
+      level: "N3",
+      order: 69,
+      title: "縮約形 • Bentuk Kontraksi",
+      summary: "Bentuk lisan santai yang memendekkan ungkapan agar terdengar lebih natural dalam percakapan sehari-hari.",
+      formulas: [
+        { group: "Umum", rule: "Contoh umum, ている → てる, てしまう → ちゃう, では → じゃ, なくては → なくちゃ." }
+      ],
+      groups: [
+{
+          name: "Contraction",
+          examples: [
+            {
+            base: "ている / てしまう / では", transformed: "てる / ちゃう / じゃ", kana: "ている / てしまう / では → てる / ちゃう / じゃ", romaji: "Teiru / teshimau / deha → teru / chau / ja", meaning: "bentuk kontraksi lisan",
+            sentences: [
+              { jp: "今何してるの、と聞かれてはじめて時計を見た。", kana: "いま なに してる の、と きかれて はじめて とけい を みた。", romaji: "Ima nani shiteru no,to kikarete hajimete tokei o mita.", meaning: "Saat ditanya lagi ngapain, saya baru sadar melihat jam." },
+              { jp: "もう終電ないし、このままだと駅で朝まで待つことになっちゃう。", kana: "もう しゅうでん ない し、このまま だ と えき で あさ まで まつ こと に なっちゃう。", romaji: "Mou shuuden nai shi,konomama da to eki de asa made matsu koto ni nacchau.", meaning: "Kereta terakhir sudah tidak ada, jadi kalau begini bisa-bisa saya harus menunggu di stasiun sampai pagi." },
+              { jp: "それじゃ、また来週ここで会おうか。", kana: "それ じゃ、また らいしゅう ここ で あおう か。", romaji: "Sore ja,mata raishuu koko de aou ka.", meaning: "Kalau begitu, minggu depan kita ketemu di sini lagi ya." },
+              { jp: "早く支度しなくちゃと思いながら、まだソファから動けない。", kana: "はやく したく しなくちゃ と おもいながら、まだ そふぁ から うごけない。", romaji: "Hayaku shitaku shinakucha to omoinagara,mada sofua kara ugokenai.", meaning: "Sambil berpikir harus cepat siap-siap, saya masih juga belum bisa bangun dari sofa." },
+              { jp: "昨日のこと、ちゃんと覚えてるつもりだったのに細かいところが抜けてた。", kana: "きのう の こと、ちゃんと おぼえてる つもり だった のに こまかい ところ が ぬけてた。", romaji: "Kinou no koto,chanto oboeteru tsumori datta noni komakai tokoro ga nuketeta.", meaning: "Saya kira masih ingat jelas kejadian kemarin, tapi detail-detailnya ternyata ada yang hilang." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-70",
+      level: "N3",
+      order: 70,
+      title: "〜てほしい / 〜てもらいたい • Ingin Orang Lain Melakukan",
+      summary: "Kedua bentuk ini menyatakan keinginan agar orang lain melakukan sesuatu. てほしい lebih langsung, てもらいたい sedikit lebih halus.",
+      formulas: [
+        { group: "Umum", rule: "Vて + ほしい, atau Vて + もらいたい." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "手伝う", transformed: "手伝ってほしい / 手伝ってもらいたい", kana: "てつだう → てつだってほしい / てつだってもらいたい", romaji: "Tetsudau → tetsudattehoshii / tetsudattemoraitai", meaning: "ingin dibantu",
+            sentences: [
+              { jp: "今日は荷物が多いから、少し手伝ってほしい。", kana: "きょう は にもつ が おおい から、すこし てつだって ほしい。", romaji: "Kyou wa nimotsu ga ooi kara,sukoshi tetsudatte hoshii.", meaning: "Hari ini barang saya banyak, jadi saya ingin dibantu sedikit." },
+              { jp: "できれば、提出前に一度だけ見直してもらいたいです。", kana: "できれば、ていしゅつまえ に いちど だけ みなおして もらいたい です。", romaji: "Dekireba,teishutsumae ni ichido dake minaoshite moraitai desu.", meaning: "Kalau bisa, saya ingin minta tolong diperiksa sekali sebelum dikumpulkan." },
+              { jp: "答えを教えるより、自分で考えてほしいなと思う。", kana: "こたえ を おしえる より、じぶん で かんがえて ほしい な と おもう。", romaji: "Kotae o oshieru yori,jibun de kangaete hoshii na to omou.", meaning: "Daripada langsung diberi jawabannya, saya ingin dia berpikir sendiri." },
+              { jp: "次のミーティングでは、もう少しゆっくり説明してもらいたい。", kana: "つぎ の みーてぃんぐ では、もう すこし ゆっくり せつめい して もらいたい。", romaji: "Tsugi no miiteingu deha,mou sukoshi yukkuri setsumei shite moraitai.", meaning: "Di meeting berikutnya saya ingin penjelasannya disampaikan sedikit lebih pelan." },
+              { jp: "無理に明るくふるまうより、正直に話してほしい。", kana: "むり に あかるく ふるまう より、しょうじき に はなして ほしい。", romaji: "Muri ni akaruku furumau yori,shoujiki ni hanashite hoshii.", meaning: "Daripada pura-pura ceria, saya ingin dia bicara jujur saja." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-71",
+      level: "N3",
+      order: 71,
+      title: "〜上げる / 〜上がる • Menuntaskan Sampai Selesai",
+      summary: "Pola ini dipakai untuk menyatakan menyelesaikan sampai tuntas, atau selesai dengan hasil akhir yang jelas.",
+      formulas: [
+        { group: "Umum", rule: "Banyak dipakai sebagai kata kerja gabungan, misalnya 書き上げる, 仕上がる." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "書く", transformed: "書き上げる / 仕上がる", kana: "かく → かきあげる / しあがる", romaji: "Kaku → kakiageru / shiagaru", meaning: "menyelesaikan sampai tuntas / selesai jadi",
+            sentences: [
+              { jp: "締め切りの朝にやっとレポートを書き上げた。", kana: "しめきり の あさ に やっと れぽーと を かきあげた。", romaji: "Shimekiri no asa ni yatto repooto o kakiageta.", meaning: "Pagi saat deadline, akhirnya saya berhasil menuntaskan laporan itu." },
+              { jp: "最後まで読み上げると、文章の流れの悪さによく気づける。", kana: "さいご まで よみあげる と、ぶんしょう の ながれ の わるさ に よく きづける。", romaji: "Saigo made yomiageru to,bunshou no nagare no warusa ni yoku kizukeru.", meaning: "Kalau dibacakan sampai akhir, kita jadi lebih mudah sadar bagian alurnya yang kurang enak." },
+              { jp: "思ったより早く料理が仕上がって、少し余裕ができた。", kana: "おもった より はやく りょうり が しあがって、すこし よゆう が できた。", romaji: "Omotta yori hayaku ryouri ga shiagatte,sukoshi yoyuu ga dekita.", meaning: "Masakannya selesai lebih cepat dari yang saya duga, jadi saya punya sedikit waktu luang." },
+              { jp: "この写真、あと少し明るさを調整すればきれいに仕上がりそう。", kana: "この しゃしん、あと すこし あかるさ を ちょうせい すれば きれい に しあがりそう。", romaji: "Kono shashin,ato sukoshi akarusa o chousei sureba kirei ni shiagarisou.", meaning: "Foto ini sepertinya akan jadi bagus kalau tinggal sedikit disesuaikan pencahayaannya." },
+              { jp: "みんなで協力して会場を作り上げた達成感がすごかった。", kana: "みんな で きょうりょく して かいじょう を つくりあげた たっせいかん が すごかった。", romaji: "Minna de kyouryoku shite kaijou o tsukuriageta tasseikan ga sugokatta.", meaning: "Rasa puas karena kami membangun venue itu bersama-sama benar-benar besar." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-72",
+      level: "N3",
+      order: 72,
+      title: "〜切る / 〜切れる • Sampai Habis / Sampai Batas",
+      summary: "Menyatakan melakukan sampai batas akhir, menghabiskan seluruhnya, atau selesai total.",
+      formulas: [
+        { group: "Umum", rule: "Misalnya 読み切る, 使い切る, 売り切れる." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "使う", transformed: "使い切る / 売り切れる", kana: "つかう → つかいきる / うりきれる", romaji: "Tsukau → tsukaikiru / urikireru", meaning: "menghabiskan / habis terjual",
+            sentences: [
+              { jp: "今日は一日でスマホの充電を使い切ってしまった。", kana: "きょう は いちにち で すまほ の じゅうでん を つかいきって しまった。", romaji: "Kyou wa ichinichi de sumaho no juuden o tsukaikitte shimatta.", meaning: "Hari ini dalam sehari saya benar-benar menghabiskan baterai HP." },
+              { jp: "長い小説だったけど、休みの間に読み切れた。", kana: "ながい しょうせつ だった けど、やすみ の あいだ に よみきれた。", romaji: "Nagai shousetsu datta kedo,yasumi no aida ni yomikireta.", meaning: "Novelnya memang panjang, tapi selama libur saya berhasil menuntaskannya sampai habis." },
+              { jp: "人気の商品は開店一時間で売り切れたらしい。", kana: "にんき の しょうひん は かいてん いちじかん で うりきれた らしい。", romaji: "Ninki no shouhin wa kaiten ichijikan de urikireta rashii.", meaning: "Produk yang populer itu katanya habis terjual dalam satu jam setelah toko buka." },
+              { jp: "言いたいことを全部言い切れなくて、少しもやもやしている。", kana: "いいたい こと を ぜんぶ いいきれなくて、すこし もやもや している。", romaji: "Iitai koto o zenbu iikirenakute,sukoshi moyamoya shiteiru.", meaning: "Karena tidak berhasil menyampaikan semua yang ingin saya katakan sampai tuntas, saya agak mengganjal." },
+              { jp: "今月は予算を使い切らないように気をつけている。", kana: "こんげつ は よさん を つかいきらない よう に きをつけている。", romaji: "Kongetsu wa yosan o tsukaikiranai you ni kiotsuketeiru.", meaning: "Bulan ini saya hati-hati supaya tidak menghabiskan anggaran sampai ludes." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-73",
+      level: "N3",
+      order: 73,
+      title: "〜始める / 〜終わる • Mulai / Selesai Melakukan",
+      summary: "Kata kerja gabungan yang menunjukkan awal dan akhir suatu tindakan.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + 始める / 終わる, misalnya 降り始める, 読み終わる." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "読む", transformed: "読み始める / 読み終わる", kana: "よむ → よみはじめる / よみおわる", romaji: "Yomu → yomihajimeru / yomiowaru", meaning: "mulai membaca / selesai membaca",
+            sentences: [
+              { jp: "電車に乗ったとたん、本を読み始める人って多いよね。", kana: "でんしゃ に のった とたん、ほん を よみはじめる ひと って おおい よ ね。", romaji: "Densha ni notta totan,hon o yomihajimeru hito tte ooi yo ne.", meaning: "Banyak orang ya yang begitu naik kereta langsung mulai membaca buku." },
+              { jp: "雨が降り始める前に駅へ着けてよかった。", kana: "あめ が ふりはじめる まえ に えき へ つけて よかった。", romaji: "Ame ga furihajimeru mae ni eki e tsukete yokatta.", meaning: "Untung saya bisa sampai stasiun sebelum hujannya mulai turun." },
+              { jp: "昨夜やっとその小説を読み終わって、少しさびしい気分だ。", kana: "さくや やっと その しょうせつ を よみおわって、すこし さびしい きぶん だ。", romaji: "Sakuya yatto sono shousetsu o yomiowatte,sukoshi sabishii kibun da.", meaning: "Tadi malam saya akhirnya selesai membaca novel itu, dan sekarang rasanya agak sepi." },
+              { jp: "仕事が終わり始めるころには、外はもう暗くなっていた。", kana: "しごと が おわりはじめる ころ に は、そと は もう くらく なっていた。", romaji: "Shigoto ga owarihajimeru koro ni ha,soto wa mou kuraku natteita.", meaning: "Saat pekerjaan mulai mendekati selesai, di luar sudah gelap." },
+              { jp: "新しい生活が始まる前の、この少し落ち着かない感じが嫌いじゃない。", kana: "あたらしい せいかつ が はじまる まえ の、この すこし おちつかない かんじ が きらい じゃない。", romaji: "Atarashii seikatsu ga hajimaru mae no,kono sukoshi ochitsukanai kanji ga kirai janai.", meaning: "Saya tidak terlalu benci perasaan sedikit gelisah sebelum hidup yang baru dimulai." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-74",
+      level: "N3",
+      order: 74,
+      title: "〜ようとしない • Tidak Mau Berusaha Melakukan",
+      summary: "Menyatakan seseorang tidak berniat atau tidak mau mencoba melakukan sesuatu.",
+      formulas: [
+        { group: "Umum", rule: "Bentuk volitional + としない, misalnya 話そうとしない." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "話す", transformed: "話そうとしない", kana: "はなす → はなそうとしない", romaji: "Hanasu → hanasoutoshinai", meaning: "tidak mau mencoba bicara",
+            sentences: [
+              { jp: "彼は理由を聞いても、最後まで話そうとしなかった。", kana: "かれ は りゆう を きいても、さいご まで はなそうと しなかった。", romaji: "Kare wa riyuu o kiitemo,saigo made hanasouto shinakatta.", meaning: "Walaupun ditanya alasannya, dia sampai akhir tidak mau mencoba bicara." },
+              { jp: "子どもが野菜を食べようとしない時は、形を変えるとうまくいくことがある。", kana: "こども が やさい を たべようと しない とき は、かたち を かえる と うまく いく こと が ある。", romaji: "Kodomo ga yasai o tabeyouto shinai toki ha,katachi o kaeru to umaku iku koto ga aru.", meaning: "Kalau anak tidak mau mencoba makan sayur, kadang mengganti bentuk penyajiannya bisa berhasil." },
+              { jp: "間違いを認めようとしないままだと、同じことがまた起こるよ。", kana: "まちがい を みとめようと しない まま だ と、おなじ こと が また おこる よ。", romaji: "Machigai o mitomeyouto shinai mama da to,onaji koto ga mata okoru yo.", meaning: "Kalau terus tidak mau mengakui kesalahan, hal yang sama akan terulang lagi." },
+              { jp: "彼女は人に頼ろうとしないところがある。", kana: "かのじょ は ひと に たよろうと しない ところ が ある。", romaji: "Kanojo wa hito ni tayorouto shinai tokoro ga aru.", meaning: "Dia punya sisi yang memang tidak mau bergantung pada orang lain." },
+              { jp: "疲れているのに休もうとしないから、少し心配になる。", kana: "つかれている のに やすもうと しない から、すこし しんぱい に なる。", romaji: "Tsukareteiru noni yasumouto shinai kara,sukoshi shinpai ni naru.", meaning: "Karena dia capek tapi tetap tidak mau istirahat, saya jadi agak khawatir." }
+            ]
+          }
+          ]
+        }
+      ]
+    },
+    {
+      id: "vf-75",
+      level: "N3",
+      order: 75,
+      title: "〜続ける • Terus Melakukan",
+      summary: "Menyatakan suatu tindakan terus dilakukan tanpa berhenti.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + 続ける, misalnya 書き続ける, 考え続ける." }
+      ],
+      groups: [
+{
+          name: "Umum",
+          examples: [
+            {
+            base: "書く", transformed: "書き続ける", kana: "かく → かきつづける", romaji: "Kaku → kakitsuzukeru", meaning: "terus menulis",
+            sentences: [
+              { jp: "毎日少しでも書き続けることが、私にはいちばん難しい。", kana: "まいにち すこし でも かきつづける こと が、わたし に は いちばん むずかしい。", romaji: "Mainichi sukoshi demo kakitsuzukeru koto ga,watashi ni wa ichiban muzukashii.", meaning: "Bagi saya, hal yang paling sulit justru terus menulis sedikit demi sedikit setiap hari." },
+              { jp: "彼は雨の中でも走り続けていて、本気度がすごかった。", kana: "かれ は あめ の なか で も はしりつづけていて、ほんきど が すごかった。", romaji: "Kare wa ame no naka de mo hashiritsuzuketeite,honkido ga sugokatta.", meaning: "Dia terus berlari bahkan saat hujan, dan keseriusannya terasa luar biasa." },
+              { jp: "答えが出なくても、考え続けること自体に意味がある。", kana: "こたえ が でなくても、かんがえつづける こと じたい に いみ が ある。", romaji: "Kotae ga denakutemo,kangaetsuzukeru koto jitai ni imi ga aru.", meaning: "Walaupun belum ada jawaban, terus memikirkannya sendiri sudah punya arti." },
+              { jp: "この町で店を続けてきた人たちの話をもっと聞いてみたい。", kana: "この まち で みせ を つづけてきた ひとたち の はなし を もっと きいて みたい。", romaji: "Kono machi de mise o tsuzuketekita hitotachi no hanashi o motto kiite mitai.", meaning: "Saya ingin mendengar lebih banyak cerita dari orang-orang yang terus mempertahankan toko mereka di kota ini." },
+              { jp: "完璧じゃなくても、やめずに続けるほうが大事な時もある。", kana: "かんぺき じゃなくても、やめず に つづける ほう が だいじ な とき も ある。", romaji: "Kanpeki janakutemo,yamezu ni tsuzukeru hou ga daiji na toki mo aru.", meaning: "Kadang yang lebih penting bukan menjadi sempurna, melainkan terus berjalan tanpa berhenti." }
+            ]
+          }
+          ]
+        }
+      ]
     }
   ];
 
-  // =========================================================================
-  // WADAH KOSONG SEMENTARA UNTUK FORM 1 HINGGA 62
-  // Biar web lu tetep bisa jalan dan gak error ngebaca menu lainnya.
-  // =========================================================================
   const remainingDefs = [
 	["1", "~る", "Bentuk Kamus (Present/Future Plain)", "N5"],
     ["2", "~ない", "Bentuk Negatif Plain", "N5"],
@@ -5208,7 +5471,8 @@
     ["63", "~える/られる", "Bentuk Potensial (Bisa/Dapat)", "N4"],
     ["64", "~られる", "Bentuk Pasif (Di-/Ter-)", "N4"],
     ["65", "~させられる", "Bentuk Kausatif-Pasif (Dipaksa/Terpaksa)", "N4"],
-    ["66", "~よう/おう", "Bentuk Kehendak/Volitional (Ayo/Mau)", "N4"]
+    ["66", "~よう/おう", "Bentuk Kehendak/Volitional (Ayo/Mau)", "N4"],
+	["67", "自動詞/他動詞", "Kata Kerja Intransitif vs Transitif", "N4"]
   ];
 
   const manualIds = new Set(manualForms.map((form) => form.id));

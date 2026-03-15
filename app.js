@@ -2697,7 +2697,8 @@ grid.style.display="grid";
         if (la !== lb) return la - lb;
         const ta = typeOrder.indexOf(a.type);
         const tb = typeOrder.indexOf(b.type);
-        return ta - tb;
+        if (ta !== tb) return ta - tb;
+        return (a.romaji || "").localeCompare(b.romaji || "", "en", { sensitivity: "base" });
       });
   }
 

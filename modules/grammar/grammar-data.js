@@ -2670,4 +2670,1316 @@ window.grammarData = [
       {jp:"健康に関しては、無理を続けないことがいちばん大事だと思う。",kana:"けんこう にかんして は、むり を つづけない こと が いちばん だいじ だ と おもう。",romaji:"Kenkou nikanshite ha,muri o tsuzukenai koto ga ichiban daiji da to omou.",meaning:"Kalau soal kesehatan, menurut saya yang paling penting adalah tidak terus-menerus memaksakan diri."}
     ]}
   ]}
+,
+
+  {id:"GR-N2-01",level:"N2",title:"〜ものの / とはいうものの",summary:"Menyatakan kenyataan yang bertolak belakang dengan hal setelahnya, artinya walaupun memang begitu, tetapi.",groups:[
+    {name:"〜ものの / とはいうものの",description:"Dipakai saat hasil akhirnya tidak sesuai harapan awal atau penjelasan sebelumnya.",sentences:[
+      {"jp":"予約は取れたものの、人気の展示は入場制限で見られなかった。","kana":"よやくはとれたものの、にんきのてんじはにゅうじょうせいげんでみられなかった。","romaji":"yoyaku ha tore tamonono, ninki no tenji ha nyuujouseigen de mira renakatta.","meaning":"Walaupun reservasinya berhasil didapat, pameran yang populer itu tetap tidak bisa dilihat karena pembatasan masuk."},
+      {"jp":"日本での生活には慣れてきたものの、役所の手続きはまだ緊張する。","kana":"にっぽんでのせいかつにはなれてきたものの、やくしょのてつづきはまだきんちょうする。","romaji":"nippon deno seikatsu niha nare tekitamonono, yakusho no tetsuzuki hamada kinchousu ru.","meaning":"Walaupun saya mulai terbiasa hidup di Jepang, urusan administrasi di kantor pemerintahan masih bikin tegang."},
+      {"jp":"駅の近くに引っ越したものの、朝の通勤ラッシュはやはり大変だ。","kana":"えきのちかくにひっこしたものの、あさのつうきんらっしゅはやはりたいへんだ。","romaji":"eki no chikaku ni hikkoshi tamonono, asa no tsuukin rasshu hayahari taihen da.","meaning":"Walaupun saya pindah dekat stasiun, jam sibuk pagi tetap berat juga."},
+      {"jp":"静かな町とはいうものの、祭りの日はかなりにぎやかになる。","kana":"しずかなまちとはいうものの、まつりのにちはかなりにぎやかになる。","romaji":"shizuka na machi tohaiumonono, matsuri no nichi hakanarinigiyakaninaru.","meaning":"Walaupun disebut kota yang tenang, saat hari festival suasananya jadi sangat ramai."},
+      {"jp":"留学したとはいうものの、最初の数か月は日本語より身ぶりで何とかしていた。","kana":"りゅうがくしたとはいうものの、さいしょのすうかげつはにほんごよりみぶりでなんとかしていた。","romaji":"ryuugaku shitatohaiumonono, saisho no suukagetsu ha nihongo yori mi buride nantoka shiteita.","meaning":"Walaupun saya datang untuk belajar ke luar negeri, beberapa bulan pertama saya lebih banyak bertahan dengan bahasa tubuh daripada bahasa Jepang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-02",level:"N2",title:"〜にもかかわらず",summary:"Menyatakan hal yang terjadi bertentangan dengan kondisi yang seharusnya, artinya meskipun.",groups:[
+    {name:"〜にもかかわらず",description:"Nuansanya agak formal dan sering dipakai di pengumuman, berita, atau penjelasan yang tegas.",sentences:[
+      {"jp":"大雨にもかかわらず、区役所の窓口には朝から人が並んでいた。","kana":"おおあめにもかかわらず、くやくしょのまどぐちにはあさからにんがならんでいた。","romaji":"ooame nimokakawarazu, kuyakusho no madoguchi niha asa kara nin ga naran deita.","meaning":"Meskipun hujan deras, sejak pagi orang-orang sudah mengantre di loket kantor wilayah."},
+      {"jp":"体調がよくないにもかかわらず、彼は最後まで会議に出ていた。","kana":"たいちょうがよくないにもかかわらず、かれはさいごまでかいぎにでていた。","romaji":"taichou gayokunainimokakawarazu, kareha saigo made kaigi ni dete ita.","meaning":"Meskipun kondisinya kurang sehat, dia tetap ikut rapat sampai selesai."},
+      {"jp":"平日にもかかわらず、このカフェは外国人のお客さんで混んでいる。","kana":"へいじつにもかかわらず、このかふぇはがいこくじんのおきゃくさんでこんでいる。","romaji":"heijitsu nimokakawarazu, kono kafe ha gaikokujin noo kyaku sande kon deiru.","meaning":"Meskipun hari kerja, kafe ini ramai oleh pelanggan asing."},
+      {"jp":"注意されたにもかかわらず、またホームで走る人がいた。","kana":"ちゅういされたにもかかわらず、またほーむではしるにんがいた。","romaji":"chuui saretanimokakawarazu, mata hoomu de hashiru nin gaita.","meaning":"Meskipun sudah diperingatkan, masih ada orang yang berlari di peron."},
+      {"jp":"準備不足にもかかわらず、本番は意外とうまくいった。","kana":"じゅんびぶそくにもかかわらず、ほんばんはいがいとうまくいった。","romaji":"junbibusoku nimokakawarazu, honban ha igai toumakuitta.","meaning":"Meskipun persiapannya kurang, pelaksanaannya ternyata berjalan cukup baik."}
+    ]}
+  ]},
+
+  {id:"GR-N2-03",level:"N2",title:"〜ながら(も)",summary:"Menyatakan dua hal yang bertentangan dalam satu keadaan, artinya walaupun begitu tetap.",groups:[
+    {name:"〜ながら(も)",description:"Sering dipakai untuk menunjukkan perasaan campur aduk atau keadaan yang tidak sepenuhnya sesuai.",sentences:[
+      {"jp":"駅前で働きながらも、彼女は毎晩日本語学校に通っている。","kana":"えきまえではたらきながらも、かのじょはまいばんにほんごがくこうにとおっている。","romaji":"ekimae de hataraki nagaramo, kanojo ha maiban nihongogaku kou ni tootte iru.","meaning":"Walaupun bekerja di depan stasiun, dia tetap pergi ke sekolah bahasa Jepang tiap malam."},
+      {"jp":"不便だと感じながら、結局この町の落ち着いた雰囲気が好きになった。","kana":"ふべんだとかんじながら、けっきょくこのまちのおちついたふんいきがすきになった。","romaji":"fuben dato kanji nagara, kekkyoku kono machi no ochitsui ta fun'iki ga suki ninatta.","meaning":"Walaupun saya merasa kota ini tidak terlalu praktis, akhirnya saya jadi suka suasananya yang tenang."},
+      {"jp":"申し訳ないと思いながらも、締め切りの延長をお願いした。","kana":"もうしわけないとおもいながらも、しめきりのえんちょうをおねがいした。","romaji":"moushiwakenai to omoi nagaramo, shimekiri no enchou woo negai shita.","meaning":"Walaupun merasa tidak enak, saya tetap meminta perpanjangan tenggat."},
+      {"jp":"古い建物ながら、館内はきれいに手入れされている。","kana":"ふるいたてものながら、かんないはきれいにていれされている。","romaji":"furui tatemono nagara, kannai hakireini teire sareteiru.","meaning":"Walaupun bangunannya tua, bagian dalamnya terawat rapi."},
+      {"jp":"学生ながらも、地域の防災活動に真剣に関わっている人がいる。","kana":"がくせいながらも、ちいきのぼうさいかつどうにしんけんにかかわっているにんがいる。","romaji":"gakusei nagaramo, chiiki no bousai katsudou ni shinken ni kakawa tteiru nin gairu.","meaning":"Ada orang yang walaupun masih mahasiswa, terlibat serius dalam kegiatan kesiapsiagaan bencana di lingkungan sekitar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-04",level:"N2",title:"〜つつ(も)",summary:"Menyatakan pertentangan saat seseorang sadar akan sesuatu tetapi tetap melakukan hal lain.",groups:[
+    {name:"〜つつ(も)",description:"Banyak dipakai di tulisan atau ucapan yang sedikit lebih formal daripada ながらも.",sentences:[
+      {"jp":"無理だと分かりつつ、締め切り前はつい徹夜してしまう。","kana":"むりだとわかりつつ、しめきりまえはついてつやしてしまう。","romaji":"muri dato waka ritsutsu, shimekiri mae hatsui tetsuya shiteshimau.","meaning":"Walaupun tahu itu tidak baik, menjelang tenggat saya tetap saja begadang."},
+      {"jp":"気になりつつも、忙しくて病院の予約を先延ばしにしていた。","kana":"きになりつつも、いそがしくてびょういんのよやくをさきのばしにしていた。","romaji":"kini naritsutsumo, isogashiku te byouin no yoyaku wo saki noba shinishiteita.","meaning":"Walaupun khawatir, karena sibuk saya terus menunda membuat janji ke rumah sakit."},
+      {"jp":"失礼だと思いつつ、会議中に何度も時計を見てしまった。","kana":"しつれいだとおもいつつ、かいぎちゅうになんどもとけいをみてしまった。","romaji":"shitsurei dato omoi tsutsu, kaigichuu ni nando mo tokei wo mite shimatta.","meaning":"Walaupun merasa itu tidak sopan, saya tetap beberapa kali melihat jam saat rapat."},
+      {"jp":"節約しなければと思いつつ、コンビニで新作スイーツを見ると買ってしまう。","kana":"せつやくしなければとおもいつつ、こんびにでしんさくすいーつをみるとかってしまう。","romaji":"setsuyaku shinakerebato omoi tsutsu, konbini de shinsaku suiitsu wo miru to katsu teshimau.","meaning":"Walaupun berpikir harus hemat, tiap lihat dessert baru di konbini saya tetap membelinya."},
+      {"jp":"周りに頼るべきだと思いつつも、最後は自分で抱え込んでしまう。","kana":"まわりにたよるべきだとおもいつつも、さいごはじぶんでかかえこんでしまう。","romaji":"mawari ni tayoru bekidato omoi tsutsumo, saigo ha jibun de kakae kon deshimau.","meaning":"Walaupun merasa seharusnya mengandalkan orang lain, pada akhirnya saya malah menanggung semuanya sendiri."}
+    ]}
+  ]},
+
+  {id:"GR-N2-05",level:"N2",title:"〜にかかわらず / にかかわりなく",summary:"Menyatakan tanpa melihat perbedaan kondisi, jenis, atau status, artinya tanpa memandang.",groups:[
+    {name:"〜にかかわらず / にかかわりなく",description:"Sering dipakai untuk aturan, pengumuman, dan penjelasan resmi.",sentences:[
+      {"jp":"この図書館は市内在住かどうかにかかわらず利用できます。","kana":"このとしょかんはしないざいじゅうかどうかにかかわらずりようできます。","romaji":"kono toshokan ha shinai zaijuu kadoukanikakawarazu riyou dekimasu.","meaning":"Perpustakaan ini bisa dipakai tanpa memandang apakah tinggal di dalam kota atau tidak."},
+      {"jp":"経験の有無にかかわらず、応募できるアルバイトです。","kana":"けいけんのうむにかかわらず、おうぼできるあるばいとです。","romaji":"keiken no umu nikakawarazu, oubo dekiru arubaito desu.","meaning":"Ini pekerjaan paruh waktu yang bisa dilamar tanpa memandang ada pengalaman atau tidak."},
+      {"jp":"国籍にかかわりなく、災害時は同じ避難所が案内されます。","kana":"こくせきにかかわりなく、さいがいじはおなじひなんじょがあんないされます。","romaji":"kokuseki nikakawarinaku, saigaiji ha onaji hinanjo ga annai saremasu.","meaning":"Tanpa memandang kewarganegaraan, saat bencana orang-orang akan diarahkan ke tempat evakuasi yang sama."},
+      {"jp":"雨天にかかわらず、地域清掃は予定どおり行われます。","kana":"うてんにかかわらず、ちいきせいそうはよていどおりおこなわれます。","romaji":"uten nikakawarazu, chiiki seisou ha yotei doori okonawa remasu.","meaning":"Tanpa memandang hujan atau tidak, kegiatan bersih-bersih lingkungan tetap berjalan sesuai jadwal."},
+      {"jp":"年齢にかかわりなく参加できる日本語交流会が人気らしい。","kana":"ねんれいにかかわりなくさんかできるにほんごこうりゅうかいがにんきらしい。","romaji":"nenrei nikakawarinaku sanka dekiru nihongo kouryuukai ga ninki rashii.","meaning":"Katanya acara pertukaran bahasa Jepang yang bisa diikuti tanpa memandang usia itu cukup populer."}
+    ]}
+  ]},
+
+  {id:"GR-N2-06",level:"N2",title:"〜からといって / からって",summary:"Menyatakan bahwa alasan tertentu tidak otomatis membenarkan kesimpulan setelahnya, artinya hanya karena begitu bukan berarti.",groups:[
+    {name:"〜からといって / からって",description:"からって adalah bentuk lisan yang santai.",sentences:[
+      {"jp":"近いからといって、終電ぎりぎりまで駅前で遊ぶのは危ない。","kana":"ちかいからといって、しゅうでんぎりぎりまでえきまえであそぶのはあぶない。","romaji":"chikai karatoitte, shuuden girigirimade ekimae de asobu noha abunai.","meaning":"Hanya karena rumah dekat bukan berarti aman bermain di sekitar stasiun sampai mepet kereta terakhir."},
+      {"jp":"日本語が上手だからといって、敬語まで完璧とは限らない。","kana":"にほんごがじょうずだからといって、けいごまでかんぺきとはかぎらない。","romaji":"nihongo ga jouzu dakaratoitte, keigo made kanpeki toha kagira nai.","meaning":"Hanya karena bahasa Jepangnya bagus bukan berarti keigo-nya juga pasti sempurna."},
+      {"jp":"有名な店だからって、毎回すぐ入れるわけじゃない。","kana":"ゆうめいなみせだからって、まいかいすぐいれるわけじゃない。","romaji":"yuumei na mise dakaratte, maikai sugu ire ruwakejanai.","meaning":"Hanya karena tokonya terkenal bukan berarti setiap kali kita bisa langsung masuk."},
+      {"jp":"雨が弱いからといって、傘なしで出ると帰りに困るよ。","kana":"あめがよわいからといって、かさなしででるとかえりにこまるよ。","romaji":"ame ga yowai karatoitte, kasa nashide deru to kaeri ni komaru yo.","meaning":"Hanya karena hujannya sedang ringan bukan berarti aman keluar tanpa payung."},
+      {"jp":"外国人だからって、みんな同じサポートが必要なわけではない。","kana":"がいこくじんだからって、みんなおなじさぽーとがひつようなわけではない。","romaji":"gaikokujin dakaratte, minna onaji sapooto ga hitsuyou nawakedehanai.","meaning":"Hanya karena seseorang orang asing bukan berarti semua membutuhkan dukungan yang sama."}
+    ]}
+  ]},
+
+  {id:"GR-N2-07",level:"N2",title:"〜にしても / にしろ / にせよ",summary:"Menyatakan andaipun memilih sisi mana pun, pembicara tetap ingin menekankan hal berikutnya.",groups:[
+    {name:"〜にしても / にしろ / にせよ",description:"Sering dipakai saat mempertimbangkan beberapa kemungkinan.",sentences:[
+      {"jp":"引っ越すにしても、まずは区役所で住所変更の手続きを確認したい。","kana":"ひっこすにしても、まずはくやくしょでじゅうしょへんこうのてつづきをかくにんしたい。","romaji":"hikkosu nishitemo, mazuha kuyakusho de juushohenkou no tetsuzuki wo kakuninshi tai.","meaning":"Kalaupun jadi pindah, saya ingin mengecek dulu prosedur perubahan alamat di kantor wilayah."},
+      {"jp":"断るにしろ、早めに連絡したほうがいい。","kana":"ことわるにしろ、はやめにれんらくしたほうがいい。","romaji":"kotowaru nishiro, hayame ni renraku shitahougaii.","meaning":"Kalaupun mau menolak, lebih baik memberi kabar lebih awal."},
+      {"jp":"留学を続けるにせよ帰国するにせよ、今月中には決めないといけない。","kana":"りゅうがくをつづけるにせよきこくするにせよ、こんげつちゅうにはきめないといけない。","romaji":"ryuugaku wo tsuzuke runiseyo kikoku suruniseyo, kongetsuchuu niha kime naitoikenai.","meaning":"Mau lanjut kuliah di luar negeri atau pulang ke negara asal, saya harus memutuskan dalam bulan ini."},
+      {"jp":"安いにしても、このスマホケースはさすがに作りが軽すぎる。","kana":"やすいにしても、このすまほけーすはさすがにつくりがかるすぎる。","romaji":"yasui nishitemo, kono sumahokeesu hasasugani tsukuri ga karusu giru.","meaning":"Walaupun harganya murah, casing ponsel ini tetap terasa terlalu ringkih."},
+      {"jp":"歩くにしろ電車に乗るにしろ、今日は早めに出たほうがよさそうだ。","kana":"あるくにしろでんしゃにのるにしろ、こんにちははやめにでたほうがよさそうだ。","romaji":"aruku nishiro densha ni noru nishiro, konnichiha hayame ni deta hougayosasouda.","meaning":"Entah jalan kaki atau naik kereta, hari ini sepertinya lebih baik berangkat lebih awal."}
+    ]}
+  ]},
+
+  {id:"GR-N2-08",level:"N2",title:"〜かのようだ / かのように",summary:"Menyatakan keadaan yang terlihat seolah-olah demikian, artinya seperti, seakan-akan.",groups:[
+    {name:"〜かのようだ / かのように",description:"Dipakai untuk menggambarkan kesan yang kuat atau gaya penulisan yang lebih deskriptif.",sentences:[
+      {"jp":"店員は常連客の名前を全部覚えているかのように自然に声をかけていた。","kana":"てんいんはじょうれんきゃくのなまえをぜんぶおぼえているかのようにしぜんにこえをかけていた。","romaji":"ten'in ha jourenkyaku no namae wo zenbu oboe teirukanoyouni shizen ni koe wokaketeita.","meaning":"Pelayan itu menyapa dengan natural seolah-olah mengingat nama semua pelanggan tetap."},
+      {"jp":"彼は何もなかったかのように翌日ふつうに出社した。","kana":"かれはなにもなかったかのようによくじつふつうにしゅっしゃした。","romaji":"kareha nanimo nakattakanoyouni yokujitsu futsuuni shussha shita.","meaning":"Dia masuk kerja keesokan harinya seperti tidak terjadi apa-apa."},
+      {"jp":"初めて来たのに、昔からこの町を知っているかのような気持ちになった。","kana":"はじめてきたのに、むかしからこのまちをしっているかのようなきもちになった。","romaji":"hajimete kita noni, mukashi karakono machi wo shitte irukanoyouna kimochi ninatta.","meaning":"Padahal baru pertama datang, saya merasa seperti sudah lama mengenal kota ini."},
+      {"jp":"先生はゆっくり息を整えるかのように、発表の前に少し間を置いた。","kana":"せんせいはゆっくりいきをととのえるかのように、はっぴょうのまえにすこしかんをおいた。","romaji":"sensei hayukkuri iki wo totonoe rukanoyouni, happyou no mae ni sukoshi kan wo oita.","meaning":"Guru itu berhenti sejenak sebelum presentasi seolah-olah sedang menenangkan napas."},
+      {"jp":"雪は音を吸い込むかのように、街全体を静かにしていた。","kana":"ゆきはおとをすいこむかのように、まちぜんたいをしずかにしていた。","romaji":"yuki ha oto wo suikomu kanoyouni, machi zentai wo shizuka nishiteita.","meaning":"Salju membuat seluruh kota menjadi tenang seolah-olah menyerap semua suara."}
+    ]}
+  ]},
+
+  {id:"GR-N2-09",level:"N2",title:"〜げ",summary:"Menyatakan kesan yang terlihat dari luar, seperti tampak, kelihatan, berkesan.",groups:[
+    {name:"〜げ",description:"Sering melekat pada kata sifat atau perasaan dan banyak dipakai untuk menggambarkan ekspresi orang.",sentences:[
+      {"jp":"窓口の職員は少し困りげな顔をしながら、別の番号札を渡してくれた。","kana":"まどぐちのしょくいんはすこしこまりげなかおをしながら、べつのばんごうさつをわたしてくれた。","romaji":"madoguchi no shokuin ha sukoshi komari gena kao woshinagara, betsuno bangou satsu wo watashi tekureta.","meaning":"Petugas loket itu memberikan nomor antrean lain sambil menunjukkan ekspresi yang agak kebingungan."},
+      {"jp":"彼は自信ありげに答えていたのに、結果が出たら意外と静かだった。","kana":"かれはじしんありげにこたえていたのに、けっかがでたらいがいとしずかだった。","romaji":"kareha jishin arigeni kotae teitanoni, kekka ga deta ra igai to shizuka datta.","meaning":"Tadi dia menjawab dengan sangat percaya diri, tapi setelah hasil keluar dia justru jadi diam."},
+      {"jp":"ホームで立っていた女の子が不安げに何度も案内板を見ていた。","kana":"ほーむでたっていたおんなのこがふあんげになんどもあんないばんをみていた。","romaji":"hoomu de tatsu teita onnanoko ga fuan geni nando mo annaiban wo mite ita.","meaning":"Anak perempuan yang berdiri di peron terus melihat papan petunjuk dengan wajah cemas."},
+      {"jp":"店長は忙しげに店内を行き来していて、話しかけるタイミングがなかった。","kana":"てんちょうはいそがしげにてんないをいききしていて、はなしかけるたいみんぐがなかった。","romaji":"tenchou ha isogashi geni tennai wo ikiki shiteite, hanashi kakeru taimingu ganakatta.","meaning":"Manajer toko mondar-mandir dengan terlihat sangat sibuk sehingga saya tidak sempat menyapanya."},
+      {"jp":"その学生は誇らしげに奨学金の通知を見せてくれた。","kana":"そのがくせいはほこらしげにしょうがくきんのつうちをみせてくれた。","romaji":"sono gakusei ha hokora shigeni shougakukin no tsuuchi wo mise tekureta.","meaning":"Mahasiswa itu menunjukkan surat beasiswanya dengan ekspresi bangga."}
+    ]}
+  ]},
+
+  {id:"GR-N2-10",level:"N2",title:"〜ばかりに",summary:"Menyatakan penyebab tunggal yang membuat hasil buruk terjadi, artinya hanya karena.",groups:[
+    {name:"〜ばかりに",description:"Nuansanya penyesalan atau sayang sekali gara-gara hal itu.",sentences:[
+      {"jp":"終電を一本逃したばかりに、タクシー代が予想以上にかかった。","kana":"しゅうでんをいっぽんのがしたばかりに、たくしーだいがよそういじょうにかかった。","romaji":"shuuden wo ippon nogashi tabakarini, takushii dai ga yosouijou nikakatta.","meaning":"Hanya karena ketinggalan satu kereta terakhir, ongkos taksinya jadi jauh lebih mahal dari perkiraan."},
+      {"jp":"確認を一つ怠ったばかりに、在留カードの更新で二度手間になった。","kana":"かくにんをひとつおこたったばかりに、ざいりゅうかーどのこうしんでにどでまになった。","romaji":"kakunin wo hitotsu okotatsu tabakarini, zairyuu kaado no koushin de nidodema ninatta.","meaning":"Hanya karena melewatkan satu pengecekan, pengurusan perpanjangan kartu tinggal jadi dua kali kerja."},
+      {"jp":"つい見栄を張ったばかりに、あとで説明が大変になった。","kana":"ついみえをはったばかりに、あとでせつめいがたいへんになった。","romaji":"tsui mie wo hatsu tabakarini, atode setsumei ga taihen ninatta.","meaning":"Hanya karena tadi sempat gengsi, penjelasannya jadi merepotkan di belakang."},
+      {"jp":"安い部屋を選んだばかりに、冬の寒さでかなり苦労した。","kana":"やすいへやをえらんだばかりに、ふゆのさむさでかなりくろうした。","romaji":"yasui heya wo eran dabakarini, fuyu no samusa dekanari kurou shita.","meaning":"Hanya karena memilih kamar yang murah, saya cukup menderita saat musim dingin."},
+      {"jp":"『大丈夫です』と言ったばかりに、全部一人で任されてしまった。","kana":"『だいじょうぶです』といったばかりに、ぜんぶひとりでまかされてしまった。","romaji":"( daijoubu desu ) to itta bakarini, zenbu hitori de makasa reteshimatta.","meaning":"Hanya karena saya bilang 'tidak apa-apa', akhirnya semua diserahkan ke saya sendirian."}
+    ]}
+  ]},
+
+  {id:"GR-N2-11",level:"N2",title:"〜につき",summary:"Menyatakan alasan atau dasar pengumuman secara formal, artinya karena, disebabkan oleh.",groups:[
+    {name:"〜につき",description:"Sering terlihat di papan pengumuman, toko, dan surat resmi.",sentences:[
+      {"jp":"工事中につき、こちらの通路は通れません。","kana":"こうじちゅうにつき、こちらのつうろはとうれません。","romaji":"koujichuu nitsuki, kochirano tsuuro ha toure masen.","meaning":"Karena sedang ada konstruksi, lorong ini tidak bisa dilewati."},
+      {"jp":"本日は棚卸しにつき、コンビニの一部商品が買えません。","kana":"ほんじつはたなおろしにつき、こんびにのいちぶしょうひんがかえません。","romaji":"honjitsu ha tanaoroshi nitsuki, konbini no ichibu shouhin ga kae masen.","meaning":"Karena hari ini ada stok opname, sebagian barang di konbini tidak bisa dibeli."},
+      {"jp":"会場整備につき、午後一時までロビーでお待ちください。","kana":"かいじょうせいびにつき、ごごいちじまでろびーでおまちください。","romaji":"kaijou seibi nitsuki, gogo ichiji made robii deo machi kudasai.","meaning":"Karena penataan venue, harap menunggu di lobi sampai pukul satu siang."},
+      {"jp":"準備中につき、窓口の受付はまだ始まっておりません。","kana":"じゅんびちゅうにつき、まどぐちのうけつけはまだはじまっておりません。","romaji":"junbichuu nitsuki, madoguchi no uketsuke hamada hajima tteorimasen.","meaning":"Karena masih tahap persiapan, pelayanan loket belum dimulai."},
+      {"jp":"研修につき、本日の電話対応は少人数で行っております。","kana":"けんしゅうにつき、ほんじつのでんわたいおうはしょうにんずうでいっております。","romaji":"kenshuu nitsuki, honjitsu no denwa taiou ha shouninzuu de itte orimasu.","meaning":"Karena ada pelatihan, layanan telepon hari ini ditangani oleh staf yang lebih sedikit."}
+    ]}
+  ]},
+
+  {id:"GR-N2-12",level:"N2",title:"〜あまり",summary:"Menyatakan sesuatu terjadi karena perasaan atau keadaan yang terlalu kuat, artinya karena terlalu.",groups:[
+    {name:"〜あまり",description:"Sering dipakai untuk emosi, kelelahan, atau keadaan berlebihan.",sentences:[
+      {"jp":"心配のあまり、母は夜遅くに何度もメッセージを送ってきた。","kana":"しんぱいのあまり、はははよるおそくになんどもめっせーじをおくってきた。","romaji":"shinpai noamari, haha ha yoruosoku ni nando mo messeeji wo okutsu tekita.","meaning":"Karena terlalu khawatir, ibu sampai mengirim pesan berkali-kali larut malam."},
+      {"jp":"忙しさのあまり、冷蔵庫に何があるかさえ覚えていなかった。","kana":"いそがしさのあまり、れいぞうこになにがあるかさえおぼえていなかった。","romaji":"isogashisa noamari, reizouko ni nani gaarukasae oboe teinakatta.","meaning":"Karena terlalu sibuk, saya sampai tidak ingat isi kulkas."},
+      {"jp":"緊張のあまり、面接で自分の名前を言い直してしまった。","kana":"きんちょうのあまり、めんせつでじぶんのなまえをいいなおしてしまった。","romaji":"kinchou noamari, mensetsu de jibun no namae wo ii naoshi teshimatta.","meaning":"Karena terlalu tegang, saya sampai harus mengulangi nama sendiri saat wawancara."},
+      {"jp":"うれしさのあまり、その場で先生に何度もお礼を言った。","kana":"うれしさのあまり、そのばでせんせいになんどもおれいをいった。","romaji":"ureshisanoamari, sono ba de sensei ni nando moo rei wo itta.","meaning":"Karena terlalu senang, saya berterima kasih berkali-kali kepada sensei di tempat itu juga."},
+      {"jp":"暑さのあまり、駅までの道でアイスを二本も買ってしまった。","kana":"あつさのあまり、えきまでのみちであいすをにほんもかってしまった。","romaji":"atsusa noamari, eki madeno michi de aisu wo nihon mo katsu teshimatta.","meaning":"Karena terlalu panas, di jalan ke stasiun saya malah membeli dua es krim sekaligus."}
+    ]}
+  ]},
+
+  {id:"GR-N2-13",level:"N2",title:"〜ものだから",summary:"Menyatakan alasan pribadi yang terdengar seperti penjelasan atau permintaan pengertian, artinya soalnya.",groups:[
+    {name:"〜ものだから",description:"Banyak dipakai saat menjelaskan keadaan diri sendiri dengan nada agak lembut.",sentences:[
+      {"jp":"日本に来たばかりなものだから、電車の乗り換えにまだ慣れていないんです。","kana":"にっぽんにきたばかりなものだから、でんしゃののりかえにまだなれていないんです。","romaji":"nippon ni kita bakarinamonodakara, densha no norikae nimada nare teinaindesu.","meaning":"Soalnya saya baru datang ke Jepang, jadi masih belum terbiasa ganti kereta."},
+      {"jp":"子どもが熱を出したものですから、今日は在宅で仕事をします。","kana":"こどもがねつをだしたものですから、こんにちはざいたくでしごとをします。","romaji":"kodomo ga netsu wo dashi tamonodesukara, konnichiha zaitaku de shigoto woshimasu.","meaning":"Soalnya anak saya demam, hari ini saya akan bekerja dari rumah."},
+      {"jp":"このあたりは詳しくないものですから、駅までの道を教えていただけますか。","kana":"このあたりはくわしくないものですから、えきまでのみちをおしえていただけますか。","romaji":"konoatariha kuwashiku naimonodesukara, eki madeno michi wo oshie teitadakemasuka.","meaning":"Soalnya saya belum tahu daerah sini, bolehkah Anda memberi tahu jalan ke stasiun?"},
+      {"jp":"急に予定が変わったものだから、予約の時間に少し遅れそうです。","kana":"きゅうによていがかわったものだから、よやくのじかんにすこしおくれそうです。","romaji":"kyuuni yotei ga kawa ttamonodakara, yoyaku no jikan ni sukoshi okure soudesu.","meaning":"Soalnya jadwalnya mendadak berubah, saya sepertinya akan sedikit terlambat untuk reservasi."},
+      {"jp":"人前で話すのが苦手なものだから、発表の前はいつも落ち着かなくて。","kana":"ひとまえではなすのがにがてなものだから、はっぴょうのまえはいつもおちつかなくて。","romaji":"hitomae de hanasu noga nigate namonodakara, happyou no mae haitsumo ochitsuka nakute.","meaning":"Soalnya saya kurang pandai bicara di depan orang, jadi sebelum presentasi saya selalu gelisah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-14",level:"N2",title:"〜のことだから",summary:"Menyatakan dugaan berdasarkan sifat atau kebiasaan seseorang, artinya mengingat dia orang seperti itu.",groups:[
+    {name:"〜のことだから",description:"Dipakai saat pembicara mengenal baik sifat orang yang dibicarakan.",sentences:[
+      {"jp":"時間に厳しい佐藤さんのことだから、もう会場に着いていると思う。","kana":"じかんにいかめしいさとうさんのことだから、もうかいじょうについているとおもう。","romaji":"jikan ni ikameshii satou sannokotodakara, mou kaijou ni tsui teiruto omou.","meaning":"Mengingat Satou-san sangat disiplin soal waktu, saya rasa dia sudah sampai di venue."},
+      {"jp":"甘い物が好きな彼女のことだから、新しい限定パフェはもう食べたはずだ。","kana":"あまいものがすきなかのじょのことだから、あたらしいげんていぱふぇはもうたべたはずだ。","romaji":"amai mono ga suki na kanojo nokotodakara, atarashii gentei pafe hamou tabeta hazuda.","meaning":"Mengingat dia suka makanan manis, pasti dia sudah mencoba parfait edisi terbatas yang baru itu."},
+      {"jp":"責任感の強い先輩のことだから、最後まできちんと対応してくれるだろう。","kana":"せきにんかんのつよいせんぱいのことだから、さいごまできちんとたいおうしてくれるだろう。","romaji":"sekininkan no tsuyoi senpai nokotodakara, saigo madekichinto taiou shitekurerudarou.","meaning":"Mengingat senior itu rasa tanggung jawabnya kuat, pasti dia akan menangani sampai tuntas."},
+      {"jp":"子ども思いの先生のことだから、保護者への連絡も丁寧にしているはずだ。","kana":"こどもおもいのせんせいのことだから、ほごしゃへのれんらくもていねいにしているはずだ。","romaji":"kodomo omoi no sensei nokotodakara, hogosha heno renraku mo teinei nishiteiruhazuda.","meaning":"Mengingat guru itu sangat perhatian pada anak-anak, pasti dia juga menghubungi orang tua dengan teliti."},
+      {"jp":"旅行好きの友達のことだから、連休はじっと家にいないと思う。","kana":"りょこうすきのともだちのことだから、れんきゅうはじっといえにいないとおもう。","romaji":"ryokou suki no tomodachi nokotodakara, renkyuu hajitto ie niinaito omou.","meaning":"Mengingat teman saya suka jalan-jalan, saya rasa saat libur panjang dia tidak akan diam di rumah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-15",level:"N2",title:"〜ことから",summary:"Menyatakan alasan atau dasar penilaian berdasarkan fakta tertentu, artinya karena, dari fakta bahwa.",groups:[
+    {name:"〜ことから",description:"Sering dipakai untuk penjelasan objektif atau tulisan resmi.",sentences:[
+      {"jp":"この地域は坂が多いことから、自転車よりバスを使う人が多い。","kana":"このちいきはさかがおおいことから、じてんしゃよりばすをつかうにんがおおい。","romaji":"kono chiiki ha saka ga ooi kotokara, jitensha yori basu wo tsukau nin ga ooi.","meaning":"Karena daerah ini banyak tanjakan, orang-orang lebih banyak memakai bus daripada sepeda."},
+      {"jp":"駅から近いことから、この会議室がよく選ばれている。","kana":"えきからちかいことから、このかいぎしつがよくえらばれている。","romaji":"eki kara chikai kotokara, kono kaigishitsu gayoku eraba reteiru.","meaning":"Karena dekat dari stasiun, ruang rapat ini sering dipilih."},
+      {"jp":"申込者が多いことから、説明会は二回に分けて行われることになった。","kana":"もうしこみしゃがおおいことから、せつめいかいはにかいにわけておこなわれることになった。","romaji":"moushikomisha ga ooi kotokara, setsumeikai ha nikai ni wake te okonawa rerukotoninatta.","meaning":"Karena pendaftarnya banyak, sesi penjelasan diputuskan diadakan dalam dua gelombang."},
+      {"jp":"発音が似ていることから、学習者が間違えやすい表現だと言われている。","kana":"はつおんがにていることから、がくしゅうしゃがまちがえやすいひょうげんだといわれている。","romaji":"hatsuon ga nite irukotokara, gakushuusha ga machigae yasui hyougen dato iwa reteiru.","meaning":"Karena pelafalannya mirip, ungkapan ini katanya mudah tertukar oleh pelajar."},
+      {"jp":"古い写真が見つかったことから、この建物の歴史が改めて注目された。","kana":"ふるいしゃしんがみつかったことから、このたてもののれきしがあらためてちゅうもくされた。","romaji":"furui shashin ga mitsu kattakotokara, kono tatemono no rekishi ga aratame te chuumoku sareta.","meaning":"Karena foto lamanya ditemukan, sejarah bangunan ini kembali mendapat perhatian."}
+    ]}
+  ]},
+
+  {id:"GR-N2-16",level:"N2",title:"〜からには / 〜からは / 〜以上は / 〜上は",summary:"Menyatakan kalau sesuatu sudah diputuskan atau dilakukan, maka ada tanggung jawab atau konsekuensi setelahnya.",groups:[
+    {name:"〜からには / 〜からは / 〜以上は / 〜上は",description:"Dipakai untuk tekad, kewajiban, dan keputusan yang tidak setengah-setengah.",sentences:[
+      {"jp":"日本で働くからには、職場のルールをきちんと理解しておきたい。","kana":"にっぽんではたらくからには、しょくばのるーるをきちんとりかいしておきたい。","romaji":"nippon de hataraku karaniha, shokuba no ruuru wokichinto rikai shiteokitai.","meaning":"Kalau sudah bekerja di Jepang, saya ingin memahami aturan kantor dengan benar."},
+      {"jp":"引き受けたからは、最後まで責任を持ってやるつもりです。","kana":"ひきうけたからは、さいごまでせきにんをもってやるつもりです。","romaji":"hikiuke takaraha, saigo made sekinin wo motsu teyarutsumoridesu.","meaning":"Kalau sudah saya terima, saya berniat mengerjakannya dengan tanggung jawab sampai akhir."},
+      {"jp":"留学すると決めた以上は、中途半端な気持ちではいたくない。","kana":"りゅうがくするときめたいじょうは、ちゅうとはんぱなきもちではいたくない。","romaji":"ryuugaku suruto kime ta ijou ha, chuutohanpa na kimochi dehaitakunai.","meaning":"Kalau sudah memutuskan untuk belajar ke luar negeri, saya tidak mau menjalaninya setengah hati."},
+      {"jp":"発表者である上は、質問にも落ち着いて答えないといけない。","kana":"はっぴょうしゃであるうえは、しつもんにもおちついてこたえないといけない。","romaji":"happyousha dearu ue ha, shitsumon nimo ochitsui te kotae naitoikenai.","meaning":"Kalau sudah menjadi presenter, saya harus bisa menjawab pertanyaan dengan tenang juga."},
+      {"jp":"住民としてこの町に暮らすからには、地域の防災訓練にも参加したい。","kana":"じゅうみんとしてこのまちにくらすからには、ちいきのぼうさいくんれんにもさんかしたい。","romaji":"juumin toshitekono machi ni kura sukaraniha, chiiki no bousaikunren nimo sanka shitai.","meaning":"Kalau sudah tinggal di kota ini sebagai warga, saya juga ingin ikut latihan kesiapsiagaan bencananya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-17",level:"N2",title:"〜ところをみると",summary:"Menyatakan penilaian berdasarkan situasi yang terlihat, artinya dilihat dari.",groups:[
+    {name:"〜ところをみると",description:"Dipakai saat menyimpulkan sesuatu dari tanda yang tampak.",sentences:[
+      {"jp":"玄関に濡れた傘が何本もあるところを見ると、もう中にかなり人が集まっているようだ。","kana":"げんかんにぬれたかさがなんぼんもあるところをみると、もうなかにかなりにんがあつまっているようだ。","romaji":"genkan ni nure ta kasa ga nanbon moarutokorowo miru to, mou nakani kanari nin ga atsuma tteiruyouda.","meaning":"Dilihat dari banyaknya payung basah di pintu masuk, sepertinya di dalam sudah cukup ramai."},
+      {"jp":"店員と自然に話しているところを見ると、彼はこの辺りの常連らしい。","kana":"てんいんとしぜんにはなしているところをみると、かれはこのあたりのじょうれんらしい。","romaji":"ten'in to shizen ni hanashi teirutokorowo miru to, kareha kono atari no jouren rashii.","meaning":"Dilihat dari caranya bicara akrab dengan pelayan, sepertinya dia pelanggan tetap di daerah sini."},
+      {"jp":"申請書を迷わず書いているところを見ると、手続きに慣れているんですね。","kana":"しんせいしょをまよわずかいているところをみると、てつづきになれているんですね。","romaji":"shinseisho wo mayowa zu kai teirutokorowo miru to, tetsuzuki ni nare teirundesune.","meaning":"Dilihat dari caranya mengisi formulir tanpa ragu, sepertinya Anda sudah terbiasa dengan prosedur ini ya."},
+      {"jp":"机の上に参考書が何冊も開いてあるところを見ると、試験前でかなり忙しそうだ。","kana":"つくえのうえにさんこうしょがなんさつもひらいてあるところをみると、しけんまえでかなりいそがしそうだ。","romaji":"tsukue no ueni sankousho ga nansatsu mo hirai tearutokorowo miru to, shikenmae dekanari isogashiso uda.","meaning":"Dilihat dari banyaknya buku referensi yang terbuka di meja, kelihatannya dia sangat sibuk menjelang ujian."},
+      {"jp":"会場の雰囲気が明るいところを見ると、今年の交流会は成功だったんだろう。","kana":"かいじょうのふんいきがあかるいところをみると、こんねんのこうりゅうかいはせいこうだったんだろう。","romaji":"kaijou no fun'iki ga akarui tokorowo miru to, konnen no kouryuukai ha seikou dattandarou.","meaning":"Dilihat dari suasana venue yang cerah, acara pertukaran tahun ini sepertinya sukses."}
+    ]}
+  ]},
+
+  {id:"GR-N2-18",level:"N2",title:"〜だけに / 〜だけあって",summary:"Menyatakan karena memang sesuai kemampuan atau keadaan, hasilnya terasa wajar dan pantas.",groups:[
+    {name:"〜だけに / 〜だけあって",description:"だけあって cenderung untuk hasil yang sesuai harapan, だけに bisa juga menekankan sisi beratnya.",sentences:[
+      {"jp":"観光地だけあって、駅の案内表示に英語と中国語もあった。","kana":"かんこうちだけあって、えきのあんないひょうじにえいごとちゅうごくごもあった。","romaji":"kankouchi dakeatte, eki no annaihyouji ni eigo to chuugokugo moatta.","meaning":"Karena memang daerah wisata, papan petunjuk di stasiunnya juga ada bahasa Inggris dan Mandarin."},
+      {"jp":"十年日本に住んでいるだけあって、役所での説明もとてもスムーズだった。","kana":"じゅうねんにっぽんにすんでいるだけあって、やくしょでのせつめいもとてもすむーずだった。","romaji":"juunen nippon ni sun deirudakeatte, yakusho deno setsumei mototemo sumuuzu datta.","meaning":"Karena memang sudah tinggal di Jepang sepuluh tahun, penjelasannya di kantor pemerintahan juga sangat lancar."},
+      {"jp":"期待していただけに、休演の知らせを見た時はがっかりした。","kana":"きたいしていただけに、きゅうえんのしらせをみたときはがっかりした。","romaji":"kitaishi teitadakeni, kyuuen no shirase wo mita toki hagakkarishita.","meaning":"Justru karena saya sangat berharap, saat melihat kabar pertunjukannya dibatalkan saya jadi kecewa sekali."},
+      {"jp":"人気店だけあって、平日の昼でも行列ができていた。","kana":"にんきみせだけあって、へいじつのひるでもぎょうれつができていた。","romaji":"ninki mise dakeatte, heijitsu no hiru demo gyouretsu gadekiteita.","meaning":"Karena memang toko terkenal, bahkan siang hari kerja pun antreannya panjang."},
+      {"jp":"任された仕事が大きいだけに、準備にも時間をかけたかった。","kana":"まかされたしごとがおおきいだけに、じゅんびにもじかんをかけたかった。","romaji":"makasa reta shigoto ga ookii dakeni, junbi nimo jikan wokaketakatta.","meaning":"Justru karena pekerjaan yang diberikan cukup besar, saya ingin meluangkan lebih banyak waktu untuk persiapan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-19",level:"N2",title:"〜ことだし",summary:"Menyatakan alasan tambahan yang cukup untuk mengambil tindakan, artinya lagipula, sekalian.",groups:[
+    {name:"〜ことだし",description:"Sering dipakai dalam percakapan santai untuk memberi dorongan melakukan sesuatu.",sentences:[
+      {"jp":"せっかく近くまで来たことだし、帰りに神社にも寄っていこう。","kana":"せっかくちかくまできたことだし、かえりにじんじゃにもよっていこう。","romaji":"sekkaku chikaku made kita kotodashi, kaeri ni jinja nimo yotsu teikou.","meaning":"Mumpung kita sudah sampai dekat sini, sekalian mampir ke kuil saat pulang yuk."},
+      {"jp":"雨もやんだことだし、少し散歩してから帰ろうか。","kana":"あめもやんだことだし、すこしさんぽしてからかえろうか。","romaji":"ame moyandakotodashi, sukoshi sanpo shitekara kaero uka.","meaning":"Karena hujannya juga sudah berhenti, bagaimana kalau kita jalan sebentar sebelum pulang?"},
+      {"jp":"新しい学期が始まることだし、ノートとペンを買い替えたい。","kana":"あたらしいがっきがはじまることだし、のーととぺんをかいかえたい。","romaji":"atarashii gakki ga hajima rukotodashi, nooto to pen wo kai kae tai.","meaning":"Karena semester baru juga mulai, saya ingin ganti buku catatan dan pena."},
+      {"jp":"時間もあることだし、在留手続きに必要な書類を今のうちに整理しておこう。","kana":"じかんもあることだし、ざいりゅうてつづきにひつようなしょるいをいまのうちにせいりしておこう。","romaji":"jikan moarukotodashi, zairyuu tetsuzuki ni hitsuyou na shorui wo ima nouchini seiri shiteokou.","meaning":"Karena waktunya juga ada, mari rapikan dokumen yang dibutuhkan untuk urusan izin tinggal sekarang."},
+      {"jp":"引っ越したことだし、近所の避難場所も確認しておいたほうがいいね。","kana":"ひっこしたことだし、きんじょのひなんばしょもかくにんしておいたほうがいいね。","romaji":"hikkoshi takotodashi, kinjo no hinanbasho mo kakuninshi teoitahougaiine.","meaning":"Karena baru pindah juga, sebaiknya kita cek juga lokasi tempat evakuasi di sekitar sini."}
+    ]}
+  ]},
+
+  {id:"GR-N2-20",level:"N2",title:"〜てこそ",summary:"Menyatakan bahwa sesuatu baru bermakna jika syarat itu terpenuhi, artinya justru setelah, barulah.",groups:[
+    {name:"〜てこそ",description:"Dipakai untuk menekankan inti atau nilai sebenarnya dari sesuatu.",sentences:[
+      {"jp":"毎日使ってこそ、日本語の表現は自然に身についていく。","kana":"まいにちつかってこそ、にほんごのひょうげんはしぜんにみについていく。","romaji":"mainichi tsukatte koso, nihongo no hyougen ha shizen ni mini tsuiteiku.","meaning":"Justru dengan dipakai setiap hari, ungkapan bahasa Jepang baru menempel secara alami."},
+      {"jp":"地域の行事は参加してこそ、その町の雰囲気が分かる。","kana":"ちいきのぎょうじはさんかしてこそ、そのまちのふんいきがわかる。","romaji":"chiiki no gyouji ha sanka shitekoso, sono machi no fun'iki ga waka ru.","meaning":"Justru dengan ikut acara lingkungan, kita baru mengerti suasana kota itu."},
+      {"jp":"防災知識は実際に訓練してこそ役に立つ。","kana":"ぼうさいちしきはじっさいにくんれんしてこそやくにたつ。","romaji":"bousai chishiki ha jissaini kunren shitekoso yakunitatsu.","meaning":"Pengetahuan kebencanaan justru berguna setelah benar-benar dilatih."},
+      {"jp":"感謝の気持ちは言葉にしてこそ相手に伝わる。","kana":"かんしゃのきもちはことばにしてこそあいてにつたわる。","romaji":"kansha no kimochi ha kotoba nishitekoso aite ni tsutawa ru.","meaning":"Perasaan terima kasih justru tersampaikan setelah diucapkan dengan kata-kata."},
+      {"jp":"学んだ敬語は職場で使ってこそ意味があると思う。","kana":"まなんだけいごはしょくばでつかってこそいみがあるとおもう。","romaji":"manan da keigo ha shokuba de tsukatte koso imi gaaruto omou.","meaning":"Menurut saya keigo yang dipelajari justru punya arti kalau dipakai di tempat kerja."}
+    ]}
+  ]},
+
+  {id:"GR-N2-21",level:"N2",title:"あまりの〜に",summary:"Menyatakan sesuatu terjadi karena keadaan atau perasaan yang terlalu kuat, artinya karena begitu.",groups:[
+    {name:"あまりの〜に",description:"Bentuk ini memakai kata benda atau kata sifat yang dinominalkan.",sentences:[
+      {"jp":"あまりの暑さに、駅まで歩くのをあきらめてバスに乗った。","kana":"あまりのあつさに、えきまであるくのをあきらめてばすにじょうった。","romaji":"amarino atsusa ni, eki made aruku nowoakiramete basu ni joutsu ta.","meaning":"Karena panasnya luar biasa, saya menyerah berjalan sampai stasiun dan memilih naik bus."},
+      {"jp":"あまりの混雑に、コンビニに入るだけでも時間がかかった。","kana":"あまりのこんざつに、こんびににいるだけでもじかんがかかった。","romaji":"amarino konzatsu ni, konbini ni iru dakedemo jikan gakakatta.","meaning":"Karena terlalu padat, untuk masuk ke konbini saja butuh waktu."},
+      {"jp":"あまりの緊張に、名前を書こうとしてペンを落としてしまった。","kana":"あまりのきんちょうに、なまえをかこうとしてぺんをおとしてしまった。","romaji":"amarino kinchou ni, namae wo kako utoshite pen wo oto shiteshimatta.","meaning":"Karena terlalu tegang, saat hendak menulis nama saya malah menjatuhkan pena."},
+      {"jp":"あまりの静けさに、図書館の中でスマホを触るのもためらわれた。","kana":"あまりのしずけさに、としょかんのなかですまほをふるのもためらわれた。","romaji":"amarino shizukesa ni, toshokan no naka de sumaho wo furu nomotamerawareta.","meaning":"Karena suasananya terlalu sunyi, saya sampai segan menyentuh ponsel di dalam perpustakaan."},
+      {"jp":"あまりの親切に、初めて来た町なのに不安が少し消えた。","kana":"あまりのしんせつに、はじめてきたまちなのにふあんがすこしきえた。","romaji":"amarino shinsetsu ni, hajimete kita machi nanoni fuan ga sukoshi kie ta.","meaning":"Karena orang-orangnya sangat ramah, kecemasan saya sebagai pendatang baru sedikit berkurang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-22",level:"N2",title:"〜ものなら / 〜もんなら",summary:"Menyatakan andaikata sesuatu mungkin dilakukan, biasanya dengan nuansa sulit atau penyesalan, artinya kalau saja bisa.",groups:[
+    {name:"〜ものなら / 〜もんなら",description:"もんなら adalah bentuk lisan yang lebih santai.",sentences:[
+      {"jp":"取れるものなら、来月の連休に有給を取りたい。","kana":"とれるものなら、らいげつのれんきゅうにゆうきゅうをとりたい。","romaji":"tore rumononara, raigetsu no renkyuu ni yuukyuu wo tori tai.","meaning":"Kalau saja memungkinkan, saya ingin mengambil cuti berbayar pada libur panjang bulan depan."},
+      {"jp":"戻れるものなら、申請書を出す前の自分に確認不足だと言いたい。","kana":"もどれるものなら、しんせいしょをだすまえのじぶんにかくにんぶそくだといいたい。","romaji":"modore rumononara, shinseisho wo dasu mae no jibun ni kakuninbusoku dato ii tai.","meaning":"Kalau saja bisa kembali ke masa sebelum menyerahkan formulir, saya ingin bilang pada diri sendiri bahwa pengecekannya kurang."},
+      {"jp":"買えるもんなら、駅前のあの広いマンションに住んでみたいよ。","kana":"かえるもんなら、えきまえのあのひろいまんしょんにすんでみたいよ。","romaji":"kae rumonnara, ekimae noano hiroi manshon ni sun demitaiyo.","meaning":"Kalau saja sanggup beli, saya ingin mencoba tinggal di apartemen luas dekat stasiun itu."},
+      {"jp":"休めるものなら、今日は一日中家で寝ていたい。","kana":"やすめるものなら、こんにちはいちにちじゅういえでねていたい。","romaji":"yasume rumononara, konnichiha ichinichijuu ie de nete itai.","meaning":"Kalau saja bisa libur, hari ini saya ingin tidur di rumah seharian."},
+      {"jp":"やり直せるものなら、面接の最後の一言をもう少し丁寧に言い換えたい。","kana":"やりなおせるものなら、めんせつのさいごのひとことをもうすこしていねいにいいかえたい。","romaji":"yari naose rumononara, mensetsu no saigo no hitokoto womou sukoshi teinei ni iikae tai.","meaning":"Kalau saja bisa diulang, saya ingin menyampaikan kalimat terakhir saat wawancara dengan lebih sopan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-23",level:"N2",title:"〜ないことには〜ない",summary:"Menyatakan sesuatu tidak akan terjadi sebelum syaratnya terpenuhi, artinya kalau tidak, tidak akan.",groups:[
+    {name:"〜ないことには〜ない",description:"Sering dipakai untuk syarat penting yang mendahului langkah berikutnya.",sentences:[
+      {"jp":"区役所で住民票を取らないことには、銀行口座の手続きが進められない。","kana":"くやくしょでじゅうみんひょうをとらないことには、ぎんこうこうざのてつづきがすすめられない。","romaji":"kuyakusho de juuminhyou wo tora naikotoniha, ginkoukouza no tetsuzuki ga susume rarenai.","meaning":"Kalau belum ambil surat domisili di kantor wilayah, proses rekening bank tidak bisa dilanjutkan."},
+      {"jp":"実際に会って話さないことには、誤解が解けるかどうか分からない。","kana":"じっさいにあってはなさないことには、ごかいがとけるかどうかわからない。","romaji":"jissaini atsu te hanasa naikotoniha, gokai ga toke rukadouka waka ranai.","meaning":"Kalau belum bicara langsung, tidak tahu apakah salah pahamnya bisa selesai atau tidak."},
+      {"jp":"予定が決まらないことには、ホテルも予約しにくい。","kana":"よていがきまらないことには、ほてるもよやくしにくい。","romaji":"yotei ga kima ranaikotoniha, hoteru mo yoyaku shinikui.","meaning":"Kalau jadwalnya belum pasti, hotel juga susah dipesan."},
+      {"jp":"検査を受けないことには、原因ははっきりしないでしょう。","kana":"けんさをうけないことには、げんいんははっきりしないでしょう。","romaji":"kensa wo uke naikotoniha, gen'in hahakkirishinaideshou.","meaning":"Kalau belum menjalani pemeriksaan, penyebabnya mungkin tidak akan jelas."},
+      {"jp":"本人に確認しないことには、この書類を提出していいか判断できません。","kana":"ほんにんにかくにんしないことには、このしょるいをていしゅつしていいかはんだんできません。","romaji":"honnin ni kakuninshi naikotoniha, kono shorui wo teishutsu shiteiika handan dekimasen.","meaning":"Kalau belum dikonfirmasi ke orangnya langsung, saya tidak bisa memutuskan apakah dokumen ini boleh diserahkan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-24",level:"N2",title:"〜さえ〜ば",summary:"Menyatakan cukup dengan satu syarat utama, hasil yang diinginkan akan tercapai.",groups:[
+    {name:"〜さえ〜ば",description:"Nuansanya menekankan bahwa syarat itu adalah yang paling penting.",sentences:[
+      {"jp":"駅まで近ければ、部屋は少し狭くてもかまわない。","kana":"えきまでちかければ、へやはすこしせまくてもかまわない。","romaji":"eki made chikake reba, heya ha sukoshi semaku temokamawanai.","meaning":"Asal dekat ke stasiun, kamar agak sempit pun tidak masalah."},
+      {"jp":"身分証明書さえあれば、その日のうちにカードを受け取れます。","kana":"みぶんしょうめいしょさえあれば、そのにちのうちにかーどをうけとれます。","romaji":"mibunshoumeisho saeareba, sono nichi nouchini kaado wo uketore masu.","meaning":"Asal ada kartu identitas, kartunya bisa diterima hari itu juga."},
+      {"jp":"静かに勉強できる場所さえあれば、私はどこでも集中できる。","kana":"しずかにべんきょうできるばしょさえあれば、わたしはどこでもしゅうちゅうできる。","romaji":"shizuka ni benkyou dekiru basho saeareba, watashi hadokodemo shuuchuu dekiru.","meaning":"Asal ada tempat tenang untuk belajar, saya bisa fokus di mana saja."},
+      {"jp":"通じる日本語さえ話せれば、最初は完璧じゃなくても何とかなる。","kana":"つうじるにほんごさえはなせれば、さいしょはかんぺきじゃなくてもなんとかなる。","romaji":"tsuuji ru nihongo sae hanase reba, saisho ha kanpeki janakutemo nantoka naru.","meaning":"Asal bisa bicara bahasa Jepang yang cukup dipahami, awalnya tidak sempurna pun masih bisa jalan."},
+      {"jp":"時間さえ合えば、地域のイベントにももっと参加したい。","kana":"じかんさえあえば、ちいきのいべんとにももっとさんかしたい。","romaji":"jikan sae ae ba, chiiki no ibento nimomotto sanka shitai.","meaning":"Asal waktunya cocok, saya juga ingin lebih sering ikut acara lingkungan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-25",level:"N2",title:"〜ようものなら",summary:"Menyatakan kalau hal buruk itu sampai terjadi, akibatnya akan serius.",groups:[
+    {name:"〜ようものなら",description:"Nuansanya peringatan atau konsekuensi berat.",sentences:[
+      {"jp":"朝の山手線でスマホを落とそうものなら、見つけるのが本当に大変だ。","kana":"あさのやまのてせんですまほをおとそうものなら、みつけるのがほんとうにたいへんだ。","romaji":"asa no yamanotesen de sumaho wo oto soumononara, mitsu kerunoga hontou ni taihen da.","meaning":"Kalau sampai menjatuhkan ponsel di Yamanote Line saat jam sibuk pagi, mencarinya benar-benar sulit."},
+      {"jp":"提出期限を一日でも過ぎようものなら、申請は受け付けてもらえない。","kana":"ていしゅつきげんをついたちでもすぎようものなら、しんせいはうけつけてもらえない。","romaji":"teishutsukigen wo tsuitachi demo sugi youmononara, shinsei ha uketsuke temoraenai.","meaning":"Kalau sampai lewat satu hari saja dari tenggat, pengajuannya tidak akan diterima."},
+      {"jp":"アラームを止めて二度寝しようものなら、その日はほぼ遅刻だ。","kana":"あらーむをとめてにどねしようものなら、そのにちはほぼちこくだ。","romaji":"araamu wo tome te nido neshi youmononara, sono nichi hahobo chikoku da.","meaning":"Kalau habis mematikan alarm lalu tidur lagi, hampir pasti hari itu akan terlambat."},
+      {"jp":"会議中にそんな言い方をしようものなら、場の空気が一気に固まる。","kana":"かいぎちゅうにそんないいかたをしようものなら、ばのくうきがいっきにかたまる。","romaji":"kaigichuu nisonna iikata woshiyoumononara, ba no kuuki ga ikki ni katama ru.","meaning":"Kalau sampai bicara seperti itu saat rapat, suasananya akan langsung membeku."},
+      {"jp":"真夏に水を持たずに外出しようものなら、すぐ体調を崩しかねない。","kana":"まなつにみずをもたずにがいしゅつしようものなら、すぐたいちょうをくずしかねない。","romaji":"manatsu ni mizu wo mota zuni gaishutsu shiyoumononara, sugu taichou wo kuzushi kanenai.","meaning":"Kalau keluar di tengah musim panas tanpa bawa air, kondisi tubuh bisa cepat drop."}
+    ]}
+  ]},
+
+  {id:"GR-N2-26",level:"N2",title:"〜となると",summary:"Menyatakan saat topik bergeser ke hal tertentu, situasinya menjadi berbeda atau perlu dipikirkan lagi.",groups:[
+    {name:"〜となると",description:"Sering dipakai saat masuk ke pembahasan yang lebih serius atau spesifik.",sentences:[
+      {"jp":"観光なら気楽だけど、日本で就職するとなると話は別だ。","kana":"かんこうならきらくだけど、にっぽんでしゅうしょくするとなるとはなしはべつだ。","romaji":"kankou nara kiraku dakedo, nippon de shuushoku surutonaruto hanashi ha betsu da.","meaning":"Kalau hanya untuk wisata sih santai, tapi kalau sampai bekerja di Jepang ceritanya beda."},
+      {"jp":"日帰りなら行けるが、泊まりとなると荷物も増える。","kana":"ひがえりならいけるが、とまりとなるとにもつもふえる。","romaji":"higaeri nara ike ruga, tomari tonaruto nimotsu mo fue ru.","meaning":"Kalau hanya pergi pulang-pergi masih mudah, tapi kalau menginap barang bawaannya jadi lebih banyak."},
+      {"jp":"学生同士ならいいけど、先生も来るとなると服装に少し気を使う。","kana":"がくせいどうしならいいけど、せんせいもくるとなるとふくそうにすこしきをつかう。","romaji":"gakusei doushi naraiikedo, sensei mo kuru tonaruto fukusou ni sukoshi kiwo tsukau.","meaning":"Kalau hanya sesama mahasiswa sih tidak apa-apa, tapi kalau dosen juga datang saya jadi lebih memperhatikan pakaian."},
+      {"jp":"一人で食べるなら平気でも、お客さんに出すとなると味が気になる。","kana":"ひとりでたべるならへいきでも、おきゃくさんにだすとなるとあじがきになる。","romaji":"hitori de tabe runara heiki demo, o kyaku sanni dasu tonaruto aji ga kini naru.","meaning":"Kalau dimakan sendiri saya tidak masalah, tapi kalau disajikan ke tamu saya jadi memikirkan rasanya."},
+      {"jp":"更新手続きとなると、必要書類をもう一度全部確認したくなる。","kana":"こうしんてつづきとなると、ひつようしょるいをもういちどぜんぶかくにんしたくなる。","romaji":"koushin tetsuzuki tonaruto, hitsuyoushorui womou ichido zenbu kakuninshi takunaru.","meaning":"Kalau sudah bicara soal perpanjangan dokumen, saya jadi ingin memeriksa lagi semua berkas yang diperlukan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-27",level:"N2",title:"〜にしても〜にしても / 〜にしろ〜にしろ / 〜にせよ〜にせよ",summary:"Menyatakan dua kemungkinan mana pun yang dipilih, pembicara ingin mengatakan hal yang sama sesudahnya.",groups:[
+    {name:"〜にしても〜にしても / 〜にしろ〜にしろ / 〜にせよ〜にせよ",description:"Dipakai untuk menyebut dua opsi sekaligus lalu memberi komentar umum.",sentences:[
+      {"jp":"電車にしてもバスにしても、今朝は遅れが出ているみたいだ。","kana":"でんしゃにしてもばすにしても、けさはおくれがでているみたいだ。","romaji":"densha nishitemo basu nishitemo, kesa ha okure ga dete irumitaida.","meaning":"Entah kereta atau bus, sepertinya pagi ini sama-sama mengalami keterlambatan."},
+      {"jp":"自炊にしろ外食にしろ、最近は食費が前より上がった。","kana":"じすいにしろがいしょくにしろ、さいきんはしょくひがまえよりあがった。","romaji":"jisui nishiro gaishoku nishiro, saikin ha shokuhi ga mae yori aga tta.","meaning":"Entah masak sendiri atau makan di luar, belakangan biaya makan jadi lebih tinggi dari sebelumnya."},
+      {"jp":"大学にせよ専門学校にせよ、見学してから決めたい。","kana":"だいがくにせよせんもんがっこうにせよ、けんがくしてからきめたい。","romaji":"daigaku niseyo senmongakkou niseyo, kengaku shitekara kime tai.","meaning":"Entah universitas atau sekolah kejuruan, saya ingin memutuskan setelah melihat langsung."},
+      {"jp":"日本人にしても外国人にしても、この手続きは最初は分かりにくいと思う。","kana":"にほんじんにしてもがいこくじんにしても、このてつづきはさいしょはわかりにくいとおもう。","romaji":"nihonjin nishitemo gaikokujin nishitemo, kono tetsuzuki ha saisho ha waka rinikuito omou.","meaning":"Entah orang Jepang atau orang asing, saya rasa prosedur ini memang sulit dipahami pada awalnya."},
+      {"jp":"オンラインにしろ対面にしろ、事前準備が足りないと不安になる。","kana":"おんらいんにしろたいめんにしろ、じぜんじゅんびがたりないとふあんになる。","romaji":"onrain nishiro taimen nishiro, jizenjunbi ga tari naito fuan ninaru.","meaning":"Entah online atau tatap muka, kalau persiapannya kurang saya jadi gelisah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-28",level:"N2",title:"〜に基づいて / をもとに(して)",summary:"Menyatakan sesuatu dibuat atau diputuskan berdasarkan data, aturan, atau bahan tertentu.",groups:[
+    {name:"〜に基づいて / をもとに(して)",description:"Dipakai di laporan, presentasi, berita, dan penjelasan resmi.",sentences:[
+      {"jp":"アンケート結果に基づいて、日本語クラスの時間が見直された。","kana":"あんけーとけっかにもとづいて、にほんごくらすのじかんがみなおされた。","romaji":"ankeeto kekka ni motozu ite, nihongo kurasu no jikan ga minaosa reta.","meaning":"Berdasarkan hasil angket, jadwal kelas bahasa Jepang ditinjau ulang."},
+      {"jp":"住民の意見をもとにして、公園の使い方が改善された。","kana":"じゅうみんのいけんをもとにして、こうえんのつかいかたがかいぜんされた。","romaji":"juumin no iken womotonishite, kouen no tsukaikata ga kaizen sareta.","meaning":"Berdasarkan pendapat warga, cara penggunaan taman diperbaiki."},
+      {"jp":"この資料は去年の統計に基づいて作成されています。","kana":"このしりょうはきょねんのとうけいにもとづいてさくせいされています。","romaji":"kono shiryou ha kyonen no toukei ni motozu ite sakusei sareteimasu.","meaning":"Materi ini dibuat berdasarkan statistik tahun lalu."},
+      {"jp":"実際の体験談をもとにした記事だから、とても読みやすかった。","kana":"じっさいのたいけんだんをもとにしたきじだから、とてもよみやすかった。","romaji":"jissai no taikendan womotonishita kiji dakara, totemo yomi yasukatta.","meaning":"Karena artikelnya dibuat berdasarkan pengalaman nyata, sangat mudah dibaca."},
+      {"jp":"医師の説明に基づいて、しばらく食事を変えることにした。","kana":"いしのせつめいにもとづいて、しばらくしょくじをかえることにした。","romaji":"ishi no setsumei ni motozu ite, shibaraku shokuji wo kae rukotonishita.","meaning":"Berdasarkan penjelasan dokter, saya memutuskan mengubah pola makan untuk sementara."}
+    ]}
+  ]},
+
+  {id:"GR-N2-29",level:"N2",title:"〜のもと(で)",summary:"Menyatakan keadaan, pengaruh, atau lingkungan tempat sesuatu berlangsung, artinya di bawah, dalam.",groups:[
+    {name:"〜のもと(で)",description:"Bisa dipakai untuk pengawasan, kebijakan, aturan, atau kondisi tertentu.",sentences:[
+      {"jp":"専門家の指導のもとで、地域の防災訓練が行われた。","kana":"せんもんかのしどうのもとで、ちいきのぼうさいくんれんがおこなわれた。","romaji":"senmonka no shidou nomotode, chiiki no bousaikunren ga okonawa reta.","meaning":"Latihan kesiapsiagaan bencana di lingkungan ini dilakukan di bawah bimbingan pakar."},
+      {"jp":"新しい制度のもと、窓口の受付時間が少し変わった。","kana":"あたらしいせいどのもと、まどぐちのうけつけじかんがすこしかわった。","romaji":"atarashii seido nomoto, madoguchi no uketsukejikan ga sukoshi kawa tta.","meaning":"Di bawah sistem baru, jam pelayanan loket sedikit berubah."},
+      {"jp":"静かな環境のもとで勉強すると、やはり集中しやすい。","kana":"しずかなかんきょうのもとでべんきょうすると、やはりしゅうちゅうしやすい。","romaji":"shizuka na kankyou nomotode benkyou suruto, yahari shuuchuu shiyasui.","meaning":"Kalau belajar dalam lingkungan yang tenang, memang lebih mudah fokus."},
+      {"jp":"店長の管理のもとで、アルバイトのシフトが細かく調整されている。","kana":"てんちょうのかんりのもとで、あるばいとのしふとがこまかくちょうせいされている。","romaji":"tenchou no kanri nomotode, arubaito no shifuto ga komakaku chousei sareteiru.","meaning":"Di bawah pengelolaan manajer toko, jadwal kerja part-time diatur dengan rinci."},
+      {"jp":"十分な準備のもとで始めたイベントは、当日も落ち着いて進んだ。","kana":"じゅうぶんなじゅんびのもとではじめたいべんとは、とうじつもおちついてすすんだ。","romaji":"juubun na junbi nomotode hajime ta ibento ha, toujitsu mo ochitsui te susun da.","meaning":"Acara yang dimulai dengan persiapan cukup berjalan tenang juga pada hari-H."}
+    ]}
+  ]},
+
+  {id:"GR-N2-30",level:"N2",title:"〜に沿って",summary:"Menyatakan mengikuti aturan, rencana, garis, atau arah tertentu.",groups:[
+    {name:"〜に沿って",description:"Sering dipakai untuk manual, jalur, panduan, dan kebijakan.",sentences:[
+      {"jp":"係員の案内に沿って、避難口まで移動してください。","kana":"かかりいんのあんないにそって、ひなんくちまでいどうしてください。","romaji":"kakariin no annai ni sotte, hinan kuchi made idou shitekudasai.","meaning":"Silakan bergerak ke pintu evakuasi mengikuti arahan petugas."},
+      {"jp":"マニュアルに沿って作業すれば、初めてでも大きな失敗はしにくい。","kana":"まにゅあるにそってさぎょうすれば、はじめてでもおおきなしっぱいはしにくい。","romaji":"manyuaru ni sotte sagyou sureba, hajimete demo ooki na shippai hashinikui.","meaning":"Kalau bekerja mengikuti manual, bahkan pemula pun lebih kecil kemungkinan melakukan kesalahan besar."},
+      {"jp":"川に沿って歩いていくと、古い商店街に出ます。","kana":"かわにそってあるいていくと、ふるいしょうてんがいにでます。","romaji":"kawa ni sotte arui teikuto, furui shoutengai ni dema su.","meaning":"Kalau berjalan menyusuri sungai, nanti akan sampai di area pertokoan lama."},
+      {"jp":"計画に沿って進めていたのに、配送の遅れで予定がずれた。","kana":"けいかくにそってすすめていたのに、はいそうのおくれでよていがずれた。","romaji":"keikaku ni sotte susume teitanoni, haisou no okure de yotei gazureta.","meaning":"Padahal semuanya berjalan sesuai rencana, tapi jadwal bergeser karena keterlambatan pengiriman."},
+      {"jp":"市の方針に沿った形で、多言語の案内が増えてきた。","kana":"しのほうしんにそったかたちで、たげんごのあんないがふえてきた。","romaji":"shi no houshin ni sotsu ta katachi de, tagengo no annai ga fue tekita.","meaning":"Sesuai kebijakan kota, jumlah petunjuk multibahasa mulai bertambah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-31",level:"N2",title:"〜どころか",summary:"Menyatakan kenyataan jauh melampaui atau justru berlawanan dengan dugaan, artinya jangankan, malah.",groups:[
+    {name:"〜どころか",description:"Dipakai saat hasilnya lebih ekstrem dari perkiraan.",sentences:[
+      {"jp":"休むどころか、今週は残業が続いている。","kana":"やすむどころか、こんしゅうはざんぎょうがつづいている。","romaji":"yasumu dokoroka, konshuu ha zangyou ga tsuzui teiru.","meaning":"Jangankan bisa istirahat, minggu ini saya malah terus lembur."},
+      {"jp":"一駅歩くどころか、今日は最寄りのコンビニに行くだけで汗だくになった。","kana":"ひとえきあるくどころか、こんにちはもよりのこんびににいくだけであせだくになった。","romaji":"hitoeki aruku dokoroka, konnichiha moyori no konbini ni iku dakede ase dakuninatta.","meaning":"Jangankan jalan satu stasiun, hari ini jalan ke konbini terdekat saja sudah mandi keringat."},
+      {"jp":"日本語の勉強は楽になるどころか、N2に入ってからますます奥が深い。","kana":"にほんごのべんきょうはらくになるどころか、N2にいっってからますますおくがふかい。","romaji":"nihongo no benkyou ha raku ninarudokoroka, N2 ni itsutsu tekaramasumasu oku ga fukai.","meaning":"Belajar bahasa Jepang bukannya jadi lebih mudah, justru sejak masuk N2 terasa makin dalam."},
+      {"jp":"静かになるどころか、祭りの時間が近づくほど人が増えてきた。","kana":"しずかになるどころか、まつりのじかんがちかづくほどにんがふえてきた。","romaji":"shizuka ninarudokoroka, matsuri no jikan ga chikazu kuhodo nin ga fue tekita.","meaning":"Bukannya makin sepi, semakin dekat waktu festival orang-orang justru makin banyak."},
+      {"jp":"値下げされるどころか、人気エリアの家賃はまた上がっていた。","kana":"ねさげされるどころか、にんきえりあのやちんはまたあがっていた。","romaji":"nesage sarerudokoroka, ninki eria no yachin hamata aga tteita.","meaning":"Bukannya turun harga, sewa di area populer malah naik lagi."}
+    ]}
+  ]},
+
+  {id:"GR-N2-32",level:"N2",title:"〜一方で",summary:"Menyatakan dua sisi yang berjalan bersamaan, satu hal benar tapi di sisi lain ada hal lain juga.",groups:[
+    {name:"〜一方で",description:"Sering dipakai untuk menjelaskan keseimbangan atau kontras yang netral.",sentences:[
+      {"jp":"駅前は便利な一方で、夜でも車の音が気になる。","kana":"えきまえはべんりないっぽうで、よるでもくるまのおとがきになる。","romaji":"ekimae ha benri na ippou de, yoru demo kuruma no oto ga kini naru.","meaning":"Di satu sisi area depan stasiun itu praktis, tapi di sisi lain suara mobil terasa bahkan malam hari."},
+      {"jp":"オンライン授業は助かる一方で、集中を保つのが難しい日もある。","kana":"おんらいんじゅぎょうはたすかるいっぽうで、しゅうちゅうをたもつのがむずかしいにちもある。","romaji":"onrain jugyou ha tasuka ru ippou de, shuuchuu wo tamotsu noga muzukashii nichi moaru.","meaning":"Di satu sisi kelas online membantu, tapi di sisi lain ada hari-hari ketika sulit menjaga fokus."},
+      {"jp":"外国人向けの案内が増える一方で、細かい手続きはまだ分かりにくい。","kana":"がいこくじんむけのあんないがふえるいっぽうで、こまかいてつづきはまだわかりにくい。","romaji":"gaikokujin muke no annai ga fue ru ippou de, komakai tetsuzuki hamada waka rinikui.","meaning":"Di satu sisi petunjuk untuk orang asing bertambah, tapi di sisi lain prosedur rinci masih sulit dipahami."},
+      {"jp":"この仕事はやりがいが大きい一方で、責任もかなり重い。","kana":"このしごとはやりがいがおおきいいっぽうで、せきにんもかなりおもい。","romaji":"kono shigoto hayarigaiga ookii ippou de, sekinin mokanari omoi.","meaning":"Di satu sisi pekerjaan ini sangat memuaskan, tapi di sisi lain tanggung jawabnya juga cukup berat."},
+      {"jp":"中心部の家賃は高い一方で、通勤時間を短くできる利点がある。","kana":"ちゅうしんぶのやちんはたかいいっぽうで、つうきんじかんをみじかくできるりてんがある。","romaji":"chuushinbu no yachin ha takai ippou de, tsuukinjikan wo mijikaku dekiru riten gaaru.","meaning":"Di satu sisi sewa di pusat kota mahal, tapi di sisi lain ada keuntungan waktu commute jadi lebih singkat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-33",level:"N2",title:"〜に反して",summary:"Menyatakan hasil yang berlawanan dengan harapan, aturan, atau dugaan.",groups:[
+    {name:"〜に反して",description:"Banyak dipakai dalam tulisan atau penjelasan yang agak formal.",sentences:[
+      {"jp":"天気予報に反して、午後は意外なくらい晴れた。","kana":"てんきよほうにはんして、ごごはいがいなくらいはれた。","romaji":"tenkiyohou ni hanshi te, gogo ha igai nakurai hare ta.","meaning":"Berlawanan dengan ramalan cuaca, sore harinya justru cerah sekali."},
+      {"jp":"期待に反して、説明会は思ったより短時間で終わった。","kana":"きたいにはんして、せつめいかいはおもったよりたんじかんでおわった。","romaji":"kitai ni hanshi te, setsumeikai ha omotta yori tanjikan de owa tta.","meaning":"Berlawanan dengan dugaan, sesi penjelasan selesai lebih cepat dari perkiraan."},
+      {"jp":"親の心配に反して、娘は新しい学校にすぐ慣れた。","kana":"おやのしんぱいにはんして、むすめはあたらしいがっこうにすぐなれた。","romaji":"oya no shinpai ni hanshi te, musume ha atarashii gakkou nisugu nare ta.","meaning":"Berlawanan dengan kekhawatiran orang tuanya, anak itu cepat menyesuaikan diri di sekolah baru."},
+      {"jp":"見た目の印象に反して、その先生はかなり話しやすかった。","kana":"みためのいんしょうにはんして、そのせんせいはかなりはなしやすかった。","romaji":"mitame no inshou ni hanshi te, sono sensei hakanari hanashi yasukatta.","meaning":"Berlawanan dengan kesan penampilannya, guru itu ternyata sangat mudah diajak bicara."},
+      {"jp":"ルールに反して、ゴミ出しの日以外に袋を置く人がいて困っている。","kana":"るーるにはんして、ごみだしのにちいがいにふくろをおくにんがいてこまっている。","romaji":"ruuru ni hanshi te, gomi dashi no nichi igai ni fukuro wo oku nin gaite komatsu teiru.","meaning":"Berlawanan dengan aturan, ada orang yang menaruh sampah di luar jadwal sehingga merepotkan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-34",level:"N2",title:"〜というより",summary:"Menyatakan bahwa ungkapan pertama kurang tepat dan ungkapan kedua lebih cocok.",groups:[
+    {name:"〜というより",description:"Sering dipakai untuk memperbaiki pilihan kata secara halus.",sentences:[
+      {"jp":"この町は静かというより、夜になると本当に人通りが少ない。","kana":"このまちはしずかというより、よるになるとほんとうにひとどおりがすくない。","romaji":"kono machi ha shizuka toiuyori, yoru ninaruto hontou ni hitodoori ga sukunai.","meaning":"Kota ini bukan sekadar tenang, tapi malam hari benar-benar sepi orang."},
+      {"jp":"彼は厳しいというより、仕事の基準がはっきりしているんだと思う。","kana":"かれはいかめしいというより、しごとのきじゅんがはっきりしているんだとおもう。","romaji":"kareha ikameshii toiuyori, shigoto no kijun gahakkirishiteirundato omou.","meaning":"Dia bukan keras, melainkan menurut saya standar kerjanya memang jelas."},
+      {"jp":"今日は寒いというより、風が痛いくらい強い。","kana":"こんにちはさむいというより、かぜがいたいくらいつよい。","romaji":"konnichiha samui toiuyori, kaze ga itai kurai tsuyoi.","meaning":"Hari ini bukan cuma dingin, anginnya sampai terasa menusuk."},
+      {"jp":"趣味というより、もう生活の一部みたいな感じです。","kana":"しゅみというより、もうせいかつのいちぶみたいなかんじです。","romaji":"shumi toiuyori, mou seikatsu no ichibu mitaina kanji desu.","meaning":"Ini bukan sekadar hobi, rasanya sudah seperti bagian dari hidup sehari-hari."},
+      {"jp":"その店は安いというより、量のわりにちょうどいい価格だ。","kana":"そのみせはやすいというより、りょうのわりにちょうどいいかかくだ。","romaji":"sono mise ha yasui toiuyori, ryou nowarinichoudoii kakaku da.","meaning":"Toko itu bukan benar-benar murah, tapi harganya pas jika melihat porsinya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-35",level:"N2",title:"〜だけまし",summary:"Menyatakan walaupun tidak ideal, setidaknya masih lebih baik daripada kemungkinan yang lebih buruk.",groups:[
+    {name:"〜だけまし",description:"Nuansanya setidaknya mendingan.",sentences:[
+      {"jp":"駅から遠いけど、家賃が手ごろなだけましだ。","kana":"えきからとおいけど、やちんがてごろなだけましだ。","romaji":"eki kara tooi kedo, yachin ga tegoro nadakemashida.","meaning":"Walaupun jauh dari stasiun, setidaknya sewanya masih terjangkau."},
+      {"jp":"全席禁煙じゃないけど、分煙されているだけましだと思う。","kana":"ぜんせききんえんじゃないけど、ぶんえんされているだけましだとおもう。","romaji":"zensekikin'en janaikedo, bun'en sareteirudakemashidato omou.","meaning":"Walaupun belum seluruhnya bebas rokok, setidaknya area merokoknya sudah dipisah."},
+      {"jp":"説明は少し分かりにくかったが、英語の資料があるだけましだった。","kana":"せつめいはすこしわかりにくかったが、えいごのしりょうがあるだけましだった。","romaji":"setsumei ha sukoshi waka rinikukattaga, eigo no shiryou gaarudakemashidatta.","meaning":"Penjelasannya memang agak sulit dipahami, tapi setidaknya ada materi berbahasa Inggris."},
+      {"jp":"待ち時間は長かったものの、当日中に診てもらえただけましだ。","kana":"まちじかんはながかったものの、とうじつちゅうにみてもらえただけましだ。","romaji":"machijikan ha nagaka ttamonono, toujitsuchuu ni mite moraetadakemashida.","meaning":"Walaupun waktu tunggunya lama, setidaknya saya masih bisa diperiksa pada hari yang sama."},
+      {"jp":"残業になったけれど、終電に間に合っただけましだった。","kana":"ざんぎょうになったけれど、しゅうでんにまにあっただけましだった。","romaji":"zangyou ninattakeredo, shuuden ni maniatsu tadakemashidatta.","meaning":"Walaupun jadi lembur, setidaknya saya masih sempat naik kereta terakhir."}
+    ]}
+  ]},
+
+  {id:"GR-N2-36",level:"N2",title:"〜くらいなら",summary:"Menyatakan jika harus memilih kondisi yang buruk itu, lebih baik memilih pilihan lain.",groups:[
+    {name:"〜くらいなら",description:"Sering dipakai untuk preferensi kuat atau penolakan.",sentences:[
+      {"jp":"そんなに高い家賃を払うくらいなら、少し遠くても広い部屋に住みたい。","kana":"そんなにたかいやちんをはらうくらいなら、すこしとおくてもひろいへやにすみたい。","romaji":"sonnani takai yachin wo harau kurainara, sukoshi tooku temo hiroi heya ni sumi tai.","meaning":"Kalau harus membayar sewa semahal itu, saya lebih pilih kamar yang agak jauh tapi lebih luas."},
+      {"jp":"長い列に並ぶくらいなら、時間をずらしてまた来ます。","kana":"ながいつらにならぶくらいなら、じかんをずらしてまたきます。","romaji":"nagai tsurani narabu kurainara, jikan wozurashitemata kima su.","meaning":"Kalau harus antre sepanjang itu, saya lebih baik datang lagi di waktu lain."},
+      {"jp":"よく分からないまま契約するくらいなら、今日は持ち帰って確認したい。","kana":"よくわからないままけいやくするくらいなら、こんにちはもちかえってかくにんしたい。","romaji":"yoku waka ranaimama keiyaku surukurainara, konnichiha mochikaetsu te kakuninshi tai.","meaning":"Kalau harus menandatangani kontrak tanpa paham betul, saya lebih baik bawa pulang dulu untuk dicek."},
+      {"jp":"無理して一人で抱えるくらいなら、早めに相談したほうがいい。","kana":"むりしてひとりでかかえるくらいなら、はやめにそうだんしたほうがいい。","romaji":"muri shite hitori de kakae rukurainara, hayame ni soudan shitahougaii.","meaning":"Kalau harus memaksakan diri menanggung sendiri, lebih baik berkonsultasi lebih awal."},
+      {"jp":"コンビニで毎日買うくらいなら、週末にまとめて作り置きしたい。","kana":"こんびにでまいにちかうくらいなら、しゅうまつにまとめてつくりおきしたい。","romaji":"konbini de mainichi kau kurainara, shuumatsu nimatomete tsukuri oki shitai.","meaning":"Kalau harus beli di konbini setiap hari, saya lebih pilih masak untuk stok di akhir pekan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-37",level:"N2",title:"〜ざるをえない",summary:"Menyatakan terpaksa harus melakukan sesuatu karena keadaan, artinya mau tak mau.",groups:[
+    {name:"〜ざるをえない",description:"Bentuk formal, asalnya dari bentuk negatif lama ざる.",sentences:[
+      {"jp":"電車が止まったので、タクシーを使わざるをえなかった。","kana":"でんしゃがとまったので、たくしーをつかわざるをえなかった。","romaji":"densha ga toma ttanode, takushii wo tsukawa zaruwoenakatta.","meaning":"Karena keretanya berhenti beroperasi, saya terpaksa naik taksi."},
+      {"jp":"人手が足りず、店長もレジに入らざるをえない状況だった。","kana":"ひとでがたりず、てんちょうもれじにいらざるをえないじょうきょうだった。","romaji":"hitode ga tari zu, tenchou mo reji ni ira zaruwoenai joukyou datta.","meaning":"Karena kekurangan staf, manajer toko pun terpaksa turun ke kasir."},
+      {"jp":"締め切りが近い以上、今日は少し残らざるをえません。","kana":"しめきりがちかいいじょう、こんにちはすこしのこらざるをえません。","romaji":"shimekiri ga chikai ijou, konnichiha sukoshi nokora zaruwoemasen.","meaning":"Karena tenggat sudah dekat, hari ini saya mau tak mau harus tinggal sedikit lebih lama."},
+      {"jp":"在留期限が迫っていて、予定を変えざるをえなくなった。","kana":"ざいりゅうきげんがせまっていて、よていをかえざるをえなくなった。","romaji":"zairyuu kigen ga sematsu teite, yotei wo kae zaruwoenakunatta.","meaning":"Karena batas masa tinggal sudah dekat, saya terpaksa mengubah rencana."},
+      {"jp":"この値段なら、昼食を簡単に済ませざるをえない日もある。","kana":"このねだんなら、ちゅうしょくをかんたんにすませざるをえないにちもある。","romaji":"kono nedan nara, chuushoku wo kantan ni suma sezaruwoenai nichi moaru.","meaning":"Dengan harga seperti ini, ada hari-hari ketika saya mau tak mau harus makan siang seadanya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-38",level:"N2",title:"〜て(は)いられない",summary:"Menyatakan tidak bisa terus berada dalam keadaan itu, karena ada alasan emosional atau situasional.",groups:[
+    {name:"〜て(は)いられない",description:"Bisa berarti tidak bisa diam saja atau tidak bisa terus melakukan hal itu.",sentences:[
+      {"jp":"ニュースを見て、ただ待っていてはいられないと思った。","kana":"にゅーすをみて、ただまっていてはいられないとおもった。","romaji":"nyuusu wo mite, tada matsu teitehairarenaito omotta.","meaning":"Setelah melihat berita, saya merasa tidak bisa hanya diam menunggu."},
+      {"jp":"忙しい時期だけど、子どもの発表会には行かずにはいられないし、仕事ばかりしてはいられない。","kana":"いそがしいじきだけど、こどものはっぴょうかいにはいかずにはいられないし、しごとばかりしてはいられない。","romaji":"isogashii jiki dakedo, kodomo no happyoukai niha ika zunihairarenaishi, shigoto bakarishitehairarenai.","meaning":"Walaupun sedang sibuk, saya tidak bisa cuma terus bekerja dan melewatkan pentas anak."},
+      {"jp":"後輩が困っているのに、見ているだけではいられなかった。","kana":"こうはいがこまっているのに、みているだけではいられなかった。","romaji":"kouhai ga komatsu teirunoni, mite irudakedehairarenakatta.","meaning":"Melihat junior sedang kesulitan, saya tidak bisa hanya menonton saja."},
+      {"jp":"試験前だからといって、毎晩遅くまで起きてはいられない。","kana":"しけんまえだからといって、まいばんおそくまでおきてはいられない。","romaji":"shikenmae dakaratoitte, maiban osoku made oki tehairarenai.","meaning":"Hanya karena menjelang ujian bukan berarti saya bisa terus begadang tiap malam."},
+      {"jp":"家賃も上がっているし、いつまでも今の働き方のままではいられない。","kana":"やちんもあがっているし、いつまでもいまのはたらきほうのままではいられない。","romaji":"yachin mo aga tteirushi, itsumademo ima no hataraki hou nomamadehairarenai.","meaning":"Karena sewa juga naik, saya tidak bisa selamanya bertahan dengan cara kerja yang sekarang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-39",level:"N2",title:"〜ないではいられない",summary:"Menyatakan perasaan yang begitu kuat sehingga tidak bisa menahan diri untuk tidak melakukan sesuatu.",groups:[
+    {name:"〜ないではいられない",description:"Sering dipakai untuk tawa, tangis, komentar, atau tindakan spontan.",sentences:[
+      {"jp":"あの店の期間限定メニューを見ると、試さないではいられない。","kana":"あのみせのきかんげんていめにゅーをみると、ためさないではいられない。","romaji":"ano mise no kikangentei menyuu wo miru to, tamesa naidehairarenai.","meaning":"Setiap melihat menu edisi terbatas toko itu, saya tidak bisa menahan diri untuk tidak mencobanya."},
+      {"jp":"子どもたちのやり取りが面白くて、笑わないではいられなかった。","kana":"こどもたちのやりとりがおもしろくて、わらわないではいられなかった。","romaji":"kodomo tachinoyari tori ga omoshiroku te, warawa naidehairarenakatta.","meaning":"Interaksi anak-anak itu begitu lucu sampai saya tidak bisa menahan tawa."},
+      {"jp":"駅で再会した友達の顔を見て、声をかけないではいられなかった。","kana":"えきでさいかいしたともだちのかおをみて、こえをかけないではいられなかった。","romaji":"eki de saikai shita tomodachi no kao wo mite, koe wokakenaidehairarenakatta.","meaning":"Saat melihat wajah teman yang bertemu lagi di stasiun, saya tidak bisa menahan diri untuk tidak menyapanya."},
+      {"jp":"そんな言い方をされたら、反論しないではいられないよ。","kana":"そんないいかたをされたら、はんろんしないではいられないよ。","romaji":"sonna iikata wosaretara, hanron shinaidehairarenaiyo.","meaning":"Kalau dibilangi seperti itu, saya tidak mungkin diam tanpa membantah."},
+      {"jp":"努力している姿を見ると、つい応援しないではいられなくなる。","kana":"どりょくしているすがたをみると、ついおうえんしないではいられなくなる。","romaji":"doryoku shiteiru sugata wo miru to, tsui ouen shinaidehairarenakunaru.","meaning":"Saat melihat seseorang berusaha keras, saya jadi tidak bisa menahan diri untuk tidak mendukungnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-40",level:"N2",title:"〜てならない",summary:"Menyatakan perasaan yang sangat kuat dan terus terasa, artinya sangat sekali.",groups:[
+    {name:"〜てならない",description:"Sering dipakai untuk kekhawatiran, penyesalan, rasa malu, atau keinginan kuat.",sentences:[
+      {"jp":"初めての一人暮らしで、家族のことが心配でならない。","kana":"はじめてのひとりぐらしで、かぞくのことがしんぱいでならない。","romaji":"hajimete no hitorigurashi de, kazoku nokotoga shinpai denaranai.","meaning":"Karena baru pertama tinggal sendiri, saya sangat terus-menerus mengkhawatirkan keluarga."},
+      {"jp":"あの時もっと丁寧に説明できたはずだと思うと、悔しくてならない。","kana":"あのときもっとていねいにせつめいできたはずだとおもうと、くやしくてならない。","romaji":"ano toki motto teinei ni setsumei dekitahazudato omou to, kuyashiku tenaranai.","meaning":"Kalau teringat seharusnya saya bisa menjelaskan lebih baik saat itu, saya merasa sangat menyesal."},
+      {"jp":"卒業式が近づくと、この教室が少しさびしく感じられてならない。","kana":"そつぎょうしきがちかづくと、このきょうしつがすこしさびしくかんじられてならない。","romaji":"sotsugyoushiki ga chikazu kuto, kono kyoushitsu ga sukoshi sabishiku kanji raretenaranai.","meaning":"Semakin dekat hari wisuda, ruang kelas ini terasa makin menyedihkan bagi saya."},
+      {"jp":"お世話になった先生に、早く良い報告がしたくてならない。","kana":"おせわになったせんせいに、はやくよいほうこくがしたくてならない。","romaji":"o sewa ninatta sensei ni, hayaku yoi houkoku gashitakutenaranai.","meaning":"Saya sangat ingin segera menyampaikan kabar baik kepada guru yang sudah banyak membantu."},
+      {"jp":"最近は物価の上がり方が気になってならない。","kana":"さいきんはぶっかのあがりかたがきになってならない。","romaji":"saikin ha bukka no agarikata ga kini nattenaranai.","meaning":"Belakangan kenaikan harga-harga benar-benar membuat saya terus kepikiran."}
+    ]}
+  ]},
+
+  {id:"GR-N2-41",level:"N2",title:"〜にほかならない",summary:"Menyatakan bahwa sesuatu tidak lain adalah hal itu sendiri, sangat menegaskan inti atau hakikat.",groups:[
+    {name:"〜にほかならない",description:"Biasa dipakai dalam tulisan, pidato, atau penjelasan yang tegas.",sentences:[
+      {"jp":"今回の成功は、現場スタッフの努力の結果にほかならない。","kana":"こんかいのせいこうは、げんばすたっふのどりょくのけっかにほかならない。","romaji":"konkai no seikou ha, genba sutaffu no doryoku no kekka nihokanaranai.","meaning":"Keberhasilan kali ini tidak lain adalah hasil dari kerja keras staf lapangan."},
+      {"jp":"この制度の目的は、住民の不安を減らすことにほかならない。","kana":"このせいどのもくてきは、じゅうみんのふあんをへらすことにほかならない。","romaji":"kono seido no mokuteki ha, juumin no fuan wo hera sukotonihokanaranai.","meaning":"Tujuan sistem ini tidak lain adalah mengurangi kecemasan warga."},
+      {"jp":"彼が日本語を上達させた理由は、毎日使い続けたことにほかならない。","kana":"かれがにほんごをじょうたつさせたりゆうは、まいにちつかいつづけたことにほかならない。","romaji":"kare ga nihongo wo joutatsu saseta riyuu ha, mainichi tsukai tsuzuke takotonihokanaranai.","meaning":"Alasan dia bisa meningkatkan bahasa Jepangnya tidak lain adalah karena terus memakainya setiap hari."},
+      {"jp":"長い行列ができているのは、この店が信頼されている証拠にほかならない。","kana":"ながいぎょうれつができているのは、このみせがしんらいされているしょうこにほかならない。","romaji":"nagai gyouretsu gadekiteirunoha, kono mise ga shinrai sareteiru shouko nihokanaranai.","meaning":"Antrean panjang itu tidak lain adalah bukti bahwa toko ini dipercaya."},
+      {"jp":"地域の交流会に参加する意味は、新しく来た人を孤立させないことにほかならない。","kana":"ちいきのこうりゅうかいにさんかするいみは、あたらしくきたにんをこりつさせないことにほかならない。","romaji":"chiiki no kouryuukai ni sanka suru imi ha, atarashiku kita nin wo koritsu sasenaikotonihokanaranai.","meaning":"Makna ikut acara komunitas tidak lain adalah mencegah pendatang baru merasa terisolasi."}
+    ]}
+  ]},
+
+  {id:"GR-N2-42",level:"N2",title:"〜というものだ",summary:"Menyatakan penilaian umum yang dianggap wajar atau memang begitulah seharusnya.",groups:[
+    {name:"〜というものだ",description:"Dipakai saat menyatakan pendapat yang terasa sebagai kesimpulan umum.",sentences:[
+      {"jp":"困っている人に窓口まで付き添うのが親切というものだ。","kana":"こまっているにんにまどぐちまでつきそうのがしんせつというものだ。","romaji":"komatsu teiru nin ni madoguchi made tsuki sou noga shinsetsu toiumonoda.","meaning":"Mendampingi orang yang sedang kesulitan sampai ke loket itulah yang namanya kebaikan."},
+      {"jp":"大事な連絡に返事をしないのは失礼というものだ。","kana":"だいじなれんらくにへんじをしないのはしつれいというものだ。","romaji":"daiji na renraku ni henji woshinainoha shitsurei toiumonoda.","meaning":"Tidak membalas pesan penting itu memang bisa dibilang tidak sopan."},
+      {"jp":"せっかく学ぶなら、教科書だけでなく実際に使ってこそ勉強というものだ。","kana":"せっかくまなぶなら、きょうかしょだけでなくじっさいにつかってこそべんきょうというものだ。","romaji":"sekkaku manabu nara, kyoukasho dakedenaku jissaini tsukatte koso benkyou toiumonoda.","meaning":"Kalau sudah belajar, bukan cuma buku teks tetapi juga pemakaian nyata itulah yang namanya belajar."},
+      {"jp":"地域に住む以上、ゴミのルールを守るのは当然というものだ。","kana":"ちいきにすむいじょう、ごみのるーるをまもるのはとうぜんというものだ。","romaji":"chiiki ni sumu ijou, gomi no ruuru wo mamoru noha touzen toiumonoda.","meaning":"Kalau tinggal di suatu lingkungan, mematuhi aturan buang sampah memang sudah sewajarnya."},
+      {"jp":"相手の立場を考えて話すのが、社会人の会話というものだと思う。","kana":"あいてのたちばをかんがえてはなすのが、しゃかいじんのかいわというものだとおもう。","romaji":"aite no tachiba wo kangae te hanasu noga, shakaijin no kaiwa toiumonodato omou.","meaning":"Menurut saya, berbicara sambil mempertimbangkan posisi lawan bicara itulah percakapan orang dewasa."}
+    ]}
+  ]},
+
+  {id:"GR-N2-43",level:"N2",title:"〜にすぎない",summary:"Menyatakan bahwa sesuatu tidak lebih dari itu saja, merendahkan atau membatasi kadar.",groups:[
+    {name:"〜にすぎない",description:"Sering diterjemahkan hanya, cuma, tidak lebih dari.",sentences:[
+      {"jp":"これは個人的な感想にすぎないので、参考程度に聞いてください。","kana":"これはこじんてきなかんそうにすぎないので、さんこうていどにきいてください。","romaji":"koreha kojintekina kansou nisuginainode, sankouteido ni kii tekudasai.","meaning":"Ini tidak lebih dari pendapat pribadi, jadi tolong anggap sebagai referensi saja."},
+      {"jp":"駅から徒歩五分といっても、実際は広告の表現にすぎないことも多い。","kana":"えきからとほごぶといっても、じっさいはこうこくのひょうげんにすぎないこともおおい。","romaji":"eki kara toho gobu toittemo, jissai ha koukoku no hyougen nisuginaikotomo ooi.","meaning":"Walaupun tertulis lima menit jalan kaki dari stasiun, sering kali itu tidak lebih dari bahasa iklan."},
+      {"jp":"そのミスは手続き全体から見れば一部にすぎない。","kana":"そのみすはてつづきぜんたいからみればいちぶにすぎない。","romaji":"sono misu ha tetsuzuki zentai kara mire ba ichibu nisuginai.","meaning":"Kesalahan itu jika dilihat dari keseluruhan proses tidak lebih dari satu bagian kecil saja."},
+      {"jp":"今の私は、まだ入口に立ったにすぎないと感じている。","kana":"いまのわたしは、まだいりぐちにたったにすぎないとかんじている。","romaji":"ima no watashi ha, mada iriguchi ni tatsu tanisuginaito kanji teiru.","meaning":"Saya merasa diri saya sekarang masih tidak lebih dari baru berdiri di pintu masuk."},
+      {"jp":"うわさはうわさにすぎないから、本人の話を聞くまで判断しないほうがいい。","kana":"うわさはうわさにすぎないから、ほんにんのはなしをきくまではんだんしないほうがいい。","romaji":"uwasahauwasanisuginaikara, honnin no hanashi wo kiku made handan shinaihougaii.","meaning":"Rumor tidak lebih dari rumor, jadi lebih baik jangan menilai sebelum mendengar langsung dari orangnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-44",level:"N2",title:"〜(より)ほかない",summary:"Menyatakan tidak ada pilihan lain selain melakukan itu.",groups:[
+    {name:"〜(より)ほかない",description:"Nuansanya pasrah atau kesimpulan realistis.",sentences:[
+      {"jp":"終電がない以上、今日はホテルに泊まるほかない。","kana":"しゅうでんがないいじょう、こんにちはほてるにとまるほかない。","romaji":"shuuden ganai ijou, konnichiha hoteru ni toma ruhokanai.","meaning":"Karena sudah tidak ada kereta terakhir, hari ini tidak ada pilihan selain menginap di hotel."},
+      {"jp":"この書類が足りないなら、明日もう一度来るほかありません。","kana":"このしょるいがたりないなら、あしたもういちどくるほかありません。","romaji":"kono shorui ga tari nainara, ashita mou ichido kuru hokaarimasen.","meaning":"Kalau dokumen ini kurang, berarti tidak ada pilihan selain datang lagi besok."},
+      {"jp":"相手から連絡が来ないので、今は待つよりほかない。","kana":"あいてかられんらくがこないので、いまはまつよりほかない。","romaji":"aite kara renraku ga konai node, ima ha matsu yorihokanai.","meaning":"Karena belum ada kabar dari pihak sana, sekarang tidak ada pilihan selain menunggu."},
+      {"jp":"道に迷ったら、近くの交番で聞くほかないと思う。","kana":"みちにまよったら、ちかくのこうばんできくほかないとおもう。","romaji":"michi ni mayotsu tara, chikaku no kouban de kiku hokanaito omou.","meaning":"Kalau tersesat, saya rasa tidak ada pilihan selain bertanya di pos polisi terdekat."},
+      {"jp":"急な雨なら、駅の売店で傘を買うほかないね。","kana":"きゅうなあめなら、えきのばいてんでかさをかうほかないね。","romaji":"kyuuna ame nara, eki no baiten de kasa wo kau hokanaine.","meaning":"Kalau hujannya mendadak, ya tidak ada pilihan selain beli payung di kios stasiun."}
+    ]}
+  ]},
+
+  {id:"GR-N2-45",level:"N2",title:"〜おそれがある",summary:"Menyatakan adanya risiko atau kekhawatiran bahwa sesuatu yang buruk bisa terjadi.",groups:[
+    {name:"〜おそれがある",description:"Sering muncul di berita, laporan, dan pengumuman resmi.",sentences:[
+      {"jp":"台風の進路によっては、明日の電車に遅れが出るおそれがあります。","kana":"たいふうのしんろによっては、あしたのでんしゃにおくれがでるおそれがあります。","romaji":"taifuu no shinro niyotteha, ashita no densha ni okure ga deru osoregaarimasu.","meaning":"Tergantung arah topannya, besok ada risiko kereta mengalami keterlambatan."},
+      {"jp":"記入漏れがあると、申請が受理されないおそれがある。","kana":"きにゅうもれがあると、しんせいがじゅりされないおそれがある。","romaji":"kinyuu more gaaruto, shinsei ga juri sarenaiosoregaaru.","meaning":"Kalau ada bagian yang tidak terisi, ada risiko pengajuannya tidak diterima."},
+      {"jp":"このまま雪が降り続けば、高速道路が通行止めになるおそれがある。","kana":"このままゆきがおりつづけば、こうそくどうろがつうこうどめめになるおそれがある。","romaji":"konomama yuki ga ori tsuzuke ba, kousokudouro ga tsuukoudome meninaruosoregaaru.","meaning":"Kalau saljunya terus turun seperti ini, ada risiko jalan tol ditutup."},
+      {"jp":"人が集中しすぎると、会場周辺が危険な状態になるおそれがある。","kana":"にんがしゅうちゅうしすぎると、かいじょうしゅうへんがきけんなじょうたいになるおそれがある。","romaji":"nin ga shuuchuu shisugiruto, kaijou shuuhen ga kiken na joutai ninaruosoregaaru.","meaning":"Kalau orang terlalu terkumpul, ada risiko area sekitar venue menjadi berbahaya."},
+      {"jp":"誤った情報を広めると、地域に混乱を招くおそれがある。","kana":"あやまったじょうほうをひろめると、ちいきにこんらんをまねくおそれがある。","romaji":"ayamatsu ta jouhou wo hirome ruto, chiiki ni konran wo maneku osoregaaru.","meaning":"Kalau menyebarkan informasi yang salah, ada risiko menimbulkan kebingungan di masyarakat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-46",level:"N2",title:"〜かねない",summary:"Menyatakan ada kemungkinan cukup besar terjadinya hal buruk.",groups:[
+    {name:"〜かねない",description:"Lebih kuat dan lebih subjektif daripada おそれがある.",sentences:[
+      {"jp":"こんなに睡眠不足のまま運転すれば、事故を起こしかねない。","kana":"こんなにすいみんぶそくのままうんてんすれば、じこをおこしかねない。","romaji":"konnani suiminbusoku nomama unten sureba, jiko wo oko shikanenai.","meaning":"Kalau mengemudi dengan kurang tidur seperti ini, bisa-bisa menyebabkan kecelakaan."},
+      {"jp":"あいまいな案内は、初めて来た人を混乱させかねない。","kana":"あいまいなあんないは、はじめてきたにんをこんらんさせかねない。","romaji":"aimaina annai ha, hajimete kita nin wo konran sasekanenai.","meaning":"Petunjuk yang samar bisa saja membuat orang yang baru datang menjadi bingung."},
+      {"jp":"忙しいからといって食事を抜き続けると、体調を崩しかねないよ。","kana":"いそがしいからといってしょくじをぬきつづけると、たいちょうをくずしかねないよ。","romaji":"isogashii karatoitte shokuji wo nuki tsuzuke ruto, taichou wo kuzushi kanenaiyo.","meaning":"Kalau terus melewatkan makan hanya karena sibuk, kondisi tubuhmu bisa drop."},
+      {"jp":"不用意な一言が、長く続いた信頼関係を壊しかねない。","kana":"ふよういなひとことが、ながくつづいたしんらいかんけいをこわしかねない。","romaji":"fuyoui na hitokoto ga, nagaku tsuzui ta shinraikankei wo kowashi kanenai.","meaning":"Satu kalimat yang ceroboh bisa saja merusak kepercayaan yang sudah lama terbangun."},
+      {"jp":"この暑さで水分を取らないと、熱中症になりかねません。","kana":"このあつさですいぶんをとらないと、ねっちゅうしょうになりかねません。","romaji":"kono atsusa de suibun wo tora naito, netchuu shou ninarikanemasen.","meaning":"Dalam panas seperti ini, kalau tidak minum cukup air Anda bisa kena heatstroke."}
+    ]}
+  ]},
+
+  {id:"GR-N2-47",level:"N2",title:"〜に相違ない",summary:"Menyatakan keyakinan kuat bahwa sesuatu pasti benar, artinya pasti, tidak salah lagi.",groups:[
+    {name:"〜に相違ない",description:"Nuansanya formal dan lebih tertulis.",sentences:[
+      {"jp":"この丁寧な対応なら、あのホテルは評判が高いに相違ない。","kana":"このていねいなたいおうなら、あのほてるはひょうばんがたかいにそういない。","romaji":"kono teinei na taiou nara, ano hoteru ha hyouban ga takai ni soui nai.","meaning":"Dengan pelayanan seteliti ini, hotel itu pasti punya reputasi tinggi."},
+      {"jp":"あれだけ準備していたのだから、彼女は本番でも落ち着いていたに相違ない。","kana":"あれだけじゅんびしていたのだから、かのじょはほんばんでもおちついていたにそういない。","romaji":"aredake junbi shiteitanodakara, kanojo ha honban demo ochitsui teitani soui nai.","meaning":"Karena dia sudah mempersiapkan sebanyak itu, pasti saat hari-H dia juga tenang."},
+      {"jp":"駅前にこれだけ人が集まっているということは、何か大きなイベントがあるに相違ない。","kana":"えきまえにこれだけにんがあつまっているということは、なにかおおきないべんとがあるにそういない。","romaji":"ekimae nikoredake nin ga atsuma tteirutoiukotoha, nanika ooki na ibento gaaruni soui nai.","meaning":"Kalau sebanyak ini orang berkumpul di depan stasiun, pasti ada acara besar."},
+      {"jp":"誰も文句を言わずに通っている店だから、味は確かに相違ない。","kana":"だれももんくをいわずにとおっているみせだから、あじはたしかにそういない。","romaji":"daremo monku wo iwa zuni tootte iru mise dakara, aji ha tashikani soui nai.","meaning":"Karena toko itu terus didatangi tanpa keluhan, rasanya pasti memang dapat dipercaya."},
+      {"jp":"先生があれほど喜んでいたのだから、合格したに相違ない。","kana":"せんせいがあれほどよろこんでいたのだから、ごうかくしたにそういない。","romaji":"sensei gaarehodo yorokonde itanodakara, goukaku shitani soui nai.","meaning":"Karena sensei sampai segembira itu, pasti saya lulus."}
+    ]}
+  ]},
+
+  {id:"GR-N2-48",level:"N2",title:"〜とか",summary:"Menyatakan contoh yang didengar atau disebut secara santai, artinya katanya, seperti.",groups:[
+    {name:"〜とか",description:"Dalam N2, bentuk ini sering terasa lisan dan tidak memastikan semua detail.",sentences:[
+      {"jp":"駅前に新しいベーカリーができたとかで、朝からかなり並んでいた。","kana":"えきまえにあたらしいべーかりーができたとかで、あさからかなりならんでいた。","romaji":"ekimae ni atarashii beekarii gadekitatokade, asa karakanari naran deita.","meaning":"Katanya ada toko roti baru di depan stasiun, jadi dari pagi sudah ramai antre."},
+      {"jp":"今年は花火大会が中止になるとか聞いたけど、本当かな。","kana":"こんねんははなびたいかいがちゅうしになるとかきいたけど、ほんとうかな。","romaji":"konnen ha hanabitaikai ga chuushi ninarutoka kii takedo, hontou kana.","meaning":"Saya dengar katanya festival kembang api tahun ini dibatalkan, apa benar ya?"},
+      {"jp":"課長は来週から大阪に転勤だとか。","kana":"かちょうはらいしゅうからおおさかにてんきんだとか。","romaji":"kachou ha raishuu kara oosaka ni tenkin datoka.","meaning":"Katanya kepala divisi mulai minggu depan dipindah ke Osaka."},
+      {"jp":"その映画、公開初日から泣けるとか話題になっていた。","kana":"そのえいが、こうかいしょにちからなけるとかわだいになっていた。","romaji":"sono eiga, koukai shonichi kara nake rutoka wadai ninatteita.","meaning":"Katanya film itu sudah ramai dibicarakan sejak hari pertama tayang karena sangat menyentuh."},
+      {"jp":"このあたりは昔、川が流れていたとかで地名にもその名残がある。","kana":"このあたりはむかし、かわがながれていたとかでちめいにもそのなごりがある。","romaji":"konoatariha mukashi, kawa ga nagare teitatokade chimei nimosono nagori gaaru.","meaning":"Katanya dulu di sekitar sini pernah ada sungai, dan jejaknya masih terlihat di nama daerah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-49",level:"N2",title:"〜やら〜やら",summary:"Menyatakan banyak hal bercampur dan agak kacau, artinya ini itu, bermacam-macam.",groups:[
+    {name:"〜やら〜やら",description:"Sering dipakai saat situasinya ramai, ribet, atau emosinya campur aduk.",sentences:[
+      {"jp":"引っ越しの日は荷物の整理やら住所変更やらで一日が終わった。","kana":"ひっこしのにちはにもつのせいりやらじゅうしょへんこうやらでついたちがおわった。","romaji":"hikkoshi no nichi ha nimotsu no seiri yara juushohenkou yarade tsuitachi ga owa tta.","meaning":"Hari pindahan habis begitu saja untuk beres-beres barang, ubah alamat, dan macam-macam lainnya."},
+      {"jp":"会場では日本語やら英語やらが飛び交っていて、にぎやかだった。","kana":"かいじょうではにほんごやらえいごやらがとびかっていて、にぎやかだった。","romaji":"kaijou deha nihongo yara eigo yaraga tobikatsu teite, nigiyakadatta.","meaning":"Di venue itu bahasa Jepang, bahasa Inggris, dan berbagai bahasa lain terdengar bersahutan sehingga suasananya ramai."},
+      {"jp":"合格発表の日はうれしいやら不安やらで落ち着かなかった。","kana":"ごうかくはっぴょうのにちはうれしいやらふあんやらでおちつかなかった。","romaji":"goukakuhappyou no nichi haureshiiyara fuan yarade ochitsuka nakatta.","meaning":"Di hari pengumuman kelulusan saya tidak tenang karena campuran rasa senang dan cemas."},
+      {"jp":"年末は忘年会やら実家への発送やらで出費が増える。","kana":"ねんまつはぼうねんかいやらじっかへのはっそうやらでしゅっぴがふえる。","romaji":"nenmatsu ha bounenkai yara jikka heno hassou yarade shuppi ga fue ru.","meaning":"Menjelang akhir tahun pengeluaran bertambah karena acara tahun akhir, kirim barang ke rumah, dan lain-lain."},
+      {"jp":"週末の商店街は買い物客やら観光客やらでとにかく人が多い。","kana":"しゅうまつのしょうてんがいはかいものきゃくやらかんこうきゃくやらでとにかくにんがおおい。","romaji":"shuumatsu no shoutengai ha kaimono kyaku yara kankoukyaku yaradetonikaku nin ga ooi.","meaning":"Pada akhir pekan area pertokoan itu penuh oleh pembeli, turis, dan banyak orang lainnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-50",level:"N2",title:"〜といった",summary:"Menyatakan contoh representative, artinya seperti, semacam.",groups:[
+    {name:"〜といった",description:"Biasa dipakai untuk merangkum beberapa contoh yang sejenis.",sentences:[
+      {"jp":"窓口では在留カードやパスポートといった本人確認書類が必要です。","kana":"まどぐちではざいりゅうかーどやぱすぽーとといったほんにんかくにんしょるいがひつようです。","romaji":"madoguchi deha zairyuu kaado ya pasupooto toitta honnin kakuninsho rui ga hitsuyou desu.","meaning":"Di loket dibutuhkan dokumen identitas seperti kartu tinggal dan paspor."},
+      {"jp":"このエリアには書店、喫茶店、古着屋といった落ち着いた店が多い。","kana":"このえりあにはしょてん、きっさてん、ふるぎやといったおちついたみせがおおい。","romaji":"kono eria niha shoten, kissaten, furugi ya toitta ochitsui ta mise ga ooi.","meaning":"Di area ini banyak toko yang tenang seperti toko buku, kafe, dan toko pakaian bekas."},
+      {"jp":"発表では家賃や通学時間といった生活面の比較も入れたい。","kana":"はっぴょうではやちんやつうがくじかんといったせいかつめんのひかくもいれたい。","romaji":"happyou deha yachin ya tsuugakujikan toitta seikatsu men no hikaku mo ire tai.","meaning":"Dalam presentasi saya juga ingin memasukkan perbandingan aspek kehidupan seperti sewa dan waktu perjalanan ke sekolah."},
+      {"jp":"冬は乾燥、インフルエンザ、雪道対策といった注意が必要になる。","kana":"ふゆはかんそう、いんふるえんざ、ゆきみちたいさくといったちゅういがひつようになる。","romaji":"fuyu ha kansou, infuruenza, yukimichi taisaku toitta chuui ga hitsuyou ninaru.","meaning":"Di musim dingin perlu perhatian terhadap hal-hal seperti udara kering, influenza, dan jalan bersalju."},
+      {"jp":"日本で働くには報連相といった基本も大事だと感じる。","kana":"にっぽんではたらくにはほうれんそうといったきほんもだいじだとかんじる。","romaji":"nippon de hataraku niha hou ren sou toitta kihon mo daiji dato kanji ru.","meaning":"Saya merasa bahwa hal-hal dasar seperti hou-ren-sou juga penting untuk bekerja di Jepang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-51",level:"N2",title:"〜というか〜というか",summary:"Menyatakan pembicara mencari kata yang paling pas, artinya dibilang begini juga iya, dibilang begitu juga iya.",groups:[
+    {name:"〜というか〜というか",description:"Nuansanya percakapan dan agak ragu memilih ungkapan.",sentences:[
+      {"jp":"あの先生は厳しいというか、細かいところまでよく見ているというか、油断できない。","kana":"あのせんせいはいかめしいというか、こまかいところまでよくみているというか、ゆだんできない。","romaji":"ano sensei ha ikameshii toiuka, komakai tokoromadeyoku mite irutoiuka, yudan dekinai.","meaning":"Guru itu bisa dibilang tegas, bisa juga dibilang sangat memperhatikan detail, jadi kita tidak bisa lengah."},
+      {"jp":"この町は便利というか、不便が少ないというか、暮らしやすい。","kana":"このまちはべんりというか、ふべんがすくないというか、くらしやすい。","romaji":"kono machi ha benri toiuka, fuben ga sukunai toiuka, kurashi yasui.","meaning":"Kota ini bisa dibilang praktis, atau mungkin lebih tepatnya sedikit sekali hal yang merepotkan, jadi nyaman ditinggali."},
+      {"jp":"彼の日本語は上手というか、自然すぎて外国人に見えない。","kana":"かのにほんごはじょうずというか、しぜんすぎてがいこくじんにみえない。","romaji":"kano nihongo ha jouzu toiuka, shizen sugite gaikokujin ni mie nai.","meaning":"Bahasa Jepangnya bukan cuma bagus, malah terlalu alami sampai tidak kelihatan seperti orang asing."},
+      {"jp":"緊張したというか、周りに圧倒されたというか、最初はほとんど話せなかった。","kana":"きんちょうしたというか、まわりにあっとうされたというか、さいしょはほとんどはなせなかった。","romaji":"kinchoushi tatoiuka, mawari ni attou saretatoiuka, saisho hahotondo hanase nakatta.","meaning":"Saya ini entah gugup atau kewalahan oleh suasana sekitar, pokoknya awalnya hampir tidak bisa bicara."},
+      {"jp":"その店は静かというか、少し緊張するくらい整っていた。","kana":"そのみせはしずかというか、すこしきんちょうするくらいととのっていた。","romaji":"sono mise ha shizuka toiuka, sukoshi kinchousu rukurai totonotsu teita.","meaning":"Toko itu bukan sekadar tenang, tapi begitu rapi sampai sedikit membuat tegang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-52",level:"N2",title:"〜抜きで / 〜抜きにして",summary:"Menyatakan menghilangkan sesuatu dari pertimbangan atau tanpa sesuatu itu.",groups:[
+    {name:"〜抜きで / 〜抜きにして",description:"Bisa dipakai untuk makanan, formalitas, atau pembahasan tertentu.",sentences:[
+      {"jp":"今日はあいさつ抜きで、すぐ本題に入りましょう。","kana":"こんにちはあいさつぬきで、すぐほんだいにいりましょう。","romaji":"konnichiha aisatsu nuki de, sugu hondai ni iri mashou.","meaning":"Hari ini tanpa basa-basi, mari langsung masuk ke pokok pembahasan."},
+      {"jp":"卵抜きで作れるメニューがあれば教えてください。","kana":"たまごぬきでつくれるめにゅーがあればおしえてください。","romaji":"tamago nuki de tsukure ru menyuu gaareba oshie tekudasai.","meaning":"Kalau ada menu yang bisa dibuat tanpa telur, tolong beri tahu saya."},
+      {"jp":"個人的な感情は抜きにして、この案の問題点だけを確認したい。","kana":"こじんてきなかんじょうはぬきにして、このあんのもんだいてんだけをかくにんしたい。","romaji":"kojintekina kanjou ha nuki nishite, kono an no mondaiten dakewo kakuninshi tai.","meaning":"Tanpa melibatkan perasaan pribadi, saya ingin memeriksa dulu masalah dari usulan ini saja."},
+      {"jp":"予約なしでは入れない人気店だけど、平日の昼なら行列抜きで入れることもある。","kana":"よやくなしではいれないにんきみせだけど、へいじつのひるならぎょうれつぬきでいれることもある。","romaji":"yoyaku nashideha ire nai ninki mise dakedo, heijitsu no hiru nara gyouretsu nuki de ire rukotomoaru.","meaning":"Walaupun toko populer ini biasanya harus reservasi, siang hari kerja kadang bisa masuk tanpa antre."},
+      {"jp":"形式ばった紹介は抜きで、まず名前だけ覚えてもらえればうれしいです。","kana":"けいしきばったしょうかいはぬきで、まずなまえだけおぼえてもらえればうれしいです。","romaji":"keishiki batta shoukai ha nuki de, mazu namae dake oboe temoraerebaureshiidesu.","meaning":"Tanpa perkenalan yang terlalu formal, saya akan senang kalau nama saya dulu yang diingat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-53",level:"N2",title:"〜ことなく",summary:"Menyatakan tanpa melakukan hal itu sama sekali.",groups:[
+    {name:"〜ことなく",description:"Sering dipakai dalam bentuk tulisan dan terdengar lebih formal daripada ないで.",sentences:[
+      {"jp":"彼は一度も迷うことなく、窓口までまっすぐ歩いていった。","kana":"かれはいちどもまようことなく、まどぐちまでまっすぐあるいていった。","romaji":"kareha ichido mo mayou kotonaku, madoguchi mademassugu arui teitta.","meaning":"Dia berjalan lurus ke loket tanpa ragu sedikit pun."},
+      {"jp":"その職人は無駄な動きをすることなく作業を進めていた。","kana":"そのしょくにんはむだなうごきをすることなくさぎょうをすすめていた。","romaji":"sono shokunin ha muda na ugoki wosurukotonaku sagyou wo susume teita.","meaning":"Pengrajin itu melanjutkan pekerjaannya tanpa gerakan yang sia-sia."},
+      {"jp":"休日はどこへ行くこともなく、部屋の掃除だけして終わった。","kana":"きゅうじつはどこへいくこともなく、へやのそうじだけしておわった。","romaji":"kyuujitsu hadokohe iku kotomonaku, heya no souji dakeshite owa tta.","meaning":"Saat libur saya tidak pergi ke mana-mana dan cuma berakhir dengan membersihkan kamar."},
+      {"jp":"大きな混乱が起こることなく、イベントは無事に終了した。","kana":"おおきなこんらんがおこることなく、いべんとはぶじにしゅうりょうした。","romaji":"ooki na konran ga oko rukotonaku, ibento ha buji ni shuuryou shita.","meaning":"Acara itu selesai dengan aman tanpa terjadi kekacauan besar."},
+      {"jp":"文句を言うことなく働く人ほど、実は疲れをためているのかもしれない。","kana":"もんくをいうことなくはたらくにんほど、じつはつかれをためているのかもしれない。","romaji":"monku wo iu kotonaku hataraku nin hodo, jitsuha tsukare wotameteirunokamoshirenai.","meaning":"Orang yang bekerja tanpa mengeluh justru mungkin diam-diam menumpuk kelelahan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-54",level:"N2",title:"〜をこめて",summary:"Menyatakan melakukan sesuatu dengan memasukkan perasaan, doa, atau makna tertentu ke dalamnya.",groups:[
+    {name:"〜をこめて",description:"Sering dipakai untuk ucapan, hadiah, surat, dan karya.",sentences:[
+      {"jp":"感謝をこめて、留学中にお世話になった先生へ手紙を書いた。","kana":"かんしゃをこめて、りゅうがくちゅうにおせわになったせんせいへてがみをかいた。","romaji":"kansha wokomete, ryuugakuchuu nio sewa ninatta sensei he tegami wo kai ta.","meaning":"Dengan penuh rasa terima kasih, saya menulis surat kepada guru yang membantu saya selama studi."},
+      {"jp":"応援の気持ちをこめて、部活の後輩にメッセージを送った。","kana":"おうえんのきもちをこめて、ぶかつのこうはいにめっせーじをおくった。","romaji":"ouen no kimochi wokomete, bukatsu no kouhai ni messeeji wo okutsu ta.","meaning":"Dengan perasaan mendukung, saya mengirim pesan kepada junior klub."},
+      {"jp":"無事を祈る気持ちをこめて、お守りを渡した。","kana":"ぶじをいのるきもちをこめて、おまもりをわたした。","romaji":"buji wo inoru kimochi wokomete, o mamori wo watashi ta.","meaning":"Saya memberikan jimat dengan doa agar semuanya selamat."},
+      {"jp":"お祝いの気持ちをこめて、先輩の送別会で小さな花束を用意した。","kana":"おいわいのきもちをこめて、せんぱいのそうべつかいでちいさなはなたばをよういした。","romaji":"o iwai no kimochi wokomete, senpai no soubetsukai de chiisa na hanataba wo youishi ta.","meaning":"Dengan perasaan ikut merayakan, saya menyiapkan buket kecil untuk acara perpisahan senior."},
+      {"jp":"地域の人への敬意をこめて、祭りではいつも手伝うようにしている。","kana":"ちいきのにんへのけいいをこめて、まつりではいつもてつだうようにしている。","romaji":"chiiki no nin heno keii wokomete, matsuri dehaitsumo tetsudau younishiteiru.","meaning":"Sebagai bentuk rasa hormat kepada warga setempat, saya selalu berusaha membantu saat festival."}
+    ]}
+  ]},
+
+  {id:"GR-N2-55",level:"N2",title:"〜に限り",summary:"Menyatakan hanya berlaku pada kondisi atau orang tertentu.",groups:[
+    {name:"〜に限り",description:"Sering dipakai di pengumuman atau aturan khusus.",sentences:[
+      {"jp":"本日に限り、この窓口でも英語で対応しています。","kana":"ほんじつにかぎり、このまどぐちでもえいごでたいおうしています。","romaji":"honjitsu ni kagiri, kono madoguchi demo eigo de taiou shiteimasu.","meaning":"Hanya untuk hari ini, loket ini juga melayani dalam bahasa Inggris."},
+      {"jp":"学生に限り、図書館の延長利用が認められています。","kana":"がくせいにかぎり、としょかんのえんちょうりようがみとめられています。","romaji":"gakusei ni kagiri, toshokan no enchou riyou ga mitome rareteimasu.","meaning":"Hanya untuk mahasiswa, penggunaan perpustakaan dengan perpanjangan waktu diizinkan."},
+      {"jp":"このクーポンは平日に限り使えます。","kana":"このくーぽんはへいじつにかぎりつかえます。","romaji":"kono kuupon ha heijitsu ni kagiri tsukae masu.","meaning":"Kupon ini hanya bisa dipakai pada hari kerja."},
+      {"jp":"初回参加者に限り、登録料が無料になります。","kana":"しょかいさんかしゃにかぎり、とうろくりょうがむりょうになります。","romaji":"shokai sankasha ni kagiri, tourokuryou ga muryou ninarimasu.","meaning":"Hanya untuk peserta pertama kali, biaya pendaftaran menjadi gratis."},
+      {"jp":"雨天時に限り、校内の一部通路が開放されます。","kana":"うてんじにかぎり、こうないのいちぶつうろがかいほうされます。","romaji":"utenji ni kagiri, kounai no ichibu tsuuro ga kaihou saremasu.","meaning":"Hanya saat hujan, sebagian lorong di dalam sekolah dibuka."}
+    ]}
+  ]},
+
+  {id:"GR-N2-56",level:"N2",title:"〜に限って",summary:"Menyatakan anehnya justru pada saat atau orang tertentu terjadi hal yang tidak diinginkan.",groups:[
+    {name:"〜に限って",description:"Sering memuat rasa kesal atau heran.",sentences:[
+      {"jp":"急いでいる日に限って、改札前で定期が見つからない。","kana":"いそいでいるにちにかぎって、かいさつまえでていきがみつからない。","romaji":"isoi deiru nichi ni kagitsu te, kaisatsu mae de teiki ga mitsu karanai.","meaning":"Anehnya justru pada hari sedang terburu-buru kartu langganan saya tidak ketemu di depan gerbang."},
+      {"jp":"こういう大事な会議の日に限って、プリンターが止まるんだよね。","kana":"こういうだいじなかいぎのにちにかぎって、ぷりんたーがとまるんだよね。","romaji":"kouiu daiji na kaigi no nichi ni kagitsu te, purintaa ga toma rundayone.","meaning":"Anehnya justru di hari rapat penting seperti ini printer malah berhenti."},
+      {"jp":"普段は元気なのに、病院へ行く日に限って子どもが熱を出す。","kana":"ふだんはげんきなのに、びょういんへいくにちにかぎってこどもがねつをだす。","romaji":"fudan ha genki nanoni, byouin he iku nichi ni kagitsu te kodomo ga netsu wo dasu.","meaning":"Biasanya anak sehat-sehat saja, tapi anehnya justru di hari ke rumah sakit dia demam."},
+      {"jp":"忘れ物をしない人に限って、一度するとかなり落ち込む。","kana":"わすれものをしないにんにかぎって、いちどするとかなりおちこむ。","romaji":"wasuremono woshinai nin ni kagitsu te, ichido surutokanari ochikomu.","meaning":"Justru orang yang biasanya tidak pernah lupa barang, sekali lupa akan sangat terpukul."},
+      {"jp":"旅行の朝に限って、近所で工事が始まって早く目が覚めた。","kana":"りょこうのあさにかぎって、きんじょでこうじがはじまってはやくめがさめた。","romaji":"ryokou no asa ni kagitsu te, kinjo de kouji ga hajima tte hayaku me ga same ta.","meaning":"Anehnya justru pada pagi hari keberangkatan ada konstruksi di sekitar rumah dan saya jadi bangun terlalu cepat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-57",level:"N2",title:"〜限り(は)",summary:"Menyatakan selama kondisi itu masih berlaku, hasil setelahnya juga berlaku.",groups:[
+    {name:"〜限り(は)",description:"Bisa diterjemahkan selama, sepanjang.",sentences:[
+      {"jp":"日本に住む限り、ゴミの分別には慣れないといけない。","kana":"にっぽんにすむかぎり、ごみのふんべつにはなれないといけない。","romaji":"nippon ni sumu kagiri, gomi no funbetsu niha nare naitoikenai.","meaning":"Selama tinggal di Jepang, kita harus terbiasa memilah sampah."},
+      {"jp":"私が担当する限り、この案内はもっと分かりやすくしたい。","kana":"わたしがたんとうするかぎり、このあんないはもっとわかりやすくしたい。","romaji":"watashi ga tantou suru kagiri, kono annai hamotto waka riyasukushitai.","meaning":"Selama saya yang menangani, saya ingin petunjuk ini dibuat lebih mudah dipahami."},
+      {"jp":"健康である限り、できるだけ自分の足で出かけたい。","kana":"けんこうであるかぎり、できるだけじぶんのあしででかけたい。","romaji":"kenkou dearu kagiri, dekirudake jibun no ashi de deka ketai.","meaning":"Selama masih sehat, saya ingin pergi dengan kaki sendiri sebisa mungkin."},
+      {"jp":"予約サイトが開いている限り、まだ空きがある可能性があります。","kana":"よやくさいとがひらいているかぎり、まだあきがあるかのうせいがあります。","romaji":"yoyaku saito ga hirai teiru kagiri, mada aki gaaru kanousei gaarimasu.","meaning":"Selama situs reservasinya masih bisa dibuka, masih ada kemungkinan slotnya tersedia."},
+      {"jp":"ルールが変わらない限り、来年度もこの方法で申請することになる。","kana":"るーるがかわらないかぎり、らいねんどもこのほうほうでしんせいすることになる。","romaji":"ruuru ga kawa ranai kagiri, rainendo mokono houhou de shinsei surukotoninaru.","meaning":"Selama aturannya tidak berubah, tahun depan pun pengajuan akan dilakukan dengan cara ini."}
+    ]}
+  ]},
+
+  {id:"GR-N2-58",level:"N2",title:"〜限りでは",summary:"Menyatakan penilaian sejauh berdasarkan informasi atau pengamatan tertentu.",groups:[
+    {name:"〜限りでは",description:"Sering diterjemahkan sejauh yang saya lihat, sejauh berdasarkan.",sentences:[
+      {"jp":"私が見た限りでは、この書類に大きな不備はありません。","kana":"わたしがみたかぎりでは、このしょるいにおおきなふびはありません。","romaji":"watashi ga mita kagiri deha, kono shorui ni ooki na fubi haarimasen.","meaning":"Sejauh yang saya lihat, dokumen ini tidak punya kekurangan besar."},
+      {"jp":"案内板を読んだ限りでは、受付は二階のようです。","kana":"あんないばんをよんだかぎりでは、うけつけはにかいのようです。","romaji":"annaiban wo yonda kagiri deha, uketsuke ha nikai noyoudesu.","meaning":"Sejauh yang saya baca dari papan petunjuk, loketnya sepertinya ada di lantai dua."},
+      {"jp":"先生の説明を聞いた限りでは、試験内容は去年と大きく変わらない。","kana":"せんせいのせつめいをきいたかぎりでは、しけんないようはきょねんとおおきくかわらない。","romaji":"sensei no setsumei wo kii ta kagiri deha, shikennaiyou ha kyonen to ookiku kawa ranai.","meaning":"Sejauh yang saya dengar dari penjelasan sensei, isi ujiannya tidak banyak berubah dari tahun lalu."},
+      {"jp":"私の経験した限りでは、この地域の人はかなり親切です。","kana":"わたしのけいけんしたかぎりでは、このちいきのにんはかなりしんせつです。","romaji":"watashi no keiken shita kagiri deha, kono chiiki no nin hakanari shinsetsu desu.","meaning":"Sejauh pengalaman saya, orang-orang di daerah ini cukup ramah."},
+      {"jp":"公開されている情報だけを見る限りでは、まだ判断が難しい。","kana":"こうかいされているじょうほうだけをみるかぎりでは、まだはんだんがむずかしい。","romaji":"koukai sareteiru jouhou dakewo miru kagiri deha, mada handan ga muzukashii.","meaning":"Sejauh hanya melihat informasi yang dipublikasikan, masih sulit mengambil keputusan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-59",level:"N2",title:"〜どころではない",summary:"Menyatakan situasi terlalu serius sehingga tidak sempat memikirkan hal lain.",groups:[
+    {name:"〜どころではない",description:"Nuansanya lebih kuat daripada どころか.",sentences:[
+      {"jp":"引っ越し直後は観光どころではなく、生活を整えるだけで精いっぱいだった。","kana":"ひっこしちょくごはかんこうどころではなく、せいかつをととのえるだけでせいいっぱいだった。","romaji":"hikkoshi chokugo ha kankou dokorodehanaku, seikatsu wo totonoe rudakede seiippai datta.","meaning":"Setelah baru pindah, jangankan jalan-jalan, mengatur hidup sehari-hari saja sudah sangat melelahkan."},
+      {"jp":"締め切り前で昼休みどころではない。","kana":"しめきりまえでひるやすみどころではない。","romaji":"shimekiri mae de hiruyasumi dokorodehanai.","meaning":"Karena menjelang tenggat, jangankan istirahat siang, saya bahkan tidak sempat berhenti."},
+      {"jp":"子どもが急に熱を出して、買い物どころではなくなった。","kana":"こどもがきゅうにねつをだして、かいものどころではなくなった。","romaji":"kodomo ga kyuuni netsu wo dashi te, kaimono dokorodehanakunatta.","meaning":"Anak tiba-tiba demam, jadi jangankan belanja, keluar rumah pun batal."},
+      {"jp":"地震の速報を見て、冗談を言っているどころではない空気になった。","kana":"じしんのそくほうをみて、じょうだんをいっているどころではないくうきになった。","romaji":"jishin no sokuhou wo mite, joudan wo itte irudokorodehanai kuuki ninatta.","meaning":"Begitu melihat kabar gempa, suasananya langsung tidak lagi memungkinkan untuk bercanda."},
+      {"jp":"新生活の最初の週は自炊どころではなく、毎日コンビニに頼っていた。","kana":"しんせいかつのさいしょのしゅうはじすいどころではなく、まいにちこんびににたよっていた。","romaji":"shinseikatsu no saisho no shuu ha jisui dokorodehanaku, mainichi konbini ni tayotsu teita.","meaning":"Pada minggu pertama hidup baru, jangankan masak sendiri, saya tiap hari bergantung pada konbini."}
+    ]}
+  ]},
+
+  {id:"GR-N2-60",level:"N2",title:"〜ものか",summary:"Menyatakan penolakan atau keyakinan kuat bahwa sesuatu tidak mungkin dilakukan.",groups:[
+    {name:"〜ものか",description:"Sering terdengar emosional dan kuat dalam percakapan.",sentences:[
+      {"jp":"あんな対応をされた店に、もう二度と行くものか。","kana":"あんなたいおうをされたみせに、もうにどといくものか。","romaji":"anna taiou wosareta mise ni, mou nido to iku monoka.","meaning":"Setelah dilayani seperti itu, saya tidak akan pergi lagi ke toko itu."},
+      {"jp":"こんなに準備したんだから、簡単にあきらめるものか。","kana":"こんなにじゅんびしたんだから、かんたんにあきらめるものか。","romaji":"konnani junbi shitandakara, kantan niakiramerumonoka.","meaning":"Karena saya sudah mempersiapkan sebanyak ini, saya tidak akan menyerah begitu saja."},
+      {"jp":"忙しいからといって、大事な約束を忘れるものか。","kana":"いそがしいからといって、だいじなやくそくをわすれるものか。","romaji":"isogashii karatoitte, daiji na yakusoku wo wasure rumonoka.","meaning":"Hanya karena sibuk bukan berarti saya akan melupakan janji penting."},
+      {"jp":"あのミスを繰り返すものかと、手順を全部書き出した。","kana":"あのみすをくりかえすものかと、てじゅんをぜんぶかきだした。","romaji":"ano misu wo kurikaesu monokato, tejun wo zenbu kakidashi ta.","meaning":"Saya menuliskan semua langkah sambil bertekad tidak akan mengulangi kesalahan itu lagi."},
+      {"jp":"寒いくらいで部活を休むものかと、彼は外へ出ていった。","kana":"さむいくらいでぶかつをやすむものかと、かれはそとへでていった。","romaji":"samui kuraide bukatsu wo yasumu monokato, kareha soto he dete itta.","meaning":"Hanya karena dingin, dia tidak mau sampai bolos kegiatan klub lalu tetap keluar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-61",level:"N2",title:"〜っこない",summary:"Menyatakan keyakinan santai tapi kuat bahwa sesuatu mustahil terjadi.",groups:[
+    {name:"〜っこない",description:"Lebih kasual daripada わけがない.",sentences:[
+      {"jp":"終電まであと十分しかないし、今から走っても間に合いっこない。","kana":"しゅうでんまであとじゅうぶんしかないし、いまからはしってもまにあいっこない。","romaji":"shuuden madeato juubun shikanaishi, imaka ra hashitsu temo maniai kkonai.","meaning":"Kereta terakhir tinggal sepuluh menit lagi, jadi sekalipun lari sekarang tetap tidak mungkin sempat."},
+      {"jp":"そんな難しい漢字、今日一日で全部覚えられっこないよ。","kana":"そんなむずかしいかんじ、きょういちにちでぜんぶおぼえられっこないよ。","romaji":"sonna muzukashii kanji, kyouichinichi de zenbu oboe rarekkonaiyo.","meaning":"Kanji sesulit itu tidak mungkin dihafal semua hanya dalam satu hari."},
+      {"jp":"説明なしでこの書類を一人で完成できっこない。","kana":"せつめいなしでこのしょるいをひとりでかんせいできっこない。","romaji":"setsumei nashidekono shorui wo hitori de kansei dekikkonai.","meaning":"Tanpa penjelasan, tidak mungkin saya bisa menyelesaikan dokumen ini sendirian."},
+      {"jp":"あの行列じゃ、開店直後に入れっこないね。","kana":"あのぎょうれつじゃ、かいてんちょくごにいれっこないね。","romaji":"ano gyouretsu ja, kaitenchokugo ni ire kkonaine.","meaning":"Dengan antrean sepanjang itu, tidak mungkin kita bisa masuk tepat setelah buka."},
+      {"jp":"毎日寝不足のままで、いい集中力なんて続きっこない。","kana":"まいにちねぶそくのままで、いいしゅうちゅうりょくなんてつづきっこない。","romaji":"mainichi nebusoku nomamade, ii shuuchuuryoku nante tsuzuki kkonai.","meaning":"Kalau terus kurang tidur tiap hari, konsentrasi yang baik tidak mungkin bertahan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-62",level:"N2",title:"〜わけがない",summary:"Menyatakan dengan logis bahwa sesuatu mustahil benar.",groups:[
+    {name:"〜わけがない",description:"Lebih objektif dan tegas daripada っこない.",sentences:[
+      {"jp":"準備なしであの発表をこなせるわけがない。","kana":"じゅんびなしであのはっぴょうをこなせるわけがない。","romaji":"junbi nashideano happyou wokonaseruwakeganai.","meaning":"Tidak mungkin seseorang bisa menjalani presentasi sebesar itu tanpa persiapan."},
+      {"jp":"こんなに静かな住宅街で、深夜まで店が開いているわけがない。","kana":"こんなにしずかなじゅうたくがいで、しんやまでみせがひらいているわけがない。","romaji":"konnani shizuka na juutakugai de, shinya made mise ga hirai teiruwakeganai.","meaning":"Di area perumahan setenang ini tidak mungkin ada toko yang buka sampai larut malam."},
+      {"jp":"彼が約束の時間を忘れるわけがないから、何か事情があるはずだ。","kana":"かれがやくそくのじかんをわすれるわけがないから、なにかじじょうがあるはずだ。","romaji":"kare ga yakusoku no jikan wo wasure ruwakeganaikara, nanika jijou gaaruhazuda.","meaning":"Tidak mungkin dia lupa waktu janji, jadi pasti ada suatu alasan."},
+      {"jp":"一度も練習していないのに、いきなり本番でうまくできるわけがない。","kana":"いちどもれんしゅうしていないのに、いきなりほんばんでうまくできるわけがない。","romaji":"ichido mo renshuu shiteinainoni, ikinari honban deumakudekiruwakeganai.","meaning":"Kalau tidak pernah latihan, tidak mungkin langsung bisa melakukannya dengan baik saat tampil."},
+      {"jp":"パスポートなしで国際線に乗れるわけがありません。","kana":"ぱすぽーとなしでこくさいせんにのれるわけがありません。","romaji":"pasupooto nashide kokusaisen ni nore ruwakegaarimasen.","meaning":"Tidak mungkin bisa naik penerbangan internasional tanpa paspor."}
+    ]}
+  ]},
+
+  {id:"GR-N2-63",level:"N2",title:"〜というものではない / 〜というものでもない",summary:"Menyatakan bahwa sesuatu tidak selalu bisa disimpulkan seperti itu.",groups:[
+    {name:"〜というものではない / 〜というものでもない",description:"Dipakai untuk menyangkal generalisasi yang terlalu sederhana.",sentences:[
+      {"jp":"日本語は長く勉強すればいいというものではなく、使い方も大事だ。","kana":"にほんごはながくべんきょうすればいいというものではなく、つかいかたもだいじだ。","romaji":"nihongo ha nagaku benkyou surebaiitoiumonodehanaku, tsukaikata mo daiji da.","meaning":"Belajar bahasa Jepang bukan cuma soal belajar lama, cara memakainya juga penting."},
+      {"jp":"安ければいいというものではなく、住みやすさも考えたい。","kana":"やすければいいというものではなく、すみやすさもかんがえたい。","romaji":"yasuke rebaiitoiumonodehanaku, sumi yasusamo kangae tai.","meaning":"Tempat tinggal bukan berarti yang murah saja sudah cukup, kenyamanan juga ingin saya pertimbangkan."},
+      {"jp":"謝ればそれで済むというものでもない場面もある。","kana":"あやまればそれですむというものでもないばめんもある。","romaji":"ayamare basorede sumu toiumonodemonai bamen moaru.","meaning":"Ada situasi di mana meminta maaf saja tidak otomatis menyelesaikan semuanya."},
+      {"jp":"多言語化すれば伝わるというものではなく、案内の見やすさも必要だ。","kana":"たげんごかすればつたわるというものではなく、あんないのみやすさもひつようだ。","romaji":"tagengo kasu reba tsutawa rutoiumonodehanaku, annai no miya susamo hitsuyou da.","meaning":"Bukan berarti kalau sudah dibuat multibahasa semua akan langsung tersampaikan, keterbacaan petunjuk juga perlu."},
+      {"jp":"急げば早く終わるというものではないので、まず落ち着いて確認しよう。","kana":"いそげばはやくおわるというものではないので、まずおちついてかくにんしよう。","romaji":"isoge ba hayaku owa rutoiumonodehanainode, mazu ochitsui te kakuninshi you.","meaning":"Bukan berarti kalau diburu semuanya jadi cepat selesai, jadi mari tenang dan periksa dulu."}
+    ]}
+  ]},
+
+  {id:"GR-N2-64",level:"N2",title:"〜のみならず(〜も)",summary:"Menyatakan tidak hanya A, tetapi juga B.",groups:[
+    {name:"〜のみならず(〜も)",description:"Nuansanya formal dan banyak dipakai dalam tulisan.",sentences:[
+      {"jp":"このイベントは学生のみならず、地域の大人にも人気がある。","kana":"このいべんとはがくせいのみならず、ちいきのおとなにもにんきがある。","romaji":"kono ibento ha gakusei nominarazu, chiiki no otona nimo ninki gaaru.","meaning":"Acara ini populer bukan hanya di kalangan mahasiswa, tetapi juga warga dewasa di sekitarnya."},
+      {"jp":"日本語のみならず、英語での案内も充実してきた。","kana":"にほんごのみならず、えいごでのあんないもじゅうじつしてきた。","romaji":"nihongo nominarazu, eigo deno annai mo juujitsu shitekita.","meaning":"Bukan hanya bahasa Jepang, petunjuk dalam bahasa Inggris juga makin lengkap."},
+      {"jp":"彼は接客のみならず、在庫管理まで任されている。","kana":"かれはせっきゃくのみならず、ざいこかんりまでまかされている。","romaji":"kareha sekkyaku nominarazu, zaikokanri made makasa reteiru.","meaning":"Dia tidak hanya menangani pelayanan pelanggan, tetapi juga dipercaya mengelola stok."},
+      {"jp":"この制度は住民のみならず、観光客にも影響を与える。","kana":"このせいどはじゅうみんのみならず、かんこうきゃくにもえいきょうをあたえる。","romaji":"kono seido ha juumin nominarazu, kankoukyaku nimo eikyou wo atae ru.","meaning":"Sistem ini berdampak bukan hanya kepada warga, tetapi juga turis."},
+      {"jp":"その先生は授業のみならず、進路相談にも親身だ。","kana":"そのせんせいはじゅぎょうのみならず、しんろそうだんにもしんみだ。","romaji":"sono sensei ha jugyou nominarazu, shinro soudan nimo shinmi da.","meaning":"Sensei itu bukan hanya baik saat mengajar, tetapi juga sangat perhatian dalam konsultasi karier."}
+    ]}
+  ]},
+
+  {id:"GR-N2-65",level:"N2",title:"〜に限らず",summary:"Menyatakan bahwa sesuatu berlaku tidak hanya untuk satu hal yang disebut.",groups:[
+    {name:"〜に限らず",description:"Dipakai untuk memperluas cakupan secara netral.",sentences:[
+      {"jp":"駅前に限らず、この地域全体で家賃が上がっている。","kana":"えきまえにかぎらず、このちいきぜんたいでやちんがあがっている。","romaji":"ekimae ni kagira zu, kono chiiki zentai de yachin ga aga tteiru.","meaning":"Bukan hanya area depan stasiun, sewa di seluruh daerah ini juga sedang naik."},
+      {"jp":"日本人に限らず、初めて来た人にはこの案内が分かりにくい。","kana":"にほんじんにかぎらず、はじめてきたにんにはこのあんないがわかりにくい。","romaji":"nihonjin ni kagira zu, hajimete kita nin nihakono annai ga waka rinikui.","meaning":"Bukan hanya orang Jepang, bagi orang yang baru datang petunjuk ini memang sulit dipahami."},
+      {"jp":"平日に限らず、土日もこのクリニックはかなり混んでいる。","kana":"へいじつにかぎらず、どにちもこのくりにっくはかなりこんでいる。","romaji":"heijitsu ni kagira zu, donichi mokono kurinikku hakanari kon deiru.","meaning":"Bukan hanya hari kerja, klinik ini juga cukup ramai pada Sabtu dan Minggu."},
+      {"jp":"若者に限らず、高齢者にもスマホ手続きの負担が大きい。","kana":"わかものにかぎらず、こうれいしゃにもすまほてつづきのふたんがおおきい。","romaji":"wakamono ni kagira zu, koureisha nimo sumaho tetsuzuki no futan ga ookii.","meaning":"Bukan hanya anak muda, orang lanjut usia pun terbebani oleh prosedur via ponsel."},
+      {"jp":"東京に限らず、地方都市でも外国人向けの支援が必要だと思う。","kana":"とうきょうにかぎらず、ちほうとしでもがいこくじんむけのしえんがひつようだとおもう。","romaji":"toukyou ni kagira zu, chihoutoshi demo gaikokujin muke no shien ga hitsuyou dato omou.","meaning":"Menurut saya dukungan bagi warga asing dibutuhkan bukan hanya di Tokyo, tetapi juga di kota-kota daerah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-66",level:"N2",title:"〜はもとより(〜も)",summary:"Menyatakan tentu saja A, apalagi juga B.",groups:[
+    {name:"〜はもとより(〜も)",description:"Lebih formal daripada もちろん.",sentences:[
+      {"jp":"駅員はもとより、近くの店員まで道案内に慣れていた。","kana":"えきいんはもとより、ちかくのてんいんまでみちあんないになれていた。","romaji":"ekiin hamotoyori, chikaku no ten'in made michiannai ni nare teita.","meaning":"Tentu saja petugas stasiun, bahkan pegawai toko di dekat situ pun terbiasa memberi petunjuk jalan."},
+      {"jp":"日本語はもとより、英語での説明まで必要になる場面が増えた。","kana":"にほんごはもとより、えいごでのせつめいまでひつようになるばめんがふえた。","romaji":"nihongo hamotoyori, eigo deno setsumei made hitsuyou ninaru bamen ga fue ta.","meaning":"Tentu saja bahasa Jepang, bahkan penjelasan dalam bahasa Inggris pun makin sering diperlukan."},
+      {"jp":"この図書館は本はもとより、学習スペースも充実している。","kana":"このとしょかんはほんはもとより、がくしゅうすぺーすもじゅうじつしている。","romaji":"kono toshokan ha hon hamotoyori, gakushuu supeesu mo juujitsu shiteiru.","meaning":"Perpustakaan ini tentu saja memiliki buku, bahkan area belajarnya pun sangat lengkap."},
+      {"jp":"安全面はもとより、子どもが楽しめる工夫も考えられている。","kana":"あんぜんめんはもとより、こどもがたのしめるくふうもかんがえられている。","romaji":"anzenmen hamotoyori, kodomo ga tanoshi meru kufuu mo kangae rareteiru.","meaning":"Tentu saja aspek keamanan diperhatikan, dan bahkan unsur agar anak-anak bisa menikmatinya juga dipikirkan."},
+      {"jp":"家賃はもとより、初期費用の高さにも驚いた。","kana":"やちんはもとより、しょきひようのたかさにもおどろいた。","romaji":"yachin hamotoyori, shoki hiyou no takasa nimo odoroi ta.","meaning":"Tentu saja sewanya sendiri mahal, dan saya juga terkejut dengan tingginya biaya awal."}
+    ]}
+  ]},
+
+  {id:"GR-N2-67",level:"N2",title:"〜うえに",summary:"Menyatakan penambahan hal lain, biasanya searah, artinya selain itu, di samping itu.",groups:[
+    {name:"〜うえに",description:"Bisa dipakai untuk hal positif maupun negatif.",sentences:[
+      {"jp":"このマンションは駅に近いうえに、スーパーもすぐそばにある。","kana":"このまんしょんはえきにちかいうえに、すーぱーもすぐそばにある。","romaji":"kono manshon ha eki ni chikai ueni, suupaa mosugusobaniaru.","meaning":"Apartemen ini selain dekat stasiun, supermarketnya juga ada di dekat sini."},
+      {"jp":"今日は風が強いうえに、気温まで下がってきた。","kana":"こんにちはかぜがつよいうえに、きおんまでさがってきた。","romaji":"konnichiha kaze ga tsuyoi ueni, kion made saga ttekita.","meaning":"Hari ini selain anginnya kencang, suhunya juga turun."},
+      {"jp":"彼女は説明が丁寧なうえに、質問にも落ち着いて答えてくれる。","kana":"かのじょはせつめいがていねいなうえに、しつもんにもおちついてこたえてくれる。","romaji":"kanojo ha setsumei ga teinei naueni, shitsumon nimo ochitsui te kotae tekureru.","meaning":"Dia selain menjelaskan dengan rinci, juga menjawab pertanyaan dengan tenang."},
+      {"jp":"連休前で店が混んでいるうえに、店員も少なくて大変そうだった。","kana":"れんきゅうまえでみせがこんでいるうえに、てんいんもすくなくてたいへんそうだった。","romaji":"renkyuumae de mise ga kon deiruueni, ten'in mo sukunaku te taihen soudatta.","meaning":"Menjelang libur panjang tokonya ramai, dan ditambah stafnya sedikit sehingga terlihat kewalahan."},
+      {"jp":"この制度は手続きが簡単なうえに、相談窓口も分かりやすい。","kana":"このせいどはてつづきがかんたんなうえに、そうだんまどぐちもわかりやすい。","romaji":"kono seido ha tetsuzuki ga kantan naueni, soudanmadoguchi mo waka riyasui.","meaning":"Sistem ini selain prosedurnya sederhana, loket konsultasinya juga mudah dipahami."}
+    ]}
+  ]},
+
+  {id:"GR-N2-68",level:"N2",title:"〜も〜ば、〜も",summary:"Menyatakan beberapa sisi atau sifat sekaligus.",groups:[
+    {name:"〜も〜ば、〜も",description:"Sering dipakai untuk menilai orang atau benda dari dua arah.",sentences:[
+      {"jp":"この町は家賃も安ければ、交通の便も悪くない。","kana":"このまちはやちんもやすければ、こうつうのびんもわるくない。","romaji":"kono machi ha yachin mo yasuke reba, koutsuu no bin mo waruku nai.","meaning":"Kota ini sewanya murah, dan akses transportasinya juga tidak buruk."},
+      {"jp":"彼は仕事も早ければ、説明も分かりやすい。","kana":"かれはしごともはやければ、せつめいもわかりやすい。","romaji":"kareha shigoto mo hayake reba, setsumei mo waka riyasui.","meaning":"Dia kerjanya cepat, dan penjelasannya juga mudah dipahami."},
+      {"jp":"そのイベントは楽しい面もあれば、準備が大変な面もある。","kana":"そのいべんとはたのしいめんもあれば、じゅんびがたいへんなめんもある。","romaji":"sono ibento ha tanoshii men moareba, junbi ga taihen na men moaru.","meaning":"Acara itu ada sisi menyenangkannya, tapi ada juga sisi persiapannya melelahkan."},
+      {"jp":"日本での生活は便利なこともあれば、細かい手続きに戸惑うこともある。","kana":"にっぽんでのせいかつはべんりなこともあれば、こまかいてつづきにとまどうこともある。","romaji":"nippon deno seikatsu ha benri nakotomoareba, komakai tetsuzuki ni tomadou kotomoaru.","meaning":"Hidup di Jepang ada praktisnya, tapi ada juga saat-saat kita bingung oleh prosedur yang detail."},
+      {"jp":"このアプリは見やすいし、検索もしやすければ共有も簡単だ。","kana":"このあぷりはみやすいし、けんさくもしやすければきょうゆうもかんたんだ。","romaji":"kono apuri ha miya suishi, kensaku moshiyasukereba kyouyuu mo kantan da.","meaning":"Aplikasi ini mudah dilihat, mudah dicari, dan juga mudah dibagikan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-69",level:"N2",title:"〜を問わず",summary:"Menyatakan tanpa memandang perbedaan jenis, waktu, usia, dan sebagainya.",groups:[
+    {name:"〜を問わず",description:"Sering dipakai untuk aturan atau cakupan yang luas.",sentences:[
+      {"jp":"この交流会は年齢を問わず参加できます。","kana":"このこうりゅうかいはねんれいをとわずさんかできます。","romaji":"kono kouryuukai ha nenrei wo towa zu sanka dekimasu.","meaning":"Acara pertukaran ini bisa diikuti tanpa memandang usia."},
+      {"jp":"昼夜を問わず救急の相談ができる番号を確認しておくと安心だ。","kana":"ちゅうやをとわずきゅうきゅうのそうだんができるばんごうをかくにんしておくとあんしんだ。","romaji":"chuuya wo towa zu kyuukyuu no soudan gadekiru bangou wo kakuninshi teokuto anshin da.","meaning":"Rasanya tenang kalau sudah tahu nomor layanan darurat yang bisa dihubungi siang maupun malam."},
+      {"jp":"経験を問わず応募可能な求人だったので、留学生にも人気がある。","kana":"けいけんをとわずおうぼかのうなきゅうじんだったので、りゅうがくせいにもにんきがある。","romaji":"keiken wo towa zu oubo kanouna kyuujin dattanode, ryuugakusei nimo ninki gaaru.","meaning":"Karena lowongan ini bisa dilamar tanpa memandang pengalaman, lowongan ini populer juga di kalangan pelajar asing."},
+      {"jp":"国籍を問わず利用できる相談窓口が増えてきた。","kana":"こくせきをとわずりようできるそうだんまどぐちがふえてきた。","romaji":"kokuseki wo towa zu riyou dekiru soudanmadoguchi ga fue tekita.","meaning":"Loket konsultasi yang bisa dipakai tanpa memandang kewarganegaraan mulai bertambah."},
+      {"jp":"この施設は天候を問わず子どもが遊べるのが魅力だ。","kana":"このしせつはてんこうをとわずこどもがあそべるのがみりょくだ。","romaji":"kono shisetsu ha tenkou wo towa zu kodomo ga asobe runoga miryoku da.","meaning":"Daya tarik fasilitas ini adalah anak-anak bisa bermain di sini tanpa memandang cuaca."}
+    ]}
+  ]},
+
+  {id:"GR-N2-70",level:"N2",title:"〜もかまわず",summary:"Menyatakan melakukan sesuatu tanpa peduli keadaan atau penilaian sekitar.",groups:[
+    {name:"〜もかまわず",description:"Sering bernuansa kritik atau kekagetan.",sentences:[
+      {"jp":"彼は人目もかまわず、駅前で友達と再会して泣いていた。","kana":"かれはひとめもかまわず、えきまえでともだちとさいかいしてないていた。","romaji":"kareha hitome mokamawazu, ekimae de tomodachi to saikai shite nai teita.","meaning":"Dia sampai menangis di depan stasiun saat bertemu lagi dengan temannya tanpa peduli pandangan orang."},
+      {"jp":"時間もかまわず電話してしまって、あとで申し訳なくなった。","kana":"じかんもかまわずでんわしてしまって、あとでもうしわけなくなった。","romaji":"jikan mokamawazu denwa shiteshimatte, atode moushiwake nakunatta.","meaning":"Saya menelepon tanpa mempedulikan waktunya, lalu belakangan merasa tidak enak."},
+      {"jp":"雨もかまわず練習を続ける部員たちを見て驚いた。","kana":"あめもかまわずれんしゅうをつづけるぶいんたちをみておどろいた。","romaji":"ame mokamawazu renshuu wo tsuzuke ru buin tachiwo mite odoroi ta.","meaning":"Saya kaget melihat anggota klub itu terus latihan tanpa peduli hujan."},
+      {"jp":"彼は服の汚れもかまわず、転んだ子どもをすぐ助けに行った。","kana":"かれはふくのよごれもかまわず、ころんだこどもをすぐたすけにいった。","romaji":"kareha fuku no yogore mokamawazu, koron da kodomo wosugu tasuke ni itta.","meaning":"Tanpa peduli bajunya akan kotor, dia langsung menolong anak yang jatuh."},
+      {"jp":"周囲の反対もかまわず、その店は深夜営業を始めたらしい。","kana":"しゅういのはんたいもかまわず、そのみせはしんやえいぎょうをはじめたらしい。","romaji":"shuui no hantai mokamawazu, sono mise ha shinya eigyou wo hajime tarashii.","meaning":"Katanya toko itu mulai buka sampai larut malam tanpa mempedulikan penolakan sekitar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-71",level:"N2",title:"〜はともかく(として)",summary:"Menyatakan untuk sementara membiarkan topik pertama dan fokus ke hal lain yang lebih penting.",groups:[
+    {name:"〜はともかく(として)",description:"Sering diterjemahkan terlepas dari, soal itu nanti dulu.",sentences:[
+      {"jp":"細かいデザインはともかくとして、まず内容を固めましょう。","kana":"こまかいでざいんはともかくとして、まずないようをかためましょう。","romaji":"komakai dezain hatomokakutoshite, mazu naiyou wo katame mashou.","meaning":"Soal desain yang rinci nanti dulu, mari mantapkan isinya terlebih dahulu."},
+      {"jp":"結果はともかく、最後までやり切ったことに意味がある。","kana":"けっかはともかく、さいごまでやりきったことにいみがある。","romaji":"kekka hatomokaku, saigo madeyari kitsu takotoni imi gaaru.","meaning":"Terlepas dari hasilnya, ada makna pada fakta bahwa kita menyelesaikannya sampai akhir."},
+      {"jp":"費用はともかくとして、手続きにどれくらい時間がかかるか知りたい。","kana":"ひようはともかくとして、てつづきにどれくらいじかんがかかるかしりたい。","romaji":"hiyou hatomokakutoshite, tetsuzuki nidorekurai jikan gakakaruka shiri tai.","meaning":"Terlepas dari biaya, saya ingin tahu berapa lama prosesnya."},
+      {"jp":"好き嫌いはともかく、この案は現実的だと思う。","kana":"すききらいはともかく、このあんはげんじつてきだとおもう。","romaji":"suki kirai hatomokaku, kono an ha genjitsuteki dato omou.","meaning":"Terlepas dari suka atau tidak, menurut saya usulan ini realistis."},
+      {"jp":"天気はともかく、交通機関だけは止まらないでほしい。","kana":"てんきはともかく、こうつうきかんだけはとまらないでほしい。","romaji":"tenki hatomokaku, koutsuukikan dakeha toma ranaidehoshii.","meaning":"Soal cuaca bagaimana nanti dulu, saya hanya berharap transportasinya jangan sampai berhenti."}
+    ]}
+  ]},
+
+  {id:"GR-N2-72",level:"N2",title:"〜はさておき",summary:"Menyatakan topik pertama disisihkan dulu untuk membicarakan hal utama.",groups:[
+    {name:"〜はさておき",description:"Mirip dengan はともかく, tetapi terasa lebih jelas menunda topik itu.",sentences:[
+      {"jp":"冗談はさておき、そろそろ会議を始めましょう。","kana":"じょうだんはさておき、そろそろかいぎをはじめましょう。","romaji":"joudan hasateoki, sorosoro kaigi wo hajime mashou.","meaning":"Leluconnya nanti dulu, mari mulai rapatnya."},
+      {"jp":"観光の話はさておき、まず住む場所を決めないといけない。","kana":"かんこうのはなしはさておき、まずすむばしょをきめないといけない。","romaji":"kankou no hanashi hasateoki, mazu sumu basho wo kime naitoikenai.","meaning":"Soal wisata nanti dulu, pertama-tama saya harus menentukan tempat tinggal."},
+      {"jp":"見た目はさておき、このカバンはとにかく軽くて使いやすい。","kana":"みためはさておき、このかばんはとにかくかるくてつかいやすい。","romaji":"mitame hasateoki, kono kaban hatonikaku karuku te tsukai yasui.","meaning":"Soal penampilannya nanti dulu, tas ini yang jelas ringan dan mudah dipakai."},
+      {"jp":"感想はさておき、提出期限だけは今日中に確認してください。","kana":"かんそうはさておき、ていしゅつきげんだけはきょうじゅうにかくにんしてください。","romaji":"kansou hasateoki, teishutsukigen dakeha kyoujuu ni kakuninshi tekudasai.","meaning":"Pendapatnya nanti dulu, yang penting tolong cek batas pengumpulannya hari ini."},
+      {"jp":"昔の話はさておき、今できる対応を考えよう。","kana":"むかしのはなしはさておき、いまできるたいおうをかんがえよう。","romaji":"mukashi no hanashi hasateoki, ima dekiru taiou wo kangae you.","meaning":"Cerita masa lalu nanti dulu, mari pikirkan respons yang bisa dilakukan sekarang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-73",level:"N2",title:"〜をめぐって",summary:"Menyatakan seputar sesuatu yang menjadi pusat pembahasan, konflik, atau gerakan.",groups:[
+    {name:"〜をめぐって",description:"Sering dipakai dalam berita dan diskusi sosial.",sentences:[
+      {"jp":"再開発計画をめぐって、住民説明会が何度も開かれている。","kana":"さいかいはつけいかくをめぐって、じゅうみんせつめいかいがなんどもひらかれている。","romaji":"saikaihatsu keikaku womegutte, juumin setsumeikai ga nando mo hiraka reteiru.","meaning":"Seputar rencana pembangunan ulang, sesi penjelasan untuk warga sudah diadakan berkali-kali."},
+      {"jp":"その予算案をめぐって、議論が長引いているらしい。","kana":"そのよさんあんをめぐって、ぎろんがながびいているらしい。","romaji":"sono yosan'an womegutte, giron ga nagabii teirurashii.","meaning":"Katanya perdebatan soal rancangan anggaran itu berlangsung panjang."},
+      {"jp":"駅前の喫煙所をめぐって、賛成と反対の意見が分かれている。","kana":"えきまえのきつえんじょをめぐって、さんせいとはんたいのいけんがわかれている。","romaji":"ekimae no kitsuenjo womegutte, sansei to hantai no iken ga waka reteiru.","meaning":"Seputar area merokok di depan stasiun, pendapat yang setuju dan menolak terpecah."},
+      {"jp":"留学生支援をめぐる取り組みが、最近少しずつ広がってきた。","kana":"りゅうがくせいしえんをめぐるとりくみが、さいきんすこしずつひろがってきた。","romaji":"ryuugakusei shien womeguru torikumi ga, saikin sukoshi zutsu hiroga ttekita.","meaning":"Upaya seputar dukungan bagi pelajar internasional belakangan mulai meluas sedikit demi sedikit."},
+      {"jp":"文化財の保存をめぐって、地域の人たちが話し合いを続けている。","kana":"ぶんかざいのほぞんをめぐって、ちいきのにんたちがはなしあいをつづけている。","romaji":"bunkazai no hozon womegutte, chiiki no nin tachiga hanashiai wo tsuzuke teiru.","meaning":"Warga daerah terus berdiskusi mengenai pelestarian aset budaya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-74",level:"N2",title:"〜に応えて / 〜に応える",summary:"Menyatakan menanggapi harapan, permintaan, atau dukungan.",groups:[
+    {name:"〜に応えて / 〜に応える",description:"Bisa dipakai untuk respons konkret maupun hasil yang sesuai harapan.",sentences:[
+      {"jp":"住民の要望に応えて、区役所の案内が多言語化された。","kana":"じゅうみんのようぼうにこたえて、くやくしょのあんないがたげんごかされた。","romaji":"juumin no youbou ni kotae te, kuyakusho no annai ga tagengo kasa reta.","meaning":"Menanggapi permintaan warga, petunjuk di kantor wilayah dibuat multibahasa."},
+      {"jp":"ファンの声に応えて、駅前で追加公演が決まった。","kana":"ふぁんのこえにこたえて、えきまえでついかこうえんがきまった。","romaji":"fan no koe ni kotae te, ekimae de tsuikakouen ga kima tta.","meaning":"Menanggapi suara penggemar, pertunjukan tambahan diputuskan diadakan di dekat stasiun."},
+      {"jp":"先生の期待に応えられるよう、毎日少しずつ準備している。","kana":"せんせいのきたいにこたえられるよう、まいにちすこしずつじゅんびしている。","romaji":"sensei no kitai ni kotae rareruyou, mainichi sukoshi zutsu junbi shiteiru.","meaning":"Saya sedang mempersiapkan sedikit demi sedikit setiap hari agar bisa memenuhi harapan sensei."},
+      {"jp":"地域の不安に応える形で、防災セミナーが開かれた。","kana":"ちいきのふあんにこたえるかたちで、ぼうさいせみなーがひらかれた。","romaji":"chiiki no fuan ni kotae ru katachi de, bousai seminaa ga hiraka reta.","meaning":"Dalam bentuk menanggapi kecemasan warga, seminar kesiapsiagaan bencana diadakan."},
+      {"jp":"応援に応えて、選手たちは最後まで走りきった。","kana":"おうえんにこたえて、せんしゅたちはさいごまではしりきった。","romaji":"ouen ni kotae te, senshu tachiha saigo made hashiri kitta.","meaning":"Menjawab dukungan para pendukung, para atlet berlari sampai akhir."}
+    ]}
+  ]},
+
+  {id:"GR-N2-75",level:"N2",title:"〜をはじめ / 〜をはじめとして",summary:"Menyatakan menyebut contoh utama lalu masih ada yang lain juga.",groups:[
+    {name:"〜をはじめ / 〜をはじめとして",description:"Dipakai untuk memperkenalkan perwakilan dari kelompok.",sentences:[
+      {"jp":"東京をはじめ、多くの都市で外国人向け相談窓口が増えている。","kana":"とうきょうをはじめ、おおくのとしでがいこくじんむけそうだんまどぐちがふえている。","romaji":"toukyou wohajime, ooku no toshi de gaikokujin muke soudanmadoguchi ga fue teiru.","meaning":"Dimulai dari Tokyo, banyak kota juga menambah loket konsultasi bagi orang asing."},
+      {"jp":"店長をはじめとして、スタッフ全員が丁寧に対応してくれた。","kana":"てんちょうをはじめとして、すたっふぜんいんがていねいにたいおうしてくれた。","romaji":"tenchou wohajimetoshite, sutaffu zen'in ga teinei ni taiou shitekureta.","meaning":"Dimulai dari manajer toko, semua staf melayani dengan sangat sopan."},
+      {"jp":"日本語の先生をはじめ、たくさんの人に支えてもらった。","kana":"にほんごのせんせいをはじめ、たくさんのにんにささえてもらった。","romaji":"nihongo no sensei wohajime, takusanno nin ni sasae temoratta.","meaning":"Dimulai dari sensei bahasa Jepang, saya banyak dibantu oleh banyak orang."},
+      {"jp":"駅周辺をはじめ、この地域は夜でも比較的明るい。","kana":"えきしゅうへんをはじめ、このちいきはよるでもひかくてきあかるい。","romaji":"ekishuuhen wohajime, kono chiiki ha yoru demo hikakuteki akarui.","meaning":"Dimulai dari area sekitar stasiun, daerah ini relatif terang bahkan pada malam hari."},
+      {"jp":"春をはじめとして、京都はどの季節も観光客が多い。","kana":"はるをはじめとして、きょうとはどのきせつもかんこうきゃくがおおい。","romaji":"haru wohajimetoshite, kyouto hadono kisetsu mo kankoukyaku ga ooi.","meaning":"Dimulai dari musim semi, Kyoto ramai turis di musim mana pun."}
+    ]}
+  ]},
+
+  {id:"GR-N2-76",level:"N2",title:"〜限り",summary:"Menyatakan selama rentang itu, atau sejauh kapasitas tertentu masih ada.",groups:[
+    {name:"〜限り",description:"Di N2, bentuk ini sering menunjukkan batas maksimal atau sepanjang durasi tertentu.",sentences:[
+      {"jp":"見える限り、ホームの先まで人でいっぱいだった。","kana":"みえるかぎり、ほーむのさきまでにんでいっぱいだった。","romaji":"mie ru kagiri, hoomu no saki made nin deippaidatta.","meaning":"Sejauh mata memandang, sampai ujung peron dipenuhi orang."},
+      {"jp":"私の知る限り、この地域で一番朝早く開く店です。","kana":"わたしのしるかぎり、このちいきでいちばんあさはやくひらくみせです。","romaji":"watashi no shiru kagiri, kono chiiki de ichiban asahayaku hiraku mise desu.","meaning":"Sejauh yang saya tahu, ini toko yang buka paling pagi di daerah ini."},
+      {"jp":"体力の続く限り、今年も山登りに挑戦したい。","kana":"たいりょくのつづくかぎり、こんねんもやまのぼりにちょうせんしたい。","romaji":"tairyoku no tsuzuku kagiri, konnen mo yamanobori ni chousen shitai.","meaning":"Selama tenaga saya masih cukup, tahun ini pun saya ingin mencoba mendaki gunung."},
+      {"jp":"許される限り、学生の負担は減らしたいと先生は言っていた。","kana":"ゆるされるかぎり、がくせいのふたんはへらしたいとせんせいはいっていた。","romaji":"yurusa reru kagiri, gakusei no futan ha hera shitaito sensei ha itte ita.","meaning":"Sensei bilang beliau ingin mengurangi beban mahasiswa sejauh hal itu diizinkan."},
+      {"jp":"できる限り簡単な日本語で説明してもらえて助かった。","kana":"できるかぎりかんたんなにほんごでせつめいしてもらえてたすかった。","romaji":"dekiru kagiri kantan na nihongo de setsumeishi temoraete tasuka tta.","meaning":"Saya terbantu karena penjelasannya diberikan dengan bahasa Jepang sesederhana mungkin."}
+    ]}
+  ]},
+
+  {id:"GR-N2-77",level:"N2",title:"〜からして",summary:"Menyatakan bahkan dari titik itu saja sudah terlihat suatu penilaian.",groups:[
+    {name:"〜からして",description:"Nuansanya dari ... saja sudah.",sentences:[
+      {"jp":"この店は入口の雰囲気からして落ち着いていて入りやすい。","kana":"このみせはいりぐちのふんいきからしておちついていていりやすい。","romaji":"kono mise ha iriguchi no fun'iki karashite ochitsui teite iri yasui.","meaning":"Toko ini dari suasana pintu masuknya saja sudah terasa tenang dan mudah dimasuki."},
+      {"jp":"彼はあいさつの仕方からして、とても礼儀正しい。","kana":"かれはあいさつのしかたからして、とてもれいぎただしい。","romaji":"kareha aisatsuno shikata karashite, totemo reigitadashi i.","meaning":"Dari cara menyapanya saja sudah terlihat bahwa dia sangat sopan."},
+      {"jp":"この書類は項目の多さからして、準備に時間がかかりそうだ。","kana":"このしょるいはこうもくのおおさからして、じゅんびにじかんがかかりそうだ。","romaji":"kono shorui ha koumoku no oosa karashite, junbi ni jikan gakakarisouda.","meaning":"Dari banyaknya kolom saja, kelihatannya dokumen ini butuh waktu lama untuk disiapkan."},
+      {"jp":"駅名の読み方からして、初めての人には難しいかもしれない。","kana":"えきめいのよみかたからして、はじめてのにんにはむずかしいかもしれない。","romaji":"ekimei no yomikata karashite, hajimete no nin niha muzukashii kamoshirenai.","meaning":"Dari cara membaca nama stasiunnya saja, mungkin ini sulit bagi orang yang baru pertama kali datang."},
+      {"jp":"あの人は持ち物からして仕事ができそうな雰囲気がある。","kana":"あのにんはもちものからしてしごとができそうなふんいきがある。","romaji":"ano nin ha mochimono karashite shigoto gadekisouna fun'iki gaaru.","meaning":"Dari barang bawaan yang dipakainya saja, ada aura bahwa dia sangat kompeten bekerja."}
+    ]}
+  ]},
+
+  {id:"GR-N2-78",level:"N2",title:"〜にわたって",summary:"Menyatakan sesuatu berlangsung atau mencakup rentang yang luas dalam waktu, area, atau jumlah.",groups:[
+    {name:"〜にわたって",description:"Sering dipakai untuk durasi panjang atau cakupan luas.",sentences:[
+      {"jp":"この工事は三か月にわたって行われる予定です。","kana":"このこうじはさんかがつにわたっておこなわれるよていです。","romaji":"kono kouji ha san ka gatsu niwatatte okonawa reru yotei desu.","meaning":"Pekerjaan konstruksi ini rencananya akan berlangsung selama tiga bulan."},
+      {"jp":"説明会では二日間にわたって生活情報が紹介された。","kana":"せつめいかいではふつかかんにわたってせいかつじょうほうがしょうかいされた。","romaji":"setsumeikai deha futsukakan niwatatte seikatsujouhou ga shoukai sareta.","meaning":"Dalam sesi penjelasan, informasi kehidupan diperkenalkan selama dua hari."},
+      {"jp":"川沿いの道が数キロにわたってライトアップされていた。","kana":"かわぞいのみちがかずきろにわたってらいとあっぷされていた。","romaji":"kawazoi no michi ga kazu kiro niwatatte raitoappu sareteita.","meaning":"Jalan di sepanjang sungai itu diterangi lampu sejauh beberapa kilometer."},
+      {"jp":"長年にわたる調査の結果、この地域の歴史が詳しく分かってきた。","kana":"ながねんにわたるちょうさのけっか、このちいきのれきしがくわしくわかってきた。","romaji":"naganen niwataru chousa no kekka, kono chiiki no rekishi ga kuwashiku waka ttekita.","meaning":"Berkat penelitian selama bertahun-tahun, sejarah daerah ini mulai dipahami lebih rinci."},
+      {"jp":"交流会では、学生から社会人まで幅広い立場の人が参加していた。","kana":"こうりゅうかいでは、がくせいからしゃかいじんまではばひろいたちばのにんがさんかしていた。","romaji":"kouryuukai deha, gakusei kara shakaijin made habahiroi tachiba no nin ga sanka shiteita.","meaning":"Dalam acara pertukaran itu, peserta yang hadir berasal dari latar yang sangat beragam, dari mahasiswa sampai pekerja."}
+    ]}
+  ]},
+
+  {id:"GR-N2-79",level:"N2",title:"〜だけ",summary:"Menyatakan sesuai kadar, sejauh, atau sebanyak itu.",groups:[
+    {name:"〜だけ",description:"Di N2, bentuk ini sering muncul dalam nuansa sebatas, sebanyak, sejauh.",sentences:[
+      {"jp":"できるだけ早く区役所へ行って、必要な手続きを済ませたい。","kana":"できるだけはやくくやくしょへいって、ひつようなてつづきをすませたい。","romaji":"dekirudake hayaku kuyakusho he itte, hitsuyou na tetsuzuki wo suma setai.","meaning":"Saya ingin pergi ke kantor wilayah secepat mungkin dan menyelesaikan prosedur yang dibutuhkan."},
+      {"jp":"食べたいだけ取るのではなく、食べられる分だけにしたほうがいい。","kana":"たべたいだけとるのではなく、たべられるふんだけにしたほうがいい。","romaji":"tabeta idake toru nodehanaku, tabe rareru fun dakenishitahougaii.","meaning":"Daripada mengambil sebanyak yang diinginkan, lebih baik ambil sesuai yang bisa dimakan."},
+      {"jp":"分かるだけでいいので、今の状況を説明してください。","kana":"わかるだけでいいので、いまのじょうきょうをせつめいしてください。","romaji":"waka rudakedeiinode, ima no joukyou wo setsumeishi tekudasai.","meaning":"Cukup sejauh yang Anda pahami, tolong jelaskan situasi saat ini."},
+      {"jp":"見たいだけ写真を撮ったら、あとは景色そのものを楽しみたい。","kana":"みたいだけしゃしんをとったら、あとはけしきそのものをたのしみたい。","romaji":"mita idake shashin wo totsu tara, atoha keshiki sonomonowo tanoshimi tai.","meaning":"Setelah mengambil foto sebanyak yang saya mau, saya ingin menikmati pemandangannya secara langsung."},
+      {"jp":"無理をするだけして倒れてしまっては意味がない。","kana":"むりをするだけしてたおれてしまってはいみがない。","romaji":"muri wosurudakeshite taore teshimatteha imi ganai.","meaning":"Tidak ada gunanya memaksakan diri sebanyak-banyaknya sampai akhirnya tumbang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-80",level:"N2",title:"〜ものだ",summary:"Menyatakan kecenderungan umum, rasa kagum, kenangan, atau nasihat yang terasa manusiawi.",groups:[
+    {name:"〜ものだ",description:"Maknanya berubah sesuai konteks, jadi perhatikan nuansanya.",sentences:[
+      {"jp":"春になると、この川沿いをゆっくり歩きたくなるものだ。","kana":"はるになると、このかわぞいをゆっくりあるきたくなるものだ。","romaji":"haru ninaruto, kono kawazoi woyukkuri aruki takunarumonoda.","meaning":"Begitu musim semi tiba, saya jadi ingin berjalan santai di sepanjang sungai ini."},
+      {"jp":"初めて日本に来たころは、駅の複雑さに驚いたものだ。","kana":"はじめてにっぽんにきたころは、えきのふくざつさにおどろいたものだ。","romaji":"hajimete nippon ni kita koroha, eki no fukuzatsusa ni odoroi tamonoda.","meaning":"Waktu pertama datang ke Jepang dulu, saya benar-benar kagum dengan rumitnya stasiun."},
+      {"jp":"人の親切は、離れて暮らしてみて初めて身にしみるものだ。","kana":"にんのしんせつは、はなれてくらしてみてはじめてみにしみるものだ。","romaji":"nin no shinsetsu ha, hanare te kurashi temite hajimete mini shimirumonoda.","meaning":"Kebaikan orang itu baru terasa sungguh-sungguh setelah kita hidup jauh dari rumah."},
+      {"jp":"子どもは思っている以上に周りをよく見ているものです。","kana":"こどもはおもっているいじょうにまわりをよくみているものです。","romaji":"kodomo ha omotte iru ijou ni mawari woyoku mite irumonodesu.","meaning":"Anak-anak biasanya memperhatikan sekitar lebih dari yang kita kira."},
+      {"jp":"忙しい時ほど、基本を忘れないようにしたいものだ。","kana":"いそがしいときほど、きほんをわすれないようにしたいものだ。","romaji":"isogashii toki hodo, kihon wo wasure naiyounishitaimonoda.","meaning":"Justru saat sibuk saya ingin berusaha tidak melupakan hal-hal dasar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-81",level:"N2",title:"〜ものではない",summary:"Menyatakan larangan, nasihat, atau penilaian umum bahwa sesuatu tidak patut dilakukan.",groups:[
+    {name:"〜ものではない",description:"Sering dipakai oleh orang yang lebih tua, guru, atau dalam tulisan bernada nasihat.",sentences:[
+      {"jp":"公共の場所では、大きな声で電話をするものではない。","kana":"こうきょうのばしょでは、おおきなこえででんわをするものではない。","romaji":"koukyou no basho deha, ooki na koe de denwa wosurumonodehanai.","meaning":"Di tempat umum, sebaiknya jangan menelepon dengan suara keras."},
+      {"jp":"人の苦労を簡単に比べるものではないと思う。","kana":"にんのくろうをかんたんにくらべるものではないとおもう。","romaji":"nin no kurou wo kantan ni kurabe rumonodehanaito omou.","meaning":"Menurut saya, kesulitan orang tidak sepatutnya dibanding-bandingkan dengan mudah."},
+      {"jp":"忙しいからといって、食事を抜くものではありません。","kana":"いそがしいからといって、しょくじをぬくものではありません。","romaji":"isogashii karatoitte, shokuji wo nuku monodehaarimasen.","meaning":"Hanya karena sibuk, bukan berarti kita pantas melewatkan makan."},
+      {"jp":"借りた本に書き込みをするものではないよ。","kana":"かりたほんにかきこみをするものではないよ。","romaji":"kari ta hon ni kakikomi wosurumonodehanaiyo.","meaning":"Buku pinjaman itu tidak sepatutnya dicorat-coret ya."},
+      {"jp":"失敗した人をみんなの前で責めるものではない。","kana":"しっぱいしたにんをみんなのまえでせめるものではない。","romaji":"shippai shita nin wominnano mae de seme rumonodehanai.","meaning":"Tidak pantas menyalahkan orang yang gagal di depan semua orang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-82",level:"N2",title:"〜ことだ",summary:"Menyatakan saran kuat atau hal terbaik yang sebaiknya dilakukan.",groups:[
+    {name:"〜ことだ",description:"Sering muncul dalam nasihat praktis.",sentences:[
+      {"jp":"日本で長く暮らすつもりなら、まず地域のルールを知ることだ。","kana":"にっぽんでながくくらすつもりなら、まずちいきのるーるをしることだ。","romaji":"nippon de nagaku kura sutsumorinara, mazu chiiki no ruuru wo shiru kotoda.","meaning":"Kalau berniat tinggal lama di Jepang, hal pertama yang sebaiknya dilakukan adalah memahami aturan setempat."},
+      {"jp":"面接で緊張しやすいなら、声に出して練習することだ。","kana":"めんせつできんちょうしやすいなら、こえにだしてれんしゅうすることだ。","romaji":"mensetsu de kinchoushi yasuinara, koe ni dashi te renshuu surukotoda.","meaning":"Kalau mudah gugup saat wawancara, yang terbaik adalah berlatih dengan mengucapkan keras-keras."},
+      {"jp":"体調を崩しやすい季節は、無理せず早めに休むことだ。","kana":"たいちょうをくずしやすいきせつは、むりせずはやめにやすむことだ。","romaji":"taichou wo kuzushi yasui kisetsu ha, muri sezu hayame ni yasumu kotoda.","meaning":"Pada musim saat tubuh mudah drop, yang terbaik adalah beristirahat lebih awal tanpa memaksakan diri."},
+      {"jp":"新しい環境で友達を作りたいなら、自分から一度話しかけてみることだ。","kana":"あたらしいかんきょうでともだちをつくりたいなら、じぶんからいちどはなしかけてみることだ。","romaji":"atarashii kankyou de tomodachi wo tsukuri tainara, jibun kara ichido hanashi kaketemirukotoda.","meaning":"Kalau ingin punya teman di lingkungan baru, cobalah menyapa lebih dulu setidaknya sekali."},
+      {"jp":"書類で困ったら、一人で悩まず窓口で聞くことです。","kana":"しょるいでこまったら、ひとりでなやまずまどぐちできくことです。","romaji":"shorui de komatsu tara, hitori de nayama zu madoguchi de kiku kotodesu.","meaning":"Kalau bingung soal dokumen, yang terbaik adalah bertanya di loket tanpa memikirkan sendiri."}
+    ]}
+  ]},
+
+  {id:"GR-N2-83",level:"N2",title:"〜反面",summary:"Menyatakan di satu sisi ada sifat atau hasil tertentu, tetapi di sisi lain ada sisi berbeda juga.",groups:[
+    {name:"〜反面",description:"Mirip 一方で tetapi sering terasa lebih formal dan evaluatif.",sentences:[
+      {"jp":"この町は便利な反面、週末になると観光客でかなり混む。","kana":"このまちはべんりなはんめん、しゅうまつになるとかんこうきゃくでかなりこむ。","romaji":"kono machi ha benri na hanmen, shuumatsu ninaruto kankoukyaku dekanari komu.","meaning":"Di satu sisi kota ini praktis, tapi di sisi lain saat akhir pekan sangat ramai turis."},
+      {"jp":"在宅勤務は通勤がなくて楽な反面、気持ちの切り替えが難しい。","kana":"ざいたくきんむはつうきんがなくてらくなはんめん、きもちのきりかえがむずかしい。","romaji":"zaitakukinmu ha tsuukin ganakute raku na hanmen, kimochi no kirikae ga muzukashii.","meaning":"Kerja dari rumah di satu sisi enak karena tidak perlu commute, tapi di sisi lain sulit memisahkan mode kerja dan istirahat."},
+      {"jp":"新しい制度は分かりやすい反面、細かい例外には対応しにくい。","kana":"あたらしいせいどはわかりやすいはんめん、こまかいれいがいにはたいおうしにくい。","romaji":"atarashii seido ha waka riyasui hanmen, komakai reigai niha taiou shinikui.","meaning":"Sistem baru di satu sisi mudah dipahami, tapi di sisi lain sulit menangani pengecualian yang rinci."},
+      {"jp":"駅近の部屋は便利な反面、夜でも少し騒がしい。","kana":"えきちかのへやはべんりなはんめん、よるでもすこしさわがしい。","romaji":"ekichika no heya ha benri na hanmen, yoru demo sukoshi sawagashii.","meaning":"Kamar dekat stasiun di satu sisi praktis, tapi di sisi lain agak berisik bahkan malam hari."},
+      {"jp":"日本語で仕事ができるのは自信になる反面、間違えたくない気持ちも強くなる。","kana":"にほんごでしごとができるのはじしんになるはんめん、まちがえたくないきもちもつよくなる。","romaji":"nihongo de shigoto gadekirunoha jishin ninaru hanmen, machigae takunai kimochi mo tsuyoku naru.","meaning":"Bisa bekerja dalam bahasa Jepang di satu sisi menambah percaya diri, tapi di sisi lain membuat saya makin takut salah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-84",level:"N2",title:"〜だけのことはある",summary:"Menyatakan hasilnya memang pantas mengingat usaha, reputasi, atau nilainya.",groups:[
+    {name:"〜だけのことはある",description:"Nuansanya positif, seperti memang tidak heran.",sentences:[
+      {"jp":"人気店だけのことはあって、ランチの味も接客も満足だった。","kana":"にんきみせだけのことはあって、らんちのあじもせっきゃくもまんぞくだった。","romaji":"ninki mise dakenokotohaatte, ranchi no aji mo sekkyaku mo manzoku datta.","meaning":"Memang pantas disebut toko populer, rasa makan siangnya maupun layanannya sama-sama memuaskan."},
+      {"jp":"毎日練習しているだけのことはあって、発表がとても自然だった。","kana":"まいにちれんしゅうしているだけのことはあって、はっぴょうがとてもしぜんだった。","romaji":"mainichi renshuu shiteirudakenokotohaatte, happyou gatotemo shizen datta.","meaning":"Tidak heran, karena latihan tiap hari presentasinya terdengar sangat alami."},
+      {"jp":"長年この町で働いているだけのことはあって、彼は顔が広い。","kana":"ながねんこのまちではたらいているだけのことはあって、かれはかおがひろい。","romaji":"naganen kono machi de hatarai teirudakenokotohaatte, kareha kao ga hiroi.","meaning":"Pantas saja dia kenal banyak orang, karena memang sudah lama bekerja di kota ini."},
+      {"jp":"老舗旅館だけのことはあり、おもてなしが細やかだった。","kana":"しにせりょかんだけのことはあり、おもてなしがささやかだった。","romaji":"shinise ryokan dakenokotohaari, omotenashiga sasayaka datta.","meaning":"Memang pantas disebut ryokan tua yang mapan, pelayanannya sangat penuh perhatian."},
+      {"jp":"苦労して勉強しただけのことはあって、難しい質問にも落ち着いて答えていた。","kana":"くろうしてべんきょうしただけのことはあって、むずかしいしつもんにもおちついてこたえていた。","romaji":"kurou shite benkyou shitadakenokotohaatte, muzukashii shitsumon nimo ochitsui te kotae teita.","meaning":"Pantas saja, karena telah belajar dengan susah payah dia bisa menjawab pertanyaan sulit dengan tenang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-87",level:"N2",title:"〜ようがない",summary:"Menyatakan tidak ada cara untuk melakukan sesuatu.",groups:[
+    {name:"〜ようがない",description:"Umumnya memakai masu-stem + ようがない.",sentences:[
+      {"jp":"連絡先が分からないので、知らせようがない。","kana":"れんらくさきがわからないので、しらせようがない。","romaji":"renrakusaki ga waka ranainode, shirase youganai.","meaning":"Karena saya tidak tahu kontaknya, tidak ada cara untuk memberi tahu dia."},
+      {"jp":"電車が全部止まってしまっては、どうしようもないし帰りようがない。","kana":"でんしゃがぜんぶとまってしまっては、どうしようもないしかえりようがない。","romaji":"densha ga zenbu toma tteshimatteha, doushiyoumonaishi kaeri youganai.","meaning":"Kalau semua kereta berhenti, tidak ada cara untuk pulang."},
+      {"jp":"本人が来ないことには、こちらでは確認しようがありません。","kana":"ほんにんがこないことには、こちらではかくにんしようがありません。","romaji":"honnin ga konai kotoniha, kochiradeha kakuninshi yougaarimasen.","meaning":"Kalau orangnya sendiri belum datang, dari pihak kami tidak ada cara untuk memastikan."},
+      {"jp":"昔の資料が残っていないから、その経緯は調べようがない。","kana":"むかしのしりょうがのこっていないから、そのけいいはしらべようがない。","romaji":"mukashi no shiryou ga nokotsu teinaikara, sono keii ha shirabe youganai.","meaning":"Karena dokumen lamanya tidak tersisa, tidak ada cara menelusuri prosesnya."},
+      {"jp":"店内で写真が禁止されていると、あとで比べようがないですね。","kana":"てんないでしゃしんがきんしされていると、あとでくらべようがないですね。","romaji":"tennai de shashin ga kinshi sareteiruto, atode kurabe youganaidesune.","meaning":"Kalau memotret di dalam toko dilarang, nanti kita jadi tidak punya cara untuk membandingkan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-89",level:"N2",title:"〜たきり",summary:"Menyatakan setelah suatu tindakan, keadaan tidak berubah lagi sejak itu.",groups:[
+    {name:"〜たきり",description:"Sering dipakai dengan nuansa tidak kembali, tidak muncul lagi, atau terus begitu.",sentences:[
+      {"jp":"春に引っ越してきたきり、まだ一度も実家へ帰れていない。","kana":"はるにひっこしてきたきり、まだいちどもじっかへかえれていない。","romaji":"haru ni hikkoshi tekitakiri, mada ichido mo jikka he kaere teinai.","meaning":"Sejak pindah di musim semi, saya belum sempat pulang ke rumah sama sekali."},
+      {"jp":"朝出かけたきり、兄は夜まで連絡がなかった。","kana":"あさでかけたきり、あにはよるまでれんらくがなかった。","romaji":"asa deka ketakiri, ani ha yoru made renraku ganakatta.","meaning":"Sejak pergi pagi tadi, kakak saya tidak memberi kabar sampai malam."},
+      {"jp":"その本は友達に貸したきり、まだ戻ってきていない。","kana":"そのほんはともだちにかしたきり、まだもどってきていない。","romaji":"sono hon ha tomodachi ni kashi takiri, mada modotsu tekiteinai.","meaning":"Buku itu sejak saya pinjamkan ke teman belum juga kembali."},
+      {"jp":"一度体調を崩したきり、無理をしないようにしている。","kana":"いちどたいちょうをくずしたきり、むりをしないようにしている。","romaji":"ichido taichou wo kuzushi takiri, muri woshinaiyounishiteiru.","meaning":"Sejak sekali jatuh sakit itu, saya berusaha tidak memaksakan diri lagi."},
+      {"jp":"彼とは卒業式で会ったきりだ。","kana":"かれとはそつぎょうしきであったきりだ。","romaji":"kare toha sotsugyoushiki de atsu takirida.","meaning":"Sejak bertemu di upacara kelulusan itu, saya belum pernah bertemu dia lagi."}
+    ]}
+  ]},
+
+  {id:"GR-N2-90",level:"N2",title:"〜あげく",summary:"Menyatakan setelah proses panjang atau berliku, hasil akhirnya biasanya buruk atau mengecewakan.",groups:[
+    {name:"〜あげく",description:"Sering diterjemahkan ujung-ujungnya setelah susah payah.",sentences:[
+      {"jp":"何度も窓口を行ったり来たりしたあげく、必要書類が一枚足りないと言われた。","kana":"なんどもまどぐちをいったりきたりしたあげく、ひつようしょるいがいちまいたりないといわれた。","romaji":"nando mo madoguchi wo itta ri kita rishitaageku, hitsuyoushorui ga ichimai tari naito iwa reta.","meaning":"Setelah bolak-balik loket berkali-kali, ujung-ujungnya saya diberi tahu bahwa masih kurang satu dokumen."},
+      {"jp":"長く悩んだあげく、今回は引っ越しを見送ることにした。","kana":"ながくなやんだあげく、こんかいはひっこしをみおくることにした。","romaji":"nagaku nayan daageku, konkai ha hikkoshi wo miokuru kotonishita.","meaning":"Setelah berpikir lama, pada akhirnya saya memutuskan menunda pindahan kali ini."},
+      {"jp":"店をいくつも回ったあげく、結局最初の店で買うことになった。","kana":"みせをいくつもまわったあげく、けっきょくさいしょのみせでかうことになった。","romaji":"mise woikutsumo mawatsu taageku, kekkyoku saisho no mise de kau kotoninatta.","meaning":"Setelah keliling banyak toko, ujung-ujungnya saya jadi beli di toko pertama."},
+      {"jp":"夜遅くまで話し合ったあげく、結論は来週に持ち越された。","kana":"よるおそくまではなしあったあげく、けつろんはらいしゅうにもちこされた。","romaji":"yoruosoku made hanashiatsu taageku, ketsuron ha raishuu ni mochikosa reta.","meaning":"Setelah berdiskusi sampai larut malam, pada akhirnya kesimpulannya ditunda ke minggu depan."},
+      {"jp":"無理を重ねたあげく、しばらく仕事を休むことになってしまった。","kana":"むりをおもねたあげく、しばらくしごとをやすむことになってしまった。","romaji":"muri wo omone taageku, shibaraku shigoto wo yasumu kotoninatteshimatta.","meaning":"Setelah terus memaksakan diri, ujung-ujungnya saya malah harus istirahat kerja beberapa waktu."}
+    ]}
+  ]},
+
+  {id:"GR-N2-91",level:"N2",title:"〜末(に)",summary:"Menyatakan setelah proses atau pertimbangan panjang, akhirnya menghasilkan suatu keputusan atau hasil.",groups:[
+    {name:"〜末(に)",description:"Berbeda dengan あげく, hasilnya bisa positif maupun netral.",sentences:[
+      {"jp":"家族で何度も相談した末に、日本へ留学することを決めた。","kana":"かぞくでなんどもそうだんしたまつに、にっぽんへりゅうがくすることをきめた。","romaji":"kazoku de nando mo soudan shita matsu ni, nippon he ryuugaku surukotowo kime ta.","meaning":"Setelah berdiskusi berkali-kali bersama keluarga, saya akhirnya memutuskan belajar di Jepang."},
+      {"jp":"検討の末、来年度から制度を少し変更することになった。","kana":"けんとうのまつ、らいねんどからせいどをすこしへんこうすることになった。","romaji":"kentou no matsu, rainendo kara seido wo sukoshi henkou surukotoninatta.","meaning":"Setelah dipertimbangkan, diputuskan bahwa mulai tahun depan sistemnya akan sedikit diubah."},
+      {"jp":"迷った末に、駅から少し遠くても静かな部屋を選んだ。","kana":"まよったまつに、えきからすこしとおくてもしずかなへやをえらんだ。","romaji":"mayotsu ta matsu ni, eki kara sukoshi tooku temo shizuka na heya wo eran da.","meaning":"Setelah bimbang lama, saya akhirnya memilih kamar yang agak jauh dari stasiun tetapi lebih tenang."},
+      {"jp":"努力の末に合格通知を受け取った時は、本当にほっとした。","kana":"どりょくのまつにごうかくつうちをうけとったときは、ほんとうにほっとした。","romaji":"doryoku no matsu ni goukakutsuuchi wo uketotsu ta toki ha, hontou nihottoshita.","meaning":"Setelah perjuangan panjang, saat menerima surat kelulusan saya benar-benar lega."},
+      {"jp":"話し合いの末、地域の祭りは予定どおり行われることになった。","kana":"はなしあいのまつ、ちいきのまつりはよていどおりおこなわれることになった。","romaji":"hanashiai no matsu, chiiki no matsuri ha yotei doori okonawa rerukotoninatta.","meaning":"Setelah perundingan, festival lingkungan diputuskan tetap diadakan sesuai jadwal."}
+    ]}
+  ]},
+
+  {id:"GR-N2-92",level:"N2",title:"〜ずじまい",summary:"Menyatakan akhirnya tidak sempat atau tidak jadi melakukan sesuatu.",groups:[
+    {name:"〜ずじまい",description:"Sering memuat rasa sayang atau penyesalan ringan.",sentences:[
+      {"jp":"気になっていたラーメン屋に行けずじまいで、引っ越すことになった。","kana":"きになっていたらーめんやにいけずじまいで、ひっこすことになった。","romaji":"kini natteita raamen ya ni ike zujimaide, hikkosu kotoninatta.","meaning":"Akhirnya saya pindah tanpa sempat pergi ke kedai ramen yang sudah lama ingin saya coba."},
+      {"jp":"忙しくて、先生にお礼を言えずじまいだった。","kana":"いそがしくて、せんせいにおれいをいえずじまいだった。","romaji":"isogashiku te, sensei nio rei wo ie zujimaidatta.","meaning":"Karena sibuk, akhirnya saya tidak sempat mengucapkan terima kasih kepada sensei."},
+      {"jp":"傘を買おうと思っていたのに、また忘れたまま帰らずじまいだった。","kana":"かさをかおうとおもっていたのに、またわすれたままかえらずじまいだった。","romaji":"kasa wo kao uto omotte itanoni, mata wasure tamama kaera zujimaidatta.","meaning":"Padahal sudah berniat membeli payung, akhirnya saya pulang tanpa jadi juga."},
+      {"jp":"旅行中ずっと雨で、海を見られずじまいだった。","kana":"りょこうちゅうずっとあめで、うみをみられずじまいだった。","romaji":"ryokouchuu zutto ame de, umi wo mira rezujimaidatta.","meaning":"Sepanjang perjalanan hujan terus, jadi saya akhirnya tidak sempat melihat laut."},
+      {"jp":"あの映画は話題になっていたのに、結局見ずじまいだったな。","kana":"あのえいがはわだいになっていたのに、けっきょくみずじまいだったな。","romaji":"ano eiga ha wadai ninatteitanoni, kekkyoku mizu jimaidattana.","meaning":"Padahal film itu ramai dibicarakan, tapi akhirnya saya tidak jadi menontonnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-93",level:"N2",title:"〜次第だ",summary:"Menyatakan hasil yang memang merupakan konsekuensi alami dari keadaan tertentu.",groups:[
+    {name:"〜次第だ",description:"Dalam N2 sering dipakai sebagai penjelasan formal, karena alasan itu jadinya begini.",sentences:[
+      {"jp":"連日の残業で疲れがたまり、今日は少し集中力が落ちている次第です。","kana":"れんじつのざんぎょうでつかれがたまり、こんにちはすこししゅうちゅうりょくがおちているしだいです。","romaji":"renjitsu no zangyou de tsukare gatamari, konnichiha sukoshi shuuchuuryoku ga ochi teiru shidai desu.","meaning":"Karena lembur terus-menerus, kelelahan menumpuk dan hari ini konsentrasi saya sedikit menurun."},
+      {"jp":"日本に来てから多くの人に助けられ、今こうして生活している次第です。","kana":"にっぽんにきてからおおくのにんにたすけられ、いまこうしてせいかつしているしだいです。","romaji":"nippon ni kite kara ooku no nin ni tasuke rare, imako ushite seikatsu shiteiru shidai desu.","meaning":"Sejak datang ke Jepang saya banyak dibantu orang, dan karena itulah sekarang saya bisa hidup seperti ini."},
+      {"jp":"事情を十分に確認したうえで、このような判断に至った次第です。","kana":"じじょうをじゅうぶんにかくにんしたうえで、このようなはんだんにいたったしだいです。","romaji":"jijou wo juubun ni kakuninshi tauede, konoyouna handan ni itatsu ta shidai desu.","meaning":"Setelah mengecek keadaan dengan cukup, karena itulah kami sampai pada keputusan ini."},
+      {"jp":"急な変更となりましたが、以上が本日のご案内となる次第です。","kana":"きゅうなへんこうとなりましたが、いじょうがほんじつのごあんないとなるしだいです。","romaji":"kyuuna henkou tonarimashitaga, ijou ga honjitsu nogo annai tonaru shidai desu.","meaning":"Meski ada perubahan mendadak, demikianlah isi pengumuman untuk hari ini."},
+      {"jp":"皆様のご理解に支えられて、無事に再開できた次第です。","kana":"みなさまのごりかいにささえられて、ぶじにさいかいできたしだいです。","romaji":"minasama nogo rikai ni sasae rarete, buji ni saikai dekita shidai desu.","meaning":"Berkat dukungan dan pengertian Anda semua, akhirnya kami bisa buka kembali dengan aman."}
+    ]}
+  ]},
+
+  {id:"GR-N2-95",level:"N2",title:"〜にともなって / 〜にともない / 〜にともなう",summary:"Menyatakan sesuatu berubah atau terjadi seiring perubahan lain.",groups:[
+    {name:"〜にともなって / 〜にともない / 〜にともなう",description:"Sering dipakai di berita, bisnis, dan penjelasan formal.",sentences:[
+      {"jp":"物価の上昇にともなって、学食のメニューも少し値上がりした。","kana":"ぶっかのじょうしょうにともなって、がくしょくのめにゅーもすこしねあがりした。","romaji":"bukka no joushou nitomonatte, gakushoku no menyuu mo sukoshi neagari shita.","meaning":"Seiring kenaikan harga-harga, menu kafetaria kampus juga sedikit naik."},
+      {"jp":"利用者の増加にともない、駅の案内表示が見直された。","kana":"りようしゃのぞうかにともない、えきのあんないひょうじがみなおされた。","romaji":"riyousha no zouka nitomonai, eki no annaihyouji ga minaosa reta.","meaning":"Seiring bertambahnya pengguna, papan petunjuk di stasiun ditinjau ulang."},
+      {"jp":"季節の変化にともなって、観光客の服装もかなり変わる。","kana":"きせつのへんかにともなって、かんこうきゃくのふくそうもかなりかわる。","romaji":"kisetsu no henka nitomonatte, kankoukyaku no fukusou mokanari kawa ru.","meaning":"Seiring pergantian musim, pakaian para wisatawan juga banyak berubah."},
+      {"jp":"制度改正にともなう説明会が来週開かれる。","kana":"せいどかいせいにともなうせつめいかいがらいしゅうひらかれる。","romaji":"seido kaisei nitomonau setsumeikai ga raishuu hiraka reru.","meaning":"Sesi penjelasan terkait revisi sistem akan diadakan minggu depan."},
+      {"jp":"人口の高齢化にともなって、地域の支援体制も見直しが進んでいる。","kana":"じんこうのこうれいかにともなって、ちいきのしえんたいせいもみなおしがすすんでいる。","romaji":"jinkou no koureika nitomonatte, chiiki no shien taisei mo minaoshi ga susun deiru.","meaning":"Seiring penuaan populasi, sistem dukungan masyarakat juga sedang ditinjau ulang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-96",level:"N2",title:"〜につれて",summary:"Menyatakan perubahan bertahap yang mengikuti perubahan lain.",groups:[
+    {name:"〜につれて",description:"Lebih alami untuk perubahan yang terjadi sedikit demi sedikit.",sentences:[
+      {"jp":"日本語に慣れるにつれて、ニュースも少しずつ聞き取れるようになった。","kana":"にほんごになれるにつれて、にゅーすもすこしずつききとれるようになった。","romaji":"nihongo ni nare runitsurete, nyuusu mo sukoshi zutsu kiki tore ruyouninatta.","meaning":"Seiring saya makin terbiasa dengan bahasa Jepang, berita pun sedikit demi sedikit mulai bisa saya tangkap."},
+      {"jp":"駅に近づくにつれて、人通りが増えてきた。","kana":"えきにちかづくにつれて、ひとどおりがふえてきた。","romaji":"eki ni chikazu kunitsurete, hitodoori ga fue tekita.","meaning":"Semakin mendekati stasiun, jumlah orang lewat makin banyak."},
+      {"jp":"季節が秋に変わるにつれて、朝晩が冷えてきた。","kana":"きせつがあきにかわるにつれて、あさばんがひえてきた。","romaji":"kisetsu ga aki ni kawa runitsurete, asaban ga hie tekita.","meaning":"Seiring musim bergeser ke musim gugur, pagi dan malam mulai terasa dingin."},
+      {"jp":"経験を積むにつれて、職場で質問するタイミングも分かってきた。","kana":"けいけんをつむにつれて、しょくばでしつもんするたいみんぐもわかってきた。","romaji":"keiken wo tsumu nitsurete, shokuba de shitsumon suru taimingu mo waka ttekita.","meaning":"Seiring bertambahnya pengalaman, saya mulai mengerti timing yang pas untuk bertanya di kantor."},
+      {"jp":"子どもが大きくなるにつれて、話す内容も少しずつ変わっていく。","kana":"こどもがおおきくなるにつれて、はなすないようもすこしずつかわっていく。","romaji":"kodomo ga ookiku narunitsurete, hanasu naiyou mo sukoshi zutsu kawa tteiku.","meaning":"Seiring anak bertambah besar, isi percakapannya pun sedikit demi sedikit berubah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-97",level:"N2",title:"〜かいあって / 〜かいもなく",summary:"Menyatakan usaha itu membuahkan hasil, atau sebaliknya sia-sia.",groups:[
+    {name:"〜かいあって / 〜かいもなく",description:"Dipakai untuk menunjukkan sepadan atau tidak sepadan dengan usaha.",sentences:[
+      {"jp":"毎日発音を練習したかいあって、接客でも聞き返されなくなった。","kana":"まいにちはつおんをれんしゅうしたかいあって、せっきゃくでもききかえされなくなった。","romaji":"mainichi hatsuon wo renshuu shitakaiatte, sekkyaku demo kiki kaesa renakunatta.","meaning":"Berkat latihan pengucapan setiap hari, saya tidak lagi sering diminta mengulang saat melayani pelanggan."},
+      {"jp":"早起きしたかいあって、市役所の手続きを午前中に全部終えられた。","kana":"はやおきしたかいあって、しやくしょのてつづきをごぜんちゅうにぜんぶおえられた。","romaji":"hayaoki shitakaiatte, shiyakusho no tetsuzuki wo gozenchuu ni zenbu oe rareta.","meaning":"Berkat bangun pagi, semua urusan di balai kota selesai dalam pagi hari."},
+      {"jp":"何度も練習したかいもなく、本番では途中で言葉が出なくなった。","kana":"なんどもれんしゅうしたかいもなく、ほんばんではとちゅうでことばがでなくなった。","romaji":"nando mo renshuu shitakaimonaku, honban deha tochuu de kotoba ga dena kunatta.","meaning":"Sayangnya meski sudah berlatih berkali-kali, di penampilan utama kata-kata saya justru sempat tidak keluar."},
+      {"jp":"遠くまで並んで来たかいあって、限定商品を買うことができた。","kana":"とおくまでならんできたかいあって、げんていしょうひんをかうことができた。","romaji":"tooku made naran de kita kaiatte, genteishouhin wo kau kotogadekita.","meaning":"Berkat rela antre jauh-jauh, saya berhasil membeli barang edisi terbatas itu."},
+      {"jp":"徹夜したかいもなく、提出形式を間違えてやり直しになった。","kana":"てつやしたかいもなく、ていしゅつけいしきをまちがえてやりなおしになった。","romaji":"tetsuya shitakaimonaku, teishutsu keishiki wo machigae teyari naoshi ninatta.","meaning":"Sayangnya meski sudah begadang, format pengumpulannya salah dan saya harus mengulang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-98",level:"N2",title:"〜つつある",summary:"Menyatakan sesuatu sedang berlangsung menuju perubahan tertentu.",groups:[
+    {name:"〜つつある",description:"Sering dipakai untuk perubahan sosial, kebiasaan, atau keadaan yang sedang bergerak.",sentences:[
+      {"jp":"この地域でも外国人向けの支援体制が少しずつ整いつつある。","kana":"このちいきでもがいこくじんむけのしえんたいせいがすこしずつととのいつつある。","romaji":"kono chiiki demo gaikokujin muke no shien taisei ga sukoshi zutsu totonoi tsutsuaru.","meaning":"Di daerah ini pun sistem dukungan untuk warga asing sedang perlahan-lahan tertata."},
+      {"jp":"紙の申請は減りつつあり、手続きの多くがオンライン化している。","kana":"かみのしんせいはへりつつあり、てつづきのおおくがおんらいんかしている。","romaji":"kami no shinsei ha heri tsutsuari, tetsuzuki no ooku ga onrain kashi teiru.","meaning":"Pengajuan kertas sedang berkurang, dan banyak prosedur makin beralih ke online."},
+      {"jp":"駅前の商店街は形を変えつつあるが、昔の雰囲気もまだ残っている。","kana":"えきまえのしょうてんがいはかたちをかえつつあるが、むかしのふんいきもまだのこっている。","romaji":"ekimae no shoutengai ha katachi wo kae tsutsuaruga, mukashi no fun'iki momada nokotsu teiru.","meaning":"Area pertokoan depan stasiun sedang berubah bentuk, tapi suasana lamanya masih tersisa."},
+      {"jp":"季節は春に向かいつつあり、朝の空気が少しやわらかい。","kana":"きせつははるにむかいつつあり、あさのくうきがすこしやわらかい。","romaji":"kisetsu ha haru ni mukai tsutsuari, asa no kuuki ga sukoshi yawarakai.","meaning":"Musim sedang bergerak menuju musim semi, dan udara pagi terasa sedikit lebih lembut."},
+      {"jp":"私の生活もようやく落ち着きつつある。","kana":"わたしのせいかつもようやくおちつきつつある。","romaji":"watashi no seikatsu moyouyaku ochitsuki tsutsuaru.","meaning":"Hidup saya akhirnya mulai berangsur stabil."}
+    ]}
+  ]},
+
+  {id:"GR-N2-99",level:"N2",title:"〜一方だ",summary:"Menyatakan sesuatu terus berubah ke satu arah saja, biasanya makin kuat atau makin parah.",groups:[
+    {name:"〜一方だ",description:"Sering dipakai untuk perubahan sepihak yang terus berlanjut.",sentences:[
+      {"jp":"物価は上がる一方で、学生の生活はますます大変になっている。","kana":"ぶっかはあがるいっぽうで、がくせいのせいかつはますますたいへんになっている。","romaji":"bukka ha aga ru ippou de, gakusei no seikatsu hamasumasu taihen ninatteiru.","meaning":"Harga-harga terus naik, dan hidup mahasiswa makin lama makin berat."},
+      {"jp":"駅前の再開発で、この辺りの景色は変わる一方だ。","kana":"えきまえのさいかいはつで、このあたりのけしきはかわるいっぽうだ。","romaji":"ekimae no saikaihatsu de, kono atari no keshiki ha kawa ru ippou da.","meaning":"Karena pembangunan ulang depan stasiun, pemandangan di sekitar sini terus berubah."},
+      {"jp":"忙しさが増す一方で、部屋の片づけが全然進まない。","kana":"いそがしさがますいっぽうで、へやのかたづけがぜんぜんすすまない。","romaji":"isogashisa ga masu ippou de, heya no katazu kega zenzen susuma nai.","meaning":"Kesibukan terus bertambah, sementara beres-beres kamar tidak berjalan sama sekali."},
+      {"jp":"外国人旅行者は増える一方らしく、案内の見直しが必要だ。","kana":"がいこくじんりょこうしゃはふえるいっぽうらしく、あんないのみなおしがひつようだ。","romaji":"gaikokujinryokousha ha fue ru ippou rashiku, annai no minaoshi ga hitsuyou da.","meaning":"Katanya wisatawan asing terus bertambah, jadi peninjauan ulang petunjuk memang perlu."},
+      {"jp":"会議が長引く一方で、結論はなかなか出なかった。","kana":"かいぎがながびくいっぽうで、けつろんはなかなかでなかった。","romaji":"kaigi ga nagabiku ippou de, ketsuron hanakanaka dena katta.","meaning":"Rapat terus saja memanjang, sementara kesimpulannya sulit keluar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-100",level:"N2",title:"〜ばかりだ",summary:"Menyatakan tinggal menunggu satu langkah lagi, atau perubahan terus menuju satu arah.",groups:[
+    {name:"〜ばかりだ",description:"Maknanya berbeda tergantung konteks, jadi perhatikan isi kalimat.",sentences:[
+      {"jp":"荷物も送ったし、あとは出発の日を待つばかりだ。","kana":"にもつもおくったし、あとはしゅっぱつのにちをまつばかりだ。","romaji":"nimotsu mo okutsu tashi, atoha shuppatsu no nichi wo matsu bakarida.","meaning":"Barang sudah dikirim, jadi sekarang tinggal menunggu hari keberangkatan."},
+      {"jp":"手続きはすべて終わり、カードの到着を待つばかりです。","kana":"てつづきはすべておわり、かーどのとうちゃくをまつばかりです。","romaji":"tetsuzuki hasubete owari, kaado no touchaku wo matsu bakaridesu.","meaning":"Semua prosedur sudah selesai, sekarang tinggal menunggu kartu tiba."},
+      {"jp":"練習不足のままだと、不安は増すばかりだ。","kana":"れんしゅうぶそくのままだと、ふあんはますばかりだ。","romaji":"renshuubusoku nomamadato, fuan ha masu bakarida.","meaning":"Kalau tetap kurang latihan, rasa cemas hanya akan terus bertambah."},
+      {"jp":"このまま空き家が増えるばかりでは、商店街も元気を失ってしまう。","kana":"このままあきやがふえるばかりでは、しょうてんがいもげんきをうってしまう。","romaji":"konomama akiya ga fue rubakarideha, shoutengai mo genki wo utsu teshimau.","meaning":"Kalau rumah kosong terus bertambah seperti ini, area pertokoan juga akan kehilangan semangatnya."},
+      {"jp":"新生活は忙しいけれど、少しずつ楽しみも増えるばかりだ。","kana":"しんせいかつはいそがしいけれど、すこしずつたのしみもふえるばかりだ。","romaji":"shinseikatsu ha isogashii keredo, sukoshi zutsu tanoshimi mo fue rubakarida.","meaning":"Hidup baru memang sibuk, tapi sedikit demi sedikit hal-hal menyenangkannya juga semakin banyak."}
+    ]}
+  ]},
+
+  {id:"GR-N2-101",level:"N2",title:"〜に応じて",summary:"Menyatakan sesuatu berubah atau dipilih sesuai keadaan, kebutuhan, atau tingkat tertentu.",groups:[
+    {name:"〜に応じて",description:"Sering dipakai untuk aturan fleksibel atau penyesuaian.",sentences:[
+      {"jp":"混雑状況に応じて、入場制限を行う場合があります。","kana":"こんざつじょうきょうにおうじて、にゅうじょうせいげんをおこなうばあいがあります。","romaji":"konzatsujoukyou ni ouji te, nyuujouseigen wo okonau baai gaarimasu.","meaning":"Sesuai tingkat keramaian, kemungkinan pembatasan masuk akan diberlakukan."},
+      {"jp":"学生の理解度に応じて、先生が説明の速さを変えてくれた。","kana":"がくせいのりかいどにおうじて、せんせいがせつめいのはやさをかえてくれた。","romaji":"gakusei no rikaido ni ouji te, sensei ga setsumei no hayasa wo kae tekureta.","meaning":"Sesuai tingkat pemahaman murid, sensei mengubah kecepatan penjelasannya."},
+      {"jp":"天気に応じて、イベント会場を屋内に変更するそうだ。","kana":"てんきにおうじて、いべんとかいじょうをおくないにへんこうするそうだ。","romaji":"tenki ni ouji te, ibento kaijou wo okunai ni henkou surusouda.","meaning":"Katanya sesuai cuaca, lokasi acara akan dipindahkan ke dalam ruangan."},
+      {"jp":"予算に応じて、必要な設備から順番にそろえていきたい。","kana":"よさんにおうじて、ひつようなせつびからじゅんばんにそろえていきたい。","romaji":"yosan ni ouji te, hitsuyou na setsubi kara junban nisoroeteikitai.","meaning":"Sesuai anggaran, saya ingin melengkapi fasilitas yang perlu satu per satu."},
+      {"jp":"相談内容に応じて、担当窓口をご案内します。","kana":"そうだんないようにおうじて、たんとうまどぐちをごあんないします。","romaji":"soudannaiyou ni ouji te, tantoumadoguchi wogo annai shimasu.","meaning":"Sesuai isi konsultasinya, kami akan mengarahkan Anda ke loket yang tepat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-102",level:"N2",title:"〜につけ / 〜につけて",summary:"Menyatakan setiap kali melihat, mendengar, atau mengalami sesuatu, perasaan tertentu muncul.",groups:[
+    {name:"〜につけ / 〜につけて",description:"Sering dipakai untuk kenangan atau emosi yang berulang.",sentences:[
+      {"jp":"春の匂いを感じるにつけ、日本に来た最初の年を思い出す。","kana":"はるのにおいをかんじるにつけ、にっぽんにきたさいしょのねんをおもいだす。","romaji":"haru no nioi wo kanji runitsuke, nippon ni kita saisho no nen wo omoidasu.","meaning":"Setiap kali mencium aroma musim semi, saya teringat tahun pertama saya datang ke Jepang."},
+      {"jp":"駅の発車メロディーを聞くにつけ、帰国前の気持ちがよみがえる。","kana":"えきのはっしゃめろでぃーをきくにつけ、きこくまえのきもちがよみがえる。","romaji":"eki no hassha merodii wo kiku nitsuke, kikoku mae no kimochi gayomigaeru.","meaning":"Setiap kali mendengar melodi keberangkatan di stasiun, perasaan sebelum pulang ke negara asal kembali muncul."},
+      {"jp":"後輩の成長を見るにつけ、自分ももっと頑張ろうと思う。","kana":"こうはいのせいちょうをみるにつけ、じぶんももっとがんばろうとおもう。","romaji":"kouhai no seichou wo miru nitsuke, jibun momotto ganbaro uto omou.","meaning":"Setiap kali melihat junior berkembang, saya juga merasa ingin berusaha lebih keras."},
+      {"jp":"困っている外国人を見るにつけ、最初のころの自分を思い出す。","kana":"こまっているがいこくじんをみるにつけ、さいしょのころのじぶんをおもいだす。","romaji":"komatsu teiru gaikokujin wo miru nitsuke, saisho nokorono jibun wo omoidasu.","meaning":"Setiap kali melihat orang asing yang sedang kesulitan, saya teringat diri saya dulu di awal."},
+      {"jp":"季節の行事にふれるにつけ、この町で暮らしている実感が深くなる。","kana":"きせつのぎょうじにふれるにつけ、このまちでくらしているじっかんがふかくなる。","romaji":"kisetsu no gyouji nifurerunitsuke, kono machi de kurashi teiru jikkan ga fukaku naru.","meaning":"Setiap kali ikut tradisi musiman, rasa bahwa saya benar-benar hidup di kota ini makin dalam."}
+    ]}
+  ]},
+
+  {id:"GR-N2-103",level:"N2",title:"〜を契機に / 〜を契機にして",summary:"Menyatakan sesuatu menjadi titik balik atau kesempatan untuk perubahan.",groups:[
+    {name:"〜を契機に / 〜を契機にして",description:"Nuansanya formal dan sering dipakai dalam tulisan atau berita.",sentences:[
+      {"jp":"留学を契機に、自分の将来を真剣に考えるようになった。","kana":"りゅうがくをけいきに、じぶんのしょうらいをしんけんにかんがえるようになった。","romaji":"ryuugaku wo keiki ni, jibun no shourai wo shinken ni kangae ruyouninatta.","meaning":"Belajar di luar negeri menjadi titik balik yang membuat saya mulai serius memikirkan masa depan."},
+      {"jp":"この地震を契機に、家でも防災グッズをそろえ始めた。","kana":"このじしんをけいきに、いえでもぼうさいぐっずをそろえはじめた。","romaji":"kono jishin wo keiki ni, ie demo bousai guzzu wosoroe hajime ta.","meaning":"Gempa ini menjadi titik tolak bagi kami untuk mulai menyiapkan perlengkapan darurat di rumah."},
+      {"jp":"駅前の再開発を契機にして、周辺の店も少しずつ変わってきた。","kana":"えきまえのさいかいはつをけいきにして、しゅうへんのみせもすこしずつかわってきた。","romaji":"ekimae no saikaihatsu wo keiki nishite, shuuhen no mise mo sukoshi zutsu kawa ttekita.","meaning":"Pembangunan ulang depan stasiun menjadi momentum yang membuat toko-toko di sekitarnya ikut berubah."},
+      {"jp":"先生との出会いを契機に、日本語の勉強が一気に楽しくなった。","kana":"せんせいとのであいをけいきに、にほんごのべんきょうがいっきにたのしくなった。","romaji":"sensei tono deai wo keiki ni, nihongo no benkyou ga ikki ni tanoshiku natta.","meaning":"Pertemuan dengan sensei menjadi titik balik yang membuat belajar bahasa Jepang jadi sangat menyenangkan."},
+      {"jp":"受賞を契機に、その活動が全国に知られるようになった。","kana":"じゅしょうをけいきに、そのかつどうがぜんこくにしられるようになった。","romaji":"jushou wo keiki ni, sono katsudou ga zenkoku ni shira reruyouninatta.","meaning":"Penghargaan itu menjadi momentum yang membuat kegiatan tersebut dikenal secara nasional."}
+    ]}
+  ]},
+
+  {id:"GR-N2-104",level:"N2",title:"〜をきっかけに",summary:"Menyatakan sesuatu menjadi pemicu perubahan atau awal suatu hal.",groups:[
+    {name:"〜をきっかけに",description:"Lebih umum dan percakapan daripada を契機に.",sentences:[
+      {"jp":"友達に誘われたのをきっかけに、地域のボランティアに参加し始めた。","kana":"ともだちにさそわれたのをきっかけに、ちいきのぼらんてぃあにさんかしはじめた。","romaji":"tomodachi ni sasowa retanowokikkakeni, chiiki no boranteia ni sanka shi hajime ta.","meaning":"Ajakan dari teman menjadi pemicu saya mulai ikut kegiatan relawan lingkungan."},
+      {"jp":"引っ越しをきっかけに、物を増やしすぎない生活を意識するようになった。","kana":"ひっこしをきっかけに、ものをふやしすぎないせいかつをいしきするようになった。","romaji":"hikkoshi wokikkakeni, mono wo fuyashi suginai seikatsu wo ishiki suruyouninatta.","meaning":"Pindahan menjadi pemicu saya mulai lebih sadar untuk tidak menumpuk barang."},
+      {"jp":"病院で注意されたのをきっかけに、毎日歩くようにしている。","kana":"びょういんでちゅういされたのをきっかけに、まいにちあるくようにしている。","romaji":"byouin de chuui saretanowokikkakeni, mainichi aruku younishiteiru.","meaning":"Setelah diingatkan di rumah sakit, saya mulai membiasakan berjalan kaki setiap hari."},
+      {"jp":"その映画をきっかけに、日本の手話に興味を持った。","kana":"そのえいがをきっかけに、にっぽんのしゅわにきょうみをもった。","romaji":"sono eiga wokikkakeni, nippon no shuwa ni kyoumi wo motsu ta.","meaning":"Film itu menjadi pemicu ketertarikan saya pada bahasa isyarat Jepang."},
+      {"jp":"店長との会話をきっかけに、アルバイト先での悩みが少し軽くなった。","kana":"てんちょうとのかいわをきっかけに、あるばいとさきでのなやみがすこしかるくなった。","romaji":"tenchou tono kaiwa wokikkakeni, arubaito saki deno nayami ga sukoshi karuku natta.","meaning":"Percakapan dengan manajer toko menjadi pemicu yang sedikit meringankan kegelisahan saya di tempat kerja part-time."}
+    ]}
+  ]},
+
+  {id:"GR-N2-105",level:"N2",title:"〜ようではないか",summary:"Menyatakan ajakan kuat atau seruan bersama, artinya mari kita.",groups:[
+    {name:"〜ようではないか",description:"Banyak dipakai dalam pidato, slogan, atau ucapan yang membangkitkan semangat.",sentences:[
+      {"jp":"新しい学期が始まったのだから、気持ちを切り替えて頑張ろうではないか。","kana":"あたらしいがっきがはじまったのだから、きもちをきりかえてがんばろうではないか。","romaji":"atarashii gakki ga hajima ttanodakara, kimochi wo kirikae te ganbaro udehanaika.","meaning":"Semester baru sudah dimulai, jadi mari kita ganti suasana hati dan berusaha."},
+      {"jp":"地域の一員として、まずは挨拶から始めようではないか。","kana":"ちいきのいちいんとして、まずはあいさつからはじめようではないか。","romaji":"chiiki no ichiin toshite, mazuha aisatsu kara hajime youdehanaika.","meaning":"Sebagai bagian dari lingkungan ini, mari mulai dari saling menyapa."},
+      {"jp":"せっかく集まったのだから、遠慮せず意見を出し合おうではないか。","kana":"せっかくあつまったのだから、えんりょせずいけんをだしあおうではないか。","romaji":"sekkaku atsuma ttanodakara, enryo sezu iken wo dashi ao udehanaika.","meaning":"Mumpung sudah berkumpul, mari saling menyampaikan pendapat tanpa sungkan."},
+      {"jp":"防災の日をきっかけに、家族で避難先を確認しようではありませんか。","kana":"ぼうさいのにちをきっかけに、かぞくでひなんさきをかくにんしようではありませんか。","romaji":"bousai no nichi wokikkakeni, kazoku de hinansaki wo kakuninshi youdehaarimasenka.","meaning":"Mari menjadikan hari kesiapsiagaan bencana sebagai momen untuk memeriksa lokasi evakuasi bersama keluarga."},
+      {"jp":"失敗を恐れるより、まず一歩を踏み出してみようではないか。","kana":"しっぱいをおそれるより、まずいっぽをふみだしてみようではないか。","romaji":"shippai wo osore ruyori, mazu ippo wo fumi dashi temiyoudehanaika.","meaning":"Daripada takut gagal, mari coba dulu melangkah satu langkah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-106",level:"N2",title:"〜次第で",summary:"Menyatakan hasil berubah tergantung pada hal tertentu.",groups:[
+    {name:"〜次第で",description:"Artinya tergantung, bergantung pada.",sentences:[
+      {"jp":"面接の結果次第で、春からの予定が大きく変わりそうだ。","kana":"めんせつのけっかしだいで、はるからのよていがおおきくかわりそうだ。","romaji":"mensetsu no kekkashidai de, haru karano yotei ga ookiku kawari souda.","meaning":"Tergantung hasil wawancara, rencana saya mulai musim semi nanti bisa banyak berubah."},
+      {"jp":"天気次第で、花見の場所を公園から屋内に変える。","kana":"てんきしだいで、はなみのばしょをこうえんからおくないにかえる。","romaji":"tenki shidai de, hanami no basho wo kouen kara okunai ni kae ru.","meaning":"Tergantung cuaca, lokasi hanami akan dipindah dari taman ke dalam ruangan."},
+      {"jp":"上司の判断次第で、在宅勤務の日数が決まるらしい。","kana":"じょうしのはんだんしだいで、ざいたくきんむのにっすうがきまるらしい。","romaji":"joushi no handan shidai de, zaitakukinmu no nissuu ga kima rurashii.","meaning":"Katanya jumlah hari kerja dari rumah ditentukan tergantung keputusan atasan."},
+      {"jp":"体調次第では、明日の授業をオンラインにするかもしれません。","kana":"たいちょうしだいでは、あしたのじゅぎょうをおんらいんにするかもしれません。","romaji":"taichou shidai deha, ashita no jugyou wo onrain nisurukamoshiremasen.","meaning":"Tergantung kondisi tubuh, kelas besok mungkin akan diubah menjadi online."},
+      {"jp":"あなたの説明の仕方次第で、相手の受け取り方も変わるよ。","kana":"あなたのせつめいのしかたしだいで、あいてのうけとりかたもかわるよ。","romaji":"anatano setsumei no shikata shidai de, aite no uketorikata mo kawa ruyo.","meaning":"Tergantung cara Anda menjelaskan, cara orang lain menerima pun bisa berubah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-107",level:"N2",title:"〜までして / 〜てまで",summary:"Menyatakan sampai melakukan hal sejauh itu demi sesuatu.",groups:[
+    {name:"〜までして / 〜てまで",description:"Sering memuat penilaian apakah tindakan itu pantas atau berlebihan.",sentences:[
+      {"jp":"夜食を我慢してまで、健康診断の数値を改善したいと思った。","kana":"やしょくをがまんしてまで、けんこうしんだんのすうちをかいぜんしたいとおもった。","romaji":"yashoku wo gaman shitemade, kenkoushindan no suuchi wo kaizen shitaito omotta.","meaning":"Saya sampai rela menahan makan malam demi memperbaiki hasil pemeriksaan kesehatan."},
+      {"jp":"そこまでして働く必要があるのか、少し考えたほうがいい。","kana":"そこまでしてはたらくひつようがあるのか、すこしかんがえたほうがいい。","romaji":"sokomadeshite hataraku hitsuyou gaarunoka, sukoshi kangae tahougaii.","meaning":"Mungkin perlu dipikirkan lagi apakah memang perlu bekerja sampai sejauh itu."},
+      {"jp":"人に借金してまで新しいスマホを買うつもりはない。","kana":"にんにしゃっきんしてまであたらしいすまほをかうつもりはない。","romaji":"nin ni shakkin shitemade atarashii sumaho wo kau tsumorihanai.","meaning":"Saya tidak berniat membeli ponsel baru sampai harus berutang pada orang lain."},
+      {"jp":"徹夜してまで資料を直したのに、提出先を間違えていた。","kana":"てつやしてまでしりょうをなおしたのに、ていしゅつさきをまちがえていた。","romaji":"tetsuya shitemade shiryou wo naoshi tanoni, teishutsusaki wo machigae teita.","meaning":"Padahal saya sampai begadang memperbaiki materi, ternyata tujuan pengirimannya malah salah."},
+      {"jp":"休日をつぶしてまで参加した勉強会は、それだけの価値があった。","kana":"きゅうじつをつぶしてまでさんかしたべんきょうかいは、それだけのかちがあった。","romaji":"kyuujitsu wotsubushitemade sanka shita benkyoukai ha, soredakeno kachi gaatta.","meaning":"Sesi belajar yang saya ikuti sampai mengorbankan hari libur itu ternyata memang sepadan nilainya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-108",level:"N2",title:"〜てでも",summary:"Menyatakan meskipun harus melakukan cara yang agak berat, tetap ingin mencapai tujuan.",groups:[
+    {name:"〜てでも",description:"Nuansanya tekad atau prioritas yang kuat.",sentences:[
+      {"jp":"多少並んででも、あの病院で診てもらいたい。","kana":"たしょうならんででも、あのびょういんでみてもらいたい。","romaji":"tashou naran dedemo, ano byouin de mite moraitai.","meaning":"Meskipun harus antre lumayan lama, saya tetap ingin diperiksa di rumah sakit itu."},
+      {"jp":"無理をしてでも行くべきかどうか、今日は少し迷っている。","kana":"むりをしてでもいくべきかどうか、こんにちはすこしまよっている。","romaji":"muri woshitedemo iku bekikadouka, konnichiha sukoshi mayotsu teiru.","meaning":"Hari ini saya agak ragu apakah harus tetap pergi meskipun harus memaksakan diri."},
+      {"jp":"少し高くても、この時期は駅近の部屋を借りてでも通勤時間を減らしたい。","kana":"すこしたかくても、このじきはえきちかのへやをかりてでもつうきんじかんをへらしたい。","romaji":"sukoshi takaku temo, kono jiki ha ekichika no heya wo kari tedemo tsuukinjikan wo hera shitai.","meaning":"Meskipun sedikit mahal, pada masa seperti ini saya ingin mengurangi waktu commute walau harus menyewa kamar dekat stasiun."},
+      {"jp":"短い時間ででも、毎日日本語に触れるようにしている。","kana":"みじかいじかんででも、まいにちにほんごにふれるようにしている。","romaji":"mijikai jikan dedemo, mainichi nihongo ni fureru younishiteiru.","meaning":"Saya berusaha tetap bersentuhan dengan bahasa Jepang setiap hari meskipun hanya sebentar."},
+      {"jp":"お願いしてでも、今日中に確認してもらわないと間に合わない。","kana":"おねがいしてでも、きょうじゅうにかくにんしてもらわないとまにあわない。","romaji":"o negai shitedemo, kyoujuu ni kakuninshi temorawanaito maniawa nai.","meaning":"Meskipun harus minta tolong dengan sungguh-sungguh, saya harus mendapatkan pengecekan hari ini supaya sempat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-109",level:"N2",title:"〜てこそ",summary:"Menyatakan nilai atau hasil yang baru bermakna kalau syaratnya terpenuhi.",groups:[
+    {name:"〜てこそ",description:"Walau bentuknya sama dengan N2 nomor 20, di sini nuansanya lebih menonjol sebagai penegasan nilai.",sentences:[
+      {"jp":"言葉は相手を思って使ってこそ、本当のコミュニケーションになる。","kana":"ことばはあいてをおもってつかってこそ、ほんとうのこみゅにけーしょんになる。","romaji":"kotoba ha aite wo omotte tsukatte koso, hontou no komyunikeeshon ninaru.","meaning":"Bahasa baru menjadi komunikasi yang sesungguhnya jika dipakai dengan memikirkan lawan bicara."},
+      {"jp":"地域の情報は住んでいる人に届いてこそ意味がある。","kana":"ちいきのじょうほうはすんでいるにんにとどいてこそいみがある。","romaji":"chiiki no jouhou ha sun deiru nin ni todoi tekoso imi gaaru.","meaning":"Informasi lingkungan baru punya arti jika benar-benar sampai ke orang yang tinggal di situ."},
+      {"jp":"学んだ防災知識は、いざという時に動けてこそ役立つ。","kana":"まなんだぼうさいちしきは、いざというときにうごけてこそやくたつ。","romaji":"manan da bousai chishiki ha, izatoiu tokini ugoke tekoso yakutatsu.","meaning":"Pengetahuan kebencanaan baru berguna jika kita bisa bergerak saat keadaan darurat."},
+      {"jp":"店のサービスは続けて利用してこそ、細かな良さが分かる。","kana":"みせのさーびすはつづけてりようしてこそ、こまかなよさがわかる。","romaji":"mise no saabisu ha tsuzuke te riyou shitekoso, komaka na yosa ga waka ru.","meaning":"Pelayanan toko baru benar-benar terasa kualitas kecilnya kalau kita terus menggunakannya."},
+      {"jp":"留学の経験は帰国後に生かしてこそ、自分の力になると思う。","kana":"りゅうがくのけいけんはきこくごにいかしてこそ、じぶんのちからになるとおもう。","romaji":"ryuugaku no keiken ha kikokugo ni ika shitekoso, jibun no chikara ninaruto omou.","meaning":"Menurut saya pengalaman belajar di luar negeri baru jadi kekuatan kalau dimanfaatkan setelah pulang."}
+    ]}
+  ]},
+
+  {id:"GR-N2-110",level:"N2",title:"〜として〜ない",summary:"Menyatakan bahkan jika dilihat dari sudut paling ringan pun, sesuatu tidak terpenuhi.",groups:[
+    {name:"〜として〜ない",description:"Sering muncul dalam bentuk 一日として〜ない, 一度として〜ない.",sentences:[
+      {"jp":"来日してから、一日として日本語にふれなかった日はない。","kana":"らいにちしてから、ついたちとしてにほんごにふれなかったにちはない。","romaji":"rainichi shitekara, tsuitachi toshite nihongo nifurenakatta nichi hanai.","meaning":"Sejak datang ke Jepang, tidak ada satu hari pun saya tidak bersentuhan dengan bahasa Jepang."},
+      {"jp":"この一週間、一度として定時に帰れていない。","kana":"このいっしゅうかん、いちどとしてていじにかえれていない。","romaji":"kono isshuukan, ichido toshite teiji ni kaere teinai.","meaning":"Selama satu minggu ini, tidak ada satu kali pun saya bisa pulang tepat waktu."},
+      {"jp":"駅前のあの店は、昼どきは一日として空いている日がない。","kana":"えきまえのあのみせは、ひるどきはついたちとしてあいているにちがない。","romaji":"ekimae noano mise ha, hiru dokiha tsuitachi toshite ai teiru nichi ganai.","meaning":"Toko itu di depan stasiun tidak punya satu hari pun yang sepi saat jam makan siang."},
+      {"jp":"彼は約束を一度として軽く扱ったことがない。","kana":"かれはやくそくをいちどとしてかるくあつかったことがない。","romaji":"kareha yakusoku wo ichido toshite karuku atsukatsu takotoganai.","meaning":"Dia tidak pernah sekalipun memperlakukan janji dengan enteng."},
+      {"jp":"試験前の今月は、一日として気が抜ける日はなかった。","kana":"しけんまえのこんげつは、ついたちとしてきがぬけるにちはなかった。","romaji":"shikenmae no kongetsu ha, tsuitachi toshite kiga nuke ru nichi hanakatta.","meaning":"Selama bulan menjelang ujian ini, tidak ada satu hari pun saya bisa benar-benar santai."}
+    ]}
+  ]},
+
+  {id:"GR-N2-111",level:"N2",title:"〜からすると / 〜からすれば / 〜からいうと / 〜からいえば / 〜からいって",summary:"Menyatakan penilaian dari sudut pandang tertentu.",groups:[
+    {name:"〜からすると / 〜からすれば / 〜からいうと / 〜からいえば / 〜からいって",description:"Artinya kalau dilihat dari, menurut sudut pandang.",sentences:[
+      {"jp":"初めて日本で暮らす人からすると、このゴミ出しのルールは複雑に見えるだろう。","kana":"はじめてにっぽんでくらすにんからすると、このごみだしのるーるはふくざつにみえるだろう。","romaji":"hajimete nippon de kura su nin karasuruto, kono gomi dashi no ruuru ha fukuzatsu ni mie rudarou.","meaning":"Kalau dilihat dari sudut pandang orang yang baru pertama hidup di Jepang, aturan buang sampah ini pasti terlihat rumit."},
+      {"jp":"親からすれば、子どもが夜遅くまで帰らないのはやはり心配だ。","kana":"したしからすれば、こどもがよるおそくまでかえらないのはやはりしんぱいだ。","romaji":"shitashika rasureba, kodomo ga yoruosoku made kaera nainohayahari shinpai da.","meaning":"Kalau dari sudut pandang orang tua, anak yang pulang larut malam tentu tetap mengkhawatirkan."},
+      {"jp":"通う立場からいうと、駅から近いだけで大きな安心感がある。","kana":"かようたちばからいうと、えきからちかいだけでおおきなあんしんかんがある。","romaji":"kayou tachiba karaiuto, eki kara chikai dakede ooki na anshinkan gaaru.","meaning":"Kalau dari sudut pandang orang yang harus berangkat setiap hari, dekat dari stasiun saja sudah memberi rasa tenang."},
+      {"jp":"留学生からいえば、手続きの情報はもっと多言語であってほしい。","kana":"りゅうがくせいからいえば、てつづきのじょうほうはもっとたげんごであってほしい。","romaji":"ryuugakusei karaieba, tetsuzuki no jouhou hamotto tagengo deattehoshii.","meaning":"Kalau dari sudut pandang pelajar asing, saya ingin informasi prosedur lebih banyak tersedia dalam berbagai bahasa."},
+      {"jp":"利用者からいって、このアプリは更新後のほうがずっと使いやすい。","kana":"りようしゃからいって、このあぷりはこうしんのちのほうがずっとつかいやすい。","romaji":"riyousha karaitte, kono apuri ha koushin nochino hougazutto tsukai yasui.","meaning":"Kalau dilihat dari sisi pengguna, aplikasi ini jauh lebih mudah dipakai setelah diperbarui."}
+    ]}
+  ]},
+
+  {id:"GR-N2-112",level:"N2",title:"〜を〜として / 〜を〜とする",summary:"Menyatakan menjadikan sesuatu sebagai posisi, tujuan, atau bahan dasar.",groups:[
+    {name:"〜を〜として / 〜を〜とする",description:"Sering dipakai dalam definisi, aturan, dan penjelasan formal.",sentences:[
+      {"jp":"この施設は地域交流の場を目的として設計された。","kana":"このしせつはちいきこうりゅうのばをもくてきとしてせっけいされた。","romaji":"kono shisetsu ha chiiki kouryuu no ba wo mokuteki toshite sekkei sareta.","meaning":"Fasilitas ini dirancang dengan tujuan menjadi tempat interaksi warga."},
+      {"jp":"日本語を共通言語として、いろいろな国の人が話していた。","kana":"にほんごをきょうつうげんごとして、いろいろなくにのにんがはなしていた。","romaji":"nihongo wo kyoutsuugengo toshite, iroirona kuni no nin ga hanashi teita.","meaning":"Dengan bahasa Jepang sebagai bahasa bersama, orang-orang dari berbagai negara saling berbicara."},
+      {"jp":"来月一日を開始日とする研修が予定されている。","kana":"らいげつついたちをかいしびとするけんしゅうがよていされている。","romaji":"raigetsu tsuitachi wo kaishibi tosuru kenshuu ga yotei sareteiru.","meaning":"Pelatihan dengan tanggal mulai pada tanggal satu bulan depan sedang dijadwalkan."},
+      {"jp":"その団体は子どもの支援を中心として活動している。","kana":"そのだんたいはこどものしえんをちゅうしんとしてかつどうしている。","romaji":"sono dantai ha kodomo no shien wo chuushin toshite katsudou shiteiru.","meaning":"Organisasi itu berkegiatan dengan menjadikan dukungan anak-anak sebagai fokus utama."},
+      {"jp":"この報告書は去年の調査結果を基礎資料としてまとめられた。","kana":"このほうこくしょはきょねんのちょうさけっかをきそしりょうとしてまとめられた。","romaji":"kono houkokusho ha kyonen no chousakekka wo kisoshiryou toshitematomerareta.","meaning":"Laporan ini dirangkum dengan hasil survei tahun lalu sebagai bahan dasar."}
+    ]}
+  ]},
+
+  {id:"GR-N2-113",level:"N2",title:"〜にしてみたら / 〜にしてみれば",summary:"Menyatakan jika dilihat dari sudut orang itu, perasaannya tentu begini.",groups:[
+    {name:"〜にしてみたら / 〜にしてみれば",description:"Dipakai untuk empati atau mempertimbangkan posisi pihak lain.",sentences:[
+      {"jp":"初めて海外で働く人にしてみれば、毎日の小さな手続きでも大きな負担だろう。","kana":"はじめてかいがいではたらくにんにしてみれば、まいにちのちいさなてつづきでもおおきなふたんだろう。","romaji":"hajimete kaigai de hataraku nin nishitemireba, mainichi no chiisa na tetsuzuki demo ooki na futan darou.","meaning":"Kalau dilihat dari sudut orang yang baru pertama kali bekerja di luar negeri, prosedur kecil sehari-hari pun pasti terasa berat."},
+      {"jp":"親にしてみれば、子どもが一人で東京に出るのは心配でたまらないはずだ。","kana":"おやにしてみれば、こどもがひとりでとうきょうにでるのはしんぱいでたまらないはずだ。","romaji":"oya nishitemireba, kodomo ga hitori de toukyou ni deru noha shinpai detamaranaihazuda.","meaning":"Kalau dari sudut pandang orang tua, anak yang pergi sendirian ke Tokyo pasti sangat mengkhawatirkan."},
+      {"jp":"店側にしてみれば、急なキャンセルが続くのはかなり痛い。","kana":"みせがわにしてみれば、きゅうなきゃんせるがつづくのはかなりいたい。","romaji":"misegawa nishitemireba, kyuuna kyanseru ga tsuzuku nohakanari itai.","meaning":"Kalau dilihat dari sisi toko, pembatalan mendadak yang terus terjadi tentu sangat merugikan."},
+      {"jp":"引っ越したばかりの人にしてみたら、近所のルールは分からなくて当然だ。","kana":"ひっこしたばかりのにんにしてみたら、きんじょのるーるはわからなくてとうぜんだ。","romaji":"hikkoshi tabakarino nin nishitemitara, kinjo no ruuru ha waka ranakute touzen da.","meaning":"Kalau dilihat dari sudut orang yang baru pindah, wajar saja kalau mereka belum paham aturan lingkungan."},
+      {"jp":"聞かれた本人にしてみれば、何気ない質問でも答えにくい時がある。","kana":"きかれたほんにんにしてみれば、なにげないしつもんでもこたえにくいときがある。","romaji":"kika reta honnin nishitemireba, nanigena i shitsumon demo kotae nikui toki gaaru.","meaning":"Bagi orang yang ditanya, ada kalanya pertanyaan yang tampak biasa pun sulit dijawab."}
+    ]}
+  ]},
+
+  {id:"GR-N2-114",level:"N2",title:"〜にあたって / 〜にあたり",summary:"Menyatakan pada saat melakukan hal penting tertentu.",groups:[
+    {name:"〜にあたって / 〜にあたり",description:"Sering dipakai di pengumuman, pidato, dan dokumen resmi.",sentences:[
+      {"jp":"契約にあたって、事前に重要事項説明を受ける必要があります。","kana":"けいやくにあたって、じぜんにじゅうようじこうせつめいをうけるひつようがあります。","romaji":"keiyaku niatatte, jizen ni juuyoujikou setsumei wo ukeru hitsuyou gaarimasu.","meaning":"Saat membuat kontrak, Anda perlu menerima penjelasan poin-poin penting terlebih dahulu."},
+      {"jp":"留学開始にあたり、保険の内容をもう一度確認した。","kana":"りゅうがくかいしにあたり、ほけんのないようをもういちどかくにんした。","romaji":"ryuugaku kaishi niatari, hoken no naiyou womou ichido kakuninshi ta.","meaning":"Saat memulai studi di luar negeri, saya mengecek lagi isi asuransinya."},
+      {"jp":"開会にあたり、主催者から一言ごあいさつがあります。","kana":"かいかいにあたり、しゅさいしゃからひとことごあいさつがあります。","romaji":"kaikai niatari, shusaisha kara hitokoto goaisatsugaarimasu.","meaning":"Saat pembukaan, akan ada sambutan singkat dari penyelenggara."},
+      {"jp":"新しい仕事を始めるにあたって、生活リズムも整えたい。","kana":"あたらしいしごとをはじめるにあたって、せいかつりずむもととのえたい。","romaji":"atarashii shigoto wo hajime runiatatte, seikatsu rizumu mo totonoe tai.","meaning":"Menjelang mulai pekerjaan baru, saya juga ingin merapikan ritme hidup."},
+      {"jp":"受験にあたって、不安な点は早めに先生へ相談してください。","kana":"じゅけんにあたって、ふあんなてんははやめにせんせいへそうだんしてください。","romaji":"juken niatatte, fuan na ten ha hayame ni sensei he soudan shitekudasai.","meaning":"Saat menghadapi ujian masuk, kalau ada kekhawatiran sebaiknya segera konsultasikan ke sensei."}
+    ]}
+  ]},
+
+  {id:"GR-N2-115",level:"N2",title:"〜際に(は)",summary:"Menyatakan pada saat itu, ketika kesempatan atau momen tersebut terjadi.",groups:[
+    {name:"〜際に(は)",description:"Umum dalam pengumuman, aturan, dan tulisan yang rapi.",sentences:[
+      {"jp":"ご来館の際には、入口で学生証をご提示ください。","kana":"ごらいかんのさいには、いりぐちでがくせいしょうをごていじください。","romaji":"go raikan no saini ha, iriguchi de gakuseishou wogo teiji kudasai.","meaning":"Saat berkunjung ke perpustakaan ini, mohon tunjukkan kartu pelajar di pintu masuk."},
+      {"jp":"お困りの際は、遠慮なくスタッフにお声がけください。","kana":"おこまりのきわは、えんりょなくすたっふにおこえがけください。","romaji":"o komari no kiwa ha, enryo naku sutaffu nio koe gakekudasai.","meaning":"Saat mengalami kesulitan, silakan hubungi staf tanpa sungkan."},
+      {"jp":"申請の際に必要な持ち物は、事前にサイトで確認できます。","kana":"しんせいのさいにひつようなもちものは、じぜんにさいとでかくにんできます。","romaji":"shinsei no saini hitsuyou na mochimono ha, jizen ni saito de kakunin dekimasu.","meaning":"Barang yang diperlukan saat pengajuan bisa dicek lebih dulu di situs."},
+      {"jp":"日本へ入国する際には、最新の案内を必ず確認したほうがいい。","kana":"にっぽんへにゅうこくするさいには、さいしんのあんないをかならずかくにんしたほうがいい。","romaji":"nippon he nyuukoku suru saini ha, saishin no annai wo kanarazu kakuninshi tahougaii.","meaning":"Saat masuk ke Jepang, sebaiknya pastikan selalu mengecek informasi terbaru."},
+      {"jp":"災害の際は、まず身の安全を確保してください。","kana":"さいがいのきわは、まずみのあんぜんをかくほしてください。","romaji":"saigai no kiwa ha, mazu mino anzen wo kakuho shitekudasai.","meaning":"Saat terjadi bencana, pastikan keselamatan diri terlebih dahulu."}
+    ]}
+  ]},
+
+  {id:"GR-N2-116",level:"N2",title:"〜つつ",summary:"Menyatakan sambil melakukan satu hal, dilakukan juga hal lain, biasanya gaya tulis.",groups:[
+    {name:"〜つつ",description:"Lebih formal dan tertulis daripada ながら.",sentences:[
+      {"jp":"周囲の反応を見つつ、説明のしかたを少し変えた。","kana":"しゅういのはんのうをみつつ、せつめいのしかたをすこしかえた。","romaji":"shuui no hannou wo mitsu tsu, setsumei noshikatawo sukoshi kae ta.","meaning":"Sambil melihat reaksi sekitar, saya sedikit mengubah cara menjelaskan."},
+      {"jp":"駅からの道を確認しつつ、近くの店も何軒か見て回った。","kana":"えきからのみちをかくにんしつつ、ちかくのみせもなんけんかみてまわった。","romaji":"eki karano michi wo kakuninshi tsutsu, chikaku no mise mo nanken ka mite mawatsu ta.","meaning":"Sambil memastikan jalan dari stasiun, saya juga melihat-lihat beberapa toko di sekitar."},
+      {"jp":"先輩の助言を受けつつ、自分なりの方法も探している。","kana":"せんぱいのじょげんをうけつつ、じぶんなりのほうほうもさがしている。","romaji":"senpai no jogen wo uke tsutsu, jibun narino houhou mo sagashi teiru.","meaning":"Sambil menerima saran senior, saya juga mencari cara yang cocok bagi diri sendiri."},
+      {"jp":"状況を整理しつつ、次に必要な手続きを考えた。","kana":"じょうきょうをせいりしつつ、つぎにひつようなてつづきをかんがえた。","romaji":"joukyou wo seiri shitsutsu, tsugini hitsuyou na tetsuzuki wo kangae ta.","meaning":"Sambil merapikan situasi, saya memikirkan prosedur berikutnya yang diperlukan."},
+      {"jp":"昔の面影を残しつつ、新しい店も増えてきた。","kana":"むかしのおもかげをのこしつつ、あたらしいみせもふえてきた。","romaji":"mukashi no omokage wo nokoshi tsutsu, atarashii mise mo fue tekita.","meaning":"Sambil tetap menyisakan nuansa lama, toko-toko baru juga mulai bertambah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-117",level:"N2",title:"〜折に(は)",summary:"Menyatakan pada kesempatan tertentu.",groups:[
+    {name:"〜折に(は)",description:"Terdengar agak formal dan sopan.",sentences:[
+      {"jp":"お近くにお越しの折には、ぜひお立ち寄りください。","kana":"おちかくにおこしのおりには、ぜひおたちよりください。","romaji":"o chikaku nio koshi no ori niha, zehio tachi yori kudasai.","meaning":"Saat Anda kebetulan datang ke dekat sini, silakan mampir."},
+      {"jp":"日本へいらした折には、この町にも遊びに来てください。","kana":"にっぽんへいらしたおりには、このまちにもあそびにきてください。","romaji":"nippon heirashita ori niha, kono machi nimo asobi ni kite kudasai.","meaning":"Kalau suatu saat Anda datang ke Jepang, mampirlah juga ke kota ini."},
+      {"jp":"困った折には、以前お世話になった先生に相談している。","kana":"こまったおりには、いぜんおせわになったせんせいにそうだんしている。","romaji":"komatsu ta ori niha, izen o sewa ninatta sensei ni soudan shiteiru.","meaning":"Pada saat mengalami kesulitan, saya biasanya berkonsultasi dengan sensei yang pernah membantu saya."},
+      {"jp":"卒業の折には、家族へきちんと感謝を伝えたい。","kana":"そつぎょうのおりには、かぞくへきちんとかんしゃをつたえたい。","romaji":"sotsugyou no ori niha, kazoku hekichinto kansha wo tsutae tai.","meaning":"Saat kelulusan nanti, saya ingin menyampaikan rasa terima kasih kepada keluarga dengan baik."},
+      {"jp":"機会があった折に、近所の神社の歴史を調べてみた。","kana":"きかいがあったおりに、きんじょのじんじゃのれきしをしらべてみた。","romaji":"kikai gaatta ori ni, kinjo no jinja no rekishi wo shirabe temita.","meaning":"Pada suatu kesempatan, saya mencoba meneliti sejarah kuil dekat rumah."}
+    ]}
+  ]},
+
+  {id:"GR-N2-118",level:"N2",title:"〜に際して",summary:"Menyatakan pada saat yang penting, resmi, atau khusus.",groups:[
+    {name:"〜に際して",description:"Lebih formal daripada 際に.",sentences:[
+      {"jp":"卒業に際して、お世話になった方々へ手紙を書いた。","kana":"そつぎょうにさいして、おせわになったかたがたへてがみをかいた。","romaji":"sotsugyou ni saishi te, o sewa ninatta katagata he tegami wo kai ta.","meaning":"Menjelang kelulusan, saya menulis surat kepada orang-orang yang telah banyak membantu."},
+      {"jp":"契約更新に際して、条件を再確認する必要があります。","kana":"けいやくこうしんにさいして、じょうけんをさいかくにんするひつようがあります。","romaji":"keiyaku koushin ni saishi te, jouken wo saikakunin suru hitsuyou gaarimasu.","meaning":"Saat perpanjangan kontrak, syarat-syaratnya perlu dikonfirmasi lagi."},
+      {"jp":"開店に際して、近隣住民へあいさつ回りをしたそうだ。","kana":"かいてんにさいして、きんりんじゅうみんへあいさつまわりをしたそうだ。","romaji":"kaiten ni saishi te, kinrinjuumin heaisatsu mawari woshitasouda.","meaning":"Katanya menjelang pembukaan toko, mereka berkeliling menyapa warga sekitar."},
+      {"jp":"移転に際して、営業時間も変更となりました。","kana":"いてんにさいして、えいぎょうじかんもへんこうとなりました。","romaji":"iten ni saishi te, eigyoujikan mo henkou tonarimashita.","meaning":"Sehubungan dengan perpindahan lokasi, jam operasional juga berubah."},
+      {"jp":"大会開催に際して、駅周辺では交通規制が行われる。","kana":"たいかいかいさいにさいして、えきしゅうへんではこうつうきせいがおこなわれる。","romaji":"taikaikaisai ni saishi te, ekishuuhen deha koutsuukisei ga okonawa reru.","meaning":"Menjelang penyelenggaraan turnamen, pembatasan lalu lintas akan diberlakukan di sekitar stasiun."}
+    ]}
+  ]},
+
+  {id:"GR-N2-119",level:"N2",title:"〜か〜ないかのうちに",summary:"Menyatakan sesuatu terjadi hampir bersamaan, begitu A terjadi, langsung B.",groups:[
+    {name:"〜か〜ないかのうちに",description:"Menekankan jeda yang sangat singkat.",sentences:[
+      {"jp":"授業が終わるか終わらないかのうちに、学生たちは食堂へ向かった。","kana":"じゅぎょうがおわるかおわらないかのうちに、がくせいたちはしょくどうへむかった。","romaji":"jugyou ga owa ruka owa ranaikanouchini, gakusei tachiha shokudou he muka tta.","meaning":"Begitu kelas selesai, para mahasiswa langsung menuju kantin."},
+      {"jp":"家に着くか着かないかのうちに、急な雨が降り出した。","kana":"いえにつくかつかないかのうちに、きゅうなあめがおりだした。","romaji":"ie ni tsuku ka tsuka naikanouchini, kyuuna ame ga ori dashi ta.","meaning":"Begitu saya hampir sampai rumah, hujan mendadak turun."},
+      {"jp":"駅の階段を上がるか上がらないかのうちに、発車ベルが鳴った。","kana":"えきのかいだんをあがるかあがらないかのうちに、はっしゃべるがなった。","romaji":"eki no kaidan wo aga ruka aga ranaikanouchini, hassha beru ga natsu ta.","meaning":"Begitu saya hampir selesai menaiki tangga stasiun, bel keberangkatan berbunyi."},
+      {"jp":"席に座るか座らないかのうちに、名前を呼ばれた。","kana":"せきにすわるかすわらないかのうちに、なまえをよばれた。","romaji":"seki ni suwaru ka suwara naikanouchini, namae wo yoba reta.","meaning":"Begitu saya baru hampir duduk, nama saya dipanggil."},
+      {"jp":"店が開くか開かないかのうちに、入口に列ができていた。","kana":"みせがひらくかひらかないかのうちに、いりぐちにれつができていた。","romaji":"mise ga hiraku ka hiraka naikanouchini, iriguchi ni retsu gadekiteita.","meaning":"Begitu toko hampir buka, antrean sudah terbentuk di pintu masuk."}
+    ]}
+  ]},
+
+  {id:"GR-N2-120",level:"N2",title:"〜かと思うと / 〜かと思ったら",summary:"Menyatakan perubahan atau kejadian kedua terjadi sangat cepat setelah yang pertama.",groups:[
+    {name:"〜かと思うと / 〜かと思ったら",description:"Sering dipakai untuk perubahan mendadak yang mengejutkan.",sentences:[
+      {"jp":"さっきまで晴れていたかと思ったら、急に土砂降りになった。","kana":"さっきまではれていたかとおもったら、きゅうにどしゃぶりになった。","romaji":"sakkimade hare teitakato omotta ra, kyuuni doshaburi ninatta.","meaning":"Baru saja tadi cerah, tahu-tahu hujan deras turun."},
+      {"jp":"子どもたちは静かになったかと思うと、次の瞬間にはまた走り回っていた。","kana":"こどもたちはしずかになったかとおもうと、つぎのしゅんかんにはまたはしりまわっていた。","romaji":"kodomo tachiha shizuka ninattakato omou to, tsugino shunkan nihamata hashiri mawatsu teita.","meaning":"Anak-anak baru saja diam, tahu-tahu detik berikutnya mereka sudah berlari lagi."},
+      {"jp":"駅に着いたかと思ったら、もう乗り換えのアナウンスが流れた。","kana":"えきについたかとおもったら、もうのりかえのあなうんすがながれた。","romaji":"eki ni tsui takato omotta ra, mou norikae no anaunsu ga nagare ta.","meaning":"Begitu sampai di stasiun, langsung terdengar pengumuman untuk transit."},
+      {"jp":"春になったかと思ったら、また寒さが戻ってきた。","kana":"はるになったかとおもったら、またさむさがもどってきた。","romaji":"haru ninattakato omotta ra, mata samusa ga modotsu tekita.","meaning":"Baru saja terasa musim semi datang, tahu-tahu dinginnya kembali lagi."},
+      {"jp":"彼は怒ったかと思ったら、すぐにいつもの表情に戻った。","kana":"かれはいかったかとおもったら、すぐにいつものひょうじょうにもどった。","romaji":"kareha ikatsu takato omotta ra, suguniitsumono hyoujou ni modotsu ta.","meaning":"Baru saya kira dia marah, ternyata segera kembali ke ekspresi biasanya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-121",level:"N2",title:"〜次第",summary:"Menyatakan akan segera melakukan sesuatu begitu syarat atau tahap sebelumnya selesai.",groups:[
+    {name:"〜次第",description:"Sering dipakai dalam pengumuman atau bahasa kerja.",sentences:[
+      {"jp":"準備ができ次第、順番にご案内いたします。","kana":"じゅんびができしだい、じゅんばんにごあんないいたします。","romaji":"junbi gadeki shidai, junban nigo annai itashimasu.","meaning":"Begitu persiapannya selesai, kami akan memandu Anda satu per satu."},
+      {"jp":"結果が分かり次第、ご連絡します。","kana":"けっかがわかりしだい、ごれんらくします。","romaji":"kekka ga waka ri shidai, go renraku shimasu.","meaning":"Begitu hasilnya diketahui, saya akan menghubungi Anda."},
+      {"jp":"資料がそろい次第、申請書を提出する予定です。","kana":"しりょうがそろいしだい、しんせいしょをていしゅつするよていです。","romaji":"shiryou gasoroi shidai, shinseisho wo teishutsu suru yotei desu.","meaning":"Begitu semua materi lengkap, saya berencana menyerahkan formulir pengajuan."},
+      {"jp":"会場の安全確認が終わり次第、入場を開始します。","kana":"かいじょうのあんぜんかくにんがおわりしだい、にゅうじょうをかいしします。","romaji":"kaijou no anzenkakunin ga owari shidai, nyuujou wo kaishi shimasu.","meaning":"Begitu pemeriksaan keamanan venue selesai, masuk akan dibuka."},
+      {"jp":"新しい情報が入り次第、掲示板にも反映されるはずです。","kana":"あたらしいじょうほうがいりしだい、けいじばんにもはんえいされるはずです。","romaji":"atarashii jouhou ga iri shidai, keijiban nimo han'ei sareruhazudesu.","meaning":"Begitu ada informasi baru masuk, seharusnya itu juga akan ditampilkan di papan pengumuman."}
+    ]}
+  ]},
+
+  {id:"GR-N2-122",level:"N2",title:"〜て以来 / 〜てこのかた",summary:"Menyatakan sejak saat itu sampai sekarang keadaan terus berlanjut.",groups:[
+    {name:"〜て以来 / 〜てこのかた",description:"てこのかた terdengar lebih formal dan puitis daripada て以来.",sentences:[
+      {"jp":"日本に来て以来、電車の時間の正確さに毎回感心している。","kana":"にっぽんにきていらい、でんしゃのじかんのせいかくさにまいかいかんしんしている。","romaji":"nippon ni kite irai, densha no jikan no seikaku sani maikai kanshin shiteiru.","meaning":"Sejak datang ke Jepang, saya selalu kagum pada ketepatan waktu keretanya."},
+      {"jp":"この町に住み始めて以来、朝の散歩が日課になった。","kana":"このまちにすみはじめていらい、あさのさんぽがにっかになった。","romaji":"kono machi ni sumi hajime te irai, asa no sanpo ga nikka ninatta.","meaning":"Sejak mulai tinggal di kota ini, jalan pagi menjadi kebiasaan harian saya."},
+      {"jp":"先生に会って以来、日本語の勉強の見方が変わった。","kana":"せんせいにあっていらい、にほんごのべんきょうのみかたがかわった。","romaji":"sensei ni atsu te irai, nihongo no benkyou no mikata ga kawa tta.","meaning":"Sejak bertemu sensei itu, cara pandang saya terhadap belajar bahasa Jepang berubah."},
+      {"jp":"祖父は手術してこのかた、食事にかなり気をつけている。","kana":"そふはしゅじゅつしてこのかた、しょくじにかなりきをつけている。","romaji":"sofu ha shujutsu shitekonokata, shokuji nikanari kiwo tsuketeiru.","meaning":"Sejak menjalani operasi, kakek sangat memperhatikan makanannya."},
+      {"jp":"あの日連絡をもらって以来、ずっと結果を待っている。","kana":"あのにちれんらくをもらっていらい、ずっとけっかをまっている。","romaji":"ano nichiren raku womoratte irai, zutto kekka wo matsu teiru.","meaning":"Sejak menerima kabar hari itu, saya terus menunggu hasilnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-123",level:"N2",title:"〜に先立ち / 〜に先立って",summary:"Menyatakan dilakukan terlebih dahulu sebelum acara atau hal utama.",groups:[
+    {name:"〜に先立ち / 〜に先立って",description:"Nuansanya formal dan sering dipakai untuk acara resmi.",sentences:[
+      {"jp":"式典に先立ち、会場の安全確認が行われた。","kana":"しきてんにさきだち、かいじょうのあんぜんかくにんがおこなわれた。","romaji":"shikiten ni sakidachi, kaijou no anzenkakunin ga okonawa reta.","meaning":"Sebelum upacara dimulai, pemeriksaan keamanan venue dilakukan."},
+      {"jp":"新学期に先立って、保護者向けの説明会が開かれる。","kana":"しんがっきにさきだって、ほごしゃむけのせつめいかいがひらかれる。","romaji":"shingakki ni sakidatsu te, hogosha muke no setsumeikai ga hiraka reru.","meaning":"Sebelum semester baru dimulai, akan diadakan sesi penjelasan bagi orang tua."},
+      {"jp":"工事開始に先立ち、近隣住民への案内が配られた。","kana":"こうじかいしにさきだち、きんりんじゅうみんへのあんないがくばられた。","romaji":"kouji kaishi ni sakidachi, kinrinjuumin heno annai ga kubara reta.","meaning":"Sebelum konstruksi dimulai, pemberitahuan dibagikan kepada warga sekitar."},
+      {"jp":"本格導入に先立って、まず小規模なテスト運用をするらしい。","kana":"ほんかくどうにゅうにさきだって、まずしょうきぼなてすとうんようをするらしい。","romaji":"honkaku dounyuu ni sakidatsu te, mazu shoukibo na tesuto unyou wosururashii.","meaning":"Katanya sebelum penerapan penuh, mereka akan melakukan uji coba skala kecil terlebih dahulu."},
+      {"jp":"発表会に先立ち、機材の最終確認を済ませておきたい。","kana":"はっぴょうかいにさきだち、きざいのさいしゅうかくにんをすませておきたい。","romaji":"happyoukai ni sakidachi, kizai no saishuu kakunin wo suma seteokitai.","meaning":"Sebelum presentasi dimulai, saya ingin menyelesaikan pengecekan akhir peralatannya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-124",level:"N2",title:"〜うえで",summary:"Menyatakan setelah melakukan langkah pertama, lalu baru langkah berikutnya.",groups:[
+    {name:"〜うえで",description:"Banyak dipakai untuk prosedur, penjelasan, dan pertimbangan.",sentences:[
+      {"jp":"説明をよく読んだうえで、申込フォームを送信してください。","kana":"せつめいをよくよんだうえで、もうしこみふぉーむをそうしんしてください。","romaji":"setsumei woyoku yonda uede, moushikomi foomu wo soushin shitekudasai.","meaning":"Setelah membaca penjelasannya dengan baik, silakan kirim formulir pendaftaran."},
+      {"jp":"家族と相談したうえで、進学先を決めたい。","kana":"かぞくとそうだんしたうえで、しんがくさきをきめたい。","romaji":"kazoku to soudan shitauede, shingakusaki wo kime tai.","meaning":"Saya ingin memutuskan tempat studi setelah berdiskusi dengan keluarga."},
+      {"jp":"実際に見学したうえで、その部屋を借りるか判断する。","kana":"じっさいにけんがくしたうえで、そのへやをかりるかはんだんする。","romaji":"jissaini kengaku shitauede, sono heya wo kari ruka handan suru.","meaning":"Saya akan memutuskan apakah akan menyewa kamar itu setelah melihat langsung."},
+      {"jp":"先生の助言を聞いたうえで、研究テーマをしぼった。","kana":"せんせいのじょげんをきいたうえで、けんきゅうてーまをしぼった。","romaji":"sensei no jogen wo kii tauede, kenkyuu teema woshibotta.","meaning":"Setelah mendengar saran sensei, saya mempersempit tema penelitian."},
+      {"jp":"体調を確認したうえで、明日の予定を決めましょう。","kana":"たいちょうをかくにんしたうえで、あしたのよていをきめましょう。","romaji":"taichou wo kakuninshi tauede, ashita no yotei wo kime mashou.","meaning":"Mari tentukan rencana besok setelah memastikan kondisi tubuh."}
+    ]}
+  ]},
+
+  {id:"GR-N2-125",level:"N2",title:"〜にかけては",summary:"Menyatakan kalau soal bidang itu, orang atau hal tersebut sangat menonjol.",groups:[
+    {name:"〜にかけては",description:"Dipakai untuk kelebihan yang khusus.",sentences:[
+      {"jp":"接客の丁寧さにかけては、この店は駅前でも評判がいい。","kana":"せっきゃくのていねいさにかけては、このみせはえきまえでもひょうばんがいい。","romaji":"sekkyaku no teinei sanikaketeha, kono mise ha ekimae demo hyouban gaii.","meaning":"Kalau soal keramahan pelayanan, toko ini terkenal baik bahkan di area depan stasiun."},
+      {"jp":"行動の早さにかけては、彼女の右に出る人はいない。","kana":"こうどうのはやさにかけては、かのじょのみぎにでるにんはいない。","romaji":"koudou no hayasa nikaketeha, kanojo no migi ni deru nin hainai.","meaning":"Kalau soal cepat bertindak, tidak ada yang mengalahkan dia."},
+      {"jp":"日本の季節行事の知識にかけては、うちの先生は本当に詳しい。","kana":"にっぽんのきせつぎょうじのちしきにかけては、うちのせんせいはほんとうにくわしい。","romaji":"nippon no kisetsu gyouji no chishiki nikaketeha, uchino sensei ha hontou ni kuwashii.","meaning":"Kalau soal pengetahuan tentang tradisi musiman Jepang, sensei kami benar-benar sangat paham."},
+      {"jp":"早起きにかけては自信があるので、朝番でも大丈夫です。","kana":"はやおきにかけてはじしんがあるので、あさばんでもだいじょうぶです。","romaji":"hayaoki nikaketeha jishin gaarunode, asa ban demo daijoubu desu.","meaning":"Kalau soal bangun pagi saya percaya diri, jadi shift pagi pun tidak masalah."},
+      {"jp":"地元の店情報にかけては、商店街の会長に聞くのが一番早い。","kana":"じもとのみせじょうほうにかけては、しょうてんがいのかいちょうにきくのがいちばんはやい。","romaji":"jimoto no mise jouhou nikaketeha, shoutengai no kaichou ni kiku noga ichiban hayai.","meaning":"Kalau soal info toko-toko setempat, paling cepat memang bertanya ke ketua area pertokoan."}
+    ]}
+  ]},
+
+  {id:"GR-N2-126",level:"N2",title:"〜とは",summary:"Menyatakan kejutan, definisi, atau penegasan terhadap sesuatu yang tidak disangka.",groups:[
+    {name:"〜とは",description:"Maknanya bergantung konteks, sering terdengar seperti wah ternyata.",sentences:[
+      {"jp":"平日の昼にこんなに混むとは思わなかった。","kana":"へいじつのひるにこんなにこむとはおもわなかった。","romaji":"heijitsu no hiru nikonnani komu toha omowa nakatta.","meaning":"Saya tidak menyangka siang hari kerja pun akan seramai ini."},
+      {"jp":"日本で桜を見ながら入学式を迎えられるとは、来る前は想像していなかった。","kana":"にっぽんでさくらをみながらにゅうがくしきをむかえられるとは、くるまえはそうぞうしていなかった。","romaji":"nippon de sakura wo mina gara nyuugakushiki wo mukae rarerutoha, kuru mae ha souzou shiteinakatta.","meaning":"Sebelum datang ke sini saya tidak membayangkan bisa menyambut awal sekolah sambil melihat bunga sakura di Jepang."},
+      {"jp":"報連相とは、仕事の基本になる大事な考え方の一つです。","kana":"ほうれんそうとは、しごとのきほんになるだいじなかんがえかたのひとつです。","romaji":"hou ren sou toha, shigoto no kihon ninaru daiji na kangaekata no hitotsu desu.","meaning":"Hou-ren-sou adalah salah satu cara pikir penting yang menjadi dasar dalam pekerjaan."},
+      {"jp":"たった一駅違うだけで、雰囲気がここまで変わるとは驚きだ。","kana":"たったひとえきちがうだけで、ふんいきがここまでかわるとはおどろきだ。","romaji":"tatta hitoeki chigau dakede, fun'iki gakokomade kawa rutoha odoroki da.","meaning":"Saya terkejut hanya beda satu stasiun saja suasananya bisa berubah sejauh ini."},
+      {"jp":"自分が人前で日本語を話す日が来るとは、昔は思ってもみなかった。","kana":"じぶんがひとまえでにほんごをはなすにちがくるとは、むかしはおもってもみなかった。","romaji":"jibun ga hitomae de nihongo wo hanasu nichi ga kuru toha, mukashi ha omotte mominakatta.","meaning":"Dulu saya sama sekali tidak menyangka akan tiba hari ketika saya berbicara bahasa Jepang di depan orang banyak."}
+    ]}
+  ]},
+
+  {id:"GR-N2-127",level:"N2",title:"ということは",summary:"Menyatakan kesimpulan yang ditarik dari informasi sebelumnya.",groups:[
+    {name:"ということは",description:"Sering diterjemahkan kalau begitu berarti.",sentences:[
+      {"jp":"最終の受付が六時までということは、五時半には着いておきたい。","kana":"さいしゅうのうけつけがろくときまでということは、ごじはんにはついておきたい。","romaji":"saishuu no uketsuke ga roku toki madetoiukotoha, goji han niha tsui teokitai.","meaning":"Kalau begitu berarti karena pendaftaran terakhir sampai jam enam, saya ingin sudah sampai setengah enam."},
+      {"jp":"来週は祝日があるということは、ゴミ出しの日も変わるかもしれない。","kana":"らいしゅうはしゅくじつがあるということは、ごみだしのにちもかわるかもしれない。","romaji":"raishuu ha shukujitsu gaarutoiukotoha, gomi dashi no nichi mo kawa rukamoshirenai.","meaning":"Kalau begitu berarti karena minggu depan ada hari libur nasional, jadwal buang sampah juga mungkin berubah."},
+      {"jp":"この部屋は即入居可ということは、もうクリーニングも終わっているんですね。","kana":"このへやはそくにゅうきょかということは、もうくりーにんぐもおわっているんですね。","romaji":"kono heya ha soku nyuukyo ka toiukotoha, mou kuriiningu mo owa tteirundesune.","meaning":"Kalau begitu berarti karena kamar ini bisa langsung ditempati, pembersihannya juga sudah selesai ya."},
+      {"jp":"彼がまだ来ていないということは、電車が遅れているのかも。","kana":"かれがまだきていないということは、でんしゃがおくれているのかも。","romaji":"kare gamada kite inaitoiukotoha, densha ga okure teirunokamo.","meaning":"Kalau begitu berarti karena dia belum datang, mungkin keretanya terlambat."},
+      {"jp":"発表者が三人増えるということは、持ち時間も少し短くなりそうだ。","kana":"はっぴょうしゃがさんにんふえるということは、もちじかんもすこしみじかくなりそうだ。","romaji":"happyousha ga sannin fue rutoiukotoha, mochijikan mo sukoshi mijikaku narisouda.","meaning":"Kalau begitu berarti karena presenternya bertambah tiga orang, waktu per orang juga akan sedikit lebih singkat."}
+    ]}
+  ]},
+
+  {id:"GR-N2-128",level:"N2",title:"〜まい",summary:"Menyatakan niat untuk tidak melakukan atau dugaan kuat bahwa sesuatu tidak akan terjadi.",groups:[
+    {name:"〜まい",description:"Bentuk ini terdengar tertulis atau agak kaku.",sentences:[
+      {"jp":"もう同じ失敗は繰り返すまいと、手順を全部見直した。","kana":"もうおなじしっぱいはくりかえすまいと、てじゅんをぜんぶみなおした。","romaji":"mou onaji shippai ha kurikaesu maito, tejun wo zenbu minaoshi ta.","meaning":"Dengan tekad tidak akan mengulangi kesalahan yang sama, saya meninjau ulang semua prosedur."},
+      {"jp":"彼はそんな約束を忘れるまい。","kana":"かれはそんなやくそくをわすれるまい。","romaji":"kareha sonna yakusoku wo wasure rumai.","meaning":"Dia pasti tidak akan melupakan janji seperti itu."},
+      {"jp":"二度と終電を逃すまいと、最近は早めに切り上げている。","kana":"にどとしゅうでんをのがすまいと、さいきんははやめにきりあげている。","romaji":"nido to shuuden wo nogasu maito, saikin ha hayame ni kiriage teiru.","meaning":"Dengan tekad agar tidak ketinggalan kereta terakhir lagi, belakangan saya selalu pulang lebih cepat."},
+      {"jp":"これ以上迷惑をかけるまいとして、一人で抱え込んでしまった。","kana":"これいじょうめいわくをかけるまいとして、ひとりでかかえこんでしまった。","romaji":"kore ijou meiwaku wokakerumaitoshite, hitori de kakae kon deshimatta.","meaning":"Karena berniat tidak ingin merepotkan orang lagi, saya malah memikul semuanya sendirian."},
+      {"jp":"あの先生なら、学生の努力を見落とすまい。","kana":"あのせんせいなら、がくせいのどりょくをみおとすまい。","romaji":"ano sensei nara, gakusei no doryoku wo mioto sumai.","meaning":"Kalau sensei itu, saya yakin beliau tidak akan melewatkan usaha muridnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-129",level:"N2",title:"〜ようか〜まいか",summary:"Menyatakan kebimbangan antara melakukan atau tidak melakukan sesuatu.",groups:[
+    {name:"〜ようか〜まいか",description:"Sering dipakai saat benar-benar sedang mempertimbangkan dua pilihan.",sentences:[
+      {"jp":"その講座に申し込もうか申し込むまいか、締め切り直前まで迷っている。","kana":"そのこうざにもうしこもうかもうしこむまいか、しめきりちょくぜんまでまよっている。","romaji":"sono kouza ni moushikomo uka moushikomu maika, shimekiri chokuzen made mayotsu teiru.","meaning":"Saya masih bimbang sampai menjelang tenggat apakah akan mendaftar kelas itu atau tidak."},
+      {"jp":"引っ越そうかこのまま住み続けまいか、家賃更新の前に決めたい。","kana":"ひっこそうかこのまますみつづけまいか、やちんこうしんのまえにきめたい。","romaji":"hikkoso ukakonomama sumi tsuzuke maika, yachin koushin no mae ni kime tai.","meaning":"Saya ingin memutuskan sebelum perpanjangan sewa apakah akan pindah atau tetap tinggal di sini."},
+      {"jp":"話そうか話すまいか迷っているうちに、タイミングを逃してしまった。","kana":"はなそうかはなすまいかまよっているうちに、たいみんぐをのがしてしまった。","romaji":"hanaso uka hanasu maika mayotsu teiruuchini, taimingu wo nogashi teshimatta.","meaning":"Saat saya bimbang mau bicara atau tidak, saya malah kehilangan timing."},
+      {"jp":"買おうか買うまいか悩んでいるうちに、限定品は売り切れてしまった。","kana":"かおうかかうまいかなやんでいるうちに、げんていひんはうりきれてしまった。","romaji":"kao uka kau maika nayan deiruuchini, genteihin ha urikire teshimatta.","meaning":"Saat saya bimbang mau beli atau tidak, barang edisi terbatas itu malah habis."},
+      {"jp":"参加しようかするまいかは、明日の体調で決めるつもりだ。","kana":"さんかしようかするまいかは、あしたのたいちょうできめるつもりだ。","romaji":"sanka shiyoukasurumaikaha, ashita no taichou de kime rutsumorida.","meaning":"Saya berniat memutuskan ikut atau tidak berdasarkan kondisi tubuh besok."}
+    ]}
+  ]},
+
+  {id:"GR-N2-130",level:"N2",title:"〜つもり",summary:"Menyatakan keyakinan pribadi atau cara pandang subjektif bahwa seseorang merasa dirinya begini.",groups:[
+    {name:"〜つもり",description:"Di N2, bentuk ini sering dipakai untuk kesadaran diri atau anggapan subjektif.",sentences:[
+      {"jp":"自分では丁寧に話したつもりだったが、少しかたく聞こえたかもしれない。","kana":"じぶんではていねいにはなしたつもりだったが、すこしかたくきこえたかもしれない。","romaji":"jibun deha teinei ni hanashi tatsumoridattaga, sukoshi kataku kiko etakamoshirenai.","meaning":"Saya merasa tadi sudah bicara dengan sopan, tapi mungkin terdengar agak kaku."},
+      {"jp":"まだ若いつもりでも、無理をすると次の日に響く。","kana":"まだわかいつもりでも、むりをするとつぎのにちにひびく。","romaji":"mada wakai tsumoridemo, muri wosuruto tsugino nichi ni hibiku.","meaning":"Walaupun merasa diri masih muda, kalau memaksakan diri efeknya terasa keesokan hari."},
+      {"jp":"分かっているつもりでいたが、実際に手続きをすると迷うことが多かった。","kana":"わかっているつもりでいたが、じっさいにてつづきをするとまようことがおおかった。","romaji":"waka tteirutsumorideitaga, jissaini tetsuzuki wosuruto mayou kotoga ooka tta.","meaning":"Saya kira sudah paham, tapi saat benar-benar menjalani prosedur ternyata ada banyak hal yang membingungkan."},
+      {"jp":"簡単な案内を書いたつもりでも、読む人には難しいことがある。","kana":"かんたんなあんないをかいたつもりでも、よむにんにはむずかしいことがある。","romaji":"kantan na annai wo kai tatsumoridemo, yomu nin niha muzukashii kotogaaru.","meaning":"Walaupun saya merasa sudah menulis petunjuk yang sederhana, bagi pembaca itu tetap bisa terasa sulit."},
+      {"jp":"休んだつもりでも、頭の中では仕事のことばかり考えていた。","kana":"やすんだつもりでも、あたまのなかではしごとのことばかりかんがえていた。","romaji":"yasun datsumoridemo, atama no naka deha shigoto nokotobakari kangae teita.","meaning":"Walaupun merasa sudah beristirahat, di kepala saya ternyata tetap memikirkan pekerjaan terus."}
+    ]}
+  ]},
+
+  {id:"GR-N2-131",level:"N2",title:"〜ものがある",summary:"Menyatakan ada sesuatu yang kuat terasa, sulit dijelaskan, atau menyentuh perasaan.",groups:[
+    {name:"〜ものがある",description:"Sering dipakai untuk penilaian subjektif yang dalam.",sentences:[
+      {"jp":"昔ながらの商店街には、今の大型店にはない温かいものがある。","kana":"むかしながらのしょうてんがいには、いまのおおがたてんにはないあたたかいものがある。","romaji":"mukashi nagarano shoutengai niha, ima no oogataten nihanai atatakai monogaaru.","meaning":"Di area pertokoan tradisional ada kehangatan yang tidak dimiliki toko besar modern."},
+      {"jp":"一人で生活を整えていく大変さには、実際に住んでみて初めて分かるものがある。","kana":"ひとりでせいかつをととのえていくたいへんさには、じっさいにすんでみてはじめてわかるものがある。","romaji":"hitori de seikatsu wo totonoe teiku taihen saniha, jissaini sun demite hajimete waka rumonogaaru.","meaning":"Ada hal tentang sulitnya menata hidup sendiri yang baru benar-benar dipahami setelah menjalaninya."},
+      {"jp":"災害の記録を読むと、今の備えについて考えさせられるものがある。","kana":"さいがいのきろくをよむと、いまのそなえについてかんがえさせられるものがある。","romaji":"saigai no kiroku wo yomu to, ima no sonae nitsuite kangae saserarerumonogaaru.","meaning":"Saat membaca catatan bencana, ada sesuatu yang membuat kita memikirkan kesiapan diri saat ini."},
+      {"jp":"異国で頑張る人の話には、胸を打たれるものがある。","kana":"いこくでがんばるにんのはなしには、むねをうたれるものがある。","romaji":"ikoku de ganbaru nin no hanashi niha, mune wo uta rerumonogaaru.","meaning":"Ada sesuatu yang menggetarkan hati dalam cerita orang yang berjuang di negeri asing."},
+      {"jp":"長く使われてきた道具には、それだけの重みを感じさせるものがある。","kana":"ながくつかわれてきたどうぐには、それだけのおもみをかんじさせるものがある。","romaji":"nagaku tsukawa retekita dougu niha, soredakeno omomi wo kanji saserumonogaaru.","meaning":"Pada alat yang telah dipakai lama, ada sesuatu yang membuat kita merasakan bobot sejarahnya."}
+    ]}
+  ]},
+
+  {id:"GR-N2-132",level:"N2",title:"〜ことに",summary:"Menyatakan perasaan pembicara terhadap seluruh kejadian, seperti untungnya, anehnya, sedihnya.",groups:[
+    {name:"〜ことに",description:"Biasanya memakai kata seperti 驚いたことに, 幸いなことに.",sentences:[
+      {"jp":"幸いなことに、必要な書類はその場で全部そろえられた。","kana":"さいわいなことに、ひつようなしょるいはそのばでぜんぶそろえられた。","romaji":"saiwai nakotoni, hitsuyou na shorui hasono ba de zenbu soroerareta.","meaning":"Untungnya, dokumen yang diperlukan bisa dilengkapi semuanya di tempat itu juga."},
+      {"jp":"驚いたことに、その小さな店には海外からのお客さんも多かった。","kana":"おどろいたことに、そのちいさなみせにはかいがいからのおきゃくさんもおおかった。","romaji":"odoroi takotoni, sono chiisa na mise niha kaigai karanoo kyaku sanmo ooka tta.","meaning":"Mengejutkannya, toko kecil itu juga punya banyak pelanggan dari luar negeri."},
+      {"jp":"残念なことに、今年の地域祭りは中止になった。","kana":"ざんねんなことに、こんねんのちいきまつりはちゅうしになった。","romaji":"zannen nakotoni, konnen no chiiki matsuri ha chuushi ninatta.","meaning":"Sayangnya, festival lingkungan tahun ini dibatalkan."},
+      {"jp":"ありがたいことに、近所の人がゴミ出しのルールを丁寧に教えてくれた。","kana":"ありがたいことに、きんじょのにんがごみだしのるーるをていねいにおしえてくれた。","romaji":"arigataikotoni, kinjo no nin ga gomi dashi no ruuru wo teinei ni oshie tekureta.","meaning":"Syukurnya, tetangga sekitar menjelaskan aturan buang sampah dengan rinci."},
+      {"jp":"不思議なことに、最初は苦手だった納豆が最近は平気になってきた。","kana":"ふしぎなことに、さいしょはにがてだったなっとうがさいきんはへいきになってきた。","romaji":"fushigi nakotoni, saisho ha nigate datta nattou ga saikin ha heiki ninattekita.","meaning":"Aneh tapi nyata, natto yang dulu saya tidak suka belakangan justru mulai terasa biasa saja."}
+    ]}
+  ]},
+
+  {id:"GR-N2-133",level:"N2",title:"〜ことか",summary:"Menyatakan tingkat perasaan yang sangat kuat, seperti betapa.",groups:[
+    {name:"〜ことか",description:"Sering dipakai dalam bentuk どんなに〜ことか atau 〜ことか.",sentences:[
+      {"jp":"一人で病院へ行く日、どれほど心細かったことか。","kana":"ひとりでびょういんへいくにち、どれほどこころぼそかったことか。","romaji":"hitori de byouin he iku nichi, dorehodo kokorobosoka ttakotoka.","meaning":"Betapa cemasnya saya pada hari harus pergi ke rumah sakit sendirian."},
+      {"jp":"合格通知を開く瞬間、どんなに緊張したことか。","kana":"ごうかくつうちをひらくしゅんかん、どんなにきんちょうしたことか。","romaji":"goukakutsuuchi wo hiraku shunkan, donnani kinchoushi takotoka.","meaning":"Betapa tegangnya saya saat membuka surat kelulusan itu."},
+      {"jp":"家族からの荷物が届いた時、どれだけうれしかったことか。","kana":"かぞくからのにもつがとどいたとき、どれだけうれしかったことか。","romaji":"kazoku karano nimotsu ga todoi ta toki, doredakeureshikattakotoka.","meaning":"Betapa senangnya saya saat paket dari keluarga tiba."},
+      {"jp":"初めて給料を受け取った日の安心感は、今でも忘れられないことか。","kana":"はじめてきゅうりょうをうけとったにちのあんしんかんは、いまでもわすれられないことか。","romaji":"hajimete kyuuryou wo uketotsu ta nichi no anshinkan ha, ima demo wasure rarenaikotoka.","meaning":"Betapa leganya saya pada hari menerima gaji pertama, sampai sekarang rasanya sulit dilupakan."},
+      {"jp":"あの雪の日に駅まで歩いた時、どんなに寒かったことか。","kana":"あのゆきのにちにえきまであるいたとき、どんなにさむかったことか。","romaji":"ano yuki no nichi ni eki made arui ta toki, donnani samuka ttakotoka.","meaning":"Betapa dinginnya saat saya berjalan ke stasiun pada hari bersalju itu."}
+    ]}
+  ]},
+
+  {id:"GR-N2-134",level:"N2",title:"〜ないものか",summary:"Menyatakan harapan atau keinginan agar sesuatu bisa terjadi.",groups:[
+    {name:"〜ないものか",description:"Nuansanya berharap, apakah tidak bisa ya.",sentences:[
+      {"jp":"この手続き、もう少し簡単にならないものか。","kana":"このてつづき、もうすこしかんたんにならないものか。","romaji":"kono tetsuzuki, mou sukoshi kantan ninaranaimonoka.","meaning":"Apakah prosedur ini tidak bisa dibuat sedikit lebih sederhana ya."},
+      {"jp":"駅前の空き店舗を、地域の交流スペースにできないものかと考えている。","kana":"えきまえのあきてんぽを、ちいきのこうりゅうすぺーすにできないものかとかんがえている。","romaji":"ekimae no aki tenpo wo, chiiki no kouryuu supeesu nidekinaimonokato kangae teiru.","meaning":"Saya berpikir apakah toko kosong di depan stasiun itu tidak bisa dijadikan ruang interaksi warga."},
+      {"jp":"忙しい時期でも、週に一度くらいは早く帰れないものか。","kana":"いそがしいじきでも、しゅうにいちどくらいははやくかえれないものか。","romaji":"isogashii jiki demo, shuu ni ichido kuraiha hayaku kaere naimonoka.","meaning":"Apakah bahkan di masa sibuk pun saya tidak bisa pulang cepat setidaknya seminggu sekali."},
+      {"jp":"外国人向けの案内が、もっと分かりやすくならないものだろうか。","kana":"がいこくじんむけのあんないが、もっとわかりやすくならないものだろうか。","romaji":"gaikokujin muke no annai ga, motto waka riyasukunaranaimonodarouka.","meaning":"Apakah petunjuk untuk warga asing tidak bisa dibuat lebih mudah dipahami ya."},
+      {"jp":"商店街と学校が一緒に何かできないものかと、最近よく話題になる。","kana":"しょうてんがいとがっこうがいっしょになにかできないものかと、さいきんよくわだいになる。","romaji":"shoutengai to gakkou ga isshoni nanika dekinaimonokato, saikin yoku wadai ninaru.","meaning":"Belakangan sering dibicarakan apakah area pertokoan dan sekolah tidak bisa membuat sesuatu bersama."}
+    ]}
+  ]},
+
+  {id:"GR-N2-135",level:"N2",title:"〜たいものだ",summary:"Menyatakan harapan atau keinginan yang kuat dengan nada agak dewasa atau reflektif.",groups:[
+    {name:"〜たいものだ",description:"Sering dipakai untuk hal yang belum tentu mudah tercapai.",sentences:[
+      {"jp":"せっかく日本に住んでいるのだから、季節の行事をもっと大切にしたいものだ。","kana":"せっかくにっぽんにすんでいるのだから、きせつのぎょうじをもっとたいせつにしたいものだ。","romaji":"sekkaku nippon ni sun deirunodakara, kisetsu no gyouji womotto taisetsu nishitaimonoda.","meaning":"Mumpung tinggal di Jepang, saya ingin lebih menghargai tradisi musiman."},
+      {"jp":"忙しくても、感謝の言葉だけは忘れずにいたいものだ。","kana":"いそがしくても、かんしゃのことばだけはわすれずにいたいものだ。","romaji":"isogashiku temo, kansha no kotoba dakeha wasure zuniitaimonoda.","meaning":"Meskipun sibuk, saya ingin tetap tidak melupakan kata-kata terima kasih."},
+      {"jp":"次に引っ越す時は、駅近だけでなく静かさも重視したいものだ。","kana":"つぎにひっこすときは、えきちかだけでなくしずかさもじゅうししたいものだ。","romaji":"tsugini hikkosu toki ha, ekichika dakedenaku shizuka samo juushi shitaimonoda.","meaning":"Kalau nanti pindah lagi, saya ingin menimbang bukan hanya dekat stasiun tetapi juga ketenangannya."},
+      {"jp":"子どもたちには、安心して学べる環境を残したいものです。","kana":"こどもたちには、あんしんしてまなべるかんきょうをのこしたいものです。","romaji":"kodomo tachiniha, anshinshi te manabe ru kankyou wo nokoshita imonodesu.","meaning":"Saya ingin meninggalkan lingkungan tempat anak-anak bisa belajar dengan tenang."},
+      {"jp":"せっかく出会えた人との縁は、できるだけ長く大事にしたいものだ。","kana":"せっかくであえたにんとのへりは、できるだけながくだいじにしたいものだ。","romaji":"sekkaku deae ta nin tono heri ha, dekirudake nagaku daiji nishitaimonoda.","meaning":"Hubungan dengan orang-orang yang sudah bisa saya temui ini ingin saya jaga selama mungkin."}
+    ]}
+  ]}
+
 ];

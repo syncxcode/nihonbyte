@@ -5403,6 +5403,111 @@
         }
       ]
     }
+    ,{
+      id: "vf-76",
+      level: "N2",
+      order: 85,
+      title: "〜うる / 〜える / 〜えない • Mungkin Bisa / Bisa / Tidak Bisa Terjadi",
+      summary: "Menyatakan apakah sesuatu mungkin terjadi atau mungkin dilakukan dalam bentuk yang agak formal.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + うる / える / えない, misalnya 起こりうる, 考えられうる, ありえない." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [
+            {
+              base: "起こる", transformed: "起こりうる", kana: "おこる → おこりうる", romaji: "oko ru → oko riuru", meaning: "bisa terjadi",
+              sentences: [
+              {"jp":"大きな災害はどの地域でも起こりうるから、備えが必要だ。","kana":"おおきなさいがいはどのちいきでもおこりうるから、そなえがひつようだ。","romaji":"ooki na saigai hadono chiiki demo oko riurukara, sonae ga hitsuyou da.","meaning":"Bencana besar bisa saja terjadi di daerah mana pun, jadi persiapan itu perlu."},
+              {"jp":"その説明なら、誤解が生じうると思います。","kana":"そのせつめいなら、ごかいがしょうじうるとおもいます。","romaji":"sono setsumei nara, gokai ga shouji uruto omoi masu.","meaning":"Dengan penjelasan seperti itu, menurut saya salah paham bisa saja muncul."},
+              {"jp":"駅前の再開発で、家賃がさらに上がりえるという声もある。","kana":"えきまえのさいかいはつで、やちんがさらにあがりえるというこえもある。","romaji":"ekimae no saikaihatsu de, yachin gasarani aga rierutoiu koe moaru.","meaning":"Ada juga pendapat bahwa sewa masih bisa naik lagi karena pembangunan ulang depan stasiun."},
+              {"jp":"忙しい時期に体調を崩すことは十分ありえる。","kana":"いそがしいじきにたいちょうをくずすことはじゅうぶんありえる。","romaji":"isogashii jiki ni taichou wo kuzusu kotoha juubun arieru.","meaning":"Jatuh sakit pada masa sibuk sangat mungkin terjadi."},
+              {"jp":"あの人がそんな失礼なことを言うなんて、私にはありえない話だ。","kana":"あのにんがそんなしつれいなことをいうなんて、わたしにはありえないはなしだ。","romaji":"ano nin gasonna shitsurei nakotowo iu nante, watashi nihaarienai hanashi da.","meaning":"Bagi saya, tidak mungkin orang itu berkata sesuatu yang seburuk itu."}
+              ]
+            }
+          ]
+        }
+      ]
+    }    ,{
+      id: "vf-77",
+      level: "N2",
+      order: 86,
+      title: "〜がたい • Sulit Untuk Secara Emosional atau Psikologis",
+      summary: "Menyatakan sesuatu sulit dilakukan, bukan karena kemampuan teknis, melainkan karena perasaan, posisi, atau sifat halnya.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + がたい, misalnya 信じがたい, 受け入れがたい." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [
+            {
+              base: "信じる", transformed: "信じがたい", kana: "しんじる → しんじがたい", romaji: "shinji ru → shinji gatai", meaning: "sulit dipercaya",
+              sentences: [
+              {"jp":"駅前であんな事故が起きたなんて、今でも信じがたい。","kana":"えきまえであんなじこがおきたなんて、いまでもしんじがたい。","romaji":"ekimae deanna jiko ga oki tanante, ima demo shinji gatai.","meaning":"Sampai sekarang masih sulit dipercaya bahwa kecelakaan seperti itu terjadi di depan stasiun."},
+              {"jp":"お世話になった人にあんな言い方をするのは見過ごしがたい。","kana":"おせわになったにんにあんないいかたをするのはみすごしがたい。","romaji":"o sewa ninatta nin nianna iikata wosurunoha misugo shigatai.","meaning":"Sulit untuk membiarkan begitu saja orang berbicara seperti itu kepada seseorang yang sudah banyak membantu."},
+              {"jp":"急なルール変更は、利用者にとって受け入れがたい部分もある。","kana":"きゅうなるーるへんこうは、りようしゃにとってうけいれがたいぶぶんもある。","romaji":"kyuuna ruuru henkou ha, riyousha nitotte ukeire gatai bubun moaru.","meaning":"Perubahan aturan mendadak punya sisi yang sulit diterima bagi pengguna."},
+              {"jp":"この地域の歴史を知らずに再開発だけを進めるのは理解しがたい。","kana":"このちいきのれきしをしらずにさいかいはつだけをすすめるのはりかいしがたい。","romaji":"kono chiiki no rekishi wo shirazu ni saikaihatsu dakewo susume runoha rikai shigatai.","meaning":"Sulit dipahami jika pembangunan ulang hanya diteruskan tanpa memahami sejarah daerah ini."},
+              {"jp":"長く通った学校がなくなると聞いて、言葉にしがたい寂しさがあった。","kana":"ながくかよったがっこうがなくなるときいて、ことばにしがたいさびしさがあった。","romaji":"nagaku kayotsu ta gakkou ganakunaruto kii te, kotoba nishigatai sabishisa gaatta.","meaning":"Saat mendengar sekolah yang lama saya datangi akan hilang, ada kesedihan yang sulit diungkapkan."}
+              ]
+            }
+          ]
+        }
+      ]
+    }    ,{
+      id: "vf-78",
+      level: "N2",
+      order: 88,
+      title: "〜かねる • Sulit / Tidak Bisa dengan Sopan",
+      summary: "Menyatakan sulit melakukan sesuatu atau tidak dapat menyetujui sesuatu, sering dalam konteks sopan dan formal.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + かねる, misalnya 判断しかねる, お答えしかねます." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [
+            {
+              base: "答える", transformed: "答えかねる", kana: "こたえる → こたえかねる", romaji: "kotae ru → kotae kaneru", meaning: "sulit menjawab",
+              sentences: [
+              {"jp":"個人情報に関することには、こちらではお答えしかねます。","kana":"こじんじょうほうにかんすることには、こちらではおこたえしかねます。","romaji":"kojinjouhou ni kansu rukotoniha, kochiradehao kotae shikanemasu.","meaning":"Untuk hal yang berkaitan dengan data pribadi, dari pihak kami tidak dapat menjawabnya."},
+              {"jp":"資料が不足しているため、今の段階では判断しかねる。","kana":"しりょうがふそくしているため、いまのだんかいでははんだんしかねる。","romaji":"shiryou ga fusoku shiteirutame, ima no dankai deha handan shikaneru.","meaning":"Karena materinya belum cukup, pada tahap sekarang kami sulit mengambil keputusan."},
+              {"jp":"その件については、私一人では決めかねます。","kana":"そのけんについては、わたしひとりではきめかねます。","romaji":"sono ken nitsuiteha, watashihitori deha kime kanemasu.","meaning":"Soal itu saya sulit memutuskan sendirian."},
+              {"jp":"店内の撮影は、他のお客さまの都合もあり許可しかねます。","kana":"てんないのさつえいは、ほかのおきゃくさまのつごうもありきょかしかねます。","romaji":"tennai no satsuei ha, hokano o kyaku samano tsugou moari kyoka shikanemasu.","meaning":"Pemotretan di dalam toko sulit kami izinkan juga demi kenyamanan pelanggan lain."},
+              {"jp":"事情は分かるが、その要求には賛成しかねる。","kana":"じじょうはわかるが、そのようきゅうにはさんせいしかねる。","romaji":"jijou ha waka ruga, sono youkyuu niha sansei shikaneru.","meaning":"Saya paham situasinya, tetapi saya sulit menyetujui permintaan itu."}
+              ]
+            }
+          ]
+        }
+      ]
+    }    ,{
+      id: "vf-79",
+      level: "N2",
+      order: 94,
+      title: "〜抜く • Menuntaskan Sampai Akhir",
+      summary: "Menyatakan melakukan sesuatu terus sampai tuntas atau sampai batas akhir.",
+      formulas: [
+        { group: "Umum", rule: "Masu-stem + 抜く, misalnya やり抜く, 生き抜く, 読み抜く." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [
+            {
+              base: "やる", transformed: "やり抜く", kana: "やる → やりぬく", romaji: "yaru → yari nuku", meaning: "melakukan sampai tuntas",
+              sentences: [
+              {"jp":"忙しい一週間だったが、チーム全員で準備をやり抜いた。","kana":"いそがしいいっしゅうかんだったが、ちーむぜんいんでじゅんびをやりぬいた。","romaji":"isogashii isshuukan dattaga, chiimu zen'in de junbi woyari nui ta.","meaning":"Minggu itu sangat sibuk, tetapi seluruh tim menuntaskan persiapan sampai akhir."},
+              {"jp":"最後まで走り抜いた選手たちに、会場から大きな拍手が送られた。","kana":"さいごまではしりぬいたせんしゅたちに、かいじょうからおおきなはくしゅがおくられた。","romaji":"saigo made hashiri nui ta senshu tachini, kaijou kara ooki na hakushu ga okura reta.","meaning":"Para atlet yang berlari sampai garis akhir mendapat tepuk tangan besar dari venue."},
+              {"jp":"難しい論文でも、期限までに読み抜くと決めていた。","kana":"むずかしいろんぶんでも、きげんまでによみぬくときめていた。","romaji":"muzukashii ronbun demo, kigen madeni yomi nuku to kime teita.","meaning":"Saya sudah memutuskan untuk membaca habis artikel ilmiah yang sulit itu sebelum tenggat."},
+              {"jp":"東京で一人暮らしを始めてから、自分の力で生活を生き抜く感覚が少し分かってきた。","kana":"とうきょうでひとりぐらしをはじめてから、じぶんのちからでせいかつをいきぬくかんかくがすこしわかってきた。","romaji":"toukyou de hitorigurashi wo hajime tekara, jibun no chikara de seikatsu wo iki nuku kankaku ga sukoshi waka ttekita.","meaning":"Sejak mulai tinggal sendiri di Tokyo, saya sedikit demi sedikit mengerti rasanya bertahan hidup dengan kekuatan sendiri."},
+              {"jp":"途中で投げ出さずに続け抜いた経験は、次の仕事でも自信になる。","kana":"とちゅうでなげださずにつづけぬいたけいけんは、つぎのしごとでもじしんになる。","romaji":"tochuu de nagedasa zuni tsuzuke nui ta keiken ha, tsugino shigoto demo jishin ninaru.","meaning":"Pengalaman terus bertahan sampai tuntas tanpa menyerah di tengah jalan menjadi kepercayaan diri untuk pekerjaan berikutnya."}
+              ]
+            }
+          ]
+        }
+      ]
+    }
   ];
 
   const remainingDefs = [

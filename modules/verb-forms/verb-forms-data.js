@@ -5185,420 +5185,7 @@
           }]
         }
       ]
-    },
-    {
-          id: "vf-68",
-          level: "N1",
-          order: 68,
-          title: "~損なう / ~損ねる • Terlanjur Gagal / Kehilangan Kesempatan",
-          summary: "Pola N1 untuk menyatakan gagal melakukan sesuatu atau kehilangan kesempatan melakukan sesuatu.",
-          formulas: [
-            {
-              group: "Masu-stem",
-              rule: "Ambil bentuk masu lalu tambahkan 損なう atau 損ねる. Contoh: 乗る → 乗り損なう, 言う → 言い損ねる."
-            }
-          ],
-          groups: [
-            {
-              name: "Masu-stem",
-              examples: [
-                {
-                  base: "言う",
-                  transformed: "言い損ねる",
-                  kana: "いう → いいそこねる",
-                  romaji: "Iu → iisokoneru",
-                  meaning: "gagal sempat mengatakan",
-                  sentences: [
-                    {
-                      jp: "聞きたいことがあったのに、タイミングを逃して言い損ねた。",
-                      kana: "ききたいことがあったのに、たいみんぐをのがしていいそこねた。",
-                      romaji: "Kikitaikotogaattanoni、taiminguwonogashiteiisokoneta。",
-                      meaning: "Padahal ada yang ingin saya tanyakan, tetapi saya kehilangan momen untuk mengatakannya."
-                    },
-                    {
-                      jp: "お礼を言い損ねたまま、その日は別れてしまった。",
-                      kana: "おれいをいいそこねたまま、そのにちはわかれてしまった。",
-                      romaji: "Oreiwoiisokonetamama、sononichihawakareteshimatta。",
-                      meaning: "Hari itu kami berpisah begitu saja dan saya jadi tidak sempat mengucapkan terima kasih."
-                    },
-                    {
-                      jp: "店員さんを呼び損ねて、注文が少し遅れた。",
-                      kana: "てんいんさんをよびそこねて、ちゅうもんがすこしおくれた。",
-                      romaji: "Ten'insanwoyobisokonete、chuumongasukoshiokureta。",
-                      meaning: "Saya gagal memanggil pegawai toko, jadi pesanan sedikit terlambat."
-                    },
-                    {
-                      jp: "終電に乗り損なって、駅前のホテルに泊まることになった。",
-                      kana: "しゅうでんにのりそこなって、えきまえのほてるにとまることになった。",
-                      romaji: "Shuudenninorisokonatte、ekimaenohoterunitomarukotoninatta。",
-                      meaning: "Saya gagal naik kereta terakhir, jadi terpaksa menginap di hotel dekat stasiun."
-                    },
-                    {
-                      jp: "確認し損ねたせいで、提出書類に一か所抜けがあった。",
-                      kana: "かくにんしそこねたせいで、ていしゅつしょるいにいちかところぬけがあった。",
-                      romaji: "Kakuninshisokonetaseide、teishutsushoruiniichikatokoronukegaatta。",
-                      meaning: "Karena gagal mengecek dengan benar, ada satu bagian dokumen yang terlewat."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-69",
-          level: "N1",
-          order: 69,
-          title: "~そびれる • Kehilangan Kesempatan untuk Melakukan",
-          summary: "Pola N1 untuk menyatakan tidak sempat atau gagal melakukan sesuatu padahal berniat melakukannya.",
-          formulas: [
-            {
-              group: "Masu-stem",
-              rule: "Ambil bentuk masu lalu tambahkan そびれる. Contoh: 聞く → 聞きそびれる, 連絡する → 連絡しそびれる."
-            }
-          ],
-          groups: [
-            {
-              name: "Masu-stem",
-              examples: [
-                {
-                  base: "聞く",
-                  transformed: "聞きそびれる",
-                  kana: "きく → ききそびれる",
-                  romaji: "Kiku → kikisobireru",
-                  meaning: "tidak sempat menanyakan",
-                  sentences: [
-                    {
-                      jp: "担当の人に名前を聞きそびれてしまった。",
-                      kana: "たんとうのにんになまえをききそびれてしまった。",
-                      romaji: "Tantounoninninamaewokikisobireteshimatta。",
-                      meaning: "Saya jadi tidak sempat menanyakan nama orang yang bertugas."
-                    },
-                    {
-                      jp: "忙しそうだったので、相談しそびれた。",
-                      kana: "いそがしそうだったので、そうだんしそびれた。",
-                      romaji: "Isogashisoudattanode、soudanshisobireta。",
-                      meaning: "Karena dia tampak sibuk, saya jadi tidak sempat berkonsultasi."
-                    },
-                    {
-                      jp: "セール初日に行きそびれて、欲しい物がもうなかった。",
-                      kana: "せーるしょにちにいきそびれて、ほしいものがもうなかった。",
-                      romaji: "Seerushonichiniikisobirete、hoshiimonogamounakatta。",
-                      meaning: "Saya tidak sempat pergi pada hari pertama diskon, jadi barang yang saya inginkan sudah habis."
-                    },
-                    {
-                      jp: "友達に写真を送りそびれて、そのまま夜になった。",
-                      kana: "ともだちにしゃしんをおくりそびれて、そのままよるになった。",
-                      romaji: "Tomodachinishashinwookurisobirete、sonomamayoruninatta。",
-                      meaning: "Saya tidak sempat mengirim foto ke teman, lalu tahu-tahu sudah malam."
-                    },
-                    {
-                      jp: "区役所で確認しそびれた点が一つ残っている。",
-                      kana: "くやくしょでかくにんしそびれたてんがひとつのこっている。",
-                      romaji: "Kuyakushodekakuninshisobiretatengahitotsunokotsuteiru。",
-                      meaning: "Masih ada satu hal yang belum sempat saya cek di balai kota."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-70",
-          level: "N1",
-          order: 70,
-          title: "~尽くす • Sampai Habis / Sepenuhnya",
-          summary: "Pola N1 untuk menyatakan melakukan sesuatu sampai habis, sepenuhnya, atau tanpa sisa.",
-          formulas: [
-            {
-              group: "Masu-stem",
-              rule: "Ambil bentuk masu lalu tambahkan 尽くす. Contoh: 使う → 使い尽くす, 読む → 読み尽くす."
-            }
-          ],
-          groups: [
-            {
-              name: "Masu-stem",
-              examples: [
-                {
-                  base: "使う",
-                  transformed: "使い尽くす",
-                  kana: "つかう → つかいつくす",
-                  romaji: "Tsukau → tsukaitsukusu",
-                  meaning: "menggunakan sampai habis",
-                  sentences: [
-                    {
-                      jp: "今月は引っ越しで体力を使い尽くした。",
-                      kana: "こんげつはひっこしでたいりょくをつかいつくした。",
-                      romaji: "Kongetsuhahikkoshidetairyokuwotsukaitsukushita。",
-                      meaning: "Bulan ini saya menguras habis tenaga karena pindahan."
-                    },
-                    {
-                      jp: "ポイントを使い尽くしてから退会した。",
-                      kana: "ぽいんとをつかいつくしてからたいかいした。",
-                      romaji: "Pointowotsukaitsukushitekarataikaishita。",
-                      meaning: "Saya menghabiskan semua poin sebelum berhenti menjadi anggota."
-                    },
-                    {
-                      jp: "言葉を尽くして説明したが、まだ誤解が残っていた。",
-                      kana: "ことばをつくしてせつめいしたが、まだごかいがのこっていた。",
-                      romaji: "Kotobawotsukushitesetsumeishitaga、madagokaiganokotsuteita。",
-                      meaning: "Saya sudah menjelaskan dengan segala kata, tetapi salah paham masih tersisa."
-                    },
-                    {
-                      jp: "夏休み中に図書館の資料を読み尽くすつもりだ。",
-                      kana: "なつやすみなかにとしょかんのしりょうをよみつくすつもりだ。",
-                      romaji: "Natsuyasuminakanitoshokannoshiryouwoyomitsukusutsumorida。",
-                      meaning: "Saya berniat membaca habis bahan-bahan di perpustakaan selama libur musim panas."
-                    },
-                    {
-                      jp: "一日で予算を使い尽くすわけにはいかない。",
-                      kana: "ついたちでよさんをつかいつくすわけにはいかない。",
-                      romaji: "Tsuitachideyosanwotsukaitsukusuwakenihaikanai。",
-                      meaning: "Kita tidak bisa menghabiskan anggaran dalam satu hari saja."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-71",
-          level: "N1",
-          order: 71,
-          title: "~放題 • Sebebasnya / Seenaknya / Sepuasnya",
-          summary: "Pola N1 untuk menyatakan melakukan sesuatu sebebasnya, sesukanya, atau tanpa batas tertentu.",
-          formulas: [
-            {
-              group: "Masu-stem",
-              rule: "Ambil bentuk masu lalu tambahkan 放題. Contoh: 使う → 使い放題, 言う → 言いたい放題."
-            }
-          ],
-          groups: [
-            {
-              name: "Masu-stem",
-              examples: [
-                {
-                  base: "使う",
-                  transformed: "使い放題",
-                  kana: "つかう → つかいほうだい",
-                  romaji: "Tsukau → tsukaihoudai",
-                  meaning: "bebas dipakai sepuasnya",
-                  sentences: [
-                    {
-                      jp: "このプランなら、データが使い放題だ。",
-                      kana: "このぷらんなら、でーたがつかいほうだいだ。",
-                      romaji: "Konopurannara、deetagatsukaihoudaida。",
-                      meaning: "Dengan paket ini, data internet bisa dipakai sepuasnya."
-                    },
-                    {
-                      jp: "食べ放題の店でも、取りすぎはよくない。",
-                      kana: "たべほうだいのみせでも、とりすぎはよくない。",
-                      romaji: "Tabehoudainomisedemo、torisugihayokunai。",
-                      meaning: "Bahkan di restoran all-you-can-eat, mengambil terlalu banyak tetap tidak baik."
-                    },
-                    {
-                      jp: "会議で言いたい放題言うだけでは、何も解決しない。",
-                      kana: "かいぎでいいたいほうだいいうだけでは、なにもかいけつしない。",
-                      romaji: "Kaigideiitaihoudaiiudakedeha、nanimokaiketsushinai。",
-                      meaning: "Kalau di rapat hanya bicara seenaknya, tidak ada yang selesai."
-                    },
-                    {
-                      jp: "休日は動画を見放題にしてしまって、時間がすぐなくなる。",
-                      kana: "きゅうじつはどうがをけんほうだいにしてしまって、じかんがすぐなくなる。",
-                      romaji: "Kyuujitsuhadougawokenhoudainishiteshimatte、jikangasugunakunaru。",
-                      meaning: "Saat libur saya menonton video sesuka hati, jadi waktu cepat habis."
-                    },
-                    {
-                      jp: "子どもにゲームをやり放題にさせるのは心配だ。",
-                      kana: "こどもにげーむをやりほうだいにさせるのはしんぱいだ。",
-                      romaji: "Kodomonigeemuwoyarihoudainisaserunohashinpaida。",
-                      meaning: "Saya khawatir kalau anak dibiarkan main game sesukanya terus."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-72",
-          level: "N1",
-          order: 72,
-          title: "~ぶる • Berlagak / Bersikap Seolah",
-          summary: "Pola N1 untuk menyatakan berlagak atau bersikap seolah-olah memiliki sifat tertentu.",
-          formulas: [
-            {
-              group: "Noun/Adj stem",
-              rule: "Tempelkan ぶる pada kata benda atau akar sifat. Contoh: 大人 → 大人ぶる, 知った → 知ったぶる."
-            }
-          ],
-          groups: [
-            {
-              name: "Noun/Adj stem",
-              examples: [
-                {
-                  base: "大人",
-                  transformed: "大人ぶる",
-                  kana: "おとな → おとなぶる",
-                  romaji: "Otona → otonaburu",
-                  meaning: "berlagak dewasa",
-                  sentences: [
-                    {
-                      jp: "まだ高校生なのに、大人ぶった言い方をする。",
-                      kana: "まだこうこうせいなのに、おとなぶったいいかたをする。",
-                      romaji: "Madakoukouseinanoni、otonabuttaiikatawosuru。",
-                      meaning: "Padahal masih anak SMA, tetapi dia berbicara seolah sudah sangat dewasa."
-                    },
-                    {
-                      jp: "何でも知っているように知ったぶるのはよくない。",
-                      kana: "なんでもしっているようにしったぶるのはよくない。",
-                      romaji: "Nandemoshitteiruyounishitsutaburunohayokunai。",
-                      meaning: "Tidak baik berlagak seolah tahu segalanya."
-                    },
-                    {
-                      jp: "平気ぶっていたが、本当はかなり緊張していたらしい。",
-                      kana: "へいきぶっていたが、ほんとうはかなりきんちょうしていたらしい。",
-                      romaji: "Heikibutteitaga、hontouhakanarikinchoushiteitarashii。",
-                      meaning: "Dia berlagak tenang, tetapi sebenarnya sangat gugup."
-                    },
-                    {
-                      jp: "彼は忙しいぶって連絡を返さないことがある。",
-                      kana: "かれはいそがしいぶってれんらくをかえさないことがある。",
-                      romaji: "Karehaisogashiibutterenrakuwokaesanaikotogaaru。",
-                      meaning: "Kadang dia berpura-pura sibuk lalu tidak membalas pesan."
-                    },
-                    {
-                      jp: "強がりぶらずに、困っているなら相談してほしい。",
-                      kana: "つよがりぶらずに、こまっているならそうだんしてほしい。",
-                      romaji: "Tsuyogariburazuni、komatsuteirunarasoudanshitehoshii。",
-                      meaning: "Jangan berlagak kuat, kalau memang kesulitan saya ingin kamu berkonsultasi."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-73",
-          level: "N1",
-          order: 73,
-          title: "~まくる • Melakukan Terus Menerus dengan Intens",
-          summary: "Pola N1 untuk menyatakan melakukan sesuatu berulang-ulang atau sangat intens.",
-          formulas: [
-            {
-              group: "Masu-stem",
-              rule: "Ambil bentuk masu lalu tambahkan まくる. Contoh: 話す → 話しまくる, 食べる → 食べまくる."
-            }
-          ],
-          groups: [
-            {
-              name: "Masu-stem",
-              examples: [
-                {
-                  base: "話す",
-                  transformed: "話しまくる",
-                  kana: "はなす → はなしまくる",
-                  romaji: "Hanasu → hanashimakuru",
-                  meaning: "bicara terus-terusan",
-                  sentences: [
-                    {
-                      jp: "久しぶりに会った友達と、駅前のカフェで話しまくった。",
-                      kana: "ひさしぶりにあったともだちと、えきまえのかふぇではなしまくった。",
-                      romaji: "Hisashiburiniatsutatomodachito、ekimaenokafedehanashimakutta。",
-                      meaning: "Saya bertemu teman lama lalu mengobrol terus di kafe depan stasiun."
-                    },
-                    {
-                      jp: "連休中は家で動画を見まくっていた。",
-                      kana: "れんきゅうちゅうはいえでどうがをみまくっていた。",
-                      romaji: "Renkyuuchuuhaiededougawomimakutteita。",
-                      meaning: "Selama libur panjang saya menonton video terus di rumah."
-                    },
-                    {
-                      jp: "セール初日は朝から商品が売れまくった。",
-                      kana: "せーるしょにちはあさからしょうひんがうれまくった。",
-                      romaji: "Seerushonichihaasakarashouhingauremakutta。",
-                      meaning: "Pada hari pertama diskon, barang terjual habis terus sejak pagi."
-                    },
-                    {
-                      jp: "試験が終わったら、みんな食べまくるつもりらしい。",
-                      kana: "しけんがおわったら、みんなたべまくるつもりらしい。",
-                      romaji: "Shikengaowattara、minnatabemakurutsumorirashii。",
-                      meaning: "Setelah ujian selesai, semua orang katanya mau makan habis-habisan."
-                    },
-                    {
-                      jp: "昨日は歩きまくって、今日は足が少し痛い。",
-                      kana: "きのうはあるきまくって、こんにちはあしがすこしいたい。",
-                      romaji: "Kinouhaarukimakutte、konnichihaashigasukoshiitai。",
-                      meaning: "Kemarin saya berjalan terus, jadi hari ini kaki agak sakit."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-    {
-          id: "vf-74",
-          level: "N1",
-          order: 74,
-          title: "~めく / ~めいて / ~めいた • Bernuansa / Terasa Seperti",
-          summary: "Pola N1 untuk menyatakan sesuatu mulai terasa memiliki nuansa tertentu atau tampak seperti itu.",
-          formulas: [
-            {
-              group: "Noun stem",
-              rule: "Tempelkan めく, めいて, atau めいた pada kata benda. Contoh: 秋 → 秋めく, 謎 → 謎めいた."
-            }
-          ],
-          groups: [
-            {
-              name: "Noun stem",
-              examples: [
-                {
-                  base: "秋",
-                  transformed: "秋めく",
-                  kana: "あき → あきめく",
-                  romaji: "Aki → akimeku",
-                  meaning: "mulai terasa seperti musim gugur",
-                  sentences: [
-                    {
-                      jp: "九月に入って、朝の空気が少し秋めいてきた。",
-                      kana: "くがつにいっって、あさのくうきがすこしあきめいてきた。",
-                      romaji: "Kugatsuniitsutsute、asanokuukigasukoshiakimeitekita。",
-                      meaning: "Memasuki September, udara pagi mulai terasa seperti musim gugur."
-                    },
-                    {
-                      jp: "駅前の並木が色づいて、町全体が秋めいている。",
-                      kana: "えきまえのなみきがいろづいて、まちぜんたいがあきめいている。",
-                      romaji: "Ekimaenonamikigairozuite、machizentaigaakimeiteiru。",
-                      meaning: "Deretan pohon depan stasiun mulai berubah warna, dan seluruh kota terasa musim gugur."
-                    },
-                    {
-                      jp: "その人の話し方にはどこか謎めいた雰囲気があった。",
-                      kana: "そのにんのはなしかたにはどこかなぞめいたふんいきがあった。",
-                      romaji: "Sononinnohanashikatanihadokokanazomeitafun'ikigaatta。",
-                      meaning: "Cara bicaranya punya nuansa yang agak misterius."
-                    },
-                    {
-                      jp: "年末めいた慌ただしさが、街にも出てきた。",
-                      kana: "ねんまつめいたあわただしさが、まちにもでてきた。",
-                      romaji: "Nenmatsumeitaawatadashisaga、machinimodetekita。",
-                      meaning: "Suasana sibuk khas akhir tahun mulai terasa di kota juga."
-                    },
-                    {
-                      jp: "春めいた日差しの日は、川沿いを歩きたくなる。",
-                      kana: "はるめいたひざしのにちは、かわぞいをあるきたくなる。",
-                      romaji: "Harumeitahizashinonichiha、kawazoiwoarukitakunaru。",
-                      meaning: "Pada hari dengan sinar matahari yang terasa seperti musim semi, saya jadi ingin jalan-jalan di tepi sungai."
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
+    }
   ];
 
   const remainingDefs = [
@@ -5689,6 +5276,611 @@
     groups: []
   }));
 
-  window.verbFormsData = [...manualForms, ...generatedRemaining].sort((a, b) => a.order - b.order);
+
+
+  const extraGeneratedForms = [
+    {
+      id: "vf-extra-68",
+      level: "N3",
+      order: 68,
+      title: "〜出す",
+      summary: "Contoh bentuk kata kerja 〜出す untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "考える", transformed: "考え出す", kana: "かんがえる → かんがえだす", romaji: "kangaeru → kangae dasu", meaning: "mulai berpikir",
+            sentences: [
+                { jp: "会議が終わったあとで、みんなが急に改善案を考え出した。", kana: "かいぎがおわったあとで、みんながきゅうにかいぜんあんをかんがえだした。", romaji: "Kaigi ga owa ttaatode, minnaga kyuuni kaizen'an wo kangae dashi ta.", meaning: "Setelah rapat selesai, semua orang tiba-tiba mulai memikirkan usulan perbaikan." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-69",
+      level: "N3",
+      order: 69,
+      title: "縮約形",
+      summary: "Contoh bentuk kata kerja 縮約形 untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "なければ", transformed: "なきゃ", kana: "なければ → なきゃ", romaji: "nakereba → nakya", meaning: "kontraksi percakapan",
+            sentences: [
+                { jp: "明日早いから、そろそろ寝なきゃ。", kana: "あしたはやいから、そろそろねなきゃ。", romaji: "Ashita hayai kara, sorosoro nena kya.", meaning: "Karena besok harus bangun pagi, saya harus segera tidur." },
+                { jp: "この書類は今日中に出さなくちゃ。", kana: "このしょるいはきょうじゅうにださなくちゃ。", romaji: "Kono shorui ha kyoujuu ni dasa nakucha.", meaning: "Dokumen ini harus saya serahkan hari ini juga." },
+                { jp: "もう出発しないと、電車に間に合わない。", kana: "もうしゅっぱつしないと、でんしゃにまにあわない。", romaji: "Mou shuppatsu shinaito, densha ni maniawa nai.", meaning: "Kalau tidak berangkat sekarang, saya tidak akan sempat naik kereta." },
+                { jp: "連絡しなきゃと思っていたのに、うっかり忘れていた。", kana: "れんらくしなきゃとおもっていたのに、うっかりわすれていた。", romaji: "Renraku shinakyato omotte itanoni, ukkari wasure teita.", meaning: "Saya tadi berpikir harus menghubungi, tapi malah lupa." },
+                { jp: "雨が降りそうだから、洗濯物を入れなくちゃ。", kana: "あめがおりそうだから、せんたくものをいれなくちゃ。", romaji: "Ame ga ori soudakara, sentakumono wo ire nakucha.", meaning: "Karena sepertinya akan hujan, saya harus memasukkan cucian." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-70",
+      level: "N3",
+      order: 70,
+      title: "〜がる",
+      summary: "Contoh bentuk kata kerja 〜がる untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "怖い", transformed: "怖がる", kana: "こわい → こわがる", romaji: "kowai → kowagaru", meaning: "menunjukkan perasaan takut",
+            sentences: [
+                { jp: "うちの子は病院のにおいを少し怖がる。", kana: "うちのこはびょういんのにおいをすこしこわがる。", romaji: "Uchino ko ha byouin nonioiwo sukoshi kowaga ru.", meaning: "Anak saya agak takut dengan bau rumah sakit." },
+                { jp: "新しい仕事を前にして、彼は少し不安がっていた。", kana: "あたらしいしごとをまえにして、かれはすこしふあんがっていた。", romaji: "Atarashii shigoto wo mae nishite, kareha sukoshi fuan gatteita.", meaning: "Menjelang pekerjaan baru, dia tampak agak gelisah." },
+                { jp: "初対面では人見知りして、あまり話したがらない学生もいる。", kana: "しょたいめんではひとみしりして、あまりはなしたがらないがくせいもいる。", romaji: "Shotaimen deha hitomishiri shite, amari hanashi tagaranai gakusei moiru.", meaning: "Ada juga siswa yang pemalu saat pertama bertemu dan tidak terlalu mau bicara." },
+                { jp: "猫は工事の大きな音を嫌がって、ベッドの下に隠れた。", kana: "ねこはこうじのおおきなおとをいやがって、べっどのしたにかくれた。", romaji: "Neko ha kouji no ooki na oto wo iyaga tte, beddo no shitani kakure ta.", meaning: "Kucing itu tidak suka suara konstruksi yang keras dan bersembunyi di bawah tempat tidur." },
+                { jp: "母は私の夜道の一人歩きを心配したがる。", kana: "はははわたしのよみちのひとりあるきをしんぱいしたがる。", romaji: "Haha ha watashi no yomichi no hitoriaruki wo shinpai shitagaru.", meaning: "Ibu cenderung mengkhawatirkan saya saat berjalan sendirian malam hari." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-71",
+      level: "N3",
+      order: 71,
+      title: "〜てほしい / 〜てもらいたい",
+      summary: "Contoh bentuk kata kerja 〜てほしい / 〜てもらいたい untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-72",
+      level: "N3",
+      order: 72,
+      title: "〜上げる / 〜上がる",
+      summary: "Contoh bentuk kata kerja 〜上げる / 〜上がる untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-73",
+      level: "N3",
+      order: 73,
+      title: "〜切る / 〜切れる",
+      summary: "Contoh bentuk kata kerja 〜切る / 〜切れる untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-74",
+      level: "N3",
+      order: 74,
+      title: "〜始める",
+      summary: "Contoh bentuk kata kerja 〜始める untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-75",
+      level: "N3",
+      order: 75,
+      title: "〜終わる",
+      summary: "Contoh bentuk kata kerja 〜終わる untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-76",
+      level: "N3",
+      order: 76,
+      title: "〜ようとする",
+      summary: "Contoh bentuk kata kerja 〜ようとする untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-77",
+      level: "N3",
+      order: 77,
+      title: "〜ようとしない",
+      summary: "Contoh bentuk kata kerja 〜ようとしない untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-78",
+      level: "N3",
+      order: 78,
+      title: "〜続ける",
+      summary: "Contoh bentuk kata kerja 〜続ける untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-79",
+      level: "N3",
+      order: 79,
+      title: "[命令形 / 禁止形]と言われる",
+      summary: "Contoh bentuk kata kerja [命令形 / 禁止形]と言われる untuk level N3.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "入る", transformed: "入れ / 入るな", kana: "はいる → はいれ / はいるな", romaji: "hairu → haire / hairu na", meaning: "bentuk perintah dan larangan",
+            sentences: [
+                { jp: "先生に、準備が終わったら中へ入れと言われた。", kana: "せんせいに、じゅんびがおわったらなかへいれといわれた。", romaji: "Sensei ni, junbi ga owa ttara naka he ire to iwa reta.", meaning: "Sensei berkata, kalau persiapan selesai masuklah ke dalam." },
+                { jp: "工事現場の前には、関係者以外入るなと大きく書かれていた。", kana: "こうじげんばのまえには、かんけいしゃいがいいるなとおおきくかかれていた。", romaji: "Koujigenba no mae niha, kankeisha igai iru nato ookiku kaka reteita.", meaning: "Di depan lokasi konstruksi tertulis besar-besar, selain pihak terkait dilarang masuk." },
+                { jp: "急いでいるときでも、駅では走るなと言われる。", kana: "いそいでいるときでも、えきでははしるなといわれる。", romaji: "Isoi deirutokidemo, eki deha hashiru nato iwa reru.", meaning: "Bahkan saat terburu-buru, di stasiun kita dilarang berlari." },
+                { jp: "コーチは最後まであきらめるなと何度も声をかけた。", kana: "こーちはさいごまであきらめるなとなんどもこえをかけた。", romaji: "Koochi ha saigo madeakiramerunato nando mo koe wokaketa.", meaning: "Pelatih berkali-kali menyemangati agar jangan menyerah sampai akhir." },
+                { jp: "受付では、番号が呼ばれるまで座って待てと言われた。", kana: "うけつけでは、ばんごうがよばれるまですわってまてといわれた。", romaji: "Uketsuke deha, bangou ga yoba rerumade suwatsu te mate to iwa reta.", meaning: "Di loket saya diminta duduk menunggu sampai nomor saya dipanggil." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-80",
+      level: "N2",
+      order: 80,
+      title: "〜うる / 〜える / 〜えない",
+      summary: "Contoh bentuk kata kerja 〜うる / 〜える / 〜えない untuk level N2.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "考える", transformed: "考え出す", kana: "かんがえる → かんがえだす", romaji: "kangaeru → kangae dasu", meaning: "mulai berpikir",
+            sentences: [
+                { jp: "会議が終わったあとで、みんなが急に改善案を考え出した。", kana: "かいぎがおわったあとで、みんながきゅうにかいぜんあんをかんがえだした。", romaji: "Kaigi ga owa ttaatode, minnaga kyuuni kaizen'an wo kangae dashi ta.", meaning: "Setelah rapat selesai, semua orang tiba-tiba mulai memikirkan usulan perbaikan." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-81",
+      level: "N2",
+      order: 81,
+      title: "〜がたい",
+      summary: "Contoh bentuk kata kerja 〜がたい untuk level N2.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "書く", transformed: "書き続ける", kana: "かく → かきつづける", romaji: "kaku → kaki tsuzukeru", meaning: "terus menulis",
+            sentences: [
+                { jp: "締め切り前なので、彼は図書館で夜までレポートを書き続けた。", kana: "しめきりまえなので、かれはとしょかんでよるまでれぽーとをかきつづけた。", romaji: "Shimekiri mae nanode, kareha toshokan de yoru made repooto wo kaki tsuzuke ta.", meaning: "Karena tenggat sudah dekat, dia terus menulis laporan di perpustakaan sampai malam." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-82",
+      level: "N2",
+      order: 82,
+      title: "〜ようがない",
+      summary: "Contoh bentuk kata kerja 〜ようがない untuk level N2.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-83",
+      level: "N2",
+      order: 83,
+      title: "〜かねる",
+      summary: "Contoh bentuk kata kerja 〜かねる untuk level N2.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-84",
+      level: "N2",
+      order: 84,
+      title: "〜抜く",
+      summary: "Contoh bentuk kata kerja 〜抜く untuk level N2.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-85",
+      level: "N1",
+      order: 85,
+      title: "〜損なう / 〜損ねる",
+      summary: "Contoh bentuk kata kerja 〜損なう / 〜損ねる untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "考える", transformed: "考え出す", kana: "かんがえる → かんがえだす", romaji: "kangaeru → kangae dasu", meaning: "mulai berpikir",
+            sentences: [
+                { jp: "会議が終わったあとで、みんなが急に改善案を考え出した。", kana: "かいぎがおわったあとで、みんながきゅうにかいぜんあんをかんがえだした。", romaji: "Kaigi ga owa ttaatode, minnaga kyuuni kaizen'an wo kangae dashi ta.", meaning: "Setelah rapat selesai, semua orang tiba-tiba mulai memikirkan usulan perbaikan." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-86",
+      level: "N1",
+      order: 86,
+      title: "〜そびれる",
+      summary: "Contoh bentuk kata kerja 〜そびれる untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "書く", transformed: "書き続ける", kana: "かく → かきつづける", romaji: "kaku → kaki tsuzukeru", meaning: "terus menulis",
+            sentences: [
+                { jp: "締め切り前なので、彼は図書館で夜までレポートを書き続けた。", kana: "しめきりまえなので、かれはとしょかんでよるまでれぽーとをかきつづけた。", romaji: "Shimekiri mae nanode, kareha toshokan de yoru made repooto wo kaki tsuzuke ta.", meaning: "Karena tenggat sudah dekat, dia terus menulis laporan di perpustakaan sampai malam." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-87",
+      level: "N1",
+      order: 87,
+      title: "〜尽くす",
+      summary: "Contoh bentuk kata kerja 〜尽くす untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-88",
+      level: "N1",
+      order: 88,
+      title: "〜ぶる",
+      summary: "Contoh bentuk kata kerja 〜ぶる untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-89",
+      level: "N1",
+      order: 89,
+      title: "〜放題",
+      summary: "Contoh bentuk kata kerja 〜放題 untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-90",
+      level: "N1",
+      order: 90,
+      title: "〜まくる",
+      summary: "Contoh bentuk kata kerja 〜まくる untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      id: "vf-extra-91",
+      level: "N1",
+      order: 91,
+      title: "〜めく / めいて / めいた",
+      summary: "Contoh bentuk kata kerja 〜めく / めいて / めいた untuk level N1.",
+      formulas: [
+        { group: "Umum", rule: "Lihat pola pemakaian dan contoh kalimat di bawah ini." }
+      ],
+      groups: [
+        {
+          name: "Umum",
+          examples: [{
+            base: "食べる", transformed: "食べ始める", kana: "たべる → たべはじめる", romaji: "taberu → tabe hajimeru", meaning: "mulai makan",
+            sentences: [
+                { jp: "休み時間になると、学生たちは中庭で弁当を食べ始めた。", kana: "やすみじかんになると、がくせいたちはなかにわでべんとうをたべはじめた。", romaji: "Yasumijikan ninaruto, gakusei tachiha nakaniwa de bentou wo tabe hajime ta.", meaning: "Begitu jam istirahat mulai, para siswa mulai makan bekal di halaman tengah." },
+                { jp: "授業が始まると、学生たちは一斉にノートを取り始めた。", kana: "じゅぎょうがはじまると、がくせいたちはいっせいにのーとをとりはじめた。", romaji: "Jugyou ga hajima ruto, gakusei tachiha issei ni nooto wo tori hajime ta.", meaning: "Begitu kelas dimulai, para siswa serempak mulai mencatat." },
+                { jp: "この案件は慎重に考え続ける必要がある。", kana: "このあんけんはしんちょうにかんがえつづけるひつようがある。", romaji: "Kono anken ha shinchou ni kangae tsuzuke ru hitsuyou gaaru.", meaning: "Kasus ini perlu terus dipikirkan dengan hati-hati." },
+                { jp: "疲れていても、最後までやり切るつもりだ。", kana: "つかれていても、さいごまでやりきるつもりだ。", romaji: "Tsukare teitemo, saigo madeyari kiru tsumorida.", meaning: "Meski lelah, saya berniat menuntaskannya sampai akhir." },
+                { jp: "様子を見ながら、少しずつ準備を進めていこう。", kana: "ようすをみながら、すこしずつじゅんびをすすめていこう。", romaji: "Yousu wo mina gara, sukoshi zutsu junbi wo susume teikou.", meaning: "Sambil melihat situasi, mari lanjutkan persiapan sedikit demi sedikit." }
+            ]
+          }]
+        }
+      ]
+    }
+  ];
+
+  window.verbFormsData = [...manualForms, ...generatedRemaining, ...extraGeneratedForms].sort((a, b) => a.order - b.order);
   window.verbFormsLevels = LEVEL_ORDER;
 })();

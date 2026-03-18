@@ -15,7 +15,7 @@
   let _grid       = null;
   let _onBack     = null;
   let _flipping   = false;
-  let _activeWord = null; // word yang sedang ditampilkan di single view
+  let _activeWord = null; // word yang sedang aktif di single view
 
   function shuffle(arr) {
     const a = arr.slice();

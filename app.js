@@ -4206,12 +4206,6 @@ grid.style.display="grid";
         icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
       },
       {
-        action: "kanji-card",
-        title: "Kanji Card",
-        description: "Verb & Adj N5~N1",
-        icon: '<path d="M4 7h7"/><path d="M4 11h7"/><path d="M4 15h4"/><rect x="14" y="4" width="7" height="16" rx="2"/>'
-      },
-      {
         action: "grammar",
         title: "Grammar (文法)",
         description: "Materi + poster",
@@ -4703,7 +4697,7 @@ grid.style.display="grid";
       cardButton.addEventListener("click", (e) => {
         if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn") || e.target.closest(".bookmark-card-btn")) return;
 
-        // Mobile: tap 1x reveal tombol, tap 2x buka kanji-card
+        // Mobile: tap 1x reveal tombol, tap 2x buka modal
         const isTouchDevice = navigator.maxTouchPoints > 0 || window.matchMedia("(hover: none)").matches;
         if (isTouchDevice) {
           const cardImg = cardButton.querySelector(".card-image");
@@ -4713,7 +4707,7 @@ grid.style.display="grid";
             cardImg.classList.add("touch-revealed");
             return;
           }
-          // Tap kedua — buka kanji-card
+          // Tap kedua — buka modal
           cardImg.classList.remove("touch-revealed");
         }
 
@@ -4775,7 +4769,6 @@ grid.style.display="grid";
                 }, 50);
               }
             });
-          }
         } catch (err) {}
       });
       fragment.appendChild(cardButton);

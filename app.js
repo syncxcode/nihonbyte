@@ -3588,7 +3588,6 @@ grid.style.display="grid";
     else if (
       viewMode === "menu" ||
       viewMode === "support" ||
-      viewMode === "kanji-card" ||
       viewMode.startsWith("letters:") ||
       viewMode === "verb-forms" ||
       viewMode.startsWith("verb-form:") ||
@@ -3973,15 +3972,7 @@ grid.style.display="grid";
               </strong>
               <span>Ekspresi sehari-hari</span>
             </button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="kanji-card">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--kanji" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h7"/><path d="M4 11h7"/><path d="M4 15h4"/><rect x="14" y="4" width="7" height="16" rx="2"/></svg>
-                </span>
-                Kanji Card
-              </strong>
-              <span>Verb &amp; Adj N5~N1</span>
-            </button>
+
           </div>
 
           <div class="bottom-nav-hub__group">
@@ -4125,13 +4116,6 @@ grid.style.display="grid";
           selectedLevel = "all";
           selectedType = "ekspresi";
           if (category) category.value = "ekspresi";
-          if (search) search.value = "";
-          render();
-        }
-
-        if (action === "kanji-card") {
-          if (!ensureLoginForMenu()) return;
-          viewMode = "kanji-card";
           if (search) search.value = "";
           render();
         }
@@ -4355,15 +4339,6 @@ grid.style.display="grid";
       selectedType = "ekspresi";
       if (category) category.value = "ekspresi";
       if (search) search.value = "";
-      render();
-      return;
-    }
-
-    if (action === "kanji-card") {
-      if (!ensureLoginForMenu()) return;
-      viewMode = "kanji-card";
-      if (search) search.value = "";
-      closeModal();
       render();
       return;
     }
@@ -4681,29 +4656,6 @@ grid.style.display="grid";
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
 
-    if (viewMode === "kanji-card") {
-      grid.classList.remove("hub-mode", "support-mode");
-      grid.classList.add("kc-grid-mode");
-      grid.style.removeProperty("grid-template-columns");
-      setHistoryMode(false);
-      if (window.kanjiCardUI) {
-        window.kanjiCardUI.render({
-          grid,
-          onBackToMenu: () => {
-            grid.classList.remove("kc-grid-mode");
-            viewMode = "menu";
-            render();
-          }
-        });
-      } else {
-        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#e11d48;font-weight:700;font-size:1rem;">
-          Kanji Card belum siap. Pastikan file <code>assets/flashcard/flashcard.js</code> sudah diupload ke repo.
-        </div>`;
-      }
-      if (resultInfo) resultInfo.textContent = "Kanji Card";
-      return;
-    }
-
     let words = getFilteredWords();
     if (paginationContainer) {
       paginationContainer.innerHTML = "";
@@ -4751,7 +4703,7 @@ grid.style.display="grid";
       cardButton.addEventListener("click", (e) => {
         if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn") || e.target.closest(".bookmark-card-btn")) return;
 
-        // Mobile: tap 1x reveal tombol, tap 2x buka modal
+        // Mobile: tap 1x reveal tombol, tap 2x buka kanji-card
         const isTouchDevice = navigator.maxTouchPoints > 0 || window.matchMedia("(hover: none)").matches;
         if (isTouchDevice) {
           const cardImg = cardButton.querySelector(".card-image");
@@ -4761,7 +4713,7 @@ grid.style.display="grid";
             cardImg.classList.add("touch-revealed");
             return;
           }
-          // Tap kedua — buka modal
+          // Tap kedua — buka kanji-card
           cardImg.classList.remove("touch-revealed");
         }
 
@@ -4814,8 +4766,6 @@ grid.style.display="grid";
                   renderPagination(_savedTotalPages);
                 }
                 grid.classList.remove("kc-grid-mode");
-
-                // Reset viewMode kembali ke vocab
                 viewMode = "vocab";
 
                 // Restore scroll
@@ -4825,8 +4775,6 @@ grid.style.display="grid";
                 }, 50);
               }
             });
-          } else {
-            openModal(word);
           }
         } catch (err) {}
       });
@@ -4939,16 +4887,12 @@ grid.style.display="grid";
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {
       grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
-
-    // ── Kanji Card: jaga tampilan saat rotate / resize ──────────────────────
-    // Kalau sedang di kanji-card (flashcard utama) atau kanji-card-single
-    // (openWord dari grid), cukup rerender layout — deck & kartu tidak reset.
-    if (viewMode === "kanji-card" || viewMode === "kanji-card-single") {
+    // Kanji Card: jaga layout saat rotate/resize — deck & kartu tidak reset
+    if (viewMode === "kanji-card-single") {
       if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === "function") {
         window.kanjiCardUI.rerender();
       }
     }
-    // ────────────────────────────────────────────────────────────────────────
   });
   if (document.documentElement.classList.contains('ios-device')) {
     sidebar.classList.remove("active");

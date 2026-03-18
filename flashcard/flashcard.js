@@ -15,12 +15,7 @@
   let _grid       = null;
   let _onBack     = null;
   let _flipping   = false;
-
-  // Track mode aktif agar rerender tahu harus render apa
-  // "list"   = flashcard utama (dari menu Kanji Card)
-  // "single" = openWord (dari klik kartu di grid vocab)
-  let _mode       = "list";
-  let _activeWord = null;
+  let _activeWord = null; // word yang sedang ditampilkan di single view
 
   function shuffle(arr) {
     const a = arr.slice();
@@ -215,18 +210,13 @@
   }
 
   function render(opts) {
-    var grid         = opts.grid;
+    var grid        = opts.grid;
     var onBackToMenu = opts.onBackToMenu || null;
     _grid   = grid;
     _onBack = onBackToMenu;
-    _mode   = "list";
-
-    // _preserveState: jangan rebuild deck (dipanggil dari rerender saat resize/rotate)
-    if (!opts._preserveState) {
-      _level = "all";
-      _deck  = buildDeck("all");
-      _index = 0;
-    }
+    _level  = "all";
+    _deck   = buildDeck("all");
+    _index  = 0;
 
     var landscape = isMobileLandscape();
     var mobile    = isMobile();
@@ -331,7 +321,6 @@
     var onBackToMenu = opts.onBackToMenu || null;
     _grid   = grid;
     _onBack = onBackToMenu;
-    _mode   = "single";
 
     if (!word) return;
     _activeWord = word;
@@ -403,20 +392,15 @@
     document.addEventListener("keydown", handleKeydown);
   }
 
-  // ── rerender() ──────────────────────────────────────────────────────────────
-  // Dipanggil oleh app.js saat resize / rotate layar.
-  // Re-render ulang layout sesuai ukuran layar baru,
-  // tanpa reset deck, index, atau word yang sedang aktif.
-  // ─────────────────────────────────────────────────────────────────────────────
+  // rerender: dipanggil app.js saat resize/rotate
+  // Re-render layout sesuai ukuran baru, deck & kartu tidak reset
   function rerender() {
     if (!_grid) return;
-    if (_mode === "single") {
-      var word = _activeWord || (_deck && _deck[_index]);
-      if (!word) return;
-      openWord(word, { grid: _grid, onBackToMenu: _onBack, _preserveState: true });
-    } else {
-      render({ grid: _grid, onBackToMenu: _onBack, _preserveState: true });
-    }
+    var word = _activeWord || (_deck && _deck[_index]);
+    if (!word) return;
+    openWord(word, { grid: _grid, onBackToMenu: _onBack, _preserveState: true });
   }
 
   window.kanjiCardUI = { render: render, openWord: openWord, rerender: rerender };
+
+})();

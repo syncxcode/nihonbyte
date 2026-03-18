@@ -4771,12 +4771,16 @@ grid.style.display="grid";
               ? contentPanel.scrollTop
               : (window.scrollY || window.pageYOffset || 0);
 
-            // Sembunyikan semua card & pagination — JANGAN rebuild
-            grid.querySelectorAll(".card").forEach(function(c) { c.style.display = "none"; });
+            // Cabut semua card dari DOM ke fragment — bukan hide
+            var cardFragment = document.createDocumentFragment();
+            grid.querySelectorAll(".card").forEach(function(c) {
+              cardFragment.appendChild(c);
+            });
+
             const paginationContainer = document.getElementById("pagination-container");
             if (paginationContainer) paginationContainer.style.display = "none";
 
-            // Inject container kanji-card ke dalam grid
+            // Inject container kanji-card
             var kcContainer = document.createElement("div");
             kcContainer.id = "kc-single-container";
             kcContainer.style.cssText = "width:100%;grid-column:1/-1;";
@@ -4786,16 +4790,16 @@ grid.style.display="grid";
             grid.style.removeProperty("grid-template-columns");
             if (resultInfo) resultInfo.textContent = "";
 
-            // Scroll ke atas
             if (contentPanel) contentPanel.scrollTop = 0;
             else window.scrollTo({ top: 0, behavior: "instant" });
 
             window.kanjiCardUI.openWord(word, {
               grid: kcContainer,
               onBackToMenu: function() {
-                // Hapus container, tampilkan kembali cards
+                // Hapus container kanji-card
                 kcContainer.remove();
-                grid.querySelectorAll(".card").forEach(function(c) { c.style.display = ""; });
+                // Kembalikan semua card dari fragment ke grid
+                grid.appendChild(cardFragment);
                 if (paginationContainer) paginationContainer.style.display = "flex";
                 grid.classList.remove("kc-grid-mode");
 

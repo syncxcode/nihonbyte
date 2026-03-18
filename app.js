@@ -4766,23 +4766,35 @@ grid.style.display="grid";
         try {
           var word = JSON.parse(cardButton.dataset.word);
           if (window.kanjiCardUI) {
+            // Simpan posisi scroll sebelum buka kanji-card
+            var savedScroll = window.scrollY || window.pageYOffset || 0;
+
             viewMode = "kanji-card-single";
             grid.classList.add("kc-grid-mode");
             grid.style.removeProperty("grid-template-columns");
             if (typeof setHistoryMode === "function") setHistoryMode(false);
             if (resultInfo) resultInfo.textContent = "";
-            // Bersihkan pagination biar gak muncul
+
+            // Bersihkan pagination
             const paginationContainer = document.getElementById("pagination-container");
             if (paginationContainer) {
               paginationContainer.innerHTML = "";
               paginationContainer.style.display = "none";
             }
+
+            // Scroll ke atas grid (bukan window), biar render mulai dari atas
+            grid.scrollIntoView({ behavior: "instant", block: "start" });
+
             window.kanjiCardUI.openWord(word, {
               grid: grid,
               onBackToMenu: function() {
                 grid.classList.remove("kc-grid-mode");
                 viewMode = "vocab";
                 render();
+                // Restore scroll ke posisi card yang diklik
+                requestAnimationFrame(function() {
+                  window.scrollTo({ top: savedScroll, behavior: "instant" });
+                });
               }
             });
           } else {

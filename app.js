@@ -4491,12 +4491,13 @@ grid.style.display="grid";
 
     if (!isTesting) {
       setTimeout(() => {
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        if (window.innerWidth >= 768) {
-          const contentPanel = document.querySelector(".content-panel");
-          if (contentPanel) contentPanel.scrollTop = 0;
+        var cp = document.querySelector(".content-panel");
+        if (cp) {
+          cp.scrollTop = 0;
+        } else {
+          window.scrollTo(0, 0);
+          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = 0;
         }
       }, 50);
     }

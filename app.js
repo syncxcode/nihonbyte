@@ -4488,17 +4488,12 @@ grid.style.display="grid";
     }
 
     savedScrollPosition = 0; 
-    const _skipScrollReset = !!grid._restoreScrollY;
-    const _restoreY = grid._restoreScrollY || 0;
-    grid._restoreScrollY = null;
 
-    if (!_skipScrollReset) {
+    if (!isTesting) {
       setTimeout(() => {
-        // Reset scroll global (Mobile)
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
-        // Reset scroll spesifik Desktop
         if (window.innerWidth >= 768) {
           const contentPanel = document.querySelector(".content-panel");
           if (contentPanel) contentPanel.scrollTop = 0;
@@ -4776,29 +4771,39 @@ grid.style.display="grid";
               ? contentPanel.scrollTop
               : (window.scrollY || window.pageYOffset || 0);
 
-            viewMode = "kanji-card-single";
+            // Sembunyikan semua card & pagination — JANGAN rebuild
+            grid.querySelectorAll(".card").forEach(function(c) { c.style.display = "none"; });
+            const paginationContainer = document.getElementById("pagination-container");
+            if (paginationContainer) paginationContainer.style.display = "none";
+
+            // Inject container kanji-card ke dalam grid
+            var kcContainer = document.createElement("div");
+            kcContainer.id = "kc-single-container";
+            kcContainer.style.cssText = "width:100%;grid-column:1/-1;";
+            grid.appendChild(kcContainer);
+
             grid.classList.add("kc-grid-mode");
             grid.style.removeProperty("grid-template-columns");
-            if (typeof setHistoryMode === "function") setHistoryMode(false);
             if (resultInfo) resultInfo.textContent = "";
 
-            const paginationContainer = document.getElementById("pagination-container");
-            if (paginationContainer) {
-              paginationContainer.innerHTML = "";
-              paginationContainer.style.display = "none";
-            }
-
-            // Scroll ke atas saat buka kanji-card
+            // Scroll ke atas
             if (contentPanel) contentPanel.scrollTop = 0;
             else window.scrollTo({ top: 0, behavior: "instant" });
 
             window.kanjiCardUI.openWord(word, {
-              grid: grid,
+              grid: kcContainer,
               onBackToMenu: function() {
+                // Hapus container, tampilkan kembali cards
+                kcContainer.remove();
+                grid.querySelectorAll(".card").forEach(function(c) { c.style.display = ""; });
+                if (paginationContainer) paginationContainer.style.display = "flex";
                 grid.classList.remove("kc-grid-mode");
-                viewMode = "vocab";
-                grid._restoreScrollY = savedScroll;
-                render();
+
+                // Restore scroll
+                setTimeout(function() {
+                  if (contentPanel) contentPanel.scrollTop = savedScroll;
+                  else window.scrollTo({ top: savedScroll, behavior: "instant" });
+                }, 50);
               }
             });
           } else {
@@ -4810,19 +4815,6 @@ grid.style.display="grid";
     });
     
     grid.appendChild(fragment);
-
-    // Restore scroll kembali dari kanji-card
-    if (_skipScrollReset && _restoreY >= 0) {
-      setTimeout(function() {
-        var cp = document.querySelector(".content-panel");
-        if (cp) cp.scrollTop = _restoreY;
-        else {
-          window.scrollTo({ top: _restoreY, behavior: "instant" });
-          document.documentElement.scrollTop = _restoreY;
-          document.body.scrollTop = _restoreY;
-        }
-      }, 100);
-    }
     
     // Panggil mesin tombol halaman
     if (!isGuestPreview) renderPagination(totalPages);

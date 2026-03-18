@@ -4817,7 +4817,34 @@ grid.style.display="grid";
                       }
                       cardImg.classList.remove("touch-revealed");
                     }
-                    try { openModal(JSON.parse(c.dataset.word)); } catch(err) {}
+                    try {
+                      var w = JSON.parse(c.dataset.word);
+                      var cp2 = document.querySelector(".content-panel");
+                      var sc2 = cp2 ? cp2.scrollTop : (window.scrollY || 0);
+                      var savedGridHTML2 = grid.innerHTML;
+                      var savedGridClass2 = grid.className;
+                      viewMode = "kanji-card-single";
+                      grid.classList.add("kc-grid-mode");
+                      grid.style.removeProperty("grid-template-columns");
+                      if (typeof setHistoryMode === "function") setHistoryMode(false);
+                      if (resultInfo) resultInfo.textContent = "";
+                      var pc2 = document.getElementById("pagination-container");
+                      if (pc2) { pc2.innerHTML = ""; pc2.style.display = "none"; }
+                      window.kanjiCardUI.openWord(w, {
+                        grid: grid,
+                        onBackToMenu: function() {
+                          viewMode = "vocab";
+                          grid.className = savedGridClass2;
+                          grid.style.removeProperty("grid-template-columns");
+                          grid.innerHTML = savedGridHTML2;
+                          if (pc2) pc2.style.display = "flex";
+                          requestAnimationFrame(function() {
+                            if (cp2) { cp2.scrollTop = sc2; }
+                            else { window.scrollTo({ top: sc2, behavior: "instant" }); }
+                          });
+                        }
+                      });
+                    } catch(err) {}
                   });
                 });
 

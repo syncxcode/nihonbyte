@@ -1,13 +1,44 @@
 /* ============================================================
    NihonByte — Kanji Card CSS  (prefix: kc-)
+   ============================================================
+
+   STRUKTUR FILE:
+   ┌─────────────────────────────────────────────────────────┐
+   │  SECTION 1 — BASE                                       │
+   │  Warna, font, border, animasi, transisi.                │
+   │  Tidak ada nilai layout/sizing yang device-specific.    │
+   ├─────────────────────────────────────────────────────────┤
+   │  SECTION 2 — DESKTOP          (min-width: 1025px)       │
+   ├─────────────────────────────────────────────────────────┤
+   │  SECTION 3 — MOBILE POTRET    (max-width: 1024px        │
+   │                                + orientation: portrait) │
+   ├─────────────────────────────────────────────────────────┤
+   │  SECTION 4 — MOBILE LANDSCAPE (max-width: 1024px        │
+   │                                + orientation: landscape)│
+   └─────────────────────────────────────────────────────────┘
+
+   ATURAN:
+   - Mau ubah layout desktop?       → cari SECTION 2
+   - Mau ubah layout mobile potret? → cari SECTION 3
+   - Mau ubah layout landscape?     → cari SECTION 4
+   - Mau ubah warna/font/animasi?   → cari SECTION 1
+
    ============================================================ */
 
+
+/* ============================================================
+   SECTION 1 — BASE
+   Hanya properti yang TIDAK berubah antar device:
+   warna, font, border, shadow, animasi, transisi, cursor.
+   Tidak ada: padding, margin, width, height, font-size,
+   flex-direction, gap yang layout-specific.
+   ============================================================ */
+
+/* ── Poster wrapper ── */
 .kc-poster {
-  width: min(980px, calc(100% - 16px));
-  margin: 0 auto;
-  padding: 12px 16px 20px;
-  box-sizing: border-box;
   font-family: 'Ubuntu', 'Shippori Mincho', sans-serif;
+  box-sizing: border-box;
+  margin: 0 auto;
 }
 
 /* ── Header ── */
@@ -15,15 +46,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 10px;
   flex-wrap: nowrap;
 }
 
 .kc-poster-title {
   display: flex;
   align-items: center;
-  gap: 10px;
   flex: 1;
 }
 
@@ -31,15 +59,12 @@
   background: #e11d48;
   color: #fff;
   font-weight: 800;
-  font-size: 0.95rem;
-  padding: 5px 16px;
   border-radius: 999px;
   white-space: nowrap;
 }
 
 .kc-counter {
   color: #64748b;
-  font-size: 0.85rem;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -52,115 +77,49 @@
   background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6,9 12,15 18,9'/%3E%3C/svg%3E") no-repeat right 12px center;
   border: 1.5px solid #e2e8f0;
   border-radius: 10px;
-  padding: 8px 36px 8px 14px;
-  font-size: 0.85rem;
   font-weight: 600;
   color: #1e293b;
   cursor: pointer;
   outline: none;
   transition: border-color 0.2s;
-  min-width: 150px;
 }
-
 .kc-level-select:focus { border-color: #e11d48; }
 
 .kc-back-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
   background: #fff;
   border: 1.5px solid #e2e8f0;
   border-radius: 10px;
-  padding: 7px 14px;
-  font-size: 0.8rem;
   font-weight: 700;
   color: #1e293b;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s;
   white-space: nowrap;
 }
-
 .kc-back-btn:hover { border-color: #e11d48; color: #e11d48; }
 
-/* ── Content Box: satu wadah untuk kartu + contoh kalimat ── */
+/* ── Content box ── */
 .kc-content-box {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 32px rgba(20, 24, 30, 0.12);
-  padding: 20px;
   box-sizing: border-box;
   display: flex;
-  gap: 20px;
-}
-
-/* Portrait */
-.kc-portrait .kc-content-box {
-  flex-direction: column;
-  align-items: center;
-}
-
-.kc-portrait .kc-left-col {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.kc-portrait .kc-right-col { width: 100%; }
-
-/* Landscape */
-.kc-landscape .kc-content-box {
-  flex-direction: row;
-  align-items: stretch;
-  height: 100%;
-  gap: 12px;
-}
-
-.kc-landscape .kc-left-col {
-  flex: 0 0 42%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.kc-landscape .kc-right-col {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* Desktop */
-@media (min-width: 1025px) {
-  .kc-content-box {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .kc-left-col {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .kc-right-col { flex: 1; min-width: 0; }
 }
 
 /* ── Card area ── */
-.kc-card-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+.kc-card-area { display: flex; align-items: center; }
 
-/* ── Kartu ── */
+/* ── Card ── */
 .kc-card {
-  width: 260px;
-  height: 370px;
   background: #ffffff;
   border-radius: 18px;
   border: 2px solid #e2e8f0;
-  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 8px 28px rgba(15, 23, 42, 0.12),
+    0 2px 6px  rgba(15, 23, 42, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,13 +130,8 @@
   -webkit-user-select: none;
   cursor: grab;
 }
-
 .kc-card:active { cursor: grabbing; }
 
-@media (max-width: 1024px) and (orientation: portrait)  { .kc-card { width: 240px; height: 340px; } }
-@media (max-width: 1024px) and (orientation: landscape) { .kc-card { width: 176px; height: 248px; } }
-
-/* ── Card inner ── */
 .kc-card-inner {
   width: 100%;
   height: 100%;
@@ -185,10 +139,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 16px;
   box-sizing: border-box;
   text-align: center;
-  gap: 4px;
 }
 
 .kc-card-badge {
@@ -196,64 +148,66 @@
   top: 12px; right: 12px;
   background: #f1f5f9;
   color: #64748b;
-  font-size: 0.65rem;
   font-weight: 700;
-  padding: 3px 8px;
   border-radius: 999px;
 }
 
 .kc-card-kanji {
   font-family: 'Shippori Mincho', serif;
-  font-size: 3.2rem;
   font-weight: 700;
   color: #0f172a;
   line-height: 1.1;
-  margin-bottom: 4px;
 }
 
-.kc-card-kana    { font-size: 1rem; color: #475569; font-weight: 500; }
-.kc-card-romaji  { font-size: 0.85rem; color: #94a3b8; font-style: italic; margin-bottom: 6px; }
-.kc-card-meaning { font-size: 1.05rem; font-weight: 700; color: #1e293b; }
+.kc-card-kana    { color: #475569; font-weight: 500; }
+.kc-card-romaji  { color: #94a3b8; font-style: italic; }
+.kc-card-meaning { font-weight: 700; color: #1e293b; }
 
 .kc-card-divider {
-  width: 40px; height: 2px;
+  width: 40px;
+  height: 2px;
   background: #e11d48;
   border-radius: 999px;
-  margin: 10px auto;
 }
 
 .kc-card-underdev {
   position: absolute;
   bottom: 12px; left: 0; right: 0;
   text-align: center;
-  font-size: 0.65rem;
   color: #cbd5e1;
   font-style: italic;
 }
 
-@media (max-width: 1024px) and (orientation: landscape) {
-  .kc-card-kanji   { font-size: 2.1rem; }
-  .kc-card-kana    { font-size: 0.8rem; }
-  .kc-card-romaji  { font-size: 0.72rem; }
-  .kc-card-meaning { font-size: 0.85rem; }
-  .kc-card-divider { margin: 6px auto; }
-  .kc-card-inner   { gap: 2px; padding: 12px 10px; }
+.kc-card-empty {
+  color: #94a3b8;
+  text-align: center;
 }
 
 /* ── Flip animations ── */
-@keyframes kc-fo-l { from { transform: perspective(600px) rotateY(0);    opacity: 1; } to { transform: perspective(600px) rotateY(90deg);  opacity: 0; } }
-@keyframes kc-fo-r { from { transform: perspective(600px) rotateY(0);    opacity: 1; } to { transform: perspective(600px) rotateY(-90deg); opacity: 0; } }
-@keyframes kc-fi-r { from { transform: perspective(600px) rotateY(-90deg); opacity: 0; } to { transform: perspective(600px) rotateY(0); opacity: 1; } }
-@keyframes kc-fi-l { from { transform: perspective(600px) rotateY(90deg);  opacity: 0; } to { transform: perspective(600px) rotateY(0); opacity: 1; } }
+@keyframes kc-fo-l {
+  from { transform: perspective(600px) rotateY(0);     opacity: 1; }
+  to   { transform: perspective(600px) rotateY(90deg); opacity: 0; }
+}
+@keyframes kc-fo-r {
+  from { transform: perspective(600px) rotateY(0);      opacity: 1; }
+  to   { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+}
+@keyframes kc-fi-r {
+  from { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+  to   { transform: perspective(600px) rotateY(0);      opacity: 1; }
+}
+@keyframes kc-fi-l {
+  from { transform: perspective(600px) rotateY(90deg); opacity: 0; }
+  to   { transform: perspective(600px) rotateY(0);     opacity: 1; }
+}
 
 .kc-flip-out-left  { animation: kc-fo-l 0.15s ease-in  forwards; }
 .kc-flip-out-right { animation: kc-fo-r 0.15s ease-in  forwards; }
 .kc-flip-in-right  { animation: kc-fi-r 0.18s ease-out forwards; }
 .kc-flip-in-left   { animation: kc-fi-l 0.18s ease-out forwards; }
 
-/* ── Desktop nav buttons ── */
+/* ── Nav buttons ── */
 .kc-nav-btn {
-  width: 44px; height: 44px;
   border-radius: 50%;
   border: 1.5px solid #e2e8f0;
   background: #fff;
@@ -265,7 +219,6 @@
   transition: border-color 0.2s, color 0.2s;
   flex-shrink: 0;
 }
-
 .kc-nav-btn:hover:not(:disabled) { border-color: #e11d48; color: #e11d48; }
 .kc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
@@ -279,22 +232,13 @@
   flex-direction: column;
 }
 
-.kc-portrait  .kc-examples-panel { height: auto; }
-.kc-landscape .kc-examples-panel { height: 100%; }
-
-@media (min-width: 1025px) {
-  .kc-examples-panel { height: auto; max-height: 420px; }
-}
-
 .kc-examples-header {
-  padding: 10px 16px 8px;
   border-bottom: 1.5px solid #e2e8f0;
   flex-shrink: 0;
   background: #fff;
 }
 
 .kc-examples-title {
-  font-size: 0.75rem;
   font-weight: 800;
   color: #475569;
   text-transform: uppercase;
@@ -302,26 +246,21 @@
 }
 
 .kc-examples-body {
-  padding: 8px 10px 10px;
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
 .kc-example-item {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 9px 8px;
-  border-radius: 10px;
   background: #fff;
   border: 1px solid #f1f5f9;
+  border-radius: 10px;
   transition: background 0.15s;
 }
-
 .kc-example-item:hover { background: #fdf2f5; }
 
 .kc-example-text {
@@ -332,14 +271,13 @@
   min-width: 0;
 }
 
-.kc-example-jp     { font-family: 'Shippori Mincho', serif; font-size: 1rem; color: #0f172a; line-height: 1.5; word-break: break-word; }
-.kc-example-romaji { font-size: 0.78rem; color: #94a3b8; font-style: italic; }
-.kc-example-id     { font-size: 0.82rem; color: #475569; font-weight: 500; }
-.kc-underdev       { color: #cbd5e1 !important; font-style: italic; font-size: 0.8rem !important; }
+.kc-example-jp     { font-family: 'Shippori Mincho', serif; color: #0f172a; line-height: 1.5; word-break: break-word; }
+.kc-example-romaji { color: #94a3b8; font-style: italic; }
+.kc-example-id     { color: #475569; font-weight: 500; }
+.kc-underdev       { color: #cbd5e1 !important; font-style: italic; }
 
 .kc-play-btn {
   flex-shrink: 0;
-  width: 32px; height: 32px;
   border-radius: 50%;
   border: 1.5px solid #e2e8f0;
   background: #fff;
@@ -349,43 +287,17 @@
   justify-content: center;
   color: #e11d48;
   transition: border-color 0.2s, background 0.2s;
-  margin-top: 2px;
 }
-
 .kc-play-btn:hover:not(:disabled) { background: #fef2f2; border-color: #e11d48; }
 .kc-play-btn:disabled { color: #cbd5e1; cursor: default; border-color: #f1f5f9; }
 
-@media (max-width: 1024px) and (orientation: landscape) {
-  .kc-example-jp     { font-size: 0.85rem; }
-  .kc-example-romaji { font-size: 0.68rem; }
-  .kc-example-id     { font-size: 0.7rem; }
-  .kc-example-item   { padding: 6px 8px; }
-  .kc-play-btn       { width: 26px; height: 26px; }
-  .kc-play-btn svg   { width: 13px; height: 13px; }
-  .kc-examples-header { padding: 6px 12px; }
-  .kc-examples-body  { padding: 5px 8px; gap: 1px; }
-}
-
-.kc-card-empty { color: #94a3b8; font-size: 0.9rem; text-align: center; padding: 20px; }
-
-/* ── Single Word View (dari klik flashcard) ── */
-.kc-single {
-  padding-top: 0; /* gak perlu padding atas, back btn ada di dalam box */
-}
-
-/* Content box single mode: relative buat posisi back btn */
+/* ── Single Word View ── */
 .kc-single-box {
   position: relative;
-  padding-top: 52px !important; /* ruang untuk back button di dalam box */
 }
 
-/* Back button — pojok kiri atas di dalam content box */
 .kc-single-back-btn {
   position: absolute;
-  top: 12px;
-  left: 14px;
-  width: 38px;
-  height: 38px;
   border-radius: 50%;
   border: 1.5px solid #e2e8f0;
   background: #fff;
@@ -397,53 +309,263 @@
   transition: border-color 0.2s, color 0.2s;
   z-index: 10;
   padding: 0;
-  box-shadow: 0 2px 8px rgba(15,23,42,0.08);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
 }
+.kc-single-back-btn:hover { border-color: #e11d48; color: #e11d48; }
 
-.kc-single-back-btn:hover {
-  border-color: #e11d48;
-  color: #e11d48;
-}
 
-/* Desktop */
+/* ============================================================
+   SECTION 2 — DESKTOP
+   Target: min-width 769px
+   Layout: kartu + panel kanan berdampingan (row)
+   ============================================================ */
 @media (min-width: 769px) {
-  .kc-single-box {
-    padding-top: 56px !important;
+
+  /* Poster */
+  .kc-poster {
+    width: min(980px, calc(100% - 16px));
+    padding: 12px 16px 20px;
   }
-  .kc-single-back-btn {
-    top: 12px;
-    left: 16px;
-    width: 42px;
-    height: 42px;
+
+  /* Header */
+  .kc-poster-header {
+    gap: 10px;
+    margin-bottom: 10px;
   }
+  .kc-poster-title { gap: 10px; }
+  .kc-title-pill   { font-size: 0.95rem; padding: 5px 16px; }
+  .kc-counter      { font-size: 0.85rem; }
+  .kc-level-select { padding: 8px 36px 8px 14px; font-size: 0.85rem; min-width: 150px; }
+  .kc-back-btn     { gap: 6px; padding: 7px 14px; font-size: 0.8rem; }
+
+  /* Content box — row */
+  .kc-content-box {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Kolom kiri (kartu) */
+  .kc-left-col {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Kolom kanan (contoh kalimat) */
+  .kc-right-col { flex: 1; min-width: 0; }
+
+  /* Card area */
+  .kc-card-area { gap: 12px; }
+
+  /* Card */
+  .kc-card { width: 260px; height: 370px; }
+
+  .kc-card-inner   { padding: 20px 16px; gap: 4px; }
+  .kc-card-badge   { font-size: 0.65rem; padding: 3px 8px; }
+  .kc-card-kanji   { font-size: 3.2rem; margin-bottom: 4px; }
+  .kc-card-kana    { font-size: 1rem; }
+  .kc-card-romaji  { font-size: 0.85rem; margin-bottom: 6px; }
+  .kc-card-meaning { font-size: 1.05rem; }
+  .kc-card-divider { margin: 10px auto; }
+  .kc-card-underdev { font-size: 0.65rem; }
+  .kc-card-empty   { font-size: 0.9rem; padding: 20px; }
+
+  /* Nav buttons */
+  .kc-nav-btn { width: 44px; height: 44px; }
+
+  /* Examples panel */
+  .kc-examples-panel  { height: auto; max-height: 420px; }
+  .kc-examples-header { padding: 10px 16px 8px; }
+  .kc-examples-title  { font-size: 0.75rem; }
+  .kc-examples-body   { padding: 8px 10px 10px; gap: 2px; }
+
+  .kc-example-item   { gap: 10px; padding: 9px 8px; }
+  .kc-example-jp     { font-size: 1rem; }
+  .kc-example-romaji { font-size: 0.78rem; }
+  .kc-example-id     { font-size: 0.82rem; }
+  .kc-underdev       { font-size: 0.8rem !important; }
+
+  .kc-play-btn     { width: 32px; height: 32px; margin-top: 2px; }
+
+  /* Single view */
+  .kc-single-box        { padding-top: 56px !important; }
+  .kc-single-back-btn   { top: 12px; left: 16px; width: 42px; height: 42px; }
+
 }
 
-/* Mobile Portrait */
-@media (max-width: 768px) and (orientation: portrait) {
-  .kc-single-box {
-    padding-top: 50px !important;
+
+/* ============================================================
+   SECTION 3 — MOBILE POTRET
+   Target: max-width 767px + orientation portrait
+   Layout: kartu di atas, panel contoh kalimat di bawah (column)
+   ============================================================ */
+@media (max-width: 767px) and (orientation: portrait) {
+
+  /* Poster */
+  .kc-poster {
+    width: min(980px, calc(100% - 16px));
+    padding: 12px 16px 20px;
   }
-  .kc-single-back-btn {
-    top: 10px;
-    left: 12px;
-    width: 36px;
-    height: 36px;
+
+  /* Header */
+  .kc-poster-header {
+    gap: 10px;
+    margin-bottom: 10px;
   }
+  .kc-poster-title { gap: 10px; }
+  .kc-title-pill   { font-size: 0.95rem; padding: 5px 16px; }
+  .kc-counter      { font-size: 0.85rem; }
+  .kc-level-select { padding: 8px 36px 8px 14px; font-size: 0.85rem; min-width: 150px; }
+  .kc-back-btn     { gap: 6px; padding: 7px 14px; font-size: 0.8rem; }
+
+  /* Content box — column, kartu centered */
+  .kc-content-box {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Kolom kiri (kartu) — full width, centered */
+  .kc-left-col {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Kolom kanan (contoh kalimat) — full width */
+  .kc-right-col { width: 100%; }
+
+  /* Card area */
+  .kc-card-area { gap: 12px; }
+
+  /* Card */
+  .kc-card { width: 240px; height: 340px; }
+
+  .kc-card-inner   { padding: 20px 16px; gap: 4px; }
+  .kc-card-badge   { font-size: 0.65rem; padding: 3px 8px; }
+  .kc-card-kanji   { font-size: 3.2rem; margin-bottom: 4px; }
+  .kc-card-kana    { font-size: 1rem; }
+  .kc-card-romaji  { font-size: 0.85rem; margin-bottom: 6px; }
+  .kc-card-meaning { font-size: 1.05rem; }
+  .kc-card-divider { margin: 10px auto; }
+  .kc-card-underdev { font-size: 0.65rem; }
+  .kc-card-empty   { font-size: 0.9rem; padding: 20px; }
+
+  /* Nav buttons */
+  .kc-nav-btn { width: 44px; height: 44px; }
+
+  /* Examples panel */
+  .kc-examples-panel  { height: auto; }
+  .kc-examples-header { padding: 10px 16px 8px; }
+  .kc-examples-title  { font-size: 0.75rem; }
+  .kc-examples-body   { padding: 8px 10px 10px; gap: 2px; }
+
+  .kc-example-item   { gap: 10px; padding: 9px 8px; }
+  .kc-example-jp     { font-size: 1rem; }
+  .kc-example-romaji { font-size: 0.78rem; }
+  .kc-example-id     { font-size: 0.82rem; }
+  .kc-underdev       { font-size: 0.8rem !important; }
+
+  .kc-play-btn     { width: 32px; height: 32px; margin-top: 2px; }
+
+  /* Single view */
+  .kc-single-box       { padding-top: 50px !important; }
+  .kc-single-back-btn  { top: 10px; left: 12px; width: 36px; height: 36px; }
+
 }
 
-/* Mobile Landscape */
+
+/* ============================================================
+   SECTION 4 — MOBILE LANDSCAPE
+   Target: orientation landscape + max-height 520px
+   Layout: kartu kiri (42%), panel kanan (58%), row, stretch
+   ============================================================ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
-  .kc-single-box {
-    padding-top: 42px !important;
+
+  /* Poster */
+  .kc-poster {
+    width: min(980px, calc(100% - 16px));
+    padding: 8px 12px 12px;
   }
-  .kc-single-back-btn {
-    top: 8px;
-    left: 10px;
-    width: 32px;
-    height: 32px;
+
+  /* Header */
+  .kc-poster-header {
+    gap: 8px;
+    margin-bottom: 8px;
   }
-  .kc-single-back-btn svg {
-    width: 16px;
-    height: 16px;
+  .kc-poster-title { gap: 8px; }
+  .kc-title-pill   { font-size: 0.85rem; padding: 4px 12px; }
+  .kc-counter      { font-size: 0.78rem; }
+  .kc-level-select { padding: 6px 30px 6px 10px; font-size: 0.78rem; min-width: 120px; }
+  .kc-back-btn     { gap: 5px; padding: 5px 10px; font-size: 0.75rem; }
+
+  /* Content box — row, stretch penuh */
+  .kc-content-box {
+    flex-direction: row;
+    align-items: stretch;
+    height: 100%;
+    padding: 12px;
+    gap: 12px;
   }
+
+  /* Kolom kiri (kartu) */
+  .kc-left-col {
+    flex: 0 0 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Kolom kanan (contoh kalimat) */
+  .kc-right-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Card area */
+  .kc-card-area { gap: 10px; }
+
+  /* Card — lebih kecil */
+  .kc-card { width: 176px; height: 248px; }
+
+  .kc-card-inner   { padding: 12px 10px; gap: 2px; }
+  .kc-card-badge   { font-size: 0.6rem; padding: 2px 6px; }
+  .kc-card-kanji   { font-size: 2.1rem; margin-bottom: 2px; }
+  .kc-card-kana    { font-size: 0.8rem; }
+  .kc-card-romaji  { font-size: 0.72rem; margin-bottom: 4px; }
+  .kc-card-meaning { font-size: 0.85rem; }
+  .kc-card-divider { margin: 6px auto; }
+  .kc-card-underdev { font-size: 0.6rem; }
+  .kc-card-empty   { font-size: 0.8rem; padding: 12px; }
+
+  /* Nav buttons */
+  .kc-nav-btn { width: 36px; height: 36px; }
+
+  /* Examples panel — stretch penuh secara vertikal */
+  .kc-examples-panel  { height: 100%; }
+  .kc-examples-header { padding: 6px 12px; }
+  .kc-examples-title  { font-size: 0.7rem; }
+  .kc-examples-body   { padding: 5px 8px; gap: 1px; }
+
+  .kc-example-item   { gap: 8px; padding: 6px 8px; }
+  .kc-example-jp     { font-size: 0.85rem; }
+  .kc-example-romaji { font-size: 0.68rem; }
+  .kc-example-id     { font-size: 0.7rem; }
+  .kc-underdev       { font-size: 0.7rem !important; }
+
+  .kc-play-btn       { width: 26px; height: 26px; margin-top: 1px; }
+  .kc-play-btn svg   { width: 13px; height: 13px; }
+
+  /* Single view */
+  .kc-single-box        { padding-top: 42px !important; }
+  .kc-single-back-btn   { top: 8px; left: 10px; width: 32px; height: 32px; }
+  .kc-single-back-btn svg { width: 16px; height: 16px; }
+
 }

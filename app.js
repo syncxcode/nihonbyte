@@ -4779,7 +4779,10 @@ grid.style.display="grid";
             });
 
             const paginationContainer = document.getElementById("pagination-container");
-            if (paginationContainer) paginationContainer.style.display = "none";
+            if (paginationContainer) {
+              paginationContainer.style.display = "none";
+              paginationContainer.style.visibility = "hidden";
+            }
 
             // Inject container kanji-card
             var kcContainer = document.createElement("div");
@@ -4801,7 +4804,10 @@ grid.style.display="grid";
                 kcContainer.remove();
                 // Kembalikan semua card dari fragment ke grid
                 grid.appendChild(cardFragment);
-                if (paginationContainer) paginationContainer.style.display = "flex";
+                if (paginationContainer) {
+                  paginationContainer.style.display = "flex";
+                  paginationContainer.style.visibility = "";
+                }
                 grid.classList.remove("kc-grid-mode");
 
                 // Restore scroll

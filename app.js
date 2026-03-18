@@ -4771,15 +4771,10 @@ grid.style.display="grid";
         try {
           var word = JSON.parse(cardButton.dataset.word);
           if (window.kanjiCardUI) {
-            // Simpan scroll container
             var contentPanel = document.querySelector(".content-panel");
             var savedScroll = contentPanel
               ? contentPanel.scrollTop
               : (window.scrollY || window.pageYOffset || 0);
-
-            // Simpan seluruh HTML grid + pagination sebelum diganti
-            var savedGridHTML = grid.innerHTML;
-            var savedGridClass = grid.className;
 
             viewMode = "kanji-card-single";
             grid.classList.add("kc-grid-mode");
@@ -4787,7 +4782,6 @@ grid.style.display="grid";
             if (typeof setHistoryMode === "function") setHistoryMode(false);
             if (resultInfo) resultInfo.textContent = "";
 
-            // Sembunyikan pagination
             const paginationContainer = document.getElementById("pagination-container");
             if (paginationContainer) {
               paginationContainer.innerHTML = "";
@@ -4795,79 +4789,16 @@ grid.style.display="grid";
             }
 
             // Scroll ke atas saat buka kanji-card
-            var cpScroll = document.querySelector(".content-panel");
-            if (cpScroll) cpScroll.scrollTop = 0;
+            if (contentPanel) contentPanel.scrollTop = 0;
             else window.scrollTo({ top: 0, behavior: "instant" });
 
             window.kanjiCardUI.openWord(word, {
               grid: grid,
               onBackToMenu: function() {
-                // Restore langsung dari cache — tanpa render() ulang
+                grid.classList.remove("kc-grid-mode");
                 viewMode = "vocab";
-                grid.className = savedGridClass;
-                grid.style.removeProperty("grid-template-columns");
-                grid.innerHTML = savedGridHTML;
-
-                // Re-attach event listeners ke kartu yang di-restore
-                grid.querySelectorAll(".card[data-word]").forEach(function(c) {
-                  c.addEventListener("click", function(e) {
-                    if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn") || e.target.closest(".bookmark-card-btn")) return;
-                    var isTouchDevice = navigator.maxTouchPoints > 0 || window.matchMedia("(hover: none)").matches;
-                    if (isTouchDevice) {
-                      var cardImg = c.querySelector(".card-image");
-                      if (!cardImg.classList.contains("touch-revealed")) {
-                        document.querySelectorAll(".card-image.touch-revealed").forEach(function(x) { x.classList.remove("touch-revealed"); });
-                        cardImg.classList.add("touch-revealed");
-                        return;
-                      }
-                      cardImg.classList.remove("touch-revealed");
-                    }
-                    try {
-                      var w = JSON.parse(c.dataset.word);
-                      var cp2 = document.querySelector(".content-panel");
-                      var sc2 = cp2 ? cp2.scrollTop : (window.scrollY || 0);
-                      var savedGridHTML2 = grid.innerHTML;
-                      var savedGridClass2 = grid.className;
-                      viewMode = "kanji-card-single";
-                      grid.classList.add("kc-grid-mode");
-                      grid.style.removeProperty("grid-template-columns");
-                      if (typeof setHistoryMode === "function") setHistoryMode(false);
-                      if (resultInfo) resultInfo.textContent = "";
-                      var pc2 = document.getElementById("pagination-container");
-                      if (pc2) { pc2.innerHTML = ""; pc2.style.display = "none"; }
-                      // Scroll ke atas saat buka kanji-card
-                      var cp2scroll = document.querySelector(".content-panel");
-                      if (cp2scroll) cp2scroll.scrollTop = 0;
-                      else window.scrollTo({ top: 0, behavior: "instant" });
-                      window.kanjiCardUI.openWord(w, {
-                        grid: grid,
-                        onBackToMenu: function() {
-                          viewMode = "vocab";
-                          grid.className = savedGridClass2;
-                          grid.style.removeProperty("grid-template-columns");
-                          grid.innerHTML = savedGridHTML2;
-                          if (pc2) pc2.style.display = "flex";
-                          requestAnimationFrame(function() {
-                            if (cp2) { cp2.scrollTop = sc2; }
-                            else { window.scrollTo({ top: sc2, behavior: "instant" }); }
-                          });
-                        }
-                      });
-                    } catch(err) {}
-                  });
-                });
-
-                // Restore pagination
-                if (paginationContainer) paginationContainer.style.display = "flex";
-
-                // Restore scroll
-                requestAnimationFrame(function() {
-                  if (contentPanel) {
-                    contentPanel.scrollTop = savedScroll;
-                  } else {
-                    window.scrollTo({ top: savedScroll, behavior: "instant" });
-                  }
-                });
+                grid._restoreScrollY = savedScroll;
+                render();
               }
             });
           } else {
@@ -4880,20 +4811,17 @@ grid.style.display="grid";
     
     grid.appendChild(fragment);
 
-    // Restore scroll kembali dari kanji-card — harus setelah kartu ter-render
-    if (_skipScrollReset && _restoreY > 0) {
-      requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-          var contentPanel = document.querySelector(".content-panel");
-          if (contentPanel) {
-            contentPanel.scrollTop = _restoreY;
-          } else {
-            window.scrollTo({ top: _restoreY, behavior: "instant" });
-            document.documentElement.scrollTop = _restoreY;
-            document.body.scrollTop = _restoreY;
-          }
-        });
-      });
+    // Restore scroll kembali dari kanji-card
+    if (_skipScrollReset && _restoreY >= 0) {
+      setTimeout(function() {
+        var cp = document.querySelector(".content-panel");
+        if (cp) cp.scrollTop = _restoreY;
+        else {
+          window.scrollTo({ top: _restoreY, behavior: "instant" });
+          document.documentElement.scrollTop = _restoreY;
+          document.body.scrollTop = _restoreY;
+        }
+      }, 100);
     }
     
     // Panggil mesin tombol halaman

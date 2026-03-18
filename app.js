@@ -4492,29 +4492,19 @@ grid.style.display="grid";
     const _restoreY = grid._restoreScrollY || 0;
     grid._restoreScrollY = null;
 
-    setTimeout(() => {
-      if (_skipScrollReset) {
-        // Kembali dari kanji-card: restore ke posisi card yang diklik
-        window.scrollTo({ top: _restoreY, behavior: "instant" });
-        document.documentElement.scrollTop = _restoreY;
-        document.body.scrollTop = _restoreY;
+    if (!_skipScrollReset) {
+      setTimeout(() => {
+        // Reset scroll global (Mobile)
+        window.scrollTo(0, 0); 
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        // Reset scroll spesifik Desktop
         if (window.innerWidth >= 768) {
           const contentPanel = document.querySelector(".content-panel");
-          if (contentPanel) contentPanel.scrollTop = _restoreY;
+          if (contentPanel) contentPanel.scrollTop = 0;
         }
-        return;
-      }
-       // Reset scroll global (Mobile)
-       window.scrollTo(0, 0); 
-       document.documentElement.scrollTop = 0;
-       document.body.scrollTop = 0;
-       
-       // Reset scroll spesifik Desktop (karena desktop pakai layout split-panel)
-       if (window.innerWidth >= 768) {
-         const contentPanel = document.querySelector(".content-panel");
-         if (contentPanel) contentPanel.scrollTop = 0;
-       }
-    }, 50);
+      }, 50);
+    }
 
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
@@ -4819,6 +4809,21 @@ grid.style.display="grid";
     });
     
     grid.appendChild(fragment);
+
+    // Restore scroll kembali dari kanji-card — harus setelah kartu ter-render
+    if (_skipScrollReset && _restoreY > 0) {
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          window.scrollTo({ top: _restoreY, behavior: "instant" });
+          document.documentElement.scrollTop = _restoreY;
+          document.body.scrollTop = _restoreY;
+          if (window.innerWidth >= 768) {
+            const contentPanel = document.querySelector(".content-panel");
+            if (contentPanel) contentPanel.scrollTop = _restoreY;
+          }
+        });
+      });
+    }
     
     // Panggil mesin tombol halaman
     if (!isGuestPreview) renderPagination(totalPages);

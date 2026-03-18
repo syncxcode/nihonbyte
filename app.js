@@ -4771,8 +4771,11 @@ grid.style.display="grid";
         try {
           var word = JSON.parse(cardButton.dataset.word);
           if (window.kanjiCardUI) {
-            // Simpan posisi scroll sebelum buka kanji-card
-            var savedScroll = window.scrollY || window.pageYOffset || 0;
+            // Simpan dari container yang beneran scroll
+            var contentPanel = document.querySelector(".content-panel");
+            var savedScroll = contentPanel
+              ? contentPanel.scrollTop
+              : (window.scrollY || window.pageYOffset || 0);
 
             viewMode = "kanji-card-single";
             grid.classList.add("kc-grid-mode");
@@ -4787,7 +4790,7 @@ grid.style.display="grid";
               paginationContainer.style.display = "none";
             }
 
-            // Scroll ke atas grid (bukan window), biar render mulai dari atas
+            // Scroll ke atas grid
             grid.scrollIntoView({ behavior: "instant", block: "start" });
 
             window.kanjiCardUI.openWord(word, {
@@ -4795,7 +4798,6 @@ grid.style.display="grid";
               onBackToMenu: function() {
                 grid.classList.remove("kc-grid-mode");
                 viewMode = "vocab";
-                // Pasang flag restore scroll sebelum render()
                 grid._restoreScrollY = savedScroll;
                 render();
               }
@@ -4814,12 +4816,13 @@ grid.style.display="grid";
     if (_skipScrollReset && _restoreY > 0) {
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          window.scrollTo({ top: _restoreY, behavior: "instant" });
-          document.documentElement.scrollTop = _restoreY;
-          document.body.scrollTop = _restoreY;
-          if (window.innerWidth >= 768) {
-            const contentPanel = document.querySelector(".content-panel");
-            if (contentPanel) contentPanel.scrollTop = _restoreY;
+          var contentPanel = document.querySelector(".content-panel");
+          if (contentPanel) {
+            contentPanel.scrollTop = _restoreY;
+          } else {
+            window.scrollTo({ top: _restoreY, behavior: "instant" });
+            document.documentElement.scrollTop = _restoreY;
+            document.body.scrollTop = _restoreY;
           }
         });
       });

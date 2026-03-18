@@ -4799,6 +4799,9 @@ grid.style.display="grid";
             if (contentPanel) contentPanel.scrollTop = 0;
             else window.scrollTo({ top: 0, behavior: "instant" });
 
+            // Set viewMode agar resize handler tahu kita sedang di single view
+            viewMode = "kanji-card-single";
+
             window.kanjiCardUI.openWord(word, {
               grid: kcContainer,
               onBackToMenu: function() {
@@ -4811,6 +4814,9 @@ grid.style.display="grid";
                   renderPagination(_savedTotalPages);
                 }
                 grid.classList.remove("kc-grid-mode");
+
+                // Reset viewMode kembali ke vocab
+                viewMode = "vocab";
 
                 // Restore scroll
                 setTimeout(function() {
@@ -4933,6 +4939,16 @@ grid.style.display="grid";
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {
       grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
+
+    // ── Kanji Card: jaga tampilan saat rotate / resize ──────────────────────
+    // Kalau sedang di kanji-card (flashcard utama) atau kanji-card-single
+    // (openWord dari grid), cukup rerender layout — deck & kartu tidak reset.
+    if (viewMode === "kanji-card" || viewMode === "kanji-card-single") {
+      if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === "function") {
+        window.kanjiCardUI.rerender();
+      }
+    }
+    // ────────────────────────────────────────────────────────────────────────
   });
   if (document.documentElement.classList.contains('ios-device')) {
     sidebar.classList.remove("active");

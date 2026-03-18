@@ -4794,6 +4794,11 @@ grid.style.display="grid";
               paginationContainer.style.display = "none";
             }
 
+            // Scroll ke atas saat buka kanji-card
+            var cpScroll = document.querySelector(".content-panel");
+            if (cpScroll) cpScroll.scrollTop = 0;
+            else window.scrollTo({ top: 0, behavior: "instant" });
+
             window.kanjiCardUI.openWord(word, {
               grid: grid,
               onBackToMenu: function() {
@@ -4830,6 +4835,10 @@ grid.style.display="grid";
                       if (resultInfo) resultInfo.textContent = "";
                       var pc2 = document.getElementById("pagination-container");
                       if (pc2) { pc2.innerHTML = ""; pc2.style.display = "none"; }
+                      // Scroll ke atas saat buka kanji-card
+                      var cp2scroll = document.querySelector(".content-panel");
+                      if (cp2scroll) cp2scroll.scrollTop = 0;
+                      else window.scrollTo({ top: 0, behavior: "instant" });
                       window.kanjiCardUI.openWord(w, {
                         grid: grid,
                         onBackToMenu: function() {

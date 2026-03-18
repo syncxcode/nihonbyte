@@ -4677,6 +4677,9 @@ grid.style.display="grid";
 
 // ==== LOGIKA KARTU KOSAKATA & PAGINATION ====
 
+    // Guard: kanji-card-single = openWord mode, jangan di-re-render
+    if (viewMode === "kanji-card-single") return;
+
     if (viewMode === "kanji-card") {
       grid.classList.remove("hub-mode", "support-mode");
       grid.classList.add("kc-grid-mode");
@@ -4763,11 +4766,17 @@ grid.style.display="grid";
         try {
           var word = JSON.parse(cardButton.dataset.word);
           if (window.kanjiCardUI) {
-            viewMode = "kanji-card";
+            viewMode = "kanji-card-single";
             grid.classList.add("kc-grid-mode");
             grid.style.removeProperty("grid-template-columns");
             if (typeof setHistoryMode === "function") setHistoryMode(false);
-            if (resultInfo) resultInfo.textContent = "Kanji Card";
+            if (resultInfo) resultInfo.textContent = "";
+            // Bersihkan pagination biar gak muncul
+            const paginationContainer = document.getElementById("pagination-container");
+            if (paginationContainer) {
+              paginationContainer.innerHTML = "";
+              paginationContainer.style.display = "none";
+            }
             window.kanjiCardUI.openWord(word, {
               grid: grid,
               onBackToMenu: function() {

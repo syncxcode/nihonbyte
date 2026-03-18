@@ -371,15 +371,20 @@
 
 /* ── Single Word View (dari klik flashcard) ── */
 .kc-single {
-  position: relative;
-  padding-top: 52px; /* ruang untuk back button */
+  padding-top: 0; /* gak perlu padding atas, back btn ada di dalam box */
 }
 
-/* Back button — pojok kiri atas, SVG only */
+/* Content box single mode: relative buat posisi back btn */
+.kc-single-box {
+  position: relative;
+  padding-top: 52px !important; /* ruang untuk back button di dalam box */
+}
+
+/* Back button — pojok kiri atas di dalam content box */
 .kc-single-back-btn {
   position: absolute;
   top: 12px;
-  left: 16px;
+  left: 14px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -393,6 +398,7 @@
   transition: border-color 0.2s, color 0.2s;
   z-index: 10;
   padding: 0;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.08);
 }
 
 .kc-single-back-btn:hover {
@@ -402,12 +408,12 @@
 
 /* Desktop */
 @media (min-width: 769px) {
-  .kc-single {
-    padding-top: 56px;
+  .kc-single-box {
+    padding-top: 56px !important;
   }
   .kc-single-back-btn {
-    top: 14px;
-    left: 20px;
+    top: 12px;
+    left: 16px;
     width: 42px;
     height: 42px;
   }
@@ -415,12 +421,12 @@
 
 /* Mobile Portrait */
 @media (max-width: 768px) and (orientation: portrait) {
-  .kc-single {
-    padding-top: 50px;
+  .kc-single-box {
+    padding-top: 50px !important;
   }
   .kc-single-back-btn {
     top: 10px;
-    left: 14px;
+    left: 12px;
     width: 36px;
     height: 36px;
   }
@@ -428,12 +434,12 @@
 
 /* Mobile Landscape */
 @media screen and (orientation: landscape) and (max-height: 520px) {
-  .kc-single {
-    padding-top: 44px;
+  .kc-single-box {
+    padding-top: 42px !important;
   }
   .kc-single-back-btn {
     top: 8px;
-    left: 12px;
+    left: 10px;
     width: 32px;
     height: 32px;
   }

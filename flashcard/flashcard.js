@@ -321,12 +321,13 @@
     grid.innerHTML =
       '<div class="kc-poster kc-single ' + (landscape ? "kc-landscape" : "kc-portrait") + '">' +
 
-        // Tombol back SVG only — pojok kiri atas
-        '<button id="kc-back-btn" class="kc-single-back-btn" aria-label="Kembali">' +
-          SVG_BACK +
-        '</button>' +
+        '<div class="kc-content-box kc-single-box">' +
 
-        '<div class="kc-content-box">' +
+          // Tombol back SVG only — pojok kiri atas di dalam poster
+          '<button id="kc-back-btn" class="kc-single-back-btn" aria-label="Kembali">' +
+            SVG_BACK +
+          '</button>' +
+
           '<div class="kc-left-col">' +
             '<div class="kc-card-area">' +
               navPrev +

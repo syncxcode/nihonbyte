@@ -4760,7 +4760,26 @@ grid.style.display="grid";
           cardImg.classList.remove("touch-revealed");
         }
 
-        try { openModal(JSON.parse(cardButton.dataset.word)); } catch (err) {}
+        try {
+          var word = JSON.parse(cardButton.dataset.word);
+          if (window.kanjiCardUI) {
+            viewMode = "kanji-card";
+            grid.classList.add("kc-grid-mode");
+            grid.style.removeProperty("grid-template-columns");
+            if (typeof setHistoryMode === "function") setHistoryMode(false);
+            if (resultInfo) resultInfo.textContent = "Kanji Card";
+            window.kanjiCardUI.openWord(word, {
+              grid: grid,
+              onBackToMenu: function() {
+                grid.classList.remove("kc-grid-mode");
+                viewMode = "vocab";
+                render();
+              }
+            });
+          } else {
+            openModal(word);
+          }
+        } catch (err) {}
       });
       fragment.appendChild(cardButton);
     });

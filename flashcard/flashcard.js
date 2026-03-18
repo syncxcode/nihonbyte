@@ -293,6 +293,72 @@
     document.addEventListener("keydown", handleKeydown);
   }
 
-  window.kanjiCardUI = { render: render };
+  function openWord(word, opts) {
+    var grid         = opts.grid;
+    var onBackToMenu = opts.onBackToMenu || null;
+    _grid   = grid;
+    _onBack = onBackToMenu;
+
+    if (!word) return;
+
+    // Sisipkan word sebagai deck tunggal di index 0
+    _deck  = [word];
+    _index = 0;
+
+    if (typeof closeSidebar === "function") closeSidebar();
+
+    var landscape = isMobileLandscape();
+    var mobile    = isMobile();
+
+    // Nav desktop (kiri kanan)
+    var navPrev = !mobile
+      ? '<button id="kc-btn-prev" class="kc-nav-btn kc-nav-prev" disabled>' + SVG_PREV + '</button>'
+      : "";
+    var navNext = !mobile
+      ? '<button id="kc-btn-next" class="kc-nav-btn kc-nav-next" disabled>' + SVG_NEXT + '</button>'
+      : "";
+
+    grid.innerHTML =
+      '<div class="kc-poster kc-single ' + (landscape ? "kc-landscape" : "kc-portrait") + '">' +
+
+        // Tombol back SVG only — pojok kiri atas
+        '<button id="kc-back-btn" class="kc-single-back-btn" aria-label="Kembali">' +
+          SVG_BACK +
+        '</button>' +
+
+        '<div class="kc-content-box">' +
+          '<div class="kc-left-col">' +
+            '<div class="kc-card-area">' +
+              navPrev +
+              '<div id="kc-card" class="kc-card">' + cardInnerHTML(word) + '</div>' +
+              navNext +
+            '</div>' +
+          '</div>' +
+          '<div class="kc-right-col">' +
+            '<div class="kc-examples-panel">' +
+              '<div class="kc-examples-header">' +
+                '<span class="kc-examples-title">Contoh Kalimat</span>' +
+              '</div>' +
+              '<div id="kc-examples-body" class="kc-examples-body">' +
+                examplesHTML(word) +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+
+      '</div>';
+
+    var cardEl = document.getElementById("kc-card");
+    if (cardEl) bindSwipe(cardEl);
+
+    var btnBack = document.getElementById("kc-back-btn");
+    if (btnBack) btnBack.addEventListener("click", function() {
+      if (typeof _onBack === "function") _onBack();
+    });
+
+    bindPlayButtons();
+  }
+
+  window.kanjiCardUI = { render: render, openWord: openWord };
 
 })();

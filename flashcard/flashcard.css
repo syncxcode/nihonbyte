@@ -368,3 +368,77 @@
 }
 
 .kc-card-empty { color: #94a3b8; font-size: 0.9rem; text-align: center; padding: 20px; }
+
+/* ── Single Word View (dari klik flashcard) ── */
+.kc-single {
+  position: relative;
+  padding-top: 52px; /* ruang untuk back button */
+}
+
+/* Back button — pojok kiri atas, SVG only */
+.kc-single-back-btn {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e293b;
+  transition: border-color 0.2s, color 0.2s;
+  z-index: 10;
+  padding: 0;
+}
+
+.kc-single-back-btn:hover {
+  border-color: #e11d48;
+  color: #e11d48;
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .kc-single {
+    padding-top: 56px;
+  }
+  .kc-single-back-btn {
+    top: 14px;
+    left: 20px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 768px) and (orientation: portrait) {
+  .kc-single {
+    padding-top: 50px;
+  }
+  .kc-single-back-btn {
+    top: 10px;
+    left: 14px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Mobile Landscape */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .kc-single {
+    padding-top: 44px;
+  }
+  .kc-single-back-btn {
+    top: 8px;
+    left: 12px;
+    width: 32px;
+    height: 32px;
+  }
+  .kc-single-back-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+}

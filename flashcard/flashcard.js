@@ -293,6 +293,28 @@
     document.addEventListener("keydown", handleKeydown);
   }
 
+  function buildDeckFromWord(word) {
+    if (typeof vocabularyData === "undefined") return [word];
+    // Filter by same type + level, shuffle
+    var filtered = vocabularyData.filter(function(w) {
+      return w.type === word.type && w.level === word.level;
+    });
+    if (filtered.length === 0) return [word];
+    // Shuffle
+    var arr = filtered.slice();
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    // Pastikan word yang diklik ada di index 0
+    var idx = arr.findIndex(function(w) {
+      return (w.kanji && w.kanji === word.kanji) || (!w.kanji && w.kana === word.kana);
+    });
+    if (idx > 0) { var t = arr[0]; arr[0] = arr[idx]; arr[idx] = t; }
+    else if (idx === -1) arr.unshift(word);
+    return arr;
+  }
+
   function openWord(word, opts) {
     var grid         = opts.grid;
     var onBackToMenu = opts.onBackToMenu || null;
@@ -301,8 +323,8 @@
 
     if (!word) return;
 
-    // Sisipkan word sebagai deck tunggal di index 0
-    _deck  = [word];
+    // Build deck filtered by type+level yang sama
+    _deck  = buildDeckFromWord(word);
     _index = 0;
 
     if (typeof closeSidebar === "function") closeSidebar();
@@ -310,24 +332,16 @@
     var landscape = isMobileLandscape();
     var mobile    = isMobile();
 
-    // Nav desktop (kiri kanan)
-    var navPrev = !mobile
-      ? '<button id="kc-btn-prev" class="kc-nav-btn kc-nav-prev" disabled>' + SVG_PREV + '</button>'
-      : "";
-    var navNext = !mobile
-      ? '<button id="kc-btn-next" class="kc-nav-btn kc-nav-next" disabled>' + SVG_NEXT + '</button>'
-      : "";
+    // Nav aktif di desktop, swipe di mobile
+    var navPrev = !mobile ? '<button id="kc-btn-prev" class="kc-nav-btn kc-nav-prev">' + SVG_PREV + '</button>' : "";
+    var navNext = !mobile ? '<button id="kc-btn-next" class="kc-nav-btn kc-nav-next">' + SVG_NEXT + '</button>' : "";
 
     grid.innerHTML =
       '<div class="kc-poster kc-single ' + (landscape ? "kc-landscape" : "kc-portrait") + '">' +
-
         '<div class="kc-content-box kc-single-box">' +
-
-          // Tombol back SVG only — pojok kiri atas di dalam poster
           '<button id="kc-back-btn" class="kc-single-back-btn" aria-label="Kembali">' +
             SVG_BACK +
           '</button>' +
-
           '<div class="kc-left-col">' +
             '<div class="kc-card-area">' +
               navPrev +
@@ -346,18 +360,32 @@
             '</div>' +
           '</div>' +
         '</div>' +
-
       '</div>';
 
+    // Fix font glitch — paksa repaint setelah inject
     var cardEl = document.getElementById("kc-card");
-    if (cardEl) bindSwipe(cardEl);
+    if (cardEl) {
+      bindSwipe(cardEl);
+      // Trigger repaint biar font Shippori Mincho gak glitch
+      cardEl.style.opacity = "0.99";
+      requestAnimationFrame(function() { cardEl.style.opacity = ""; });
+    }
 
+    var btnPrev = document.getElementById("kc-btn-prev");
+    var btnNext = document.getElementById("kc-btn-next");
     var btnBack = document.getElementById("kc-back-btn");
+
+    if (btnPrev) btnPrev.addEventListener("click", function() { navigate(-1); });
+    if (btnNext) btnNext.addEventListener("click", function() { navigate(1); });
     if (btnBack) btnBack.addEventListener("click", function() {
       if (typeof _onBack === "function") _onBack();
     });
 
     bindPlayButtons();
+    updateNavBtns();
+
+    document.removeEventListener("keydown", handleKeydown);
+    document.addEventListener("keydown", handleKeydown);
   }
 
   window.kanjiCardUI = { render: render, openWord: openWord };

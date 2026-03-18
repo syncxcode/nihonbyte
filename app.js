@@ -4771,11 +4771,15 @@ grid.style.display="grid";
         try {
           var word = JSON.parse(cardButton.dataset.word);
           if (window.kanjiCardUI) {
-            // Simpan dari container yang beneran scroll
+            // Simpan scroll container
             var contentPanel = document.querySelector(".content-panel");
             var savedScroll = contentPanel
               ? contentPanel.scrollTop
               : (window.scrollY || window.pageYOffset || 0);
+
+            // Simpan seluruh HTML grid + pagination sebelum diganti
+            var savedGridHTML = grid.innerHTML;
+            var savedGridClass = grid.className;
 
             viewMode = "kanji-card-single";
             grid.classList.add("kc-grid-mode");
@@ -4783,23 +4787,51 @@ grid.style.display="grid";
             if (typeof setHistoryMode === "function") setHistoryMode(false);
             if (resultInfo) resultInfo.textContent = "";
 
-            // Bersihkan pagination
+            // Sembunyikan pagination
             const paginationContainer = document.getElementById("pagination-container");
             if (paginationContainer) {
               paginationContainer.innerHTML = "";
               paginationContainer.style.display = "none";
             }
 
-            // Scroll ke atas grid
-            grid.scrollIntoView({ behavior: "instant", block: "start" });
-
             window.kanjiCardUI.openWord(word, {
               grid: grid,
               onBackToMenu: function() {
-                grid.classList.remove("kc-grid-mode");
+                // Restore langsung dari cache — tanpa render() ulang
                 viewMode = "vocab";
-                grid._restoreScrollY = savedScroll;
-                render();
+                grid.className = savedGridClass;
+                grid.style.removeProperty("grid-template-columns");
+                grid.innerHTML = savedGridHTML;
+
+                // Re-attach event listeners ke kartu yang di-restore
+                grid.querySelectorAll(".card[data-word]").forEach(function(c) {
+                  c.addEventListener("click", function(e) {
+                    if (e.target.closest(".play-audio-btn") || e.target.closest(".download-card-btn") || e.target.closest(".bookmark-card-btn")) return;
+                    var isTouchDevice = navigator.maxTouchPoints > 0 || window.matchMedia("(hover: none)").matches;
+                    if (isTouchDevice) {
+                      var cardImg = c.querySelector(".card-image");
+                      if (!cardImg.classList.contains("touch-revealed")) {
+                        document.querySelectorAll(".card-image.touch-revealed").forEach(function(x) { x.classList.remove("touch-revealed"); });
+                        cardImg.classList.add("touch-revealed");
+                        return;
+                      }
+                      cardImg.classList.remove("touch-revealed");
+                    }
+                    try { openModal(JSON.parse(c.dataset.word)); } catch(err) {}
+                  });
+                });
+
+                // Restore pagination
+                if (paginationContainer) paginationContainer.style.display = "flex";
+
+                // Restore scroll
+                requestAnimationFrame(function() {
+                  if (contentPanel) {
+                    contentPanel.scrollTop = savedScroll;
+                  } else {
+                    window.scrollTo({ top: savedScroll, behavior: "instant" });
+                  }
+                });
               }
             });
           } else {

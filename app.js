@@ -4488,7 +4488,22 @@ grid.style.display="grid";
     }
 
     savedScrollPosition = 0; 
+    const _skipScrollReset = !!grid._restoreScrollY;
+    const _restoreY = grid._restoreScrollY || 0;
+    grid._restoreScrollY = null;
+
     setTimeout(() => {
+      if (_skipScrollReset) {
+        // Kembali dari kanji-card: restore ke posisi card yang diklik
+        window.scrollTo({ top: _restoreY, behavior: "instant" });
+        document.documentElement.scrollTop = _restoreY;
+        document.body.scrollTop = _restoreY;
+        if (window.innerWidth >= 768) {
+          const contentPanel = document.querySelector(".content-panel");
+          if (contentPanel) contentPanel.scrollTop = _restoreY;
+        }
+        return;
+      }
        // Reset scroll global (Mobile)
        window.scrollTo(0, 0); 
        document.documentElement.scrollTop = 0;
@@ -4790,11 +4805,9 @@ grid.style.display="grid";
               onBackToMenu: function() {
                 grid.classList.remove("kc-grid-mode");
                 viewMode = "vocab";
+                // Pasang flag restore scroll sebelum render()
+                grid._restoreScrollY = savedScroll;
                 render();
-                // Restore scroll ke posisi card yang diklik
-                requestAnimationFrame(function() {
-                  window.scrollTo({ top: savedScroll, behavior: "instant" });
-                });
               }
             });
           } else {

@@ -4734,7 +4734,8 @@ grid.style.display="grid";
     
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const paginatedWords = words.slice(startIndex, endIndex); // Potong array sesuai jatah
+    const paginatedWords = words.slice(startIndex, endIndex);
+    const _savedTotalPages = totalPages; // simpan buat restore
 
     const fragment = document.createDocumentFragment();
     paginatedWords.forEach((word) => {
@@ -4780,6 +4781,7 @@ grid.style.display="grid";
 
             const paginationContainer = document.getElementById("pagination-container");
             if (paginationContainer) {
+              paginationContainer.innerHTML = "";
               paginationContainer.style.display = "none";
               paginationContainer.style.visibility = "hidden";
             }
@@ -4805,8 +4807,8 @@ grid.style.display="grid";
                 // Kembalikan semua card dari fragment ke grid
                 grid.appendChild(cardFragment);
                 if (paginationContainer) {
-                  paginationContainer.style.display = "flex";
                   paginationContainer.style.visibility = "";
+                  renderPagination(_savedTotalPages);
                 }
                 grid.classList.remove("kc-grid-mode");
 

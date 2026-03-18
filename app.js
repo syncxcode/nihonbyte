@@ -2336,6 +2336,12 @@ grid.style.display="grid";
       if (inQuiz) {
         // Sedang latihan: jangan render() → nanti user dilempar ke menu
         _refreshQuizLayout();
+      } else if (viewMode === 'kanji-card-single') {
+        // Sedang di kanji-card: rerender layout saja, kartu tidak reset
+        document.body.style.height = window.innerHeight + 'px';
+        if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
+          window.kanjiCardUI.rerender();
+        }
       } else {
         // Tidak sedang latihan: render normal
         document.body.style.height = window.innerHeight + 'px';
@@ -2358,6 +2364,14 @@ grid.style.display="grid";
       if (inQuiz) {
         // Orientasi berubah saat latihan → hanya refresh layout, jangan reset ke menu
         setTimeout(() => _refreshQuizLayout(), 150);
+      } else if (viewMode === 'kanji-card-single') {
+        // Sedang di kanji-card: rerender layout saja, kartu tidak reset
+        document.body.style.height = window.innerHeight + 'px';
+        setTimeout(() => {
+          if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
+            window.kanjiCardUI.rerender();
+          }
+        }, 150);
       } else {
         document.body.style.height = window.innerHeight + 'px';
         setTimeout(() => {

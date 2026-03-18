@@ -4769,6 +4769,7 @@ grid.style.display="grid";
                 }, 50);
               }
             });
+          }
         } catch (err) {}
       });
       fragment.appendChild(cardButton);

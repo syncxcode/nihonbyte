@@ -4465,9 +4465,6 @@ grid.style.display="grid";
             <div class="hub-levels">
               ${levels.map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`).join("")}
             </div>
-            <div class="hub-note hub-note--choukai">
-              N5–N1 tersedia
-            </div>
           </div>
         </div>
         </div>

@@ -11791,6 +11791,6 @@ body.history-mode .dashboard-shell textarea {
 
 @media (max-width: 767px) {
   .dash-progress-wrap {
-    width: 100% !important;
+    width: 86% !important;
   }
 }

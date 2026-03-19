@@ -5771,7 +5771,7 @@ grid.style.display="grid";
       return;
     }
 
-    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>Menyiapkan dashboard...</p></div>';
+    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:20px;"><p>Menyiapkan dashboard...</p></div>';
     if (resultInfo) resultInfo.textContent = "Dasbor saya";
     if (typeof setHistoryMode === "function") setHistoryMode(true);
     if (typeof closeSidebar === "function") closeSidebar();

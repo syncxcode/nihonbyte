@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NihonByte · Mulai Perjalananmu</title>
+  <link rel="icon" type="image/png" href="../assets/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    :root {
+      --red: #e11d48;
+      --red-light: #fb7185;
+      --red-dark: #be123c;
+      --bg: #0a0f1e;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(225,29,72,0.1);
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(225,29,72,0.4);
+      --text-primary: #f1f5f9;
+      --text-secondary: rgba(148,163,184,0.85);
+      --text-muted: rgba(148,163,184,0.5);
+      --text-accent: rgba(251,113,133,0.6);
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: var(--bg);
+      font-family: 'Ubuntu', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── Background ── */
+    .ob-bg {
+      position: fixed; inset: 0; overflow: hidden; z-index: 0;
+    }
+    .ob-orb {
+      position: absolute; border-radius: 50%;
+      animation: orb-pulse 6s ease-in-out infinite alternate;
+    }
+    .ob-orb-1 {
+      width: 700px; height: 700px; top: -200px; left: -150px;
+      background: radial-gradient(circle, rgba(225,29,72,0.22) 0%, transparent 70%);
+    }
+    .ob-orb-2 {
+      width: 600px; height: 600px; bottom: -150px; right: -150px;
+      background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+      animation-delay: 3s;
+    }
+    .ob-orb-3 {
+      width: 400px; height: 400px; top: 40%; left: 45%;
+      background: radial-gradient(circle, rgba(139,7,24,0.28) 0%, transparent 70%);
+      animation-delay: 1.5s;
+    }
+    @keyframes orb-pulse {
+      from { transform: scale(1); opacity: 0.7; }
+      to   { transform: scale(1.18); opacity: 1; }
+    }
+    .ob-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(225,29,72,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(225,29,72,0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .ob-kanji {
+      position: absolute; font-family: 'Shippori Mincho', serif;
+      font-weight: 700; pointer-events: none;
+      color: rgba(225,29,72,0.07);
+      animation: kanji-drift 12s ease-in-out infinite alternate;
+    }
+    .ob-kanji-1 { font-size: clamp(100px, 14vw, 200px); top: -30px; right: 6%; animation-delay: 0s; }
+    .ob-kanji-2 { font-size: clamp(80px, 10vw, 140px); bottom: 5%; left: 3%; animation-delay: 3s; }
+    .ob-kanji-3 { font-size: clamp(60px, 8vw, 110px); top: 35%; right: 3%; animation-delay: 6s; }
+    .ob-kanji-4 { font-size: clamp(50px, 6vw, 90px); top: 65%; left: 12%; animation-delay: 9s; }
+    @keyframes kanji-drift {
+      from { transform: translateY(0) rotate(-4deg); opacity: 0.7; }
+      to   { transform: translateY(-22px) rotate(4deg); opacity: 1; }
+    }
+
+    /* ── Layout ── */
+    .ob-shell {
+      position: relative; z-index: 1;
+      width: 100%; height: 100dvh;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── Navbar ── */
+    .ob-nav {
+      flex-shrink: 0;
+      padding: 16px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .ob-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .ob-logo-mark {
+      width: 32px; height: 32px; background: var(--red);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ob-logo-mark svg { width: 17px; height: 17px; }
+    .ob-logo-name {
+      font-size: 0.92rem; font-weight: 800; color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+    .ob-progress-dots {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ob-dot {
+      height: 3px; border-radius: 2px;
+      background: rgba(255,255,255,0.12);
+      transition: all 0.35s ease;
+    }
+    .ob-dot.active { background: var(--red); width: 28px; }
+    .ob-dot.done   { background: rgba(225,29,72,0.35); width: 18px; }
+    .ob-dot.idle   { width: 18px; }
+
+    /* ── Screens ── */
+    .ob-body { flex: 1; overflow: hidden; position: relative; }
+    .ob-screen {
+      position: absolute; inset: 0;
+      display: flex; align-items: stretch;
+      opacity: 0; pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .ob-screen.active {
+      opacity: 1; pointer-events: all;
+      transform: translateY(0);
+    }
+
+    /* ── Screen 1: Pilih Level ── */
+    .ob-left {
+      flex: 0 0 380px;
+      padding: 48px 44px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      overflow-y: auto;
+    }
+    .ob-right {
+      flex: 1;
+      padding: 32px 40px;
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 9px;
+      overflow-y: auto;
+    }
+
+    .ob-badge {
+      display: inline-block;
+      background: rgba(225,29,72,0.15); border: 1px solid rgba(225,29,72,0.4);
+      color: var(--red-light); font-size: 0.58rem; font-weight: 800;
+      letter-spacing: 0.16em; padding: 3px 11px; border-radius: 999px;
+      margin-bottom: 20px; width: fit-content;
+    }
+    .ob-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+      font-weight: 900; color: var(--text-primary);
+      line-height: 1.08; margin-bottom: 8px; letter-spacing: -0.025em;
+    }
+    .ob-subtitle {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 0.92rem; color: var(--text-accent);
+      margin-bottom: 18px; letter-spacing: 0.04em;
+    }
+    .ob-desc {
+      font-size: 0.83rem; color: var(--text-secondary);
+      line-height: 1.78; max-width: 290px;
+    }
+    .ob-note {
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; max-width: 290px;
+    }
+    .ob-note p {
+      font-size: 0.74rem; color: var(--text-muted); line-height: 1.65;
+    }
+    .ob-note p + p { margin-top: 1px; }
+
+    .ob-cta-hint {
+      font-size: 0.68rem; font-weight: 800; color: rgba(251,113,133,0.55);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;
+    }
+
+    .ob-level-card {
+      display: flex; align-items: center; gap: 13px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 13px; padding: 12px 16px; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.18s;
+      animation: card-in 0.3s ease both;
+    }
+    .ob-level-card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+    }
+    @keyframes card-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .ob-level-icon {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 800; flex-shrink: 0;
+    }
+    .lvl-n5 { background: #fff0f3; color: #e11d48; border: 1.5px solid #e11d48; }
+    .lvl-n4 { background: #eff6ff; color: #2563eb; border: 1.5px solid #2563eb; }
+    .lvl-n3 { background: #f0fdf4; color: #16a34a; border: 1.5px solid #16a34a; }
+    .lvl-n2 { background: #fefce8; color: #ca8a04; border: 1.5px solid #ca8a04; }
+    .lvl-n1 { background: #fdf4ff; color: #9333ea; border: 1.5px solid #9333ea; }
+    .ob-level-info { flex: 1; }
+    .ob-level-name {
+      font-size: 0.88rem; font-weight: 800; color: var(--text-primary);
+      display: block; margin-bottom: 1px;
+    }
+    .ob-level-label {
+      font-size: 0.7rem; color: rgba(148,163,184,0.6);
+      font-family: 'Shippori Mincho', serif;
+    }
+    .ob-level-arr { color: rgba(148,163,184,0.3); }
+    .ob-level-arr svg { width: 15px; height: 15px; display: block; }
+
+    /* ── Screen 2: Placement Quiz ── */
+    .ob-quiz-panel {
+      flex: 1; padding: 40px 48px;
+      display: flex; flex-direction: column; justify-content: center; gap: 16px;
+      overflow-y: auto;
+    }
+    .ob-quiz-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ob-quiz-tag {
+      background: rgba(225,29,72,0.15); border: 1px solid rgba(225,29,72,0.35);
+      color: var(--red-light); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.1em; padding: 3px 11px; border-radius: 999px;
+    }
+    .ob-quiz-counter {
+      font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+    }
+    .ob-quiz-bar {
+      height: 3px; background: rgba(255,255,255,0.08);
+      border-radius: 999px; overflow: hidden;
+    }
+    .ob-quiz-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red), var(--red-light));
+      border-radius: 999px; transition: width 0.4s ease;
+    }
+    .ob-quiz-section-info {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .ob-quiz-section-pill {
+      font-size: 0.68rem; font-weight: 700; color: var(--text-muted);
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .ob-question {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--text-primary); line-height: 1.65;
+    }
+    .ob-question u { text-decoration-color: var(--red); }
+    .ob-transl {
+      font-size: 0.76rem; color: var(--text-muted);
+      font-style: italic; margin-top: -8px;
+    }
+    .ob-options { display: flex; flex-direction: column; gap: 8px; }
+    .ob-option {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 11px; padding: 11px 16px; cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .ob-option:not(.answered):hover {
+      background: rgba(225,29,72,0.08);
+      border-color: rgba(225,29,72,0.3);
+    }
+    .ob-option.correct {
+      background: rgba(22,163,74,0.12); border-color: rgba(22,163,74,0.5);
+      pointer-events: none;
+    }
+    .ob-option.wrong {
+      background: rgba(225,29,72,0.12); border-color: rgba(225,29,72,0.5);
+      pointer-events: none;
+    }
+    .ob-option.disabled { pointer-events: none; }
+    .ob-opt-key {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(255,255,255,0.07); flex-shrink: 0;
+      font-size: 0.65rem; font-weight: 800; color: rgba(148,163,184,0.7);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s, color 0.15s;
+    }
+    .ob-option.correct .ob-opt-key { background: #16a34a; color: #fff; }
+    .ob-option.wrong   .ob-opt-key { background: var(--red); color: #fff; }
+    .ob-opt-text { font-size: 0.86rem; color: #e2e8f0; }
+    .ob-lock-hint {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.68rem; color: rgba(148,163,184,0.35);
+    }
+    .ob-lock-hint svg { width: 11px; height: 11px; flex-shrink: 0; }
+
+    /* ── Screen 2b: Section Result ── */
+    .ob-result-panel {
+      flex: 1; padding: 40px 48px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; text-align: center;
+    }
+    .ob-result-icon svg { width: 80px; height: 80px; display: block; }
+    .ob-result-score {
+      font-size: 3.5rem; font-weight: 900;
+      line-height: 1;
+    }
+    .ob-result-score.pass { color: #16a34a; }
+    .ob-result-score.fail { color: var(--red); }
+    .ob-result-title { font-size: 1.3rem; font-weight: 800; color: var(--text-primary); }
+    .ob-result-desc { font-size: 0.84rem; color: var(--text-secondary); max-width: 360px; line-height: 1.7; }
+
+    /* ── Screen 3: Done ── */
+    .ob-done-panel {
+      flex: 1; padding: 40px 48px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; text-align: center;
+    }
+    .ob-done-icon svg { width: 80px; height: 80px; display: block; }
+    .ob-done-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 900;
+      color: var(--text-primary); line-height: 1.1;
+    }
+    .ob-done-desc {
+      font-size: 0.84rem; color: var(--text-secondary);
+      max-width: 380px; line-height: 1.75;
+    }
+    .ob-done-levels { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+    .ob-done-level {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 11px; padding: 7px 14px;
+    }
+    .ob-done-level-icon {
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; font-weight: 800; flex-shrink: 0;
+    }
+    .ob-done-level span { font-size: 0.8rem; font-weight: 700; color: var(--text-primary); }
+
+    /* ── Buttons ── */
+    .ob-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: var(--red); color: #fff; border: none; border-radius: 13px;
+      padding: 13px 26px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(225,29,72,0.3);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 6px; font-family: 'Ubuntu', sans-serif;
+    }
+    .ob-btn:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(225,29,72,0.4); }
+    .ob-btn svg { width: 17px; height: 17px; }
+    .ob-btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 13px; padding: 11px 22px; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; font-family: 'Ubuntu', sans-serif;
+    }
+    .ob-btn-ghost:hover { background: rgba(255,255,255,0.05); color: var(--text-secondary); }
+
+    /* ── Loading overlay ── */
+    .ob-loading {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 16px;
+      transition: opacity 0.4s ease;
+    }
+    .ob-loading.hide { opacity: 0; pointer-events: none; }
+    .ob-loading-spinner {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2.5px solid rgba(225,29,72,0.2);
+      border-top-color: var(--red);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .ob-loading-text { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* ── Responsive Mobile Portrait ── */
+    @media (max-width: 767px) and (orientation: portrait) {
+      .ob-nav { padding: 14px 20px; }
+      .ob-screen { flex-direction: column; overflow-y: auto; }
+      .ob-left {
+        flex: 0 0 auto; padding: 28px 22px 16px;
+        border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .ob-right { flex: 1; padding: 16px 22px 28px; gap: 8px; }
+      .ob-title { font-size: 1.75rem; }
+      .ob-desc { max-width: 100%; }
+      .ob-note { max-width: 100%; }
+      .ob-kanji-1 { font-size: 100px; }
+      .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
+      .ob-quiz-panel { padding: 24px 22px; }
+      .ob-result-panel { padding: 28px 22px; }
+      .ob-done-panel { padding: 28px 22px; }
+    }
+
+    /* ── Responsive Mobile Landscape ── */
+    @media screen and (orientation: landscape) and (max-height: 520px) {
+      .ob-left { flex: 0 0 280px; padding: 20px 28px; }
+      .ob-title { font-size: 1.5rem; }
+      .ob-right { padding: 16px 24px; gap: 6px; }
+      .ob-level-card { padding: 9px 13px; }
+      .ob-level-icon { width: 32px; height: 32px; font-size: 0.6rem; }
+      .ob-quiz-panel { padding: 20px 32px; gap: 10px; }
+      .ob-done-panel { padding: 20px 32px; }
+      .ob-kanji-1, .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Loading -->
+<div class="ob-loading" id="ob-loading">
+  <div class="ob-loading-spinner"></div>
+  <span class="ob-loading-text">Memuat...</span>
+</div>
+
+<!-- Background -->
+<div class="ob-bg">
+  <div class="ob-orb ob-orb-1"></div>
+  <div class="ob-orb ob-orb-2"></div>
+  <div class="ob-orb ob-orb-3"></div>
+  <div class="ob-grid"></div>
+  <div class="ob-kanji ob-kanji-1">語</div>
+  <div class="ob-kanji ob-kanji-2">学</div>
+  <div class="ob-kanji ob-kanji-3">力</div>
+  <div class="ob-kanji ob-kanji-4">文</div>
+</div>
+
+<div class="ob-shell">
+
+  <!-- Navbar -->
+  <nav class="ob-nav">
+    <div class="ob-logo">
+      <div class="ob-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <span class="ob-logo-name">NihonByte</span>
+    </div>
+    <div class="ob-progress-dots" id="ob-dots">
+      <div class="ob-dot active idle" data-step="1"></div>
+      <div class="ob-dot idle" data-step="2"></div>
+      <div class="ob-dot idle" data-step="3"></div>
+    </div>
+  </nav>
+
+  <!-- Screens -->
+  <div class="ob-body">
+
+    <!-- ── SCREEN 1: Pilih Level ── -->
+    <div class="ob-screen active" id="screen-level">
+      <div class="ob-left">
+        <div class="ob-badge">NIHONBYTE PRACTICE</div>
+        <h1 class="ob-title">Perjalananmu<br>dimulai<br>di sini</h1>
+        <p class="ob-subtitle">日本語の旅はここから始まる</p>
+        <p class="ob-desc">Bukan sekadar kosakata dan grammar. NihonByte dirancang untuk membangun fondasi yang kuat, satu level dalam satu waktu. Sebelum masuk, kami perlu tahu kamu ada di mana sekarang.</p>
+        <div class="ob-note">
+          <p>Jika kamu memilih level di atas N5.</p>
+          <p>Ada tes singkat untuk memverifikasi kemampuan bahasa Jepang kamu.</p>
+        </div>
+      </div>
+      <div class="ob-right">
+        <div class="ob-cta-hint">Sudah sejauh mana kamu?</div>
+        <div class="ob-level-card" data-level="N5" style="animation-delay:0.04s">
+          <div class="ob-level-icon lvl-n5">N5</div>
+          <div class="ob-level-info">
+            <span class="ob-level-name">N5 · 基礎</span>
+            <span class="ob-level-label">Baru mulai belajar bahasa Jepang</span>
+          </div>
+          <div class="ob-level-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ob-level-card" data-level="N4" style="animation-delay:0.1s">
+          <div class="ob-level-icon lvl-n4">N4</div>
+          <div class="ob-level-info">
+            <span class="ob-level-name">N4 · 初級</span>
+            <span class="ob-level-label">Sudah kenal dasar, siap naik level</span>
+          </div>
+          <div class="ob-level-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ob-level-card" data-level="N3" style="animation-delay:0.16s">
+          <div class="ob-level-icon lvl-n3">N3</div>
+          <div class="ob-level-info">
+            <span class="ob-level-name">N3 · 中級</span>
+            <span class="ob-level-label">Sudah bisa percakapan sederhana</span>
+          </div>
+          <div class="ob-level-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ob-level-card" data-level="N2" style="animation-delay:0.22s">
+          <div class="ob-level-icon lvl-n2">N2</div>
+          <div class="ob-level-info">
+            <span class="ob-level-name">N2 · 上級</span>
+            <span class="ob-level-label">Lancar membaca dan menulis</span>
+          </div>
+          <div class="ob-level-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="ob-level-card" data-level="N1" style="animation-delay:0.28s">
+          <div class="ob-level-icon lvl-n1">N1</div>
+          <div class="ob-level-info">
+            <span class="ob-level-name">N1 · 最上級</span>
+            <span class="ob-level-label">Hampir fasih atau sudah lulus JLPT N2</span>
+          </div>
+          <div class="ob-level-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 2: Placement Quiz ── -->
+    <div class="ob-screen" id="screen-quiz">
+      <div class="ob-quiz-panel">
+        <div class="ob-quiz-header">
+          <div class="ob-quiz-tag" id="quiz-tag">N5 · KOSAKATA</div>
+          <div class="ob-quiz-counter" id="quiz-counter">1 / 10</div>
+        </div>
+        <div class="ob-quiz-bar">
+          <div class="ob-quiz-fill" id="quiz-bar" style="width:0%"></div>
+        </div>
+        <div class="ob-quiz-section-info">
+          <div class="ob-quiz-section-pill" id="quiz-section-pill">Bagian 1 dari 2</div>
+          <div class="ob-quiz-section-pill" id="quiz-min-score">Min. 80% untuk lulus</div>
+        </div>
+        <div class="ob-question" id="quiz-question">Memuat soal...</div>
+        <div class="ob-transl" id="quiz-transl"></div>
+        <div class="ob-options" id="quiz-options"></div>
+        <div class="ob-lock-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Selesaikan semua soal untuk melanjutkan
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 2b: Section Result ── -->
+    <div class="ob-screen" id="screen-result">
+      <div class="ob-result-panel">
+        <div class="ob-result-icon" id="result-icon"></div>
+        <div class="ob-result-score" id="result-score">80%</div>
+        <div class="ob-result-title" id="result-title">Lulus</div>
+        <div class="ob-result-desc" id="result-desc"></div>
+        <button class="ob-btn" id="result-btn" onclick="handleResultNext()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Lanjut
+        </button>
+      </div>
+    </div>
+
+    <!-- ── SCREEN 3: Done ── -->
+    <div class="ob-screen" id="screen-done">
+      <div class="ob-done-panel">
+        <div class="ob-done-icon">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="37" fill="rgba(225,29,72,0.1)" stroke="rgba(225,29,72,0.25)" stroke-width="1.5"/>
+            <polyline points="22,40 33,52 58,26" stroke="#e11d48" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="ob-done-title">Selamat Datang!</h2>
+        <p class="ob-done-desc">Konfigurasi selesai. Semua materi, latihan, dan fitur sekarang disesuaikan dengan level kamu.</p>
+        <div class="ob-done-levels" id="done-levels"></div>
+        <button class="ob-btn" onclick="finishOnboarding()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Mulai Belajar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Firebase -->
+<script src="../firebase-config.js"></script>
+<script type="module">
+  import { initializeApp }   from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+  import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+  const cfg = window.NIHONBYTE_FIREBASE_CONFIG;
+  if (!cfg || !cfg.apiKey) {
+    console.warn("Firebase config tidak ditemukan.");
+    hideLoading();
+  } else {
+    const app  = initializeApp(cfg);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+
+    window._ob_db   = db;
+    window._ob_doc  = doc;
+    window._ob_setDoc = setDoc;
+    window._ob_getDoc = getDoc;
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.replace("../index.html");
+        return;
+      }
+      window._ob_uid = user.uid;
+
+      // Cek apakah sudah onboarding
+      try {
+        const ref  = doc(db, "users", user.uid, "practice", "progress");
+        const snap = await getDoc(ref);
+        if (snap.exists() && snap.data()?.onboardingDone) {
+          window.location.replace("../index.html");
+          return;
+        }
+      } catch(e) { console.error(e); }
+
+      hideLoading();
+    });
+  }
+</script>
+
+<!-- Data latihan (untuk placement quiz) -->
+<script src="../latihan/data-goi.js"></script>
+<script src="../latihan/data-bunpou.js"></script>
+
+<script>
+  // ── Utils ──────────────────────────────────────────────────
+  function hideLoading() {
+    const el = document.getElementById("ob-loading");
+    el.classList.add("hide");
+    setTimeout(() => el.style.display = "none", 420);
+  }
+
+  function showScreen(id) {
+    document.querySelectorAll(".ob-screen").forEach(s => s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+  }
+
+  function setDots(step) {
+    document.querySelectorAll(".ob-dot").forEach((d, i) => {
+      d.className = "ob-dot";
+      if (i + 1 === step) d.classList.add("active", "idle");
+      else if (i + 1 < step) d.classList.add("done", "idle");
+      else d.classList.add("idle");
+    });
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ── State ──────────────────────────────────────────────────
+  const LEVELS = ["N5","N4","N3","N2","N1"];
+  const LEVEL_LABELS = { N5:"基礎", N4:"初級", N3:"中級", N2:"上級", N1:"最上級" };
+  const LEVEL_CLASSES = { N5:"lvl-n5", N4:"lvl-n4", N3:"lvl-n3", N2:"lvl-n2", N1:"lvl-n1" };
+
+  let targetLevel   = null;
+  let sectionsToTest = []; // [{level, type, label}]
+  let sectionIdx    = 0;
+  let questions     = [];
+  let qIdx          = 0;
+  let correctCount  = 0;
+  let sectionResults = []; // [{level, type, score, passed}]
+  let unlockedLevels = [];
+
+  // ── Screen 1: Level cards ──────────────────────────────────
+  document.querySelectorAll(".ob-level-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const lvl = card.dataset.level;
+      selectLevel(lvl);
+    });
+  });
+
+  function selectLevel(lvl) {
+    targetLevel = lvl;
+    const idx   = LEVELS.indexOf(lvl);
+
+    if (idx === 0) {
+      // N5 — langsung unlock, tidak perlu placement
+      unlockedLevels = ["N5"];
+      saveAndFinish({ N5:"active", N4:"locked", N3:"locked", N2:"locked", N1:"locked" });
+      return;
+    }
+
+    // Buat sections yang perlu di-test: N5..level-1, masing-masing goi + bunpou
+    sectionsToTest = [];
+    for (let i = 0; i < idx; i++) {
+      sectionsToTest.push({ level: LEVELS[i], type: "goi",    label: "Kosakata" });
+      sectionsToTest.push({ level: LEVELS[i], type: "bunpou", label: "Tata Bahasa" });
+    }
+    sectionIdx     = 0;
+    sectionResults = [];
+    setDots(2);
+    startSection();
+  }
+
+  // ── Placement Quiz ─────────────────────────────────────────
+  function buildQuestions(level, type) {
+    let pool = [];
+    if (type === "goi") {
+      const src = window.latihanGoiReal?.[level] || {};
+      Object.values(src).forEach(arr => { if (Array.isArray(arr)) pool.push(...arr); });
+    } else {
+      const src = window.latihanBunpouReal?.[level] || {};
+      Object.values(src).forEach(arr => { if (Array.isArray(arr)) pool.push(...arr); });
+    }
+    return shuffle(pool).slice(0, 10).map(q => ({
+      prompt: q.question,
+      options: q.options,
+      answer: q.answer,
+      transl: q.translation || ""
+    }));
+  }
+
+  function startSection() {
+    // Cek apakah ada seksi yang gagal sebelumnya yang perlu diulang
+    const failIdx = sectionResults.findIndex(r => !r.passed);
+    if (failIdx > -1) {
+      // Reset seksi yang gagal
+      const failedSection = sectionResults[failIdx];
+      sectionIdx = sectionsToTest.findIndex(s => s.level === failedSection.level && s.type === failedSection.type);
+      sectionResults.splice(failIdx, 1);
+    }
+
+    const section = sectionsToTest[sectionIdx];
+    questions     = buildQuestions(section.level, section.type);
+    qIdx          = 0;
+    correctCount  = 0;
+
+    // Update tag
+    document.getElementById("quiz-tag").textContent = `${section.level} · ${section.label.toUpperCase()}`;
+    document.getElementById("quiz-section-pill").textContent =
+      `Bagian ${sectionIdx + 1} dari ${sectionsToTest.length}`;
+
+    showScreen("screen-quiz");
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    const q    = questions[qIdx];
+    const total = questions.length;
+    const pct  = Math.round((qIdx / total) * 100);
+
+    document.getElementById("quiz-counter").textContent = `${qIdx + 1} / ${total}`;
+    document.getElementById("quiz-bar").style.width     = pct + "%";
+    document.getElementById("quiz-question").innerHTML  = q.prompt;
+    document.getElementById("quiz-transl").textContent  = q.transl;
+
+    const optEl = document.getElementById("quiz-options");
+    optEl.innerHTML = q.options.map((opt, i) => `
+      <div class="ob-option" data-opt="${encodeURIComponent(opt)}" data-ans="${encodeURIComponent(q.answer)}">
+        <div class="ob-opt-key">${String.fromCharCode(65 + i)}</div>
+        <div class="ob-opt-text">${opt}</div>
+      </div>
+    `).join("");
+
+    optEl.querySelectorAll(".ob-option").forEach(btn => {
+      btn.addEventListener("click", () => handleAnswer(btn));
+    });
+  }
+
+  function handleAnswer(btn) {
+    const opt = decodeURIComponent(btn.dataset.opt);
+    const ans = decodeURIComponent(btn.dataset.ans);
+    if (opt === ans) correctCount++;
+
+    // Mark options
+    document.querySelectorAll(".ob-option").forEach(b => {
+      b.classList.add("disabled");
+      const bOpt = decodeURIComponent(b.dataset.opt);
+      if (bOpt === ans) b.classList.add("correct");
+      else if (b === btn && opt !== ans) b.classList.add("wrong");
+    });
+
+    setTimeout(() => {
+      qIdx++;
+      if (qIdx >= questions.length) {
+        endSection();
+      } else {
+        renderQuestion();
+      }
+    }, 750);
+  }
+
+  function endSection() {
+    const section = sectionsToTest[sectionIdx];
+    const score   = Math.round((correctCount / questions.length) * 100);
+    const passed  = score >= 80;
+
+    sectionResults.push({ level: section.level, type: section.type, score, passed });
+
+    // Tampilkan result
+    const iconEl  = document.getElementById("result-icon");
+    const scoreEl = document.getElementById("result-score");
+    const titleEl = document.getElementById("result-title");
+    const descEl  = document.getElementById("result-desc");
+    const btnEl   = document.getElementById("result-btn");
+
+    scoreEl.textContent = score + "%";
+    scoreEl.className   = "ob-result-score " + (passed ? "pass" : "fail");
+
+    if (passed) {
+      iconEl.innerHTML = `<svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="37" fill="rgba(22,163,74,0.1)" stroke="rgba(22,163,74,0.3)" stroke-width="1.5"/><polyline points="22,40 33,52 58,26" stroke="#16a34a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      titleEl.textContent = "Lulus";
+      descEl.textContent  = "Bagus! Kamu lolos bagian ini. Lanjut ke bagian berikutnya.";
+      btnEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg> Lanjut`;
+    } else {
+      iconEl.innerHTML = `<svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="37" fill="rgba(225,29,72,0.1)" stroke="rgba(225,29,72,0.25)" stroke-width="1.5"/><line x1="26" y1="26" x2="54" y2="54" stroke="#e11d48" stroke-width="2.8" stroke-linecap="round"/><line x1="54" y1="26" x2="26" y2="54" stroke="#e11d48" stroke-width="2.8" stroke-linecap="round"/></svg>`;
+      titleEl.textContent = "Belum Lulus";
+      descEl.textContent  = `Nilai minimum 80%. Kamu mendapat ${score}%. Ulangi bagian ini untuk melanjutkan.`;
+      btnEl.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Ulangi`;
+    }
+
+    setDots(2);
+    showScreen("screen-result");
+  }
+
+  function handleResultNext() {
+    const lastResult = sectionResults[sectionResults.length - 1];
+    if (!lastResult.passed) {
+      // Ulangi seksi yang gagal
+      const failIdx = sectionsToTest.findIndex(s => s.level === lastResult.level && s.type === lastResult.type);
+      sectionIdx = failIdx;
+      sectionResults.pop(); // hapus result yang gagal
+      startSection();
+      return;
+    }
+
+    // Cek apakah semua seksi sudah done
+    const doneIds = sectionResults.map(r => `${r.level}_${r.type}`);
+    const allDone = sectionsToTest.every(s => doneIds.includes(`${s.level}_${s.type}`));
+
+    if (allDone) {
+      computeUnlockedAndFinish();
+    } else {
+      // Lanjut ke seksi berikutnya
+      sectionIdx++;
+      // Skip yang sudah lulus
+      while (sectionIdx < sectionsToTest.length) {
+        const s = sectionsToTest[sectionIdx];
+        const done = sectionResults.find(r => r.level === s.level && r.type === s.type && r.passed);
+        if (!done) break;
+        sectionIdx++;
+      }
+      if (sectionIdx >= sectionsToTest.length) {
+        computeUnlockedAndFinish();
+      } else {
+        startSection();
+      }
+    }
+  }
+
+  function computeUnlockedAndFinish() {
+    const targetIdx = LEVELS.indexOf(targetLevel);
+    const levelStatus = { N5:"locked", N4:"locked", N3:"locked", N2:"locked", N1:"locked" };
+    levelStatus["N5"] = "active";
+
+    // Unlock level berurutan selama goi + bunpou keduanya lulus
+    for (let i = 0; i < targetIdx; i++) {
+      const lvl       = LEVELS[i];
+      const goiPassed = sectionResults.find(r => r.level === lvl && r.type === "goi"    && r.passed);
+      const bunPassed = sectionResults.find(r => r.level === lvl && r.type === "bunpou" && r.passed);
+      if (goiPassed && bunPassed) {
+        levelStatus[LEVELS[i + 1]] = "active";
+      } else {
+        break;
+      }
+    }
+
+    unlockedLevels = LEVELS.filter(l => levelStatus[l] === "active");
+    saveAndFinish(levelStatus);
+  }
+
+  // ── Save & Finish ──────────────────────────────────────────
+  async function saveAndFinish(levelStatus) {
+    setDots(3);
+    showScreen("screen-done");
+
+    // Render unlocked levels
+    const doneLevels = LEVELS.filter(l => levelStatus[l] === "active");
+    const container  = document.getElementById("done-levels");
+    container.innerHTML = doneLevels.map(l => `
+      <div class="ob-done-level">
+        <div class="ob-done-level-icon ${LEVEL_CLASSES[l]}">${l}</div>
+        <span>${LEVEL_LABELS[l]}</span>
+      </div>
+    `).join("");
+
+    // Simpan ke Firestore
+    if (window._ob_db && window._ob_uid) {
+      try {
+        const ref = window._ob_doc(window._ob_db, "users", window._ob_uid, "practice", "progress");
+        await window._ob_setDoc(ref, {
+          onboardingDone: true,
+          startLevel: LEVELS.find(l => levelStatus[l] === "active") || "N5",
+          levelStatus,
+          updatedAt: new Date().toISOString()
+        }, { merge: true });
+      } catch(e) {
+        console.error("Gagal simpan onboarding:", e);
+      }
+    }
+  }
+
+  function finishOnboarding() {
+    window.location.replace("../index.html");
+  }
+</script>
+</body>
+</html>

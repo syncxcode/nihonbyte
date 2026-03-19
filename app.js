@@ -892,19 +892,35 @@ grid.style.display="grid";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
-        // Reset cache practice agar render() fetch ulang setelah login
-        if (window.practiceUI) window.practiceUI._latestProg = undefined;
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
         updateAccountStatusUI(user);
         setAccessMode("logged-in");
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
+
+        // ── Cek onboarding sebelum render ──
+        // Kalau belum onboarding → redirect ke halaman onboarding
+        try {
+          if (window.firebaseDb && window.doc && window.getDoc) {
+            const _obRef  = window.doc(window.firebaseDb, "users", user.uid, "practice", "progress");
+            const _obSnap = await window.getDoc(_obRef);
+            if (!_obSnap.exists() || !_obSnap.data()?.onboardingDone) {
+              window.location.replace("./onboard/onboarding.html");
+              return;
+            }
+            // Simpan progress ke cache global biar level gate bisa baca
+            window._practiceProgress = _obSnap.data();
+          }
+        } catch(e) { console.error("Cek onboarding gagal:", e); }
+        // ────────────────────────────────────
+
         viewMode = "menu";
         selectedType = "verb-adj-only";
         selectedLevel = "all";
         if (search) search.value = "";
         await loadUserBookmarks(user.uid); // Load bookmarks saat login
+        applyLevelGate(); // Apply level gate sesuai unlocked levels
         render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
           openAccountModal();
@@ -2138,6 +2154,10 @@ grid.style.display="grid";
       
       // 3. Reset Kategori Khusus (Lepas semua pilihan)
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
+
+      // 4. Apply level gate sesuai onboarding (hanya untuk LOCKED_VOCAB_TYPES)
+      // Saat modal baru dibuka, belum ada kategori aktif → level bebas dulu
+      _applySearchLevelGate(false);
       // ----------------------------------------
 
       filterModal.classList.add("active");
@@ -2208,6 +2228,10 @@ grid.style.display="grid";
     document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         btn.classList.toggle("active");
+        // Cek apakah ada LOCKED_VOCAB_TYPES yang aktif → apply level gate
+        const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
+        const hasLockedType = activeTypes.some(t => LOCKED_VOCAB_TYPES.includes(t));
+        _applySearchLevelGate(hasLockedType);
       });
     });
 
@@ -2718,14 +2742,24 @@ grid.style.display="grid";
       });
   }
 
+  const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-suru", "adj-i", "adj-na"];
+
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();
     const selectedFromDropdown = category ? category.value : "all";
     if (typeof vocabularyData === "undefined") return []; // Safety check
 
     const filtered = vocabularyData.filter((word) => {
-      if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+      // Level gate hanya untuk vocab inti (LOCKED_VOCAB_TYPES)
+      // Kotoba, activity, ekspresi, dll bebas semua level
+      const isLockedType = LOCKED_VOCAB_TYPES.includes(word.type);
+      if (isLockedType && selectedLevel !== "all" && word.level !== selectedLevel) return false;
+      if (!isLockedType && selectedLevel !== "all") {
+        // Kotoba: tetap filter level kalau user SENGAJA pilih level spesifik di search
+        // tapi tidak di-restrict oleh onboarding
+        if (word.level !== selectedLevel) return false;
+      }
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
       const text = [
         word.kanji || "",
@@ -4363,132 +4397,7 @@ grid.style.display="grid";
     }
   }
 
-
-  // ── Practice Lock Screen ─────────────────────────────────────────────
-  // Render lock screen ke grid. Klik "Buka Practice" → render onboarding ke grid.
-  function renderPracticeLockScreen(title, subtitle) {
-    grid.classList.add("hub-mode");
-    grid.classList.remove("support-mode", "kc-grid-mode");
-    grid.style.removeProperty("grid-template-columns");
-    grid.innerHTML = `
-      <div class="prc-lock-poster">
-        <div class="prc-lock-poster__bg">
-          <div class="prc-lock-poster__orb prc-lock-poster__orb--1"></div>
-          <div class="prc-lock-poster__orb prc-lock-poster__orb--2"></div>
-          <div class="prc-lock-poster__orb prc-lock-poster__orb--3"></div>
-          <div class="prc-lock-poster__grid-lines"></div>
-        </div>
-        <div class="prc-lock-poster__inner">
-          <div class="prc-lock-poster__left">
-            <div class="prc-lock-poster__badge">LOCKED</div>
-            <h2 class="prc-lock-poster__title">${title}</h2>
-            <p class="prc-lock-poster__subtitle">${subtitle}</p>
-            <p class="prc-lock-poster__desc">
-              Selesaikan <strong>90% kosakata inti</strong> di mode Practice terlebih dahulu untuk membuka akses ke fitur ini.
-            </p>
-            <button class="prc-lock-poster__btn" id="prc-lock-cta">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Mulai Practice
-            </button>
-          </div>
-          <div class="prc-lock-poster__right">
-            <div class="prc-lock-poster__icon-wrap">
-              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="60" cy="60" r="56" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.2)" stroke-width="2"/>
-                <circle cx="60" cy="60" r="40" fill="rgba(225,29,72,0.06)" stroke="rgba(225,29,72,0.15)" stroke-width="1.5"/>
-                <rect x="36" y="54" width="48" height="36" rx="6" fill="rgba(225,29,72,0.12)" stroke="#e11d48" stroke-width="2.5"/>
-                <path d="M44 54V42a16 16 0 0 1 32 0v12" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="60" cy="72" r="5" fill="#e11d48"/>
-                <line x1="60" y1="77" x2="60" y2="84" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="prc-lock-poster__steps">
-              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">01</span><span class="prc-lock-poster__step-text">Pilih level di Practice</span></div>
-              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">02</span><span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span></div>
-              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">03</span><span class="prc-lock-poster__step-text">Fitur terbuka otomatis</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("prc-lock-cta")?.addEventListener("click", () => {
-      renderPracticeOnboardingInGrid();
-    });
-  }
-
-  // Render onboarding langsung ke #grid (replace lock screen)
-  function renderPracticeOnboardingInGrid() {
-    const LEVELS = ["N5","N4","N3","N2","N1"];
-    const LEVEL_LABELS = { N5:"基礎", N4:"初級", N3:"中級", N2:"上級", N1:"最上級" };
-    const LEVEL_SVGS = {
-      N5: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fff0f3"/><circle cx="28" cy="28" r="26" stroke="#e11d48" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#e11d48" font-family="Ubuntu,sans-serif">N5</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#9f1239" font-family="Shippori Mincho,serif">基礎</text></svg>`,
-      N4: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#eff6ff"/><circle cx="28" cy="28" r="26" stroke="#2563eb" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb" font-family="Ubuntu,sans-serif">N4</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#1e40af" font-family="Shippori Mincho,serif">初級</text></svg>`,
-      N3: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#f0fdf4"/><circle cx="28" cy="28" r="26" stroke="#16a34a" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a" font-family="Ubuntu,sans-serif">N3</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#14532d" font-family="Shippori Mincho,serif">中級</text></svg>`,
-      N2: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fefce8"/><circle cx="28" cy="28" r="26" stroke="#ca8a04" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#ca8a04" font-family="Ubuntu,sans-serif">N2</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#713f12" font-family="Shippori Mincho,serif">上級</text></svg>`,
-      N1: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fdf4ff"/><circle cx="28" cy="28" r="26" stroke="#9333ea" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#9333ea" font-family="Ubuntu,sans-serif">N1</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#581c87" font-family="Shippori Mincho,serif">最上級</text></svg>`,
-    };
-
-    grid.classList.add("hub-mode");
-    grid.classList.remove("support-mode", "kc-grid-mode");
-    grid.style.removeProperty("grid-template-columns");
-    grid.innerHTML = `
-      <div class="prc-ob-poster">
-        <div class="prc-ob-poster__bg">
-          <div class="prc-ob-orb prc-ob-orb--1"></div>
-          <div class="prc-ob-orb prc-ob-orb--2"></div>
-          <div class="prc-ob-orb prc-ob-orb--3"></div>
-          <div class="prc-ob-kanji-float prc-ob-kanji-float--1">語</div>
-          <div class="prc-ob-kanji-float prc-ob-kanji-float--2">学</div>
-          <div class="prc-ob-kanji-float prc-ob-kanji-float--3">力</div>
-          <div class="prc-ob-kanji-float prc-ob-kanji-float--4">文</div>
-        </div>
-        <div class="prc-ob-poster__inner">
-          <div class="prc-ob-poster__header">
-            <div class="prc-ob-poster__badge">NihonByte Practice</div>
-            <h2 class="prc-ob-poster__title">Mulai<br>Perjalananmu</h2>
-            <p class="prc-ob-poster__sub">日本語能力試験</p>
-            <p class="prc-ob-poster__desc">Pilih level JLPT yang sesuai kemampuanmu. Jika memilih di atas N5, kamu akan dites terlebih dahulu.</p>
-          </div>
-          <div class="prc-ob-poster__levels">
-            ${LEVELS.map((lvl, i) => `
-              <button class="prc-ob-level-card" data-level="${lvl}" style="animation-delay:${i*0.06}s">
-                <div class="prc-ob-level-card__icon">${LEVEL_SVGS[lvl]}</div>
-                <div class="prc-ob-level-card__body">
-                  <span class="prc-ob-level-card__name">${lvl}</span>
-                  <span class="prc-ob-level-card__label">${LEVEL_LABELS[lvl]}</span>
-                </div>
-                <div class="prc-ob-level-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
-              </button>
-            `).join("")}
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Handler klik level — delegate ke practiceUI
-    grid.querySelectorAll(".prc-ob-level-card").forEach(btn => {
-      btn.addEventListener("click", () => {
-        if (window.practiceUI && typeof window.practiceUI.handleOnboardingFromGrid === "function") {
-          window.practiceUI.handleOnboardingFromGrid(btn.dataset.level, () => render());
-        }
-      });
-    });
-  }
-
-  async function renderPracticeHub() {
-    // Cek onboarding
-    if (window.currentUser) {
-      const prog = window.practiceUI
-        ? await window.practiceUI._getPracticeProgressCached()
-        : null;
-      if (!prog || !prog.onboardingDone) {
-        renderPracticeLockScreen("Latihan<br>Terkunci", "練習問題");
-        if (resultInfo) resultInfo.textContent = "Latihan";
-        return;
-      }
-    }
-
+  function renderPracticeHub() {
     grid.classList.add("hub-mode");
     grid.classList.remove("support-mode");
     grid.style.removeProperty("grid-template-columns");
@@ -4588,7 +4497,48 @@ grid.style.display="grid";
   // INI ADALAH FUNGSI RENDER() YANG BENAR
   // (Sudah mencakup semua logika dari awal sampai akhir)
   // ==========================================
-    function render() {
+  
+
+  // Helper: disable/enable level buttons di search modal sesuai onboarding
+  function _applySearchLevelGate(isLockedCategory) {
+    const prog = window._practiceProgress;
+    if (!prog || !prog.levelStatus || !isLockedCategory) {
+      // Bebas semua level
+      document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all)").forEach(btn => {
+        btn.disabled = false;
+        btn.classList.remove("level-btn--locked");
+      });
+      return;
+    }
+    // Disable level yang belum unlock
+    document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all)").forEach(btn => {
+      const lvl = btn.dataset.level;
+      const unlocked = prog.levelStatus[lvl] === "active" || prog.levelStatus[lvl] === "completed";
+      btn.disabled = !unlocked;
+      btn.classList.toggle("level-btn--locked", !unlocked);
+      if (!unlocked) btn.classList.remove("active"); // hapus active kalau locked
+    });
+    // Kalau semua level spesifik locked, set ke "all"
+    const anyActive = [...document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all).active")].length > 0;
+    if (!anyActive) {
+      document.querySelector("#levelGrid .level-btn--all")?.classList.add("active");
+    }
+  }
+
+  // ── Level Gate ─────────────────────────────────────────────
+  // Set window.grammarLevels dan window.verbFormsLevels
+  // sesuai level yang sudah unlock dari onboarding
+  function applyLevelGate() {
+    const prog = window._practiceProgress;
+    if (!prog || !prog.levelStatus) return;
+    const ALL = ["N5","N4","N3","N2","N1"];
+    const unlocked = ALL.filter(l => prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed");
+    if (unlocked.length === 0) return;
+    window.grammarLevels   = unlocked;
+    window.verbFormsLevels = unlocked;
+  }
+
+  function render() {
     // SAFETY GUARD: jangan re-render halaman saat latihan sedang aktif.
     //     Ini mencegah rotasi / navigasi tidak sengaja mengusir user dari quiz.
     if (isTesting || document.body.classList.contains('training-session')) {
@@ -4790,29 +4740,6 @@ grid.style.display="grid";
 
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
-
-    // Guard onboarding: kalau belum selesai, tampilkan lock screen di grid
-    if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
-      const _prog = window.practiceUI?._latestProg;
-      if (_prog === undefined) {
-        // Belum ada cache — tampilkan lock screen dulu, fetch di background
-        // Kalau ternyata sudah onboarding, render() akan tampilkan vocab
-        renderPracticeLockScreen("Flashcard<br>Terkunci", "語彙");
-        if (resultInfo) resultInfo.textContent = "";
-        if (window.practiceUI?._getPracticeProgressCached) {
-          window.practiceUI._getPracticeProgressCached().then(p => {
-            window.practiceUI._latestProg = p || null;
-            if (p && p.onboardingDone) render(); // sudah onboarding → tampilkan vocab
-          });
-        }
-        return;
-      }
-      if (!_prog || !_prog.onboardingDone) {
-        renderPracticeLockScreen("Flashcard<br>Terkunci", "語彙");
-        if (resultInfo) resultInfo.textContent = "";
-        return;
-      }
-    }
 
     let words = getFilteredWords();
     if (paginationContainer) {

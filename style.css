@@ -11766,7 +11766,9 @@ body.history-mode .dashboard-shell textarea {
 .prc-wrapper {
   width: 100%;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 100dvh;
+  display: block;
+  /* Standalone — tidak ikut grid manapun */
 }
 
 /* ── Screen base ── */
@@ -12346,16 +12348,4 @@ body.history-mode .dashboard-shell textarea {
   .prc-latihan-locked { padding: 16px; flex-direction: row; gap: 16px; text-align: left; max-width: 100%; }
   .prc-latihan-locked-icon { margin-bottom: 0; flex-shrink: 0; }
   .prc-latihan-locked-icon svg { width: 44px; height: 44px; }
-}
-
-/* ── Vocab Locked State (di dalam grid) ── */
-.prc-vocab-locked {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 60px 24px;
-  min-height: 60vh;
 }

@@ -4828,56 +4828,25 @@ grid.style.display="grid";
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
 
-    // Guard: kalau belum onboarding → tampilkan lock screen, stop render grid
+    // Guard: kalau belum onboarding → buka practice onboarding, stop render grid
     if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
-      // Cek dari cache dulu (sync). Kalau belum ada cache, fetch lalu re-render.
       const _cachedProg = window.practiceUI?._latestProg;
       if (_cachedProg === undefined) {
         // Belum ada cache — fetch async lalu render ulang
-        if (window.practiceUI && typeof window.practiceUI._getPracticeProgressCached === "function") {
+        if (window.practiceUI?._getPracticeProgressCached) {
           window.practiceUI._getPracticeProgressCached().then(prog => {
             window.practiceUI._latestProg = prog || null;
             render();
           });
         }
-        return; // stop render sekarang, tunggu fetch selesai
+        return;
       }
       if (!_cachedProg || !_cachedProg.onboardingDone) {
-        // Belum onboarding — tampilkan lock screen, jangan render grid
-        grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
-        grid.style.removeProperty("grid-template-columns");
-        grid.innerHTML = `
-          <div class="prc-vocab-locked">
-            <div class="prc-latihan-locked-icon">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
-                <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
-                <rect x="20" y="28" width="24" height="18" rx="3" stroke="#e11d48" stroke-width="2.5"/>
-                <path d="M24 28v-6a8 8 0 0 1 16 0v6" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="32" cy="37" r="2.5" fill="#e11d48"/>
-              </svg>
-            </div>
-            <h3 class="prc-latihan-locked-title">Pilih Level Belajarmu</h3>
-            <p class="prc-latihan-locked-desc">
-              Pilih level untuk memulai perjalanan belajar dan membuka konten vocabulary.
-            </p>
-            <button class="prc-unlock-btn" id="prc-vocab-locked-cta">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Mulai Onboarding
-            </button>
-          </div>
-        `;
-        if (paginationContainer) {
-          paginationContainer.innerHTML = "";
-          paginationContainer.style.display = "none";
+        // Belum onboarding → langsung buka practice (standalone, tidak ganggu grid)
+        if (window.practiceUI && typeof window.practiceUI.open === "function") {
+          window.practiceUI.open({ onClose: () => { render(); } });
         }
-        if (resultInfo) resultInfo.textContent = "";
-        document.getElementById("prc-vocab-locked-cta")?.addEventListener("click", () => {
-          if (window.practiceUI && typeof window.practiceUI.open === "function") {
-            window.practiceUI.open({ onClose: () => { render(); } });
-          }
-        });
-        return; // stop render grid
+        return;
       }
     }
 

@@ -897,24 +897,26 @@
   async function openPractice(opts) {
     _onClose = opts.onClose || null;
 
-    // Inject wrapper di dalam #grid langsung (replace konten grid)
     const grid = document.getElementById("grid");
+    const pagination = document.getElementById("pagination-container");
     const contentPanel = document.querySelector(".content-panel");
 
+    // Sembunyikan grid dan pagination — practice punya container sendiri
+    if (grid) grid.style.display = "none";
+    if (pagination) pagination.style.display = "none";
+
+    // Buat wrapper standalone sebagai sibling #grid di content-panel
     let wrapper = document.getElementById("prc-wrapper");
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.id = "prc-wrapper";
       wrapper.className = "prc-wrapper";
+      if (contentPanel) contentPanel.appendChild(wrapper);
+      else document.body.appendChild(wrapper);
     }
-
-    // Kosongkan grid dan inject wrapper ke dalamnya
-    grid.innerHTML = "";
-    grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
-    grid.style.removeProperty("grid-template-columns");
-    grid.appendChild(wrapper);
-
     wrapper.style.display = "";
+
+    // Scroll ke atas
     if (contentPanel) contentPanel.scrollTop = 0;
     else window.scrollTo({ top: 0, behavior: "instant" });
 
@@ -940,11 +942,17 @@
 
   function closePractice() {
     const wrapper = document.getElementById("prc-wrapper");
-    if (wrapper) wrapper.remove(); // hapus dari DOM
+    if (wrapper) wrapper.remove();
+
+    // Kembalikan grid dan pagination
+    const grid = document.getElementById("grid");
+    const pagination = document.getElementById("pagination-container");
+    if (grid) grid.style.display = "";
+    if (pagination) pagination.style.display = "";
 
     _container = null;
     _screen = "level";
-    if (typeof _onClose === "function") _onClose(); // trigger render()
+    if (typeof _onClose === "function") _onClose();
   }
 
   // ── rerender (untuk resize/rotate) ─────────────────────────

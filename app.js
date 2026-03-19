@@ -4546,7 +4546,11 @@ grid.style.display="grid";
         </div>
       `;
       document.getElementById("prc-go-to-practice-from-latihan")?.addEventListener("click", () => {
+        // Hapus hub-mode dulu biar display:block !important tidak override
+        grid.classList.remove("hub-mode", "support-mode");
+        grid.innerHTML = "";
         grid.style.display = "none";
+        if (paginationContainer) paginationContainer.style.display = "none";
         if (window.practiceUI && typeof window.practiceUI.open === "function") {
           window.practiceUI.open({ onClose: () => { render(); } });
         }
@@ -4882,6 +4886,8 @@ grid.style.display="grid";
       }
       if (!_cachedProg || !_cachedProg.onboardingDone) {
         // Belum onboarding → sembunyikan grid, buka practice standalone
+        grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
+        grid.innerHTML = "";
         grid.style.display = "none";
         if (paginationContainer) paginationContainer.style.display = "none";
         if (window.practiceUI && typeof window.practiceUI.open === "function") {

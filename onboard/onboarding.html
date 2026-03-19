@@ -12,7 +12,10 @@
       margin: 0; padding: 0;
       user-select: none;
       -webkit-user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    *::-webkit-scrollbar { display: none; }
 
     :root {
       --red: #e11d48;
@@ -101,12 +104,7 @@
     .ob-logo {
       display: flex; align-items: center; gap: 10px;
     }
-    .ob-logo-mark {
-      width: 32px; height: 32px; background: var(--red);
-      border-radius: 9px; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .ob-logo-mark svg { width: 17px; height: 17px; }
+    .ob-logo-img { height: 38px; width: auto; display: block; }
     .ob-logo-name {
       font-size: 0.92rem; font-weight: 800; color: var(--text-primary);
       letter-spacing: 0.02em;
@@ -124,7 +122,7 @@
     .ob-dot.idle   { width: 18px; }
 
     /* ── Screens ── */
-    .ob-body { flex: 1; overflow: hidden; position: relative; }
+    .ob-body { flex: 1; overflow: hidden; position: relative; scrollbar-width: none; }
     .ob-screen {
       position: absolute; inset: 0;
       display: flex; align-items: stretch;
@@ -139,18 +137,18 @@
 
     /* ── Screen 1: Pilih Level ── */
     .ob-left {
-      flex: 0 0 380px;
-      padding: 48px 44px;
+      flex: 0 0 540px;
+      padding: 52px 52px;
       display: flex; flex-direction: column; justify-content: center;
       border-right: 1px solid rgba(255,255,255,0.05);
-      overflow-y: auto;
+      overflow: hidden;
     }
     .ob-right {
       flex: 1;
-      padding: 32px 40px;
+      padding: 36px 48px;
       display: flex; flex-direction: column; justify-content: center;
-      gap: 9px;
-      overflow-y: auto;
+      gap: 10px;
+      overflow: hidden;
     }
 
     .ob-badge {
@@ -161,18 +159,18 @@
       margin-bottom: 20px; width: fit-content;
     }
     .ob-title {
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      font-weight: 900; color: var(--text-primary);
-      line-height: 1.08; margin-bottom: 8px; letter-spacing: -0.025em;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 900; color: #ffffff;
+      line-height: 1.1; margin-bottom: 10px; letter-spacing: -0.025em;
     }
     .ob-subtitle {
       font-family: 'Shippori Mincho', serif;
-      font-size: 0.92rem; color: var(--text-accent);
+      font-size: 0.95rem; color: rgba(251,113,133,0.8);
       margin-bottom: 18px; letter-spacing: 0.04em;
     }
     .ob-desc {
-      font-size: 0.83rem; color: var(--text-secondary);
-      line-height: 1.78; max-width: 290px;
+      font-size: 0.92rem; color: rgba(203,213,225,0.92);
+      line-height: 1.8; max-width: 380px;
     }
     .ob-note {
       margin-top: 22px;
@@ -182,7 +180,7 @@
       border-radius: 10px; max-width: 290px;
     }
     .ob-note p {
-      font-size: 0.74rem; color: var(--text-muted); line-height: 1.65;
+      font-size: 0.76rem; color: rgba(148,163,184,0.75); line-height: 1.65;
     }
     .ob-note p + p { margin-top: 1px; }
 
@@ -468,7 +466,7 @@
     <div class="ob-screen active" id="screen-level">
       <div class="ob-left">
         <div class="ob-badge">NIHONBYTE PRACTICE</div>
-        <h1 class="ob-title">Perjalananmu<br>dimulai<br>di sini</h1>
+        <h1 class="ob-title">Perjalananmu<br>dimulai dari sini</h1>
         <p class="ob-subtitle">日本語の旅はここから始まる</p>
         <p class="ob-desc">Bukan sekadar kosakata dan grammar. NihonByte dirancang untuk membangun fondasi yang kuat, satu level dalam satu waktu. Sebelum masuk, kami perlu tahu kamu ada di mana sekarang.</p>
         <div class="ob-note">

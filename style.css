@@ -11766,6 +11766,7 @@ body.history-mode .dashboard-shell textarea {
 .prc-wrapper {
   width: 100%;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 /* ── Screen base ── */
@@ -12210,7 +12211,9 @@ body.history-mode .dashboard-shell textarea {
    SECTION 2 — DESKTOP (min-width: 769px)
    ============================================================ */
 @media (min-width: 769px) {
-  .prc-wrapper { padding: 12px 16px 20px; }
+  .prc-wrapper {
+    padding: calc(var(--topbar-height, 78px) + 16px) 16px 40px;
+  }
   .prc-onboarding-card { max-width: 520px; margin: 0 auto; padding: 36px 40px; }
   .prc-onboarding-logo svg { width: 64px; height: 64px; margin-bottom: 16px; }
   .prc-placement-intro-card { max-width: 520px; margin: 0 auto; padding: 36px 40px; }
@@ -12235,7 +12238,9 @@ body.history-mode .dashboard-shell textarea {
    SECTION 3 — MOBILE POTRET (max-width: 767px + portrait)
    ============================================================ */
 @media (max-width: 767px) and (orientation: portrait) {
-  .prc-wrapper { padding: 12px 12px 20px; }
+  .prc-wrapper {
+    padding: calc(var(--topbar-height, 78px) + 12px) 12px calc(var(--bottom-nav-height, 66px) + env(safe-area-inset-bottom) + 20px);
+  }
   .prc-onboarding-card { padding: 24px 20px; }
   .prc-onboarding-logo svg { width: 52px; height: 52px; margin-bottom: 12px; }
   .prc-onboarding-title { font-size: 1.15rem; }
@@ -12258,7 +12263,9 @@ body.history-mode .dashboard-shell textarea {
    SECTION 4 — MOBILE LANDSCAPE (landscape + max-height: 520px)
    ============================================================ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
-  .prc-wrapper { padding: 8px 12px 12px; }
+  .prc-wrapper {
+    padding: calc(var(--topbar-height, 78px) + 8px) 12px 20px;
+  }
   .prc-onboarding-card { padding: 16px 20px; }
   .prc-onboarding-logo { display: none; }
   .prc-onboarding-title { font-size: 1rem; margin-bottom: 4px; }
@@ -12291,4 +12298,52 @@ body.history-mode .dashboard-shell textarea {
   .prc-placement-start-btn { padding: 10px 16px; font-size: 0.9rem; }
   .prc-back-btn { width: 32px; height: 32px; }
   .prc-back-btn svg { width: 14px; height: 14px; }
+}
+
+/* ── Latihan Locked State ── */
+.prc-latihan-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.prc-latihan-locked-icon {
+  margin-bottom: 20px;
+}
+
+.prc-latihan-locked-icon svg {
+  width: 72px;
+  height: 72px;
+  display: block;
+  margin: 0 auto;
+}
+
+.prc-latihan-locked-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 10px;
+}
+
+.prc-latihan-locked-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .prc-latihan-locked { padding: 28px 16px; }
+  .prc-latihan-locked-icon svg { width: 56px; height: 56px; }
+}
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .prc-latihan-locked { padding: 16px; flex-direction: row; gap: 16px; text-align: left; max-width: 100%; }
+  .prc-latihan-locked-icon { margin-bottom: 0; flex-shrink: 0; }
+  .prc-latihan-locked-icon svg { width: 44px; height: 44px; }
 }

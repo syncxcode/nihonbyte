@@ -3598,8 +3598,21 @@ grid.style.display="grid";
 
     if (tab === "practice") {
       closeSidebar();
-      openBottomNavHub("practice");
-      setBottomNavActive("practice");
+      // Cek onboarding selesai sebelum buka Latihan
+      (async () => {
+        const prog = window.practiceUI
+          ? await window.practiceUI._getPracticeProgressCached()
+          : null;
+        const onboardingDone = !!(prog && prog.onboardingDone);
+
+        if (!onboardingDone && window.currentUser) {
+          // Tampilkan pesan lock di dalam hub
+          openBottomNavHub("practice-locked");
+        } else {
+          openBottomNavHub("practice");
+        }
+        setBottomNavActive("practice");
+      })();
       return;
     }
 
@@ -3905,7 +3918,54 @@ grid.style.display="grid";
     document.body.classList.remove("bottom-nav-hub-open");
   }
 
+  async function _checkPracticeAccess() {
+    if (!window.practiceUI || !window.currentUser) return true; // allow jika tidak ada user
+    const prog = await window.practiceUI._getPracticeProgressCached();
+    return !!(prog && prog.onboardingDone);
+  }
+
   function openBottomNavHub(kind) {
+    // Handle practice-locked view
+    if (kind === "practice-locked") {
+      document.body.classList.add("bottom-nav-hub-open");
+      const hub = document.getElementById("bottomNavHub");
+      if (!hub) return;
+      hub.hidden = false;
+      hub.innerHTML = `
+        <section class="bottom-nav-hub__screen" aria-label="Latihan terkunci">
+          <header class="bottom-nav-hub__header">
+            <h2><span class="practice-hub-title-pill">Latihan</span></h2>
+          </header>
+          <div class="prc-latihan-locked">
+            <div class="prc-latihan-locked-icon">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
+                <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
+                <rect x="20" y="28" width="24" height="18" rx="3" stroke="#e11d48" stroke-width="2.5"/>
+                <path d="M24 28v-6a8 8 0 0 1 16 0v6" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="32" cy="37" r="2.5" fill="#e11d48"/>
+              </svg>
+            </div>
+            <h3 class="prc-latihan-locked-title">Latihan Terkunci</h3>
+            <p class="prc-latihan-locked-desc">
+              Selesaikan <strong>90% vocabulary</strong> di mode Practice terlebih dahulu sebelum bisa mengakses Latihan.
+            </p>
+            <button class="prc-unlock-btn" id="prc-go-to-practice-mobile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Buka Practice
+            </button>
+          </div>
+        </section>
+      `;
+      document.getElementById("prc-go-to-practice-mobile")?.addEventListener("click", () => {
+        closeBottomNavHub();
+        if (window.practiceUI && typeof window.practiceUI.open === "function") {
+          window.practiceUI.open({ onClose: () => { render(); } });
+        }
+      });
+      return;
+    }
+
     if (!bottomNavHub || window.innerWidth > 767) return false;
 
     const isPractice = kind === "practice";
@@ -4420,7 +4480,54 @@ grid.style.display="grid";
     }
   }
 
-  function renderPracticeHub() {
+  async function renderPracticeHub() {
+    // Cek onboarding selesai
+    const practiceAccess = window.practiceUI
+      ? await window.practiceUI._getPracticeProgressCached()
+      : null;
+    const onboardingDone = !!(practiceAccess && practiceAccess.onboardingDone);
+
+    if (!onboardingDone && window.currentUser) {
+      grid.classList.add("hub-mode");
+      grid.classList.remove("support-mode");
+      grid.style.removeProperty("grid-template-columns");
+      grid.innerHTML = `
+        <section class="hub-screen hub-screen--practice">
+          <div class="hub-practice-shell">
+            <header class="hub-header hub-header--practice">
+              <h2><span class="practice-hub-title-pill">Latihan</span></h2>
+            </header>
+            <div class="prc-latihan-locked">
+              <div class="prc-latihan-locked-icon">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
+                  <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
+                  <rect x="20" y="28" width="24" height="18" rx="3" stroke="#e11d48" stroke-width="2.5"/>
+                  <path d="M24 28v-6a8 8 0 0 1 16 0v6" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="32" cy="37" r="2.5" fill="#e11d48"/>
+                </svg>
+              </div>
+              <h3 class="prc-latihan-locked-title">Latihan Terkunci</h3>
+              <p class="prc-latihan-locked-desc">
+                Selesaikan <strong>90% vocabulary</strong> di mode Practice terlebih dahulu sebelum bisa mengakses Latihan.
+              </p>
+              <button class="prc-unlock-btn" id="prc-go-to-practice-from-latihan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Buka Practice
+              </button>
+            </div>
+          </div>
+        </section>
+      `;
+      document.getElementById("prc-go-to-practice-from-latihan")?.addEventListener("click", () => {
+        if (window.practiceUI && typeof window.practiceUI.open === "function") {
+          window.practiceUI.open({ onClose: () => { render(); } });
+        }
+      });
+      if (resultInfo) resultInfo.textContent = "Latihan";
+      return;
+    }
+
     grid.classList.add("hub-mode");
     grid.classList.remove("support-mode");
     grid.style.removeProperty("grid-template-columns");

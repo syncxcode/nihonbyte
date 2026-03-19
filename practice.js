@@ -874,7 +874,15 @@
     _practiceProg = prog;
 
     if (!prog || !prog.onboardingDone) {
-      applyBlurOverlay(true);
+      // Hanya apply blur di halaman vocab/flashcard utama
+      // Jangan apply di Latihan, Grammar, dll
+      const grid = document.getElementById("grid");
+      const isVocabView = grid && grid.style.display !== "none" &&
+        !grid.classList.contains("hub-mode") &&
+        !document.body.classList.contains("training-session");
+      if (isVocabView) {
+        applyBlurOverlay(true);
+      }
     } else {
       removeBlurOverlay();
     }
@@ -882,18 +890,30 @@
 
   // ── Open Practice ───────────────────────────────────────────
   async function openPractice(opts) {
-    const containerEl = opts.container || document.getElementById("grid");
     _onClose = opts.onClose || null;
 
-    // Buat wrapper khusus practice di atas grid
+    // Sembunyikan grid utama
+    const grid = document.getElementById("grid");
+    if (grid) grid.style.display = "none";
+
+    // Inject wrapper di dalam content-panel, setelah grid
+    const contentPanel = document.querySelector(".content-panel");
     let wrapper = document.getElementById("prc-wrapper");
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.id = "prc-wrapper";
       wrapper.className = "prc-wrapper";
-      containerEl.parentElement?.insertBefore(wrapper, containerEl);
+      if (contentPanel) {
+        contentPanel.appendChild(wrapper);
+      } else if (grid) {
+        grid.parentElement?.appendChild(wrapper);
+      }
     }
     wrapper.style.display = "";
+    // Scroll ke atas
+    if (contentPanel) contentPanel.scrollTop = 0;
+    else window.scrollTo({ top: 0, behavior: "instant" });
+
     _container = wrapper;
 
     // Cek apakah ada placement quiz yang sedang berjalan
@@ -917,6 +937,11 @@
   function closePractice() {
     const wrapper = document.getElementById("prc-wrapper");
     if (wrapper) wrapper.style.display = "none";
+
+    // Kembalikan grid
+    const grid = document.getElementById("grid");
+    if (grid) grid.style.display = "";
+
     _container = null;
     _screen = "level";
     if (typeof _onClose === "function") _onClose();
@@ -944,6 +969,15 @@
   }
 
   // ── Expose ──────────────────────────────────────────────────
+  // Cache progress biar tidak fetch ulang tiap kali
+  let _cachedProg = null;
+  async function _getPracticeProgressCached() {
+    if (_practiceProg) return _practiceProg;
+    if (_cachedProg) return _cachedProg;
+    _cachedProg = await getPracticeProgress();
+    return _cachedProg;
+  }
+
   window.practiceUI = {
     open: openPractice,
     close: closePractice,
@@ -952,6 +986,7 @@
     applyBlurOverlay,
     removeBlurOverlay,
     getScreen: () => _screen,
+    _getPracticeProgressCached,
   };
 
 })();

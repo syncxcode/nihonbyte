@@ -11679,3 +11679,113 @@ body.history-mode .dashboard-shell textarea {
   background-size: contain; background-repeat: no-repeat;
   margin-left: 4px; vertical-align: middle; opacity: 0.6;
 }
+
+
+/* ============================================================
+   PROGRESS TRACKING — Dashboard + Latihan Lock
+   ============================================================ */
+
+/* ── Dashboard Progress Bar ── */
+.dash-progress-wrap {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+}
+
+.dash-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.dash-progress-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.dash-progress-pct {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #e11d48;
+  transition: color 0.3s;
+}
+
+.dash-progress-pct--ready { color: #16a34a; }
+
+.dash-progress-bar-outer {
+  height: 6px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.dash-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.dash-progress-bar-fill--ready {
+  background: linear-gradient(90deg, #16a34a, #4ade80);
+}
+
+.dash-progress-breakdown {
+  display: flex;
+  gap: 12px;
+  font-size: 0.68rem;
+  color: #94a3b8;
+}
+
+.dash-progress-unlock-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(22,163,74,0.08);
+  border: 1px solid rgba(22,163,74,0.2);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #16a34a;
+  animation: dash-unlock-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dash-unlock-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ── Latihan Lock Banner ── */
+.latihan-lock-banner {
+  grid-column: 1 / -1;
+  margin-bottom: 12px;
+}
+
+.latihan-lock-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(225,29,72,0.08);
+  border: 1px solid rgba(225,29,72,0.2);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: #e11d48;
+}
+
+.latihan-lock-banner__inner strong { font-weight: 800; }
+
+/* ── Locked hub level buttons ── */
+.hub-level-btn--locked {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}

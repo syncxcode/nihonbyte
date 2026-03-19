@@ -921,6 +921,8 @@ grid.style.display="grid";
         if (search) search.value = "";
         await loadUserBookmarks(user.uid); // Load bookmarks saat login
         applyLevelGate(); // Apply level gate sesuai unlocked levels
+        // Load progress dari Firestore
+        await loadAllProgress(user.uid);
         render();
         if (shouldOpenVerificationModalAfterSignup && !user.emailVerified) {
           openAccountModal();
@@ -2155,9 +2157,8 @@ grid.style.display="grid";
       // 3. Reset Kategori Khusus (Lepas semua pilihan)
       document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
 
-      // 4. Apply level gate sesuai onboarding (hanya untuk LOCKED_VOCAB_TYPES)
-      // Saat modal baru dibuka, belum ada kategori aktif → level bebas dulu
-      _applySearchLevelGate(false);
+      // 4. Apply level gate sesuai onboarding - SELALU apply saat modal dibuka
+      _applySearchLevelGate(true);
       // ----------------------------------------
 
       filterModal.classList.add("active");
@@ -2749,17 +2750,26 @@ grid.style.display="grid";
     const selectedFromDropdown = category ? category.value : "all";
     if (typeof vocabularyData === "undefined") return []; // Safety check
 
+    // Ambil level yang unlock dari onboarding
+    const prog = window._practiceProgress;
+    const unlockedLevels = prog?.levelStatus
+      ? ["N5","N4","N3","N2","N1"].filter(l => prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed")
+      : null; // null = belum onboarding / tidak ada restrict
+
     const filtered = vocabularyData.filter((word) => {
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
-      // Level gate hanya untuk vocab inti (LOCKED_VOCAB_TYPES)
-      // Kotoba, activity, ekspresi, dll bebas semua level
       const isLockedType = LOCKED_VOCAB_TYPES.includes(word.type);
-      if (isLockedType && selectedLevel !== "all" && word.level !== selectedLevel) return false;
-      if (!isLockedType && selectedLevel !== "all") {
-        // Kotoba: tetap filter level kalau user SENGAJA pilih level spesifik di search
-        // tapi tidak di-restrict oleh onboarding
-        if (word.level !== selectedLevel) return false;
+
+      if (isLockedType) {
+        // Vocab inti: filter berdasarkan level unlock dari onboarding
+        if (unlockedLevels && !unlockedLevels.includes(word.level)) return false;
+        // Kalau user juga pilih level spesifik di search, ikutin itu juga
+        if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
+      } else {
+        // Kotoba, activity, ekspresi: bebas, tapi tetap ikut selectedLevel kalau user pilih
+        if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       }
+
       if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
       const text = [
         word.kanji || "",
@@ -4404,9 +4414,18 @@ grid.style.display="grid";
 
     const levels = ["N5", "N4", "N3", "N2", "N1"];
 
+    // Ambil level yang unlock dari onboarding
+    const prog = window._practiceProgress;
+    const unlockedLevels = prog?.levelStatus
+      ? levels.filter(l => prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed")
+      : levels; // kalau tidak ada progress, semua unlock (dev / fallback)
+
     const renderLevelButtons = (main, sectionOverride = null) =>
       levels
-        .map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="${main}" data-section="${sectionOverride || main}" data-level="${lvl}">${lvl}</button>`)
+        .map((lvl) => {
+          const isLocked = !unlockedLevels.includes(lvl);
+          return `<button type="button" class="hub-level-btn hub-level-btn--patterns${isLocked ? " hub-level-btn--locked" : ""}" data-main="${main}" data-section="${sectionOverride || main}" data-level="${lvl}"${isLocked ? " disabled aria-disabled=\"true\"" : ""}>${lvl}</button>`;
+        })
         .join("");
 
     grid.innerHTML = `
@@ -4456,6 +4475,29 @@ grid.style.display="grid";
     `;
 
     if (resultInfo) resultInfo.textContent = "Latihan";
+
+    // Check progress — kalau < 90%, tampilkan lock overlay di atas hub
+    const _prog = calcTotalProgress();
+    if (_prog.total > 0 && _prog.pct < 90) {
+      // Tambah lock banner di atas hub
+      const lockBanner = document.createElement("div");
+      lockBanner.className = "latihan-lock-banner";
+      lockBanner.innerHTML = `
+        <div class="latihan-lock-banner__inner">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Selesaikan <strong>${_prog.pct}% dari 90%</strong> progres belajar untuk membuka semua soal</span>
+        </div>
+      `;
+      const shell = grid.querySelector(".hub-practice-shell");
+      if (shell) shell.insertBefore(lockBanner, shell.firstChild);
+
+      // Disable semua level buttons
+      grid.querySelectorAll(".hub-level-btn").forEach(btn => {
+        btn.disabled = true;
+        btn.classList.add("hub-level-btn--locked");
+      });
+      return;
+    }
 
     grid.querySelectorAll(".hub-level-btn").forEach((btn) => {
       btn.addEventListener("click", () => launchExerciseFromHub(btn));
@@ -4523,6 +4565,111 @@ grid.style.display="grid";
     if (!anyActive) {
       document.querySelector("#levelGrid .level-btn--all")?.classList.add("active");
     }
+  }
+
+
+  // ── Progress Tracking ──────────────────────────────────────
+  // Simpan ke Firestore: users/{uid}/progress/opened/{type}/{wordId}
+
+  async function saveVocabProgress(word) {
+    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) return;
+    if (!word) return;
+    const type = word.type;
+    if (!LOCKED_VOCAB_TYPES.includes(type)) return; // hanya vocab inti
+    const wordId = String(word.id || word.kanji || word.kana || "");
+    if (!wordId) return;
+    try {
+      const uid = window.currentUser.uid;
+      const ref = window.doc(window.firebaseDb, "users", uid, "progress", "vocabOpened");
+      const patch = {};
+      patch[wordId] = true;
+      await window.setDoc(ref, patch, { merge: true });
+      // Update cache lokal
+      if (!window._vocabOpenedCache) window._vocabOpenedCache = {};
+      window._vocabOpenedCache[wordId] = true;
+    } catch(e) { console.error("Gagal simpan vocab progress:", e); }
+  }
+
+  async function saveGrammarProgress(patternId) {
+    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) return;
+    if (!patternId) return;
+    try {
+      const uid = window.currentUser.uid;
+      const ref = window.doc(window.firebaseDb, "users", uid, "progress", "grammarOpened");
+      const patch = {};
+      patch[String(patternId)] = true;
+      await window.setDoc(ref, patch, { merge: true });
+      if (!window._grammarOpenedCache) window._grammarOpenedCache = {};
+      window._grammarOpenedCache[String(patternId)] = true;
+    } catch(e) { console.error("Gagal simpan grammar progress:", e); }
+  }
+
+  async function saveVerbFormProgress(formId) {
+    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) return;
+    if (!formId) return;
+    try {
+      const uid = window.currentUser.uid;
+      const ref = window.doc(window.firebaseDb, "users", uid, "progress", "verbFormOpened");
+      const patch = {};
+      patch[String(formId)] = true;
+      await window.setDoc(ref, patch, { merge: true });
+      if (!window._verbFormOpenedCache) window._verbFormOpenedCache = {};
+      window._verbFormOpenedCache[String(formId)] = true;
+    } catch(e) { console.error("Gagal simpan verbform progress:", e); }
+  }
+
+  async function loadAllProgress(uid) {
+    if (!window.firebaseDb || !window.doc || !window.getDoc) return;
+    try {
+      const [vocabSnap, grammarSnap, verbSnap] = await Promise.all([
+        window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "vocabOpened")),
+        window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "grammarOpened")),
+        window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "verbFormOpened")),
+      ]);
+      window._vocabOpenedCache   = vocabSnap.exists()   ? vocabSnap.data()   : {};
+      window._grammarOpenedCache = grammarSnap.exists() ? grammarSnap.data() : {};
+      window._verbFormOpenedCache = verbSnap.exists()   ? verbSnap.data()    : {};
+    } catch(e) { console.error("Gagal load progress:", e); }
+  }
+
+  function calcTotalProgress() {
+    const prog = window._practiceProgress;
+    if (!prog?.levelStatus || typeof vocabularyData === "undefined") return { pct: 0, done: 0, total: 0 };
+
+    const unlockedLevels = ["N5","N4","N3","N2","N1"].filter(l =>
+      prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed"
+    );
+
+    // ── Vocab inti ──
+    const vocabOpened = window._vocabOpenedCache || {};
+    const vocabAll = vocabularyData.filter(w =>
+      LOCKED_VOCAB_TYPES.includes(w.type) && unlockedLevels.includes(w.level)
+    );
+    const vocabDone  = vocabAll.filter(w => {
+      const id = String(w.id || w.kanji || w.kana || "");
+      return vocabOpened[id];
+    }).length;
+    const vocabTotal = vocabAll.length;
+
+    // ── Grammar ──
+    const grammarOpened = window._grammarOpenedCache || {};
+    const grammarAll = (Array.isArray(window.grammarData) ? window.grammarData : [])
+      .filter(g => unlockedLevels.includes(g.level));
+    const grammarDone  = grammarAll.filter(g => grammarOpened[String(g.id)]).length;
+    const grammarTotal = grammarAll.length;
+
+    // ── Verb Forms ──
+    const verbOpened = window._verbFormOpenedCache || {};
+    const verbAll = (Array.isArray(window.verbFormsData) ? window.verbFormsData : [])
+      .filter(v => unlockedLevels.includes(v.level));
+    const verbDone  = verbAll.filter(v => verbOpened[String(v.id)]).length;
+    const verbTotal = verbAll.length;
+
+    const done  = vocabDone  + grammarDone  + verbDone;
+    const total = vocabTotal + grammarTotal + verbTotal;
+    const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    return { pct, done, total, vocabDone, vocabTotal, grammarDone, grammarTotal, verbDone, verbTotal };
   }
 
   // ── Level Gate ─────────────────────────────────────────────
@@ -4653,6 +4800,8 @@ grid.style.display="grid";
 
     if (viewMode.startsWith("verb-form:")) {
       const formId = viewMode.split(":")[1];
+      // Simpan progress verb-form saat poster dibuka
+      saveVerbFormProgress(formId);
       window.verbFormsUI?.renderPoster({
         grid,
         formId,
@@ -4710,6 +4859,8 @@ grid.style.display="grid";
 
     if (viewMode.startsWith("grammar:")) {
       const patternId = viewMode.split(":")[1];
+      // Simpan progress grammar saat poster dibuka
+      saveGrammarProgress(patternId);
       window.grammarUI?.renderPoster({
         grid,
         patternId,
@@ -4838,6 +4989,11 @@ grid.style.display="grid";
 
             // Set viewMode agar resize handler tahu kita sedang di single view
             viewMode = "kanji-card-single";
+
+            // Simpan progress vocab inti saat kanji-card dibuka
+            if (LOCKED_VOCAB_TYPES.includes(word.type)) {
+              saveVocabProgress(word);
+            }
 
             window.kanjiCardUI.openWord(word, {
               grid: kcContainer,
@@ -5296,6 +5452,32 @@ grid.style.display="grid";
           </div>
           <h2>${displayName}</h2>
           <p class="dashboard-email">${user.email || '-'}</p>
+          ${(function() {
+            const p = calcTotalProgress();
+            if (!p || p.total === 0) return '';
+            const pct = p.pct;
+            const isReady = pct >= 90;
+            return `
+              <div class="dash-progress-wrap">
+                <div class="dash-progress-header">
+                  <span class="dash-progress-label">Progres Belajar</span>
+                  <span class="dash-progress-pct ${isReady ? 'dash-progress-pct--ready' : ''}">${pct}%</span>
+                </div>
+                <div class="dash-progress-bar-outer">
+                  <div class="dash-progress-bar-fill ${isReady ? 'dash-progress-bar-fill--ready' : ''}" style="width:${pct}%"></div>
+                </div>
+                <div class="dash-progress-breakdown">
+                  <span>Vocab ${p.vocabDone}/${p.vocabTotal}</span>
+                  <span>Grammar ${p.grammarDone}/${p.grammarTotal}</span>
+                  <span>Verb Forms ${p.verbDone}/${p.verbTotal}</span>
+                </div>
+                ${isReady ? `<div class="dash-progress-unlock-hint">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                  Mode Latihan sudah terbuka!
+                </div>` : ''}
+              </div>
+            `;
+          })()}
         </div>
 
         <div id="dashboard-modal-backdrop" class="dashboard-modal-backdrop" hidden></div>

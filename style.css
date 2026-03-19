@@ -2556,14 +2556,17 @@ body.history-mode #grid {
   align-items: flex-start !important;
   min-height: calc(100dvh - 160px) !important;
   padding: 110px 15px 140px !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
 }
 
 /* Container utama = kotak rounded sedang */
 .history-container {
-  width: 96% !important;
-  max-width: 1480px !important;
+  width: 100% !important;
+  max-width: 980px !important;
   margin: 0 auto 80px auto !important;
   padding: 40px 50px !important;
+  box-sizing: border-box !important;
   background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(18px) !important;
   border-radius: 28px !important;           /* ← kotak agak rounded */
@@ -2829,7 +2832,7 @@ body.history-mode #grid {
 }
 
 .dashboard-shell {
-  width: min(980px, calc(100% - 8px));
+  width: min(980px, calc(100% - 30px));
   margin: 0 auto;
   border-radius: 28px;
   overflow: hidden;

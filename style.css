@@ -11687,7 +11687,6 @@ body.history-mode .dashboard-shell textarea {
 
 /* ── Dashboard Progress Bar ── */
 .dash-progress-wrap {
-  width: 100%;
   margin-top: 14px;
   padding: 14px 16px;
   background: rgba(0,0,0,0.06);

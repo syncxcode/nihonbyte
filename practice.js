@@ -276,42 +276,44 @@
     if (!_container) return;
 
     _container.innerHTML = `
-      <div class="prc-screen prc-onboarding">
-        <div class="prc-onboarding-card">
-          <div class="prc-onboarding-logo">
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
-              <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
-              <path d="M20 44V22l12-8 12 8v22" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M26 44v-8h12v8" stroke="#fda4af" stroke-width="2" stroke-linecap="round"/>
-              <path d="M32 14v4" stroke="#e11d48" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+      <div class="prc-ob-poster">
+        <div class="prc-ob-poster__bg">
+          <div class="prc-ob-orb prc-ob-orb--1"></div>
+          <div class="prc-ob-orb prc-ob-orb--2"></div>
+          <div class="prc-ob-orb prc-ob-orb--3"></div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--1">語</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--2">学</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--3">力</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--4">文</div>
+        </div>
+        <div class="prc-ob-poster__inner">
+          <div class="prc-ob-poster__header">
+            <div class="prc-ob-poster__badge">NihonByte Practice</div>
+            <h2 class="prc-ob-poster__title">Mulai<br>Perjalananmu</h2>
+            <p class="prc-ob-poster__sub">日本語能力試験</p>
+            <p class="prc-ob-poster__desc">Pilih level JLPT yang sesuai kemampuanmu. Jika memilih di atas N5, kamu akan dites terlebih dahulu.</p>
           </div>
-          <h2 class="prc-onboarding-title">Mulai Perjalananmu</h2>
-          <p class="prc-onboarding-desc">Kamu sudah familiar dengan level JLPT mana?</p>
-          <div class="prc-onboarding-levels">
-            ${LEVELS.map(lvl => `
-              <button class="prc-onboarding-level-btn" data-level="${lvl}">
-                <div class="prc-onboarding-level-icon">${LEVEL_SVGS[lvl]}</div>
-                <div class="prc-onboarding-level-info">
-                  <span class="prc-onboarding-level-name">${lvl}</span>
-                  <span class="prc-onboarding-level-sub">${LEVEL_LABELS[lvl]}</span>
+          <div class="prc-ob-poster__levels">
+            ${LEVELS.map((lvl, i) => `
+              <button class="prc-ob-level-card" data-level="${lvl}" style="animation-delay:${i * 0.06}s">
+                <div class="prc-ob-level-card__icon">${LEVEL_SVGS[lvl]}</div>
+                <div class="prc-ob-level-card__body">
+                  <span class="prc-ob-level-card__name">${lvl}</span>
+                  <span class="prc-ob-level-card__label">${LEVEL_LABELS[lvl]}</span>
                 </div>
-                <div class="prc-onboarding-level-arrow">
+                <div class="prc-ob-level-card__arrow">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
               </button>
             `).join("")}
           </div>
-          <p class="prc-onboarding-note">Jika kamu memilih level di atas N5, kamu akan dites terlebih dahulu.</p>
         </div>
       </div>
     `;
 
-    _container.querySelectorAll(".prc-onboarding-level-btn").forEach(btn => {
+    _container.querySelectorAll(".prc-ob-level-card").forEach(btn => {
       btn.addEventListener("click", () => {
-        const level = btn.dataset.level;
-        handleOnboardingSelect(level);
+        handleOnboardingSelect(btn.dataset.level);
       });
     });
   }

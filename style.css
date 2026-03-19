@@ -12348,3 +12348,580 @@ body.history-mode .dashboard-shell textarea {
   .prc-latihan-locked-icon { margin-bottom: 0; flex-shrink: 0; }
   .prc-latihan-locked-icon svg { width: 44px; height: 44px; }
 }
+
+
+/* ============================================================
+   PRACTICE — REDESIGN: LOCK SCREEN & ONBOARDING POSTER
+   ============================================================ */
+
+/* ── Lock Poster (Desktop Latihan) ── */
+.prc-lock-poster {
+  grid-column: 1 / -1;
+  position: relative;
+  min-height: calc(100dvh - var(--topbar-height, 78px) - 40px);
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0f172a;
+}
+
+.prc-lock-poster__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.prc-lock-poster__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: prc-orb-pulse 6s ease-in-out infinite alternate;
+}
+
+.prc-lock-poster__orb--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(225,29,72,0.35) 0%, transparent 70%);
+  top: -100px; left: -100px;
+  animation-delay: 0s;
+}
+
+.prc-lock-poster__orb--2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(251,113,133,0.2) 0%, transparent 70%);
+  bottom: -80px; right: -80px;
+  animation-delay: 2s;
+}
+
+.prc-lock-poster__orb--3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(99,7,24,0.4) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 4s;
+}
+
+.prc-lock-poster__grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(225,29,72,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(225,29,72,0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes prc-orb-pulse {
+  from { transform: scale(1) translate(0,0); opacity: 0.8; }
+  to   { transform: scale(1.15) translate(10px, -10px); opacity: 1; }
+}
+
+.prc-lock-poster__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0;
+}
+
+.prc-lock-poster__left {
+  flex: 1;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.prc-lock-poster__right {
+  flex: 0 0 420px;
+  padding: 60px 48px 60px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.prc-lock-poster__badge {
+  display: inline-block;
+  background: rgba(225,29,72,0.15);
+  border: 1px solid rgba(225,29,72,0.4);
+  color: #fb7185;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.prc-lock-poster__title {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  color: #f1f5f9;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.prc-lock-poster__subtitle {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1rem;
+  color: rgba(251,113,133,0.7);
+  margin: 0 0 24px;
+  letter-spacing: 0.05em;
+}
+
+.prc-lock-poster__desc {
+  font-size: 0.95rem;
+  color: rgba(148,163,184,0.9);
+  line-height: 1.7;
+  margin: 0 0 36px;
+  max-width: 380px;
+}
+
+.prc-lock-poster__desc strong { color: #fb7185; }
+
+.prc-lock-poster__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e11d48;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(225,29,72,0.35);
+  width: fit-content;
+}
+
+.prc-lock-poster__btn:hover {
+  background: #be123c;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(225,29,72,0.45);
+}
+
+.prc-lock-poster__btn svg { width: 18px; height: 18px; }
+
+.prc-lock-poster__icon-wrap svg { width: 120px; height: 120px; display: block; }
+
+.prc-lock-poster__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.prc-lock-poster__step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 12px 16px;
+  backdrop-filter: blur(8px);
+}
+
+.prc-lock-poster__step-num {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #e11d48;
+  letter-spacing: 0.05em;
+  min-width: 24px;
+}
+
+.prc-lock-poster__step-text {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* ── Lock Hub (Mobile bottom nav) ── */
+.prc-lock-hub-screen {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.prc-lock-hub {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.prc-lock-hub__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.prc-lock-hub__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  animation: prc-orb-pulse 5s ease-in-out infinite alternate;
+}
+
+.prc-lock-hub__orb--1 {
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(225,29,72,0.35) 0%, transparent 70%);
+  top: -60px; left: -60px;
+}
+
+.prc-lock-hub__orb--2 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(251,113,133,0.2) 0%, transparent 70%);
+  bottom: -40px; right: -40px;
+  animation-delay: 2.5s;
+}
+
+.prc-lock-hub__content {
+  position: relative;
+  z-index: 2;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+
+.prc-lock-hub__icon svg { width: 64px; height: 64px; display: block; }
+
+.prc-lock-hub__badge {
+  display: inline-block;
+  background: rgba(225,29,72,0.15);
+  border: 1px solid rgba(225,29,72,0.4);
+  color: #fb7185;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.prc-lock-hub__title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #f1f5f9;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.prc-lock-hub__desc {
+  font-size: 0.82rem;
+  color: rgba(148,163,184,0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.prc-lock-hub__desc strong { color: #fb7185; }
+
+.prc-lock-hub__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.prc-lock-hub__step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.prc-lock-hub__step span {
+  font-weight: 800;
+  color: #e11d48;
+  font-size: 0.65rem;
+  min-width: 20px;
+}
+
+.prc-lock-hub__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e11d48;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 22px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(225,29,72,0.35);
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+
+.prc-lock-hub__btn:hover { background: #be123c; transform: translateY(-1px); }
+.prc-lock-hub__btn svg { width: 16px; height: 16px; }
+
+/* ── Onboarding Poster ── */
+.prc-ob-poster {
+  position: relative;
+  min-height: calc(100dvh - var(--topbar-height, 78px));
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  background: #0f172a;
+  border-radius: 0;
+}
+
+.prc-ob-poster__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.prc-ob-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: prc-orb-pulse 7s ease-in-out infinite alternate;
+}
+
+.prc-ob-orb--1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(225,29,72,0.3) 0%, transparent 70%);
+  top: -150px; left: -150px;
+}
+
+.prc-ob-orb--2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation-delay: 3s;
+}
+
+.prc-ob-orb--3 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(99,7,24,0.35) 0%, transparent 70%);
+  top: 40%; left: 40%;
+  animation-delay: 1.5s;
+}
+
+.prc-ob-kanji-float {
+  position: absolute;
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 700;
+  color: rgba(225,29,72,0.08);
+  user-select: none;
+  pointer-events: none;
+  animation: prc-kanji-drift 12s ease-in-out infinite alternate;
+}
+
+.prc-ob-kanji-float--1 { font-size: 180px; top: -20px; right: 10%; animation-delay: 0s; }
+.prc-ob-kanji-float--2 { font-size: 120px; bottom: 10%; left: 5%; animation-delay: 2s; }
+.prc-ob-kanji-float--3 { font-size: 100px; top: 30%; right: 5%; animation-delay: 4s; }
+.prc-ob-kanji-float--4 { font-size: 80px; top: 60%; left: 15%; animation-delay: 6s; }
+
+@keyframes prc-kanji-drift {
+  from { transform: translateY(0) rotate(-3deg); opacity: 0.6; }
+  to   { transform: translateY(-20px) rotate(3deg); opacity: 1; }
+}
+
+.prc-ob-poster__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  gap: 0;
+  min-height: 100%;
+}
+
+/* Desktop: 2 kolom — kiri header, kanan level cards */
+.prc-ob-poster__header {
+  flex: 0 0 420px;
+  padding: 60px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.prc-ob-poster__levels {
+  flex: 1;
+  padding: 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.prc-ob-poster__badge {
+  display: inline-block;
+  background: rgba(225,29,72,0.15);
+  border: 1px solid rgba(225,29,72,0.4);
+  color: #fb7185;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.prc-ob-poster__title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: #f1f5f9;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+
+.prc-ob-poster__sub {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 0.95rem;
+  color: rgba(251,113,133,0.6);
+  margin: 0 0 20px;
+}
+
+.prc-ob-poster__desc {
+  font-size: 0.88rem;
+  color: rgba(148,163,184,0.85);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 300px;
+}
+
+/* Level cards inside poster */
+.prc-ob-level-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  animation: prc-fade-in 0.3s ease both;
+  backdrop-filter: blur(4px);
+}
+
+.prc-ob-level-card:hover {
+  background: rgba(225,29,72,0.1);
+  border-color: rgba(225,29,72,0.4);
+  transform: translateX(4px);
+}
+
+.prc-ob-level-card__icon { flex-shrink: 0; }
+.prc-ob-level-card__icon svg { width: 44px; height: 44px; display: block; }
+
+.prc-ob-level-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.prc-ob-level-card__name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+.prc-ob-level-card__label {
+  font-size: 0.78rem;
+  color: rgba(148,163,184,0.8);
+  font-family: 'Shippori Mincho', serif;
+}
+
+.prc-ob-level-card__arrow { color: rgba(148,163,184,0.4); }
+.prc-ob-level-card__arrow svg { width: 18px; height: 18px; }
+
+
+/* ── RESPONSIVE: MOBILE POTRET ── */
+@media (max-width: 767px) and (orientation: portrait) {
+
+  /* Lock poster mobile */
+  .prc-lock-poster {
+    flex-direction: column;
+    min-height: auto;
+    border-radius: 0;
+  }
+
+  .prc-lock-poster__inner { flex-direction: column; }
+
+  .prc-lock-poster__left { padding: 32px 20px 20px; }
+
+  .prc-lock-poster__right {
+    flex: 0 0 auto;
+    padding: 0 20px 32px;
+    align-items: flex-start;
+  }
+
+  .prc-lock-poster__title { font-size: 2rem; }
+  .prc-lock-poster__icon-wrap { display: none; }
+
+  .prc-lock-poster__steps { max-width: 100%; }
+
+  /* Onboarding poster mobile — 1 kolom */
+  .prc-ob-poster {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .prc-ob-poster__inner { flex-direction: column; }
+
+  .prc-ob-poster__header {
+    flex: 0 0 auto;
+    padding: 28px 20px 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .prc-ob-poster__title { font-size: 1.8rem; }
+  .prc-ob-poster__desc { max-width: 100%; }
+
+  .prc-ob-poster__levels { padding: 16px 20px 32px; gap: 8px; }
+
+  .prc-ob-kanji-float--1 { font-size: 120px; }
+  .prc-ob-kanji-float--2 { display: none; }
+  .prc-ob-kanji-float--3 { display: none; }
+  .prc-ob-kanji-float--4 { display: none; }
+
+  .prc-ob-level-card { padding: 12px 14px; }
+  .prc-ob-level-card__icon svg { width: 36px; height: 36px; }
+}
+
+
+/* ── RESPONSIVE: MOBILE LANDSCAPE ── */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  .prc-lock-poster { min-height: auto; border-radius: 0; }
+  .prc-lock-poster__left { padding: 20px 24px; }
+  .prc-lock-poster__title { font-size: 1.6rem; }
+  .prc-lock-poster__right { flex: 0 0 300px; padding: 20px 24px 20px 0; gap: 16px; }
+  .prc-lock-poster__icon-wrap svg { width: 80px; height: 80px; }
+  .prc-lock-poster__steps { gap: 6px; }
+  .prc-lock-poster__step { padding: 8px 12px; }
+  .prc-lock-poster__orb--1 { width: 300px; height: 300px; }
+
+  .prc-ob-poster { min-height: auto; }
+  .prc-ob-poster__header { flex: 0 0 280px; padding: 20px 24px; }
+  .prc-ob-poster__title { font-size: 1.6rem; }
+  .prc-ob-poster__levels { padding: 16px 20px; gap: 6px; }
+  .prc-ob-level-card { padding: 8px 12px; }
+  .prc-ob-level-card__icon svg { width: 32px; height: 32px; }
+  .prc-ob-kanji-float { display: none; }
+}

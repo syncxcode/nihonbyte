@@ -3930,28 +3930,34 @@ grid.style.display="grid";
       if (!hub) return;
       hub.hidden = false;
       hub.innerHTML = `
-        <section class="bottom-nav-hub__screen" aria-label="Latihan terkunci">
-          <header class="bottom-nav-hub__header">
-            <h2><span class="practice-hub-title-pill">Latihan</span></h2>
-          </header>
-          <div class="prc-latihan-locked">
-            <div class="prc-latihan-locked-icon">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
-                <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
-                <rect x="20" y="28" width="24" height="18" rx="3" stroke="#e11d48" stroke-width="2.5"/>
-                <path d="M24 28v-6a8 8 0 0 1 16 0v6" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                <circle cx="32" cy="37" r="2.5" fill="#e11d48"/>
-              </svg>
+        <section class="bottom-nav-hub__screen prc-lock-hub-screen" aria-label="Latihan terkunci">
+          <div class="prc-lock-hub">
+            <div class="prc-lock-hub__bg">
+              <div class="prc-lock-hub__orb prc-lock-hub__orb--1"></div>
+              <div class="prc-lock-hub__orb prc-lock-hub__orb--2"></div>
             </div>
-            <h3 class="prc-latihan-locked-title">Latihan Terkunci</h3>
-            <p class="prc-latihan-locked-desc">
-              Selesaikan <strong>90% vocabulary</strong> di mode Practice terlebih dahulu sebelum bisa mengakses Latihan.
-            </p>
-            <button class="prc-unlock-btn" id="prc-go-to-practice-mobile">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Buka Practice
-            </button>
+            <div class="prc-lock-hub__content">
+              <div class="prc-lock-hub__icon">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="40" cy="40" r="38" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.25)" stroke-width="1.5"/>
+                  <rect x="24" y="36" width="32" height="24" rx="4" fill="rgba(225,29,72,0.1)" stroke="#e11d48" stroke-width="2"/>
+                  <path d="M30 36V28a10 10 0 0 1 20 0v8" stroke="#e11d48" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="40" cy="48" r="3" fill="#e11d48"/>
+                </svg>
+              </div>
+              <div class="prc-lock-hub__badge">LOCKED</div>
+              <h3 class="prc-lock-hub__title">Latihan Terkunci</h3>
+              <p class="prc-lock-hub__desc">Selesaikan <strong>90% kosakata inti</strong> di Practice terlebih dahulu.</p>
+              <div class="prc-lock-hub__steps">
+                <div class="prc-lock-hub__step"><span>01</span> Pilih level di Practice</div>
+                <div class="prc-lock-hub__step"><span>02</span> Selesaikan 90% vocab</div>
+                <div class="prc-lock-hub__step"><span>03</span> Latihan terbuka</div>
+              </div>
+              <button class="prc-lock-hub__btn" id="prc-go-to-practice-mobile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Mulai Practice
+              </button>
+            </div>
           </div>
         </section>
       `;
@@ -4490,34 +4496,57 @@ grid.style.display="grid";
       grid.classList.remove("support-mode");
       grid.style.removeProperty("grid-template-columns");
       grid.innerHTML = `
-        <section class="hub-screen hub-screen--practice">
-          <div class="hub-practice-shell">
-            <header class="hub-header hub-header--practice">
-              <h2><span class="practice-hub-title-pill">Latihan</span></h2>
-            </header>
-            <div class="prc-latihan-locked">
-              <div class="prc-latihan-locked-icon">
-                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="32" r="30" fill="#fff0f3"/>
-                  <circle cx="32" cy="32" r="30" stroke="#e11d48" stroke-width="2"/>
-                  <rect x="20" y="28" width="24" height="18" rx="3" stroke="#e11d48" stroke-width="2.5"/>
-                  <path d="M24 28v-6a8 8 0 0 1 16 0v6" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="32" cy="37" r="2.5" fill="#e11d48"/>
-                </svg>
-              </div>
-              <h3 class="prc-latihan-locked-title">Latihan Terkunci</h3>
-              <p class="prc-latihan-locked-desc">
-                Selesaikan <strong>90% vocabulary</strong> di mode Practice terlebih dahulu sebelum bisa mengakses Latihan.
+        <div class="prc-lock-poster">
+          <div class="prc-lock-poster__bg">
+            <div class="prc-lock-poster__orb prc-lock-poster__orb--1"></div>
+            <div class="prc-lock-poster__orb prc-lock-poster__orb--2"></div>
+            <div class="prc-lock-poster__orb prc-lock-poster__orb--3"></div>
+            <div class="prc-lock-poster__grid-lines"></div>
+          </div>
+          <div class="prc-lock-poster__inner">
+            <div class="prc-lock-poster__left">
+              <div class="prc-lock-poster__badge">LOCKED</div>
+              <h2 class="prc-lock-poster__title">Latihan<br>Terkunci</h2>
+              <p class="prc-lock-poster__subtitle">練習問題</p>
+              <p class="prc-lock-poster__desc">
+                Selesaikan <strong>90% kosakata inti</strong> di mode Practice terlebih dahulu untuk membuka akses ke mode Latihan simulasi JLPT.
               </p>
-              <button class="prc-unlock-btn" id="prc-go-to-practice-from-latihan">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                Buka Practice
+              <button class="prc-lock-poster__btn" id="prc-go-to-practice-from-latihan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Mulai Practice
               </button>
             </div>
+            <div class="prc-lock-poster__right">
+              <div class="prc-lock-poster__icon-wrap">
+                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="60" cy="60" r="56" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.2)" stroke-width="2"/>
+                  <circle cx="60" cy="60" r="40" fill="rgba(225,29,72,0.06)" stroke="rgba(225,29,72,0.15)" stroke-width="1.5"/>
+                  <rect x="36" y="54" width="48" height="36" rx="6" fill="rgba(225,29,72,0.12)" stroke="#e11d48" stroke-width="2.5"/>
+                  <path d="M44 54V42a16 16 0 0 1 32 0v12" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="60" cy="72" r="5" fill="#e11d48"/>
+                  <line x1="60" y1="77" x2="60" y2="84" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="prc-lock-poster__steps">
+                <div class="prc-lock-poster__step">
+                  <span class="prc-lock-poster__step-num">01</span>
+                  <span class="prc-lock-poster__step-text">Pilih level di Practice</span>
+                </div>
+                <div class="prc-lock-poster__step">
+                  <span class="prc-lock-poster__step-num">02</span>
+                  <span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span>
+                </div>
+                <div class="prc-lock-poster__step">
+                  <span class="prc-lock-poster__step-num">03</span>
+                  <span class="prc-lock-poster__step-text">Latihan terbuka otomatis</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
       `;
       document.getElementById("prc-go-to-practice-from-latihan")?.addEventListener("click", () => {
+        grid.style.display = "none";
         if (window.practiceUI && typeof window.practiceUI.open === "function") {
           window.practiceUI.open({ onClose: () => { render(); } });
         }
@@ -4852,7 +4881,9 @@ grid.style.display="grid";
         return;
       }
       if (!_cachedProg || !_cachedProg.onboardingDone) {
-        // Belum onboarding → langsung buka practice (standalone, tidak ganggu grid)
+        // Belum onboarding → sembunyikan grid, buka practice standalone
+        grid.style.display = "none";
+        if (paginationContainer) paginationContainer.style.display = "none";
         if (window.practiceUI && typeof window.practiceUI.open === "function") {
           window.practiceUI.open({ onClose: () => { render(); } });
         }

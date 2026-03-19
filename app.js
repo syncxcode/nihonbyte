@@ -892,7 +892,7 @@ grid.style.display="grid";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
-        // Reset cache progress agar render() fetch ulang setelah login
+        // Reset cache practice agar render() fetch ulang setelah login
         if (window.practiceUI) window.practiceUI._latestProg = undefined;
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
@@ -2122,13 +2122,6 @@ grid.style.display="grid";
         `);
         return;
       }
-      // Block search saat placement quiz aktif
-      const prcWrapper = document.getElementById("prc-wrapper");
-      if (prcWrapper && prcWrapper.style.display !== "none" &&
-          window.practiceUI && window.practiceUI.getScreen() === "placement") {
-        openInfoModal("<h3>Fokus dulu!</h3><p>Selesaikan placement test terlebih dahulu.</p>");
-        return;
-      }
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -2351,13 +2344,6 @@ grid.style.display="grid";
         if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
           window.kanjiCardUI.rerender();
         }
-      } else if (window.practiceUI && document.getElementById('prc-wrapper') &&
-                 document.getElementById('prc-wrapper').style.display !== 'none') {
-        // Sedang di practice: rerender layout saja
-        document.body.style.height = window.innerHeight + 'px';
-        if (typeof window.practiceUI.rerender === 'function') {
-          window.practiceUI.rerender();
-        }
       } else {
         // Tidak sedang latihan: render normal
         document.body.style.height = window.innerHeight + 'px';
@@ -2386,15 +2372,6 @@ grid.style.display="grid";
         setTimeout(() => {
           if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
             window.kanjiCardUI.rerender();
-          }
-        }, 150);
-      } else if (window.practiceUI && document.getElementById('prc-wrapper') &&
-                 document.getElementById('prc-wrapper').style.display !== 'none') {
-        // Sedang di practice: rerender layout saja
-        document.body.style.height = window.innerHeight + 'px';
-        setTimeout(() => {
-          if (typeof window.practiceUI.rerender === 'function') {
-            window.practiceUI.rerender();
           }
         }, 150);
       } else {
@@ -3596,21 +3573,8 @@ grid.style.display="grid";
 
     if (tab === "practice") {
       closeSidebar();
-      // Cek onboarding selesai sebelum buka Latihan
-      (async () => {
-        const prog = window.practiceUI
-          ? await window.practiceUI._getPracticeProgressCached()
-          : null;
-        const onboardingDone = !!(prog && prog.onboardingDone);
-
-        if (!onboardingDone && window.currentUser) {
-          // Tampilkan pesan lock di dalam hub
-          openBottomNavHub("practice-locked");
-        } else {
-          openBottomNavHub("practice");
-        }
-        setBottomNavActive("practice");
-      })();
+      openBottomNavHub("practice");
+      setBottomNavActive("practice");
       return;
     }
 
@@ -3916,60 +3880,7 @@ grid.style.display="grid";
     document.body.classList.remove("bottom-nav-hub-open");
   }
 
-  async function _checkPracticeAccess() {
-    if (!window.practiceUI || !window.currentUser) return true; // allow jika tidak ada user
-    const prog = await window.practiceUI._getPracticeProgressCached();
-    return !!(prog && prog.onboardingDone);
-  }
-
   function openBottomNavHub(kind) {
-    // Handle practice-locked view
-    if (kind === "practice-locked") {
-      document.body.classList.add("bottom-nav-hub-open");
-      const hub = document.getElementById("bottomNavHub");
-      if (!hub) return;
-      hub.hidden = false;
-      hub.innerHTML = `
-        <section class="bottom-nav-hub__screen prc-lock-hub-screen" aria-label="Latihan terkunci">
-          <div class="prc-lock-hub">
-            <div class="prc-lock-hub__bg">
-              <div class="prc-lock-hub__orb prc-lock-hub__orb--1"></div>
-              <div class="prc-lock-hub__orb prc-lock-hub__orb--2"></div>
-            </div>
-            <div class="prc-lock-hub__content">
-              <div class="prc-lock-hub__icon">
-                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="40" cy="40" r="38" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.25)" stroke-width="1.5"/>
-                  <rect x="24" y="36" width="32" height="24" rx="4" fill="rgba(225,29,72,0.1)" stroke="#e11d48" stroke-width="2"/>
-                  <path d="M30 36V28a10 10 0 0 1 20 0v8" stroke="#e11d48" stroke-width="2" stroke-linecap="round"/>
-                  <circle cx="40" cy="48" r="3" fill="#e11d48"/>
-                </svg>
-              </div>
-              <div class="prc-lock-hub__badge">LOCKED</div>
-              <h3 class="prc-lock-hub__title">Latihan Terkunci</h3>
-              <p class="prc-lock-hub__desc">Selesaikan <strong>90% kosakata inti</strong> di Practice terlebih dahulu.</p>
-              <div class="prc-lock-hub__steps">
-                <div class="prc-lock-hub__step"><span>01</span> Pilih level di Practice</div>
-                <div class="prc-lock-hub__step"><span>02</span> Selesaikan 90% vocab</div>
-                <div class="prc-lock-hub__step"><span>03</span> Latihan terbuka</div>
-              </div>
-              <button class="prc-lock-hub__btn" id="prc-go-to-practice-mobile">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                Mulai Practice
-              </button>
-            </div>
-          </div>
-        </section>
-      `;
-      document.getElementById("prc-go-to-practice-mobile")?.addEventListener("click", () => {
-        closeBottomNavHub();
-        if (window.practiceUI && typeof window.practiceUI.open === "function") {
-          window.practiceUI.open({ onClose: () => { render(); } });
-        }
-      });
-      return;
-    }
-
     if (!bottomNavHub || window.innerWidth > 767) return false;
 
     const isPractice = kind === "practice";
@@ -4076,15 +3987,6 @@ grid.style.display="grid";
                 Ungkapan Umum
               </strong>
               <span>Ekspresi sehari-hari</span>
-            </button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="practice">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--practice" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
-                </span>
-                Practice
-              </strong>
-              <span>Belajar terstruktur</span>
             </button>
 
           </div>
@@ -4233,14 +4135,6 @@ grid.style.display="grid";
           if (search) search.value = "";
           render();
         }
-
-        if (action === "practice") {
-          if (!ensureLoginForMenu()) return;
-          closeBottomNavHub();
-          if (window.practiceUI && typeof window.practiceUI.open === "function") {
-            window.practiceUI.open({ onClose: () => { render(); } });
-          }
-        }
       });
     });
 
@@ -4326,12 +4220,6 @@ grid.style.display="grid";
         title: "Ungkapan Umum",
         description: "Ekspresi sehari-hari",
         icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
-      },
-      {
-        action: "practice",
-        title: "Practice",
-        description: "Belajar terstruktur",
-        icon: '<path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/>'
       },
       {
         action: "grammar",
@@ -4465,15 +4353,6 @@ grid.style.display="grid";
       return;
     }
 
-    if (action === "practice") {
-      if (!ensureLoginForMenu()) return;
-      closeModal();
-      if (window.practiceUI && typeof window.practiceUI.open === "function") {
-        window.practiceUI.open({ onClose: () => { render(); } });
-      }
-      return;
-    }
-
     if (action === "grammar") {
       if (!ensureLoginForMenu()) return;
       viewMode = "grammar";
@@ -4484,79 +4363,130 @@ grid.style.display="grid";
     }
   }
 
-  async function renderPracticeHub() {
-    // Cek onboarding selesai
-    const practiceAccess = window.practiceUI
-      ? await window.practiceUI._getPracticeProgressCached()
-      : null;
-    const onboardingDone = !!(practiceAccess && practiceAccess.onboardingDone);
 
-    if (!onboardingDone && window.currentUser) {
-      grid.classList.add("hub-mode");
-      grid.classList.remove("support-mode");
-      grid.style.removeProperty("grid-template-columns");
-      grid.innerHTML = `
-        <div class="prc-lock-poster">
-          <div class="prc-lock-poster__bg">
-            <div class="prc-lock-poster__orb prc-lock-poster__orb--1"></div>
-            <div class="prc-lock-poster__orb prc-lock-poster__orb--2"></div>
-            <div class="prc-lock-poster__orb prc-lock-poster__orb--3"></div>
-            <div class="prc-lock-poster__grid-lines"></div>
+  // ── Practice Lock Screen ─────────────────────────────────────────────
+  // Render lock screen ke grid. Klik "Buka Practice" → render onboarding ke grid.
+  function renderPracticeLockScreen(title, subtitle) {
+    grid.classList.add("hub-mode");
+    grid.classList.remove("support-mode", "kc-grid-mode");
+    grid.style.removeProperty("grid-template-columns");
+    grid.innerHTML = `
+      <div class="prc-lock-poster">
+        <div class="prc-lock-poster__bg">
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--1"></div>
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--2"></div>
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--3"></div>
+          <div class="prc-lock-poster__grid-lines"></div>
+        </div>
+        <div class="prc-lock-poster__inner">
+          <div class="prc-lock-poster__left">
+            <div class="prc-lock-poster__badge">LOCKED</div>
+            <h2 class="prc-lock-poster__title">${title}</h2>
+            <p class="prc-lock-poster__subtitle">${subtitle}</p>
+            <p class="prc-lock-poster__desc">
+              Selesaikan <strong>90% kosakata inti</strong> di mode Practice terlebih dahulu untuk membuka akses ke fitur ini.
+            </p>
+            <button class="prc-lock-poster__btn" id="prc-lock-cta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Mulai Practice
+            </button>
           </div>
-          <div class="prc-lock-poster__inner">
-            <div class="prc-lock-poster__left">
-              <div class="prc-lock-poster__badge">LOCKED</div>
-              <h2 class="prc-lock-poster__title">Latihan<br>Terkunci</h2>
-              <p class="prc-lock-poster__subtitle">練習問題</p>
-              <p class="prc-lock-poster__desc">
-                Selesaikan <strong>90% kosakata inti</strong> di mode Practice terlebih dahulu untuk membuka akses ke mode Latihan simulasi JLPT.
-              </p>
-              <button class="prc-lock-poster__btn" id="prc-go-to-practice-from-latihan">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                Mulai Practice
-              </button>
+          <div class="prc-lock-poster__right">
+            <div class="prc-lock-poster__icon-wrap">
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="56" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.2)" stroke-width="2"/>
+                <circle cx="60" cy="60" r="40" fill="rgba(225,29,72,0.06)" stroke="rgba(225,29,72,0.15)" stroke-width="1.5"/>
+                <rect x="36" y="54" width="48" height="36" rx="6" fill="rgba(225,29,72,0.12)" stroke="#e11d48" stroke-width="2.5"/>
+                <path d="M44 54V42a16 16 0 0 1 32 0v12" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="60" cy="72" r="5" fill="#e11d48"/>
+                <line x1="60" y1="77" x2="60" y2="84" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
             </div>
-            <div class="prc-lock-poster__right">
-              <div class="prc-lock-poster__icon-wrap">
-                <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="60" cy="60" r="56" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.2)" stroke-width="2"/>
-                  <circle cx="60" cy="60" r="40" fill="rgba(225,29,72,0.06)" stroke="rgba(225,29,72,0.15)" stroke-width="1.5"/>
-                  <rect x="36" y="54" width="48" height="36" rx="6" fill="rgba(225,29,72,0.12)" stroke="#e11d48" stroke-width="2.5"/>
-                  <path d="M44 54V42a16 16 0 0 1 32 0v12" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                  <circle cx="60" cy="72" r="5" fill="#e11d48"/>
-                  <line x1="60" y1="77" x2="60" y2="84" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="prc-lock-poster__steps">
-                <div class="prc-lock-poster__step">
-                  <span class="prc-lock-poster__step-num">01</span>
-                  <span class="prc-lock-poster__step-text">Pilih level di Practice</span>
-                </div>
-                <div class="prc-lock-poster__step">
-                  <span class="prc-lock-poster__step-num">02</span>
-                  <span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span>
-                </div>
-                <div class="prc-lock-poster__step">
-                  <span class="prc-lock-poster__step-num">03</span>
-                  <span class="prc-lock-poster__step-text">Latihan terbuka otomatis</span>
-                </div>
-              </div>
+            <div class="prc-lock-poster__steps">
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">01</span><span class="prc-lock-poster__step-text">Pilih level di Practice</span></div>
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">02</span><span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span></div>
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">03</span><span class="prc-lock-poster__step-text">Fitur terbuka otomatis</span></div>
             </div>
           </div>
         </div>
-      `;
-      document.getElementById("prc-go-to-practice-from-latihan")?.addEventListener("click", () => {
-        // Hapus hub-mode dulu biar display:block !important tidak override
-        grid.classList.remove("hub-mode", "support-mode");
-        grid.innerHTML = "";
-        grid.style.display = "none";
-        if (paginationContainer) paginationContainer.style.display = "none";
-        if (window.practiceUI && typeof window.practiceUI.open === "function") {
-          window.practiceUI.open({ onClose: () => { render(); } });
+      </div>
+    `;
+
+    document.getElementById("prc-lock-cta")?.addEventListener("click", () => {
+      renderPracticeOnboardingInGrid();
+    });
+  }
+
+  // Render onboarding langsung ke #grid (replace lock screen)
+  function renderPracticeOnboardingInGrid() {
+    const LEVELS = ["N5","N4","N3","N2","N1"];
+    const LEVEL_LABELS = { N5:"基礎", N4:"初級", N3:"中級", N2:"上級", N1:"最上級" };
+    const LEVEL_SVGS = {
+      N5: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fff0f3"/><circle cx="28" cy="28" r="26" stroke="#e11d48" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#e11d48" font-family="Ubuntu,sans-serif">N5</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#9f1239" font-family="Shippori Mincho,serif">基礎</text></svg>`,
+      N4: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#eff6ff"/><circle cx="28" cy="28" r="26" stroke="#2563eb" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb" font-family="Ubuntu,sans-serif">N4</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#1e40af" font-family="Shippori Mincho,serif">初級</text></svg>`,
+      N3: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#f0fdf4"/><circle cx="28" cy="28" r="26" stroke="#16a34a" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a" font-family="Ubuntu,sans-serif">N3</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#14532d" font-family="Shippori Mincho,serif">中級</text></svg>`,
+      N2: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fefce8"/><circle cx="28" cy="28" r="26" stroke="#ca8a04" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#ca8a04" font-family="Ubuntu,sans-serif">N2</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#713f12" font-family="Shippori Mincho,serif">上級</text></svg>`,
+      N1: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fdf4ff"/><circle cx="28" cy="28" r="26" stroke="#9333ea" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#9333ea" font-family="Ubuntu,sans-serif">N1</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#581c87" font-family="Shippori Mincho,serif">最上級</text></svg>`,
+    };
+
+    grid.classList.add("hub-mode");
+    grid.classList.remove("support-mode", "kc-grid-mode");
+    grid.style.removeProperty("grid-template-columns");
+    grid.innerHTML = `
+      <div class="prc-ob-poster">
+        <div class="prc-ob-poster__bg">
+          <div class="prc-ob-orb prc-ob-orb--1"></div>
+          <div class="prc-ob-orb prc-ob-orb--2"></div>
+          <div class="prc-ob-orb prc-ob-orb--3"></div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--1">語</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--2">学</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--3">力</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--4">文</div>
+        </div>
+        <div class="prc-ob-poster__inner">
+          <div class="prc-ob-poster__header">
+            <div class="prc-ob-poster__badge">NihonByte Practice</div>
+            <h2 class="prc-ob-poster__title">Mulai<br>Perjalananmu</h2>
+            <p class="prc-ob-poster__sub">日本語能力試験</p>
+            <p class="prc-ob-poster__desc">Pilih level JLPT yang sesuai kemampuanmu. Jika memilih di atas N5, kamu akan dites terlebih dahulu.</p>
+          </div>
+          <div class="prc-ob-poster__levels">
+            ${LEVELS.map((lvl, i) => `
+              <button class="prc-ob-level-card" data-level="${lvl}" style="animation-delay:${i*0.06}s">
+                <div class="prc-ob-level-card__icon">${LEVEL_SVGS[lvl]}</div>
+                <div class="prc-ob-level-card__body">
+                  <span class="prc-ob-level-card__name">${lvl}</span>
+                  <span class="prc-ob-level-card__label">${LEVEL_LABELS[lvl]}</span>
+                </div>
+                <div class="prc-ob-level-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Handler klik level — delegate ke practiceUI
+    grid.querySelectorAll(".prc-ob-level-card").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (window.practiceUI && typeof window.practiceUI.handleOnboardingFromGrid === "function") {
+          window.practiceUI.handleOnboardingFromGrid(btn.dataset.level, () => render());
         }
       });
-      if (resultInfo) resultInfo.textContent = "Latihan";
-      return;
+    });
+  }
+
+  async function renderPracticeHub() {
+    // Cek onboarding
+    if (window.currentUser) {
+      const prog = window.practiceUI
+        ? await window.practiceUI._getPracticeProgressCached()
+        : null;
+      if (!prog || !prog.onboardingDone) {
+        renderPracticeLockScreen("Latihan<br>Terkunci", "練習問題");
+        if (resultInfo) resultInfo.textContent = "Latihan";
+        return;
+      }
     }
 
     grid.classList.add("hub-mode");
@@ -4861,38 +4791,22 @@ grid.style.display="grid";
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
 
-    // Cleanup: kalau prc-wrapper masih ada di DOM tapi bukan di vocab view, hapus
-    const _prcWrapper = document.getElementById("prc-wrapper");
-    if (_prcWrapper && viewMode !== "vocab") {
-      _prcWrapper.remove();
-      const _g = document.getElementById("grid");
-      const _p = document.getElementById("pagination-container");
-      if (_g) _g.style.display = "";
-      if (_p) _p.style.display = "";
-    }
-
-    // Guard: kalau belum onboarding → buka practice onboarding, stop render grid
+    // Guard onboarding: kalau belum selesai, tampilkan lock screen di grid
     if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
-      const _cachedProg = window.practiceUI?._latestProg;
-      if (_cachedProg === undefined) {
-        // Belum ada cache — fetch async lalu render ulang
+      const _prog = window.practiceUI?._latestProg;
+      if (_prog === undefined) {
+        // Belum ada cache — fetch dulu lalu render ulang
         if (window.practiceUI?._getPracticeProgressCached) {
-          window.practiceUI._getPracticeProgressCached().then(prog => {
-            window.practiceUI._latestProg = prog || null;
+          window.practiceUI._getPracticeProgressCached().then(p => {
+            window.practiceUI._latestProg = p || null;
             render();
           });
         }
         return;
       }
-      if (!_cachedProg || !_cachedProg.onboardingDone) {
-        // Belum onboarding → sembunyikan grid, buka practice standalone
-        grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
-        grid.innerHTML = "";
-        grid.style.display = "none";
-        if (paginationContainer) paginationContainer.style.display = "none";
-        if (window.practiceUI && typeof window.practiceUI.open === "function") {
-          window.practiceUI.open({ onClose: () => { render(); } });
-        }
+      if (!_prog || !_prog.onboardingDone) {
+        renderPracticeLockScreen("Flashcard<br>Terkunci", "語彙");
+        if (resultInfo) resultInfo.textContent = "";
         return;
       }
     }
@@ -5132,13 +5046,6 @@ grid.style.display="grid";
     if (viewMode === "kanji-card-single") {
       if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === "function") {
         window.kanjiCardUI.rerender();
-      }
-    }
-    // Practice: jaga layout saat rotate/resize
-    if (window.practiceUI && document.getElementById("prc-wrapper") &&
-        document.getElementById("prc-wrapper").style.display !== "none") {
-      if (typeof window.practiceUI.rerender === "function") {
-        window.practiceUI.rerender();
       }
     }
   });

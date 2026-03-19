@@ -5554,6 +5554,7 @@ grid.style.display="grid";
       avatarModal.hidden = true;
       const cropModal = document.getElementById("dashboard-crop-modal");
       if (cropModal) cropModal.hidden = true;
+      document.body.style.overflow = "";
     }
 
     function openModal(type) {
@@ -5561,6 +5562,7 @@ grid.style.display="grid";
       settingsModal.hidden = type !== "settings";
       avatarModal.hidden = type !== "avatar";
       if (type === "settings") nameInput.focus();
+      document.body.style.overflow = "hidden";
     }
 
     settingsBtn.addEventListener("click", () => openModal("settings"));
@@ -5771,9 +5773,9 @@ grid.style.display="grid";
       return;
     }
 
-    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:50px;"><p>Menyiapkan dashboard...</p></div>';
     if (resultInfo) resultInfo.textContent = "Dasbor saya";
     if (typeof setHistoryMode === "function") setHistoryMode(true);
+    grid.innerHTML = '<div class="history-container" style="text-align:center;padding:20px;"><p>Menyiapkan dashboard...</p></div>';
     if (typeof closeSidebar === "function") closeSidebar();
 
     try {

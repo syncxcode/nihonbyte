@@ -4828,6 +4828,16 @@ grid.style.display="grid";
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
 
+    // Cleanup: kalau prc-wrapper masih ada di DOM tapi bukan di vocab view, hapus
+    const _prcWrapper = document.getElementById("prc-wrapper");
+    if (_prcWrapper && viewMode !== "vocab") {
+      _prcWrapper.remove();
+      const _g = document.getElementById("grid");
+      const _p = document.getElementById("pagination-container");
+      if (_g) _g.style.display = "";
+      if (_p) _p.style.display = "";
+    }
+
     // Guard: kalau belum onboarding → buka practice onboarding, stop render grid
     if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
       const _cachedProg = window.practiceUI?._latestProg;

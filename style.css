@@ -11766,7 +11766,6 @@ body.history-mode .dashboard-shell textarea {
 .prc-wrapper {
   width: 100%;
   box-sizing: border-box;
-  min-height: 100dvh;
   display: block;
   /* Standalone — tidak ikut grid manapun */
 }

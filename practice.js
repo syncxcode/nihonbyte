@@ -119,7 +119,10 @@
       const uid = window.currentUser.uid;
       const ref = window.doc(window.firebaseDb, "users", uid, "practice", "progress");
       const snap = await window.getDoc(ref);
-      return snap.exists() ? snap.data() : null;
+      const data = snap.exists() ? snap.data() : null;
+      // Update cache agar render() bisa cek sync
+      if (window.practiceUI) window.practiceUI._latestProg = data;
+      return data;
     } catch (e) {
       console.error("Gagal ambil practice progress:", e);
       return null;
@@ -132,6 +135,8 @@
       const uid = window.currentUser.uid;
       const ref = window.doc(window.firebaseDb, "users", uid, "practice", "progress");
       await window.setDoc(ref, data, { merge: true });
+      // Update cache agar render() bisa cek sync
+      if (window.practiceUI) window.practiceUI._latestProg = data;
     } catch (e) {
       console.error("Gagal simpan practice progress:", e);
     }
@@ -892,25 +897,24 @@
   async function openPractice(opts) {
     _onClose = opts.onClose || null;
 
-    // Sembunyikan grid utama
+    // Inject wrapper di dalam #grid langsung (replace konten grid)
     const grid = document.getElementById("grid");
-    if (grid) grid.style.display = "none";
-
-    // Inject wrapper di dalam content-panel, setelah grid
     const contentPanel = document.querySelector(".content-panel");
+
     let wrapper = document.getElementById("prc-wrapper");
     if (!wrapper) {
       wrapper = document.createElement("div");
       wrapper.id = "prc-wrapper";
       wrapper.className = "prc-wrapper";
-      if (contentPanel) {
-        contentPanel.appendChild(wrapper);
-      } else if (grid) {
-        grid.parentElement?.appendChild(wrapper);
-      }
     }
+
+    // Kosongkan grid dan inject wrapper ke dalamnya
+    grid.innerHTML = "";
+    grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
+    grid.style.removeProperty("grid-template-columns");
+    grid.appendChild(wrapper);
+
     wrapper.style.display = "";
-    // Scroll ke atas
     if (contentPanel) contentPanel.scrollTop = 0;
     else window.scrollTo({ top: 0, behavior: "instant" });
 
@@ -936,15 +940,11 @@
 
   function closePractice() {
     const wrapper = document.getElementById("prc-wrapper");
-    if (wrapper) wrapper.style.display = "none";
-
-    // Kembalikan grid
-    const grid = document.getElementById("grid");
-    if (grid) grid.style.display = "";
+    if (wrapper) wrapper.remove(); // hapus dari DOM
 
     _container = null;
     _screen = "level";
-    if (typeof _onClose === "function") _onClose();
+    if (typeof _onClose === "function") _onClose(); // trigger render()
   }
 
   // ── rerender (untuk resize/rotate) ─────────────────────────
@@ -987,6 +987,7 @@
     removeBlurOverlay,
     getScreen: () => _screen,
     _getPracticeProgressCached,
+    _latestProg: undefined, // undefined = belum fetch, null = sudah fetch tapi kosong
   };
 
 })();

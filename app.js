@@ -892,6 +892,10 @@ grid.style.display="grid";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "inline-flex";
         cachedUserProfile = await loadUserProfile(user.uid);
         const resolvedName = cachedUserProfile?.displayName || defaultDisplayName(user);
+        // Cek onboarding practice setelah login
+        if (window.practiceUI && typeof window.practiceUI.checkOnboardingStatus === "function") {
+          window.practiceUI.checkOnboardingStatus();
+        }
         userNameDisplay.textContent = resolvedName;
         applyUserAvatar(user, cachedUserProfile);
         window.currentUser = user;
@@ -2120,6 +2124,13 @@ grid.style.display="grid";
         `);
         return;
       }
+      // Block search saat placement quiz aktif
+      const prcWrapper = document.getElementById("prc-wrapper");
+      if (prcWrapper && prcWrapper.style.display !== "none" &&
+          window.practiceUI && window.practiceUI.getScreen() === "placement") {
+        openInfoModal("<h3>Fokus dulu!</h3><p>Selesaikan placement test terlebih dahulu.</p>");
+        return;
+      }
       bodyScrollY = window.scrollY;
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
@@ -2342,6 +2353,13 @@ grid.style.display="grid";
         if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
           window.kanjiCardUI.rerender();
         }
+      } else if (window.practiceUI && document.getElementById('prc-wrapper') &&
+                 document.getElementById('prc-wrapper').style.display !== 'none') {
+        // Sedang di practice: rerender layout saja
+        document.body.style.height = window.innerHeight + 'px';
+        if (typeof window.practiceUI.rerender === 'function') {
+          window.practiceUI.rerender();
+        }
       } else {
         // Tidak sedang latihan: render normal
         document.body.style.height = window.innerHeight + 'px';
@@ -2370,6 +2388,15 @@ grid.style.display="grid";
         setTimeout(() => {
           if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === 'function') {
             window.kanjiCardUI.rerender();
+          }
+        }, 150);
+      } else if (window.practiceUI && document.getElementById('prc-wrapper') &&
+                 document.getElementById('prc-wrapper').style.display !== 'none') {
+        // Sedang di practice: rerender layout saja
+        document.body.style.height = window.innerHeight + 'px';
+        setTimeout(() => {
+          if (typeof window.practiceUI.rerender === 'function') {
+            window.practiceUI.rerender();
           }
         }, 150);
       } else {
@@ -3986,6 +4013,15 @@ grid.style.display="grid";
               </strong>
               <span>Ekspresi sehari-hari</span>
             </button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="practice">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--practice" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+                </span>
+                Practice
+              </strong>
+              <span>Belajar terstruktur</span>
+            </button>
 
           </div>
 
@@ -4133,6 +4169,14 @@ grid.style.display="grid";
           if (search) search.value = "";
           render();
         }
+
+        if (action === "practice") {
+          if (!ensureLoginForMenu()) return;
+          closeBottomNavHub();
+          if (window.practiceUI && typeof window.practiceUI.open === "function") {
+            window.practiceUI.open({ onClose: () => { render(); } });
+          }
+        }
       });
     });
 
@@ -4218,6 +4262,12 @@ grid.style.display="grid";
         title: "Ungkapan Umum",
         description: "Ekspresi sehari-hari",
         icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
+      },
+      {
+        action: "practice",
+        title: "Practice",
+        description: "Belajar terstruktur",
+        icon: '<path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/>'
       },
       {
         action: "grammar",
@@ -4348,6 +4398,15 @@ grid.style.display="grid";
       if (category) category.value = "ekspresi";
       if (search) search.value = "";
       render();
+      return;
+    }
+
+    if (action === "practice") {
+      if (!ensureLoginForMenu()) return;
+      closeModal();
+      if (window.practiceUI && typeof window.practiceUI.open === "function") {
+        window.practiceUI.open({ onClose: () => { render(); } });
+      }
       return;
     }
 
@@ -4899,6 +4958,13 @@ grid.style.display="grid";
     if (viewMode === "kanji-card-single") {
       if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === "function") {
         window.kanjiCardUI.rerender();
+      }
+    }
+    // Practice: jaga layout saat rotate/resize
+    if (window.practiceUI && document.getElementById("prc-wrapper") &&
+        document.getElementById("prc-wrapper").style.display !== "none") {
+      if (typeof window.practiceUI.rerender === "function") {
+        window.practiceUI.rerender();
       }
     }
   });

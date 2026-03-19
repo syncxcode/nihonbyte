@@ -11661,3 +11661,634 @@ body.history-mode .dashboard-shell textarea {
     height: 24px;
   }
 }
+
+
+/* ============================================================
+   PRACTICE SYSTEM — NihonByte
+   Prefix: prc-
+   ============================================================
+
+   SECTION 1 — BASE (warna, font, transisi, animasi)
+   SECTION 2 — DESKTOP (min-width: 769px)
+   SECTION 3 — MOBILE POTRET (max-width: 767px + portrait)
+   SECTION 4 — MOBILE LANDSCAPE (landscape + max-height: 520px)
+   ============================================================ */
+
+
+/* ============================================================
+   SECTION 1 — BASE
+   ============================================================ */
+
+/* ── Blur overlay ── */
+.prc-blur-overlay {
+  filter: blur(8px);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prc-search-blocked {
+  opacity: 0.3;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+.prc-unlock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.prc-unlock-card {
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  max-width: 340px;
+  width: calc(100% - 40px);
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+
+.prc-unlock-icon {
+  width: 52px;
+  height: 52px;
+  background: #0f172a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #e11d48;
+}
+
+.prc-unlock-icon svg { width: 24px; height: 24px; }
+
+.prc-unlock-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 8px;
+}
+
+.prc-unlock-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+.prc-unlock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e11d48;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.prc-unlock-btn:hover { background: #be123c; transform: translateY(-1px); }
+.prc-unlock-btn svg { width: 16px; height: 16px; }
+
+/* ── Wrapper ── */
+.prc-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Screen base ── */
+.prc-screen {
+  width: 100%;
+  box-sizing: border-box;
+  animation: prc-fade-in 0.2s ease;
+}
+
+@keyframes prc-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Onboarding ── */
+.prc-onboarding { display: flex; justify-content: center; }
+
+.prc-onboarding-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px rgba(20,24,30,0.12);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.prc-onboarding-logo { text-align: center; }
+.prc-onboarding-logo svg { display: block; margin: 0 auto; }
+
+.prc-onboarding-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.prc-onboarding-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.prc-onboarding-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prc-onboarding-level-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  text-align: left;
+  width: 100%;
+}
+
+.prc-onboarding-level-btn:hover {
+  border-color: #e11d48;
+  background: #fff0f3;
+  transform: translateX(2px);
+}
+
+.prc-onboarding-level-icon { flex-shrink: 0; }
+.prc-onboarding-level-icon svg { width: 40px; height: 40px; display: block; }
+
+.prc-onboarding-level-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.prc-onboarding-level-name { font-size: 0.95rem; font-weight: 700; color: #0f172a; }
+.prc-onboarding-level-sub { font-size: 0.78rem; color: #64748b; font-family: 'Shippori Mincho', serif; }
+.prc-onboarding-level-arrow { color: #94a3b8; }
+.prc-onboarding-level-arrow svg { width: 18px; height: 18px; }
+.prc-onboarding-note { font-size: 0.75rem; color: #94a3b8; text-align: center; margin: 16px 0 0; line-height: 1.5; }
+
+/* ── Placement Intro ── */
+.prc-placement-intro { display: flex; justify-content: center; }
+
+.prc-placement-intro-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px rgba(20,24,30,0.12);
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.prc-placement-icon { margin-bottom: 16px; }
+.prc-placement-icon svg { width: 64px; height: 64px; display: block; margin: 0 auto; }
+.prc-placement-intro-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0 0 8px; }
+.prc-placement-intro-desc { font-size: 0.88rem; color: #475569; margin: 0 0 20px; }
+.prc-placement-intro-levels { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; text-align: left; }
+
+.prc-placement-intro-level {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.prc-placement-intro-level svg { width: 36px; height: 36px; flex-shrink: 0; }
+.prc-placement-intro-level-name { font-size: 0.9rem; font-weight: 700; color: #0f172a; display: block; }
+.prc-placement-intro-level-sub { font-size: 0.75rem; color: #64748b; display: block; }
+.prc-placement-note { font-size: 0.75rem; color: #e11d48; margin: 0 0 20px; line-height: 1.5; }
+
+.prc-placement-start-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #e11d48;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  width: 100%;
+}
+
+.prc-placement-start-btn:hover { background: #be123c; transform: translateY(-1px); }
+.prc-placement-start-btn svg { width: 18px; height: 18px; }
+
+/* ── Placement Quiz ── */
+.prc-quiz {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px rgba(20,24,30,0.12);
+  box-sizing: border-box;
+}
+
+.prc-quiz-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.prc-quiz-meta { display: flex; align-items: center; gap: 8px; }
+
+.prc-quiz-level-badge {
+  background: #e11d48;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.prc-quiz-section-label { font-size: 0.78rem; color: #64748b; }
+.prc-quiz-counter { font-size: 0.85rem; font-weight: 600; color: #475569; }
+
+.prc-quiz-progress-bar {
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.prc-quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.prc-quiz-prompt {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.15rem;
+  color: #0f172a;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.prc-quiz-prompt u { text-decoration-color: #e11d48; }
+.prc-quiz-translation { font-size: 0.8rem; color: #94a3b8; margin-bottom: 16px; font-style: italic; }
+.prc-quiz-options { display: flex; flex-direction: column; gap: 8px; }
+
+.prc-quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.prc-quiz-option:hover:not(:disabled) { border-color: #e11d48; background: #fff0f3; }
+.prc-quiz-option:disabled { cursor: default; }
+.prc-quiz-option--correct { border-color: #16a34a !important; background: #f0fdf4 !important; }
+.prc-quiz-option--wrong   { border-color: #e11d48 !important; background: #fff0f3 !important; }
+
+.prc-quiz-option-key {
+  width: 26px;
+  height: 26px;
+  background: #e2e8f0;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.prc-quiz-option--correct .prc-quiz-option-key { background: #16a34a; color: #fff; }
+.prc-quiz-option--wrong   .prc-quiz-option-key { background: #e11d48; color: #fff; }
+.prc-quiz-option-text { font-size: 0.88rem; color: #0f172a; }
+
+.prc-quiz-lock-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 16px;
+}
+
+/* ── Section Result ── */
+.prc-section-result { display: flex; justify-content: center; }
+
+.prc-section-result-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px rgba(20,24,30,0.12);
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.prc-section-result-icon svg { width: 64px; height: 64px; display: block; margin: 0 auto 16px; }
+.prc-section-result-title { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin: 0 0 8px; }
+.prc-section-result-score { font-size: 2.5rem; font-weight: 800; margin: 0 0 8px; }
+.prc-section-result-score--pass { color: #16a34a; }
+.prc-section-result-score--fail { color: #e11d48; }
+.prc-section-result-msg { font-size: 0.85rem; color: #64748b; margin: 0 0 20px; }
+
+/* ── Final Result ── */
+.prc-final-result { display: flex; justify-content: center; }
+
+.prc-final-result-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 32px rgba(20,24,30,0.12);
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.prc-final-result-icon { margin-bottom: 16px; }
+.prc-final-result-icon svg { width: 64px; height: 64px; display: block; margin: 0 auto; }
+.prc-final-result-title { font-size: 1.3rem; font-weight: 800; color: #0f172a; margin: 0 0 8px; }
+.prc-final-result-desc { font-size: 0.88rem; color: #64748b; margin: 0 0 16px; }
+.prc-final-result-levels { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+
+.prc-final-result-level {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.prc-final-result-level svg { width: 32px; height: 32px; }
+.prc-final-result-note { font-size: 0.78rem; color: #e11d48; margin: 0 0 16px; }
+
+/* ── Level Select ── */
+.prc-level-select { box-sizing: border-box; }
+.prc-level-header { margin-bottom: 20px; }
+.prc-level-title { font-size: 1.4rem; font-weight: 800; color: #0f172a; margin: 0 0 4px; }
+.prc-level-sub { font-size: 0.85rem; color: #64748b; margin: 0; }
+.prc-level-grid { display: flex; flex-direction: column; gap: 10px; }
+
+.prc-level-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.96);
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  text-align: left;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+}
+
+.prc-level-card:hover:not(:disabled) {
+  border-color: #e11d48;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225,29,72,0.12);
+}
+
+.prc-level-card--locked { opacity: 0.55; cursor: not-allowed; }
+.prc-level-card-icon { flex-shrink: 0; }
+.prc-level-card-icon svg { width: 48px; height: 48px; display: block; }
+.prc-level-card-body { flex: 1; min-width: 0; }
+.prc-level-card-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+.prc-level-card-name { font-size: 1rem; font-weight: 800; color: #0f172a; }
+.prc-level-card-label { font-size: 0.8rem; color: #64748b; font-family: 'Shippori Mincho', serif; }
+.prc-level-card-progress-wrap { display: flex; align-items: center; gap: 8px; }
+
+.prc-level-card-progress-bar {
+  flex: 1;
+  height: 5px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.prc-level-card-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.prc-level-card-pct { font-size: 0.72rem; color: #94a3b8; white-space: nowrap; }
+.prc-level-card-lock { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #94a3b8; }
+.prc-level-card-lock svg { width: 13px; height: 13px; }
+.prc-level-card-arrow { color: #cbd5e1; }
+.prc-level-card-arrow svg { width: 18px; height: 18px; }
+
+/* ── Chapter Select ── */
+.prc-chapter-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+
+.prc-back-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #e2e8f0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1e293b;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.prc-back-btn:hover { border-color: #e11d48; color: #e11d48; }
+.prc-back-btn svg { width: 18px; height: 18px; }
+.prc-chapter-title-wrap { display: flex; align-items: center; gap: 10px; }
+
+.prc-chapter-level-badge {
+  background: #e11d48;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.prc-chapter-title { font-size: 1rem; font-weight: 700; color: #0f172a; font-family: 'Shippori Mincho', serif; }
+.prc-chapter-grid { display: grid; gap: 12px; }
+
+.prc-chapter-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.96);
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  text-align: left;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+}
+
+.prc-chapter-card:hover {
+  border-color: #e11d48;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225,29,72,0.12);
+}
+
+.prc-chapter-card--done { border-color: #16a34a; }
+.prc-chapter-card-icon { flex-shrink: 0; }
+.prc-chapter-card-icon svg { width: 48px; height: 48px; display: block; }
+.prc-chapter-card-body { flex: 1; min-width: 0; }
+.prc-chapter-card-name { font-size: 0.92rem; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
+.prc-chapter-card-count { font-size: 0.75rem; color: #64748b; margin-bottom: 8px; }
+.prc-chapter-card-progress-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+
+.prc-chapter-card-progress-bar {
+  flex: 1;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.prc-chapter-card-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.prc-chapter-card--done .prc-chapter-card-progress-fill { background: linear-gradient(90deg, #16a34a, #4ade80); }
+.prc-chapter-card-pct { font-size: 0.7rem; color: #94a3b8; white-space: nowrap; }
+
+.prc-chapter-card-done-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.prc-chapter-card-cta { font-size: 0.75rem; font-weight: 600; color: #e11d48; }
+
+
+/* ============================================================
+   SECTION 2 — DESKTOP (min-width: 769px)
+   ============================================================ */
+@media (min-width: 769px) {
+  .prc-wrapper { padding: 12px 16px 20px; }
+  .prc-onboarding-card { max-width: 520px; margin: 0 auto; padding: 36px 40px; }
+  .prc-onboarding-logo svg { width: 64px; height: 64px; margin-bottom: 16px; }
+  .prc-placement-intro-card { max-width: 520px; margin: 0 auto; padding: 36px 40px; }
+  .prc-quiz { max-width: 600px; margin: 0 auto; padding: 28px 32px; }
+  .prc-quiz-prompt { font-size: 1.2rem; }
+  .prc-quiz-option { padding: 13px 16px; }
+  .prc-quiz-option-text { font-size: 0.92rem; }
+  .prc-section-result-card { max-width: 400px; margin: 0 auto; padding: 36px 40px; }
+  .prc-final-result-card { max-width: 460px; margin: 0 auto; padding: 36px 40px; }
+  .prc-level-grid { gap: 12px; }
+  .prc-level-card { padding: 16px 20px; }
+  .prc-level-card-icon svg { width: 52px; height: 52px; }
+  .prc-chapter-grid { grid-template-columns: repeat(2, 1fr); }
+  .prc-chapter-card { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+  .prc-chapter-card-icon { margin-bottom: 8px; }
+  .prc-placement-start-btn { padding: 14px 28px; font-size: 1.05rem; }
+  .prc-back-btn { width: 42px; height: 42px; }
+}
+
+
+/* ============================================================
+   SECTION 3 — MOBILE POTRET (max-width: 767px + portrait)
+   ============================================================ */
+@media (max-width: 767px) and (orientation: portrait) {
+  .prc-wrapper { padding: 12px 12px 20px; }
+  .prc-onboarding-card { padding: 24px 20px; }
+  .prc-onboarding-logo svg { width: 52px; height: 52px; margin-bottom: 12px; }
+  .prc-onboarding-title { font-size: 1.15rem; }
+  .prc-onboarding-level-btn { padding: 10px 12px; }
+  .prc-onboarding-level-icon svg { width: 36px; height: 36px; }
+  .prc-placement-intro-card { padding: 24px 20px; }
+  .prc-quiz { padding: 20px 16px; }
+  .prc-quiz-prompt { font-size: 1rem; }
+  .prc-section-result-card { padding: 28px 20px; }
+  .prc-final-result-card { padding: 28px 20px; }
+  .prc-level-card { padding: 12px 14px; }
+  .prc-level-card-icon svg { width: 44px; height: 44px; }
+  .prc-chapter-grid { grid-template-columns: 1fr; }
+  .prc-chapter-card { padding: 12px 14px; }
+  .prc-placement-start-btn { padding: 12px 20px; }
+}
+
+
+/* ============================================================
+   SECTION 4 — MOBILE LANDSCAPE (landscape + max-height: 520px)
+   ============================================================ */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .prc-wrapper { padding: 8px 12px 12px; }
+  .prc-onboarding-card { padding: 16px 20px; }
+  .prc-onboarding-logo { display: none; }
+  .prc-onboarding-title { font-size: 1rem; margin-bottom: 4px; }
+  .prc-onboarding-desc { margin-bottom: 12px; }
+  .prc-onboarding-levels { gap: 5px; }
+  .prc-onboarding-level-btn { padding: 8px 10px; }
+  .prc-onboarding-level-icon svg { width: 30px; height: 30px; }
+  .prc-onboarding-level-name { font-size: 0.85rem; }
+  .prc-onboarding-level-sub { font-size: 0.7rem; }
+  .prc-placement-intro-card { padding: 16px 20px; }
+  .prc-placement-icon { display: none; }
+  .prc-placement-intro-title { font-size: 1rem; }
+  .prc-quiz { padding: 14px 16px; }
+  .prc-quiz-prompt { font-size: 0.92rem; }
+  .prc-quiz-option { padding: 8px 12px; }
+  .prc-quiz-option-text { font-size: 0.82rem; }
+  .prc-quiz-options { gap: 5px; }
+  .prc-section-result-card { padding: 16px 20px; }
+  .prc-section-result-icon { display: none; }
+  .prc-section-result-score { font-size: 1.8rem; }
+  .prc-final-result-card { padding: 16px 20px; }
+  .prc-final-result-icon { display: none; }
+  .prc-level-grid { gap: 6px; }
+  .prc-level-card { padding: 8px 12px; }
+  .prc-level-card-icon svg { width: 36px; height: 36px; }
+  .prc-level-card-name { font-size: 0.88rem; }
+  .prc-chapter-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .prc-chapter-card { padding: 8px 10px; }
+  .prc-chapter-card-icon svg { width: 32px; height: 32px; }
+  .prc-placement-start-btn { padding: 10px 16px; font-size: 0.9rem; }
+  .prc-back-btn { width: 32px; height: 32px; }
+  .prc-back-btn svg { width: 14px; height: 14px; }
+}

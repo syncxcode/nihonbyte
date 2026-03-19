@@ -12214,7 +12214,7 @@ body.history-mode .dashboard-shell textarea {
    ============================================================ */
 @media (min-width: 769px) {
   .prc-wrapper {
-    padding: calc(var(--topbar-height, 78px) + 16px) 16px 40px;
+    padding: 10px 10px 40px;
   }
   .prc-onboarding-card { max-width: 520px; margin: 0 auto; padding: 36px 40px; }
   .prc-onboarding-logo svg { width: 64px; height: 64px; margin-bottom: 16px; }
@@ -12241,7 +12241,7 @@ body.history-mode .dashboard-shell textarea {
    ============================================================ */
 @media (max-width: 767px) and (orientation: portrait) {
   .prc-wrapper {
-    padding: calc(var(--topbar-height, 78px) + 12px) 12px calc(var(--bottom-nav-height, 66px) + env(safe-area-inset-bottom) + 20px);
+    padding: 10px 10px calc(var(--bottom-nav-height, 66px) + env(safe-area-inset-bottom) + 20px);
   }
   .prc-onboarding-card { padding: 24px 20px; }
   .prc-onboarding-logo svg { width: 52px; height: 52px; margin-bottom: 12px; }
@@ -12266,7 +12266,7 @@ body.history-mode .dashboard-shell textarea {
    ============================================================ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
   .prc-wrapper {
-    padding: calc(var(--topbar-height, 78px) + 8px) 12px 20px;
+    padding: 10px 10px 20px;
   }
   .prc-onboarding-card { padding: 16px 20px; }
   .prc-onboarding-logo { display: none; }

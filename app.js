@@ -4795,11 +4795,14 @@ grid.style.display="grid";
     if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
       const _prog = window.practiceUI?._latestProg;
       if (_prog === undefined) {
-        // Belum ada cache — fetch dulu lalu render ulang
+        // Belum ada cache — tampilkan lock screen dulu, fetch di background
+        // Kalau ternyata sudah onboarding, render() akan tampilkan vocab
+        renderPracticeLockScreen("Flashcard<br>Terkunci", "語彙");
+        if (resultInfo) resultInfo.textContent = "";
         if (window.practiceUI?._getPracticeProgressCached) {
           window.practiceUI._getPracticeProgressCached().then(p => {
             window.practiceUI._latestProg = p || null;
-            render();
+            if (p && p.onboardingDone) render(); // sudah onboarding → tampilkan vocab
           });
         }
         return;

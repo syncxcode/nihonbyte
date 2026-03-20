@@ -3941,7 +3941,8 @@ grid.style.display="grid";
         <section class="bottom-nav-hub__screen bottom-nav-hub__screen--practice" aria-label="Latihan cepat dari navbar">
           <header class="bottom-nav-hub__header">
             <h2>Latihan</h2>
-            <p>Halaman ini berisi pilihan latihan JLPT per kategori agar kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
+            <p>Halaman ini berisi pilihan latihan JLPT dengan kategori terpisah.</p>
+            <p>Supaya kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
           </header>
           <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">

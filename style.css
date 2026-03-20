@@ -12273,9 +12273,8 @@ body.history-mode .dashboard-shell textarea {
     }
 }
 
-@media (max-height: 520px) {
-    #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
-        width: 100% !important;
+@media screen and (orientation: landscape) and (max-height: 520px) {
+    .hub-screen--practice .hub-header--practice {
+      width: 94% !important
     }
 }
-

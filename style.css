@@ -12008,7 +12008,6 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .hub-screen--practice .hub-header--practice {
-    width: 94% !important;
     max-width: none !important;
     display: block !important;
     margin: 0 0 12px !important;
@@ -12130,6 +12129,7 @@ body.history-mode .dashboard-shell textarea {
     color: #ff0000 !important;
     font-size: 0.9rem !important;
     font-weight: 700 !important;
+    width: fit-content !important;
   }
 }
 
@@ -12272,3 +12272,10 @@ body.history-mode .dashboard-shell textarea {
         width: 97% !important;
     }
 }
+
+@media (min-width: 520px) {
+    #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
+        width: 94% !important;
+    }
+}
+

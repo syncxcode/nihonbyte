@@ -6523,7 +6523,7 @@ body.review-mode-active .bottom-nav {
     flex-direction: column;
     align-items: flex-start;
     width: max-content;
-    max-width: 100%;
+    max-width: 98%;
     background: linear-gradient(140deg, #f9a8d4, #f472b6);
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 16px;
@@ -12111,7 +12111,7 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .hub-screen--practice .hub-level-btn--patterns.hub-level-btn--locked {
-    background: var(--nb-sunset) !important;
+    background: #F9F6EE !important;
     border-color: var(--nb-forest) !important;
     color: rgba(36, 37, 38, 0.42) !important;
     opacity: 1 !important;
@@ -12275,7 +12275,7 @@ body.history-mode .dashboard-shell textarea {
 
 @media (max-height: 520px) {
     #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
-        width: 94% !important;
+        width: 100% !important;
     }
 }
 

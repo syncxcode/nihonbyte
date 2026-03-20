@@ -11806,12 +11806,15 @@ body.history-mode .dashboard-shell textarea {
    - Mobile portrait latihan: polish warna saja
 ========================================================= */
 :root {
-  --nb-native-surface: #f8fbff;
-  --nb-native-card: #ffffff;
-  --nb-native-border: rgba(148, 163, 184, 0.34);
-  --nb-native-text: #0f172a;
-  --nb-native-sub: #475569;
+  --nb-native-surface: #E5E4E2;
+  --nb-native-card: #E0DFDC;
+  --nb-native-border: rgba(127, 126, 122, 0.45);
+  --nb-native-text: #242526;
+  --nb-native-sub: #3b3d3f;
   --nb-native-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  --nb-forest: #228B22;
+  --nb-sunset: #FA5F55;
+  --nb-ink: #242526;
 }
 
 /* ikon full-color untuk kartu menu */
@@ -11905,6 +11908,12 @@ body.history-mode .dashboard-shell textarea {
     gap: 14px !important;
   }
 
+  .menu-panel-card--letters { order: 1; }
+  .menu-panel-card--grammar { order: 2; }
+  .menu-panel-card--verb-forms { order: 3; }
+  .menu-panel-card--adjective-forms { order: 4; }
+  .menu-panel-card--expressions { order: 5; }
+
   .menu-panel-card {
     min-height: 116px !important;
     padding: 14px !important;
@@ -11928,19 +11937,34 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.9rem !important;
   }
 
+  .menu-panel-card--letters {
+    grid-template-columns: 134px minmax(0, 1fr) !important;
+  }
+
+  .menu-panel-card--letters .menu-panel-card__letters-rail {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .menu-panel-card--letters .menu-panel-card__body > span {
+    display: none !important;
+  }
+
   .menu-panel-card--letters .letter-btn-pair {
     display: flex;
-    gap: 8px;
-    margin-top: 10px;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
   }
 
   .menu-panel-card--letters .letter-circle-btn {
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 11px !important;
-    border: 1px solid #d8dfef !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 9px !important;
+    border: 1px solid #b7b7b3 !important;
     background: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.08) !important;
   }
 
   .menu-hub-screen .menu-hub-section-card--kotoba {
@@ -11978,9 +12002,9 @@ body.history-mode .dashboard-shell textarea {
     margin: 0 !important;
     padding: 16px 18px 18px !important;
     border-radius: 20px !important;
-    border: 1px solid var(--nb-native-border) !important;
+    border: 1px solid #c0bfbc !important;
     background: var(--nb-native-surface) !important;
-    box-shadow: var(--nb-native-shadow) !important;
+    box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
   }
 
   .hub-screen--practice .hub-header--practice {
@@ -11990,22 +12014,25 @@ body.history-mode .dashboard-shell textarea {
     margin: 0 0 12px !important;
     padding: 14px 16px !important;
     border-radius: 16px !important;
-    border: 1px solid #f3bad1 !important;
-    background: linear-gradient(150deg, #f39bc8, #e96cb3) !important;
-    box-shadow: 0 8px 20px rgba(233, 108, 179, 0.22) !important;
+    border: 1px solid rgba(34, 139, 34, 0.38) !important;
+    background: #e5e4e2 !important;
+    box-shadow: none !important;
   }
 
   .practice-hub-title-pill {
     font-size: 1.88rem !important;
     font-weight: 980 !important;
     line-height: 1 !important;
-    color: #ffffff !important;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+    color: var(--nb-forest) !important;
+    text-shadow: none !important;
+    background: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
   }
 
   .hub-screen--practice .hub-header--practice p {
     margin: 0 !important;
-    color: #fff9fc !important;
+    color: var(--nb-forest) !important;
     font-size: 1rem !important;
     font-weight: 760 !important;
     line-height: 1.34 !important;
@@ -12033,8 +12060,8 @@ body.history-mode .dashboard-shell textarea {
     margin: 0 !important;
     padding: 14px 14px 12px !important;
     border-radius: 16px !important;
-    border: 1px solid var(--nb-native-border) !important;
-    background: #ffffff !important;
+    border: 1px solid #b9b8b4 !important;
+    background: #dfdeda !important;
     box-shadow: 0 8px 16px rgba(15, 23, 42, 0.06) !important;
   }
 
@@ -12045,43 +12072,50 @@ body.history-mode .dashboard-shell textarea {
     padding: 7px 14px !important;
     border-radius: 999px !important;
     margin-bottom: 10px !important;
+    background: var(--nb-forest) !important;
+    color: #ffffff !important;
   }
 
   .hub-screen--practice .hub-section-capsule--goi {
-    background: linear-gradient(135deg, #ef3d92, #d91f7d) !important;
+    background: var(--nb-forest) !important;
   }
 
   .hub-screen--practice .hub-section-capsule--bunpou {
-    background: linear-gradient(135deg, #7a64f7, #5a53e4) !important;
+    background: var(--nb-forest) !important;
   }
 
   .hub-screen--practice .hub-section-capsule--dokkai {
-    background: linear-gradient(135deg, #fb8a2f, #f1641b) !important;
+    background: var(--nb-forest) !important;
   }
 
   .hub-screen--practice .hub-section-capsule--choukai {
-    background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
+    background: var(--nb-forest) !important;
   }
 
   .hub-screen--practice .hub-levels {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     gap: 8px !important;
   }
 
   .hub-screen--practice .hub-level-btn--patterns {
-    min-width: 54px !important;
-    padding: 8px 12px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 8px 0 !important;
     border-radius: 999px !important;
-    border: 1px solid #d8e3f4 !important;
-    background: #eff3fa !important;
-    color: #1f2b3d !important;
+    border: 1px solid var(--nb-forest) !important;
+    background: var(--nb-sunset) !important;
+    color: var(--nb-ink) !important;
     font-size: 0.92rem !important;
     font-weight: 850 !important;
+    box-shadow: none !important;
   }
 
   .hub-screen--practice .hub-level-btn--patterns.hub-level-btn--locked {
-    background: #eef0f4 !important;
-    border-color: #d9dde6 !important;
-    color: #9ba4b2 !important;
+    background: var(--nb-sunset) !important;
+    border-color: var(--nb-forest) !important;
+    color: rgba(36, 37, 38, 0.42) !important;
+    opacity: 1 !important;
   }
 
   .hub-screen--practice .latihan-lock-banner {
@@ -12114,6 +12148,14 @@ body.history-mode .dashboard-shell textarea {
     padding: 10px !important;
     grid-template-columns: 48px minmax(0, 1fr) !important;
     gap: 10px !important;
+  }
+
+  .menu-panel-card--letters {
+    grid-template-columns: 116px minmax(0, 1fr) !important;
+  }
+
+  .menu-panel-card--letters .menu-panel-card__letters-rail {
+    gap: 6px;
   }
 
   .menu-panel-card__icon-wrap {
@@ -12161,10 +12203,16 @@ body.history-mode .dashboard-shell textarea {
     padding: 6px 10px !important;
   }
 
+  .hub-screen--practice .hub-levels {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
   .hub-screen--practice .hub-level-btn--patterns {
-    min-width: 46px !important;
+    min-width: 0 !important;
+    width: 100% !important;
     font-size: 0.76rem !important;
-    padding: 6px 10px !important;
+    padding: 6px 0 !important;
   }
 }
 

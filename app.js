@@ -4322,12 +4322,10 @@ grid.style.display="grid";
         if (action === "letters") {
           return `
             <div class="menu-panel-card menu-panel-card--static menu-panel-card--letters">
-              <span class="menu-panel-card__icon-wrap menu-panel-card__icon-wrap--letters" aria-hidden="true">
-                <img src="${iconPath}" class="menu-panel-card__icon" alt="">
-              </span>
-              <div class="menu-panel-card__body">
-                <strong>${title}</strong>
-                <span>${description}</span>
+              <div class="menu-panel-card__letters-rail">
+                <span class="menu-panel-card__icon-wrap menu-panel-card__icon-wrap--letters" aria-hidden="true">
+                  <img src="${iconPath}" class="menu-panel-card__icon" alt="">
+                </span>
                 <div class="letter-btn-pair">
                   <button type="button" class="letter-circle-btn" data-hub="letters" data-script="hiragana" title="Hiragana">
                     <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="35" text-anchor="middle" font-size="30" font-weight="900" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif" fill="currentColor" stroke="none">あ</text></svg>
@@ -4336,6 +4334,10 @@ grid.style.display="grid";
                     <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="35" text-anchor="middle" font-size="30" font-weight="900" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif" fill="currentColor" stroke="none">ア</text></svg>
                   </button>
                 </div>
+              </div>
+              <div class="menu-panel-card__body">
+                <strong>${title}</strong>
+                <span>${description}</span>
               </div>
             </div>
           `;

@@ -397,7 +397,7 @@
       html, body { overflow-y: auto; height: auto; min-height: 100dvh; }
 
       .ob-shell { height: auto; min-height: 100dvh; }
-      .ob-nav { padding: 14px 20px; }
+      .ob-nav { padding: 14px 20px; height: 40px; }
       .ob-body { overflow: visible; flex: 1; }
 
       .ob-screen {
@@ -442,11 +442,12 @@
     }
 
     /* ── MOBILE LANDSCAPE ── */
-    @media (max-width: 900px) and (orientation: landscape) {
+    @media (max-width: 520px) and (orientation: landscape) {
       html, body { overflow-y: auto; height: auto; min-height: 100dvh; }
 
       .ob-shell { height: auto; min-height: 100dvh; }
       .ob-body { overflow: visible; flex: 1; }
+      .ob-nav { height: 40px; }
 
       .ob-screen {
         position: relative;
@@ -458,7 +459,7 @@
       .ob-screen.active { display: flex; }
 
       .ob-left {
-        flex: 0 0 260px;
+        flex: 0 0 360px;
         padding: 20px 24px;
         overflow-y: auto;
       }
@@ -472,7 +473,7 @@
       .ob-title { font-size: 1.45rem; }
       .ob-desc { font-size: 0.8rem; max-width: 100%; }
       .ob-note { max-width: 100%; }
-      .ob-badge { margin-bottom: 12px; }
+      .ob-badge { margin-bottom: 12px; margin-top: -120px; }
       .ob-subtitle { margin-bottom: 10px; }
       .ob-kanji-1, .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
 

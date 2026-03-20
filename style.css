@@ -6515,7 +6515,7 @@ body.review-mode-active .bottom-nav {
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
     padding: 18px 18px 20px;
     width: min(100%, 900px);
-    margin: 18px auto 26px;
+    margin: 0px auto 26px;
   }
 
   .hub-screen--practice .hub-header--practice {

@@ -228,10 +228,16 @@ grid.style.display="grid";
     return !isDesktopLayout() && window.matchMedia("(orientation: portrait)").matches;
   }
 
+  function isHamburgerDrawerMode() {
+    if (!hamburger) return false;
+    const style = window.getComputedStyle(hamburger);
+    return style.display !== "none" && style.visibility !== "hidden";
+  }
+
   function applyResponsiveSidebarLayout({ preserveMobileState = false } = {}) {
     if (!sidebar || !overlay || !hamburger) return;
 
-    if (isDesktopLayout()) {
+    if (!isHamburgerDrawerMode()) {
       mobileSidebarOpenedByHamburger = false;
       sidebar.classList.add("active");
       overlay.classList.remove("active");
@@ -3321,8 +3327,10 @@ grid.style.display="grid";
     }
   });
 
-  hamburger.addEventListener("click", () => {
-    if (isDesktopLayout()) return;
+  let lastHamburgerTouchTs = 0;
+
+  function handleHamburgerToggle() {
+    if (!isHamburgerDrawerMode()) return;
     if (isTesting) {
       openInfoModal(`
         <div style="text-align: center; padding: 10px;">
@@ -3357,12 +3365,26 @@ grid.style.display="grid";
     document.body.style.top = `-${savedScrollPosition}px`;
     document.body.style.width = '100%';
     document.documentElement.style.overflow = 'hidden';
+  }
+
+  hamburger.addEventListener("touchend", (event) => {
+    lastHamburgerTouchTs = Date.now();
+    event.preventDefault();
+    handleHamburgerToggle();
+  }, { passive: false });
+
+  hamburger.addEventListener("click", (event) => {
+    if (Date.now() - lastHamburgerTouchTs < 450) {
+      event.preventDefault();
+      return;
+    }
+    handleHamburgerToggle();
   });
 
   overlay.addEventListener("click", closeSidebar);
 
   function closeSidebar() {
-    if (isDesktopLayout()) {
+    if (!isHamburgerDrawerMode()) {
       mobileSidebarOpenedByHamburger = false;
       sidebar.classList.add("active");
       overlay.classList.remove("active");
@@ -5145,7 +5167,7 @@ grid.style.display="grid";
   }
   window.addEventListener("resize", () => {
     syncMobileTopbarLayout();
-    const isMobileViewport = !isDesktopLayout();
+    const isMobileViewport = isHamburgerDrawerMode();
     const isLandscapeViewport = window.innerWidth > window.innerHeight;
     if (!isMobileViewport || isLandscapeViewport) {
       mobileSidebarOpenedByHamburger = false;

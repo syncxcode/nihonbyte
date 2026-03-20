@@ -1,0 +1,34 @@
+{
+  "pack": "nihonbyte-duotone-native-v1",
+  "size": {
+    "viewBox": "0 0 64 64",
+    "recommended_dp_android": [24, 28]
+  },
+  "menu_icons": {
+    "huruf": "menu-huruf-scroll.svg",
+    "bentuk_kata_kerja": "menu-bentuk-kata-kerja.svg",
+    "bentuk_kata_sifat": "menu-bentuk-kata-sifat.svg",
+    "ungkapan_umum": "menu-ungkapan.svg",
+    "grammar": "menu-grammar-open-book.svg",
+    "kotoba_kosakata": "menu-kotoba-tags.svg"
+  },
+  "nav_icons": {
+    "flashcard": "nav-flashcard-stack.svg",
+    "latihan": "nav-latihan-target.svg",
+    "belajar": "nav-belajar-open-book.svg",
+    "favorit": "nav-favorit-heart.svg",
+    "dukung_pengembang": "nav-dukung-hand-heart.svg",
+    "dashboard": "nav-dashboard-gauge.svg"
+  },
+  "usage": {
+    "do": [
+      "Use as inline SVG for web",
+      "Export to Android VectorDrawable via asset pipeline",
+      "Keep original colors in SVG (no forced monochrome tint)"
+    ],
+    "dont": [
+      "Do not recolor to pure black then tint with CSS",
+      "Do not mix with unrelated icon styles in the same nav group"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dukung Pengembang">
+  <title>Dukung Pengembang</title>
+  <path d="M42 20c2-2 6-2 8 0 2 2 2 6 0 8l-5 5-5-5c-2-2-2-6 0-8 2-2 6-2 8 0Z" fill="#FF7E8D"/>
+  <path d="M8 39c4-5 9-7 15-7h12c3 0 5 2 5 5s-2 5-5 5H24" fill="#79DAB0"/>
+  <path d="M56 39c-4-5-9-7-15-7h-6c-3 0-5 2-5 5s2 5 5 5h7" fill="#5EC69B"/>
+  <path d="M14 44h36c2 0 4 2 4 4v4H10v-4c0-2 2-4 4-4Z" fill="#E8FFF5"/>
+  <path d="M8 39c4-5 9-7 15-7h18c6 0 11 2 15 7M24 42h16M14 44h36c2 0 4 2 4 4v4H10v-4c0-2 2-4 4-4Z" fill="none" stroke="#2D5E4C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

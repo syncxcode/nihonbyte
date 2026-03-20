@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Belajar Open Book">
+  <title>Belajar Open Book</title>
+  <path d="M10 16h20c5 0 8 2 10 5v29c-2-3-5-5-10-5H10V16Z" fill="#8CD3FF"/>
+  <path d="M54 16H34c-5 0-8 2-10 5v29c2-3 5-5 10-5h20V16Z" fill="#5EB8F6"/>
+  <path d="M24 21v29M40 21v29" stroke="#DDF4FF" stroke-width="2"/>
+  <path d="M16 26h10M16 32h8M38 26h10M38 32h8" stroke="#2E6A8D" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M10 16h20c5 0 8 2 10 5m14-5H34c-5 0-8 2-10 5m0 29c2-3 5-5 10-5h20V16H34c-5 0-8 2-10 5V50c-2-3-5-5-10-5H10V16h20c5 0 8 2 10 5" fill="none" stroke="#2E4D67" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

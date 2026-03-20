@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ungkapan Umum">
+  <title>Ungkapan Umum</title>
+  <path d="M10 13h26a7 7 0 0 1 7 7v11a7 7 0 0 1-7 7H22l-8 7v-7h-4a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Z" fill="#FFB870"/>
+  <path d="M30 23h24a7 7 0 0 1 7 7v10a7 7 0 0 1-7 7H43l-7 6v-6h-6a7 7 0 0 1-7-7V30a7 7 0 0 1 7-7Z" fill="#FFD8AE"/>
+  <circle cx="19" cy="26" r="2.2" fill="#E86E2D"/>
+  <circle cx="25" cy="26" r="2.2" fill="#E86E2D"/>
+  <circle cx="31" cy="26" r="2.2" fill="#E86E2D"/>
+  <path d="M38 35h15M38 40h11" stroke="#E88B45" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M10 13h26a7 7 0 0 1 7 7v11a7 7 0 0 1-7 7H22l-8 7v-7h-4a7 7 0 0 1-7-7V20a7 7 0 0 1 7-7Zm20 10h24a7 7 0 0 1 7 7v10a7 7 0 0 1-7 7H43l-7 6v-6h-6a7 7 0 0 1-7-7" fill="none" stroke="#7A4A2E" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

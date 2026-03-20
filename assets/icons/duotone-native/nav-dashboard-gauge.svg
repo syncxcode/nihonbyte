@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dashboard Gauge">
+  <title>Dashboard Gauge</title>
+  <path d="M10 44a22 22 0 1 1 44 0v4H10v-4Z" fill="#CFE8FF"/>
+  <path d="M32 22a22 22 0 0 1 22 22v4H32V22Z" fill="#8DC8FF"/>
+  <path d="M32 32l12-8 2 3-10 10-4-5Z" fill="#4E8FE2"/>
+  <circle cx="32" cy="44" r="4.2" fill="#FFFFFF"/>
+  <path d="M32 44 44 27" stroke="#2F62A8" stroke-width="2.3" stroke-linecap="round"/>
+  <path d="M18 44h28M10 44a22 22 0 1 1 44 0v4H10v-4Z" fill="none" stroke="#2E4D67" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

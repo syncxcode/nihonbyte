@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Flashcard">
+  <title>Flashcard</title>
+  <rect x="12" y="16" width="36" height="28" rx="5" fill="#89E0CE"/>
+  <rect x="18" y="22" width="34" height="26" rx="5" fill="#56CBB2"/>
+  <rect x="24" y="28" width="32" height="24" rx="5" fill="#E8FFF9"/>
+  <path d="M30 35h20M30 40h14" stroke="#41A88F" stroke-width="2.3" stroke-linecap="round"/>
+  <rect x="24" y="28" width="32" height="24" rx="5" fill="none" stroke="#286A5A" stroke-width="2.1"/>
+  <path d="M12 16h36v28M18 22h34v26" fill="none" stroke="#286A5A" stroke-width="2.1" stroke-linejoin="round"/>
+</svg>

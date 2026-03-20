@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Grammar Open Book">
+  <title>Grammar Open Book</title>
+  <path d="M7 46V14l21 10v32L7 46Z" fill="#F15B4A"/>
+  <path d="M57 46V14L36 24v32l21-10Z" fill="#E1473A"/>
+  <path d="M10 7c6 1 13 5 18 11v8L10 17V7Z" fill="#D3C99A"/>
+  <path d="M54 7c-6 1-13 5-18 11v8l18-9V7Z" fill="#C6BC8F"/>
+  <rect x="30" y="22" width="4" height="34" fill="#8B5E3C"/>
+  <rect x="15" y="25" width="7" height="11" rx="1.5" fill="#E4C84F"/>
+  <rect x="42" y="25" width="7" height="11" rx="1.5" fill="#E4C84F"/>
+  <path d="M16 42l8 4M16 48l8 4" stroke="#2F3542" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M40 46l8-4M40 52l8-4" stroke="#2F3542" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M7 46V14l21 10m29 22V14L36 24m-8 32V24m8 32V24M10 7c6 1 13 5 18 11m26-11c-6 1-13 5-18 11" fill="none" stroke="#2F3542" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

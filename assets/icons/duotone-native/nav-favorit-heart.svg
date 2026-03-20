@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Favorit Heart">
+  <title>Favorit Heart</title>
+  <path d="M32 52 14 35c-6-6-6-16 0-22 6-6 15-6 21 0l-3 3 3-3c6-6 15-6 21 0 6 6 6 16 0 22L32 52Z" fill="#FF7D9B"/>
+  <path d="M32 46 18 33c-4-4-4-10 0-14 4-4 9-4 13 0l1 1 1-1c4-4 9-4 13 0 4 4 4 10 0 14L32 46Z" fill="#FFD0DD"/>
+  <path d="M32 52 14 35c-6-6-6-16 0-22 6-6 15-6 21 0l-3 3 3-3c6-6 15-6 21 0 6 6 6 16 0 22L32 52Z" fill="none" stroke="#7D2E42" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

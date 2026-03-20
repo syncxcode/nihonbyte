@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Huruf Scroll">
+  <title>Huruf Scroll</title>
+  <circle cx="11" cy="21" r="5" fill="#D8B07A"/>
+  <circle cx="53" cy="21" r="5" fill="#D8B07A"/>
+  <rect x="14" y="10" width="36" height="44" rx="5" fill="#FFF2D8"/>
+  <path d="M14 16h36M14 48h36" stroke="#E8D0A9" stroke-width="4"/>
+  <circle cx="32" cy="41" r="9" fill="#FFD5DB"/>
+  <path d="M24 26h16M24 32h16" stroke="#EF7B8D" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M27 43c1-5 7-6 9-1 2 4-3 7-6 5-2-2-1-4 1-6 2-1 5-1 6 2" fill="none" stroke="#E64A65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M14 10h36v44H14z" fill="none" stroke="#3A3F4B" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M6 21c0-3 2-5 5-5M58 21c0-3-2-5-5-5" fill="none" stroke="#3A3F4B" stroke-width="2.2" stroke-linecap="round"/>
+</svg>

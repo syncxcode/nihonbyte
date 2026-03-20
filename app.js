@@ -4685,6 +4685,12 @@ grid.style.display="grid";
   }
 
   function render() {
+    // Reset overflow kalau ada modal yang tidak di-close sebelum navigasi
+    if (!document.body.classList.contains("sidebar-open")) {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
     // SAFETY GUARD: jangan re-render halaman saat latihan sedang aktif.
     //     Ini mencegah rotasi / navigasi tidak sengaja mengusir user dari quiz.
     if (isTesting || document.body.classList.contains('training-session')) {

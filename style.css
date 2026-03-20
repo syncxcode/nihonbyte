@@ -819,6 +819,16 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   stroke-linejoin: round;
 }
 
+.duo-nav-item .duo-nav-icon,
+.duo-nav-subitem .duo-nav-icon,
+.duo-nav-support .duo-nav-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: block;
+  object-fit: contain;
+}
+
 .duo-nav-item span,
 .duo-nav-subitem span,
 .duo-nav-support span {
@@ -837,6 +847,12 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
 .duo-nav-item.is-active svg,
 .duo-nav-subitem.is-active svg,
 .duo-nav-support.is-active svg {
+  opacity: 1;
+}
+
+.duo-nav-item.is-active .duo-nav-icon,
+.duo-nav-subitem.is-active .duo-nav-icon,
+.duo-nav-support.is-active .duo-nav-icon {
   opacity: 1;
 }
 
@@ -880,6 +896,11 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.duo-nav-support .duo-nav-icon {
+  width: 20px;
+  height: 20px;
 }
 
 .download-export-card {
@@ -7854,6 +7875,14 @@ body.history-mode .dashboard-shell textarea {
   .duo-nav-item svg,
   .duo-nav-subitem svg,
   .duo-nav-support svg {
+    width: 15px !important;
+    height: 15px !important;
+    flex: 0 0 15px !important;
+  }
+
+  .duo-nav-item .duo-nav-icon,
+  .duo-nav-subitem .duo-nav-icon,
+  .duo-nav-support .duo-nav-icon {
     width: 15px !important;
     height: 15px !important;
     flex: 0 0 15px !important;

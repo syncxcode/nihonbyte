@@ -254,57 +254,41 @@ grid.style.display="grid";
 
     const desktopMarkup = `
       <button type="button" class="duo-nav-item" data-duo-nav="learn" aria-label="Flashcard">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M8 4h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-1"/>
-          <path d="M5 7h11a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/>
-          <path d="M7.5 12h6"/>
-        </svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-flashcard-stack.svg?v=2" alt="" aria-hidden="true">
         <span>Flashcard</span>
       </button>
 
 
       <button type="button" class="duo-nav-item" data-duo-nav="practice" aria-label="Latihan">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/>
-          <path d="M17 3v6h6"/>
-          <path d="M8 13h8"/>
-          <path d="M8 17h5"/>
-        </svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-latihan-target.svg?v=2" alt="" aria-hidden="true">
         <span>Latihan</span>
       </button>
 
 
       <button type="button" class="duo-nav-item" data-duo-nav="menu" aria-label="Belajar (Menu)">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 6.5a5 5 0 0 0-4-2H4v13.5h4a5 5 0 0 1 4 2a5 5 0 0 1 4-2h4V4.5h-4a5 5 0 0 0-4 2Z"/>
-          <path d="M12 6.5V20"/>
-        </svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-belajar-open-book.svg?v=2" alt="" aria-hidden="true">
         <span>Belajar</span>
       </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="favorit" aria-label="Favorit">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-        </svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-favorit-heart.svg?v=2" alt="" aria-hidden="true">
         <span>Favorit</span>
       </button>
 
       <button type="button" class="duo-nav-support" data-duo-nav="support" aria-label="Dukung Pengembang">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-dukung-hand-heart.svg?v=2" alt="" aria-hidden="true">
         <span>Dukung Pengembang</span>
       </button>
     `;
 
     const mobileMarkup = `
       <button type="button" class="duo-nav-item" data-duo-nav="favorit" aria-label="Favorit">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-        </svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-favorit-heart.svg?v=2" alt="" aria-hidden="true">
         <span>Favorit</span>
       </button>
 
       <button type="button" class="duo-nav-item" data-duo-nav="support" aria-label="Dukung Pengembang">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-7-4.5-9.5-8.5A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6.5C19 16.5 12 21 12 21Z"/></svg>
+        <img class="duo-nav-icon" src="./assets/icons/duotone-native/nav-dukung-hand-heart.svg?v=2" alt="" aria-hidden="true">
         <span>Dukung Pengembang</span>
       </button>
     `;

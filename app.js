@@ -3330,7 +3330,7 @@ grid.style.display="grid";
       sidebar.scrollTop = 0;
       
       savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      originalOverflow = document.body.style.overflow || '';
+      originalOverflow = '';
       originalPosition = document.body.style.position || '';
       originalTop = document.body.style.top || '';
       originalWidth = document.body.style.width || '';

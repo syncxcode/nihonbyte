@@ -12273,7 +12273,7 @@ body.history-mode .dashboard-shell textarea {
     }
 }
 
-@media (min-width: 520px) {
+@media (max-height: 520px) {
     #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
         width: 94% !important;
     }

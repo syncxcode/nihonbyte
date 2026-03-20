@@ -223,7 +223,11 @@ grid.style.display="grid";
     return window.matchMedia(DESKTOP_LAYOUT_QUERY).matches;
   }
 
-  function applyResponsiveSidebarLayout() {
+  function isMobilePortraitLayout() {
+    return !isDesktopLayout() && window.matchMedia("(orientation: portrait)").matches;
+  }
+
+  function applyResponsiveSidebarLayout({ preserveMobileState = false } = {}) {
     if (!sidebar || !overlay || !hamburger) return;
 
     if (isDesktopLayout()) {
@@ -236,6 +240,11 @@ grid.style.display="grid";
       document.body.style.top = "";
       document.body.style.width = "";
       document.documentElement.style.overflow = "";
+    } else if (preserveMobileState) {
+      sidebar.classList.add("active");
+      overlay.classList.add("active");
+      document.body.classList.add("sidebar-open");
+      hamburger.setAttribute("aria-expanded", "true");
     } else {
       sidebar.classList.remove("active");
       overlay.classList.remove("active");
@@ -5037,7 +5046,8 @@ grid.style.display="grid";
   }
   window.addEventListener("resize", () => {
     syncMobileTopbarLayout();
-    applyResponsiveSidebarLayout();
+    const preserveMobileSidebar = isMobilePortraitLayout() && sidebar.classList.contains("active");
+    applyResponsiveSidebarLayout({ preserveMobileState: preserveMobileSidebar });
     if (duoNavInitialized) renderDuoSidebarNav();
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {
       grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");

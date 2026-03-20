@@ -11797,3 +11797,424 @@ body.history-mode .dashboard-shell textarea {
     width: 86% !important;
   }
 }
+
+/* =========================================================
+   Native Hub Refresh (Belajar + Latihan Menu)
+   Scope:
+   - Desktop
+   - Mobile landscape (base sama desktop, ukuran diperkecil)
+   - Mobile portrait latihan: polish warna saja
+========================================================= */
+:root {
+  --nb-native-surface: #f8fbff;
+  --nb-native-card: #ffffff;
+  --nb-native-border: rgba(148, 163, 184, 0.34);
+  --nb-native-text: #0f172a;
+  --nb-native-sub: #475569;
+  --nb-native-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+/* ikon full-color untuk kartu menu */
+.menu-panel-card__icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: linear-gradient(160deg, #f5f8ff, #ebf2ff);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.menu-panel-card__icon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  display: block;
+}
+
+.menu-panel-card--letters .menu-panel-card__icon-wrap {
+  background: linear-gradient(150deg, #fff6ea, #ffece0);
+}
+
+.menu-panel-card--verb-forms .menu-panel-card__icon-wrap {
+  background: linear-gradient(150deg, #ebf6ff, #def0ff);
+}
+
+.menu-panel-card--adjective-forms .menu-panel-card__icon-wrap {
+  background: linear-gradient(150deg, #f3edff, #ece3ff);
+}
+
+.menu-panel-card--expressions .menu-panel-card__icon-wrap {
+  background: linear-gradient(150deg, #fff5e8, #ffe9d0);
+}
+
+.menu-panel-card--grammar .menu-panel-card__icon-wrap {
+  background: linear-gradient(150deg, #fff2ef, #ffe6df);
+}
+
+.menu-panel-card .letter-circle-btn svg {
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #e44773 !important;
+  stroke: none !important;
+}
+
+@media (min-width: 768px), screen and (orientation: landscape) and (max-height: 520px) {
+  #grid.hub-mode {
+    padding: 16px 18px 30px !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  #grid.hub-mode .hub-screen,
+  #grid.hub-mode .menu-hub-screen,
+  #grid.hub-mode .hub-screen--practice {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .menu-hub-screen .menu-hub-header {
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    padding: 16px 18px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: linear-gradient(180deg, #ffffff, #f8fbff) !important;
+    box-shadow: var(--nb-native-shadow) !important;
+  }
+
+  .menu-hub-title-pill {
+    background: linear-gradient(135deg, #ff7444, #ff4f6d) !important;
+    color: #ffffff !important;
+    font-size: 1.24rem !important;
+  }
+
+  .menu-hub-header p {
+    color: var(--nb-native-sub) !important;
+    max-width: 74ch;
+    font-weight: 650 !important;
+  }
+
+  .menu-panel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  .menu-panel-card {
+    min-height: 116px !important;
+    padding: 14px !important;
+    border-radius: 18px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: var(--nb-native-card) !important;
+    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.07) !important;
+    grid-template-columns: 60px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .menu-panel-card strong {
+    color: var(--nb-native-text) !important;
+    font-size: 1.1rem !important;
+    line-height: 1.14 !important;
+  }
+
+  .menu-panel-card span {
+    color: #56657a !important;
+    font-size: 0.9rem !important;
+  }
+
+  .menu-panel-card--letters .letter-btn-pair {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .menu-panel-card--letters .letter-circle-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 11px !important;
+    border: 1px solid #d8dfef !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .menu-hub-screen .menu-hub-section-card--kotoba {
+    width: 100% !important;
+    margin-top: 16px !important;
+    padding: 14px 16px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: #ffffff !important;
+    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.07) !important;
+  }
+
+  .menu-hub-screen .menu-hub-section-card--kotoba .menu-section-title-pill {
+    background: linear-gradient(135deg, #6f64f8, #4f46e5) !important;
+    font-size: 1.02rem !important;
+  }
+
+  .menu-hub-screen .menu-hub-section-card--kotoba .hub-levels {
+    gap: 9px !important;
+    margin-top: 2px;
+  }
+
+  .menu-hub-screen .hub-level-btn--category {
+    background: #eef2ff !important;
+    border: 1px solid #d8def8 !important;
+    color: #283a63 !important;
+    font-weight: 820 !important;
+    border-radius: 999px !important;
+    padding: 8px 12px !important;
+  }
+
+  .hub-screen--practice .hub-practice-shell {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 16px 18px 18px !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: var(--nb-native-surface) !important;
+    box-shadow: var(--nb-native-shadow) !important;
+  }
+
+  .hub-screen--practice .hub-header--practice {
+    width: 100% !important;
+    max-width: none !important;
+    display: block !important;
+    margin: 0 0 12px !important;
+    padding: 14px 16px !important;
+    border-radius: 16px !important;
+    border: 1px solid #f3bad1 !important;
+    background: linear-gradient(150deg, #f39bc8, #e96cb3) !important;
+    box-shadow: 0 8px 20px rgba(233, 108, 179, 0.22) !important;
+  }
+
+  .practice-hub-title-pill {
+    font-size: 1.88rem !important;
+    font-weight: 980 !important;
+    line-height: 1 !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .hub-screen--practice .hub-header--practice p {
+    margin: 0 !important;
+    color: #fff9fc !important;
+    font-size: 1rem !important;
+    font-weight: 760 !important;
+    line-height: 1.34 !important;
+  }
+
+  .hub-practice-divider {
+    width: 100% !important;
+    border-bottom: 1px solid #cfd9e9 !important;
+    margin: 6px 0 14px !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper .hub-section {
+    margin: 0 !important;
+    padding: 14px 14px 12px !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule {
+    font-size: 0.95rem !important;
+    font-weight: 890 !important;
+    letter-spacing: 0 !important;
+    padding: 7px 14px !important;
+    border-radius: 999px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule--goi {
+    background: linear-gradient(135deg, #ef3d92, #d91f7d) !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule--bunpou {
+    background: linear-gradient(135deg, #7a64f7, #5a53e4) !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule--dokkai {
+    background: linear-gradient(135deg, #fb8a2f, #f1641b) !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule--choukai {
+    background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
+  }
+
+  .hub-screen--practice .hub-levels {
+    gap: 8px !important;
+  }
+
+  .hub-screen--practice .hub-level-btn--patterns {
+    min-width: 54px !important;
+    padding: 8px 12px !important;
+    border-radius: 999px !important;
+    border: 1px solid #d8e3f4 !important;
+    background: #eff3fa !important;
+    color: #1f2b3d !important;
+    font-size: 0.92rem !important;
+    font-weight: 850 !important;
+  }
+
+  .hub-screen--practice .hub-level-btn--patterns.hub-level-btn--locked {
+    background: #eef0f4 !important;
+    border-color: #d9dde6 !important;
+    color: #9ba4b2 !important;
+  }
+
+  .hub-screen--practice .latihan-lock-banner {
+    margin-bottom: 12px !important;
+  }
+
+  .hub-screen--practice .latihan-lock-banner__inner {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    border: 1px solid #fecdd3 !important;
+    background: #fff3f5 !important;
+    color: #be123c !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  #grid.hub-mode {
+    padding: 10px 12px 16px !important;
+  }
+
+  .menu-panel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .menu-panel-card {
+    min-height: 92px !important;
+    padding: 10px !important;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .menu-panel-card__icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .menu-panel-card__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu-panel-card strong {
+    font-size: 0.95rem !important;
+  }
+
+  .menu-panel-card span {
+    font-size: 0.78rem !important;
+  }
+
+  .hub-screen--practice .hub-practice-shell {
+    padding: 12px !important;
+  }
+
+  .practice-hub-title-pill {
+    font-size: 1.24rem !important;
+  }
+
+  .hub-screen--practice .hub-header--practice p {
+    font-size: 0.8rem !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper .hub-section {
+    padding: 10px 10px 9px !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule {
+    font-size: 0.82rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .hub-screen--practice .hub-level-btn--patterns {
+    min-width: 46px !important;
+    font-size: 0.76rem !important;
+    padding: 6px 10px !important;
+  }
+}
+
+/* mobile portrait: hanya polish warna menu latihan (UX tetap sama) */
+@media (max-width: 767px) and (orientation: portrait) {
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
+    background: linear-gradient(180deg, #f8fbff, #eef4ff) !important;
+    border: 1px solid #d8e3f3 !important;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header h2 {
+    color: #0f172a !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header p {
+    color: #334155 !important;
+    font-weight: 650 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__practice-wrapper {
+    background: #f9fbff !important;
+    border-color: #d8e3f3 !important;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--goi {
+    background: linear-gradient(135deg, #ef3d92, #d91f7d) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--bunpou {
+    background: linear-gradient(135deg, #7a64f7, #5a53e4) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--dokkai {
+    background: linear-gradient(135deg, #fb8a2f, #f1641b) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--choukai {
+    background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+    background: #1f2b3d !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__note--choukai {
+    background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
+    color: #ffffff !important;
+  }
+}

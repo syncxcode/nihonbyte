@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
   const grid = document.getElementById("grid");
   const category = document.getElementById("category");
   const search = document.getElementById("search");
@@ -105,7 +105,7 @@ Bentuk Kata Sifat
 </div>
 
 <div class="menu-hub-card" data-mode="pattern">
-Grammar (文法)
+Grammar (æ–‡æ³•)
 </div>
 
 <div class="menu-hub-card" data-mode="expression">
@@ -917,8 +917,8 @@ grid.style.display="grid";
         setAccessMode("logged-in");
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
 
-        // ── Cek onboarding sebelum render ──
-        // Kalau belum onboarding → redirect ke halaman onboarding
+        // â”€â”€ Cek onboarding sebelum render â”€â”€
+        // Kalau belum onboarding â†’ redirect ke halaman onboarding
         try {
           if (window.firebaseDb && window.doc && window.getDoc) {
             const _obRef  = window.doc(window.firebaseDb, "users", user.uid, "practice", "progress");
@@ -931,7 +931,7 @@ grid.style.display="grid";
             window._practiceProgress = _obSnap.data();
           }
         } catch(e) { console.error("Cek onboarding gagal:", e); }
-        // ────────────────────────────────────
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
         viewMode = "menu";
         selectedType = "verb-adj-only";
@@ -1383,7 +1383,7 @@ grid.style.display="grid";
   }
 
   // ==========================================
-  // CHOUKAI — LISTENING COMPREHENSION
+  // CHOUKAI â€” LISTENING COMPREHENSION
   // Session-based, mirip logika Goi (multi-sesi per level)
   // ==========================================
 
@@ -1447,7 +1447,7 @@ grid.style.display="grid";
     clearInterval(choukaiTimer);
     choukaiTimer = setInterval(() => {
       choukaiTimeLeft = Math.max(0, choukaiTimeLeft - 1);
-      // Pakai #quiz-timer — ID yang sama dengan Dokkai/Goi
+      // Pakai #quiz-timer â€” ID yang sama dengan Dokkai/Goi
       const timerEl = document.getElementById("quiz-timer");
       if (timerEl) timerEl.textContent = formatSessionTime(choukaiTimeLeft);
       if (choukaiTimeLeft <= 0) {
@@ -1457,7 +1457,7 @@ grid.style.display="grid";
     }, 1000);
   }
 
-  // Render HTML choukai ke #grid — gaya Dokkai (split screen)
+  // Render HTML choukai ke #grid â€” gaya Dokkai (split screen)
   function renderChoukai() {
     const item    = choukaiData_[choukaiIndex];
     const total   = choukaiData_.length;
@@ -1484,7 +1484,7 @@ grid.style.display="grid";
     grid.classList.add("quiz-active-mode");
     document.body.classList.add("training-session");
 
-    if (resultInfo) resultInfo.textContent = "頑張ってください";
+    if (resultInfo) resultInfo.textContent = "é ‘å¼µã£ã¦ãã ã•ã„";
 
     const paginationContainer = document.getElementById("pagination-container");
     if (paginationContainer) {
@@ -1493,9 +1493,9 @@ grid.style.display="grid";
     }
 
     const sessionLabel = item.sessionLabel || "";
-    const sessionKanji = item.sessionKanji ? ` · ${item.sessionKanji}` : "";
+    const sessionKanji = item.sessionKanji ? ` Â· ${item.sessionKanji}` : "";
 
-    // ── STRUKTUR IDENTIK DOKKAI ──────────────────────────────────
+    // â”€â”€ STRUKTUR IDENTIK DOKKAI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     grid.innerHTML = `
       <div class="dokkai-wrapper-pro">
         <button id="finishBtnManual">Akhiri Test</button>
@@ -1526,7 +1526,7 @@ grid.style.display="grid";
 
         <!-- KANAN: Soal + Pilihan (identik sisi kanan Dokkai) -->
         <div class="dokkai-question-side">
-          <p class="quiz-section-title">聴解 / Choukai (Mendengarkan) &bull; ${choukaiLevel_}</p>
+          <p class="quiz-section-title">è´è§£ / Choukai (Mendengarkan) &bull; ${choukaiLevel_}</p>
           <p class="quiz-subtitle">${sessionLabel}${sessionKanji}</p>
 
           <div class="quiz-head-pro">
@@ -1573,11 +1573,11 @@ grid.style.display="grid";
       });
     });
 
-    // Event: Akhiri Test — sama persis Dokkai (via #finishBtnManual)
+    // Event: Akhiri Test â€” sama persis Dokkai (via #finishBtnManual)
     document.getElementById("finishBtnManual")?.addEventListener("click", confirmEndChoukai);
   }
 
-  // Fungsi confirm akhiri — konsisten dengan confirmEndQuiz()
+  // Fungsi confirm akhiri â€” konsisten dengan confirmEndQuiz()
   function confirmEndChoukai() {
     openConfirmModal(
       "Akhiri Sesi Choukai?",
@@ -1593,7 +1593,7 @@ grid.style.display="grid";
     return ja;
   }
 
-  // Putar bel "ting… tong…" via Web Audio API (tanpa file)
+  // Putar bel "tingâ€¦ tongâ€¦" via Web Audio API (tanpa file)
   function playBell(cb) {
     try {
       const ctx  = new (window.AudioContext || window.webkitAudioContext)();
@@ -1612,8 +1612,8 @@ grid.style.display="grid";
       }
 
       const t = ctx.currentTime;
-      tone(1047, t,        0.9);  // ting — C6
-      tone(784,  t + 0.65, 1.1);  // tong — G5
+      tone(1047, t,        0.9);  // ting â€” C6
+      tone(784,  t + 0.65, 1.1);  // tong â€” G5
 
       setTimeout(cb, 1900);
     } catch (e) {
@@ -1622,7 +1622,7 @@ grid.style.display="grid";
     }
   }
 
-  // Putar dialog → bel → soal TTS → unlock pilihan
+  // Putar dialog â†’ bel â†’ soal TTS â†’ unlock pilihan
   function _playChoukaiAudio() {
     if (choukaiPlaying || choukaiAnswered) return;
 
@@ -1642,7 +1642,7 @@ grid.style.display="grid";
     const playBtn = document.getElementById("choukaiPlayBtn");
 
     if (stage)  stage.classList.add("is-playing");
-    if (status) { status.textContent = "Sedang diputar…"; status.classList.add("active"); }
+    if (status) { status.textContent = "Sedang diputarâ€¦"; status.classList.add("active"); }
     if (playBtn) { playBtn.innerHTML = `${CHOUKAI_SVG.stop} Stop`; playBtn.disabled = false; }
 
     // Tombol replay dinonaktifkan selama audio berjalan
@@ -1661,10 +1661,10 @@ grid.style.display="grid";
       return u;
     });
 
-    // Setelah semua dialog selesai → bel → baca soal → unlock
+    // Setelah semua dialog selesai â†’ bel â†’ baca soal â†’ unlock
     utterances[utterances.length - 1].onend = () => {
       if (stage)  stage.classList.remove("is-playing");
-      if (status) { status.innerHTML = `<span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle;width:16px;height:16px">${CHOUKAI_SVG.bell}</span> Dengarkan pertanyaan…`; }
+      if (status) { status.innerHTML = `<span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle;width:16px;height:16px">${CHOUKAI_SVG.bell}</span> Dengarkan pertanyaanâ€¦`; }
 
       playBell(() => {
         // Baca soal via TTS
@@ -1765,7 +1765,7 @@ grid.style.display="grid";
 
     const isPass = pct >= 60;
     const passQuotes = [
-      "Pendengaranmu tajam! Lanjutkan dengan level berikutnya! 頑張れ！",
+      "Pendengaranmu tajam! Lanjutkan dengan level berikutnya! é ‘å¼µã‚Œï¼",
       "Luar biasa! Telingamu sudah terbiasa dengan ritme bahasa Jepang!",
       "Sugoii! Latihan mendengarkan membuahkan hasil. Gas terus!"
     ];
@@ -1786,7 +1786,7 @@ grid.style.display="grid";
           <div class="qr-status" style="color:${colorTheme}">${statusLabel}</div>
           <div class="qr-score">${pct}<span class="qr-denom">/100</span></div>
           <div class="qr-stats">Benar: <strong>${choukaiScore}</strong> / ${total} soal</div>
-          <div class="qr-stats" style="font-size:0.82rem;margin-top:4px;color:#64748b;">聴解 · ${choukaiLevel_}</div>
+          <div class="qr-stats" style="font-size:0.82rem;margin-top:4px;color:#64748b;">è´è§£ Â· ${choukaiLevel_}</div>
         </div>
         <div class="qr-right">
           <p class="qr-msg">${gradeMsg}</p>
@@ -1842,11 +1842,11 @@ grid.style.display="grid";
     // FIX LABEL BIAR DOKKAI GAK DITULIS KOSAKATA LAGI
     let mainLabel = "";
     if (currentExerciseMeta.type === "bunpou") {
-      mainLabel = "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)";
+      mainLabel = "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ / Pengetahuan Bahasa (Tata Bahasa)";
     } else if (currentExerciseMeta.type === "dokkai") {
-      mainLabel = "読解 / Dokkai (Membaca)";
+      mainLabel = "èª­è§£ / Dokkai (Membaca)";
     } else {
-      mainLabel = "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
+      mainLabel = "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ / Pengetahuan Bahasa (Kosakata)";
     }
 
     const dynamicSection = item.section || currentExerciseMeta.section;
@@ -1859,7 +1859,7 @@ grid.style.display="grid";
       
     const options = generateExerciseOptions(item);
     
-    if (resultInfo) resultInfo.textContent = "頑張ってください";
+    if (resultInfo) resultInfo.textContent = "é ‘å¼µã£ã¦ãã ã•ã„";
 
     grid.className = "";
     grid.classList.add("quiz-active-mode");
@@ -1883,7 +1883,7 @@ grid.style.display="grid";
           </div>
 
           <div class="dokkai-question-side">
-            <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
+            <p class="quiz-section-title">${mainLabel} â€¢ ${currentExerciseMeta.level}</p>
             <p class="quiz-subtitle">Teks ${sectionProgress.index} dari ${sectionProgress.total}</p>
 
             <div class="quiz-head-pro">
@@ -1908,7 +1908,7 @@ grid.style.display="grid";
       grid.innerHTML = `
         <div class="quiz-wrapper-pro">
           <button id="finishBtnManual">Akhiri Test</button>
-          <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
+          <p class="quiz-section-title">${mainLabel} â€¢ ${currentExerciseMeta.level}</p>
           <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
 
           <div class="quiz-head-pro">
@@ -2036,9 +2036,9 @@ grid.style.display="grid";
     kanjiModal.classList.add("quiz-result-active");
   }
 
-  // ─────────────────────────────────────────────────────────────
-  // CUSTOM CONFIRM MODAL — Pengganti browser confirm() yang jelek
-  // ─────────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // CUSTOM CONFIRM MODAL â€” Pengganti browser confirm() yang jelek
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function openConfirmModal(title, body, onOk) {
     const overlay   = document.getElementById("confirmModal");
     const titleEl   = document.getElementById("confirmModalTitle");
@@ -2109,7 +2109,7 @@ grid.style.display="grid";
           
           <div class="review-left-col">
             <div style="margin-bottom:10px; font-weight:bold; color:#64748b; display:flex; justify-content:space-between;">
-              <span>Soal ${index + 1} • ${q.sectionLabel || '-'}</span>
+              <span>Soal ${index + 1} â€¢ ${q.sectionLabel || '-'}</span>
               <span style="color:${userColor}">${statusText}</span>
             </div>
             
@@ -2152,7 +2152,7 @@ grid.style.display="grid";
       if (isTesting) {
         openInfoModal(`
           <div style="text-align: center; padding: 10px;">
-            <h3 style="color: #ff4d6d; margin-bottom: 10px;">集中して！ (Fokus!) <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/></svg></h3>
+            <h3 style="color: #ff4d6d; margin-bottom: 10px;">é›†ä¸­ã—ã¦ï¼ (Fokus!) <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/></svg></h3>
             <p style="font-size: 1.1rem;">Selesaikan ujianmu dulu sebelum mencari kosakata lain!</p>
           </div>
         `);
@@ -2188,7 +2188,7 @@ grid.style.display="grid";
         modalSearchInput.focus();
       }
 
-      // ── Mobile: pasang readonly agar keyboard tidak muncul saat modal buka ──
+      // â”€â”€ Mobile: pasang readonly agar keyboard tidak muncul saat modal buka â”€â”€
       // Keyboard baru muncul kalau user sengaja tap input
       if (modalSearchInput && window.innerWidth <= 767) {
         modalSearchInput.setAttribute('readonly', 'readonly');
@@ -2219,10 +2219,10 @@ grid.style.display="grid";
 
     if (filterModalClose) filterModalClose.addEventListener("click", closeFilterModal);
 
-    // ==================== TOGGLE LEVEL — multiple select ====================
+    // ==================== TOGGLE LEVEL â€” multiple select ====================
     // SEMUA: lepas semua N, aktifkan SEMUA
     // N-chip: bisa pilih banyak sekaligus, klik lagi = lepas
-    // Kalau semua N dilepas → SEMUA otomatis aktif kembali
+    // Kalau semua N dilepas â†’ SEMUA otomatis aktif kembali
     document.querySelectorAll("#levelGrid .level-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const isAll = btn.dataset.level === "all";
@@ -2243,11 +2243,11 @@ grid.style.display="grid";
       });
     });
 
-    // Category buttons — multiple toggle, klik lagi = lepas
+    // Category buttons â€” multiple toggle, klik lagi = lepas
     document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         btn.classList.toggle("active");
-        // Cek apakah ada LOCKED_VOCAB_TYPES yang aktif → apply level gate
+        // Cek apakah ada LOCKED_VOCAB_TYPES yang aktif â†’ apply level gate
         const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
         const hasLockedType = activeTypes.some(t => LOCKED_VOCAB_TYPES.includes(t));
         _applySearchLevelGate(hasLockedType);
@@ -2343,9 +2343,9 @@ grid.style.display="grid";
   //     sehingga rotasi saat latihan aktif mengirim user kembali ke menu.
   //
   //     Solusi:
-  //     - Saat isTesting / training-session aktif → hanya re-apply layout
+  //     - Saat isTesting / training-session aktif â†’ hanya re-apply layout
   //       (re-render DOM quiz via renderQuiz()) tanpa reset state.
-  //     - Saat tidak sedang latihan → render() normal seperti biasa.
+  //     - Saat tidak sedang latihan â†’ render() normal seperti biasa.
   //
   // Fungsi helper: layout-only refresh saat sedang latihan
   function _refreshQuizLayout() {
@@ -2379,7 +2379,7 @@ grid.style.display="grid";
       const inQuiz = isTesting || document.body.classList.contains('training-session');
 
       if (inQuiz) {
-        // Sedang latihan: jangan render() → nanti user dilempar ke menu
+        // Sedang latihan: jangan render() â†’ nanti user dilempar ke menu
         _refreshQuizLayout();
       } else if (viewMode === 'kanji-card-single') {
         // Sedang di kanji-card: rerender layout saja, kartu tidak reset
@@ -2407,7 +2407,7 @@ grid.style.display="grid";
 
       const inQuiz = isTesting || document.body.classList.contains('training-session');
       if (inQuiz) {
-        // Orientasi berubah saat latihan → hanya refresh layout, jangan reset ke menu
+        // Orientasi berubah saat latihan â†’ hanya refresh layout, jangan reset ke menu
         setTimeout(() => _refreshQuizLayout(), 150);
       } else if (viewMode === 'kanji-card-single') {
         // Sedang di kanji-card: rerender layout saja, kartu tidak reset
@@ -2460,7 +2460,7 @@ grid.style.display="grid";
     "expression": "Ungkapan Umum",
     "ungkapan umum": "Ungkapan Umum",
     "verb-adj-only": "Kosakata Utama",
-    "pattern": "Grammar (文法)",
+    "pattern": "Grammar (æ–‡æ³•)",
     "activity": "Kosakata Aktivitas",
     "noun-hobby": "Kosakata Hobi",
     "noun-sports": "Kosakata Olahraga",
@@ -2557,48 +2557,48 @@ grid.style.display="grid";
       title: "Poster Hiragana",
       sections: [
         {
-          subtitle: "Gojūon",
+          subtitle: "GojÅ«on",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-            ["A",  "あ", "い", "う", "え", "お"],
-            ["KA", "か", "き", "く", "け", "こ"],
-            ["SA", "さ", "し", "す", "せ", "そ"],
-            ["TA", "た", "ち", "つ", "て", "と"],
-            ["NA", "な", "に", "ぬ", "ね", "の"],
-            ["HA", "は", "ひ", "ふ", "へ", "ほ"],
-            ["MA", "ま", "み", "む", "め", "も"],
-            ["YA", "や", "",   "ゆ", "",   "よ"],
-            ["RA", "ら", "り", "る", "れ", "ろ"],
-            ["WA", "わ", "",   "",   "",   "を"],
-            ["N",  "ん", "",   "",   "",   ""],
+            ["A",  "ã‚", "ã„", "ã†", "ãˆ", "ãŠ"],
+            ["KA", "ã‹", "ã", "ã", "ã‘", "ã“"],
+            ["SA", "ã•", "ã—", "ã™", "ã›", "ã"],
+            ["TA", "ãŸ", "ã¡", "ã¤", "ã¦", "ã¨"],
+            ["NA", "ãª", "ã«", "ã¬", "ã­", "ã®"],
+            ["HA", "ã¯", "ã²", "ãµ", "ã¸", "ã»"],
+            ["MA", "ã¾", "ã¿", "ã‚€", "ã‚", "ã‚‚"],
+            ["YA", "ã‚„", "",   "ã‚†", "",   "ã‚ˆ"],
+            ["RA", "ã‚‰", "ã‚Š", "ã‚‹", "ã‚Œ", "ã‚"],
+            ["WA", "ã‚", "",   "",   "",   "ã‚’"],
+            ["N",  "ã‚“", "",   "",   "",   ""],
           ],
         },
         {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-            ["GA", "が", "ぎ", "ぐ", "げ", "ご"],
-            ["ZA", "ざ", "じ", "ず", "ぜ", "ぞ"],
-            ["DA", "だ", "ぢ", "づ", "で", "ど"],
-            ["BA", "ば", "び", "ぶ", "べ", "ぼ"],
-            ["PA", "ぱ", "ぴ", "ぷ", "ぺ", "ぽ"],
+            ["GA", "ãŒ", "ãŽ", "ã", "ã’", "ã”"],
+            ["ZA", "ã–", "ã˜", "ãš", "ãœ", "ãž"],
+            ["DA", "ã ", "ã¢", "ã¥", "ã§", "ã©"],
+            ["BA", "ã°", "ã³", "ã¶", "ã¹", "ã¼"],
+            ["PA", "ã±", "ã´", "ã·", "ãº", "ã½"],
           ],
         },
         {
-          subtitle: "Yōon",
+          subtitle: "YÅon",
           rows: [
             ["", "YA", "YU", "YO"],
-            ["K", "きゃ", "きゅ", "きょ"],
-            ["S", "しゃ", "しゅ", "しょ"],
-            ["T", "ちゃ", "ちゅ", "ちょ"],
-            ["N", "にゃ", "にゅ", "にょ"],
-            ["H", "ひゃ", "ひゅ", "ひょ"],
-            ["M", "みゃ", "みゅ", "みょ"],
-            ["R", "りゃ", "りゅ", "りょ"],
-            ["G", "ぎゃ", "ぎゅ", "ぎょ"],
-            ["J", "じゃ", "じゅ", "じょ"],
-            ["B", "びゃ", "びゅ", "びょ"],
-            ["P", "ぴゃ", "ぴゅ", "ぴょ"],
+            ["K", "ãã‚ƒ", "ãã‚…", "ãã‚‡"],
+            ["S", "ã—ã‚ƒ", "ã—ã‚…", "ã—ã‚‡"],
+            ["T", "ã¡ã‚ƒ", "ã¡ã‚…", "ã¡ã‚‡"],
+            ["N", "ã«ã‚ƒ", "ã«ã‚…", "ã«ã‚‡"],
+            ["H", "ã²ã‚ƒ", "ã²ã‚…", "ã²ã‚‡"],
+            ["M", "ã¿ã‚ƒ", "ã¿ã‚…", "ã¿ã‚‡"],
+            ["R", "ã‚Šã‚ƒ", "ã‚Šã‚…", "ã‚Šã‚‡"],
+            ["G", "ãŽã‚ƒ", "ãŽã‚…", "ãŽã‚‡"],
+            ["J", "ã˜ã‚ƒ", "ã˜ã‚…", "ã˜ã‚‡"],
+            ["B", "ã³ã‚ƒ", "ã³ã‚…", "ã³ã‚‡"],
+            ["P", "ã´ã‚ƒ", "ã´ã‚…", "ã´ã‚‡"],
           ],
         },
       ],
@@ -2608,48 +2608,48 @@ grid.style.display="grid";
       title: "Poster Katakana",
       sections: [
         {
-          subtitle: "Gojūon",
+          subtitle: "GojÅ«on",
           rows: [
             ["",  "A",  "I",  "U",  "E",  "O"],
-            ["A",  "ア", "イ", "ウ", "エ", "オ"],
-            ["KA", "カ", "キ", "ク", "ケ", "コ"],
-            ["SA", "サ", "シ", "ス", "セ", "ソ"],
-            ["TA", "タ", "チ", "ツ", "テ", "ト"],
-            ["NA", "ナ", "ニ", "ヌ", "ネ", "ノ"],
-            ["HA", "ハ", "ヒ", "フ", "ヘ", "ホ"],
-            ["MA", "マ", "ミ", "ム", "メ", "モ"],
-            ["YA", "ヤ", "",   "ユ", "",   "ヨ"],
-            ["RA", "ラ", "リ", "ル", "レ", "ロ"],
-            ["WA", "ワ", "",   "",   "",   "ヲ"],
-            ["N",  "ン", "",   "",   "",   ""],
+            ["A",  "ã‚¢", "ã‚¤", "ã‚¦", "ã‚¨", "ã‚ª"],
+            ["KA", "ã‚«", "ã‚­", "ã‚¯", "ã‚±", "ã‚³"],
+            ["SA", "ã‚µ", "ã‚·", "ã‚¹", "ã‚»", "ã‚½"],
+            ["TA", "ã‚¿", "ãƒ", "ãƒ„", "ãƒ†", "ãƒˆ"],
+            ["NA", "ãƒŠ", "ãƒ‹", "ãƒŒ", "ãƒ", "ãƒŽ"],
+            ["HA", "ãƒ", "ãƒ’", "ãƒ•", "ãƒ˜", "ãƒ›"],
+            ["MA", "ãƒž", "ãƒŸ", "ãƒ ", "ãƒ¡", "ãƒ¢"],
+            ["YA", "ãƒ¤", "",   "ãƒ¦", "",   "ãƒ¨"],
+            ["RA", "ãƒ©", "ãƒª", "ãƒ«", "ãƒ¬", "ãƒ­"],
+            ["WA", "ãƒ¯", "",   "",   "",   "ãƒ²"],
+            ["N",  "ãƒ³", "",   "",   "",   ""],
           ],
         },
         {
           subtitle: "Dakuon & Handakuon",
           rows: [
             ["", "A", "I", "U", "E", "O"],
-            ["GA", "ガ", "ギ", "グ", "ゲ", "ゴ"],
-            ["ZA", "ザ", "ジ", "ズ", "ゼ", "ゾ"],
-            ["DA", "ダ", "ヂ", "ヅ", "デ", "ド"],
-            ["BA", "バ", "ビ", "ブ", "ベ", "ボ"],
-            ["PA", "パ", "ピ", "プ", "ペ", "ポ"],
+            ["GA", "ã‚¬", "ã‚®", "ã‚°", "ã‚²", "ã‚´"],
+            ["ZA", "ã‚¶", "ã‚¸", "ã‚º", "ã‚¼", "ã‚¾"],
+            ["DA", "ãƒ€", "ãƒ‚", "ãƒ…", "ãƒ‡", "ãƒ‰"],
+            ["BA", "ãƒ", "ãƒ“", "ãƒ–", "ãƒ™", "ãƒœ"],
+            ["PA", "ãƒ‘", "ãƒ”", "ãƒ—", "ãƒš", "ãƒ"],
           ],
         },
         {
-          subtitle: "Yōon",
+          subtitle: "YÅon",
           rows: [
             ["", "YA", "YU", "YO"],
-            ["K", "キャ", "キュ", "キョ"],
-            ["S", "シャ", "シュ", "ショ"],
-            ["T", "チャ", "チュ", "チョ"],
-            ["N", "ニャ", "ニュ", "ニョ"],
-            ["H", "ヒャ", "ヒュ", "ヒョ"],
-            ["M", "ミャ", "ミュ", "ミョ"],
-            ["R", "リャ", "リュ", "リョ"],
-            ["G", "ギャ", "ギュ", "ギョ"],
-            ["J", "ジャ", "ジュ", "ジョ"],
-            ["B", "ビャ", "ビュ", "ビョ"],
-            ["P", "ピャ", "ピュ", "ピョ"],
+            ["K", "ã‚­ãƒ£", "ã‚­ãƒ¥", "ã‚­ãƒ§"],
+            ["S", "ã‚·ãƒ£", "ã‚·ãƒ¥", "ã‚·ãƒ§"],
+            ["T", "ãƒãƒ£", "ãƒãƒ¥", "ãƒãƒ§"],
+            ["N", "ãƒ‹ãƒ£", "ãƒ‹ãƒ¥", "ãƒ‹ãƒ§"],
+            ["H", "ãƒ’ãƒ£", "ãƒ’ãƒ¥", "ãƒ’ãƒ§"],
+            ["M", "ãƒŸãƒ£", "ãƒŸãƒ¥", "ãƒŸãƒ§"],
+            ["R", "ãƒªãƒ£", "ãƒªãƒ¥", "ãƒªãƒ§"],
+            ["G", "ã‚®ãƒ£", "ã‚®ãƒ¥", "ã‚®ãƒ§"],
+            ["J", "ã‚¸ãƒ£", "ã‚¸ãƒ¥", "ã‚¸ãƒ§"],
+            ["B", "ãƒ“ãƒ£", "ãƒ“ãƒ¥", "ãƒ“ãƒ§"],
+            ["P", "ãƒ”ãƒ£", "ãƒ”ãƒ¥", "ãƒ”ãƒ§"],
           ],
         },
       ],
@@ -2842,10 +2842,10 @@ grid.style.display="grid";
         <button class="card-action-btn play-audio-btn" type="button" data-text="${word.kana || ''}" aria-label="Putar audio"><svg viewBox='0 0 24 24' fill='currentColor' stroke='none' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><polygon points='5 3 19 12 5 21 5 3'/></svg></button>
         
         <div class="card-overlay" style="position: relative; z-index: 2;">
-          <div class="kanji">${word.kanji || "—"}</div>
-          <div class="kana">${word.kana || "—"}</div>
+          <div class="kanji">${word.kanji || "â€”"}</div>
+          <div class="kana">${word.kana || "â€”"}</div>
           <div class="romaji">${word.romaji || ""}</div>
-          <div class="meaning">${tMeaning(word.meaning) || "—"}</div>
+          <div class="meaning">${tMeaning(word.meaning) || "â€”"}</div>
           
           <img class="watermark-logo" src="./assets/logo.png" alt="NihonByte Logo" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); width:70%; height:auto; opacity:0; pointer-events:none; z-index:-1;">
         </div>
@@ -2896,10 +2896,10 @@ grid.style.display="grid";
       card.setAttribute("aria-label", `Detail ungkapan ${word.kana || word.kanji}`);
       try { card.dataset.word = JSON.stringify(word); } catch (err) { return; }
       card.innerHTML = `
-        <div class="wide-kanji">${word.kanji || "—"}</div>
-        <div class="wide-kana">${word.kana || "—"}</div>
+        <div class="wide-kanji">${word.kanji || "â€”"}</div>
+        <div class="wide-kana">${word.kana || "â€”"}</div>
         <div class="wide-romaji">${word.romaji || ""}</div>
-        <div class="wide-meaning">${tMeaning(word.meaning) || "—"}</div>
+        <div class="wide-meaning">${tMeaning(word.meaning) || "â€”"}</div>
         <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar"><svg viewBox='0 0 24 24' fill='currentColor' stroke='none' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><polygon points='5 3 19 12 5 21 5 3'/></svg></button>
       `;
       card.addEventListener("click", (e) => {
@@ -2959,10 +2959,10 @@ grid.style.display="grid";
       try { card.dataset.word = JSON.stringify(word); } catch (err) { return; }
       
       card.innerHTML = `
-        <div class="wide-kanji">${word.kanji || "—"}</div>
-        <div class="wide-kana">${word.kana || "—"}</div>
+        <div class="wide-kanji">${word.kanji || "â€”"}</div>
+        <div class="wide-kana">${word.kana || "â€”"}</div>
         <div class="wide-romaji">${word.romaji || ""}</div>
-        <div class="wide-meaning">${tMeaning(word.meaning) || "—"}</div>
+        <div class="wide-meaning">${tMeaning(word.meaning) || "â€”"}</div>
         <button class="wide-play-btn" type="button" data-text="${word.kana || word.kanji || ''}" aria-label="Putar"><svg viewBox='0 0 24 24' fill='currentColor' stroke='none' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><polygon points='5 3 19 12 5 21 5 3'/></svg></button>
       `;
       card.addEventListener("click", (e) => {
@@ -3020,7 +3020,7 @@ grid.style.display="grid";
     const correct = testState.correctCount;
     const percentage = total ? Math.round((correct / total) * 100) : 0;
     const status = percentage >= 75 ? "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true' stroke-width='2.5'><polyline points='20 6 9 17 4 12'/></svg> LULUS" : "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true' stroke-width='2.5'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg> TIDAK LULUS";
-    openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> • <strong>${percentage}%</strong><br>${status}`);
+    openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> â€¢ <strong>${percentage}%</strong><br>${status}`);
     testState.active = false;
     viewMode = "vocab";
     render();
@@ -3138,14 +3138,14 @@ grid.style.display="grid";
       
       // Judul Gabungan
       poster.innerHTML = `
-        <h2>${data.title} • <span class="letter-poster-subtitle">${section.subtitle}</span></h2>
+        <h2>${data.title} â€¢ <span class="letter-poster-subtitle">${section.subtitle}</span></h2>
         <div class="letter-poster-body"></div>
       `;
 
       const secElem = document.createElement("div");
       secElem.className = "letter-section";
       
-      if (section.subtitle === "Yōon") secElem.classList.add("yoon-section");
+      if (section.subtitle === "YÅon") secElem.classList.add("yoon-section");
 
       let rowsToRender = section.rows;
 
@@ -3195,7 +3195,7 @@ grid.style.display="grid";
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }
   
-  // renderPatternPoster DIHAPUS — diganti oleh modul grammar-logic.js
+  // renderPatternPoster DIHAPUS â€” diganti oleh modul grammar-logic.js
 
   function syncMobileTopbarLayout() {
     const topbar = document.querySelector(".topbar");
@@ -3274,8 +3274,8 @@ grid.style.display="grid";
       recBtn.setAttribute("role", "button");
       recBtn.setAttribute("tabindex", "0");
       recBtn.innerHTML = `
-        <span class="rec-kanji">${item.kanji || "—"}</span>
-        <span class="rec-kana">${item.kana || "—"}</span>
+        <span class="rec-kanji">${item.kanji || "â€”"}</span>
+        <span class="rec-kana">${item.kana || "â€”"}</span>
         <button class="rec-audio-btn" type="button" data-text="${item.kana || ""}" aria-label="Putar audio ${item.kanji || item.kana || ''}"><svg viewBox='0 0 24 24' fill='currentColor' stroke='none' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><polygon points='5 3 19 12 5 21 5 3'/></svg></button>
       `;
       recBtn.addEventListener("click", () => openModal(item));
@@ -3552,8 +3552,8 @@ grid.style.display="grid";
     if (isPracticeLockedMode || accessMode === "guest") {
       if (isPracticeLockedMode) {
         const messages = [
-          "<h3>諦めないで (Jangan Menyerah)!</h3><p>Latihan sedang berjalan. Selesaikan dulu sebelum kembali ke beranda.</p>",
-          "<h3>ちょっと待って! (Tunggu Sebentar!)</h3><p>Mode latihan sedang dikunci agar progres kamu tidak hilang.</p>",
+          "<h3>è«¦ã‚ãªã„ã§ (Jangan Menyerah)!</h3><p>Latihan sedang berjalan. Selesaikan dulu sebelum kembali ke beranda.</p>",
+          "<h3>ã¡ã‚‡ã£ã¨å¾…ã£ã¦! (Tunggu Sebentar!)</h3><p>Mode latihan sedang dikunci agar progres kamu tidak hilang.</p>",
           "<h3>Fokus, Bosku!</h3><p>Bereskan sesi latihan dulu, setelah itu baru reset ke halaman awal.</p>"
         ];
         const randomMsg = messages[Math.floor(Math.random() * messages.length)];
@@ -3820,9 +3820,9 @@ grid.style.display="grid";
                   <button class="favorit-mini-remove" data-word-id="${wordId}" title="Hapus dari favorit">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="#ff4d6d" stroke="#ff4d6d" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                   </button>
-                  <div class="favorit-mini-kanji">${word.kanji || word.kana || "—"}</div>
+                  <div class="favorit-mini-kanji">${word.kanji || word.kana || "â€”"}</div>
                   <div class="favorit-mini-kana">${word.kana || ""}</div>
-                  <div class="favorit-mini-meaning">${tMeaning(word.meaning) || "—"}</div>
+                  <div class="favorit-mini-meaning">${tMeaning(word.meaning) || "â€”"}</div>
                 </div>
               </div>
             `;
@@ -3840,7 +3840,7 @@ grid.style.display="grid";
               Favorit
             </span>
           </h2>
-          <p>${countText} — kata yang kamu simpan dari kartu kosakata</p>
+          <p>${countText} â€” kata yang kamu simpan dari kartu kosakata</p>
           ${bookmarkedWords.length > 0 ? `<button class="favorit-clear-btn" id="favoritClearBtn">Hapus Semua</button>` : ""}
         </header>
 
@@ -3852,7 +3852,7 @@ grid.style.display="grid";
 
     if (resultInfo) resultInfo.textContent = "Favorit";
 
-    // Event: klik kartu → buka modal
+    // Event: klik kartu â†’ buka modal
     grid.querySelectorAll(".favorit-mini-card").forEach(card => {
       card.addEventListener("click", (e) => {
         if (e.target.closest(".favorit-mini-remove")) return;
@@ -3925,7 +3925,7 @@ grid.style.display="grid";
   }
 
   // Menentukan judul berdasarkan mode
-  const titlePrefix = mode === "exercise" ? "Latihan" : "Grammar (文法)";
+  const titlePrefix = mode === "exercise" ? "Latihan" : "Grammar (æ–‡æ³•)";
   
   const container = document.createElement("div");
   container.className = "empty-state";
@@ -3942,7 +3942,7 @@ grid.style.display="grid";
         The category you selected is still under development, please come back later.
       </p>
       <p style="font-size: 1.4rem; font-weight: 800; color: #ff4d6d; line-height: 1.6;">
-        選択されたカテゴリーは現在開発中です。<br>後ほどもう一度ご確認ください。
+        é¸æŠžã•ã‚ŒãŸã‚«ãƒ†ã‚´ãƒªãƒ¼ã¯ç¾åœ¨é–‹ç™ºä¸­ã§ã™ã€‚<br>å¾Œã»ã©ã‚‚ã†ä¸€åº¦ã”ç¢ºèªãã ã•ã„ã€‚
       </p>
     </div>
   `;
@@ -3985,7 +3985,7 @@ grid.style.display="grid";
           </header>
           <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ Pengetahuan Bahasa (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
@@ -3995,7 +3995,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
@@ -4005,7 +4005,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">読解 Dokkai (Membaca)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">èª­è§£ Dokkai (Membaca)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
@@ -4016,7 +4016,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">è´è§£ Choukai (Mendengarkan)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N4">N4</button>
@@ -4084,7 +4084,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (文法)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (æ–‡æ³•)</h3>
             <div class="bottom-nav-hub__chips">
               ${patternChips}
             </div>
@@ -4102,7 +4102,7 @@ grid.style.display="grid";
     bottomNavHub.hidden = false;
     document.body.classList.add("bottom-nav-hub-open");
 
-    // ── Reset scroll ke atas setiap pindah tab (mobile portrait only) ──
+    // â”€â”€ Reset scroll ke atas setiap pindah tab (mobile portrait only) â”€â”€
     if (window.innerWidth <= 767) {
       bottomNavHub.scrollTop = 0;
       window.scrollTo({ top: 0, behavior: 'instant' });
@@ -4278,38 +4278,38 @@ grid.style.display="grid";
     });
   }
 
-  function getMenuPanelCards() {
+    function getMenuPanelCards() {
     return [
       {
         action: "letters",
         script: "hiragana",
         title: "Huruf",
         description: "Hiragana & Katakana",
-        icon: '<path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v6h6"/>'
+        iconPath: "./assets/icons/duotone-native/menu-huruf-scroll.svg"
       },
       {
         action: "verb-forms",
         title: "Bentuk Kata Kerja",
         description: "Materi + poster",
-        icon: '<path d="M4 12a8 8 0 1 0 8-8v8Z"/><path d="M13 4a8 8 0 0 1 7 7h-7Z"/>'
+        iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg"
       },
       {
         action: "adjective-forms",
         title: "Bentuk Kata Sifat",
         description: "Materi + poster",
-        icon: '<path d="M4 5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z"/><path d="M14 3v6h6"/>'
+        iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg"
       },
       {
         action: "expressions",
         title: "Ungkapan Umum",
         description: "Ekspresi sehari-hari",
-        icon: '<path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H9l-5 4v-4a3 3 0 0 1-3-3V6Z"/>'
+        iconPath: "./assets/icons/duotone-native/menu-ungkapan.svg"
       },
       {
         action: "grammar",
         title: "Grammar (文法)",
         description: "Materi + poster",
-        icon: '<path d="M4 5a2 2 0 0 1 2-2h6v17H6a2 2 0 0 0-2 2V5Z"/><path d="M12 3h6a2 2 0 0 1 2 2v17a2 2 0 0 0-2-2h-6V3Z"/><line x1="8" y1="8" x2="10" y2="8" stroke-linecap="round"/><line x1="8" y1="11" x2="10" y2="11" stroke-linecap="round"/><line x1="14" y1="8" x2="16" y2="8" stroke-linecap="round"/><line x1="14" y1="11" x2="16" y2="11" stroke-linecap="round"/>'
+        iconPath: "./assets/icons/duotone-native/menu-grammar-open-book.svg"
       },
 
     ];
@@ -4317,12 +4317,14 @@ grid.style.display="grid";
 
   function renderMenuPanelGrid() {
     const cards = getMenuPanelCards()
-      .map(({ action, script = "", level = "", title, description, icon }) => {
-        // Special case: Huruf — bukan tombol, tapi card statis dengan 2 tombol bulat
+      .map(({ action, script = "", level = "", title, description, iconPath = "" }) => {
+        // Special case: Huruf - bukan tombol, tapi card statis dengan 2 tombol bulat
         if (action === "letters") {
           return `
-            <div class="menu-panel-card menu-panel-card--static">
-              <svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>
+            <div class="menu-panel-card menu-panel-card--static menu-panel-card--letters">
+              <span class="menu-panel-card__icon-wrap menu-panel-card__icon-wrap--letters" aria-hidden="true">
+                <img src="${iconPath}" class="menu-panel-card__icon" alt="">
+              </span>
               <div class="menu-panel-card__body">
                 <strong>${title}</strong>
                 <span>${description}</span>
@@ -4342,8 +4344,10 @@ grid.style.display="grid";
         const scriptAttr = script ? ` data-script="${script}"` : "";
         const levelAttr = level ? ` data-level="${level}"` : "";
         return `
-          <button type="button" class="menu-panel-card" data-hub="${action}"${scriptAttr}${levelAttr}>
-            <svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>
+          <button type="button" class="menu-panel-card menu-panel-card--${action}" data-hub="${action}"${scriptAttr}${levelAttr}>
+            <span class="menu-panel-card__icon-wrap" aria-hidden="true">
+              <img src="${iconPath}" class="menu-panel-card__icon" alt="">
+            </span>
             <div class="menu-panel-card__body">
               <strong>${title}</strong>
               <span>${description}</span>
@@ -4355,7 +4359,6 @@ grid.style.display="grid";
 
     return `<div class="menu-panel-grid">${cards}</div>`;
   }
-
   function handleHubAction(btn) {
     const action = btn.dataset.hub || "";
     const script = btn.dataset.script || "";
@@ -4481,28 +4484,28 @@ grid.style.display="grid";
 
           <div class="hub-practice-wrapper">
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Pengetahuan Bahasa (Kosakata)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--goi">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰Pengetahuan Bahasa (Kosakata)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("goi")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--bunpou">言語知識（文法）Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--bunpou">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("bunpou")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--dokkai">読解 Dokkai (Membaca)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--dokkai">èª­è§£ Dokkai (Membaca)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("dokkai", "dokkai-reading")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--choukai">è´è§£ Choukai (Mendengarkan)</h3>
             <div class="hub-levels">
               ${levels.map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`).join("")}
             </div>
@@ -4514,7 +4517,7 @@ grid.style.display="grid";
 
     if (resultInfo) resultInfo.textContent = "Latihan";
 
-    // Check progress — kalau < 90%, tampilkan lock overlay di atas hub
+    // Check progress â€” kalau < 90%, tampilkan lock overlay di atas hub
     const _prog = calcTotalProgress();
     if (_prog.total > 0 && _prog.pct < 90) {
       // Tambah lock banner di atas hub
@@ -4606,7 +4609,7 @@ grid.style.display="grid";
   }
 
 
-  // ── Progress Tracking ──────────────────────────────────────
+  // â”€â”€ Progress Tracking â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Simpan ke Firestore: users/{uid}/progress/opened/{type}/{wordId}
 
   async function saveVocabProgress(word) {
@@ -4678,7 +4681,7 @@ grid.style.display="grid";
       prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed"
     );
 
-    // ── Vocab inti ──
+    // â”€â”€ Vocab inti â”€â”€
     const vocabOpened = window._vocabOpenedCache || {};
     const vocabAll = vocabularyData.filter(w =>
       LOCKED_VOCAB_TYPES.includes(w.type) && unlockedLevels.includes(w.level)
@@ -4689,14 +4692,14 @@ grid.style.display="grid";
     }).length;
     const vocabTotal = vocabAll.length;
 
-    // ── Grammar ──
+    // â”€â”€ Grammar â”€â”€
     const grammarOpened = window._grammarOpenedCache || {};
     const grammarAll = (Array.isArray(window.grammarData) ? window.grammarData : [])
       .filter(g => unlockedLevels.includes(g.level));
     const grammarDone  = grammarAll.filter(g => grammarOpened[String(g.id)]).length;
     const grammarTotal = grammarAll.length;
 
-    // ── Verb Forms ──
+    // â”€â”€ Verb Forms â”€â”€
     const verbOpened = window._verbFormOpenedCache || {};
     const verbAll = (Array.isArray(window.verbFormsData) ? window.verbFormsData : [])
       .filter(v => unlockedLevels.includes(v.level));
@@ -4710,7 +4713,7 @@ grid.style.display="grid";
     return { pct, done, total, vocabDone, vocabTotal, grammarDone, grammarTotal, verbDone, verbTotal };
   }
 
-  // ── Level Gate ─────────────────────────────────────────────
+  // â”€â”€ Level Gate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   // Set window.grammarLevels dan window.verbFormsLevels
   // sesuai level yang sudah unlock dari onboarding
   function applyLevelGate() {
@@ -4792,7 +4795,7 @@ grid.style.display="grid";
 
     if (viewMode === "practice-hub") {
       // Mobile: pakai bottom nav hub (sama seperti "menu"), bukan render ke grid.
-      // Tanpa cek ini, rotasi landscape→portrait tetap render versi grid (desktop-style).
+      // Tanpa cek ini, rotasi landscapeâ†’portrait tetap render versi grid (desktop-style).
       if (!isDesktopLayout()) {
         openBottomNavHub("practice");
         setBottomNavActive("practice");
@@ -4854,7 +4857,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja • ${formId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja â€¢ ${formId.toUpperCase()}`;
       return;
     }
 
@@ -4880,7 +4883,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat • ${formId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat â€¢ ${formId.toUpperCase()}`;
       return;
     }
 
@@ -4897,7 +4900,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = "Materi Grammar (文法)";
+      if (resultInfo) resultInfo.textContent = "Materi Grammar (æ–‡æ³•)";
       return;
     }
 
@@ -4913,7 +4916,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Grammar (文法) • ${patternId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Grammar (æ–‡æ³•) â€¢ ${patternId.toUpperCase()}`;
       return;
     }
 
@@ -4988,12 +4991,12 @@ grid.style.display="grid";
         if (isTouchDevice) {
           const cardImg = cardButton.querySelector(".card-image");
           if (!cardImg.classList.contains("touch-revealed")) {
-            // Tap pertama — reveal tombol
+            // Tap pertama â€” reveal tombol
             document.querySelectorAll(".card-image.touch-revealed").forEach(c => c.classList.remove("touch-revealed"));
             cardImg.classList.add("touch-revealed");
             return;
           }
-          // Tap kedua — buka modal
+          // Tap kedua â€” buka modal
           cardImg.classList.remove("touch-revealed");
         }
 
@@ -5005,7 +5008,7 @@ grid.style.display="grid";
               ? contentPanel.scrollTop
               : (window.scrollY || window.pageYOffset || 0);
 
-            // Cabut semua card dari DOM ke fragment — bukan hide
+            // Cabut semua card dari DOM ke fragment â€” bukan hide
             var cardFragment = document.createDocumentFragment();
             grid.querySelectorAll(".card").forEach(function(c) {
               cardFragment.appendChild(c);
@@ -5073,7 +5076,7 @@ grid.style.display="grid";
 
     if (resultInfo) {
       resultInfo.textContent = isGuestPreview
-        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) • Login untuk buka semua materi`)
+        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) â€¢ Login untuk buka semua materi`)
         : formatResultInfo(words.length);
     }
 
@@ -5096,7 +5099,7 @@ grid.style.display="grid";
     // Tombol Prev (Kiri)
     const prevBtn = document.createElement("button");
     prevBtn.className = "page-btn";
-    prevBtn.innerHTML = "«";
+    prevBtn.innerHTML = "Â«";
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener("click", () => { if (currentPage > 1) { currentPage--; render(); } });
     paginationContainer.appendChild(prevBtn);
@@ -5134,7 +5137,7 @@ grid.style.display="grid";
     // Tombol Next (Kanan)
     const nextBtn = document.createElement("button");
     nextBtn.className = "page-btn";
-    nextBtn.innerHTML = "»";
+    nextBtn.innerHTML = "Â»";
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; render(); } });
     paginationContainer.appendChild(nextBtn);
@@ -5181,7 +5184,7 @@ grid.style.display="grid";
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {
       grid.style.setProperty("grid-template-columns", window.innerWidth <= 767 ? "1fr" : "repeat(2, minmax(0, 1fr))", "important");
     }
-    // Kanji Card: jaga layout saat rotate/resize — deck & kartu tidak reset
+    // Kanji Card: jaga layout saat rotate/resize â€” deck & kartu tidak reset
     if (viewMode === "kanji-card-single") {
       if (window.kanjiCardUI && typeof window.kanjiCardUI.rerender === "function") {
         window.kanjiCardUI.rerender();
@@ -5221,7 +5224,7 @@ grid.style.display="grid";
   }
 
   function getAdaptiveDownloadKanjiSize(text = '') {
-    const cleanText = (text || '').replace(/\s+/g, '').trim() || '—';
+    const cleanText = (text || '').replace(/\s+/g, '').trim() || 'â€”';
     const charCount = [...cleanText].length;
 
     let preferredSize = 400;
@@ -5328,10 +5331,10 @@ grid.style.display="grid";
     if (!element) return;
 
     const cardOverlay = element.querySelector('.card-overlay');
-    const sourceKanji = cardOverlay?.querySelector('.kanji')?.textContent?.trim() || '—';
-    const sourceKana = cardOverlay?.querySelector('.kana')?.textContent?.trim() || '—';
+    const sourceKanji = cardOverlay?.querySelector('.kanji')?.textContent?.trim() || 'â€”';
+    const sourceKana = cardOverlay?.querySelector('.kana')?.textContent?.trim() || 'â€”';
     const sourceRomaji = cardOverlay?.querySelector('.romaji')?.textContent?.trim() || '';
-    const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || '—';
+    const sourceMeaning = cardOverlay?.querySelector('.meaning')?.textContent?.trim() || 'â€”';
 
     const kanjiSize = getAdaptiveDownloadKanjiSize(sourceKanji);
 
@@ -5341,7 +5344,7 @@ grid.style.display="grid";
       <div class="download-export-glass-outline"></div>
       <div class="download-export-content">
         <img class="download-export-watermark" src="./assets/logo.png" alt="NihonByte Logo">
-        <div class="download-export-watermark-text">学</div>
+        <div class="download-export-watermark-text">å­¦</div>
         <div class="download-export-kanji" style="font-size:${kanjiSize}px">${escapeHTML(sourceKanji)}</div>
         <div class="download-export-kana">${escapeHTML(sourceKana)}</div>
         <div class="download-export-romaji">${escapeHTML(sourceRomaji)}</div>
@@ -5355,7 +5358,7 @@ grid.style.display="grid";
       .replace(/\s+/g, ' ')
       .trim();
 
-    const cardName = getSafeDownloadName(sourceKanji !== '—' ? sourceKanji : (sourceKana || cardId)) || 'kanji-card';
+    const cardName = getSafeDownloadName(sourceKanji !== 'â€”' ? sourceKanji : (sourceKana || cardId)) || 'kanji-card';
 
     html2canvas(exportNode, {
       backgroundColor: null,
@@ -5412,11 +5415,11 @@ grid.style.display="grid";
   }
 
   const latihanCategoryLabelMap = {
-    goi: "言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)",
-    bunpou: "言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)",
-    dokkai: "読解 Dokkai (Pemahaman Membaca)",
-    listening: "聴解 Choukai (Pemahaman Mendengarkan)",
-    choukai: "聴解 Choukai (Pemahaman Mendengarkan)",
+    goi: "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ Pengetahuan Bahasa (Kosakata)",
+    bunpou: "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ Pengetahuan Bahasa (Tata Bahasa)",
+    dokkai: "èª­è§£ Dokkai (Pemahaman Membaca)",
+    listening: "è´è§£ Choukai (Pemahaman Mendengarkan)",
+    choukai: "è´è§£ Choukai (Pemahaman Mendengarkan)",
   };
 
   function getLatihanCategoryLabel(rawCategory = "") {
@@ -5838,7 +5841,7 @@ grid.style.display="grid";
       const historyItems = (window.firebaseDb && window.doc) ? await fetchHistoryData(uid) : [];
 
       // Filter record invalid, sort terbaru di atas
-      // Prioritas sort: field timestamp → fallback _docId (doc ID = timestamp ms saat save)
+      // Prioritas sort: field timestamp â†’ fallback _docId (doc ID = timestamp ms saat save)
       const validHistory = historyItems
         .filter(d => d.kategori && String(d.kategori).trim() !== "" && d.level && String(d.level).trim() !== "")
         .sort((a, b) => {
@@ -5905,3 +5908,4 @@ grid.style.display="grid";
   setAccessMode("locked");
   refreshLanguage();
 });
+

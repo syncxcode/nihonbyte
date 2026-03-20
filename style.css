@@ -12008,14 +12008,14 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .hub-screen--practice .hub-header--practice {
-    width: 100% !important;
+    width: 94% !important;
     max-width: none !important;
     display: block !important;
     margin: 0 0 12px !important;
     padding: 14px 16px !important;
     border-radius: 16px !important;
     border: 1px solid rgba(34, 139, 34, 0.38) !important;
-    background: #e5e4e2 !important;
+    background: #228b22 !important;
     box-shadow: none !important;
   }
 
@@ -12023,7 +12023,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 1.88rem !important;
     font-weight: 980 !important;
     line-height: 1 !important;
-    color: var(--nb-forest) !important;
+    color: #ffffff !important;
     text-shadow: none !important;
     background: none !important;
     padding: 0 !important;
@@ -12032,7 +12032,7 @@ body.history-mode .dashboard-shell textarea {
 
   .hub-screen--practice .hub-header--practice p {
     margin: 0 !important;
-    color: var(--nb-forest) !important;
+    color: #ffffff !important;
     font-size: 1rem !important;
     font-weight: 760 !important;
     line-height: 1.34 !important;
@@ -12061,7 +12061,7 @@ body.history-mode .dashboard-shell textarea {
     padding: 14px 14px 12px !important;
     border-radius: 16px !important;
     border: 1px solid #b9b8b4 !important;
-    background: #dfdeda !important;
+    background: #FFD700 !important;
     box-shadow: 0 8px 16px rgba(15, 23, 42, 0.06) !important;
   }
 
@@ -12126,8 +12126,8 @@ body.history-mode .dashboard-shell textarea {
     padding: 12px 14px !important;
     border-radius: 14px !important;
     border: 1px solid #fecdd3 !important;
-    background: #fff3f5 !important;
-    color: #be123c !important;
+    background: #ff002b38 !important;
+    color: #ff0000 !important;
     font-size: 0.9rem !important;
     font-weight: 700 !important;
   }
@@ -12182,11 +12182,11 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .practice-hub-title-pill {
-    font-size: 1.24rem !important;
+    font-size: 1.65rem !important;
   }
 
   .hub-screen--practice .hub-header--practice p {
-    font-size: 0.8rem !important;
+    font-size: 1.0rem !important;
   }
 
   .hub-screen--practice .hub-practice-wrapper {
@@ -12265,4 +12265,10 @@ body.history-mode .dashboard-shell textarea {
     background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
     color: #ffffff !important;
   }
+}
+
+@media (min-width: 768px) {
+    #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
+        width: 97% !important;
+    }
 }

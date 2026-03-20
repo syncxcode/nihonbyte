@@ -4434,7 +4434,8 @@ grid.style.display="grid";
         <div class="hub-practice-shell">
           <header class="hub-header hub-header--practice">
             <h2><span class="practice-hub-title-pill">Latihan</span></h2>
-            <p>Halaman ini berisi pilihan latihan JLPT per kategori agar kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
+            <p>Halaman ini berisi pilihan latihan JLPT dengan kategori terpisah.</p>
+            <p>Supaya kamu bisa langsung fokus ke materi yang ingin diperdalam.</p>
           </header>
 
           <div class="hub-practice-divider" aria-hidden="true"></div>

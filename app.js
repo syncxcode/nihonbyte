@@ -5137,7 +5137,7 @@ grid.style.display="grid";
   }
   window.addEventListener("resize", () => {
     syncMobileTopbarLayout();
-    const preserveMobileSidebar = isMobilePortraitLayout() && sidebar.classList.contains("active");
+    const preserveMobileSidebar = isMobilePortraitLayout() && document.body.classList.contains("sidebar-open");
     applyResponsiveSidebarLayout({ preserveMobileState: preserveMobileSidebar });
     if (duoNavInitialized) renderDuoSidebarNav();
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {

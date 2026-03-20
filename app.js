@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let originalTop = '';
   let originalWidth = '';
   let savedScrollPosition = 0;
+  let mobileSidebarOpenedByHamburger = false;
 
   const DESKTOP_LAYOUT_QUERY = "(min-width: 769px)";
 
@@ -231,6 +232,7 @@ grid.style.display="grid";
     if (!sidebar || !overlay || !hamburger) return;
 
     if (isDesktopLayout()) {
+      mobileSidebarOpenedByHamburger = false;
       sidebar.classList.add("active");
       overlay.classList.remove("active");
       document.body.classList.remove("sidebar-open");
@@ -246,6 +248,7 @@ grid.style.display="grid";
       document.body.classList.add("sidebar-open");
       hamburger.setAttribute("aria-expanded", "true");
     } else {
+      mobileSidebarOpenedByHamburger = false;
       sidebar.classList.remove("active");
       overlay.classList.remove("active");
       document.body.classList.remove("sidebar-open");
@@ -3329,34 +3332,38 @@ grid.style.display="grid";
       `);
       return; // Stop di sini, sidebar tidak akan terbuka!
     }
-    const isActive = sidebar.classList.toggle("active");
-    overlay.classList.toggle("active", isActive);
-    document.body.classList.toggle("sidebar-open", isActive);
-    hamburger.setAttribute("aria-expanded", isActive);
-    
-    if (isActive) {
-      // --- TAMBAHAN BARU: Kembalikan scroll sidebar ke paling atas ---
-      sidebar.scrollTop = 0;
-      
-      savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      originalOverflow = '';
-      originalPosition = document.body.style.position || '';
-      originalTop = document.body.style.top || '';
-      originalWidth = document.body.style.width || '';
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${savedScrollPosition}px`;
-      document.body.style.width = '100%';
-      document.documentElement.style.overflow = 'hidden';
-    } else {
+    if (document.body.classList.contains("sidebar-open")) {
+      mobileSidebarOpenedByHamburger = false;
       closeSidebar();
+      return;
     }
+
+    mobileSidebarOpenedByHamburger = true;
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("sidebar-open");
+    hamburger.setAttribute("aria-expanded", "true");
+
+    // --- TAMBAHAN BARU: Kembalikan scroll sidebar ke paling atas ---
+    sidebar.scrollTop = 0;
+
+    savedScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    originalOverflow = '';
+    originalPosition = document.body.style.position || '';
+    originalTop = document.body.style.top || '';
+    originalWidth = document.body.style.width || '';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${savedScrollPosition}px`;
+    document.body.style.width = '100%';
+    document.documentElement.style.overflow = 'hidden';
   });
 
   overlay.addEventListener("click", closeSidebar);
 
   function closeSidebar() {
     if (isDesktopLayout()) {
+      mobileSidebarOpenedByHamburger = false;
       sidebar.classList.add("active");
       overlay.classList.remove("active");
       document.body.classList.remove("sidebar-open");
@@ -3364,6 +3371,7 @@ grid.style.display="grid";
       return;
     }
 
+    mobileSidebarOpenedByHamburger = false;
     sidebar.classList.remove("active");
     overlay.classList.remove("active");
     document.body.classList.remove("sidebar-open");
@@ -5137,7 +5145,15 @@ grid.style.display="grid";
   }
   window.addEventListener("resize", () => {
     syncMobileTopbarLayout();
-    const preserveMobileSidebar = isMobilePortraitLayout() && document.body.classList.contains("sidebar-open");
+    const isMobileViewport = !isDesktopLayout();
+    const isLandscapeViewport = window.innerWidth > window.innerHeight;
+    if (!isMobileViewport || isLandscapeViewport) {
+      mobileSidebarOpenedByHamburger = false;
+    }
+    const preserveMobileSidebar = isMobileViewport
+      && !isLandscapeViewport
+      && mobileSidebarOpenedByHamburger
+      && document.body.classList.contains("sidebar-open");
     applyResponsiveSidebarLayout({ preserveMobileState: preserveMobileSidebar });
     if (duoNavInitialized) renderDuoSidebarNav();
     if (viewMode === "grammar" || viewMode.startsWith("grammar:")) {

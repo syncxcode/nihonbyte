@@ -105,7 +105,7 @@ Bentuk Kata Sifat
 </div>
 
 <div class="menu-hub-card" data-mode="pattern">
-Grammar (æ–‡æ³•)
+Grammar (文法)
 </div>
 
 <div class="menu-hub-card" data-mode="expression">
@@ -1493,7 +1493,7 @@ grid.style.display="grid";
     }
 
     const sessionLabel = item.sessionLabel || "";
-    const sessionKanji = item.sessionKanji ? ` Â· ${item.sessionKanji}` : "";
+    const sessionKanji = item.sessionKanji ? ` · ${item.sessionKanji}` : "";
 
     // â”€â”€ STRUKTUR IDENTIK DOKKAI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     grid.innerHTML = `
@@ -1526,7 +1526,7 @@ grid.style.display="grid";
 
         <!-- KANAN: Soal + Pilihan (identik sisi kanan Dokkai) -->
         <div class="dokkai-question-side">
-          <p class="quiz-section-title">è´è§£ / Choukai (Mendengarkan) &bull; ${choukaiLevel_}</p>
+          <p class="quiz-section-title">聴解 / Choukai (Mendengarkan) &bull; ${choukaiLevel_}</p>
           <p class="quiz-subtitle">${sessionLabel}${sessionKanji}</p>
 
           <div class="quiz-head-pro">
@@ -1786,7 +1786,7 @@ grid.style.display="grid";
           <div class="qr-status" style="color:${colorTheme}">${statusLabel}</div>
           <div class="qr-score">${pct}<span class="qr-denom">/100</span></div>
           <div class="qr-stats">Benar: <strong>${choukaiScore}</strong> / ${total} soal</div>
-          <div class="qr-stats" style="font-size:0.82rem;margin-top:4px;color:#64748b;">è´è§£ Â· ${choukaiLevel_}</div>
+          <div class="qr-stats" style="font-size:0.82rem;margin-top:4px;color:#64748b;">聴解 · ${choukaiLevel_}</div>
         </div>
         <div class="qr-right">
           <p class="qr-msg">${gradeMsg}</p>
@@ -1842,11 +1842,11 @@ grid.style.display="grid";
     // FIX LABEL BIAR DOKKAI GAK DITULIS KOSAKATA LAGI
     let mainLabel = "";
     if (currentExerciseMeta.type === "bunpou") {
-      mainLabel = "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ / Pengetahuan Bahasa (Tata Bahasa)";
+      mainLabel = "言語知識（文法） / Pengetahuan Bahasa (Tata Bahasa)";
     } else if (currentExerciseMeta.type === "dokkai") {
-      mainLabel = "èª­è§£ / Dokkai (Membaca)";
+      mainLabel = "読解 / Dokkai (Membaca)";
     } else {
-      mainLabel = "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ / Pengetahuan Bahasa (Kosakata)";
+      mainLabel = "言語知識（文字・語彙） / Pengetahuan Bahasa (Kosakata)";
     }
 
     const dynamicSection = item.section || currentExerciseMeta.section;
@@ -1883,7 +1883,7 @@ grid.style.display="grid";
           </div>
 
           <div class="dokkai-question-side">
-            <p class="quiz-section-title">${mainLabel} â€¢ ${currentExerciseMeta.level}</p>
+            <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
             <p class="quiz-subtitle">Teks ${sectionProgress.index} dari ${sectionProgress.total}</p>
 
             <div class="quiz-head-pro">
@@ -1908,7 +1908,7 @@ grid.style.display="grid";
       grid.innerHTML = `
         <div class="quiz-wrapper-pro">
           <button id="finishBtnManual">Akhiri Test</button>
-          <p class="quiz-section-title">${mainLabel} â€¢ ${currentExerciseMeta.level}</p>
+          <p class="quiz-section-title">${mainLabel} • ${currentExerciseMeta.level}</p>
           <p class="quiz-subtitle">${sectionProgress.index}. ${dynamicSectionLabel}</p>
 
           <div class="quiz-head-pro">
@@ -2109,7 +2109,7 @@ grid.style.display="grid";
           
           <div class="review-left-col">
             <div style="margin-bottom:10px; font-weight:bold; color:#64748b; display:flex; justify-content:space-between;">
-              <span>Soal ${index + 1} â€¢ ${q.sectionLabel || '-'}</span>
+              <span>Soal ${index + 1} • ${q.sectionLabel || '-'}</span>
               <span style="color:${userColor}">${statusText}</span>
             </div>
             
@@ -2460,7 +2460,7 @@ grid.style.display="grid";
     "expression": "Ungkapan Umum",
     "ungkapan umum": "Ungkapan Umum",
     "verb-adj-only": "Kosakata Utama",
-    "pattern": "Grammar (æ–‡æ³•)",
+    "pattern": "Grammar (文法)",
     "activity": "Kosakata Aktivitas",
     "noun-hobby": "Kosakata Hobi",
     "noun-sports": "Kosakata Olahraga",
@@ -3020,7 +3020,7 @@ grid.style.display="grid";
     const correct = testState.correctCount;
     const percentage = total ? Math.round((correct / total) * 100) : 0;
     const status = percentage >= 75 ? "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true' stroke-width='2.5'><polyline points='20 6 9 17 4 12'/></svg> LULUS" : "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true' stroke-width='2.5'><line x1='18' y1='6' x2='6' y2='18'/><line x1='6' y1='6' x2='18' y2='18'/></svg> TIDAK LULUS";
-    openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> â€¢ <strong>${percentage}%</strong><br>${status}`);
+    openInfoModal(`Hasil Test ${testState.type.toUpperCase()} ${testState.level}<br><strong>${correct}/${total}</strong> • <strong>${percentage}%</strong><br>${status}`);
     testState.active = false;
     viewMode = "vocab";
     render();
@@ -3138,7 +3138,7 @@ grid.style.display="grid";
       
       // Judul Gabungan
       poster.innerHTML = `
-        <h2>${data.title} â€¢ <span class="letter-poster-subtitle">${section.subtitle}</span></h2>
+        <h2>${data.title} • <span class="letter-poster-subtitle">${section.subtitle}</span></h2>
         <div class="letter-poster-body"></div>
       `;
 
@@ -3925,7 +3925,7 @@ grid.style.display="grid";
   }
 
   // Menentukan judul berdasarkan mode
-  const titlePrefix = mode === "exercise" ? "Latihan" : "Grammar (æ–‡æ³•)";
+  const titlePrefix = mode === "exercise" ? "Latihan" : "Grammar (文法)";
   
   const container = document.createElement("div");
   container.className = "empty-state";
@@ -3985,7 +3985,7 @@ grid.style.display="grid";
           </header>
           <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ Pengetahuan Bahasa (Kosakata)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
@@ -3995,7 +3995,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
@@ -4005,7 +4005,7 @@ grid.style.display="grid";
             </div>
           </div>
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">èª­è§£ Dokkai (Membaca)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">読解 Dokkai (Membaca)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
@@ -4016,7 +4016,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">è´è§£ Choukai (Mendengarkan)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N4">N4</button>
@@ -4084,7 +4084,7 @@ grid.style.display="grid";
           </div>
 
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (æ–‡æ³•)</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (文法)</h3>
             <div class="bottom-nav-hub__chips">
               ${patternChips}
             </div>
@@ -4484,28 +4484,28 @@ grid.style.display="grid";
 
           <div class="hub-practice-wrapper">
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--goi">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰Pengetahuan Bahasa (Kosakata)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("goi")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--bunpou">è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰Pengetahuan Bahasa (Tata Bahasa)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--bunpou">言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("bunpou")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--dokkai">èª­è§£ Dokkai (Membaca)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--dokkai">読解 Dokkai (Membaca)</h3>
             <div class="hub-levels">
               ${renderLevelButtons("dokkai", "dokkai-reading")}
             </div>
           </div>
 
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--choukai">è´è§£ Choukai (Mendengarkan)</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="hub-levels">
               ${levels.map((lvl) => `<button type="button" class="hub-level-btn hub-level-btn--patterns" data-main="listening" data-section="listening" data-level="${lvl}">${lvl}</button>`).join("")}
             </div>
@@ -4857,7 +4857,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja â€¢ ${formId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja • ${formId.toUpperCase()}`;
       return;
     }
 
@@ -4883,7 +4883,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat â€¢ ${formId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat • ${formId.toUpperCase()}`;
       return;
     }
 
@@ -4900,7 +4900,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = "Materi Grammar (æ–‡æ³•)";
+      if (resultInfo) resultInfo.textContent = "Materi Grammar (文法)";
       return;
     }
 
@@ -4916,7 +4916,7 @@ grid.style.display="grid";
           render();
         }
       });
-      if (resultInfo) resultInfo.textContent = `Grammar (æ–‡æ³•) â€¢ ${patternId.toUpperCase()}`;
+      if (resultInfo) resultInfo.textContent = `Grammar (文法) • ${patternId.toUpperCase()}`;
       return;
     }
 
@@ -5076,7 +5076,7 @@ grid.style.display="grid";
 
     if (resultInfo) {
       resultInfo.textContent = isGuestPreview
-        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) â€¢ Login untuk buka semua materi`)
+        ? (window.innerWidth <= 767 ? "Guest Mode" : `${words.length} (Preview Tamu) • Login untuk buka semua materi`)
         : formatResultInfo(words.length);
     }
 
@@ -5099,7 +5099,7 @@ grid.style.display="grid";
     // Tombol Prev (Kiri)
     const prevBtn = document.createElement("button");
     prevBtn.className = "page-btn";
-    prevBtn.innerHTML = "Â«";
+    prevBtn.innerHTML = "«";
     prevBtn.disabled = currentPage === 1;
     prevBtn.addEventListener("click", () => { if (currentPage > 1) { currentPage--; render(); } });
     paginationContainer.appendChild(prevBtn);
@@ -5137,7 +5137,7 @@ grid.style.display="grid";
     // Tombol Next (Kanan)
     const nextBtn = document.createElement("button");
     nextBtn.className = "page-btn";
-    nextBtn.innerHTML = "Â»";
+    nextBtn.innerHTML = "»";
     nextBtn.disabled = currentPage === totalPages;
     nextBtn.addEventListener("click", () => { if (currentPage < totalPages) { currentPage++; render(); } });
     paginationContainer.appendChild(nextBtn);
@@ -5415,11 +5415,11 @@ grid.style.display="grid";
   }
 
   const latihanCategoryLabelMap = {
-    goi: "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡å­—ãƒ»èªžå½™ï¼‰ Pengetahuan Bahasa (Kosakata)",
-    bunpou: "è¨€èªžçŸ¥è­˜ï¼ˆæ–‡æ³•ï¼‰ Pengetahuan Bahasa (Tata Bahasa)",
-    dokkai: "èª­è§£ Dokkai (Pemahaman Membaca)",
-    listening: "è´è§£ Choukai (Pemahaman Mendengarkan)",
-    choukai: "è´è§£ Choukai (Pemahaman Mendengarkan)",
+    goi: "言語知識（文字・語彙） Pengetahuan Bahasa (Kosakata)",
+    bunpou: "言語知識（文法） Pengetahuan Bahasa (Tata Bahasa)",
+    dokkai: "読解 Dokkai (Pemahaman Membaca)",
+    listening: "聴解 Choukai (Pemahaman Mendengarkan)",
+    choukai: "聴解 Choukai (Pemahaman Mendengarkan)",
   };
 
   function getLatihanCategoryLabel(rawCategory = "") {
@@ -5908,4 +5908,6 @@ grid.style.display="grid";
   setAccessMode("locked");
   refreshLanguage();
 });
+
+
 

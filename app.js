@@ -85,46 +85,6 @@
 
 }
 
-  function renderMenuHub(){
-
-const hub = document.getElementById("menuHubContainer");
-
-hub.innerHTML = `
-<div class="menu-hub-grid">
-
-<div class="menu-hub-card" data-mode="letter">
-Huruf Jepang
-</div>
-
-<div class="menu-hub-card" data-mode="verb">
-Bentuk Kata Kerja
-</div>
-
-<div class="menu-hub-card" data-mode="adj">
-Bentuk Kata Sifat
-</div>
-
-<div class="menu-hub-card" data-mode="pattern">
-Grammar (文法)
-</div>
-
-<div class="menu-hub-card" data-mode="expression">
-Ungkapan
-</div>
-
-<div class="menu-hub-card" data-mode="latihan">
-Latihan
-</div>
-
-<div class="menu-hub-card" data-mode="support">
-Dukung Developer
-</div>
-
-</div>
-`;
-
-}
-
   function openStudy(){
 
 const grid = document.getElementById("grid");
@@ -4318,26 +4278,23 @@ grid.style.display="grid";
   function renderMenuPanelGrid() {
     const cards = getMenuPanelCards()
       .map(({ action, script = "", level = "", title, description, iconPath = "" }) => {
-        // Special case: Huruf - bukan tombol, tapi card statis dengan 2 tombol bulat
+        // Special case: Huruf - card statis dengan icon asset + tombol script
         if (action === "letters") {
           return `
             <div class="menu-panel-card menu-panel-card--static menu-panel-card--letters">
-              <div class="menu-panel-card__letters-rail">
-                <span class="menu-panel-card__icon-wrap menu-panel-card__icon-wrap--letters" aria-hidden="true">
-                  <img src="${iconPath}" class="menu-panel-card__icon" alt="">
-                </span>
-                <div class="letter-btn-pair">
-                  <button type="button" class="letter-circle-btn" data-hub="letters" data-script="hiragana" title="Hiragana">
-                    <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="35" text-anchor="middle" font-size="30" font-weight="900" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif" fill="currentColor" stroke="none">あ</text></svg>
-                  </button>
-                  <button type="button" class="letter-circle-btn" data-hub="letters" data-script="katakana" title="Katakana">
-                    <svg viewBox="0 0 48 48" aria-hidden="true"><text x="24" y="35" text-anchor="middle" font-size="30" font-weight="900" font-family="'Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif" fill="currentColor" stroke="none">ア</text></svg>
-                  </button>
-                </div>
-              </div>
+              <span class="menu-panel-card__icon-wrap menu-panel-card__icon-wrap--letters" aria-hidden="true">
+                <img src="${iconPath}" class="menu-panel-card__icon" alt="">
+              </span>
               <div class="menu-panel-card__body">
                 <strong>${title}</strong>
-                <span>${description}</span>
+                <div class="letter-btn-pair">
+                  <button type="button" class="letter-circle-btn" data-hub="letters" data-script="hiragana" title="Hiragana" aria-label="Buka Hiragana">
+                    <span aria-hidden="true">あ</span>
+                  </button>
+                  <button type="button" class="letter-circle-btn" data-hub="letters" data-script="katakana" title="Katakana" aria-label="Buka Katakana">
+                    <span aria-hidden="true">ア</span>
+                  </button>
+                </div>
               </div>
             </div>
           `;

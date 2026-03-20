@@ -11653,6 +11653,13 @@ body.history-mode .dashboard-shell textarea {
   stroke: none;
 }
 
+.letter-circle-btn > span {
+  font-size: 1.1rem;
+  font-weight: 900;
+  line-height: 1;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}
+
 @media (max-width: 767px) {
   .letter-circle-btn {
     width: 36px;
@@ -11938,7 +11945,7 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .menu-panel-card--letters {
-    grid-template-columns: 134px minmax(0, 1fr) !important;
+    grid-template-columns: 60px minmax(0, 1fr) !important;
   }
 
   .menu-panel-card--letters .menu-panel-card__letters-rail {
@@ -12151,7 +12158,7 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .menu-panel-card--letters {
-    grid-template-columns: 116px minmax(0, 1fr) !important;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
   }
 
   .menu-panel-card--letters .menu-panel-card__letters-rail {

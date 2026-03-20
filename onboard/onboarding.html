@@ -36,7 +36,11 @@
       width: 100%; height: 100%;
       background: var(--bg);
       font-family: 'Ubuntu', sans-serif;
-      overflow: hidden;
+    }
+
+    /* Desktop: locked, no scroll */
+    @media (min-width: 768px) {
+      html, body { overflow: hidden; }
     }
 
     /* ── Background ── */
@@ -123,6 +127,7 @@
 
     /* ── Screens ── */
     .ob-body { flex: 1; overflow: hidden; position: relative; scrollbar-width: none; }
+    @media (max-width: 767px) { .ob-body { overflow-y: auto; overflow-x: hidden; } }
     .ob-screen {
       position: absolute; inset: 0;
       display: flex; align-items: stretch;
@@ -141,20 +146,18 @@
       padding: 52px 52px;
       display: flex; flex-direction: column; justify-content: center;
       border-right: 1px solid rgba(255,255,255,0.05);
-      overflow: hidden;
     }
     .ob-right {
       flex: 1;
       padding: 36px 48px;
       display: flex; flex-direction: column; justify-content: center;
       gap: 10px;
-      overflow: hidden;
     }
 
     .ob-badge {
       display: inline-block;
       background: rgba(225,29,72,0.15); border: 1px solid rgba(225,29,72,0.4);
-      color: var(--red-light); font-size: 1.30rem; font-weight: 800;
+      color: var(--red-light); font-size: 0.58rem; font-weight: 800;
       letter-spacing: 0.16em; padding: 3px 11px; border-radius: 999px;
       margin-bottom: 20px; width: fit-content;
     }
@@ -389,34 +392,103 @@
     .ob-loading-text { font-size: 0.82rem; color: var(--text-muted); }
 
     /* ── Responsive Mobile Portrait ── */
+    /* ── MOBILE POTRET ── */
     @media (max-width: 767px) and (orientation: portrait) {
+      html, body { overflow-y: auto; height: auto; min-height: 100dvh; }
+
+      .ob-shell { height: auto; min-height: 100dvh; }
       .ob-nav { padding: 14px 20px; }
-      .ob-screen { flex-direction: column; overflow-y: auto; }
-      .ob-left {
-        flex: 0 0 auto; padding: 28px 22px 16px;
-        border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05);
+      .ob-body { overflow: visible; flex: 1; }
+
+      .ob-screen {
+        position: relative;
+        flex-direction: column;
+        opacity: 1; pointer-events: all;
+        transform: none;
+        display: none;
+        height: auto;
       }
-      .ob-right { flex: 1; padding: 16px 22px 28px; gap: 8px; }
+      .ob-screen.active { display: flex; }
+
+      .ob-left {
+        flex: 0 0 auto;
+        padding: 28px 22px 16px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .ob-right {
+        flex: 0 0 auto;
+        padding: 16px 22px 100px;
+        gap: 9px;
+        justify-content: flex-start;
+      }
+
       .ob-title { font-size: 1.75rem; }
-      .ob-desc { max-width: 100%; }
+      .ob-desc { max-width: 100%; font-size: 0.85rem; }
       .ob-note { max-width: 100%; }
-      .ob-kanji-1 { font-size: 100px; }
+      .ob-kanji-1 { font-size: 90px; right: 4%; }
       .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
-      .ob-quiz-panel { padding: 24px 22px; }
-      .ob-result-panel { padding: 28px 22px; }
-      .ob-done-panel { padding: 28px 22px; }
+
+      .ob-level-card { padding: 11px 14px; }
+      .ob-level-icon { width: 36px; height: 36px; }
+
+      .ob-quiz-panel {
+        flex: 0 0 auto;
+        padding: 24px 22px 100px;
+        justify-content: flex-start;
+      }
+      .ob-result-panel { padding: 36px 22px 100px; }
+      .ob-done-panel { padding: 36px 22px 100px; }
     }
 
-    /* ── Responsive Mobile Landscape ── */
-    @media screen and (orientation: landscape) and (max-height: 520px) {
-      .ob-left { flex: 0 0 280px; padding: 20px 28px; }
-      .ob-title { font-size: 1.5rem; }
-      .ob-right { padding: 16px 24px; gap: 6px; }
+    /* ── MOBILE LANDSCAPE ── */
+    @media (max-width: 900px) and (orientation: landscape) {
+      html, body { overflow-y: auto; height: auto; min-height: 100dvh; }
+
+      .ob-shell { height: auto; min-height: 100dvh; }
+      .ob-body { overflow: visible; flex: 1; }
+
+      .ob-screen {
+        position: relative;
+        display: none;
+        height: auto;
+        opacity: 1; pointer-events: all;
+        transform: none;
+      }
+      .ob-screen.active { display: flex; }
+
+      .ob-left {
+        flex: 0 0 260px;
+        padding: 20px 24px;
+        overflow-y: auto;
+      }
+      .ob-right {
+        flex: 1;
+        padding: 16px 24px 80px;
+        gap: 7px;
+        overflow-y: auto;
+      }
+
+      .ob-title { font-size: 1.45rem; }
+      .ob-desc { font-size: 0.8rem; max-width: 100%; }
+      .ob-note { max-width: 100%; }
+      .ob-badge { margin-bottom: 12px; }
+      .ob-subtitle { margin-bottom: 10px; }
+      .ob-kanji-1, .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
+
       .ob-level-card { padding: 9px 13px; }
       .ob-level-icon { width: 32px; height: 32px; font-size: 0.6rem; }
-      .ob-quiz-panel { padding: 20px 32px; gap: 10px; }
-      .ob-done-panel { padding: 20px 32px; }
-      .ob-kanji-1, .ob-kanji-2, .ob-kanji-3, .ob-kanji-4 { display: none; }
+      .ob-level-name { font-size: 0.82rem; }
+      .ob-level-label { font-size: 0.66rem; }
+
+      .ob-quiz-panel {
+        flex: 1;
+        padding: 16px 32px 60px;
+        gap: 10px;
+        overflow-y: auto;
+      }
+      .ob-result-panel { padding: 20px 32px 60px; }
+      .ob-done-panel { padding: 20px 32px 60px; }
     }
   </style>
 </head>

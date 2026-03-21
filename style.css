@@ -8589,8 +8589,8 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .dashboard-profile-card h2 {
-    font-size: 1.1rem !important;
-    margin-top: 0 !important;
+    font-size: 1.5rem !important;
+    margin-top: 9px !important;
   }
 
   .dashboard-email {

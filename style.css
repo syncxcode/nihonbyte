@@ -11998,7 +11998,7 @@ body.history-mode .dashboard-shell textarea {
 
   .menu-panel-card strong {
     color: var(--nb-native-text) !important;
-    font-size: 1rem !important;
+    font-size: 0.90rem !important;
     line-height: 1.12 !important;
   }
 

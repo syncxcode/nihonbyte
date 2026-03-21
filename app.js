@@ -4427,6 +4427,119 @@ grid.style.display="grid";
     }
   }
 
+  // Practice lock poster (fallback) and onboarding shortcut renderer.
+  function renderPracticeLockScreen(title, subtitle) {
+    grid.classList.add("hub-mode");
+    grid.classList.remove("support-mode", "kc-grid-mode");
+    grid.style.removeProperty("grid-template-columns");
+    grid.innerHTML = `
+      <div class="prc-lock-poster">
+        <div class="prc-lock-poster__bg">
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--1"></div>
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--2"></div>
+          <div class="prc-lock-poster__orb prc-lock-poster__orb--3"></div>
+          <div class="prc-lock-poster__grid-lines"></div>
+        </div>
+        <div class="prc-lock-poster__inner">
+          <div class="prc-lock-poster__left">
+            <div class="prc-lock-poster__badge">LOCKED</div>
+            <h2 class="prc-lock-poster__title">${title}</h2>
+            <p class="prc-lock-poster__subtitle">${subtitle}</p>
+            <p class="prc-lock-poster__desc">
+              Selesaikan <strong>90% kosakata inti</strong> di mode Practice terlebih dahulu untuk membuka akses ke fitur ini.
+            </p>
+            <button class="prc-lock-poster__btn" id="prc-lock-cta">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Mulai Practice
+            </button>
+          </div>
+          <div class="prc-lock-poster__right">
+            <div class="prc-lock-poster__icon-wrap">
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="56" fill="rgba(225,29,72,0.08)" stroke="rgba(225,29,72,0.2)" stroke-width="2"/>
+                <circle cx="60" cy="60" r="40" fill="rgba(225,29,72,0.06)" stroke="rgba(225,29,72,0.15)" stroke-width="1.5"/>
+                <rect x="36" y="54" width="48" height="36" rx="6" fill="rgba(225,29,72,0.12)" stroke="#e11d48" stroke-width="2.5"/>
+                <path d="M44 54V42a16 16 0 0 1 32 0v12" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="60" cy="72" r="5" fill="#e11d48"/>
+                <line x1="60" y1="77" x2="60" y2="84" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="prc-lock-poster__steps">
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">01</span><span class="prc-lock-poster__step-text">Pilih level di Practice</span></div>
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">02</span><span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span></div>
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">03</span><span class="prc-lock-poster__step-text">Fitur terbuka otomatis</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("prc-lock-cta")?.addEventListener("click", () => {
+      renderPracticeOnboardingInGrid();
+    });
+  }
+
+  function renderPracticeOnboardingInGrid() {
+    const LEVELS = ["N5", "N4", "N3", "N2", "N1"];
+    const LEVEL_LABELS = {
+      N5: "\u57fa\u790e",
+      N4: "\u521d\u7d1a",
+      N3: "\u4e2d\u7d1a",
+      N2: "\u4e0a\u7d1a",
+      N1: "\u6700\u4e0a\u7d1a"
+    };
+    const LEVEL_SVGS = {
+      N5: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fff0f3"/><circle cx="28" cy="28" r="26" stroke="#e11d48" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#e11d48" font-family="Ubuntu,sans-serif">N5</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#9f1239" font-family="Shippori Mincho,serif">\u57fa\u790e</text></svg>`,
+      N4: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#eff6ff"/><circle cx="28" cy="28" r="26" stroke="#2563eb" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#2563eb" font-family="Ubuntu,sans-serif">N4</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#1e40af" font-family="Shippori Mincho,serif">\u521d\u7d1a</text></svg>`,
+      N3: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#f0fdf4"/><circle cx="28" cy="28" r="26" stroke="#16a34a" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#16a34a" font-family="Ubuntu,sans-serif">N3</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#14532d" font-family="Shippori Mincho,serif">\u4e2d\u7d1a</text></svg>`,
+      N2: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fefce8"/><circle cx="28" cy="28" r="26" stroke="#ca8a04" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#ca8a04" font-family="Ubuntu,sans-serif">N2</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#713f12" font-family="Shippori Mincho,serif">\u4e0a\u7d1a</text></svg>`,
+      N1: `<svg viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="26" fill="#fdf4ff"/><circle cx="28" cy="28" r="26" stroke="#9333ea" stroke-width="2"/><text x="28" y="24" text-anchor="middle" font-size="11" font-weight="700" fill="#9333ea" font-family="Ubuntu,sans-serif">N1</text><text x="28" y="36" text-anchor="middle" font-size="9" fill="#581c87" font-family="Shippori Mincho,serif">\u6700\u4e0a\u7d1a</text></svg>`
+    };
+
+    grid.classList.add("hub-mode");
+    grid.classList.remove("support-mode", "kc-grid-mode");
+    grid.style.removeProperty("grid-template-columns");
+    grid.innerHTML = `
+      <div class="prc-ob-poster">
+        <div class="prc-ob-poster__bg">
+          <div class="prc-ob-orb prc-ob-orb--1"></div>
+          <div class="prc-ob-orb prc-ob-orb--2"></div>
+          <div class="prc-ob-orb prc-ob-orb--3"></div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--1">\u8a9e</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--2">\u5b66</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--3">\u529b</div>
+          <div class="prc-ob-kanji-float prc-ob-kanji-float--4">\u6587</div>
+        </div>
+        <div class="prc-ob-poster__inner">
+          <div class="prc-ob-poster__header">
+            <div class="prc-ob-poster__badge">NihonByte Practice</div>
+            <h2 class="prc-ob-poster__title">Mulai<br>Perjalananmu</h2>
+            <p class="prc-ob-poster__sub">\u65e5\u672c\u8a9e\u80fd\u529b\u8a66\u9a13</p>
+            <p class="prc-ob-poster__desc">Pilih level JLPT yang sesuai kemampuanmu. Jika memilih di atas N5, kamu akan dites terlebih dahulu.</p>
+          </div>
+          <div class="prc-ob-poster__levels">
+            ${LEVELS.map((lvl, i) => `
+              <button class="prc-ob-level-card" data-level="${lvl}" style="animation-delay:${i * 0.06}s">
+                <div class="prc-ob-level-card__icon">${LEVEL_SVGS[lvl]}</div>
+                <div class="prc-ob-level-card__body">
+                  <span class="prc-ob-level-card__name">${lvl}</span>
+                  <span class="prc-ob-level-card__label">${LEVEL_LABELS[lvl]}</span>
+                </div>
+                <div class="prc-ob-level-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      </div>
+    `;
+
+    grid.querySelectorAll(".prc-ob-level-card").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        window.location.replace("./onboard/onboarding.html");
+      });
+    });
+  }
+
   function renderPracticeHub() {
     grid.classList.add("hub-mode");
     grid.classList.remove("support-mode");

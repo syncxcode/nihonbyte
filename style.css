@@ -11529,6 +11529,16 @@ body.history-mode .dashboard-shell textarea {
   word-break: break-word;
 }
 
+@media (min-width: 768px) {
+  .gr-brick-title {
+    font-size: 0.94rem;
+    padding: 6px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .gr-group-desc {
   margin: 6px 0 10px;
   color: #334155;

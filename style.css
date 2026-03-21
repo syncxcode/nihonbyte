@@ -3925,19 +3925,19 @@ body {
   border: 2px solid rgba(203, 213, 225, 0.9);
   border-radius: 18px;
   padding: 14px 16px;
-  background: #ffffff;
+  background: #228b22;
   margin-bottom: 16px;
 }
 
 .forms-hub-head h2 {
   margin: 0;
-  color: #0f172a;
+  color: #ffffff;
   font-size: clamp(1.6rem, 2.2vw, 2rem);
 }
 
 .forms-hub-head p {
   margin: 6px 0 0;
-  color: #334155;
+  color: #ffffff;
 }
 
 
@@ -3952,7 +3952,7 @@ body {
   display: grid;
   gap: 6px;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff;
 }
 
 .forms-level-filter {
@@ -3987,7 +3987,7 @@ body {
   border: 2px solid rgba(190, 24, 93, 0.18);
   border-radius: 16px;
   padding: 14px 16px;
-  background: linear-gradient(145deg, #fff1f6, #ffe4ef);
+  background: #FFD700;
   cursor: pointer;
   display: grid;
   align-content: center;
@@ -4003,15 +4003,15 @@ body {
 }
 
 .form-brick-title {
-  font-size: 1.08rem;
+  font-size: 1.22rem;
   font-weight: 800;
-  color: #831843;
+  color: #0f172a;
 }
 
 .form-brick-desc {
-  color: #475569;
-  font-size: 0.93rem;
-  line-height: 1.35;
+  color: #1f2937;
+  font-size: 1.02rem;
+  line-height: 1.4;
 }
 
 .form-poster {
@@ -4788,6 +4788,20 @@ body {
   color: #be123c;
 }
 
+.forms-page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.forms-page-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  color: #64748b;
+  font-weight: 700;
+}
+
 @media (max-width: 767px) {
   .forms-page-btn {
     width: 34px;
@@ -4876,11 +4890,21 @@ body {
 
 /* Follow-up 6: title card bentuk kata kerja tampil suffix saja (~る, ~ます, dst) */
 .form-brick-title-only {
-  display: block;
-  font-size: 1.22rem;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #228b22;
+  color: #ffffff;
+  box-shadow: 0 10px 20px -16px rgba(16, 185, 129, 0.8);
+  font-size: 1.05rem;
   font-weight: 800;
-  color: #0f172a;
   margin-bottom: 6px;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* =========================================
@@ -11530,7 +11554,8 @@ body.history-mode .dashboard-shell textarea {
 }
 
 @media (min-width: 768px) {
-  .gr-brick-title {
+  .gr-brick-title,
+  .form-brick-title-only {
     font-size: 0.94rem;
     padding: 6px 12px;
     white-space: nowrap;

@@ -22,17 +22,49 @@
   }
 
   function renderHub({ grid, onOpenPoster }) {
-    const forms = getData();
+    const allFormsRaw = getData();
+    const fallbackLevels = ["N5", "N4", "N3", "N2", "N1"];
+    const configuredLevels = Array.isArray(window.adjectiveFormsLevels)
+      ? window.adjectiveFormsLevels
+      : (Array.isArray(window.verbFormsLevels) ? window.verbFormsLevels : fallbackLevels);
+    const normalizeLevel = (form) => {
+      const rawLevel = String(form?.level || "").toUpperCase();
+      if (fallbackLevels.includes(rawLevel)) return rawLevel;
+      const detected = `${form?.title || ""} ${form?.summary || ""}`.match(/\bN[1-5]\b/i);
+      return detected ? detected[0].toUpperCase() : "N5";
+    };
+    const forms = allFormsRaw.map((form) => ({ ...form, level: normalizeLevel(form) }));
+    const levelsInData = new Set(forms.map((form) => form.level).filter(Boolean));
+    const levels = configuredLevels.filter((level) => levelsInData.has(level));
+    const activeLevels = levels.length ? levels : fallbackLevels.filter((level) => levelsInData.has(level));
+    const unlockedLevelSet = new Set(activeLevels);
+    const filteredByUnlock = forms.filter((form) => unlockedLevelSet.has(form.level));
+    const allLevelLabel = activeLevels.length > 1
+      ? `${activeLevels[0]}~${activeLevels[activeLevels.length - 1]}`
+      : (activeLevels[0] || "N5");
+
     grid.innerHTML = `
       <section class="forms-hub">
-        <h2>${t("Bentuk Kata Sifat")}</h2>
-        <p>${t("Pilih poster bentuk kata sifat untuk buka materi lengkap.")}</p>
+        <div class="forms-hub-head">
+          <div>
+            <h2>${t("Bentuk Kata Sifat")}</h2>
+            <p>${t("Pilih level JLPT dulu, lalu buka poster bentuk kata sifat yang kamu butuhkan.")}</p>
+          </div>
+          <label class="forms-level-filter-wrap" for="adjective-form-level-filter">
+            <span>${t("Level")}</span>
+            <select id="adjective-form-level-filter" class="forms-level-filter">
+              <option value="all">${t(`Semua Level (${allLevelLabel})`)}</option>
+              ${activeLevels.map((level) => `<option value="${level}">${level}</option>`).join("")}
+            </select>
+          </label>
+        </div>
         <div class="forms-brick-grid"></div>
         <div class="forms-hub-pagination" aria-label="${t("Pagination bentuk kata sifat")}"></div>
       </section>
     `;
 
     const brickGrid = grid.querySelector(".forms-brick-grid");
+    const levelSelect = grid.querySelector("#adjective-form-level-filter");
     const localPagination = grid.querySelector(".forms-hub-pagination");
     const HUB_PAGE_SIZE = window.innerWidth <= 767 ? 5 : 12;
     let hubPage = 1;
@@ -45,20 +77,61 @@
         return;
       }
       localPagination.style.display = "flex";
-
-      for (let page = 1; page <= totalPages; page += 1) {
+      const addButton = ({ label, page, active = false, disabled = false }) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = `forms-page-btn ${page === hubPage ? "active" : ""}`;
-        btn.textContent = String(page);
-        btn.addEventListener("click", () => onChange(page));
+        btn.className = `forms-page-btn ${active ? "active" : ""}`;
+        btn.textContent = String(label);
+        btn.disabled = !!disabled;
+        if (!disabled && typeof page === "number") {
+          btn.addEventListener("click", () => onChange(page));
+        }
         localPagination.appendChild(btn);
+      };
+      const addDots = () => {
+        const dots = document.createElement("span");
+        dots.className = "forms-page-dots";
+        dots.textContent = "...";
+        localPagination.appendChild(dots);
+      };
+
+      addButton({ label: "<<", page: hubPage - 1, disabled: hubPage === 1 });
+
+      let startPage = Math.max(1, hubPage - 1);
+      let endPage = Math.min(totalPages, hubPage + 1);
+      if (hubPage === 1) endPage = Math.min(3, totalPages);
+      if (hubPage === totalPages) startPage = Math.max(1, totalPages - 2);
+
+      if (startPage > 1) {
+        addButton({ label: "1", page: 1, active: hubPage === 1 });
+        if (startPage > 2) addDots();
       }
+
+      for (let page = startPage; page <= endPage; page += 1) {
+        addButton({ label: page, page, active: page === hubPage });
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) addDots();
+        addButton({ label: String(totalPages), page: totalPages, active: hubPage === totalPages });
+      }
+
+      addButton({ label: ">>", page: hubPage + 1, disabled: hubPage === totalPages });
     }
 
     function paintList() {
+      const rawSelectedLevel = levelSelect?.value || "all";
+      const selectedLevel = rawSelectedLevel === "all" || activeLevels.includes(rawSelectedLevel)
+        ? rawSelectedLevel
+        : "all";
+      if (levelSelect && levelSelect.value !== selectedLevel) levelSelect.value = selectedLevel;
+
       brickGrid.innerHTML = "";
-      if (!forms.length) {
+      const filteredForms = selectedLevel === "all"
+        ? filteredByUnlock
+        : filteredByUnlock.filter((form) => form.level === selectedLevel);
+
+      if (!filteredForms.length) {
         brickGrid.innerHTML = `<div class="empty-state">${t("Belum ada materi bentuk kata sifat.")}</div>`;
         if (localPagination) {
           localPagination.innerHTML = "";
@@ -67,16 +140,20 @@
         return;
       }
 
-      const totalPages = Math.max(1, Math.ceil(forms.length / HUB_PAGE_SIZE));
+      const totalPages = Math.max(1, Math.ceil(filteredForms.length / HUB_PAGE_SIZE));
       if (hubPage > totalPages) hubPage = totalPages;
       const start = (hubPage - 1) * HUB_PAGE_SIZE;
-      const currentForms = forms.slice(start, start + HUB_PAGE_SIZE);
+      const currentForms = filteredForms.slice(start, start + HUB_PAGE_SIZE);
 
       currentForms.forEach((form) => {
         const btn = document.createElement("button");
         btn.className = "form-brick";
         btn.type = "button";
-        btn.innerHTML = `<span class="form-brick-desc-only">${t(form.summary)}</span>`;
+        btn.innerHTML = `
+          <strong class="form-brick-title-only">${t((form.title || "").split("•")[0].trim())}</strong>
+          <span class="form-brick-desc-only">${t(form.summary)}</span>
+          <small class="form-level-badge">${form.level || "-"}</small>
+        `;
         btn.addEventListener("click", () => onOpenPoster?.(form.id));
         brickGrid.appendChild(btn);
       });
@@ -87,6 +164,11 @@
       });
     }
 
+    levelSelect?.addEventListener("change", () => {
+      hubPage = 1;
+      paintList();
+    });
+    if (levelSelect) levelSelect.disabled = activeLevels.length <= 1;
     paintList();
   }
 

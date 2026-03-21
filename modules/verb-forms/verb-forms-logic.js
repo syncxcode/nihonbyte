@@ -18,8 +18,24 @@
   }
 
   function renderVerbFormsHub({ grid, onOpenPoster }) {
-    const forms = getData();
-    const levels = Array.isArray(window.verbFormsLevels) ? window.verbFormsLevels : ["N5", "N4", "N3", "N2", "N1"];
+    const allFormsRaw = getData();
+    const fallbackLevels = ["N5", "N4", "N3", "N2", "N1"];
+    const configuredLevels = Array.isArray(window.verbFormsLevels) ? window.verbFormsLevels : fallbackLevels;
+    const normalizeLevel = (form) => {
+      const rawLevel = String(form?.level || "").toUpperCase();
+      if (fallbackLevels.includes(rawLevel)) return rawLevel;
+      const detected = `${form?.title || ""} ${form?.summary || ""}`.match(/\bN[1-5]\b/i);
+      return detected ? detected[0].toUpperCase() : "N5";
+    };
+    const forms = allFormsRaw.map((form) => ({ ...form, level: normalizeLevel(form) }));
+    const levelsInData = new Set(forms.map((form) => form.level).filter(Boolean));
+    const levels = configuredLevels.filter((level) => levelsInData.has(level));
+    const activeLevels = levels.length ? levels : fallbackLevels.filter((level) => levelsInData.has(level));
+    const unlockedLevelSet = new Set(activeLevels);
+    const filteredByUnlock = forms.filter((form) => unlockedLevelSet.has(form.level));
+    const allLevelLabel = activeLevels.length > 1
+      ? `${activeLevels[0]}~${activeLevels[activeLevels.length - 1]}`
+      : (activeLevels[0] || "N5");
 
     grid.innerHTML = `
       <section class="forms-hub">
@@ -31,8 +47,8 @@
           <label class="forms-level-filter-wrap" for="verb-form-level-filter">
             <span>${t("Level")}</span>
             <select id="verb-form-level-filter" class="forms-level-filter">
-              <option value="all">${t("Semua Level (N5~N1)")}</option>
-              ${levels.map((level) => `<option value="${level}">${level}</option>`).join("")}
+              <option value="all">${t(`Semua Level (${allLevelLabel})`)}</option>
+              ${activeLevels.map((level) => `<option value="${level}">${level}</option>`).join("")}
             </select>
           </label>
         </div>
@@ -55,22 +71,57 @@
         return;
       }
       localPagination.style.display = "flex";
-
-      for (let page = 1; page <= totalPages; page += 1) {
+      const addButton = ({ label, page, active = false, disabled = false }) => {
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = `forms-page-btn ${page === hubPage ? "active" : ""}`;
-        btn.textContent = String(page);
-        btn.addEventListener("click", () => onChange(page));
+        btn.className = `forms-page-btn ${active ? "active" : ""}`;
+        btn.textContent = String(label);
+        btn.disabled = !!disabled;
+        if (!disabled && typeof page === "number") {
+          btn.addEventListener("click", () => onChange(page));
+        }
         localPagination.appendChild(btn);
+      };
+      const addDots = () => {
+        const dots = document.createElement("span");
+        dots.className = "forms-page-dots";
+        dots.textContent = "...";
+        localPagination.appendChild(dots);
+      };
+
+      addButton({ label: "<<", page: hubPage - 1, disabled: hubPage === 1 });
+
+      let startPage = Math.max(1, hubPage - 1);
+      let endPage = Math.min(totalPages, hubPage + 1);
+      if (hubPage === 1) endPage = Math.min(3, totalPages);
+      if (hubPage === totalPages) startPage = Math.max(1, totalPages - 2);
+
+      if (startPage > 1) {
+        addButton({ label: "1", page: 1, active: hubPage === 1 });
+        if (startPage > 2) addDots();
       }
+
+      for (let page = startPage; page <= endPage; page += 1) {
+        addButton({ label: page, page, active: page === hubPage });
+      }
+
+      if (endPage < totalPages) {
+        if (endPage < totalPages - 1) addDots();
+        addButton({ label: String(totalPages), page: totalPages, active: hubPage === totalPages });
+      }
+
+      addButton({ label: ">>", page: hubPage + 1, disabled: hubPage === totalPages });
     }
 
     function paintList() {
-      const selectedLevel = levelSelect?.value || "all";
+      const rawSelectedLevel = levelSelect?.value || "all";
+      const selectedLevel = rawSelectedLevel === "all" || activeLevels.includes(rawSelectedLevel)
+        ? rawSelectedLevel
+        : "all";
+      if (levelSelect && levelSelect.value !== selectedLevel) levelSelect.value = selectedLevel;
       const filteredForms = selectedLevel === "all"
-        ? forms
-        : forms.filter((form) => form.level === selectedLevel);
+        ? filteredByUnlock
+        : filteredByUnlock.filter((form) => form.level === selectedLevel);
 
       brickGrid.innerHTML = "";
 
@@ -107,6 +158,7 @@
       hubPage = 1;
       paintList();
     });
+    if (levelSelect) levelSelect.disabled = activeLevels.length <= 1;
     paintList();
   }
 

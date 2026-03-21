@@ -11976,6 +11976,7 @@ body.history-mode .dashboard-shell textarea {
   .menu-panel-grid {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
     gap: 14px !important;
+    grid-auto-rows: 108px !important;
   }
 
   .menu-panel-card--letters { order: 1; }
@@ -11985,7 +11986,8 @@ body.history-mode .dashboard-shell textarea {
   .menu-panel-card--expressions { order: 5; }
 
   .menu-panel-card {
-    min-height: 116px !important;
+    min-height: 108px !important;
+    height: 108px !important;
     padding: 14px !important;
     border-radius: 18px !important;
     border: 1px solid var(--nb-native-border) !important;
@@ -11994,12 +11996,18 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: 60px minmax(0, 1fr) !important;
     align-items: center !important;
     gap: 12px !important;
+    overflow: hidden !important;
   }
 
-  .menu-panel-card strong {
+  .menu-panel-card__body strong {
     color: var(--nb-native-text) !important;
     font-size: 0.90rem !important;
     line-height: 1.12 !important;
+    display: block;
+    max-width: 100%;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .menu-panel-card__body > span {
@@ -12223,13 +12231,16 @@ body.history-mode .dashboard-shell textarea {
   .menu-panel-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
     gap: 10px !important;
+    grid-auto-rows: 86px !important;
   }
 
   .menu-panel-card {
-    min-height: 92px !important;
+    min-height: 86px !important;
+    height: 86px !important;
     padding: 10px !important;
     grid-template-columns: 48px minmax(0, 1fr) !important;
     gap: 10px !important;
+    overflow: hidden !important;
   }
 
   .menu-panel-card--letters {
@@ -12251,8 +12262,11 @@ body.history-mode .dashboard-shell textarea {
     height: 30px;
   }
 
-  .menu-panel-card strong {
+  .menu-panel-card__body strong {
     font-size: 0.88rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .menu-panel-card__body > span {

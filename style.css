@@ -11375,11 +11375,21 @@ body.history-mode .dashboard-shell textarea {
 }
 
 .gr-brick-title {
-  display: block;
-  font-size: 1.22rem;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #228b22;
+  color: #ffffff;
+  box-shadow: 0 10px 20px -16px rgba(16, 185, 129, 0.8);
+  font-size: 1.05rem;
   font-weight: 800;
-  color: #0f172a;
   margin-bottom: 6px;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .gr-brick-desc {
@@ -11438,6 +11448,20 @@ body.history-mode .dashboard-shell textarea {
   color: #be123c;
 }
 
+.gr-page-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.gr-page-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  color: #64748b;
+  font-weight: 700;
+}
+
 /* ── Poster (Detail Page) ── */
 .gr-poster {
   width: min(1240px, calc(100% - 30px));
@@ -11489,9 +11513,19 @@ body.history-mode .dashboard-shell textarea {
 
 .gr-group-panel h4 {
   margin: 0;
-  color: #1d4ed8;
-  font-size: 1.06rem;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #228b22;
+  color: #ffffff;
+  font-size: 1rem;
   font-weight: 800;
+  line-height: 1.2;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .gr-group-desc {

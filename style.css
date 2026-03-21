@@ -12447,8 +12447,8 @@ body.history-mode .dashboard-shell textarea {
     }
 }
 
-@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
+@media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 520px) {
     .hub-screen--practice .hub-header--practice {
-      width: 94% !important
+      padding: 14px 10px !important;
     }
 }

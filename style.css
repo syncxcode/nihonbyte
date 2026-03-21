@@ -11973,7 +11973,7 @@ body.history-mode .dashboard-shell textarea {
   stroke: none !important;
 }
 
-@media (min-width: 768px), screen and (orientation: landscape) and (max-height: 520px) {
+@media screen and (min-width: 768px) {
   #grid.hub-mode {
     padding: 16px 18px 30px !important;
     grid-template-columns: minmax(0, 1fr) !important;
@@ -11988,11 +11988,20 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .menu-hub-screen {
+    box-sizing: border-box !important;
     padding: 16px 18px 18px !important;
     border-radius: 20px !important;
     border: 1px solid #c0bfbc !important;
     background: #ffffff !important;
     box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
+  }
+
+  .menu-hub-screen .menu-hub-header,
+  .menu-hub-screen .menu-panel-grid,
+  .menu-hub-screen .menu-hub-section-card--kotoba,
+  .menu-panel-card {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
   }
 
   .menu-hub-screen .menu-hub-header {
@@ -12267,9 +12276,26 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 520px) {
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
   #grid.hub-mode {
     padding: 10px 12px 16px !important;
+  }
+
+  .menu-hub-screen {
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    border: 1px solid #c0bfbc !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
+  }
+
+  .menu-hub-screen .menu-hub-header,
+  .menu-hub-screen .menu-panel-grid,
+  .menu-hub-screen .menu-hub-section-card--kotoba,
+  .menu-panel-card {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
   }
 
   .menu-panel-grid {
@@ -12421,7 +12447,7 @@ body.history-mode .dashboard-shell textarea {
     }
 }
 
-@media screen and (orientation: landscape) and (max-height: 520px) {
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
     .hub-screen--practice .hub-header--practice {
       width: 94% !important
     }

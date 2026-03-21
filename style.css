@@ -3844,8 +3844,8 @@ body {
   gap: 8px;
 }
 
-.form-brick strong { font-size: 1rem; color: #0f172a; }
-.form-brick span { color: #475569; font-size: 0.88rem; }
+.form-brick strong { font-size: 1rem; color: #ffffff; }
+.form-brick span { color: #1f2937; font-size: 0.88rem; }
 
 .form-poster {
   width: min(1100px, 94%);

@@ -11998,13 +11998,25 @@ body.history-mode .dashboard-shell textarea {
 
   .menu-panel-card strong {
     color: var(--nb-native-text) !important;
-    font-size: 1.1rem !important;
-    line-height: 1.14 !important;
+    font-size: 1rem !important;
+    line-height: 1.12 !important;
   }
 
-  .menu-panel-card span {
+  .menu-panel-card__body > span {
     color: #56657a !important;
+    font-size: 0.86rem !important;
+    display: block;
+    margin-top: 4px;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100%;
+  }
+
+  .menu-panel-card--expressions .menu-panel-card__body strong {
     font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    letter-spacing: 0 !important;
   }
 
   .menu-panel-card--letters {
@@ -12240,11 +12252,19 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .menu-panel-card strong {
-    font-size: 0.95rem !important;
+    font-size: 0.88rem !important;
   }
 
-  .menu-panel-card span {
-    font-size: 0.78rem !important;
+  .menu-panel-card__body > span {
+    font-size: 0.74rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .menu-panel-card--expressions .menu-panel-card__body strong {
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
   }
 
   .hub-screen--practice .hub-practice-shell {

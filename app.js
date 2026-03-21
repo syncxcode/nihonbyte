@@ -4267,26 +4267,26 @@ grid.style.display="grid";
       },
       {
         action: "verb-forms",
-        title: "Bentuk Kata Kerja",
-        description: "Materi + poster",
+        title: "Verb Forms",
+        description: "Bentuk kata kerja dari pola dasar sampai variasi kalimat",
         iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2"
       },
       {
         action: "adjective-forms",
-        title: "Bentuk Kata Sifat",
-        description: "Materi + poster",
+        title: "Adj Forms",
+        description: "Bentuk kata sifat i-adj dan na-adj dalam pola kalimat",
         iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2"
       },
       {
         action: "expressions",
         title: "Ungkapan Umum",
-        description: "Ekspresi sehari-hari",
+        description: "Ekspresi harian untuk percakapan natural sehari-hari",
         iconPath: "./assets/icons/duotone-native/menu-ungkapan.svg?v=2"
       },
       {
         action: "grammar",
         title: "Grammar (文法)",
-        description: "Materi + poster",
+        description: "Pola grammar JLPT plus contoh kalimat yang aplikatif",
         iconPath: "./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2"
       },
 

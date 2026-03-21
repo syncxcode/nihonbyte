@@ -3963,7 +3963,7 @@ grid.style.display="grid";
           </header>
           <div class="bottom-nav-hub__practice-wrapper">
           <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙 Kosakata</h3>
+            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙）Kosakata</h3>
             <div class="bottom-nav-hub__chips">
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
               <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
@@ -4574,7 +4574,7 @@ grid.style.display="grid";
 
           <div class="hub-practice-wrapper">
           <div class="hub-section">
-            <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙 Kosakata</h3>
+            <h3 class="hub-section-capsule hub-section-capsule--goi">言語知識（文字・語彙）Kosakata</h3>
             <div class="hub-levels">
               ${renderLevelButtons("goi")}
             </div>

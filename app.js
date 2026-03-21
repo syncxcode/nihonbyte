@@ -3633,6 +3633,7 @@ grid.style.display="grid";
     }
 
     if (tab === "practice") {
+      viewMode = "practice-hub";
       closeSidebar();
       openBottomNavHub("practice");
       setBottomNavActive("practice");
@@ -3640,6 +3641,7 @@ grid.style.display="grid";
     }
 
     if (tab === "menu") {
+      viewMode = "menu";
       closeSidebar();
       openBottomNavHub("menu");
       setBottomNavActive("menu");
@@ -3662,6 +3664,7 @@ grid.style.display="grid";
     let tab = "home";
 
     if (viewMode === "practice-hub") tab = "practice";
+    else if (viewMode === "dashboard") tab = "dashboard";
     else if (
       viewMode === "menu" ||
       viewMode === "support" ||
@@ -3678,7 +3681,6 @@ grid.style.display="grid";
       tab = "home";
     }
 
-    // dashboard tidak punya viewMode khusus (render via tombol), jadi tidak dipaksa dari sini
     setBottomNavActive(tab);
   }
 
@@ -4872,6 +4874,11 @@ grid.style.display="grid";
       return;
     }
 
+    if (viewMode === "dashboard") {
+      openDashboard();
+      return;
+    }
+
     if (viewMode === "menu") {
       // Mobile: gunakan bottom nav hub bukan render ke grid
       if (!isDesktopLayout()) {
@@ -5919,7 +5926,9 @@ grid.style.display="grid";
       return;
     }
 
+    viewMode = "dashboard";
     if (resultInfo) resultInfo.textContent = "Dasbor saya";
+    setBottomNavActive("dashboard");
     if (typeof setHistoryMode === "function") setHistoryMode(true);
     grid.innerHTML = '<div class="history-container" style="text-align:center;padding:20px;"><p>Menyiapkan dashboard...</p></div>';
     if (typeof closeSidebar === "function") closeSidebar();

@@ -5711,6 +5711,7 @@ body.review-mode-active .bottom-nav {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 18px;
   padding: 14px 12px;
+  box-sizing: border-box;
   text-align: left;
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
   display: grid;

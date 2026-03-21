@@ -11987,6 +11987,14 @@ body.history-mode .dashboard-shell textarea {
     margin: 0 !important;
   }
 
+  .menu-hub-screen {
+    padding: 16px 18px 18px !important;
+    border-radius: 20px !important;
+    border: 1px solid #c0bfbc !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
+  }
+
   .menu-hub-screen .menu-hub-header {
     width: 100% !important;
     margin: 0 0 14px !important;

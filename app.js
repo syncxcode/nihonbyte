@@ -73,6 +73,30 @@
     en: '<defs><clipPath id="flagCircleEn"><circle cx="32" cy="32" r="24"/></clipPath></defs><g clip-path="url(#flagCircleEn)"><rect x="8" y="8" width="48" height="48" fill="#ffffff"/><rect x="8" y="8" width="48" height="8" fill="#b91c1c"/><rect x="8" y="24" width="48" height="8" fill="#b91c1c"/><rect x="8" y="40" width="48" height="8" fill="#b91c1c"/><rect x="8" y="8" width="24" height="24" fill="#1d4ed8"/></g><circle cx="32" cy="32" r="24" fill="none" stroke="#cbd5e1" stroke-width="2"/>'
   };
 
+  const PRACTICE_PROGRESS_KEY_PREFIX = "nihonbyte.practice.progress.v1";
+
+  function getPracticeProgressStorageKey(uid) {
+    return `${PRACTICE_PROGRESS_KEY_PREFIX}.${uid}`;
+  }
+
+  function readPracticeProgressLocal(uid) {
+    try {
+      const raw = localStorage.getItem(getPracticeProgressStorageKey(uid));
+      return raw ? JSON.parse(raw) : null;
+    } catch (error) {
+      console.error("Gagal baca progress local:", error);
+      return null;
+    }
+  }
+
+  function writePracticeProgressLocal(uid, data) {
+    try {
+      localStorage.setItem(getPracticeProgressStorageKey(uid), JSON.stringify(data));
+    } catch (error) {
+      console.error("Gagal simpan progress local:", error);
+    }
+  }
+
   function openMenuHub(){
 
   const grid = document.getElementById("grid");
@@ -861,21 +885,30 @@ grid.style.display="grid";
         setAccessMode("logged-in");
         if (verificationHoldNote) verificationHoldNote.style.display = "none";
 
-        // â”€â”€ Cek onboarding sebelum render â”€â”€
-        // Kalau belum onboarding â†’ redirect ke halaman onboarding
+        // Cek onboarding dari local (fallback baca Firestore untuk data lama)
         try {
-          if (window.firebaseDb && window.doc && window.getDoc) {
-            const _obRef  = window.doc(window.firebaseDb, "users", user.uid, "practice", "progress");
-            const _obSnap = await window.getDoc(_obRef);
-            if (!_obSnap.exists() || !_obSnap.data()?.onboardingDone) {
-              window.location.replace("./onboard/onboarding.html");
-              return;
+          let localProgress = readPracticeProgressLocal(user.uid);
+
+          if (!localProgress?.onboardingDone && window.firebaseDb && window.doc && window.getDoc) {
+            const legacyRef = window.doc(window.firebaseDb, "users", user.uid, "practice", "progress");
+            const legacySnap = await window.getDoc(legacyRef);
+            if (legacySnap.exists() && legacySnap.data()?.onboardingDone) {
+              localProgress = legacySnap.data();
+              writePracticeProgressLocal(user.uid, localProgress);
             }
-            // Simpan progress ke cache global biar level gate bisa baca
-            window._practiceProgress = _obSnap.data();
           }
-        } catch(e) { console.error("Cek onboarding gagal:", e); }
-        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+          if (!localProgress?.onboardingDone) {
+            window.location.replace("./onboard/onboarding.html");
+            return;
+          }
+
+          window._practiceProgress = localProgress;
+        } catch (e) {
+          console.error("Cek onboarding local gagal:", e);
+          window.location.replace("./onboard/onboarding.html");
+          return;
+        }
 
         viewMode = "menu";
         selectedType = "verb-adj-only";
@@ -892,6 +925,7 @@ grid.style.display="grid";
         shouldOpenVerificationModalAfterSignup = false;
       } else if (user && !isVerifiedUser(user)) {
         if (window.currentUser) window.currentUser = null;
+        window._practiceProgress = null;
         if (loggedOutView) loggedOutView.style.display = "block";
         if (loggedInView) loggedInView.style.display = "none";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
@@ -907,6 +941,7 @@ grid.style.display="grid";
         if (logoutFloatingBtn) logoutFloatingBtn.style.display = "none";
         loginBtn.innerHTML = `<img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google"><span>Masuk dengan Google</span>`;
         window.currentUser = null;
+        window._practiceProgress = null;
         updateAccountStatusUI(null);
         if (accessMode !== "guest") setAccessMode("locked");
         shouldOpenVerificationModalAfterSignup = false;

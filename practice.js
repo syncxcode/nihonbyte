@@ -4432,9 +4432,11 @@ grid.style.display="grid";
   async function renderPracticeHub() {
     // Cek onboarding
     if (window.currentUser) {
-      const prog = window.practiceUI
-        ? await window.practiceUI._getPracticeProgressCached()
-        : null;
+      const prog = window._practiceProgress || (
+        window.practiceUI
+          ? await window.practiceUI._getPracticeProgressCached()
+          : null
+      );
       if (!prog || !prog.onboardingDone) {
         renderPracticeLockScreen("Latihan<br>Terkunci", "ç·´ç¿’å•é¡Œ");
         if (resultInfo) resultInfo.textContent = "Latihan";
@@ -4746,7 +4748,8 @@ grid.style.display="grid";
 
     // Guard onboarding: kalau belum selesai, tampilkan lock screen di grid
     if (viewMode === "vocab" && window.currentUser && accessMode !== "guest") {
-      const _prog = window.practiceUI?._latestProg;
+      const localProg = window._practiceProgress || null;
+      const _prog = localProg !== null ? localProg : window.practiceUI?._latestProg;
       if (_prog === undefined) {
         // Belum ada cache â€” fetch dulu lalu render ulang
         if (window.practiceUI?._getPracticeProgressCached) {

@@ -3187,7 +3187,7 @@ body.dashboard-modal-open .content-panel {
 
 @media (max-width: 767px) and (orientation: portrait) {
   .dashboard-modal {
-    top: calc(var(--topbar-height) + 12px) !important;
+    top: 62px !important;
     transform: translateX(-50%) !important;
     max-height: calc(100dvh - var(--topbar-height) - var(--bottom-nav-height) - 24px) !important;
   }

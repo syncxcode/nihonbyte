@@ -12648,14 +12648,14 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__screen--practice .latihan-lock-banner {
-    margin-bottom: 8px !important;
+    margin-bottom: 0px !important;
     grid-column: 1 / -1 !important;
   }
 
   .bottom-nav-hub__screen--practice .latihan-lock-banner__inner {
     padding: 10px 12px !important;
     border-radius: 12px !important;
-    font-size: 0.76rem !important;
+    font-size: 0.64rem !important;
     line-height: 1.22 !important;
     width: 100% !important;
     box-sizing: border-box !important;

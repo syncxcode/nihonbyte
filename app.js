@@ -4015,53 +4015,53 @@ grid.style.display="grid";
           </header>
           <div class="bottom-nav-hub__menu-grid">
             <div class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--letters">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true">
-                  <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
-                </span>
-                Huruf
-              </strong>
-              <span>Hiragana & Katakana</span>
-              <div class="bottom-nav-hub__letter-btn-row">
-                <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
-                <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
+              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true">
+                <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
+              </span>
+              <div class="bottom-nav-hub__menu-body">
+                <strong>Huruf</strong>
+                <span>Hiragana & Katakana</span>
+                <div class="bottom-nav-hub__letter-btn-row">
+                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
+                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
+                </div>
               </div>
             </div>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="patterns">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--grammar" aria-hidden="true">
-                  <img src="./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2" alt="">
-                </span>
-                Grammar (文法)
-              </strong>
-              <span>Pola grammar JLPT...</span>
+              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--grammar" aria-hidden="true">
+                <img src="./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2" alt="">
+              </span>
+              <span class="bottom-nav-hub__menu-body">
+                <strong>Grammar (文法)</strong>
+                <span>Pola grammar JLPT...</span>
+              </span>
             </button>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
-                  <img src="./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2" alt="">
-                </span>
-                Bentuk Kata Kerja
-              </strong>
-              <span>Materi + poster</span>
+              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
+                <img src="./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2" alt="">
+              </span>
+              <span class="bottom-nav-hub__menu-body">
+                <strong>Bentuk Kata Kerja</strong>
+                <span>Materi + poster</span>
+              </span>
             </button>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--adjective" aria-hidden="true">
-                  <img src="./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2" alt="">
-                </span>
-                Bentuk Kata Sifat
-              </strong>
-              <span>Materi + poster</span>
+              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--adjective" aria-hidden="true">
+                <img src="./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2" alt="">
+              </span>
+              <span class="bottom-nav-hub__menu-body">
+                <strong>Bentuk Kata Sifat</strong>
+                <span>Materi + poster</span>
+              </span>
             </button>
             <button type="button" class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--expressions" data-menu-action="expressions">
-              <strong>
-                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
-                  <img src="./assets/icons/duotone-native/menu-ungkapan.svg?v=2" alt="">
-                </span>
-                Ungkapan Umum
-              </strong>
-              <span>Ekspresi sehari-hari</span>
+              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
+                <img src="./assets/icons/duotone-native/menu-ungkapan.svg?v=2" alt="">
+              </span>
+              <span class="bottom-nav-hub__menu-body">
+                <strong>Ungkapan Umum</strong>
+                <span>Ekspresi sehari-hari</span>
+              </span>
             </button>
 
           </div>

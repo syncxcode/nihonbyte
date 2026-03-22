@@ -12423,29 +12423,66 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__menu-grid {
-    gap: 8px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
   }
 
   .bottom-nav-hub__menu-card--expressions {
-    grid-column: 1 / -1 !important;
+    grid-column: auto !important;
   }
 
-  .bottom-nav-hub__menu-card--letters {
-    align-content: start !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card {
+    min-height: 108px !important;
+    height: 108px !important;
+    padding: 14px !important;
+    border-radius: 18px !important;
+    border: 1px solid var(--nb-native-border) !important;
+    background: #ffffff !important;
+    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.07) !important;
+    display: grid !important;
+    grid-template-columns: 60px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 12px !important;
+    overflow: hidden !important;
   }
 
-  .bottom-nav-hub__menu-card--letters > span {
-    margin-top: 1px;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body {
+    min-width: 0;
+    display: block;
   }
 
-  .bottom-nav-hub__letter-btn-row {
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body strong {
+    display: block;
+    color: var(--nb-native-text) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.12 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body > span {
+    display: block;
+    margin-top: 4px;
+    color: #56657a !important;
+    font-size: 0.86rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body > span {
+    display: none !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn-row {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     margin-top: 4px;
   }
 
-  .bottom-nav-hub__letter-btn {
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn {
     width: 28px !important;
     height: 28px !important;
     border-radius: 9px !important;
@@ -12459,36 +12496,42 @@ body.history-mode .dashboard-shell textarea {
     padding: 0 !important;
   }
 
-  .bottom-nav-hub__menu-card {
-    min-height: 82px !important;
-    padding: 10px !important;
-    border-radius: 14px !important;
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.1) !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 16px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(148, 163, 184, 0.35) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
-  .bottom-nav-hub__menu-card strong {
-    gap: 7px !important;
-    font-size: 0.9rem !important;
-    line-height: 1.14 !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon img {
+    width: 34px !important;
+    height: 34px !important;
+    object-fit: contain;
+    display: block;
   }
 
-  .bottom-nav-hub__menu-card span {
-    font-size: 0.67rem !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--letters {
+    background: linear-gradient(150deg, #fff6ea, #ffece0) !important;
   }
 
-  .bottom-nav-hub__menu-icon {
-    width: 24px !important;
-    height: 24px !important;
-    flex: 0 0 24px !important;
-    border-radius: 8px !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--grammar {
+    background: linear-gradient(150deg, #fff2ef, #ffe6df) !important;
   }
 
-  .bottom-nav-hub__menu-icon img {
-    width: 16px !important;
-    height: 16px !important;
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--verb {
+    background: linear-gradient(150deg, #ebf6ff, #def0ff) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--adjective {
+    background: linear-gradient(150deg, #f3edff, #ece3ff) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--expressions {
+    background: linear-gradient(150deg, #fff5e8, #ffe9d0) !important;
   }
 
   .bottom-nav-hub__group {
@@ -12517,6 +12560,7 @@ body.history-mode .dashboard-shell textarea {
     flex-wrap: wrap !important;
     overflow-x: visible !important;
     padding-bottom: 0 !important;
+    gap: 9px !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
@@ -12525,10 +12569,10 @@ body.history-mode .dashboard-shell textarea {
     background: #eef2ff !important;
     border: 1px solid #d8def8 !important;
     color: #283a63 !important;
-    border-radius: 10px !important;
-    min-height: 27px !important;
-    padding: 5px 8px !important;
-    font-size: 0.7rem !important;
+    border-radius: 999px !important;
+    min-height: 32px !important;
+    padding: 8px 12px !important;
+    font-size: 0.78rem !important;
     line-height: 1 !important;
     box-shadow: none !important;
     font-weight: 820 !important;

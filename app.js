@@ -3947,15 +3947,45 @@ grid.style.display="grid";
     if (!bottomNavHub || window.innerWidth > 767) return false;
 
     const isPractice = kind === "practice";
+    const levels = ["N5", "N4", "N3", "N2", "N1"];
 
     const kotobaChips = KOTOBA_CATEGORY_KEYS.map((key) => {
       const label = KOTOBA_SHORT_LABELS[key] || typeLabelMap[key] || key;
       return `<button type="button" class="bottom-nav-hub__chip" data-menu-action="set-type" data-type="${key}">${label}</button>`;
     }).join("");
 
+    const prog = window._practiceProgress;
+    const unlockedLevels = prog?.levelStatus
+      ? levels.filter((lvl) => prog.levelStatus[lvl] === "active" || prog.levelStatus[lvl] === "completed")
+      : levels;
+
+    const totalProg = calcTotalProgress();
+    const isPracticeLockedByProgress = totalProg.total > 0 && totalProg.pct < 90;
+
+    const renderPracticeLevelButtons = (mainType, sectionOverride = null) =>
+      levels
+        .map((lvl) => {
+          const lockedByLevel = !unlockedLevels.includes(lvl);
+          const isLocked = isPracticeLockedByProgress || lockedByLevel;
+          return `<button type="button" class="bottom-nav-hub__chip${isLocked ? " hub-level-btn--locked" : ""}" data-practice="${mainType}" data-section="${sectionOverride || mainType}" data-level="${lvl}"${isLocked ? " disabled aria-disabled=\"true\"" : ""}>${lvl}</button>`;
+        })
+        .join("");
+
+    const practiceLockBanner = isPracticeLockedByProgress
+      ? `
+          <div class="latihan-lock-banner">
+            <div class="latihan-lock-banner__inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>Selesaikan <strong>${totalProg.pct}% dari 90%</strong> progres belajar untuk membuka semua soal</span>
+            </div>
+          </div>
+        `
+      : "";
+
     bottomNavHub.innerHTML = isPractice
       ? `
         <section class="bottom-nav-hub__screen bottom-nav-hub__screen--practice" aria-label="Latihan cepat dari navbar">
+          ${practiceLockBanner}
           <header class="bottom-nav-hub__header">
             <h2>Latihan</h2>
             <p>Halaman ini berisi pilihan latihan JLPT dengan kategori terpisah.</p>
@@ -3965,44 +3995,27 @@ grid.style.display="grid";
           <div class="bottom-nav-hub__group">
             <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--goi">言語知識（文字・語彙）Kosakata</h3>
             <div class="bottom-nav-hub__chips">
-              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N5">N5</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N4">N4</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N3">N3</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N2">N2</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="goi" data-section="goi" data-level="N1">N1</button>
+              ${renderPracticeLevelButtons("goi")}
             </div>
           </div>
           <div class="bottom-nav-hub__group">
             <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--bunpou">言語知識（文法）Tata Bahasa</h3>
             <div class="bottom-nav-hub__chips">
-              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N5">N5</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N4">N4</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N3">N3</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N2">N2</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="bunpou" data-section="bunpou" data-level="N1">N1</button>
+              ${renderPracticeLevelButtons("bunpou")}
             </div>
           </div>
           <div class="bottom-nav-hub__group">
             <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--dokkai">読解 Dokkai (Membaca)</h3>
             <div class="bottom-nav-hub__chips">
-              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N5">N5</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N4">N4</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N3">N3</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N2">N2</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="dokkai" data-section="dokkai-reading" data-level="N1">N1</button>
+              ${renderPracticeLevelButtons("dokkai", "dokkai-reading")}
             </div>
           </div>
 
           <div class="bottom-nav-hub__group">
             <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--choukai">聴解 Choukai (Mendengarkan)</h3>
             <div class="bottom-nav-hub__chips">
-              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N5">N5</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N4">N4</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N3">N3</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N2">N2</button>
-              <button type="button" class="bottom-nav-hub__chip" data-practice="listening" data-section="listening" data-level="N1">N1</button>
+              ${renderPracticeLevelButtons("listening")}
             </div>
-            <div class="bottom-nav-hub__note bottom-nav-hub__note--choukai">Choukai Sedang Dalam pengembangan</div>
           </div>
           </div>
         </section>

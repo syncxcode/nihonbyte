@@ -4042,7 +4042,7 @@ grid.style.display="grid";
               </span>
               <span class="bottom-nav-hub__menu-body">
                 <strong>Verb Forms</strong>
-                <span>Materi + poster</span>
+                <span>Pola kata kerja JLPT...</span>
               </span>
             </button>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms">
@@ -4051,7 +4051,7 @@ grid.style.display="grid";
               </span>
               <span class="bottom-nav-hub__menu-body">
                 <strong>Adj Forms</strong>
-                <span>Materi + poster</span>
+                <span>Pola kata sifat JLPT...</span>
               </span>
             </button>
             <button type="button" class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--expressions" data-menu-action="expressions">

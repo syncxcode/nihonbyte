@@ -12394,6 +12394,7 @@ body.history-mode .dashboard-shell textarea {
 @media (max-width: 767px) and (orientation: portrait) {
   .bottom-nav-hub {
     padding: calc(var(--topbar-height) + 8px) 10px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 8px) !important;
+    overflow-x: hidden !important;
   }
 
   .bottom-nav-hub__screen {
@@ -12475,20 +12476,14 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chips {
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 2px;
-  }
-
-  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chips::-webkit-scrollbar {
-    display: none;
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    padding-bottom: 0 !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
-    flex: 0 0 auto !important;
-    max-width: none !important;
+    flex: 0 1 auto !important;
+    max-width: 100% !important;
   }
 
   .bottom-nav-hub__screen--practice .bottom-nav-hub__practice-wrapper {

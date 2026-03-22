@@ -12425,6 +12425,7 @@ body.history-mode .dashboard-shell textarea {
   .bottom-nav-hub__menu-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px !important;
+    grid-auto-rows: 96px !important;
   }
 
   .bottom-nav-hub__menu-card--expressions {
@@ -12432,8 +12433,9 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card {
-    min-height: 98px !important;
-    height: 98px !important;
+    min-height: 96px !important;
+    height: 96px !important;
+    max-height: 96px !important;
     padding: 10px !important;
     border-radius: 18px !important;
     border: 1px solid var(--nb-native-border) !important;
@@ -12444,11 +12446,13 @@ body.history-mode .dashboard-shell textarea {
     align-items: center !important;
     gap: 8px !important;
     overflow: hidden !important;
+    align-self: stretch !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters {
-    min-height: 98px !important;
-    height: 98px !important;
+    min-height: 96px !important;
+    height: 96px !important;
+    max-height: 96px !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body {
@@ -12482,23 +12486,32 @@ body.history-mode .dashboard-shell textarea {
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body strong {
     display: block !important;
+    margin: 0 !important;
+    line-height: 1.05 !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn-row {
     display: flex !important;
     align-items: center;
     gap: 6px;
-    margin-top: 4px;
+    margin-top: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn {
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 7px !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 6px !important;
     border: 1px solid #b7b7b3 !important;
     background: #ffffff !important;
     color: #e44773 !important;
-    font-size: 0.74rem !important;
+    font-size: 0.68rem !important;
     font-weight: 900 !important;
     line-height: 1 !important;
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
@@ -12506,9 +12519,9 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon {
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 10px !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9px !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -12517,8 +12530,8 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon img {
-    width: 21px !important;
-    height: 21px !important;
+    width: 19px !important;
+    height: 19px !important;
     object-fit: contain;
     display: block;
   }

@@ -12593,16 +12593,50 @@ body.history-mode .dashboard-shell textarea {
   .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
     flex: 0 1 auto !important;
     max-width: 100% !important;
-    background: #eef2ff !important;
-    border: 1px solid #d8def8 !important;
-    color: #283a63 !important;
-    border-radius: 999px !important;
-    min-height: 32px !important;
-    padding: 8px 12px !important;
-    font-size: 0.78rem !important;
+    position: relative !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    min-height: 28px !important;
+    padding: 7px 10px 7px 20px !important;
+    font-size: 0.74rem !important;
     line-height: 1 !important;
-    box-shadow: none !important;
+    box-shadow: 0 3px 7px rgba(15, 23, 42, 0.14) !important;
     font-weight: 820 !important;
+    color: #ffffff !important;
+    clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 8px !important;
+    top: 50% !important;
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 1) {
+    background: linear-gradient(135deg, #1ea7e1, #0b8fc6) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 2) {
+    background: linear-gradient(135deg, #99c907, #7fb100) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 3) {
+    background: linear-gradient(135deg, #ff9f1f, #f08700) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 4) {
+    background: linear-gradient(135deg, #2db3e9, #1398ce) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n) {
+    background: linear-gradient(135deg, #f34a8b, #df236f) !important;
   }
 
   .bottom-nav-hub__screen--practice .bottom-nav-hub__practice-wrapper {

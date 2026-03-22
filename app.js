@@ -5704,11 +5704,46 @@ grid.style.display="grid";
     const avatarUpload = document.getElementById("dashboard-avatar-upload");
     const avatarSaveBtn = document.getElementById("dashboard-avatar-save");
     const presetButtons = document.querySelectorAll(".avatar-preset-btn");
+    const contentPanel = document.querySelector(".content-panel");
 
     if (!settingsBtn || !cameraBtn || !backdrop || !settingsModal || !avatarModal || !nameForm || !nameInput || !avatarPreview || !avatarSaveBtn) return;
 
     let selectedPhotoUrl = resolveProfilePhoto(user, profile);
     let photoSource = profile?.photoSource || (isGoogleUser(user) ? "google" : "default");
+    let dashboardScrollState = null;
+
+    function lockDashboardBackgroundScroll() {
+      if (dashboardScrollState) return;
+      dashboardScrollState = {
+        bodyOverflow: document.body.style.overflow,
+        htmlOverflow: document.documentElement.style.overflow,
+        bodyTouchAction: document.body.style.touchAction,
+        panelOverflow: contentPanel ? contentPanel.style.overflow : "",
+        panelTouchAction: contentPanel ? contentPanel.style.touchAction : ""
+      };
+
+      document.body.classList.add("dashboard-modal-open");
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+      if (contentPanel) {
+        contentPanel.style.overflow = "hidden";
+        contentPanel.style.touchAction = "none";
+      }
+    }
+
+    function unlockDashboardBackgroundScroll() {
+      if (!dashboardScrollState) return;
+      document.body.classList.remove("dashboard-modal-open");
+      document.body.style.overflow = dashboardScrollState.bodyOverflow;
+      document.documentElement.style.overflow = dashboardScrollState.htmlOverflow;
+      document.body.style.touchAction = dashboardScrollState.bodyTouchAction;
+      if (contentPanel) {
+        contentPanel.style.overflow = dashboardScrollState.panelOverflow;
+        contentPanel.style.touchAction = dashboardScrollState.panelTouchAction;
+      }
+      dashboardScrollState = null;
+    }
 
     function closeAllModals() {
       backdrop.hidden = true;
@@ -5716,7 +5751,7 @@ grid.style.display="grid";
       avatarModal.hidden = true;
       const cropModal = document.getElementById("dashboard-crop-modal");
       if (cropModal) cropModal.hidden = true;
-      document.body.style.overflow = "";
+      unlockDashboardBackgroundScroll();
     }
 
     function openModal(type) {
@@ -5724,7 +5759,7 @@ grid.style.display="grid";
       settingsModal.hidden = type !== "settings";
       avatarModal.hidden = type !== "avatar";
       if (type === "settings") nameInput.focus();
-      document.body.style.overflow = "hidden";
+      lockDashboardBackgroundScroll();
     }
 
     settingsBtn.addEventListener("click", () => openModal("settings"));
@@ -5789,6 +5824,7 @@ grid.style.display="grid";
         cropZoom.value = String(baseScale);
         backdrop.hidden = false;
         cropModal.hidden = false;
+        lockDashboardBackgroundScroll();
         drawCropPreview();
       };
       img.src = dataUrl;
@@ -5799,6 +5835,7 @@ grid.style.display="grid";
       cropModal.hidden = true;
       if (!settingsModal.hidden || !avatarModal.hidden) return;
       backdrop.hidden = true;
+      unlockDashboardBackgroundScroll();
     }
 
     if (cropZoom) {
@@ -5933,6 +5970,17 @@ grid.style.display="grid";
     if (!window.currentUser) {
       alert("Silahkan Login!");
       return;
+    }
+
+    // Safety reset jika sebelumnya ada modal dashboard yang belum sempat cleanup.
+    document.body.classList.remove("dashboard-modal-open");
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    document.body.style.touchAction = "";
+    const contentPanel = document.querySelector(".content-panel");
+    if (contentPanel) {
+      contentPanel.style.overflow = "";
+      contentPanel.style.touchAction = "";
     }
 
     viewMode = "dashboard";

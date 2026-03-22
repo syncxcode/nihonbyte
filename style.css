@@ -2956,6 +2956,11 @@ body.history-mode #grid {
   z-index: 1300;
 }
 
+body.dashboard-modal-open,
+body.dashboard-modal-open .content-panel {
+  overflow: hidden !important;
+}
+
 .dashboard-modal {
   position: fixed;
   left: 50%;
@@ -3178,6 +3183,14 @@ body.history-mode #grid {
     text-align: left;
   }
   .dashboard-history-meta { text-align: left; }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .dashboard-modal {
+    top: calc(var(--topbar-height) + 12px) !important;
+    transform: translateX(-50%) !important;
+    max-height: calc(100dvh - var(--topbar-height) - var(--bottom-nav-height) - 24px) !important;
+  }
 }
 
 

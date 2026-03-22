@@ -6391,6 +6391,11 @@ body.review-mode-active .bottom-nav {
     color: #1e3a8a;
   }
 
+  .bottom-nav-hub__menu-icon--grammar {
+    background: linear-gradient(135deg, #fecaca, #fb7185);
+    color: #9f1239;
+  }
+
   .bottom-nav-hub__menu-icon--adjective {
     background: linear-gradient(135deg, #c4b5fd, #a78bfa);
     color: #581c87;
@@ -12419,6 +12424,10 @@ body.history-mode .dashboard-shell textarea {
 
   .bottom-nav-hub__menu-grid {
     gap: 8px !important;
+  }
+
+  .bottom-nav-hub__menu-card--expressions {
+    grid-column: 1 / -1 !important;
   }
 
   .bottom-nav-hub__menu-card {

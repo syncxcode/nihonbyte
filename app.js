@@ -3948,8 +3948,6 @@ grid.style.display="grid";
 
     const isPractice = kind === "practice";
 
-    const patternChips = `<button type="button" class="bottom-nav-hub__chip" data-menu-action="patterns">Semua Level</button>`;
-
     const kotobaChips = KOTOBA_CATEGORY_KEYS.map((key) => {
       const label = KOTOBA_SHORT_LABELS[key] || typeLabelMap[key] || key;
       return `<button type="button" class="bottom-nav-hub__chip" data-menu-action="set-type" data-type="${key}">${label}</button>`;
@@ -4025,6 +4023,15 @@ grid.style.display="grid";
               </strong>
               <span>Hiragana & Katakana</span>
             </button>
+            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="patterns">
+              <strong>
+                <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--grammar" aria-hidden="true">
+                  <img src="./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2" alt="">
+                </span>
+                Grammar (文法)
+              </strong>
+              <span>Pola grammar JLPT...</span>
+            </button>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
@@ -4043,7 +4050,7 @@ grid.style.display="grid";
               </strong>
               <span>Materi + poster</span>
             </button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions">
+            <button type="button" class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--expressions" data-menu-action="expressions">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
                   <img src="./assets/icons/duotone-native/menu-ungkapan.svg?v=2" alt="">
@@ -4053,21 +4060,6 @@ grid.style.display="grid";
               <span>Ekspresi sehari-hari</span>
             </button>
 
-          </div>
-
-          <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--letters">Poster Huruf</h3>
-            <div class="bottom-nav-hub__chips">
-              <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="hiragana">Hiragana</button>
-              <button type="button" class="bottom-nav-hub__chip" data-menu-action="letters" data-script="katakana">Katakana</button>
-            </div>
-          </div>
-
-          <div class="bottom-nav-hub__group">
-            <h3 class="bottom-nav-hub__capsule bottom-nav-hub__capsule--patterns">Grammar (文法)</h3>
-            <div class="bottom-nav-hub__chips">
-              ${patternChips}
-            </div>
           </div>
 
           <div class="bottom-nav-hub__group bottom-nav-hub__group--kotoba">

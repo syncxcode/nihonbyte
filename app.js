@@ -4019,12 +4019,14 @@ grid.style.display="grid";
                 <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
               </span>
               <div class="bottom-nav-hub__menu-body">
-                <strong>Huruf</strong>
+                <strong>
+                  Huruf
+                  <span class="bottom-nav-hub__letter-inline">
+                    <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
+                    <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
+                  </span>
+                </strong>
                 <span>Hiragana & Katakana</span>
-                <div class="bottom-nav-hub__letter-btn-row">
-                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
-                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
-                </div>
               </div>
             </div>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="patterns">
@@ -4041,7 +4043,7 @@ grid.style.display="grid";
                 <img src="./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2" alt="">
               </span>
               <span class="bottom-nav-hub__menu-body">
-                <strong>Bentuk Kata Kerja</strong>
+                <strong>Verb Forms</strong>
                 <span>Materi + poster</span>
               </span>
             </button>
@@ -4050,7 +4052,7 @@ grid.style.display="grid";
                 <img src="./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2" alt="">
               </span>
               <span class="bottom-nav-hub__menu-body">
-                <strong>Bentuk Kata Sifat</strong>
+                <strong>Adj Forms</strong>
                 <span>Materi + poster</span>
               </span>
             </button>

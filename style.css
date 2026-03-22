@@ -12429,6 +12429,10 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .bottom-nav-hub__menu-card--expressions {
+    grid-column: 1 / -1 !important;
+  }
+
+  .bottom-nav-hub__menu-grid > .bottom-nav-hub__menu-card--expressions:not(:last-child) {
     grid-column: auto !important;
   }
 

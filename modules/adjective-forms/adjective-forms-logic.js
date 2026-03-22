@@ -1,6 +1,13 @@
 (function initAdjectiveFormsLogic() {
   const sentenceState = new Map();
   const KEY_SEPARATOR = "::";
+  const hubState = {
+    page: 1,
+    level: "all",
+    anchorId: null,
+    scrollTop: 0,
+    shouldRestoreScroll: false
+  };
 
   function getData() {
     return Array.isArray(window.adjectiveFormsData) ? window.adjectiveFormsData : [];
@@ -67,7 +74,10 @@
     const levelSelect = grid.querySelector("#adjective-form-level-filter");
     const localPagination = grid.querySelector(".forms-hub-pagination");
     const HUB_PAGE_SIZE = window.innerWidth <= 767 ? 5 : 12;
-    let hubPage = 1;
+    let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
+    if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
+      levelSelect.value = hubState.level;
+    }
 
     function renderHubPagination(totalPages, onChange) {
       if (!localPagination) return;
@@ -131,6 +141,14 @@
         ? filteredByUnlock
         : filteredByUnlock.filter((form) => form.level === selectedLevel);
 
+      if (hubState.anchorId) {
+        const anchorIndex = filteredForms.findIndex((form) => form.id === hubState.anchorId);
+        if (anchorIndex >= 0) {
+          hubPage = Math.floor(anchorIndex / HUB_PAGE_SIZE) + 1;
+        }
+        hubState.anchorId = null;
+      }
+
       if (!filteredForms.length) {
         brickGrid.innerHTML = `<div class="empty-state">${t("Belum ada materi bentuk kata sifat.")}</div>`;
         if (localPagination) {
@@ -142,6 +160,9 @@
 
       const totalPages = Math.max(1, Math.ceil(filteredForms.length / HUB_PAGE_SIZE));
       if (hubPage > totalPages) hubPage = totalPages;
+      if (hubPage < 1) hubPage = 1;
+      hubState.page = hubPage;
+      hubState.level = selectedLevel;
       const start = (hubPage - 1) * HUB_PAGE_SIZE;
       const currentForms = filteredForms.slice(start, start + HUB_PAGE_SIZE);
 
@@ -154,22 +175,43 @@
           <span class="form-brick-desc-only">${t(form.summary)}</span>
           <small class="form-level-badge">${form.level || "-"}</small>
         `;
-        btn.addEventListener("click", () => onOpenPoster?.(form.id));
+        btn.addEventListener("click", () => {
+          const contentPanel = document.querySelector(".content-panel");
+          hubState.scrollTop = contentPanel
+            ? contentPanel.scrollTop
+            : (window.scrollY || window.pageYOffset || 0);
+          hubState.anchorId = form.id;
+          hubState.shouldRestoreScroll = true;
+          onOpenPoster?.(form.id);
+        });
         brickGrid.appendChild(btn);
       });
 
       renderHubPagination(totalPages, (nextPage) => {
         hubPage = nextPage;
+        hubState.page = hubPage;
         paintList();
       });
     }
 
     levelSelect?.addEventListener("change", () => {
       hubPage = 1;
+      hubState.page = 1;
+      hubState.level = levelSelect.value || "all";
       paintList();
     });
     if (levelSelect) levelSelect.disabled = activeLevels.length <= 1;
     paintList();
+
+    if (hubState.shouldRestoreScroll) {
+      const restoreY = hubState.scrollTop;
+      hubState.shouldRestoreScroll = false;
+      setTimeout(() => {
+        const contentPanel = document.querySelector(".content-panel");
+        if (contentPanel) contentPanel.scrollTop = restoreY;
+        else window.scrollTo({ top: restoreY, behavior: "instant" });
+      }, 90);
+    }
   }
 
   function buildSentenceCard(example, formId, groupName, exampleIndex) {

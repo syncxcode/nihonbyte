@@ -5,6 +5,13 @@
 (function initSentencePatternsLogic() {
   const sentenceState = new Map();
   const KEY_SEPARATOR = "::";
+  const hubState = {
+    page: 1,
+    level: "all",
+    anchorId: null,
+    scrollTop: 0,
+    shouldRestoreScroll: false
+  };
 
   function getData() {
     return Array.isArray(window.grammarData) ? window.grammarData : [];
@@ -61,7 +68,10 @@
     const levelSelect = grid.querySelector("#gr-level-filter");
     const localPagination = grid.querySelector(".gr-hub-pagination");
     const HUB_PAGE_SIZE = window.innerWidth <= 767 ? 5 : 12;
-    let hubPage = 1;
+    let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
+    if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
+      levelSelect.value = hubState.level;
+    }
 
     function renderHubPagination(totalPages, onChange) {
       if (!localPagination) return;
@@ -124,6 +134,14 @@
         ? patterns
         : patterns.filter((p) => p.level === selectedLevel);
 
+      if (hubState.anchorId) {
+        const anchorIndex = filteredPatterns.findIndex((p) => p.id === hubState.anchorId);
+        if (anchorIndex >= 0) {
+          hubPage = Math.floor(anchorIndex / HUB_PAGE_SIZE) + 1;
+        }
+        hubState.anchorId = null;
+      }
+
       brickGrid.innerHTML = "";
 
       if (!filteredPatterns.length) {
@@ -137,6 +155,9 @@
 
       const totalPages = Math.max(1, Math.ceil(filteredPatterns.length / HUB_PAGE_SIZE));
       if (hubPage > totalPages) hubPage = totalPages;
+      if (hubPage < 1) hubPage = 1;
+      hubState.page = hubPage;
+      hubState.level = selectedLevel;
       const start = (hubPage - 1) * HUB_PAGE_SIZE;
       const currentPatterns = filteredPatterns.slice(start, start + HUB_PAGE_SIZE);
 
@@ -149,24 +170,45 @@
           <span class="gr-brick-desc">${t(pattern.summary)}</span>
           <small class="gr-level-badge">${pattern.level || "-"}</small>
         `;
-        btn.addEventListener("click", () => onOpenPoster?.(pattern.id));
+        btn.addEventListener("click", () => {
+          const contentPanel = document.querySelector(".content-panel");
+          hubState.scrollTop = contentPanel
+            ? contentPanel.scrollTop
+            : (window.scrollY || window.pageYOffset || 0);
+          hubState.anchorId = pattern.id;
+          hubState.shouldRestoreScroll = true;
+          onOpenPoster?.(pattern.id);
+        });
         brickGrid.appendChild(btn);
       });
 
       renderHubPagination(totalPages, (nextPage) => {
         hubPage = nextPage;
+        hubState.page = hubPage;
         paintList();
       });
     }
 
     levelSelect?.addEventListener("change", () => {
       hubPage = 1;
+      hubState.page = 1;
+      hubState.level = levelSelect.value || "all";
       paintList();
     });
     if (levelSelect) {
       levelSelect.disabled = activeLevels.length <= 1;
     }
     paintList();
+
+    if (hubState.shouldRestoreScroll) {
+      const restoreY = hubState.scrollTop;
+      hubState.shouldRestoreScroll = false;
+      setTimeout(() => {
+        const contentPanel = document.querySelector(".content-panel");
+        if (contentPanel) contentPanel.scrollTop = restoreY;
+        else window.scrollTo({ top: restoreY, behavior: "instant" });
+      }, 90);
+    }
   }
 
   // ═══════════════════════════════════════════

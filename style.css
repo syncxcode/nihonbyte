@@ -12782,3 +12782,10 @@ body.history-mode .dashboard-shell textarea {
       padding: 14px 10px !important;
     }
 }
+
+/* Dashboard modal scroll lock hard override (desktop + mobile landscape included) */
+body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .content-panel {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}

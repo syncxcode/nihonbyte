@@ -4014,7 +4014,7 @@ grid.style.display="grid";
             <p>Akses cepat ke fitur utama NihonByte dalam satu halaman menu yang ringkas dan mudah dipakai.</p>
           </header>
           <div class="bottom-nav-hub__menu-grid">
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana">
+            <div class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--letters">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true">
                   <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
@@ -4022,7 +4022,11 @@ grid.style.display="grid";
                 Huruf
               </strong>
               <span>Hiragana & Katakana</span>
-            </button>
+              <div class="bottom-nav-hub__letter-btn-row">
+                <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
+                <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
+              </div>
+            </div>
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="patterns">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--grammar" aria-hidden="true">

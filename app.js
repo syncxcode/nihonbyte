@@ -4019,13 +4019,11 @@ grid.style.display="grid";
                 <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
               </span>
               <div class="bottom-nav-hub__menu-body">
-                <strong>
-                  Huruf
-                  <span class="bottom-nav-hub__letter-inline">
-                    <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
-                    <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
-                  </span>
-                </strong>
+                <strong>Huruf</strong>
+                <div class="bottom-nav-hub__letter-btn-row">
+                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="hiragana" aria-label="Hiragana">あ</button>
+                  <button type="button" class="bottom-nav-hub__letter-btn" data-menu-action="letters" data-script="katakana" aria-label="Katakana">ア</button>
+                </div>
                 <span>Hiragana & Katakana</span>
               </div>
             </div>

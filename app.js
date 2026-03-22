@@ -4019,7 +4019,7 @@ grid.style.display="grid";
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="letters" data-script="hiragana">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--letters" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M8.5 9.5h7M8.5 13h7M8.5 16.5h4.5"/></svg>
+                  <img src="./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2" alt="">
                 </span>
                 Huruf
               </strong>
@@ -4028,7 +4028,7 @@ grid.style.display="grid";
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M5 12.5 10 17l9-9"/></svg>
+                  <img src="./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2" alt="">
                 </span>
                 Bentuk Kata Kerja
               </strong>
@@ -4037,7 +4037,7 @@ grid.style.display="grid";
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--adjective" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M12 3.5 15 9l6 .9-4.4 4.2 1 6-5.6-3.1L6.4 20l1-6L3 9.9 9 9Z"/></svg>
+                  <img src="./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2" alt="">
                 </span>
                 Bentuk Kata Sifat
               </strong>
@@ -4046,7 +4046,7 @@ grid.style.display="grid";
             <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="expressions">
               <strong>
                 <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2Z"/></svg>
+                  <img src="./assets/icons/duotone-native/menu-ungkapan.svg?v=2" alt="">
                 </span>
                 Ungkapan Umum
               </strong>

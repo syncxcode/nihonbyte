@@ -12392,6 +12392,129 @@ body.history-mode .dashboard-shell textarea {
 
 /* mobile portrait: hanya polish warna menu latihan (UX tetap sama) */
 @media (max-width: 767px) and (orientation: portrait) {
+  .bottom-nav-hub {
+    padding: calc(var(--topbar-height) + 8px) 10px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 8px) !important;
+  }
+
+  .bottom-nav-hub__screen {
+    gap: 10px !important;
+  }
+
+  .bottom-nav-hub__header {
+    border-radius: 14px !important;
+    padding: 12px !important;
+  }
+
+  .bottom-nav-hub__header h2 {
+    font-size: 1.08rem !important;
+    line-height: 1.06 !important;
+  }
+
+  .bottom-nav-hub__header p {
+    margin-top: 4px !important;
+    font-size: 0.74rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .bottom-nav-hub__menu-grid {
+    gap: 8px !important;
+  }
+
+  .bottom-nav-hub__menu-card {
+    min-height: 82px !important;
+    padding: 10px !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.1) !important;
+  }
+
+  .bottom-nav-hub__menu-card strong {
+    gap: 7px !important;
+    font-size: 0.9rem !important;
+    line-height: 1.14 !important;
+  }
+
+  .bottom-nav-hub__menu-card span {
+    font-size: 0.67rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .bottom-nav-hub__menu-icon {
+    width: 24px !important;
+    height: 24px !important;
+    flex: 0 0 24px !important;
+    border-radius: 8px !important;
+  }
+
+  .bottom-nav-hub__menu-icon img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .bottom-nav-hub__group {
+    border-radius: 14px !important;
+    padding: 10px !important;
+  }
+
+  .bottom-nav-hub__capsule {
+    padding: 6px 11px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .bottom-nav-hub__chips {
+    gap: 6px !important;
+  }
+
+  .bottom-nav-hub__chip {
+    min-height: 30px !important;
+    padding: 6px 9px !important;
+    font-size: 0.72rem !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chips {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
+    flex: 0 0 auto !important;
+    max-width: none !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__practice-wrapper {
+    border-radius: 14px !important;
+    padding: 10px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group {
+    padding: 0 0 10px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:last-child {
+    padding-bottom: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+    min-width: 36px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__note {
+    margin-top: 8px !important;
+    border-radius: 12px !important;
+    font-size: 0.72rem !important;
+  }
+
   .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
     background: linear-gradient(180deg, #f8fbff, #eef4ff) !important;
     border: 1px solid #d8e3f3 !important;

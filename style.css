@@ -12455,6 +12455,21 @@ body.history-mode .dashboard-shell textarea {
     gap: 10px !important;
   }
 
+  .bottom-nav-hub__screen--menu {
+    background: #f3f4f6 !important;
+    border: 1px solid #c7c6c2 !important;
+    border-radius: 16px !important;
+    padding: 10px !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__header,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group {
+    border: 1px solid #bebdb8 !important;
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08) !important;
+  }
+
   .bottom-nav-hub__header {
     border-radius: 14px !important;
     padding: 12px !important;
@@ -12492,9 +12507,9 @@ body.history-mode .dashboard-shell textarea {
     box-sizing: border-box !important;
     padding: 10px !important;
     border-radius: 18px !important;
-    border: 1px solid var(--nb-native-border) !important;
+    border: 1px solid #bebdb8 !important;
     background: #ffffff !important;
-    box-shadow: 0 9px 20px rgba(15, 23, 42, 0.07) !important;
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08) !important;
     display: grid !important;
     grid-template-columns: 46px minmax(0, 1fr) !important;
     align-items: center !important;

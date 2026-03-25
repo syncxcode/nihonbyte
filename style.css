@@ -12883,3 +12883,36 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   overflow-y: hidden !important;
   overflow-x: hidden !important;
 }
+
+/* Letter poster perf tune - mobile only (portrait + landscape) */
+@media (max-width: 767px) and (orientation: portrait),
+       screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
+  .letter-poster {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .letter-poster-body {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .letter-cell:hover,
+  .letter-label:hover,
+  .letter-empty:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}

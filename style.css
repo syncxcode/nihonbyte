@@ -12883,3 +12883,84 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   overflow-y: hidden !important;
   overflow-x: hidden !important;
 }
+
+/* Letter Poster: performance override khusus mobile potret (final override, paling bawah) */
+@media (max-width: 767px) and (orientation: portrait) {
+  .letter-poster {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: 1px solid #d6dbe5 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    content-visibility: auto !important;
+    contain: layout paint !important;
+    contain-intrinsic-size: 460px !important;
+  }
+
+  .letter-section {
+    content-visibility: auto !important;
+    contain: layout paint !important;
+    contain-intrinsic-size: 400px !important;
+  }
+
+  .letter-poster-body {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+    overscroll-behavior: contain !important;
+  }
+
+  .letter-grid-mobile {
+    contain: layout paint !important;
+    gap: 4px !important;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+@media (pointer: coarse) and (hover: none) and (orientation: landscape) and (max-height: 520px) {
+  .letter-poster {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: 1px solid #d6dbe5 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    content-visibility: auto !important;
+    contain: layout paint !important;
+    contain-intrinsic-size: 420px !important;
+  }
+
+  .letter-section {
+    content-visibility: auto !important;
+    contain: layout paint !important;
+    contain-intrinsic-size: 360px !important;
+  }
+
+  .letter-poster-body {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+    overscroll-behavior: contain !important;
+  }
+
+  .letter-grid-mobile,
+  .letter-grid-desktop {
+    contain: layout paint !important;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}

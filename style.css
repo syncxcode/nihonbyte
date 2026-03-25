@@ -11408,6 +11408,7 @@ body.history-mode .dashboard-shell textarea {
   align-content: center;
   gap: 8px;
   text-align: left;
+  overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 
@@ -11420,8 +11421,10 @@ body.history-mode .dashboard-shell textarea {
 .gr-brick-title {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  max-width: 100%;
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  box-sizing: border-box;
   padding: 7px 14px;
   border-radius: 999px;
   background: #228b22;
@@ -11431,8 +11434,9 @@ body.history-mode .dashboard-shell textarea {
   font-weight: 800;
   margin-bottom: 6px;
   line-height: 1.25;
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gr-brick-desc {

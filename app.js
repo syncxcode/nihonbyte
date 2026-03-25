@@ -3105,6 +3105,8 @@ grid.style.display="grid";
       );
     };
 
+    const postersFragment = document.createDocumentFragment();
+
     // LOOPING UTAMA (Mecah 3 Poster)
     data.sections.forEach((section) => {
       const poster = document.createElement("article");
@@ -3134,37 +3136,32 @@ grid.style.display="grid";
       const colCount = rowsToRender[0].length; 
       gridContainer.style.gridTemplateColumns = `repeat(${colCount}, minmax(0, 1fr))`;
 
-      // LOOPING HURUF
-      rowsToRender.forEach((row, rowIndex) => {
-        row.forEach((cell, colIndex) => {
-          const cellElem = document.createElement("div");
-          const isLabel = /^[A-Z]*$/.test(cell); 
-          
-          if (cell === "") {
-              cellElem.className = "letter-empty";
-          } else if (isLabel) {
-              cellElem.className = "letter-label";
-              cellElem.textContent = cell;
-              
-              // MANTRA RADAR: Deteksi Huruf Panduan Vokal (A, I, U, E, O)
-              const isVokal = isDesktop ? (colIndex === 0) : (rowIndex === 0);
-              if (isVokal) {
-                  cellElem.classList.add("label-vokal");
+      // Render batch sekali (lebih hemat layout/repaint di device mobile asli)
+      const cellsHtml = rowsToRender
+        .map((row, rowIndex) =>
+          row
+            .map((cell, colIndex) => {
+              if (cell === "") return '<div class="letter-empty"></div>';
+              const isLabel = /^[A-Z]*$/.test(cell);
+              if (isLabel) {
+                const isVokal = isDesktop ? (colIndex === 0) : (rowIndex === 0);
+                const cls = `letter-label${isVokal ? " label-vokal" : ""}`;
+                return `<div class="${cls}">${cell}</div>`;
               }
-          } else {
-              cellElem.className = "letter-cell";
-              cellElem.textContent = cell;
-          }
-          
-          gridContainer.appendChild(cellElem);
-        });
-      });
+              return `<div class="letter-cell">${cell}</div>`;
+            })
+            .join("")
+        )
+        .join("");
+      gridContainer.innerHTML = cellsHtml;
       
       // INI BAGIAN YANG TADI GAK SENGAJA KEHAPUS SAMA LU BOSKU!
       secElem.appendChild(gridContainer);
       poster.querySelector(".letter-poster-body").appendChild(secElem);
-      grid.appendChild(poster);
+      postersFragment.appendChild(poster);
     }); // <-- Ini penutup data.sections.forEach yang hilang tadi
+
+    grid.appendChild(postersFragment);
     
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }

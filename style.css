@@ -2453,6 +2453,31 @@ body.review-mode-active .app-footer {
   .letter-poster h2 { font-size: 1.2rem !important; }
 }
 
+@media (max-width: 767px) and (orientation: portrait) {
+  .letter-poster {
+    content-visibility: auto;
+    contain: layout paint style;
+    contain-intrinsic-size: 520px;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  .letter-grid-mobile {
+    contain: layout paint;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  .letter-poster-body {
+    overscroll-behavior-x: contain;
+  }
+}
+
 /* =========================================
    UI LOGIN & PROFIL (SIDEBAR) - VERSI BULAT KECE
 ========================================= */

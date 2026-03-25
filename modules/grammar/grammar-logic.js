@@ -204,6 +204,15 @@
         hubPage = nextPage;
         hubState.page = hubPage;
         paintList();
+        const contentPanel = document.querySelector(".content-panel");
+        const hubRoot = grid.querySelector(".gr-hub");
+        if (contentPanel && hubRoot) {
+          contentPanel.scrollTop = hubRoot.offsetTop;
+        } else if (hubRoot) {
+          const rect = hubRoot.getBoundingClientRect();
+          const top = rect.top + (window.scrollY || window.pageYOffset || 0);
+          window.scrollTo({ top, behavior: "auto" });
+        }
       });
     }
 
@@ -212,6 +221,15 @@
       hubState.page = 1;
       hubState.level = levelSelect.value || "all";
       paintList();
+      const contentPanel = document.querySelector(".content-panel");
+      const hubRoot = grid.querySelector(".gr-hub");
+      if (contentPanel && hubRoot) {
+        contentPanel.scrollTop = hubRoot.offsetTop;
+      } else if (hubRoot) {
+        const rect = hubRoot.getBoundingClientRect();
+        const top = rect.top + (window.scrollY || window.pageYOffset || 0);
+        window.scrollTo({ top, behavior: "auto" });
+      }
     });
     if (levelSelect) {
       levelSelect.disabled = activeLevels.length <= 1;

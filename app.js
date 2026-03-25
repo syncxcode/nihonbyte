@@ -3097,9 +3097,6 @@ grid.style.display="grid";
     if (!data) return;
 
     const isDesktop = window.innerWidth > 768;
-    const isTouchDevice = (typeof navigator !== "undefined" && Number(navigator.maxTouchPoints) > 0)
-      || (typeof window.matchMedia === "function" && window.matchMedia("(pointer: coarse)").matches);
-    const isMobileLikeViewport = isTouchDevice && (window.innerWidth <= 1024 || window.innerHeight <= 540);
 
     const transpose = (matrix) => {
       const maxCols = Math.max(...matrix.map(row => row.length));
@@ -3108,7 +3105,7 @@ grid.style.display="grid";
       );
     };
 
-    const posterNodes = [];
+    const postersFragment = document.createDocumentFragment();
 
     // LOOPING UTAMA (Mecah 3 Poster)
     data.sections.forEach((section) => {
@@ -3161,33 +3158,10 @@ grid.style.display="grid";
       // INI BAGIAN YANG TADI GAK SENGAJA KEHAPUS SAMA LU BOSKU!
       secElem.appendChild(gridContainer);
       poster.querySelector(".letter-poster-body").appendChild(secElem);
-      posterNodes.push(poster);
+      postersFragment.appendChild(poster);
     }); // <-- Ini penutup data.sections.forEach yang hilang tadi
 
-    // Device mobile (portrait + landscape): append bertahap per frame agar main thread tidak drop.
-    if (isMobileLikeViewport && posterNodes.length > 1) {
-      grid.appendChild(posterNodes[0]);
-      let nextIndex = 1;
-      const appendNextPoster = () => {
-        if (nextIndex >= posterNodes.length) return;
-        grid.appendChild(posterNodes[nextIndex]);
-        nextIndex += 1;
-        if (typeof window.requestAnimationFrame === "function") {
-          window.requestAnimationFrame(appendNextPoster);
-        } else {
-          setTimeout(appendNextPoster, 0);
-        }
-      };
-      if (typeof window.requestAnimationFrame === "function") {
-        window.requestAnimationFrame(appendNextPoster);
-      } else {
-        setTimeout(appendNextPoster, 0);
-      }
-    } else {
-      const postersFragment = document.createDocumentFragment();
-      posterNodes.forEach((poster) => postersFragment.appendChild(poster));
-      grid.appendChild(postersFragment);
-    }
+    grid.appendChild(postersFragment);
     
     if(resultInfo) resultInfo.textContent = script.charAt(0).toUpperCase() + script.slice(1);
   }

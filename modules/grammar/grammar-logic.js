@@ -100,6 +100,13 @@
       const top = rect.top + (window.scrollY || window.pageYOffset || 0);
       window.scrollTo({ top, behavior: "auto" });
     }
+    function forceScrollHubToTop() {
+      scrollHubToTop();
+      if (typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(() => scrollHubToTop());
+      }
+      setTimeout(() => scrollHubToTop(), 0);
+    }
     if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
       levelSelect.value = hubState.level;
     }
@@ -217,7 +224,7 @@
         hubPage = nextPage;
         hubState.page = hubPage;
         paintList();
-        scrollHubToTop();
+        forceScrollHubToTop();
       });
     }
 
@@ -226,7 +233,7 @@
       hubState.page = 1;
       hubState.level = levelSelect.value || "all";
       paintList();
-      scrollHubToTop();
+      forceScrollHubToTop();
     });
     if (levelSelect) {
       levelSelect.disabled = activeLevels.length <= 1;

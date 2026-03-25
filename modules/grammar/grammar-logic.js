@@ -88,17 +88,17 @@
     const HUB_PAGE_SIZE = isMobilePortrait ? 10 : (window.innerWidth <= 767 ? 5 : 12);
     let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
     function scrollHubToTop() {
-      const hubRoot = grid.querySelector(".gr-hub");
-      if (!hubRoot) return;
       const contentPanel = document.querySelector(".content-panel");
-      const hasScrollablePanel = !!contentPanel && contentPanel.scrollHeight > contentPanel.clientHeight + 1;
-      if (hasScrollablePanel) {
-        contentPanel.scrollTop = hubRoot.offsetTop;
-        return;
+      if (contentPanel) {
+        contentPanel.scrollTop = 0;
       }
-      const rect = hubRoot.getBoundingClientRect();
-      const top = rect.top + (window.scrollY || window.pageYOffset || 0);
-      window.scrollTo({ top, behavior: "auto" });
+      if (document.documentElement) {
+        document.documentElement.scrollTop = 0;
+      }
+      if (document.body) {
+        document.body.scrollTop = 0;
+      }
+      window.scrollTo({ top: 0, behavior: "auto" });
     }
     function forceScrollHubToTop() {
       scrollHubToTop();

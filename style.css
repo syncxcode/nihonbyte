@@ -12916,3 +12916,47 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
     box-shadow: none !important;
   }
 }
+
+/* iOS landscape stabilize (Safari + Chrome iOS only, Android untouched) */
+@media screen and (orientation: landscape) and (min-width: 768px) and (max-width: 1366px) {
+  .ios-device,
+  .ios-device body {
+    overflow: auto !important;
+    height: auto !important;
+  }
+
+  .ios-device .app-body-shell {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: var(--topbar-height) !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    height: auto !important;
+  }
+
+  .ios-device #sidebar,
+  .ios-device .content-panel {
+    height: calc(100dvh - var(--topbar-height)) !important;
+    max-height: calc(100dvh - var(--topbar-height)) !important;
+  }
+
+  .ios-device .content-panel {
+    padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .ios-device .menu-panel-card {
+    align-items: center !important;
+  }
+
+  .ios-device .menu-panel-card__body strong,
+  .ios-device .menu-panel-card__body > span {
+    display: block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+  }
+}

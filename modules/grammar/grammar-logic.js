@@ -87,6 +87,19 @@
     );
     const HUB_PAGE_SIZE = isMobilePortrait ? 10 : (window.innerWidth <= 767 ? 5 : 12);
     let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
+    function scrollHubToTop() {
+      const hubRoot = grid.querySelector(".gr-hub");
+      if (!hubRoot) return;
+      const contentPanel = document.querySelector(".content-panel");
+      const hasScrollablePanel = !!contentPanel && contentPanel.scrollHeight > contentPanel.clientHeight + 1;
+      if (hasScrollablePanel) {
+        contentPanel.scrollTop = hubRoot.offsetTop;
+        return;
+      }
+      const rect = hubRoot.getBoundingClientRect();
+      const top = rect.top + (window.scrollY || window.pageYOffset || 0);
+      window.scrollTo({ top, behavior: "auto" });
+    }
     if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
       levelSelect.value = hubState.level;
     }
@@ -204,15 +217,7 @@
         hubPage = nextPage;
         hubState.page = hubPage;
         paintList();
-        const contentPanel = document.querySelector(".content-panel");
-        const hubRoot = grid.querySelector(".gr-hub");
-        if (contentPanel && hubRoot) {
-          contentPanel.scrollTop = hubRoot.offsetTop;
-        } else if (hubRoot) {
-          const rect = hubRoot.getBoundingClientRect();
-          const top = rect.top + (window.scrollY || window.pageYOffset || 0);
-          window.scrollTo({ top, behavior: "auto" });
-        }
+        scrollHubToTop();
       });
     }
 
@@ -221,15 +226,7 @@
       hubState.page = 1;
       hubState.level = levelSelect.value || "all";
       paintList();
-      const contentPanel = document.querySelector(".content-panel");
-      const hubRoot = grid.querySelector(".gr-hub");
-      if (contentPanel && hubRoot) {
-        contentPanel.scrollTop = hubRoot.offsetTop;
-      } else if (hubRoot) {
-        const rect = hubRoot.getBoundingClientRect();
-        const top = rect.top + (window.scrollY || window.pageYOffset || 0);
-        window.scrollTo({ top, behavior: "auto" });
-      }
+      scrollHubToTop();
     });
     if (levelSelect) {
       levelSelect.disabled = activeLevels.length <= 1;

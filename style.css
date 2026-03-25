@@ -11715,6 +11715,21 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
+@media (max-width: 767px) and (orientation: portrait) {
+  .gr-brick {
+    overflow: hidden;
+  }
+
+  .gr-brick-title {
+    width: 50% !important;
+    min-width: 0;
+    max-width: 50% !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════
    LETTER CIRCLE BUTTONS (あ / ア) — inside Huruf panel card
    Clean native style — no pink, slate/dark tones

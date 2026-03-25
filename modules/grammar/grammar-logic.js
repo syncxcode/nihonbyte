@@ -81,7 +81,11 @@
     const brickGrid = grid.querySelector(".gr-brick-grid");
     const levelSelect = grid.querySelector("#gr-level-filter");
     const localPagination = grid.querySelector(".gr-hub-pagination");
-    const HUB_PAGE_SIZE = window.innerWidth <= 767 ? 5 : 12;
+    const isMobilePortrait = window.innerWidth <= 767 && (
+      (typeof window.matchMedia === "function" && window.matchMedia("(orientation: portrait)").matches)
+      || window.innerHeight >= window.innerWidth
+    );
+    const HUB_PAGE_SIZE = isMobilePortrait ? 10 : (window.innerWidth <= 767 ? 5 : 12);
     let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
     if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
       levelSelect.value = hubState.level;

@@ -11419,10 +11419,9 @@ body.history-mode .dashboard-shell textarea {
 }
 
 .gr-brick-title {
-  display: inline-flex;
-  align-items: center;
+  display: block;
   width: 50%;
-  min-width: 50%;
+  min-width: 0;
   max-width: 50%;
   box-sizing: border-box;
   padding: 7px 14px;

@@ -1,6 +1,6 @@
 // Grammar Logic — NihonByte
 // Modul independen: tidak bergantung pada app.js untuk rendering.
-// Menggunakan prefix class "sp-" agar tidak tabrakan dengan verb-forms.
+// Mendukung dua struktur data: grammar native + verb-form (examples) yang sudah digabung.
 
 (function initSentencePatternsLogic() {
   const sentenceState = new Map();
@@ -28,6 +28,11 @@
     return idx;
   }
 
+  function getLevelRank(level) {
+    const order = { N5: 0, N4: 1, N3: 2, N2: 3, N1: 4 };
+    return Object.prototype.hasOwnProperty.call(order, level) ? order[level] : 999;
+  }
+
   // ═══════════════════════════════════════════
   //  HUB — Daftar semua grammar (cards)
   // ═══════════════════════════════════════════
@@ -39,7 +44,16 @@
     const levels = configuredLevels.filter((level) => levelsInData.has(level));
     const activeLevels = levels.length ? levels : fallbackLevels.filter((level) => levelsInData.has(level));
     const unlockedLevelSet = new Set(activeLevels);
-    const patterns = allPatterns.filter((p) => unlockedLevelSet.has(p.level));
+    const originalIndexMap = new Map();
+    allPatterns.forEach((item, index) => originalIndexMap.set(item, index));
+    const patterns = allPatterns
+      .filter((p) => unlockedLevelSet.has(p.level))
+      .slice()
+      .sort((a, b) => {
+        const byLevel = getLevelRank(a.level) - getLevelRank(b.level);
+        if (byLevel !== 0) return byLevel;
+        return (originalIndexMap.get(a) || 0) - (originalIndexMap.get(b) || 0);
+      });
     const allLevelLabel = activeLevels.length > 1
       ? `${activeLevels[0]}~${activeLevels[activeLevels.length - 1]}`
       : (activeLevels[0] || "N5");
@@ -245,29 +259,84 @@
       return;
     }
 
-    const groupsHtml = pattern.groups
+    const groups = Array.isArray(pattern.groups) ? pattern.groups : [];
+    const formulaItems = Array.isArray(pattern.formulas) ? pattern.formulas : [];
+    const formulaHtml = formulaItems.length
+      ? `
+        <h3>${t("Rumus")}</h3>
+        <ul>
+          ${formulaItems
+            .map((item) => `<li><strong>${t(item.group || "")}:</strong> ${t(item.rule || "")}</li>`)
+            .join("")}
+        </ul>
+      `
+      : "";
+
+    const groupsHtml = groups
       .map((group) => {
-        // Tampilkan 1 kalimat awal, sisanya bisa diacak
-        const firstSentence = group.sentences[0];
-        const sentenceHtml = firstSentence
-          ? buildSentenceCard(firstSentence, pattern.id, group.name, 0)
-          : "";
+        const groupName = group?.name || "-";
+        const groupDesc = group?.description || "";
+        const hasExamples = Array.isArray(group?.examples) && group.examples.length > 0;
+
+        if (!hasExamples) {
+          const firstSentence = Array.isArray(group?.sentences) ? group.sentences[0] : null;
+          const sentenceHtml = firstSentence
+            ? buildSentenceCard(firstSentence, pattern.id, groupName, 0)
+            : "";
+
+          return `
+            <section class="gr-group-panel" data-gr-group="${groupName}" data-gr-pattern="${pattern.id}">
+              <h4>${groupName}</h4>
+              <p class="gr-group-desc">${t(groupDesc)}</p>
+              <div class="gr-sentences-area">
+                ${sentenceHtml}
+              </div>
+              <div class="gr-sentence-actions">
+                <button type="button" class="gr-shuffle-btn" data-pattern="${pattern.id}" data-group="${groupName}">
+                  <span class="gr-shuffle-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M16 3h5v5"></path><path d="M4 20l7-7"></path><path d="M21 3l-7 7"></path><path d="M16 21h5v-5"></path><path d="M4 4l7 7"></path><path d="M21 21l-7-7"></path></svg>
+                  </span>
+                  ${t("Acak Kalimat")}
+                </button>
+              </div>
+            </section>
+          `;
+        }
+
+        const examplesHtml = group.examples
+          .map((example, exampleIndex) => {
+            const firstSentence = Array.isArray(example?.sentences) ? example.sentences[0] : null;
+            const sentenceHtml = firstSentence
+              ? buildSentenceCard(firstSentence, pattern.id, `${groupName}#${exampleIndex}`, 0)
+              : "";
+
+            return `
+              <article class="example-card" data-gr-group="${groupName}" data-gr-example="${exampleIndex}">
+                <h5>${t(example?.base || "")} → ${t(example?.transformed || "")}</h5>
+                <p class="gr-group-desc">${t(example?.kana || "")}</p>
+                <p class="gr-group-desc">${t(example?.romaji || "")}</p>
+                <p class="gr-group-desc">${t(example?.meaning || "")}</p>
+                <div class="gr-sentences-area">
+                  ${sentenceHtml}
+                </div>
+                <div class="gr-sentence-actions">
+                  <button type="button" class="gr-shuffle-btn" data-pattern="${pattern.id}" data-group="${groupName}" data-example="${exampleIndex}">
+                    <span class="gr-shuffle-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M16 3h5v5"></path><path d="M4 20l7-7"></path><path d="M21 3l-7 7"></path><path d="M16 21h5v-5"></path><path d="M4 4l7 7"></path><path d="M21 21l-7-7"></path></svg>
+                    </span>
+                    ${t("Acak Kalimat")}
+                  </button>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
 
         return `
-          <section class="gr-group-panel" data-gr-group="${group.name}" data-gr-pattern="${pattern.id}">
-            <h4>${group.name}</h4>
-            <p class="gr-group-desc">${t(group.description)}</p>
-            <div class="gr-sentences-area">
-              ${sentenceHtml}
-            </div>
-            <div class="gr-sentence-actions">
-              <button type="button" class="gr-shuffle-btn" data-pattern="${pattern.id}" data-group="${group.name}">
-                <span class="gr-shuffle-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M16 3h5v5"></path><path d="M4 20l7-7"></path><path d="M21 3l-7 7"></path><path d="M16 21h5v-5"></path><path d="M4 4l7 7"></path><path d="M21 21l-7-7"></path></svg>
-                </span>
-                ${t("Acak Kalimat")}
-              </button>
-            </div>
+          <section class="gr-group-panel form-group-panel" data-gr-group="${groupName}" data-gr-pattern="${pattern.id}">
+            <h4>${groupName}</h4>
+            <p class="gr-group-desc">${t(groupDesc)}</p>
+            ${examplesHtml}
           </section>
         `;
       })
@@ -278,6 +347,7 @@
         <button type="button" class="gr-back-btn">← ${t("Kembali ke daftar")}</button>
         <h2>${t(pattern.title)}</h2>
         <p class="gr-poster-summary">${t(pattern.summary)}</p>
+        ${formulaHtml}
         <h3>${t("Contoh Kalimat per Pola")}</h3>
         ${groupsHtml}
       </section>
@@ -305,19 +375,35 @@
       btn.addEventListener("click", () => {
         const patId = btn.dataset.pattern;
         const grpName = btn.dataset.group;
+        const exampleIndexRaw = btn.dataset.example;
         const panel = btn.closest(".gr-group-panel");
         if (!panel) return;
 
         const selectedPattern = getData().find((p) => p.id === patId);
         const selectedGroup = selectedPattern?.groups.find((g) => g.name === grpName);
-        if (!selectedGroup || !selectedGroup.sentences.length) return;
+        if (!selectedGroup) return;
+
+        let sourceSentences = Array.isArray(selectedGroup.sentences) ? selectedGroup.sentences : [];
+        let sourceGroupKey = grpName;
+        let area = panel.querySelector(".gr-sentences-area");
+
+        if (typeof exampleIndexRaw !== "undefined" && exampleIndexRaw !== "") {
+          const exampleIndex = Number(exampleIndexRaw);
+          const selectedExample = Array.isArray(selectedGroup.examples) ? selectedGroup.examples[exampleIndex] : null;
+          sourceSentences = Array.isArray(selectedExample?.sentences) ? selectedExample.sentences : [];
+          sourceGroupKey = `${grpName}#${exampleIndex}`;
+          const examplePanel = btn.closest(".example-card");
+          area = examplePanel?.querySelector(".gr-sentences-area") || area;
+        }
+
+        if (!sourceSentences.length) return;
+        if (!area) return;
 
         // Pick random sentence
-        const area = panel.querySelector(".gr-sentences-area");
-        const currentKey = area?.querySelector("[data-gr-key]")?.dataset.spKey;
+        const currentKey = area.querySelector("[data-gr-key]")?.dataset.grKey;
         const currentIdx = currentKey ? Number(currentKey.split(KEY_SEPARATOR)[2]) : -1;
-        const nextIdx = randomIndex(selectedGroup.sentences.length, currentIdx);
-        const nextSentence = selectedGroup.sentences[nextIdx];
+        const nextIdx = randomIndex(sourceSentences.length, currentIdx);
+        const nextSentence = sourceSentences[nextIdx];
 
         // Update DOM
         const jpEl = area.querySelector('[data-role="sentence-jp"]');
@@ -332,7 +418,7 @@
         if (romajiEl) romajiEl.textContent = nextSentence.romaji;
         if (meaningEl) meaningEl.textContent = t(nextSentence.meaning);
         if (playBtn) playBtn.dataset.text = nextSentence.jp;
-        if (card) card.dataset.spKey = [patId, grpName, nextIdx].join(KEY_SEPARATOR);
+        if (card) card.dataset.grKey = [patId, sourceGroupKey, nextIdx].join(KEY_SEPARATOR);
       });
     });
   }

@@ -426,10 +426,6 @@ grid.style.display="grid";
     else if (viewMode === "favorit") activeKey = "favorit";
     else if (viewMode.startsWith("letters:")) activeKey = "letters";
     else if (
-      viewMode === "verb-forms" ||
-      viewMode.startsWith("verb-form:") ||
-      viewMode === "adjective-forms" ||
-      viewMode.startsWith("adjective-form:") ||
       viewMode === "grammar" || viewMode.startsWith("grammar:") ||
       viewMode.startsWith("dev:")
     ) {
@@ -3467,34 +3463,6 @@ grid.style.display="grid";
     });
   });
 
-  document.querySelectorAll(".verb-form-menu-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (accessMode === "guest") {
-        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
-        return;
-      }
-      viewMode = "verb-forms";
-      if (search) search.value = "";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
-  document.querySelectorAll(".adjective-form-menu-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      if (accessMode === "guest") {
-        openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Menu sidebar hanya terbuka untuk pengguna login.</p>");
-        return;
-      }
-      viewMode = "adjective-forms";
-      if (search) search.value = "";
-      closeModal();
-      render();
-      closeSidebar();
-    });
-  });
-
   document.querySelectorAll(".grammar-menu-btn").forEach((button) => {
     button.addEventListener("click", () => {
       if (accessMode === "guest") {
@@ -3669,10 +3637,6 @@ grid.style.display="grid";
       viewMode === "menu" ||
       viewMode === "support" ||
       viewMode.startsWith("letters:") ||
-      viewMode === "verb-forms" ||
-      viewMode.startsWith("verb-form:") ||
-      viewMode === "adjective-forms" ||
-      viewMode.startsWith("adjective-form:") ||
       viewMode === "grammar" || viewMode.startsWith("grammar:") ||
       viewMode.startsWith("dev:")
     ) {
@@ -4049,24 +4013,6 @@ grid.style.display="grid";
                 <span>Pola grammar JLPT...</span>
               </span>
             </button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="verb-forms">
-              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--verb" aria-hidden="true">
-                <img src="./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2" alt="">
-              </span>
-              <span class="bottom-nav-hub__menu-body">
-                <strong>Verb Forms</strong>
-                <span>Pola kata kerja JLPT...</span>
-              </span>
-            </button>
-            <button type="button" class="bottom-nav-hub__menu-card" data-menu-action="adjective-forms">
-              <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--adjective" aria-hidden="true">
-                <img src="./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2" alt="">
-              </span>
-              <span class="bottom-nav-hub__menu-body">
-                <strong>Adj Forms</strong>
-                <span>Pola kata sifat JLPT...</span>
-              </span>
-            </button>
             <button type="button" class="bottom-nav-hub__menu-card bottom-nav-hub__menu-card--expressions" data-menu-action="expressions">
               <span class="bottom-nav-hub__menu-icon bottom-nav-hub__menu-icon--expressions" aria-hidden="true">
                 <img src="./assets/icons/duotone-native/menu-ungkapan.svg?v=2" alt="">
@@ -4161,22 +4107,6 @@ grid.style.display="grid";
         if (action === "letters") {
           if (!ensureLoginForMenu()) return;
           viewMode = `letters:${script || "hiragana"}`;
-          if (search) search.value = "";
-          render();
-          return;
-        }
-
-        if (action === "verb-forms") {
-          if (!ensureLoginForMenu()) return;
-          viewMode = "verb-forms";
-          if (search) search.value = "";
-          render();
-          return;
-        }
-
-        if (action === "adjective-forms") {
-          if (!ensureLoginForMenu()) return;
-          viewMode = "adjective-forms";
           if (search) search.value = "";
           render();
           return;
@@ -4277,28 +4207,16 @@ grid.style.display="grid";
         iconPath: "./assets/icons/duotone-native/menu-huruf-scroll.svg?v=2"
       },
       {
-        action: "verb-forms",
-        title: "Verb Forms",
-        description: "Bentuk kata kerja dari pola dasar sampai variasi kalimat",
-        iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-kerja.svg?v=2"
-      },
-      {
-        action: "adjective-forms",
-        title: "Adj Forms",
-        description: "Bentuk kata sifat i-adj dan na-adj dalam pola kalimat",
-        iconPath: "./assets/icons/duotone-native/menu-bentuk-kata-sifat.svg?v=2"
+        action: "grammar",
+        title: "Grammar (文法)",
+        description: "Pola grammar JLPT plus contoh kalimat yang aplikatif",
+        iconPath: "./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2"
       },
       {
         action: "expressions",
         title: "Ungkapan Umum",
         description: "Ekspresi harian untuk percakapan natural sehari-hari",
         iconPath: "./assets/icons/duotone-native/menu-ungkapan.svg?v=2"
-      },
-      {
-        action: "grammar",
-        title: "Grammar (文法)",
-        description: "Pola grammar JLPT plus contoh kalimat yang aplikatif",
-        iconPath: "./assets/icons/duotone-native/menu-grammar-open-book.svg?v=2"
       },
 
     ];
@@ -4392,24 +4310,6 @@ grid.style.display="grid";
       return;
     }
 
-    if (action === "verb-forms") {
-      if (!ensureLoginForMenu()) return;
-      viewMode = "verb-forms";
-      if (search) search.value = "";
-      closeModal();
-      render();
-      return;
-    }
-
-    if (action === "adjective-forms") {
-      if (!ensureLoginForMenu()) return;
-      viewMode = "adjective-forms";
-      if (search) search.value = "";
-      closeModal();
-      render();
-      return;
-    }
-
     if (action === "patterns") {
       if (!ensureLoginForMenu()) return;
       viewMode = "grammar";
@@ -4477,7 +4377,7 @@ grid.style.display="grid";
             </div>
             <div class="prc-lock-poster__steps">
               <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">01</span><span class="prc-lock-poster__step-text">Pilih level di Practice</span></div>
-              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">02</span><span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti</span></div>
+              <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">02</span><span class="prc-lock-poster__step-text">Selesaikan 90% vocab inti + grammar</span></div>
               <div class="prc-lock-poster__step"><span class="prc-lock-poster__step-num">03</span><span class="prc-lock-poster__step-text">Fitur terbuka otomatis</span></div>
             </div>
           </div>
@@ -4746,31 +4646,15 @@ grid.style.display="grid";
     } catch(e) { console.error("Gagal simpan grammar progress:", e); }
   }
 
-  async function saveVerbFormProgress(formId) {
-    if (!window.currentUser || !window.firebaseDb || !window.doc || !window.setDoc) return;
-    if (!formId) return;
-    try {
-      const uid = window.currentUser.uid;
-      const ref = window.doc(window.firebaseDb, "users", uid, "progress", "verbFormOpened");
-      const patch = {};
-      patch[String(formId)] = true;
-      await window.setDoc(ref, patch, { merge: true });
-      if (!window._verbFormOpenedCache) window._verbFormOpenedCache = {};
-      window._verbFormOpenedCache[String(formId)] = true;
-    } catch(e) { console.error("Gagal simpan verbform progress:", e); }
-  }
-
   async function loadAllProgress(uid) {
     if (!window.firebaseDb || !window.doc || !window.getDoc) return;
     try {
-      const [vocabSnap, grammarSnap, verbSnap] = await Promise.all([
+      const [vocabSnap, grammarSnap] = await Promise.all([
         window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "vocabOpened")),
         window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "grammarOpened")),
-        window.getDoc(window.doc(window.firebaseDb, "users", uid, "progress", "verbFormOpened")),
       ]);
       window._vocabOpenedCache   = vocabSnap.exists()   ? vocabSnap.data()   : {};
       window._grammarOpenedCache = grammarSnap.exists() ? grammarSnap.data() : {};
-      window._verbFormOpenedCache = verbSnap.exists()   ? verbSnap.data()    : {};
     } catch(e) { console.error("Gagal load progress:", e); }
   }
 
@@ -4800,23 +4684,15 @@ grid.style.display="grid";
     const grammarDone  = grammarAll.filter(g => grammarOpened[String(g.id)]).length;
     const grammarTotal = grammarAll.length;
 
-    // â”€â”€ Verb Forms â”€â”€
-    const verbOpened = window._verbFormOpenedCache || {};
-    const verbAll = (Array.isArray(window.verbFormsData) ? window.verbFormsData : [])
-      .filter(v => unlockedLevels.includes(v.level));
-    const verbDone  = verbAll.filter(v => verbOpened[String(v.id)]).length;
-    const verbTotal = verbAll.length;
-
-    const done  = vocabDone  + grammarDone  + verbDone;
-    const total = vocabTotal + grammarTotal + verbTotal;
+    const done  = vocabDone  + grammarDone;
+    const total = vocabTotal + grammarTotal;
     const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
 
-    return { pct, done, total, vocabDone, vocabTotal, grammarDone, grammarTotal, verbDone, verbTotal };
+    return { pct, done, total, vocabDone, vocabTotal, grammarDone, grammarTotal };
   }
 
   // â”€â”€ Level Gate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-  // Set window.grammarLevels dan window.verbFormsLevels
-  // sesuai level yang sudah unlock dari onboarding
+  // Set window.grammarLevels sesuai level yang sudah unlock dari onboarding
   function applyLevelGate() {
     const prog = window._practiceProgress;
     if (!prog || !prog.levelStatus) return;
@@ -4824,7 +4700,6 @@ grid.style.display="grid";
     const unlocked = ALL.filter(l => prog.levelStatus[l] === "active" || prog.levelStatus[l] === "completed");
     if (unlocked.length === 0) return;
     window.grammarLevels   = unlocked;
-    window.verbFormsLevels = unlocked;
   }
 
   function render() {
@@ -4922,6 +4797,15 @@ grid.style.display="grid";
     const isActivityView = 
       viewMode === "vocab" && 
       (category?.value === "activity" || selectedType === "activity");
+
+    if (
+      viewMode === "verb-forms" ||
+      viewMode.startsWith("verb-form:") ||
+      viewMode === "adjective-forms" ||
+      viewMode.startsWith("adjective-form:")
+    ) {
+      viewMode = "grammar";
+    }
     
     if (viewMode.startsWith("dev:")) {
       const parts = viewMode.split(":"); 
@@ -4939,60 +4823,6 @@ grid.style.display="grid";
       return;
     }
     
-    if (viewMode === "verb-forms") {
-      window.verbFormsUI?.renderHub({
-        grid,
-        onOpenPoster: (formId) => {
-          viewMode = `verb-form:${formId}`;
-          render();
-        }
-      });
-      if (resultInfo) resultInfo.textContent = "Materi Bentuk Kata Kerja";
-      return;
-    }
-
-    if (viewMode.startsWith("verb-form:")) {
-      const formId = viewMode.split(":")[1];
-      // Simpan progress verb-form saat poster dibuka
-      saveVerbFormProgress(formId);
-      window.verbFormsUI?.renderPoster({
-        grid,
-        formId,
-        onBack: () => {
-          viewMode = "verb-forms";
-          render();
-        }
-      });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Kerja • ${formId.toUpperCase()}`;
-      return;
-    }
-
-    if (viewMode === "adjective-forms") {
-      window.adjectiveFormsUI?.renderHub({
-        grid,
-        onOpenPoster: (formId) => {
-          viewMode = `adjective-form:${formId}`;
-          render();
-        }
-      });
-      if (resultInfo) resultInfo.textContent = "Materi Bentuk Kata Sifat";
-      return;
-    }
-
-    if (viewMode.startsWith("adjective-form:")) {
-      const formId = viewMode.split(":")[1];
-      window.adjectiveFormsUI?.renderPoster({
-        grid,
-        formId,
-        onBack: () => {
-          viewMode = "adjective-forms";
-          render();
-        }
-      });
-      if (resultInfo) resultInfo.textContent = `Bentuk Kata Sifat • ${formId.toUpperCase()}`;
-      return;
-    }
-
     if (viewMode.startsWith("letters:")) {
       renderLetterPoster(viewMode.split(":")[1]);
       return;
@@ -5631,7 +5461,6 @@ grid.style.display="grid";
                 <div class="dash-progress-breakdown">
                   <span>Vocab ${p.vocabDone}/${p.vocabTotal}</span>
                   <span>Grammar ${p.grammarDone}/${p.grammarTotal}</span>
-                  <span>Verb Forms ${p.verbDone}/${p.verbTotal}</span>
                 </div>
                 ${isReady ? `<div class="dash-progress-unlock-hint">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>

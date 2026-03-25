@@ -87,18 +87,37 @@
     );
     const HUB_PAGE_SIZE = isMobilePortrait ? 10 : (window.innerWidth <= 767 ? 5 : 12);
     let hubPage = Number(hubState.page) > 0 ? Number(hubState.page) : 1;
-    function scrollHubToTop() {
+    function hasScrollableContentPanel() {
       const contentPanel = document.querySelector(".content-panel");
-      if (contentPanel) {
-        contentPanel.scrollTop = 0;
+      return !!contentPanel && contentPanel.scrollHeight > contentPanel.clientHeight + 1;
+    }
+    function getCurrentScrollTop() {
+      const contentPanel = document.querySelector(".content-panel");
+      if (hasScrollableContentPanel() && contentPanel) {
+        return contentPanel.scrollTop;
       }
-      if (document.documentElement) {
-        document.documentElement.scrollTop = 0;
+      return window.scrollY
+        || window.pageYOffset
+        || document.documentElement.scrollTop
+        || document.body.scrollTop
+        || 0;
+    }
+    function restoreScrollTop(top) {
+      const safeTop = Number.isFinite(top) ? top : 0;
+      const contentPanel = document.querySelector(".content-panel");
+      if (hasScrollableContentPanel() && contentPanel) {
+        contentPanel.scrollTop = safeTop;
+        return;
       }
-      if (document.body) {
-        document.body.scrollTop = 0;
-      }
-      window.scrollTo({ top: 0, behavior: "auto" });
+      if (document.documentElement) document.documentElement.scrollTop = safeTop;
+      if (document.body) document.body.scrollTop = safeTop;
+      window.scrollTo({ top: safeTop, behavior: "auto" });
+    }
+    function scrollViewportToTop() {
+      restoreScrollTop(0);
+    }
+    function scrollHubToTop() {
+      scrollViewportToTop();
     }
     function forceScrollHubToTop() {
       scrollHubToTop();
@@ -209,13 +228,17 @@
           <small class="gr-level-badge">${pattern.level || "-"}</small>
         `;
         btn.addEventListener("click", () => {
-          const contentPanel = document.querySelector(".content-panel");
-          hubState.scrollTop = contentPanel
-            ? contentPanel.scrollTop
-            : (window.scrollY || window.pageYOffset || 0);
+          hubState.scrollTop = getCurrentScrollTop();
           hubState.anchorId = pattern.id;
           hubState.shouldRestoreScroll = true;
           onOpenPoster?.(pattern.id);
+          if (isMobilePortrait) {
+            scrollViewportToTop();
+            if (typeof window.requestAnimationFrame === "function") {
+              window.requestAnimationFrame(() => scrollViewportToTop());
+            }
+            setTimeout(() => scrollViewportToTop(), 0);
+          }
         });
         brickGrid.appendChild(btn);
       });
@@ -244,9 +267,7 @@
       const restoreY = hubState.scrollTop;
       hubState.shouldRestoreScroll = false;
       setTimeout(() => {
-        const contentPanel = document.querySelector(".content-panel");
-        if (contentPanel) contentPanel.scrollTop = restoreY;
-        else window.scrollTo({ top: restoreY, behavior: "instant" });
+        restoreScrollTop(restoreY);
       }, 90);
     }
   }

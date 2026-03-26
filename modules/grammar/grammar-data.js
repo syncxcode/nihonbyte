@@ -36298,3 +36298,1077 @@ const LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
   if (!Array.isArray(window.grammarData)) window.grammarData = [];
   window.grammarData = window.grammarData.concat(__mergedVerbFormsData);
 })();
+
+(function appendExtraN5CardsFromClipboard() {
+  const __extraN5Cards = [
+{
+  "id": "GR-N5-11",
+  "level": "N5",
+  "title": "Kata Lokasi (位置を表す言葉)",
+  "summary": "Kata-kata yang menunjukkan posisi atau letak suatu benda atau tempat. Digunakan bersama partikel に atau で, biasanya mengikuti pola [Benda] の [Lokasi] に あります / います.",
+  "groups": [
+    {
+      "name": "前 (まえ)",
+      "description": "Di depan sesuatu atau seseorang.",
+      "sentences": [
+        {
+          "jp": "駅の前にコンビニがあります。",
+          "kana": "えきのまえにコンビニがあります。",
+          "romaji": "Eki no mae ni konbini ga arimasu.",
+          "meaning": "Ada minimarket di depan stasiun."
+        },
+        {
+          "jp": "学校の前で待っています。",
+          "kana": "がっこうのまえでまっています。",
+          "romaji": "Gakkou no mae de matte imasu.",
+          "meaning": "Saya sedang menunggu di depan sekolah."
+        },
+        {
+          "jp": "家の前に車があります。",
+          "kana": "いえのまえにくるまがあります。",
+          "romaji": "Ie no mae ni kuruma ga arimasu.",
+          "meaning": "Ada mobil di depan rumah."
+        },
+        {
+          "jp": "先生の前に立ちました。",
+          "kana": "せんせいのまえにたちました。",
+          "romaji": "Sensei no mae ni tachimashita.",
+          "meaning": "Saya berdiri di depan guru."
+        },
+        {
+          "jp": "ホテルの前でタクシーを呼びました。",
+          "kana": "ホテルのまえでタクシーをよびました。",
+          "romaji": "Hoteru no mae de takushii o yobimashita.",
+          "meaning": "Saya memanggil taksi di depan hotel."
+        }
+      ]
+    },
+    {
+      "name": "後ろ (うしろ)",
+      "description": "Di belakang sesuatu atau seseorang.",
+      "sentences": [
+        {
+          "jp": "私の後ろに誰かいますか。",
+          "kana": "わたしのうしろにだれかいますか。",
+          "romaji": "Watashi no ushiro ni dareka imasu ka.",
+          "meaning": "Apakah ada seseorang di belakang saya?"
+        },
+        {
+          "jp": "学校の後ろに公園があります。",
+          "kana": "がっこうのうしろにこうえんがあります。",
+          "romaji": "Gakkou no ushiro ni kouen ga arimasu.",
+          "meaning": "Ada taman di belakang sekolah."
+        },
+        {
+          "jp": "椅子の後ろにかばんがあります。",
+          "kana": "いすのうしろにかばんがあります。",
+          "romaji": "Isu no ushiro ni kaban ga arimasu.",
+          "meaning": "Ada tas di belakang kursi."
+        },
+        {
+          "jp": "後ろを向いてください。",
+          "kana": "うしろをむいてください。",
+          "romaji": "Ushiro o muite kudasai.",
+          "meaning": "Tolong berbalik ke belakang."
+        },
+        {
+          "jp": "建物の後ろに猫がいます。",
+          "kana": "たてもののうしろにねこがいます。",
+          "romaji": "Tatemono no ushiro ni neko ga imasu.",
+          "meaning": "Ada kucing di belakang gedung."
+        }
+      ]
+    },
+    {
+      "name": "中 (なか)",
+      "description": "Di dalam sesuatu.",
+      "sentences": [
+        {
+          "jp": "かばんの中に財布があります。",
+          "kana": "かばんのなかにさいふがあります。",
+          "romaji": "Kaban no naka ni saifu ga arimasu.",
+          "meaning": "Ada dompet di dalam tas."
+        },
+        {
+          "jp": "箱の中に何が入っていますか。",
+          "kana": "はこのなかになにがはいっていますか。",
+          "romaji": "Hako no naka ni nani ga haitte imasu ka.",
+          "meaning": "Apa yang ada di dalam kotak?"
+        },
+        {
+          "jp": "冷蔵庫の中にジュースがあります。",
+          "kana": "れいぞうこのなかにジュースがあります。",
+          "romaji": "Reizouko no naka ni juusu ga arimasu.",
+          "meaning": "Ada jus di dalam kulkas."
+        },
+        {
+          "jp": "部屋の中は暖かいです。",
+          "kana": "へやのなかはあたたかいです。",
+          "romaji": "Heya no naka wa atatakai desu.",
+          "meaning": "Di dalam kamar hangat."
+        },
+        {
+          "jp": "プールの中で泳いでいます。",
+          "kana": "プールのなかでおよいでいます。",
+          "romaji": "Puuru no naka de oyoide imasu.",
+          "meaning": "Saya sedang berenang di dalam kolam renang."
+        }
+      ]
+    },
+    {
+      "name": "右 (みぎ)",
+      "description": "Di sebelah kanan.",
+      "sentences": [
+        {
+          "jp": "右に曲がってください。",
+          "kana": "みぎにまがってください。",
+          "romaji": "Migi ni magatte kudasai.",
+          "meaning": "Tolong belok ke kanan."
+        },
+        {
+          "jp": "銀行の右にレストランがあります。",
+          "kana": "ぎんこうのみぎにレストランがあります。",
+          "romaji": "Ginkou no migi ni resutoran ga arimasu.",
+          "meaning": "Ada restoran di sebelah kanan bank."
+        },
+        {
+          "jp": "私の右に田中さんが座っています。",
+          "kana": "わたしのみぎにたなかさんがすわっています。",
+          "romaji": "Watashi no migi ni Tanaka-san ga suwatte imasu.",
+          "meaning": "Tanaka-san duduk di sebelah kanan saya."
+        },
+        {
+          "jp": "右手に海が見えます。",
+          "kana": "みぎてにうみがみえます。",
+          "romaji": "Migite ni umi ga miemasu.",
+          "meaning": "Di sebelah kanan terlihat laut."
+        },
+        {
+          "jp": "ドアの右にスイッチがあります。",
+          "kana": "ドアのみぎにスイッチがあります。",
+          "romaji": "Doa no migi ni suicchi ga arimasu.",
+          "meaning": "Ada sakelar di sebelah kanan pintu."
+        }
+      ]
+    },
+    {
+      "name": "左 (ひだり)",
+      "description": "Di sebelah kiri.",
+      "sentences": [
+        {
+          "jp": "左に曲がると駅があります。",
+          "kana": "ひだりにまがるとえきがあります。",
+          "romaji": "Hidari ni magaru to eki ga arimasu.",
+          "meaning": "Kalau belok ke kiri ada stasiun."
+        },
+        {
+          "jp": "私の左に座ってください。",
+          "kana": "わたしのひだりにすわってください。",
+          "romaji": "Watashi no hidari ni suwatte kudasai.",
+          "meaning": "Tolong duduk di sebelah kiri saya."
+        },
+        {
+          "jp": "入口の左に受付があります。",
+          "kana": "いりぐちのひだりにうけつけがあります。",
+          "romaji": "Iriguchi no hidari ni uketsuke ga arimasu.",
+          "meaning": "Ada resepsionis di sebelah kiri pintu masuk."
+        },
+        {
+          "jp": "左の道を歩いています。",
+          "kana": "ひだりのみちをあるいています。",
+          "romaji": "Hidari no michi o aruite imasu.",
+          "meaning": "Saya berjalan di jalan sebelah kiri."
+        },
+        {
+          "jp": "黒板の左に地図が貼ってあります。",
+          "kana": "こくばんのひだりにちずがはってあります。",
+          "romaji": "Kokuban no hidari ni chizu ga hatte arimasu.",
+          "meaning": "Ada peta yang ditempel di sebelah kiri papan tulis."
+        }
+      ]
+    },
+    {
+      "name": "上 (うえ)",
+      "description": "Di atas sesuatu.",
+      "sentences": [
+        {
+          "jp": "机の上に本があります。",
+          "kana": "つくえのうえにほんがあります。",
+          "romaji": "Tsukue no ue ni hon ga arimasu.",
+          "meaning": "Ada buku di atas meja."
+        },
+        {
+          "jp": "空の上に雲があります。",
+          "kana": "そらのうえにくもがあります。",
+          "romaji": "Sora no ue ni kumo ga arimasu.",
+          "meaning": "Ada awan di atas langit."
+        },
+        {
+          "jp": "棚の上にぬいぐるみがあります。",
+          "kana": "たなのうえにぬいぐるみがあります。",
+          "romaji": "Tana no ue ni nuigurumi ga arimasu.",
+          "meaning": "Ada boneka di atas rak."
+        },
+        {
+          "jp": "橋の上を車が走っています。",
+          "kana": "はしのうえをくるまがはしっています。",
+          "romaji": "Hashi no ue o kuruma ga hashitte imasu.",
+          "meaning": "Mobil sedang melaju di atas jembatan."
+        },
+        {
+          "jp": "冷蔵庫の上に電子レンジがあります。",
+          "kana": "れいぞうこのうえにでんしレンジがあります。",
+          "romaji": "Reizouko no ue ni denshi renji ga arimasu.",
+          "meaning": "Ada microwave di atas kulkas."
+        }
+      ]
+    },
+    {
+      "name": "下 (した)",
+      "description": "Di bawah sesuatu.",
+      "sentences": [
+        {
+          "jp": "ベッドの下に猫がいます。",
+          "kana": "ベッドのしたにねこがいます。",
+          "romaji": "Beddo no shita ni neko ga imasu.",
+          "meaning": "Ada kucing di bawah tempat tidur."
+        },
+        {
+          "jp": "机の下にごみが落ちています。",
+          "kana": "つくえのしたにごみがおちています。",
+          "romaji": "Tsukue no shita ni gomi ga ochite imasu.",
+          "meaning": "Ada sampah yang jatuh di bawah meja."
+        },
+        {
+          "jp": "橋の下に川があります。",
+          "kana": "はしのしたにかわがあります。",
+          "romaji": "Hashi no shita ni kawa ga arimasu.",
+          "meaning": "Ada sungai di bawah jembatan."
+        },
+        {
+          "jp": "木の下で休みましょう。",
+          "kana": "きのしたでやすみましょう。",
+          "romaji": "Ki no shita de yasumimashou.",
+          "meaning": "Ayo istirahat di bawah pohon."
+        },
+        {
+          "jp": "靴は玄関の下に置いてください。",
+          "kana": "くつはげんかんのしたにおいてください。",
+          "romaji": "Kutsu wa genkan no shita ni oite kudasai.",
+          "meaning": "Tolong taruh sepatu di bawah pintu masuk."
+        }
+      ]
+    },
+    {
+      "name": "横 (よこ)",
+      "description": "Di samping sesuatu (secara horizontal).",
+      "sentences": [
+        {
+          "jp": "私の横に座ってもいいですか。",
+          "kana": "わたしのよこにすわってもいいですか。",
+          "romaji": "Watashi no yoko ni suwatte mo ii desu ka.",
+          "meaning": "Bolehkah saya duduk di samping Anda?"
+        },
+        {
+          "jp": "コンビニの横に本屋があります。",
+          "kana": "コンビニのよこにほんやがあります。",
+          "romaji": "Konbini no yoko ni hon'ya ga arimasu.",
+          "meaning": "Ada toko buku di samping minimarket."
+        },
+        {
+          "jp": "ベッドの横に電気スタンドがあります。",
+          "kana": "ベッドのよこにでんきスタンドがあります。",
+          "romaji": "Beddo no yoko ni denki sutando ga arimasu.",
+          "meaning": "Ada lampu baca di samping tempat tidur."
+        },
+        {
+          "jp": "道の横に花が咲いています。",
+          "kana": "みちのよこにはながさいています。",
+          "romaji": "Michi no yoko ni hana ga saite imasu.",
+          "meaning": "Ada bunga yang mekar di pinggir jalan."
+        },
+        {
+          "jp": "テレビの横にゲーム機があります。",
+          "kana": "テレビのよこにゲームきがあります。",
+          "romaji": "Terebi no yoko ni geemuki ga arimasu.",
+          "meaning": "Ada konsol game di samping TV."
+        }
+      ]
+    },
+    {
+      "name": "隣 (となり)",
+      "description": "Di sebelah, berdampingan langsung (biasanya untuk tempat atau orang).",
+      "sentences": [
+        {
+          "jp": "隣の部屋はうるさいです。",
+          "kana": "となりのへやはうるさいです。",
+          "romaji": "Tonari no heya wa urusai desu.",
+          "meaning": "Kamar sebelah berisik."
+        },
+        {
+          "jp": "私の隣に友達が住んでいます。",
+          "kana": "わたしのとなりにともだちがすんでいます。",
+          "romaji": "Watashi no tonari ni tomodachi ga sunde imasu.",
+          "meaning": "Teman saya tinggal di sebelah saya."
+        },
+        {
+          "jp": "図書館の隣に郵便局があります。",
+          "kana": "としょかんのとなりにゆうびんきょくがあります。",
+          "romaji": "Toshokan no tonari ni yuubinkyoku ga arimasu.",
+          "meaning": "Ada kantor pos di sebelah perpustakaan."
+        },
+        {
+          "jp": "電車の中で隣の人が寝ていました。",
+          "kana": "でんしゃのなかでとなりのひとがねていました。",
+          "romaji": "Densha no naka de tonari no hito ga nete imashita.",
+          "meaning": "Di dalam kereta, orang di sebelah saya tidur."
+        },
+        {
+          "jp": "隣の席は空いていますか。",
+          "kana": "となりのせきはあいていますか。",
+          "romaji": "Tonari no seki wa aite imasu ka.",
+          "meaning": "Apakah kursi sebelah kosong?"
+        }
+      ]
+    },
+    {
+      "name": "近く (ちかく)",
+      "description": "Di dekat, tidak jauh dari sesuatu.",
+      "sentences": [
+        {
+          "jp": "駅の近くにスーパーがあります。",
+          "kana": "えきのちかくにスーパーがあります。",
+          "romaji": "Eki no chikaku ni suupaa ga arimasu.",
+          "meaning": "Ada supermarket di dekat stasiun."
+        },
+        {
+          "jp": "私の家の近くに公園があります。",
+          "kana": "わたしのいえのちかくにこうえんがあります。",
+          "romaji": "Watashi no ie no chikaku ni kouen ga arimasu.",
+          "meaning": "Ada taman di dekat rumah saya."
+        },
+        {
+          "jp": "学校の近くに住んでいます。",
+          "kana": "がっこうのちかくにすんでいます。",
+          "romaji": "Gakkou no chikaku ni sunde imasu.",
+          "meaning": "Saya tinggal di dekat sekolah."
+        },
+        {
+          "jp": "この近くにATMはありますか。",
+          "kana": "このちかくにATMはありますか。",
+          "romaji": "Kono chikaku ni ATM wa arimasu ka.",
+          "meaning": "Apakah ada ATM di dekat sini?"
+        },
+        {
+          "jp": "海の近くのホテルに泊まりました。",
+          "kana": "うみのちかくのホテルにとまりました。",
+          "romaji": "Umi no chikaku no hoteru ni tomarimashita.",
+          "meaning": "Saya menginap di hotel dekat laut."
+        }
+      ]
+    },
+    {
+      "name": "間 (あいだ)",
+      "description": "Di antara dua benda atau dua tempat.",
+      "sentences": [
+        {
+          "jp": "銀行と郵便局の間にカフェがあります。",
+          "kana": "ぎんこうとゆうびんきょくのあいだにカフェがあります。",
+          "romaji": "Ginkou to yuubinkyoku no aida ni kafe ga arimasu.",
+          "meaning": "Ada kafe di antara bank dan kantor pos."
+        },
+        {
+          "jp": "二つのビルの間に駐車場があります。",
+          "kana": "ふたつのビルのあいだにちゅうしゃじょうがあります。",
+          "romaji": "Futatsu no biru no aida ni chuushajou ga arimasu.",
+          "meaning": "Ada tempat parkir di antara dua gedung."
+        },
+        {
+          "jp": "兄と妹の間に座りました。",
+          "kana": "あにといもうとのあいだにすわりました。",
+          "romaji": "Ani to imouto no aida ni suwarimashita.",
+          "meaning": "Saya duduk di antara kakak laki-laki dan adik perempuan."
+        },
+        {
+          "jp": "本棚の間に猫が隠れています。",
+          "kana": "ほんだなのあいだにねこがかくれています。",
+          "romaji": "Hondana no aida ni neko ga kakurete imasu.",
+          "meaning": "Kucing bersembunyi di antara rak buku."
+        },
+        {
+          "jp": "駅と図書館の間は歩いて五分です。",
+          "kana": "えきととしょかんのあいだはあるいてごふんです。",
+          "romaji": "Eki to toshokan no aida wa aruite go-fun desu.",
+          "meaning": "Jarak antara stasiun dan perpustakaan adalah 5 menit jalan kaki."
+        }
+      ]
+    },
+    {
+      "name": "外 (そと)",
+      "description": "Di luar, di bagian luar suatu tempat.",
+      "sentences": [
+        {
+          "jp": "外は寒いですよ。",
+          "kana": "そとはさむいですよ。",
+          "romaji": "Soto wa samui desu yo.",
+          "meaning": "Di luar dingin lho."
+        },
+        {
+          "jp": "犬が外で吠えています。",
+          "kana": "いぬがそとでほえています。",
+          "romaji": "Inu ga soto de hoete imasu.",
+          "meaning": "Anjing sedang menggonggong di luar."
+        },
+        {
+          "jp": "外で遊んでいる子供がいます。",
+          "kana": "そとであそんでいるこどもがいます。",
+          "romaji": "Soto de asonde iru kodomo ga imasu.",
+          "meaning": "Ada anak-anak yang bermain di luar."
+        },
+        {
+          "jp": "雨が降っているから外に出ません。",
+          "kana": "あめがふっているからそとにでません。",
+          "romaji": "Ame ga futte iru kara soto ni demasen.",
+          "meaning": "Karena hujan, saya tidak keluar."
+        },
+        {
+          "jp": "外の空気を吸いに行きましょう。",
+          "kana": "そとのくうきをすいにいきましょう。",
+          "romaji": "Soto no kuuki o sui ni ikimashou.",
+          "meaning": "Ayo pergi menghirup udara segar di luar."
+        }
+      ]
+    },
+    {
+      "name": "向かい (むかい)",
+      "description": "Di seberang, berhadapan langsung dengan sesuatu.",
+      "sentences": [
+        {
+          "jp": "駅の向かいにデパートがあります。",
+          "kana": "えきのむかいにデパートがあります。",
+          "romaji": "Eki no mukai ni depaato ga arimasu.",
+          "meaning": "Ada department store di seberang stasiun."
+        },
+        {
+          "jp": "私の家の向かいに公園があります。",
+          "kana": "わたしのいえのむかいにこうえんがあります。",
+          "romaji": "Watashi no ie no mukai ni kouen ga arimasu.",
+          "meaning": "Ada taman di seberang rumah saya."
+        },
+        {
+          "jp": "向かいの席に座ってください。",
+          "kana": "むかいのせきにすわってください。",
+          "romaji": "Mukai no seki ni suwatte kudasai.",
+          "meaning": "Tolong duduk di kursi yang berhadapan."
+        },
+        {
+          "jp": "向かいのビルに会社があります。",
+          "kana": "むかいのビルにかいしゃがあります。",
+          "romaji": "Mukai no biru ni kaisha ga arimasu.",
+          "meaning": "Ada kantor di gedung seberang."
+        },
+        {
+          "jp": "学校の向かいにコンビニができました。",
+          "kana": "がっこうのむかいにコンビニができました。",
+          "romaji": "Gakkou no mukai ni konbini ga dekimashita.",
+          "meaning": "Ada minimarket baru yang dibuka di seberang sekolah."
+        }
+      ]
+    }
+  ]
+},
+
+// ────────────────────────────────────────────────────────────
+// 2. PLAIN STYLE — ADJEKTIVA & NOMINA
+// ────────────────────────────────────────────────────────────
+{
+  "id": "GR-N5-67",
+  "level": "N5",
+  "title": "Plain Style — Adjektiva & Nomina",
+  "summary": "Bentuk biasa (plain/casual) untuk adjektiva dan nomina. Digunakan dalam percakapan santai, buku harian, atau kalimat dalam kepala. い-adjektiva tidak berubah bentuk dasarnya, sedangkan な-adjektiva dan nomina menggunakan だ di akhir.",
+  "groups": [
+    {
+      "name": "い-Adjektiva (い形容詞)",
+      "description": "Bentuk plain い-adjektiva: positif = 〜い, negatif = 〜くない, lampau = 〜かった, lampau negatif = 〜くなかった.",
+      "sentences": [
+        {
+          "jp": "今日は寒い。",
+          "kana": "きょうはさむい。",
+          "romaji": "Kyou wa samui.",
+          "meaning": "Hari ini dingin."
+        },
+        {
+          "jp": "この料理はあまりおいしくない。",
+          "kana": "このりょうりはあまりおいしくない。",
+          "romaji": "Kono ryouri wa amari oishikunai.",
+          "meaning": "Masakan ini tidak begitu enak."
+        },
+        {
+          "jp": "昨日のテストは難しかった。",
+          "kana": "きのうのテストはむずかしかった。",
+          "romaji": "Kinou no tesuto wa muzukashikatta.",
+          "meaning": "Ujian kemarin sulit."
+        },
+        {
+          "jp": "子供の頃、野菜が好きじゃなかった。",
+          "kana": "こどものころ、やさいがすきじゃなかった。",
+          "romaji": "Kodomo no koro, yasai ga suki ja nakatta.",
+          "meaning": "Waktu kecil, saya tidak suka sayuran."
+        },
+        {
+          "jp": "新しいスマホはとても便利だと思う。",
+          "kana": "あたらしいスマホはとてもべんりだとおもう。",
+          "romaji": "Atarashii sumaho wa totemo benri da to omou.",
+          "meaning": "Saya pikir HP baru ini sangat praktis."
+        }
+      ]
+    },
+    {
+      "name": "な-Adjektiva & Nomina (な形容詞・名詞)",
+      "description": "Bentuk plain な-adjektiva dan nomina: positif = 〜だ, negatif = 〜じゃない, lampau = 〜だった, lampau negatif = 〜じゃなかった.",
+      "sentences": [
+        {
+          "jp": "彼女はとても親切だ。",
+          "kana": "かのじょはとてもしんせつだ。",
+          "romaji": "Kanojo wa totemo shinsetsu da.",
+          "meaning": "Dia (perempuan) sangat baik hati."
+        },
+        {
+          "jp": "この部屋は静かじゃない。",
+          "kana": "このへやはしずかじゃない。",
+          "romaji": "Kono heya wa shizuka ja nai.",
+          "meaning": "Kamar ini tidak tenang."
+        },
+        {
+          "jp": "昨日は休みだった。",
+          "kana": "きのうはやすみだった。",
+          "romaji": "Kinou wa yasumi datta.",
+          "meaning": "Kemarin hari libur."
+        },
+        {
+          "jp": "あの映画はそんなに有名じゃなかった。",
+          "kana": "あのえいがはそんなにゆうめいじゃなかった。",
+          "romaji": "Ano eiga wa sonna ni yuumei ja nakatta.",
+          "meaning": "Film itu tidak begitu terkenal."
+        },
+        {
+          "jp": "田中さんは学生だと思う。",
+          "kana": "たなかさんはがくせいだとおもう。",
+          "romaji": "Tanaka-san wa gakusei da to omou.",
+          "meaning": "Saya pikir Tanaka-san adalah pelajar."
+        }
+      ]
+    }
+  ]
+},
+
+// ────────────────────────────────────────────────────────────
+// 3. POLITE STYLE — ADJEKTIVA & NOMINA
+// ────────────────────────────────────────────────────────────
+{
+  "id": "GR-N5-71",
+  "level": "N5",
+  "title": "Polite Style — Adjektiva & Nomina",
+  "summary": "Bentuk sopan (polite) untuk adjektiva dan nomina. Digunakan dalam percakapan formal, dengan orang yang belum akrab, atau dalam situasi resmi. い-adjektiva menggunakan 〜いです, sedangkan な-adjektiva dan nomina menggunakan 〜です.",
+  "groups": [
+    {
+      "name": "い-Adjektiva (い形容詞)",
+      "description": "Bentuk polite い-adjektiva: positif = 〜いです, negatif = 〜くないです, lampau = 〜かったです, lampau negatif = 〜くなかったです.",
+      "sentences": [
+        {
+          "jp": "今日はとても暑いです。",
+          "kana": "きょうはとてもあついです。",
+          "romaji": "Kyou wa totemo atsui desu.",
+          "meaning": "Hari ini sangat panas."
+        },
+        {
+          "jp": "この問題はあまり難しくないです。",
+          "kana": "このもんだいはあまりむずかしくないです。",
+          "romaji": "Kono mondai wa amari muzukashikunai desu.",
+          "meaning": "Soal ini tidak begitu sulit."
+        },
+        {
+          "jp": "昨日の映画はとても面白かったです。",
+          "kana": "きのうのえいがはとてもおもしろかったです。",
+          "romaji": "Kinou no eiga wa totemo omoshirokatta desu.",
+          "meaning": "Film kemarin sangat menarik."
+        },
+        {
+          "jp": "先週は忙しくなかったです。",
+          "kana": "せんしゅうはいそがしくなかったです。",
+          "romaji": "Senshuu wa isogashikunakatta desu.",
+          "meaning": "Minggu lalu tidak sibuk."
+        },
+        {
+          "jp": "この店のケーキはとても甘いです。",
+          "kana": "このみせのケーキはとてもあまいです。",
+          "romaji": "Kono mise no keeki wa totemo amai desu.",
+          "meaning": "Kue di toko ini sangat manis."
+        }
+      ]
+    },
+    {
+      "name": "な-Adjektiva & Nomina (な形容詞・名詞)",
+      "description": "Bentuk polite な-adjektiva dan nomina: positif = 〜です, negatif = 〜じゃありません, lampau = 〜でした, lampau negatif = 〜じゃありませんでした.",
+      "sentences": [
+        {
+          "jp": "この図書館はとても静かです。",
+          "kana": "このとしょかんはとてもしずかです。",
+          "romaji": "Kono toshokan wa totemo shizuka desu.",
+          "meaning": "Perpustakaan ini sangat tenang."
+        },
+        {
+          "jp": "私はあまり料理が得意じゃありません。",
+          "kana": "わたしはあまりりょうりがとくいじゃありません。",
+          "romaji": "Watashi wa amari ryouri ga tokui ja arimasen.",
+          "meaning": "Saya tidak begitu pandai memasak."
+        },
+        {
+          "jp": "昨日は雨で大変でした。",
+          "kana": "きのうはあめでたいへんでした。",
+          "romaji": "Kinou wa ame de taihen deshita.",
+          "meaning": "Kemarin hujan dan sangat repot."
+        },
+        {
+          "jp": "その店はそんなに有名じゃありませんでした。",
+          "kana": "そのみせはそんなにゆうめいじゃありませんでした。",
+          "romaji": "Sono mise wa sonna ni yuumei ja arimasen deshita.",
+          "meaning": "Toko itu tidak begitu terkenal."
+        },
+        {
+          "jp": "田中さんは会社員です。",
+          "kana": "たなかさんはかいしゃいんです。",
+          "romaji": "Tanaka-san wa kaishain desu.",
+          "meaning": "Tanaka-san adalah karyawan."
+        }
+      ]
+    }
+  ]
+},
+
+// ────────────────────────────────────────────────────────────
+// 4. [PLAIN STYLE] + [NOUN] — KLAUSA RELATIF
+// ────────────────────────────────────────────────────────────
+{
+  "id": "GR-N5-75",
+  "level": "N5",
+  "title": "[Plain Style] + [Noun]",
+  "summary": "Pola klausa relatif — bentuk plain diletakkan sebelum nomina untuk menjelaskan atau memodifikasinya. Berbeda dengan adjektiva biasa, klausa ini bisa berupa kalimat lengkap yang menggambarkan nomina di belakangnya.",
+  "groups": [
+    {
+      "name": "Verb Plain + Noun",
+      "description": "Kata kerja bentuk plain (present/past, positif/negatif) diletakkan sebelum nomina untuk menjelaskannya. Contoh pola: [Verb]人、[Verb]もの、[Verb]場所。",
+      "sentences": [
+        {
+          "jp": "これは私が昨日買った本です。",
+          "kana": "これはわたしがきのうかったほんです。",
+          "romaji": "Kore wa watashi ga kinou katta hon desu.",
+          "meaning": "Ini adalah buku yang saya beli kemarin."
+        },
+        {
+          "jp": "日本語を話せる人はいますか。",
+          "kana": "にほんごをはなせるひとはいますか。",
+          "romaji": "Nihongo o hanaseru hito wa imasu ka.",
+          "meaning": "Apakah ada orang yang bisa berbicara bahasa Jepang?"
+        },
+        {
+          "jp": "毎朝行く喫茶店はここです。",
+          "kana": "まいあさいくきっさてんはここです。",
+          "romaji": "Maiasa iku kissaten wa koko desu.",
+          "meaning": "Kafe yang saya kunjungi setiap pagi adalah di sini."
+        },
+        {
+          "jp": "田中さんが作った料理はおいしかったです。",
+          "kana": "たなかさんがつくったりょうりはおいしかったです。",
+          "romaji": "Tanaka-san ga tsukutta ryouri wa oishikatta desu.",
+          "meaning": "Masakan yang dibuat Tanaka-san enak."
+        },
+        {
+          "jp": "私がまだ読んでいない本がたくさんあります。",
+          "kana": "わたしがまだよんでいないほんがたくさんあります。",
+          "romaji": "Watashi ga mada yonde inai hon ga takusan arimasu.",
+          "meaning": "Ada banyak buku yang belum saya baca."
+        }
+      ]
+    },
+    {
+      "name": "い-Adjektiva Plain + Noun",
+      "description": "い-adjektiva bentuk plain diletakkan langsung sebelum nomina tanpa perubahan bentuk. Contoh pola: [い-Adj]人、[い-Adj]もの、[い-Adj]場所。",
+      "sentences": [
+        {
+          "jp": "安いレストランを探しています。",
+          "kana": "やすいレストランをさがしています。",
+          "romaji": "Yasui resutoran o sagashite imasu.",
+          "meaning": "Saya sedang mencari restoran yang murah."
+        },
+        {
+          "jp": "背が高い人が入ってきました。",
+          "kana": "せがたかいひとがはいってきました。",
+          "romaji": "Se ga takai hito ga haitte kimashita.",
+          "meaning": "Orang yang tinggi masuk ke dalam."
+        },
+        {
+          "jp": "寒い国に行ったことがありますか。",
+          "kana": "さむいくににいったことがありますか。",
+          "romaji": "Samui kuni ni itta koto ga arimasu ka.",
+          "meaning": "Apakah Anda pernah pergi ke negara yang dingin?"
+        },
+        {
+          "jp": "新しい電車に乗りました。",
+          "kana": "あたらしいでんしゃにのりました。",
+          "romaji": "Atarashii densha ni norimashita.",
+          "meaning": "Saya naik kereta yang baru."
+        },
+        {
+          "jp": "おいしいケーキが食べたいです。",
+          "kana": "おいしいケーキがたべたいです。",
+          "romaji": "Oishii keeki ga tabetai desu.",
+          "meaning": "Saya ingin makan kue yang enak."
+        }
+      ]
+    },
+    {
+      "name": "な-Adjektiva Plain + Noun",
+      "description": "な-adjektiva bentuk plain diletakkan sebelum nomina dengan menambahkan な di antara keduanya. Contoh pola: [な-Adj]な人、[な-Adj]な場所、[な-Adj]なもの。",
+      "sentences": [
+        {
+          "jp": "静かな部屋で勉強したいです。",
+          "kana": "しずかなへやでべんきょうしたいです。",
+          "romaji": "Shizuka na heya de benkyou shitai desu.",
+          "meaning": "Saya ingin belajar di kamar yang tenang."
+        },
+        {
+          "jp": "親切な人に道を教えてもらいました。",
+          "kana": "しんせつなひとにみちをおしえてもらいました。",
+          "romaji": "Shinsetsu na hito ni michi o oshiete moraimashita.",
+          "meaning": "Saya diberi tahu jalan oleh orang yang baik hati."
+        },
+        {
+          "jp": "有名なレストランに予約しました。",
+          "kana": "ゆうめいなレストランによやくしました。",
+          "romaji": "Yuumei na resutoran ni yoyaku shimashita.",
+          "meaning": "Saya membuat reservasi di restoran yang terkenal."
+        },
+        {
+          "jp": "便利な場所に引っ越したいです。",
+          "kana": "べんりなばしょにひっこしたいです。",
+          "romaji": "Benri na basho ni hikkoshi tai desu.",
+          "meaning": "Saya ingin pindah ke tempat yang praktis."
+        },
+        {
+          "jp": "元気な子供たちが公園で遊んでいます。",
+          "kana": "げんきなこどもたちがこうえんであそんでいます。",
+          "romaji": "Genki na kodomotachi ga kouen de asonde imasu.",
+          "meaning": "Anak-anak yang energik sedang bermain di taman."
+        }
+      ]
+    }
+  ]
+},
+
+// ────────────────────────────────────────────────────────────
+// 5. 助数詞 — COUNTER WORDS
+// ────────────────────────────────────────────────────────────
+{
+  "id": "GR-N5-83",
+  "level": "N5",
+  "title": "助数詞 (Counter Words)",
+  "summary": "Kata bantu bilangan dalam bahasa Jepang. Setiap kategori benda memiliki counter tersendiri yang melekat setelah angka. Pemilihan counter yang tepat menunjukkan tingkat penguasaan bahasa Jepang yang baik.",
+  "groups": [
+    {
+      "name": "〜枚 (まい) — Benda Tipis & Datar",
+      "description": "Digunakan untuk menghitung benda yang tipis dan datar, seperti kertas, pakaian, piring, foto, dan tiket.",
+      "sentences": [
+        {
+          "jp": "コンビニでA4用紙を五枚コピーしました。",
+          "kana": "コンビニでA4ようしをごまいコピーしました。",
+          "romaji": "Konbini de A4 youshi o go-mai kopii shimashita.",
+          "meaning": "Saya memfotokopi lima lembar kertas A4 di minimarket."
+        },
+        {
+          "jp": "デパートでシャツを三枚買いましたが、一枚は友達へのプレゼントです。",
+          "kana": "デパートでシャツをさんまいかいましたが、いちまいはともだちへのプレゼントです。",
+          "romaji": "Depaato de shatsu o san-mai kaimashita ga, ichi-mai wa tomodachi e no purezento desu.",
+          "meaning": "Saya membeli tiga lembar kemeja di department store, tetapi satu lembar adalah hadiah untuk teman."
+        },
+        {
+          "jp": "このコンサートのチケットは何枚残っていますか。",
+          "kana": "このコンサートのチケットはなんまいのこっていますか。",
+          "romaji": "Kono konsaato no chiketto wa nan-mai nokotte imasu ka.",
+          "meaning": "Berapa lembar tiket konser ini yang tersisa?"
+        },
+        {
+          "jp": "料理をする前に、皿を四枚テーブルに並べました。",
+          "kana": "りょうりをするまえに、さらをよんまいテーブルにならべました。",
+          "romaji": "Ryouri o suru mae ni, sara o yon-mai teeburu ni narabemashita.",
+          "meaning": "Sebelum memasak, saya menyusun empat piring di atas meja."
+        },
+        {
+          "jp": "財布の中に千円札が二枚しか入っていません。",
+          "kana": "さいふのなかにせんえんさつがにまいしかはいっていません。",
+          "romaji": "Saifu no naka ni sen-en satsu ga ni-mai shika haitte imasen.",
+          "meaning": "Di dalam dompet hanya ada dua lembar uang seribu yen."
+        }
+      ]
+    },
+    {
+      "name": "〜本 (ほん) — Benda Panjang & Tipis",
+      "description": "Digunakan untuk menghitung benda yang panjang dan ramping, seperti pensil, botol, payung, pohon, sungai, dan film.",
+      "sentences": [
+        {
+          "jp": "カフェで冷たい水を二本注文しました。",
+          "kana": "カフェでつめたいみずをにほんちゅうもんしました。",
+          "romaji": "Kafe de tsumetai mizu o ni-hon chuumon shimashita.",
+          "meaning": "Saya memesan dua botol air dingin di kafe."
+        },
+        {
+          "jp": "スーパーでにんじんを三本と、きゅうりを二本買いました。",
+          "kana": "スーパーでにんじんをさんぼんと、きゅうりをにほんかいました。",
+          "romaji": "Suupaa de ninjin o san-bon to, kyuuri o ni-hon kaimashita.",
+          "meaning": "Saya membeli tiga buah wortel dan dua buah mentimun di supermarket."
+        },
+        {
+          "jp": "傘を忘れたので、コンビニで一本買いました。",
+          "kana": "かさをわすれたので、コンビニでいっぽんかいました。",
+          "romaji": "Kasa o wasureta node, konbini de i-ppon kaimashita.",
+          "meaning": "Karena lupa membawa payung, saya membeli satu buah di minimarket."
+        },
+        {
+          "jp": "この映画は今年見た中で一番面白い一本です。",
+          "kana": "このえいがはことしみたなかでいちばんおもしろいいっぽんです。",
+          "romaji": "Kono eiga wa kotoshi mita naka de ichiban omoshiroi i-ppon desu.",
+          "meaning": "Film ini adalah satu film paling menarik yang saya tonton tahun ini."
+        },
+        {
+          "jp": "公園に桜の木が何本植えてありますか。",
+          "kana": "こうえんにさくらのきがなんぼんうえてありますか。",
+          "romaji": "Kouen ni sakura no ki ga nan-bon uete arimasu ka.",
+          "meaning": "Ada berapa batang pohon sakura yang ditanam di taman?"
+        }
+      ]
+    },
+    {
+      "name": "〜匹 (ひき) — Hewan Kecil",
+      "description": "Digunakan untuk menghitung hewan kecil seperti kucing, anjing, ikan, serangga, dan kelinci.",
+      "sentences": [
+        {
+          "jp": "私の家では猫を二匹と犬を一匹飼っています。",
+          "kana": "わたしのいえではねこをにひきといぬをいっぴきかっています。",
+          "romaji": "Watashi no ie de wa neko o ni-hiki to inu o i-ppiki katte imasu.",
+          "meaning": "Di rumah saya, kami memelihara dua ekor kucing dan satu ekor anjing."
+        },
+        {
+          "jp": "池の中に金魚が何匹泳いでいますか。",
+          "kana": "いけのなかにきんぎょがなんびきおよいでいますか。",
+          "romaji": "Ike no naka ni kingyo ga nan-biki oyoide imasu ka.",
+          "meaning": "Ada berapa ekor ikan mas yang berenang di dalam kolam?"
+        },
+        {
+          "jp": "ペットショップで白いうさぎを三匹見ましたが、とてもかわいかったです。",
+          "kana": "ペットショップでしろいうさぎをさんびきみましたが、とてもかわいかったです。",
+          "romaji": "Petto shoppu de shiroi usagi o san-biki mimashita ga, totemo kawaikatta desu.",
+          "meaning": "Saya melihat tiga ekor kelinci putih di toko hewan, dan mereka sangat lucu."
+        },
+        {
+          "jp": "庭に野良猫が一匹来ていたので、牛乳を少しあげました。",
+          "kana": "にわにのらねこがいっぴききていたので、ぎゅうにゅうをすこしあげました。",
+          "romaji": "Niwa ni noraneko ga i-ppiki kite ita node, gyuunyuu o sukoshi agemashita.",
+          "meaning": "Karena ada seekor kucing liar yang datang ke halaman, saya memberinya sedikit susu."
+        },
+        {
+          "jp": "この水族館には熱帯魚が五百匹以上いるそうです。",
+          "kana": "このすいぞくかんにはねったいぎょがごひゃくひきいじょういるそうです。",
+          "romaji": "Kono suizokukan ni wa nettaigyo ga go-hyaku-hiki ijou iru sou desu.",
+          "meaning": "Kabarnya akuarium ini memiliki lebih dari lima ratus ekor ikan tropis."
+        }
+      ]
+    },
+    {
+      "name": "〜台 (だい) — Mesin & Kendaraan",
+      "description": "Digunakan untuk menghitung mesin, kendaraan, dan peralatan elektronik seperti mobil, sepeda, komputer, televisi, dan kamera.",
+      "sentences": [
+        {
+          "jp": "会社に新しいパソコンが三台届きました。",
+          "kana": "かいしゃにあたらしいパソコンがさんだいとどきました。",
+          "romaji": "Kaisha ni atarashii pasokon ga san-dai todokimashita.",
+          "meaning": "Tiga unit komputer baru tiba di kantor."
+        },
+        {
+          "jp": "駐車場に車が何台止まっていますか。",
+          "kana": "ちゅうしゃじょうにくるまがなんだいとまっていますか。",
+          "romaji": "Chuushajou ni kuruma ga nan-dai tomatte imasu ka.",
+          "meaning": "Ada berapa unit mobil yang terparkir di tempat parkir?"
+        },
+        {
+          "jp": "デパートの一階に自動販売機が五台並んでいます。",
+          "kana": "デパートのいっかいにじどうはんばいきがごだいならんでいます。",
+          "romaji": "Depaato no ikkai ni jidou hanbaiki ga go-dai narande imasu.",
+          "meaning": "Di lantai satu department store terdapat lima unit mesin penjual otomatis yang berjejer."
+        },
+        {
+          "jp": "兄は自転車を二台持っていますが、毎日一台しか使いません。",
+          "kana": "あにはじてんしゃをにだいもっていますが、まいにちいちだいしかつかいません。",
+          "romaji": "Ani wa jitensha o ni-dai motte imasu ga, mainichi ichi-dai shika tsukaimasen.",
+          "meaning": "Kakak laki-laki saya memiliki dua unit sepeda, namun setiap hari hanya menggunakan satu."
+        },
+        {
+          "jp": "病院のロビーに車いすが四台置いてあります。",
+          "kana": "びょういんのロビーにくるまいすがよんだいおいてあります。",
+          "romaji": "Byouin no robii ni kuruma isu ga yon-dai oite arimasu.",
+          "meaning": "Di lobi rumah sakit terdapat empat unit kursi roda yang tersedia."
+        }
+      ]
+    },
+    {
+      "name": "〜冊 (さつ) — Buku & Majalah",
+      "description": "Digunakan untuk menghitung buku, majalah, buku catatan, dan bahan bacaan yang dijilid.",
+      "sentences": [
+        {
+          "jp": "図書館でレポートのために本を六冊借りました。",
+          "kana": "としょかんでレポートのためにほんをろくさつかりました。",
+          "romaji": "Toshokan de repooto no tame ni hon o roku-satsu karimashita.",
+          "meaning": "Saya meminjam enam buah buku dari perpustakaan untuk keperluan laporan."
+        },
+        {
+          "jp": "本屋で日本語の参考書を二冊と、雑誌を一冊買いました。",
+          "kana": "ほんやでにほんごのさんこうしょをにさつと、ざっしをいっさつかいました。",
+          "romaji": "Hon'ya de nihongo no sankousho o ni-satsu to, zasshi o i-ssatsu kaimashita.",
+          "meaning": "Saya membeli dua buah buku referensi bahasa Jepang dan satu buah majalah di toko buku."
+        },
+        {
+          "jp": "今月は何冊本を読みましたか。",
+          "kana": "こんげつはなんさつほんをよみましたか。",
+          "romaji": "Kongetsu wa nan-satsu hon o yomimashita ka.",
+          "meaning": "Bulan ini Anda sudah membaca berapa buah buku?"
+        },
+        {
+          "jp": "子供の頃から集めてきた漫画が本棚に百冊以上あります。",
+          "kana": "こどものころからあつめてきたまんががほんだなにひゃくさついじょうあります。",
+          "romaji": "Kodomo no koro kara atsumete kita manga ga hondana ni hyaku-satsu ijou arimasu.",
+          "meaning": "Ada lebih dari seratus buah komik yang saya kumpulkan sejak kecil di rak buku."
+        },
+        {
+          "jp": "このノートは三冊セットで売っているので、とても経済的です。",
+          "kana": "このノートはさんさつセットでうっているので、とてもけいざいてきです。",
+          "romaji": "Kono nooto wa san-satsu setto de utte iru node, totemo keizaiteki desu.",
+          "meaning": "Buku catatan ini dijual dalam paket tiga buah, sehingga sangat ekonomis."
+        }
+      ]
+    },
+    {
+      "name": "〜人 (にん) — Orang",
+      "description": "Digunakan untuk menghitung jumlah orang. Perhatikan pengecualian: 一人 (ひとり) dan 二人 (ふたり) memiliki bacaan khusus.",
+      "sentences": [
+        {
+          "jp": "今日のパーティーには二十人以上が参加する予定です。",
+          "kana": "きょうのパーティーにはにじゅうにんいじょうがさんかするよていです。",
+          "romaji": "Kyou no paatii ni wa nijuu-nin ijou ga sanka suru yotei desu.",
+          "meaning": "Lebih dari dua puluh orang direncanakan akan berpartisipasi dalam pesta hari ini."
+        },
+        {
+          "jp": "このレストランは一度に何人まで予約できますか。",
+          "kana": "このレストランはいちどになんにんまでよやくできますか。",
+          "romaji": "Kono resutoran wa ichi-do ni nan-nin made yoyaku dekimasu ka.",
+          "meaning": "Restoran ini bisa menerima reservasi untuk berapa orang sekaligus?"
+        },
+        {
+          "jp": "電車の中には一人で立っている人と、二人で話している人がいました。",
+          "kana": "でんしゃのなかにはひとりでたっているひとと、ふたりではなしているひとがいました。",
+          "romaji": "Densha no naka ni wa hitori de tatte iru hito to, futari de hanashite iru hito ga imashita.",
+          "meaning": "Di dalam kereta, ada orang yang berdiri sendirian dan ada dua orang yang sedang berbicara."
+        },
+        {
+          "jp": "このプロジェクトは三人で担当していますが、もう一人必要です。",
+          "kana": "このプロジェクトはさんにんでたんとうしていますが、もうひとりひつようです。",
+          "romaji": "Kono purojekuto wa san-nin de tantou shite imasu ga, mou hitori hitsuyou desu.",
+          "meaning": "Proyek ini ditangani oleh tiga orang, namun masih membutuhkan satu orang lagi."
+        },
+        {
+          "jp": "市場には朝から何百人もの買い物客が来ていました。",
+          "kana": "いちばにはあさからなんびゃくにんものかいものきゃくがきていました。",
+          "romaji": "Ichiba ni wa asa kara nan-byaku-nin mono kaimono kyaku ga kite imashita.",
+          "meaning": "Sejak pagi, ratusan orang pembeli telah datang ke pasar."
+        }
+      ]
+    },
+    {
+      "name": "〜個 (こ) — Benda Kecil & Bulat",
+      "description": "Digunakan untuk menghitung benda-benda kecil yang berbentuk bulat atau tidak beraturan, seperti telur, apel, permen, batu, dan buah-buahan kecil.",
+      "sentences": [
+        {
+          "jp": "スーパーで卵を六個と、りんごを三個買いました。",
+          "kana": "スーパーでたまごをむっこと、りんごをさんこかいました。",
+          "romaji": "Suupaa de tamago o muk-ko to, ringo o san-ko kaimashita.",
+          "meaning": "Saya membeli enam butir telur dan tiga buah apel di supermarket."
+        },
+        {
+          "jp": "このケーキは一個いくらですか。",
+          "kana": "このケーキはいっこいくらですか。",
+          "romaji": "Kono keeki wa i-kko ikura desu ka.",
+          "meaning": "Kue ini satu buah berapa harganya?"
+        },
+        {
+          "jp": "市場でじゃがいもを十個まとめて買うと、少し安くなります。",
+          "kana": "いちばでじゃがいもをじゅっこまとめてかうと、すこしやすくなります。",
+          "romaji": "Ichiba de jagaimo o juk-ko matomete kau to, sukoshi yasuku narimasu.",
+          "meaning": "Jika membeli sepuluh buah kentang sekaligus di pasar, harganya akan sedikit lebih murah."
+        },
+        {
+          "jp": "デパートのチョコレート売り場で、チョコを五個入りの箱を選びました。",
+          "kana": "デパートのチョコレートうりばで、チョコをごこいりのはこをえらびました。",
+          "romaji": "Depaato no chokoreeto uriba de, choko o go-ko iri no hako o erabimashita.",
+          "meaning": "Di bagian penjualan cokelat department store, saya memilih kotak berisi lima buah cokelat."
+        },
+        {
+          "jp": "冷蔵庫にみかんが二個残っているので、食べてください。",
+          "kana": "れいぞうこにみかんがにこのこっているので、たべてください。",
+          "romaji": "Reizouko ni mikan ga ni-ko nokotte iru node, tabete kudasai.",
+          "meaning": "Ada dua buah jeruk mandarin yang tersisa di kulkas, silakan dimakan."
+        }
+      ]
+    },
+    {
+      "name": "〜つ — Counter Umum (Asli Jepang)",
+      "description": "Counter asli Jepang (hitotsu, futatsu...) yang digunakan secara umum untuk benda-benda yang tidak memiliki counter khusus, atau ketika pembicara tidak yakin dengan counter yang tepat. Hanya digunakan hingga sepuluh (とお).",
+      "sentences": [
+        {
+          "jp": "コンビニでおにぎりを二つとお茶を一本買いました。",
+          "kana": "コンビニでおにぎりをふたつとおちゃをいっぽんかいました。",
+          "romaji": "Konbini de onigiri o futatsu to ocha o i-ppon kaimashita.",
+          "meaning": "Saya membeli dua buah onigiri dan satu botol teh di minimarket."
+        },
+        {
+          "jp": "カフェでケーキを三つ注文しましたが、一つは持ち帰り用です。",
+          "kana": "カフェでケーキをみっつちゅうもんしましたが、ひとつはもちかえりようです。",
+          "romaji": "Kafe de keeki o mittsu chuumon shimashita ga, hitotsu wa mochikaeri you desu.",
+          "meaning": "Saya memesan tiga buah kue di kafe, tetapi satu buah untuk dibawa pulang."
+        },
+        {
+          "jp": "この問題には答えがいくつありますか。",
+          "kana": "このもんだいにはこたえがいくつありますか。",
+          "romaji": "Kono mondai ni wa kotae ga ikutsu arimasu ka.",
+          "meaning": "Ada berapa jawaban untuk soal ini?"
+        },
+        {
+          "jp": "市場で野菜をいくつか選んで、袋に入れました。",
+          "kana": "いちばでやさいをいくつかえらんで、ふくろにいれました。",
+          "romaji": "Ichiba de yasai o ikutsu ka erande, fukuro ni iremashita.",
+          "meaning": "Saya memilih beberapa sayuran di pasar dan memasukkannya ke dalam kantong."
+        },
+        {
+          "jp": "テーブルの上にお菓子が五つ並んでいますが、好きなものを一つ取ってください。",
+          "kana": "テーブルのうえにおかしがいつつならんでいますが、すきなものをひとつとってください。",
+          "romaji": "Teeburu no ue ni okashi ga itsutsu narande imasu ga, suki na mono o hitotsu totte kudasai.",
+          "meaning": "Di atas meja terdapat lima buah kue yang berjejer, silakan ambil satu yang Anda sukai."
+        }
+      ]
+    }
+  ]
+}
+  ];
+  if (!Array.isArray(window.grammarData)) window.grammarData = [];
+  const __extraN5IdSet = new Set(__extraN5Cards.map((item) => item?.id).filter(Boolean));
+  window.grammarData = window.grammarData
+    .filter((item) => !__extraN5IdSet.has(item?.id))
+    .concat(__extraN5Cards);
+})();

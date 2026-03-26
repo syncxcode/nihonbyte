@@ -37369,3 +37369,170 @@ const LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
   if (!Array.isArray(window.grammarData)) window.grammarData = [];
   window.grammarData = window.grammarData.concat(__extraN5Cards);
 })();
+
+(function appendExtraN4CardsFromClipboard() {
+  const __extraN4Cards = [
+{
+  "id": "GR-N4-86",
+  "level": "N4",
+  "title": "〜て / で (Sebab & Alasan)",
+  "summary": "Bentuk て digunakan untuk menyatakan sebab atau alasan yang mengakibatkan suatu kondisi. Berbeda dengan 〜から dan 〜ので, pola ini tidak bisa diikuti kalimat yang mengandung kehendak, perintah, atau permintaan. Kata kerja → 〜て、い-adjektiva → 〜くて、な-adjektiva & nomina → 〜で。",
+  "groups": [
+    {
+      "name": "Verb + 〜て",
+      "description": "Kata kerja bentuk て digunakan sebagai sebab yang menjelaskan kondisi atau perasaan di klausa berikutnya.",
+      "sentences": [
+        {
+          "jp": "電車が遅れて、会議に間に合いませんでした。",
+          "kana": "でんしゃがおくれて、かいぎにまにあいませんでした。",
+          "romaji": "Densha ga okurete, kaigi ni ma ni aimasen deshita.",
+          "meaning": "Kereta terlambat sehingga saya tidak sempat menghadiri rapat."
+        },
+        {
+          "jp": "財布を忘れて、昼ごはんが食べられませんでした。",
+          "kana": "さいふをわすれて、ひるごはんがたべられませんでした。",
+          "romaji": "Saifu o wasurete, hirugohan ga taberaremasen deshita.",
+          "meaning": "Saya lupa membawa dompet sehingga tidak bisa makan siang."
+        },
+        {
+          "jp": "道に迷って、目的地に着くのが遅くなりました。",
+          "kana": "みちにまよって、もくてきちにつくのがおそくなりました。",
+          "romaji": "Michi ni mayotte, mokutekichi ni tsuku no ga osoku narimashita.",
+          "meaning": "Saya tersesat sehingga tiba di tujuan lebih lambat dari rencana."
+        },
+        {
+          "jp": "転んで、ひざをすりむきました。",
+          "kana": "ころんで、ひざをすりむきました。",
+          "romaji": "Koronde, hiza o surimukimashita.",
+          "meaning": "Saya terjatuh sehingga lutut saya tergores."
+        },
+        {
+          "jp": "友達が来て、とても嬉しかったです。",
+          "kana": "ともだちがきて、とてもうれしかったです。",
+          "romaji": "Tomodachi ga kite, totemo ureshikatta desu.",
+          "meaning": "Teman saya datang sehingga saya sangat senang."
+        }
+      ]
+    },
+    {
+      "name": "い-Adjektiva + 〜くて",
+      "description": "い-adjektiva diubah menjadi 〜くて untuk menyatakan kondisi yang menjadi sebab dari keadaan berikutnya.",
+      "sentences": [
+        {
+          "jp": "熱くて、スープが飲めませんでした。",
+          "kana": "あつくて、スープがのめませんでした。",
+          "romaji": "Atsukute, suupu ga nomemasen deshita.",
+          "meaning": "Supnya terlalu panas sehingga saya tidak bisa meminumnya."
+        },
+        {
+          "jp": "部屋が狭くて、大きい机が置けません。",
+          "kana": "へやがせまくて、おおきいつくえがおけません。",
+          "romaji": "Heya ga semakute, ookii tsukue ga okemasen.",
+          "meaning": "Kamarnya sempit sehingga tidak bisa menaruh meja besar."
+        },
+        {
+          "jp": "試験が難しくて、半分以上の問題が解けませんでした。",
+          "kana": "しけんがむずかしくて、はんぶんいじょうのもんだいがとけませんでした。",
+          "romaji": "Shiken ga muzukashikute, hanbun ijou no mondai ga tokemasen deshita.",
+          "meaning": "Ujiannya sulit sehingga lebih dari setengah soal tidak bisa saya kerjakan."
+        },
+        {
+          "jp": "荷物が重くて、一人では運べませんでした。",
+          "kana": "にもつがおもくて、ひとりでははこべませんでした。",
+          "romaji": "Nimotsu ga omokute, hitori de wa hakobemasen deshita.",
+          "meaning": "Barangnya berat sehingga tidak bisa saya bawa sendirian."
+        },
+        {
+          "jp": "風が強くて、傘がさせませんでした。",
+          "kana": "かぜがつよくて、かさがさせませんでした。",
+          "romaji": "Kaze ga tsuyokute, kasa ga sasemasen deshita.",
+          "meaning": "Anginnya kencang sehingga saya tidak bisa membuka payung."
+        }
+      ]
+    },
+    {
+      "name": "な-Adjektiva & Nomina + 〜で",
+      "description": "な-adjektiva dan nomina menggunakan 〜で sebagai penghubung sebab. Tidak menggunakan だ sebelum で.",
+      "sentences": [
+        {
+          "jp": "交通事故で、この道は通れません。",
+          "kana": "こうつうじこで、このみちはとおれません。",
+          "romaji": "Koutsuu jiko de, kono michi wa tooremasen.",
+          "meaning": "Karena kecelakaan lalu lintas, jalan ini tidak bisa dilalui."
+        },
+        {
+          "jp": "病気で、学校を三日間休みました。",
+          "kana": "びょうきで、がっこうをみっかかんやすみました。",
+          "romaji": "Byouki de, gakkou o mikkakan yasumimashita.",
+          "meaning": "Karena sakit, saya tidak masuk sekolah selama tiga hari."
+        },
+        {
+          "jp": "不注意で、大切なデータを削除してしまいました。",
+          "kana": "ふちゅういで、たいせつなデータをさくじょしてしまいました。",
+          "romaji": "Fuchuui de, taisetsu na deeta o sakujo shite shimaimashita.",
+          "meaning": "Karena kurang hati-hati, saya tidak sengaja menghapus data penting."
+        },
+        {
+          "jp": "この地域は交通が不便で、車がないと生活が難しいです。",
+          "kana": "このちいきはこうつうがふべんで、くるまがないとせいかつがむずかしいです。",
+          "romaji": "Kono chiiki wa koutsuu ga fuben de, kuruma ga nai to seikatsu ga muzukashii desu.",
+          "meaning": "Daerah ini transportasinya tidak praktis sehingga sulit hidup tanpa mobil."
+        },
+        {
+          "jp": "停電で、仕事が三時間もできませんでした。",
+          "kana": "ていでんで、しごとがさんじかんもできませんでした。",
+          "romaji": "Teiden de, shigoto ga sanjikan mo dekimasen deshita.",
+          "meaning": "Karena mati listrik, saya tidak bisa bekerja selama tiga jam penuh."
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": "GR-N4-87",
+  "level": "N4",
+  "title": "〜なければならない",
+  "summary": "Menyatakan keharusan atau kewajiban yang tidak bisa dihindari — setara dengan 'harus' dalam bahasa Indonesia. Bentuk percakapan yang lebih santai adalah 〜なきゃ atau 〜なければいけない. Pola: [Verb-ない形] → hilangkan い → tambah なければならない.",
+  "groups": [
+    {
+      "name": "〜なければならない",
+      "description": "Digunakan untuk menyatakan sesuatu yang wajib dilakukan karena aturan, situasi, atau tanggung jawab. Bentuk formal dan sering muncul dalam tulisan maupun percakapan resmi.",
+      "sentences": [
+        {
+          "jp": "パスポートの有効期限が切れているので、更新しなければなりません。",
+          "kana": "パスポートのゆうこうきげんがきれているので、こうしんしなければなりません。",
+          "romaji": "Pasupooto no yuukou kigen ga kirete iru node, koushin shinakereba narimasen.",
+          "meaning": "Masa berlaku paspor saya sudah habis sehingga saya harus memperpanjangnya."
+        },
+        {
+          "jp": "締め切りが明日なので、今夜中にレポートを提出しなければなりません。",
+          "kana": "しめきりがあしたなので、こんやじゅうにレポートをていしゅつしなければなりません。",
+          "romaji": "Shimekiri ga ashita na node, kon'ya juu ni repooto o teishutsu shinakereba narimasen.",
+          "meaning": "Tenggat waktunya besok sehingga saya harus mengumpulkan laporan malam ini juga."
+        },
+        {
+          "jp": "この薬は毎食後に一錠飲まなければなりません。",
+          "kana": "このくすりはまいしょくごにいちじょうのまなければなりません。",
+          "romaji": "Kono kusuri wa mai shoku go ni ichi-jou nomanakere ba narimasen.",
+          "meaning": "Obat ini harus diminum satu tablet setiap sesudah makan."
+        },
+        {
+          "jp": "試験に合格するためには、毎日少なくとも二時間は勉強しなければなりません。",
+          "kana": "しけんにごうかくするためには、まいにちすくなくともにじかんはべんきょうしなければなりません。",
+          "romaji": "Shiken ni goukaku suru tame ni wa, mainichi sukunakutomo ni-jikan wa benkyou shinakereba narimasen.",
+          "meaning": "Untuk lulus ujian, saya harus belajar setidaknya dua jam setiap harinya."
+        },
+        {
+          "jp": "図書館で借りた本は、来週の月曜日までに返却しなければなりません。",
+          "kana": "としょかんでかりたほんは、らいしゅうのげつようびまでにへんきゃくしなければなりません。",
+          "romaji": "Toshokan de karita hon wa, raishuu no getsuyoubi made ni henkyaku shinakereba narimasen.",
+          "meaning": "Buku yang saya pinjam dari perpustakaan harus dikembalikan paling lambat Senin depan."
+        }
+      ]
+    }
+  ]
+}
+  ];
+  if (!Array.isArray(window.grammarData)) window.grammarData = [];
+  window.grammarData = window.grammarData.concat(__extraN4Cards);
+})();

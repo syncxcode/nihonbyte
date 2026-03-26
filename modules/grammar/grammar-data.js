@@ -36302,7 +36302,7 @@ const LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
 (function appendExtraN5CardsFromClipboard() {
   const __extraN5Cards = [
 {
-  "id": "GR-N5-11",
+  "id": "GR-N5-84",
   "level": "N5",
   "title": "Kata Lokasi (位置を表す言葉)",
   "summary": "Kata-kata yang menunjukkan posisi atau letak suatu benda atau tempat. Digunakan bersama partikel に atau で, biasanya mengikuti pola [Benda] の [Lokasi] に あります / います.",
@@ -37367,8 +37367,5 @@ const LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
 }
   ];
   if (!Array.isArray(window.grammarData)) window.grammarData = [];
-  const __extraN5IdSet = new Set(__extraN5Cards.map((item) => item?.id).filter(Boolean));
-  window.grammarData = window.grammarData
-    .filter((item) => !__extraN5IdSet.has(item?.id))
-    .concat(__extraN5Cards);
+  window.grammarData = window.grammarData.concat(__extraN5Cards);
 })();

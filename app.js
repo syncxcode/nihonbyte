@@ -3943,13 +3943,42 @@ grid.style.display="grid";
   function renderSupportPoster() {
     grid.classList.add("support-mode");
     grid.innerHTML = `
-      <section class="support-poster">
-        <h2>Dukung Pengembang</h2>
-        <p>Nihonbyte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
-        <p>Dukungan Anda membantu menjaga proyek ini tetap hidup, berkembang, dan bisa menjangkau lebih banyak orang di masa depan, tanpa iklan, tanpa batasan akses.</p>
-        <p>Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
-        <p>Terima kasih telah menjadi bagian dari perjalanan ini.</p>
-        <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn">Klik Disini</a>
+      <section class="support-poster support-poster--native">
+        <div class="support-poster__bg" aria-hidden="true">
+          <div class="support-poster__orb support-poster__orb--1"></div>
+          <div class="support-poster__orb support-poster__orb--2"></div>
+          <div class="support-poster__orb support-poster__orb--3"></div>
+          <div class="support-poster__grid-lines"></div>
+          <div class="support-poster__kanji support-poster__kanji--main">援</div>
+          <div class="support-poster__kanji support-poster__kanji--sub">支</div>
+        </div>
+
+        <div class="support-poster__content">
+          <div class="support-poster__copy">
+            <div class="support-poster__badge">Support NihonByte</div>
+            <h2>Dukung Pengembang</h2>
+            <p class="support-poster__lead">NihonByte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
+            <p class="support-poster__text">Dukungan Anda membantu proyek ini tetap hidup, berkembang, dan menjangkau lebih banyak orang tanpa iklan dan tanpa batasan akses.</p>
+            <p class="support-poster__text">Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
+            <p class="support-poster__closing">Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+
+            <div class="support-poster__actions">
+              <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn support-poster__cta">Klik Disini</a>
+            </div>
+          </div>
+
+          <div class="support-poster__visual" aria-hidden="true">
+            <div class="support-poster__mini-card support-poster__mini-card--free">
+              <span>Gratis</span>
+            </div>
+            <div class="support-poster__mini-card support-poster__mini-card--ads">
+              <span>Bebas Iklan</span>
+            </div>
+            <div class="support-poster__mini-card support-poster__mini-card--sub">
+              <span>Tanpa Berlangganan</span>
+            </div>
+          </div>
+        </div>
       </section>
     `;
     if(resultInfo) resultInfo.textContent = "Terima kasih atas dukungan Anda";

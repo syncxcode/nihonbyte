@@ -2783,6 +2783,45 @@ grid.style.display="grid";
       });
   }
 
+  function getWordSortKey(word) {
+    return {
+      romaji: (word?.romaji || "").trim(),
+      kana: (word?.kana || "").trim(),
+      kanji: (word?.kanji || "").trim(),
+      meaning: (word?.meaning || "").trim()
+    };
+  }
+
+  function sortWordsShortAZ(list) {
+    return [...list].sort((a, b) => {
+      const aKey = getWordSortKey(a);
+      const bKey = getWordSortKey(b);
+
+      const romajiCompare = aKey.romaji.localeCompare(bKey.romaji, "en", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (romajiCompare !== 0) return romajiCompare;
+
+      const kanaCompare = aKey.kana.localeCompare(bKey.kana, "ja", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (kanaCompare !== 0) return kanaCompare;
+
+      const kanjiCompare = aKey.kanji.localeCompare(bKey.kanji, "ja", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (kanjiCompare !== 0) return kanjiCompare;
+
+      return aKey.meaning.localeCompare(bKey.meaning, "id", {
+        sensitivity: "base",
+        numeric: true
+      });
+    });
+  }
+
   const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
 
   function getFilteredWords() {
@@ -2820,11 +2859,7 @@ grid.style.display="grid";
       return !key || text.includes(key);
     });
 
-    if (selectedType === "verb-adj-only" && selectedLevel === "all" && !key) {
-      return getHomepagePriorityWords(filtered);
-    }
-
-    return filtered;
+    return sortWordsShortAZ(filtered);
   }
 
   function cardImageTemplate(word, expanded = false) {
@@ -2883,9 +2918,9 @@ grid.style.display="grid";
 
     if (typeof vocabularyData === "undefined") return;
     
-    const expressions = vocabularyData.filter(w =>
+    const expressions = sortWordsShortAZ(vocabularyData.filter(w =>
       w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
-    );
+    ));
     if (!expressions.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
       if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "expression" });
@@ -2947,7 +2982,7 @@ grid.style.display="grid";
     if (paginationContainer) paginationContainer.innerHTML = "";
 
     if (typeof vocabularyData === "undefined") return;
-    const activities = vocabularyData.filter(w => w.type === "activity");
+    const activities = sortWordsShortAZ(vocabularyData.filter(w => w.type === "activity"));
     
     if (!activities.length) {
       grid.innerHTML = '<div class="empty-state">Belum ada kosakata aktivitas.</div>';

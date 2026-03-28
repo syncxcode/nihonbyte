@@ -13253,6 +13253,24 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
 }
 
 @media (min-width: 768px) {
+  #grid.support-mode .support-poster__content {
+    align-items: start;
+  }
+
+  #grid.support-mode .support-poster__copy {
+    position: relative;
+    align-self: start;
+    padding-top: 56px;
+  }
+
+  #grid.support-mode .support-poster__badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 !important;
+    z-index: 2;
+  }
+
   #grid.support-mode .support-poster__orb--1 {
     animation: supportOrbDrift 10s ease-in-out infinite;
   }

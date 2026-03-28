@@ -3955,7 +3955,7 @@ grid.style.display="grid";
 
         <div class="support-poster__content">
           <div class="support-poster__copy">
-            <div class="support-poster__badge">Support NihonByte</div>
+            <div class="support-poster__badge">Dukung Pengembang</div>
             <h2>Dukung Pengembang</h2>
             <p class="support-poster__lead">NihonByte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
             <p class="support-poster__text">Dukungan Anda membantu proyek ini tetap hidup, berkembang, dan menjangkau lebih banyak orang tanpa iklan dan tanpa batasan akses.</p>

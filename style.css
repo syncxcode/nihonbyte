@@ -13085,23 +13085,23 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 14px;
-  padding: 8px 14px;
+  margin-bottom: 12px;
+  padding: 7px 13px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(194, 65, 12, 0.14);
-  color: #9a3412;
-  font-size: 0.92rem;
-  font-weight: 850;
+  color: #a14a23;
+  font-size: 0.84rem;
+  font-weight: 840;
   letter-spacing: 0.02em;
 }
 
 #grid.support-mode .support-poster h2 {
   margin: 0 0 14px !important;
-  color: #1f2937 !important;
-  font-size: clamp(2.3rem, 4vw, 4.3rem) !important;
+  color: #3e302c !important;
+  font-size: clamp(2.1rem, 3.5vw, 3.7rem) !important;
   font-weight: 980 !important;
-  line-height: 0.98 !important;
+  line-height: 1.02 !important;
   letter-spacing: -0.03em !important;
   text-shadow: none !important;
 }
@@ -13110,26 +13110,26 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
 #grid.support-mode .support-poster__text,
 #grid.support-mode .support-poster__closing {
   margin: 0 !important;
-  color: #334155 !important;
+  color: #635650 !important;
   max-width: 60ch;
 }
 
 #grid.support-mode .support-poster__lead {
   font-size: clamp(1.05rem, 1.35vw, 1.3rem) !important;
   line-height: 1.62 !important;
-  font-weight: 760 !important;
+  font-weight: 750 !important;
 }
 
 #grid.support-mode .support-poster__text {
   margin-top: 12px !important;
   font-size: clamp(0.98rem, 1.1vw, 1.12rem) !important;
   line-height: 1.68 !important;
-  font-weight: 690 !important;
+  font-weight: 680 !important;
 }
 
 #grid.support-mode .support-poster__closing {
   margin-top: 16px !important;
-  color: #9a3412 !important;
+  color: #b45309 !important;
   font-size: 1rem !important;
   font-weight: 860 !important;
 }
@@ -13289,12 +13289,12 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
 
   #grid.support-mode .support-poster__badge {
     margin-bottom: 10px;
-    padding: 7px 12px;
-    font-size: 0.8rem;
+    padding: 6px 11px;
+    font-size: 0.76rem;
   }
 
   #grid.support-mode .support-poster h2 {
-    font-size: 2rem !important;
+    font-size: 1.82rem !important;
   }
 
   #grid.support-mode .support-poster__lead {
@@ -13379,7 +13379,7 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   }
 
   #grid.support-mode .support-poster h2 {
-    font-size: 1.74rem !important;
+    font-size: 1.56rem !important;
   }
 
   #grid.support-mode .support-poster__lead,

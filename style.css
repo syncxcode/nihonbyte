@@ -13271,6 +13271,12 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
     z-index: 2;
   }
 
+  #grid.support-mode .support-poster__visual {
+    align-self: center;
+    justify-self: end;
+    margin-top: 32px;
+  }
+
   #grid.support-mode .support-poster__orb--1 {
     animation: supportOrbDrift 10s ease-in-out infinite;
   }

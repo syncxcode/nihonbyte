@@ -12040,8 +12040,12 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: minmax(0, 1fr) !important;
   }
 
-  #grid.hub-mode .hub-screen,
-  #grid.hub-mode .menu-hub-screen,
+  #grid.hub-mode .menu-hub-screen {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
   #grid.hub-mode .hub-screen--practice {
     width: 100% !important;
     max-width: none !important;
@@ -12241,6 +12245,7 @@ body.history-mode .dashboard-shell textarea {
     max-width: none !important;
     margin: 0 !important;
     padding: 16px 18px 18px !important;
+    box-sizing: border-box !important;
     border-radius: 20px !important;
     border: 1px solid #c0bfbc !important;
     background: #ffffff !important;
@@ -12863,12 +12868,6 @@ body.history-mode .dashboard-shell textarea {
     background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
     color: #ffffff !important;
   }
-}
-
-@media (min-width: 768px) {
-    #grid.hub-mode .hub-screen, #grid.hub-mode .hub-screen--practice {
-        width: 97% !important;
-    }
 }
 
 @media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 520px) {

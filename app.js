@@ -4980,7 +4980,13 @@ grid.style.display="grid";
 
             grid.classList.add("kc-grid-mode");
             grid.style.removeProperty("grid-template-columns");
-            if (resultInfo) resultInfo.textContent = "";
+            var previousResultInfoText = resultInfo ? resultInfo.textContent : "";
+            var updateKanjiCardResultInfo = function(activeWord) {
+              if (!resultInfo) return;
+              var activeLabel = activeWord?.kanji || activeWord?.kana || "";
+              resultInfo.textContent = activeLabel ? `Card ${activeLabel}` : previousResultInfoText;
+            };
+            updateKanjiCardResultInfo(word);
 
             if (contentPanel) contentPanel.scrollTop = 0;
             else window.scrollTo({ top: 0, behavior: "instant" });
@@ -4995,6 +5001,7 @@ grid.style.display="grid";
 
             window.kanjiCardUI.openWord(word, {
               grid: kcContainer,
+              onWordChange: updateKanjiCardResultInfo,
               onBackToMenu: function() {
                 // Hapus container kanji-card
                 kcContainer.remove();
@@ -5006,6 +5013,7 @@ grid.style.display="grid";
                 }
                 grid.classList.remove("kc-grid-mode");
                 viewMode = "vocab";
+                if (resultInfo) resultInfo.textContent = previousResultInfoText;
 
                 // Restore scroll
                 setTimeout(function() {

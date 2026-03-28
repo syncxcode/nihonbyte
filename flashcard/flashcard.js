@@ -14,6 +14,7 @@
   let _level      = "all";
   let _grid       = null;
   let _onBack     = null;
+  let _onWordChange = null;
   let _flipping   = false;
   let _activeWord = null; // word yang sedang aktif di single view
 
@@ -125,6 +126,12 @@
     return (_index + 1) + " / " + _deck.length;
   }
 
+  function notifyWordChange(word) {
+    if (typeof _onWordChange === "function") {
+      _onWordChange(word || null);
+    }
+  }
+
   function navigate(dir) {
     if (_flipping || _deck.length === 0) return;
     var next = _index + dir;
@@ -138,6 +145,7 @@
 
     setTimeout(function() {
       _index = next;
+      _activeWord = _deck[_index] || null;
       var counter = document.getElementById("kc-counter");
       if (counter) counter.textContent = counterText();
 
@@ -150,6 +158,7 @@
 
       bindPlayButtons();
       updateNavBtns();
+      notifyWordChange(_activeWord);
 
       setTimeout(function() {
         cardEl.classList.remove("kc-flip-in-right", "kc-flip-in-left");
@@ -199,6 +208,7 @@
     _level = level;
     _deck  = buildDeck(level);
     _index = 0;
+    _activeWord = _deck[0] || null;
     var cardEl  = document.getElementById("kc-card");
     var exEl    = document.getElementById("kc-examples-body");
     var counter = document.getElementById("kc-counter");
@@ -207,6 +217,7 @@
     if (counter) counter.textContent = counterText();
     bindPlayButtons();
     updateNavBtns();
+    notifyWordChange(_activeWord);
   }
 
   function render(opts) {
@@ -214,6 +225,9 @@
     var onBackToMenu = opts.onBackToMenu || null;
     _grid   = grid;
     _onBack = onBackToMenu;
+    if (Object.prototype.hasOwnProperty.call(opts, "onWordChange")) {
+      _onWordChange = opts.onWordChange || null;
+    }
     _level  = "all";
     _deck   = buildDeck("all");
     _index  = 0;
@@ -224,6 +238,7 @@
     if (typeof closeSidebar === "function") closeSidebar();
 
     var word = _deck[0] || null;
+    _activeWord = word;
 
     var levelOpts = '<option value="all">Semua Level (N5~N1)</option>';
     LEVELS.forEach(function(l) { levelOpts += '<option value="' + l + '">' + l + '</option>'; });
@@ -289,6 +304,7 @@
 
     bindPlayButtons();
     updateNavBtns();
+    notifyWordChange(_activeWord);
 
     document.removeEventListener("keydown", handleKeydown);
     document.addEventListener("keydown", handleKeydown);
@@ -321,6 +337,9 @@
     var onBackToMenu = opts.onBackToMenu || null;
     _grid   = grid;
     _onBack = onBackToMenu;
+    if (Object.prototype.hasOwnProperty.call(opts, "onWordChange")) {
+      _onWordChange = opts.onWordChange || null;
+    }
 
     if (!word) return;
     _activeWord = word;
@@ -330,6 +349,7 @@
       _deck  = buildDeckFromWord(word);
       _index = 0;
     }
+    _activeWord = _deck[_index] || word;
 
     if (typeof closeSidebar === "function") closeSidebar();
 
@@ -349,7 +369,7 @@
           '<div class="kc-left-col">' +
             '<div class="kc-card-area">' +
               navPrev +
-              '<div id="kc-card" class="kc-card">' + cardInnerHTML(word) + '</div>' +
+              '<div id="kc-card" class="kc-card">' + cardInnerHTML(_activeWord) + '</div>' +
               navNext +
             '</div>' +
           '</div>' +
@@ -359,7 +379,7 @@
                 '<span class="kc-examples-title">Contoh Kalimat</span>' +
               '</div>' +
               '<div id="kc-examples-body" class="kc-examples-body">' +
-                examplesHTML(word) +
+                examplesHTML(_activeWord) +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -387,6 +407,7 @@
 
     bindPlayButtons();
     updateNavBtns();
+    notifyWordChange(_activeWord);
 
     document.removeEventListener("keydown", handleKeydown);
     document.addEventListener("keydown", handleKeydown);
@@ -398,7 +419,7 @@
     if (!_grid) return;
     var word = _activeWord || (_deck && _deck[_index]);
     if (!word) return;
-    openWord(word, { grid: _grid, onBackToMenu: _onBack, _preserveState: true });
+    openWord(word, { grid: _grid, onBackToMenu: _onBack, onWordChange: _onWordChange, _preserveState: true });
   }
 
   window.kanjiCardUI = { render: render, openWord: openWord, rerender: rerender };

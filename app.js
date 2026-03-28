@@ -2822,6 +2822,18 @@ grid.style.display="grid";
     });
   }
 
+  function sortCoreWordsByCategoryAndAZ(list) {
+    const coreTypeOrder = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
+    const grouped = new Map(coreTypeOrder.map((type) => [type, []]));
+
+    list.forEach((word) => {
+      if (!grouped.has(word.type)) return;
+      grouped.get(word.type).push(word);
+    });
+
+    return coreTypeOrder.flatMap((type) => sortWordsShortAZ(grouped.get(type) || []));
+  }
+
   const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
 
   function getFilteredWords() {
@@ -2858,6 +2870,10 @@ grid.style.display="grid";
       ].join("").toLowerCase();
       return !key || text.includes(key);
     });
+
+    if (selectedType === "verb-adj-only") {
+      return sortCoreWordsByCategoryAndAZ(filtered);
+    }
 
     return sortWordsShortAZ(filtered);
   }
@@ -3864,7 +3880,7 @@ grid.style.display="grid";
               Favorit
             </span>
           </h2>
-          <p>${countText} â€” kata yang kamu simpan dari kartu kosakata</p>
+          <p>${countText} dari kartu kosakata</p>
           ${bookmarkedWords.length > 0 ? `<button class="favorit-clear-btn" id="favoritClearBtn">Hapus Semua</button>` : ""}
         </header>
 

@@ -4631,18 +4631,16 @@ grid.style.display="grid";
   // Helper: disable/enable level buttons di search modal sesuai onboarding
   function _applySearchLevelGate(isLockedCategory) {
     const prog = window._practiceProgress;
-    if (!prog || !prog.levelStatus || !isLockedCategory) {
-      // Bebas semua level
-      document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all)").forEach(btn => {
-        btn.disabled = false;
-        btn.classList.remove("level-btn--locked");
-      });
-      return;
-    }
-    // Disable level yang belum unlock
+    if (!prog || !prog.levelStatus) return;
+
+    // Disable level yang belum unlock, selalu patuh onboarding user
+    const unlockedLevels = ["N5","N4","N3","N2","N1"].filter(
+      (lvl) => prog.levelStatus[lvl] === "active" || prog.levelStatus[lvl] === "completed"
+    );
+
     document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all)").forEach(btn => {
       const lvl = btn.dataset.level;
-      const unlocked = prog.levelStatus[lvl] === "active" || prog.levelStatus[lvl] === "completed";
+      const unlocked = unlockedLevels.includes(lvl);
       btn.disabled = !unlocked;
       btn.classList.toggle("level-btn--locked", !unlocked);
       if (!unlocked) btn.classList.remove("active"); // hapus active kalau locked

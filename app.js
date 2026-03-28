@@ -2411,17 +2411,23 @@ grid.style.display="grid";
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
     "verb-ru": "Kata Kerja Ichidan",
+    "verb-irregular": "Kata Kerja Irregular",
     "verb-suru": "Kata Kerja Suru",
     "adj-i": "Kata Sifat I",
     "adj-na": "Kata Sifat Na",
     "noun-time-weather": "Kosakata Waktu & Cuaca",
     "noun-number-counter": "Kosakata Angka & Satuan",
+    "noun-food-drink": "Kosakata Makanan & Minuman",
     "noun-house-family": "Kosakata Rumah & Keluarga",
     "noun-body-medical": "Kosakata Tubuh & Kesehatan",
     "noun-work": "Kosakata Dunia Kerja Umum",
+    "noun-food": "Kosakata Makanan",
+    "noun-drink": "Kosakata Minuman",
     "noun-vehicle": "Kosakata Kendaraan",
     "noun-caregiving": "Kosakata Keperawatan",
     "noun-animal": "Kosakata Nama Binatang",
+    "noun-nature": "Kosakata Alam",
+    "noun-government": "Kosakata Pemerintahan",
     "noun-factory": "Kosakata Pabrik & Manufaktur",
     "noun-agriculture": "Kosakata Pertanian",
     "noun-profession": "Kosakata Profesi",
@@ -2454,11 +2460,14 @@ grid.style.display="grid";
     "noun-place",
     "noun-house-family",
     "noun-work",
+    "noun-government",
     "noun-profession",
     "noun-school",
     "noun-restaurant",
+    "noun-food-drink",
     "noun-color",
     "noun-animal",
+    "noun-nature",
     "noun-sports",
     "noun-hobby",
     "question",
@@ -2480,11 +2489,14 @@ grid.style.display="grid";
     "noun-place": "Tempat",
     "noun-house-family": "Rumah",
     "noun-work": "Kerja",
+    "noun-government": "Pemerintah",
     "noun-profession": "Profesi",
     "noun-school": "Sekolah",
     "noun-restaurant": "Restoran",
+    "noun-food-drink": "Makanan",
     "noun-color": "Warna",
     "noun-animal": "Binatang",
+    "noun-nature": "Alam",
     "noun-sports": "Olahraga",
     "noun-hobby": "Hobi",
     question: "Tanya",
@@ -2499,7 +2511,7 @@ grid.style.display="grid";
   };
 
   function shouldShowLevelInResult(typeKey) {
-    return ["verb-godan", "verb-ru", "verb-suru", "adj-i", "adj-na"].includes(typeKey);
+    return ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"].includes(typeKey);
   }
 
   function formatResultInfo(totalCount, options = {}) {
@@ -2706,6 +2718,12 @@ grid.style.display="grid";
                wordType === "noun-weather";
       }
 
+      // 5. Gabungan Makanan & Minuman
+      if (targetType === "noun-food-drink") {
+        return wordType === "noun-food" ||
+               wordType === "noun-drink";
+      }
+
       // --- END LOGIKA GABUNGAN ---
 
       // Jika tidak cocok dengan gabungan di atas, 
@@ -2720,7 +2738,7 @@ grid.style.display="grid";
     return wordType?.startsWith(targetType) || false;
   }
   function getHomepagePriorityWords(list) {
-    const typeOrder = ["verb-godan", "verb-ru", "verb-suru", "adj-i", "adj-na"];
+    const typeOrder = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
     const levelOrder = ["N5", "N4", "N3", "N2", "N1"];
     return list
       .filter((word) => typeOrder.includes(word.type))
@@ -2735,7 +2753,7 @@ grid.style.display="grid";
       });
   }
 
-  const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-suru", "adj-i", "adj-na"];
+  const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
 
   function getFilteredWords() {
     const key = (search.value || "").toLowerCase().trim();

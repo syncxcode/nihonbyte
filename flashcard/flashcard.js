@@ -63,7 +63,7 @@
     const map = {
       "verb-godan"    : "Godan",
       "verb-ru"       : "Ichidan",
-      "verb-irregular": "Suru",
+      "verb-irregular": "Irregular",
       "adj-i"         : "Kata Sifat い",
       "adj-na"        : "Kata Sifat な",
     };

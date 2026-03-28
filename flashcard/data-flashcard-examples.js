@@ -1,6 +1,6 @@
 // ============================================================
 //  NihonByte — Flashcard Examples Data
-//  Key  : kanji field dari data.js
+//  Key  : kanji field dari modules/vocab/vocab-data.js
 //  Value: array max 5 contoh kalimat
 //
 //  Format per item:

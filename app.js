@@ -2218,10 +2218,12 @@ grid.style.display="grid";
       });
     });
 
-    // Category buttons â€” multiple toggle, klik lagi = lepas
+    // Category buttons â€” single select, klik lagi = lepas
     document.querySelectorAll("#categoryGrid .cat-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
+        const isActive = btn.classList.contains("active");
+        document.querySelectorAll("#categoryGrid .cat-btn").forEach(other => other.classList.remove("active"));
+        if (!isActive) btn.classList.add("active");
         // Cek apakah ada LOCKED_VOCAB_TYPES yang aktif â†’ apply level gate
         const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
         const hasLockedType = activeTypes.some(t => LOCKED_VOCAB_TYPES.includes(t));
@@ -2237,18 +2239,18 @@ grid.style.display="grid";
         ? ["all"]
         : [...document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all).active")].map(b => b.dataset.level);
 
-      // Kumpulkan semua kategori aktif (bisa lebih dari satu)
+      // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
       // Set ke single value (kompatibel dengan render existing)
       // Multi-level: simpan sebagai comma string, render akan handle
       selectedLevel = activeLevels.length === 0 ? "all" : (activeLevels.length === 1 ? activeLevels[0] : activeLevels.join(","));
 
-      // Multi-cat: ambil yang pertama untuk kompatibilitas, atau "all" kalau kosong
+      // Single-cat: ambil yang aktif, atau "all" kalau kosong
       if (modalSearchInput && modalSearchInput.value.trim() !== "" && activeTypes.length === 0) {
         selectedType = "all";
       } else {
-        selectedType = activeTypes.length === 0 ? "verb-adj-only" : (activeTypes.length === 1 ? activeTypes[0] : activeTypes[0]);
+        selectedType = activeTypes.length === 0 ? "verb-adj-only" : activeTypes[0];
       }
 
       viewMode = "vocab";
@@ -2510,8 +2512,35 @@ grid.style.display="grid";
     "noun-body-medical": "Kesehatan",
   };
 
+  const JLPT_LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
+
   function shouldShowLevelInResult(typeKey) {
-    return ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"].includes(typeKey);
+    return ["verb-adj-only", "verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"].includes(typeKey);
+  }
+
+  function getUnlockedLevelsForResultInfo() {
+    const prog = window._practiceProgress;
+    if (!prog?.levelStatus) return [];
+    return JLPT_LEVEL_ORDER.filter((level) =>
+      prog.levelStatus[level] === "active" || prog.levelStatus[level] === "completed"
+    );
+  }
+
+  function formatLevelRangeLabel(levelValue) {
+    let levels = [];
+
+    if (Array.isArray(levelValue)) {
+      levels = levelValue.slice();
+    } else if (typeof levelValue === "string" && levelValue && levelValue !== "all") {
+      levels = levelValue.split(",").map((item) => item.trim()).filter(Boolean);
+    } else if (levelValue === "all") {
+      levels = getUnlockedLevelsForResultInfo();
+    }
+
+    const ordered = JLPT_LEVEL_ORDER.filter((level) => levels.includes(level));
+    if (!ordered.length) return "";
+    if (ordered.length === 1) return ordered[0];
+    return `${ordered[0]}~${ordered[ordered.length - 1]}`;
   }
 
   function formatResultInfo(totalCount, options = {}) {
@@ -2520,9 +2549,10 @@ grid.style.display="grid";
     const effectiveType = typeOverride || (selectedType === "all" ? dropdownType : selectedType);
     const baseLabel = typeLabelMap[effectiveType] || "Kosakata";
     const levelValue = levelOverride || selectedLevel;
+    const levelLabel = formatLevelRangeLabel(levelValue);
     
-    if ((includeLevel || shouldShowLevelInResult(effectiveType)) && levelValue !== "all") {
-      return `${totalCount} (${baseLabel}) - ${levelValue}`;
+    if ((includeLevel || shouldShowLevelInResult(effectiveType)) && levelLabel) {
+      return `${totalCount} (${baseLabel}) ${levelLabel}`;
     }
     return `${totalCount} (${baseLabel})`;
   }

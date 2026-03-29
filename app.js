@@ -321,6 +321,10 @@ grid.style.display="grid";
     syncDuoSidebarNav();
   }
 
+  function openSupportPosterPage() {
+    window.location.href = "./support/supportposter.html";
+  }
+
   function handleDuoSidebarNavAction(action) {
     if (!action) return;
 
@@ -378,7 +382,7 @@ grid.style.display="grid";
     }
 
     if (action === "support") {
-      document.getElementById("supportBtn")?.click();
+      openSupportPosterPage();
       closeSidebar();
       return;
     }
@@ -422,7 +426,6 @@ grid.style.display="grid";
     let activeKey = "learn";
     if (viewMode === "practice-hub") activeKey = "practice";
     else if (viewMode === "menu") activeKey = "menu";
-    else if (viewMode === "support") activeKey = "support";
     else if (viewMode === "favorit") activeKey = "favorit";
     else if (viewMode.startsWith("letters:")) activeKey = "letters";
     else if (
@@ -3627,10 +3630,7 @@ grid.style.display="grid";
   }));
   
   document.getElementById("supportBtn")?.addEventListener("click", () => {
-    viewMode = "support";
-    if (search) search.value = "";
-    if (category) category.value = "all";
-    render();
+    openSupportPosterPage();
     closeSidebar();
   });
 
@@ -3731,7 +3731,6 @@ grid.style.display="grid";
     else if (viewMode === "dashboard") tab = "dashboard";
     else if (
       viewMode === "menu" ||
-      viewMode === "support" ||
       viewMode.startsWith("letters:") ||
       viewMode === "grammar" || viewMode.startsWith("grammar:") ||
       viewMode.startsWith("dev:")
@@ -3938,76 +3937,6 @@ grid.style.display="grid";
     } else {
       badge.style.display = "none";
     }
-  }
-
-  function renderSupportPoster() {
-    grid.classList.add("support-mode");
-    grid.innerHTML = `
-      <section class="support-poster support-poster--native">
-        <div class="support-poster__bg" aria-hidden="true">
-          <div class="support-poster__orb support-poster__orb--1"></div>
-          <div class="support-poster__orb support-poster__orb--2"></div>
-          <div class="support-poster__orb support-poster__orb--3"></div>
-          <div class="support-poster__grid-lines"></div>
-          <div class="support-poster__kanji support-poster__kanji--main">援</div>
-          <div class="support-poster__kanji support-poster__kanji--sub">支</div>
-        </div>
-
-        <div class="support-poster__content">
-          <div class="support-poster__copy">
-            <div class="support-poster__badge">Dukung Pengembang</div>
-
-            <p class="support-poster__lead"></p>
-            <p class="support-poster__text"></p>
-
-            <div class="support-poster__sep" aria-hidden="true"></div>
-
-            <ul class="support-poster__benefits" aria-label="Alasan mendukung">
-              <li class="support-poster__benefit">
-                <span class="support-poster__benefit-num" aria-hidden="true">一</span>
-                <div>
-                  <p class="support-poster__benefit-title"></p>
-                  <p class="support-poster__benefit-desc"></p>
-                </div>
-              </li>
-              <li class="support-poster__benefit">
-                <span class="support-poster__benefit-num" aria-hidden="true">二</span>
-                <div>
-                  <p class="support-poster__benefit-title"></p>
-                  <p class="support-poster__benefit-desc"></p>
-                </div>
-              </li>
-              <li class="support-poster__benefit">
-                <span class="support-poster__benefit-num" aria-hidden="true">三</span>
-                <div>
-                  <p class="support-poster__benefit-title"></p>
-                  <p class="support-poster__benefit-desc"></p>
-                </div>
-              </li>
-            </ul>
-
-            <div class="support-poster__actions">
-              <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn support-poster__cta">Dukung Sekarang</a>
-              <p class="support-poster__cta-note">Sekali saja. Tidak ada langganan.</p>
-            </div>
-          </div>
-
-          <div class="support-poster__visual" aria-hidden="true">
-            <div class="support-poster__mini-card support-poster__mini-card--free">
-              <span>Gratis</span>
-            </div>
-            <div class="support-poster__mini-card support-poster__mini-card--ads">
-              <span class="support-poster__mini-badge">Pendukung</span>
-              <span>Bebas Iklan</span>
-            </div>
-            <div class="support-poster__mini-card support-poster__mini-card--sub">
-              <span>Tanpa Langganan</span>
-            </div>
-          </div>
-        </div>
-      </section>
-    `;
-    if(resultInfo) resultInfo.textContent = "Terima kasih atas dukungan Anda";
   }
 
   function renderUnderDevelopment(mode, type, level) {
@@ -4240,7 +4169,7 @@ grid.style.display="grid";
         closeBottomNavHub();
 
         if (action === "support") {
-          document.getElementById("supportBtn")?.click();
+          openSupportPosterPage();
           return;
         }
 
@@ -4429,7 +4358,7 @@ grid.style.display="grid";
     }
 
     if (action === "support") {
-      document.getElementById("supportBtn")?.click();
+      openSupportPosterPage();
       return;
     }
 
@@ -4896,11 +4825,6 @@ grid.style.display="grid";
     syncBottomNav();
     syncDuoSidebarNav();
     closeBottomNavHub();
-
-    if (viewMode === "support") {
-      renderSupportPoster();
-      return;
-    }
 
     if (viewMode === "favorit") {
       renderFavoritPage();
@@ -6050,6 +5974,3 @@ grid.style.display="grid";
   setAccessMode("locked");
   refreshLanguage();
 });
-
-
-

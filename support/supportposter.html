@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NihonByte · Dukung Pengembang</title>
+  <link rel="icon" type="image/png" href="../assets/logo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar { display: none; }
+
+    :root {
+      --red: #B83A1F;
+      --red-dim: rgba(184,58,31,0.4);
+      --bg: #0a0a0a;
+      --border: rgba(255,255,255,0.07);
+      --text-primary: #f0ede8;
+      --text-secondary: rgba(240,237,232,0.52);
+      --text-muted: rgba(255,255,255,0.2);
+    }
+
+    html, body {
+      width: 100%; height: 100dvh;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: 'Sora', sans-serif;
+      color: var(--text-primary);
+    }
+
+    /* Background */
+    .sp-bg {
+      position: fixed; inset: 0; overflow: hidden; z-index: 0; pointer-events: none;
+    }
+    .sp-orb {
+      position: absolute; border-radius: 50%;
+    }
+    .sp-orb-1 {
+      width: 640px; height: 640px; top: -220px; left: -180px;
+      background: radial-gradient(circle, rgba(184,58,31,0.2) 0%, transparent 68%);
+      animation: orb-drift 11s ease-in-out infinite alternate;
+    }
+    .sp-orb-2 {
+      width: 480px; height: 480px; bottom: -160px; right: -120px;
+      background: radial-gradient(circle, rgba(184,58,31,0.08) 0%, transparent 70%);
+      animation: orb-drift 15s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes orb-drift {
+      from { transform: translate(0, 0); }
+      to   { transform: translate(16px, -20px); }
+    }
+    .sp-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 75%);
+    }
+    .sp-kanji {
+      position: absolute;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700; pointer-events: none;
+      color: rgba(255,255,255,0.026);
+      animation: kanji-drift 14s ease-in-out infinite alternate;
+    }
+    .sp-kanji-1 {
+      font-size: clamp(140px, 16vw, 260px);
+      top: -20px; right: 3%;
+    }
+    .sp-kanji-2 {
+      font-size: clamp(90px, 10vw, 160px);
+      bottom: 6%; left: 2%;
+      animation-delay: 6s;
+    }
+    @keyframes kanji-drift {
+      from { transform: translateY(0) rotate(-4deg); opacity: 0.7; }
+      to   { transform: translateY(-18px) rotate(3deg); opacity: 1; }
+    }
+
+    /* Shell */
+    .sp-shell {
+      position: relative; z-index: 1;
+      width: 100%; height: 100dvh;
+      display: flex; flex-direction: column;
+    }
+
+    /* Topbar */
+    .sp-topbar {
+      flex-shrink: 0;
+      height: 56px; padding: 0 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sp-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: none; border: none; cursor: pointer;
+      color: rgba(240,237,232,0.5);
+      font-family: 'Sora', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      padding: 6px 10px 6px 4px;
+      border-radius: 8px;
+      transition: color 0.18s, background 0.18s;
+      min-width: 90px;
+    }
+    .sp-back:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+    .sp-back svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .sp-logo {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-primary); letter-spacing: 0.03em;
+    }
+    .sp-logo span { color: var(--red); }
+    .sp-topbar-spacer { min-width: 90px; }
+
+    /* Main */
+    .sp-main {
+      flex: 1; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 48px;
+    }
+
+    /* Two-col layout */
+    .sp-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+      align-items: center;
+      width: 100%; max-width: 1000px;
+      height: 100%;
+      max-height: 600px;
+    }
+
+    /* Divider */
+    .sp-divider {
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.08) 75%, transparent);
+      align-self: stretch;
+      margin: 0 48px 0 0;
+    }
+
+    /* Left col */
+    .sp-left {
+      display: flex; flex-direction: column; justify-content: center;
+      animation: rise-in 0.48s ease both;
+    }
+    .sp-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--red-dim);
+      border-radius: 999px;
+      padding: 5px 13px;
+      margin-bottom: 22px; width: fit-content;
+    }
+    .sp-badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%; background: var(--red); flex-shrink: 0;
+    }
+    .sp-badge-txt {
+      font-size: 0.68rem; font-weight: 600; color: #c4593a;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .sp-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+      font-weight: 700; color: var(--text-primary);
+      line-height: 1.25; margin-bottom: 12px;
+    }
+    .sp-title em { color: var(--red); font-style: normal; }
+    .sp-desc {
+      font-size: 0.86rem; font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.82; margin-bottom: 28px;
+      max-width: 400px;
+    }
+
+    /* Benefits */
+    .sp-benefits {
+      list-style: none;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .sp-benefit {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .sp-benefit-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: rgba(184,58,31,0.65);
+      min-width: 22px;
+      padding-top: 0; flex-shrink: 0;
+      line-height: 1.35;
+    }
+    .sp-benefit-title {
+      font-size: 0.84rem; font-weight: 600;
+      color: rgba(240,237,232,0.88);
+      margin-bottom: 3px; line-height: 1.4;
+    }
+    .sp-benefit-desc {
+      font-size: 0.76rem; font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+    }
+
+    /* Right col */
+    .sp-right {
+      display: flex; flex-direction: column; justify-content: center;
+      padding-left: 48px;
+      animation: rise-in 0.52s ease 0.08s both;
+    }
+    .sp-right-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.18);
+      margin-bottom: 16px;
+    }
+
+    /* Tiers */
+    .sp-tiers {
+      display: flex; flex-direction: column;
+      gap: 10px; margin-bottom: 28px;
+    }
+    .sp-tier {
+      display: flex; align-items: center; gap: 14px;
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+    }
+    .sp-tier.feat {
+      border-color: rgba(184,58,31,0.4);
+      background: rgba(184,58,31,0.08);
+    }
+    .sp-tier-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .sp-tier.feat .sp-tier-icon {
+      background: rgba(184,58,31,0.15);
+      border-color: rgba(184,58,31,0.3);
+    }
+    .sp-tier-icon svg { width: 15px; height: 15px; }
+    .sp-tier-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+    .sp-tier-badge {
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red);
+    }
+    .sp-tier-name {
+      font-size: 0.9rem; font-weight: 600;
+      color: rgba(240,237,232,0.62); line-height: 1.2;
+    }
+    .sp-tier.feat .sp-tier-name { color: var(--text-primary); }
+    .sp-tier-sub {
+      font-size: 0.7rem; font-weight: 300;
+      color: rgba(255,255,255,0.26);
+    }
+
+    /* CTA */
+    .sp-cta {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      background: var(--red);
+      color: #f0ede8;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.92rem; font-weight: 700;
+      text-decoration: none;
+      padding: 15px 24px;
+      border-radius: 13px;
+      box-shadow: 0 10px 28px rgba(184,58,31,0.26);
+      transition: filter 0.2s, transform 0.18s, box-shadow 0.2s;
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+    .sp-cta:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 36px rgba(184,58,31,0.36);
+    }
+    .sp-cta:active { transform: translateY(0); filter: brightness(0.96); }
+    .sp-cta-note {
+      text-align: center;
+      font-size: 0.7rem; font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sp-bg">
+  <div class="sp-orb sp-orb-1"></div>
+  <div class="sp-orb sp-orb-2"></div>
+  <div class="sp-grid"></div>
+  <div class="sp-kanji sp-kanji-1">援</div>
+  <div class="sp-kanji sp-kanji-2">支</div>
+</div>
+
+<div class="sp-shell">
+
+  <nav class="sp-topbar">
+    <button class="sp-back" id="sp-back-btn" aria-label="Kembali">
+      <svg viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.5 13.5L5 8.5L10.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Kembali
+    </button>
+    <div class="sp-logo">Nihon<span>Byte</span></div>
+    <div class="sp-topbar-spacer"></div>
+  </nav>
+
+  <main class="sp-main">
+    <div class="sp-layout">
+
+      <div class="sp-left">
+        <div class="sp-badge">
+          <div class="sp-badge-dot"></div>
+          <span class="sp-badge-txt">Dukung Pengembang</span>
+        </div>
+        <h1 class="sp-title">
+          Lorem ipsum dolor<br>sit <em>amet</em> consectetur.
+        </h1>
+        <p class="sp-desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim.
+        </p>
+        <ul class="sp-benefits" aria-label="Alasan mendukung">
+          <li class="sp-benefit">
+            <span class="sp-benefit-num" aria-hidden="true">一</span>
+            <div>
+              <p class="sp-benefit-title">Lorem ipsum dolor sit amet</p>
+              <p class="sp-benefit-desc">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+            </div>
+          </li>
+          <li class="sp-benefit">
+            <span class="sp-benefit-num" aria-hidden="true">二</span>
+            <div>
+              <p class="sp-benefit-title">Consectetur adipiscing elit</p>
+              <p class="sp-benefit-desc">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+            </div>
+          </li>
+          <li class="sp-benefit">
+            <span class="sp-benefit-num" aria-hidden="true">三</span>
+            <div>
+              <p class="sp-benefit-title">Sed do eiusmod tempor</p>
+              <p class="sp-benefit-desc">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sp-divider"></div>
+
+      <div class="sp-right">
+        <p class="sp-right-label">Pilih dukungan</p>
+        <div class="sp-tiers">
+          <div class="sp-tier">
+            <div class="sp-tier-icon">
+              <svg viewBox="0 0 15 15" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="7.5" cy="5.5" r="3"/>
+                <path d="M1.5 13.5c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+              </svg>
+            </div>
+            <div class="sp-tier-info">
+              <span class="sp-tier-name">Gratis</span>
+              <span class="sp-tier-sub">Akses penuh, selamanya</span>
+            </div>
+          </div>
+          <div class="sp-tier feat">
+            <div class="sp-tier-icon">
+              <svg viewBox="0 0 15 15" fill="none" stroke="rgba(184,58,31,0.75)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7.5 1.5l1.4 3.7H13l-3.3 2.4 1.3 4-3.5-2.4-3.5 2.4 1.3-4L2 5.2h4.1z"/>
+              </svg>
+            </div>
+            <div class="sp-tier-info">
+              <span class="sp-tier-badge">Pendukung</span>
+              <span class="sp-tier-name">Bebas Iklan</span>
+              <span class="sp-tier-sub">Bantu proyek ini tetap berjalan</span>
+            </div>
+          </div>
+          <div class="sp-tier">
+            <div class="sp-tier-icon">
+              <svg viewBox="0 0 15 15" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4.5" width="11" height="8" rx="1.5"/>
+                <path d="M5 4.5V3.5a2.5 2.5 0 015 0v1"/>
+              </svg>
+            </div>
+            <div class="sp-tier-info">
+              <span class="sp-tier-name">Tanpa Langganan</span>
+              <span class="sp-tier-sub">Bayar sekali, selesai</span>
+            </div>
+          </div>
+        </div>
+
+        <a
+          href="https://sociabuzz.com/syncxcode/tribe"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="sp-cta"
+        >
+          Dukung Sekarang
+        </a>
+        <p class="sp-cta-note">Sekali saja. Tidak ada langganan.</p>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script>
+  (function() {
+    document.getElementById('sp-back-btn').addEventListener('click', function() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '../index.html';
+      }
+    });
+    history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', function() {
+      window.history.back();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -539,6 +539,187 @@
       }
     }
 
+    @media screen and (max-width: 932px) and (orientation: landscape) and (max-height: 520px) {
+      .sp-orb-1 {
+        width: 400px;
+        height: 400px;
+        top: -150px;
+        left: -110px;
+        animation: none;
+      }
+
+      .sp-orb-2 {
+        width: 280px;
+        height: 280px;
+        right: -70px;
+        bottom: -90px;
+        animation: none;
+      }
+
+      .sp-grid {
+        background-size: 36px 36px;
+      }
+
+      .sp-kanji {
+        animation: none;
+      }
+
+      .sp-kanji-1 {
+        font-size: 128px;
+        top: 2px;
+        right: -10px;
+        color: rgba(255,255,255,0.04);
+      }
+
+      .sp-kanji-2 {
+        font-size: 84px;
+        left: -6px;
+        bottom: 4px;
+        color: rgba(184,58,31,0.11);
+      }
+
+      .sp-topbar {
+        height: 52px;
+        padding: 0 18px;
+      }
+
+      .sp-back,
+      .sp-topbar-spacer {
+        min-width: 78px;
+      }
+
+      .sp-back {
+        font-size: 0.74rem;
+        padding: 6px 8px 6px 2px;
+      }
+
+      .sp-logo {
+        font-size: 0.94rem;
+      }
+
+      .sp-main {
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 16px calc(14px + env(safe-area-inset-bottom));
+      }
+
+      .sp-layout {
+        grid-template-columns: minmax(0, 1.02fr) 1px minmax(260px, 0.98fr);
+        width: 100%;
+        max-width: none;
+        height: auto;
+        max-height: none;
+        min-height: 100%;
+        align-items: start;
+      }
+
+      .sp-divider {
+        margin: 0 24px 0 0;
+      }
+
+      .sp-left {
+        justify-content: flex-start;
+        padding-top: 10px;
+      }
+
+      .sp-right {
+        justify-content: flex-start;
+        padding-left: 24px;
+        padding-top: 10px;
+      }
+
+      .sp-badge {
+        margin-bottom: 16px;
+        padding: 4px 12px;
+      }
+
+      .sp-badge-txt {
+        font-size: 0.62rem;
+      }
+
+      .sp-title {
+        font-size: clamp(1.42rem, 3.55vw, 1.9rem);
+        line-height: 1.14;
+        margin-bottom: 10px;
+        max-width: 13ch;
+      }
+
+      .sp-desc {
+        max-width: 340px;
+        margin-bottom: 18px;
+        font-size: 0.78rem;
+        line-height: 1.68;
+      }
+
+      .sp-benefit {
+        gap: 12px;
+        padding: 10px 0;
+      }
+
+      .sp-benefit-num {
+        min-width: 18px;
+        font-size: 0.82rem;
+      }
+
+      .sp-benefit-title {
+        font-size: 0.78rem;
+        margin-bottom: 2px;
+      }
+
+      .sp-benefit-desc {
+        font-size: 0.68rem;
+        line-height: 1.52;
+      }
+
+      .sp-right-label {
+        margin-bottom: 12px;
+        font-size: 0.58rem;
+      }
+
+      .sp-tiers {
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .sp-tier {
+        gap: 12px;
+        padding: 12px 12px;
+        border-radius: 14px;
+      }
+
+      .sp-tier-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 10px;
+      }
+
+      .sp-tier-name {
+        font-size: 0.84rem;
+      }
+
+      .sp-tier-badge {
+        font-size: 0.54rem;
+      }
+
+      .sp-tier-sub {
+        font-size: 0.64rem;
+        line-height: 1.38;
+      }
+
+      .sp-cta {
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-size: 0.84rem;
+        margin-bottom: 6px;
+      }
+
+      .sp-cta-note {
+        font-size: 0.62rem;
+      }
+    }
+
     @keyframes rise-in {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }

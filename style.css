@@ -1,4 +1,4 @@
-html, body {
+﻿html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -35,7 +35,7 @@ header, .navbar, .header-container {
 }
 
 .topbar {
-  position: fixed !important; /* 🚀 KUNCI HEADER FREEZE */
+  position: fixed !important; /* ðŸš€ KUNCI HEADER FREEZE */
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
@@ -207,7 +207,7 @@ select, input, .action-btn {
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 15px !important;
   padding: 15px !important;
-  padding-top: 112px !important; /* 🚀 TARUH DI SINI BIAR GAK KETIMPA PADDING 15PX */
+  padding-top: 112px !important; /* ðŸš€ TARUH DI SINI BIAR GAK KETIMPA PADDING 15PX */
   width: 100% !important;
   max-width: 100vw !important;
   box-sizing: border-box !important;
@@ -513,7 +513,7 @@ select, input, .action-btn {
   margin: 24px auto 22px;
   padding: 17px 22px;
   font-size: 1.12rem;
-  border: 2px solid #ffb7c5; /* 🚀 TITIK KOMA SUDAH DIPERBAIKI */
+  border: 2px solid #ffb7c5; /* ðŸš€ TITIK KOMA SUDAH DIPERBAIKI */
   border-radius: 999px;
   outline: none;
 }
@@ -1255,7 +1255,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
 #supportBtn { width: 100%; padding: 18px 20px; margin-top: 25px; background: linear-gradient(135deg, #ff6b81, #ff9ff3, #a29bfe); color: white; font-weight: 700; font-size: 16px; text-align: center; border: none; border-radius: 16px; cursor: pointer; box-shadow: 0 8px 25px rgba(255, 107, 129, 0.4); transition: all 0.4s ease; position: relative; overflow: hidden; }
 #supportBtn:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 12px 35px rgba(255, 107, 129, 0.6); background: linear-gradient(135deg, #ff4757, #ff9ff3, #7f8cff); }
 #supportBtn:active { transform: translateY(0) scale(0.98); box-shadow: 0 4px 15px rgba(255, 107, 129, 0.3); }
-#supportBtn::before { content: "❤️ "; font-size: 18px; animation: heartbeat 2s infinite; }
+#supportBtn::before { content: "â¤ï¸ "; font-size: 18px; animation: heartbeat 2s infinite; }
 @keyframes heartbeat { 0% { transform: scale(1); } 20% { transform: scale(1.3); } 40% { transform: scale(1); } 60% { transform: scale(1.2); } 80% { transform: scale(1); } 100% { transform: scale(1); } }
 
 .test-tree > details { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 6px 8px; }
@@ -1273,7 +1273,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
 
 
 /* =========================================
-   6. 🍎 iOS PERFORMANCE OPTIMIZER (SAFE MODE)
+   6. ðŸŽ iOS PERFORMANCE OPTIMIZER (SAFE MODE)
 ========================================= */
 .ios-device body::before { position: absolute !important; }
 .ios-device * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
@@ -1506,7 +1506,7 @@ body.duo-nav-enabled #sidebar .sidebar-tree {
   /* Urutan 4: TOMBOL SEARCH */
   #searchBtn {
     order: 4 !important;
-    position: static !important; /* 🚀 MATIKAN ABSOLUTE */
+    position: static !important; /* ðŸš€ MATIKAN ABSOLUTE */
     margin: 0 !important;
     height: 46px !important;
     transform: none !important;
@@ -1661,7 +1661,7 @@ nested-latihan-list {
   box-sizing: border-box;
   overflow-y: auto;
   
-  /* 🚀 MANTRA ANTI COPAS / HIGHLIGHT */
+  /* ðŸš€ MANTRA ANTI COPAS / HIGHLIGHT */
   user-select: none !important;
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
@@ -1689,7 +1689,7 @@ nested-latihan-list {
 }
 
 .quiz-opt-btn-pro {
-  min-height: 48px !important; /* 🚀 Tombol gak setebal sebelumnya */
+  min-height: 48px !important; /* ðŸš€ Tombol gak setebal sebelumnya */
   padding: 10px 16px;
   border-radius: 12px;
   border: 1px solid #cbd5e1;
@@ -1768,12 +1768,12 @@ body.training-session #resultInfo {
   cursor: default !important;
 }
 
-/* ─────────────────────────────────────────────────────
-   GOI & BUNPOU — Quiz · MOBILE PORTRAIT ONLY
-   ⚠️  Landscape diatur TERPISAH di blok
-       "GOI & BUNPOU — MODE LATIHAN · Mobile Landscape"
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   GOI & BUNPOU â€” Quiz Â· MOBILE PORTRAIT ONLY
+   âš ï¸  Landscape diatur TERPISAH di blok
+       "GOI & BUNPOU â€” MODE LATIHAN Â· Mobile Landscape"
        di bagian bawah file. JANGAN tambah landscape sini.
-───────────────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 767px) and (orientation: portrait) {
   #grid.quiz-active-mode {
     padding: 52px 12px 14px !important;
@@ -2016,13 +2016,13 @@ body.review-mode-active #hamburger {
 }
 
 
-/* ─────────────────────────────────────────────────────
-   DOKKAI — RESPONSIF HP · MOBILE PORTRAIT ONLY
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   DOKKAI â€” RESPONSIF HP Â· MOBILE PORTRAIT ONLY
    Berlaku: max-width 767px + portrait
-   ⚠️  Landscape diatur TERPISAH di blok
-       "DOKKAI SPLIT-SCREEN — Mobile Landscape"
+   âš ï¸  Landscape diatur TERPISAH di blok
+       "DOKKAI SPLIT-SCREEN â€” Mobile Landscape"
        di bagian bawah file. JANGAN tambah landscape sini.
-───────────────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 767px) and (orientation: portrait) {
   .dokkai-wrapper-pro {
     flex-direction: column;
@@ -2126,7 +2126,7 @@ body.review-mode-active .app-footer {
   align-items: center;
   gap: 8px;
   width: 100%;
-  margin-top: auto !important; /* 🚀 INI KUNCI BUAT NENDANG KE BAWAH! */
+  margin-top: auto !important; /* ðŸš€ INI KUNCI BUAT NENDANG KE BAWAH! */
   margin-bottom: 25px !important; 
   padding-top: 20px !important; 
   position: relative;
@@ -2270,7 +2270,7 @@ body.review-mode-active .app-footer {
   border: 1.5px solid #94a3b8 !important; 
 }
 
-/* 🚀 KOTAK KOSONG DIBIKIN ABU MUDA */
+/* ðŸš€ KOTAK KOSONG DIBIKIN ABU MUDA */
 .letter-empty {
   background: rgba(255, 255, 255, 0.3) !important; /* Efek kaca transparan abu muda */
   border: 1px solid rgba(255, 255, 255, 0.4) !important; /* Border putih tipis elegan */
@@ -2292,7 +2292,7 @@ body.review-mode-active .app-footer {
 
 /* --- TAMPILAN DESKTOP (Poster IMAX & Mewah) --- */
 @media (min-width: 769px) {
-  /* 🚀 BIKIN GEDE: Lebarin container posternya sampai nyaris penuh */
+  /* ðŸš€ BIKIN GEDE: Lebarin container posternya sampai nyaris penuh */
   .letter-poster {
     width: 96% !important; /* Gunakan 96% lebar layar biar lega */
     max-width: 1600px !important; /* Batas atas dilebarin drastis */
@@ -2308,7 +2308,7 @@ body.review-mode-active .app-footer {
     text-align: center !important;
   }
 
-  /* 🚀 BIKIN GEDE: Melarin grid hurufnya */
+  /* ðŸš€ BIKIN GEDE: Melarin grid hurufnya */
   .letter-grid-desktop {
     width: 100% !important;
     gap: 8px 12px !important; /* Jarak antar kotak pas */
@@ -2497,7 +2497,7 @@ body.review-mode-active .app-footer {
   padding: 12px 20px;
   background: #ffffff;
   border: none;
-  border-radius: 999px; /* 🚀 MANTRA KAPSUL BULAT */
+  border-radius: 999px; /* ðŸš€ MANTRA KAPSUL BULAT */
   font-weight: 800;
   color: #334155;
   font-size: 0.95rem;
@@ -2615,7 +2615,7 @@ body.history-mode #grid {
   box-sizing: border-box !important;
   background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(18px) !important;
-  border-radius: 28px !important;           /* ← kotak agak rounded */
+  border-radius: 28px !important;           /* â† kotak agak rounded */
   border: 3px solid #ff4d6d !important;
   box-shadow: 0 25px 70px rgba(255, 77, 109, 0.20) !important;
 }
@@ -2639,7 +2639,7 @@ body.history-mode #grid {
   align-items: center !important;
   background: #ffffff !important;
   border: 2.5px solid #ff4d6d !important;
-  border-radius: 9999px !important;           /* ← kapsul sempurna */
+  border-radius: 9999px !important;           /* â† kapsul sempurna */
   padding: 16px 24px !important;
   margin-bottom: 14px !important;
   box-shadow: 0 4px 15px rgba(255, 77, 109, 0.12) !important;
@@ -2680,7 +2680,7 @@ body.history-mode #grid {
   text-overflow: ellipsis !important;
   font-size: 0.93rem !important;
   
-  /* 🚀 MANTRA PAKSA RATA KIRI */
+  /* ðŸš€ MANTRA PAKSA RATA KIRI */
   text-align: left !important;
   display: flex !important;
   align-items: center !important;
@@ -3312,7 +3312,7 @@ body::before {
     left: 0 !important;
     width: 100% !important;
     
-    /* 🚀 DIPAKSA KECIL & RAMPING (Maksimal 34px) */
+    /* ðŸš€ DIPAKSA KECIL & RAMPING (Maksimal 34px) */
     height: 34px !important; 
     min-height: 34px !important; 
     max-height: 34px !important; 
@@ -3597,12 +3597,12 @@ body {
   }
 }
 
-/* === Follow-up 4: font Jepang + greeting こんにちは + polish poster/support === */
+/* === Follow-up 4: font Jepang + greeting ã“ã‚“ã«ã¡ã¯ + polish poster/support === */
 :root {
   --jp-calligraphy: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
 }
 
-/* Greeting sidebar 2 baris: こんにちは + Namaーさん */
+/* Greeting sidebar 2 baris: ã“ã‚“ã«ã¡ã¯ + Namaãƒ¼ã•ã‚“ */
 #sidebar-greeting {
   display: grid;
   grid-template-rows: auto auto;
@@ -4555,7 +4555,7 @@ body {
 
 /* =========================================
    Desktop split-scroll: sidebar + content independen
-   FIX FINAL: position:fixed pada shell — reliable di semua browser mobile
+   FIX FINAL: position:fixed pada shell â€” reliable di semua browser mobile
 ========================================= */
 @media (min-width: 768px) {
   html, body {
@@ -4564,7 +4564,7 @@ body {
   }
 
   /* Shell menempel dari bawah topbar sampai benar-benar dasar layar,
-     tidak peduli browser chrome — ini paling andal di semua browser */
+     tidak peduli browser chrome â€” ini paling andal di semua browser */
   .app-body-shell {
     position: fixed !important;
     margin-top: 0 !important;      /* reset base margin-top, pakai top: langsung */
@@ -4926,7 +4926,7 @@ body {
   line-height: 1.4;
 }
 
-/* Follow-up 6: title card bentuk kata kerja tampil suffix saja (~る, ~ます, dst) */
+/* Follow-up 6: title card bentuk kata kerja tampil suffix saja (~ã‚‹, ~ã¾ã™, dst) */
 .form-brick-title-only {
   display: inline-flex;
   align-items: center;
@@ -5439,7 +5439,7 @@ body.guest-mode .download-card-btn.guest-restricted {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     
-    /* 🚀 KUNCI 1: Hilangkan padding kiri-kanan biar ngitungnya presisi 100% */
+    /* ðŸš€ KUNCI 1: Hilangkan padding kiri-kanan biar ngitungnya presisi 100% */
     padding: 5px 0px 15px !important; 
     gap: 12px !important;
     
@@ -5455,7 +5455,7 @@ body.guest-mode .download-card-btn.guest-restricted {
   }
   
   #kanjiModal .recommendation-item {
-    /* 🚀 KUNCI 2: Lebar persis 50% dikurangi setengah jarak (gap) */
+    /* ðŸš€ KUNCI 2: Lebar persis 50% dikurangi setengah jarak (gap) */
     flex: 0 0 calc(50% - 6px) !important; 
     width: calc(50% - 6px) !important;
     max-width: calc(50% - 6px) !important;
@@ -5612,7 +5612,7 @@ body.review-mode-active .bottom-nav {
 }
 
 /* =========================================================
-   Hub Screen (Menu & Latihan) — clean card layout
+   Hub Screen (Menu & Latihan) â€” clean card layout
 ========================================================= */
 
 .hub-mode {
@@ -7129,7 +7129,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =========================================
-   🔥 FIX FINAL: SIDEBAR DIAM + KANAN SCROLL + GAK TENGGELAM 🔥
+   ðŸ”¥ FIX FINAL: SIDEBAR DIAM + KANAN SCROLL + GAK TENGGELAM ðŸ”¥
 ========================================= */
 @media (min-width: 768px) {
   /* 1. Gembok global, Sidebar fix 100% DIAM */
@@ -7167,7 +7167,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* ==========================================
-   CARD ACTION BUTTONS — HOVER REVEAL SYSTEM
+   CARD ACTION BUTTONS â€” HOVER REVEAL SYSTEM
    ========================================== */
 
 /* Base style semua tombol aksi di kartu */
@@ -7222,7 +7222,7 @@ body.history-mode .dashboard-shell textarea {
   border-color: rgba(255,77,109,0.6);
 }
 
-/* Hover pada kartu → semua tombol muncul */
+/* Hover pada kartu â†’ semua tombol muncul */
 .card-image:hover .card-action-btn {
   opacity: 1;
   transform: scale(1);
@@ -7305,7 +7305,7 @@ body.history-mode .dashboard-shell textarea {
   padding-bottom: 16px !important;
 }
 
-/* Row kartu favorit — 3 kolom grid */
+/* Row kartu favorit â€” 3 kolom grid */
 .favorit-cards-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -7466,11 +7466,11 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =========================================
-   MOBILE OVERHAUL — fokus max-width: 768px
+   MOBILE OVERHAUL â€” fokus max-width: 768px
    JANGAN SENTUH DESKTOP
 ========================================= */
 
-/* ─── 1. Mobile card: dark glass gradient kayak desktop ─── */
+/* â”€â”€â”€ 1. Mobile card: dark glass gradient kayak desktop â”€â”€â”€ */
 @media (max-width: 768px) {
   .card-image,
   .card-image.expanded {
@@ -7484,13 +7484,13 @@ body.history-mode .dashboard-shell textarea {
       0 8px 20px rgba(0,0,0,0.38) !important;
   }
 
-  /* Download btn icon — dark card, icon jadi putih */
+  /* Download btn icon â€” dark card, icon jadi putih */
   .download-card-btn svg {
     color: #ffffff !important;
     stroke: #ffffff !important;
   }
 
-  /* ─── 2. Hide top.png, tampilkan favicon di mobile ─── */
+  /* â”€â”€â”€ 2. Hide top.png, tampilkan favicon di mobile â”€â”€â”€ */
   .header-identity .topbar-side-logo {
     display: none !important;
   }
@@ -7500,7 +7500,7 @@ body.history-mode .dashboard-shell textarea {
     height: 34px !important;
   }
 
-  /* ─── 3. Topbar lebih kecil dan kompak ─── */
+  /* â”€â”€â”€ 3. Topbar lebih kecil dan kompak â”€â”€â”€ */
   .topbar {
     min-height: 30px !important;
     height: 45px !important;
@@ -7543,7 +7543,7 @@ body.history-mode .dashboard-shell textarea {
     padding: 0 !important;
   }
 
-  /* Search btn — circle diperkecil, icon SVG tetap jelas */
+  /* Search btn â€” circle diperkecil, icon SVG tetap jelas */
   #searchBtn,
   .topbar .search-icon-btn {
     height: 30px !important;
@@ -7576,7 +7576,7 @@ body.history-mode .dashboard-shell textarea {
     padding-top: 12px !important;
   }
 
-  /* ─── 4. iOS version tag no-wrap + profile look fix ─── */
+  /* â”€â”€â”€ 4. iOS version tag no-wrap + profile look fix â”€â”€â”€ */
   .profile-version {
     white-space: nowrap !important;
     overflow: hidden !important;
@@ -7609,7 +7609,7 @@ body.history-mode .dashboard-shell textarea {
     font-weight: 700 !important;
   }
 
-  /* ─── 5. Language switch di sidebar-head tampil di mobile ─── */
+  /* â”€â”€â”€ 5. Language switch di sidebar-head tampil di mobile â”€â”€â”€ */
   #languageSwitch.sidebar-language-switch {
     display: flex !important;
     width: fit-content !important;
@@ -7617,7 +7617,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ─── iOS-specific autohide scroll fix ─── */
+/* â”€â”€â”€ iOS-specific autohide scroll fix â”€â”€â”€ */
 .ios-device .bottom-nav {
   transition: transform 0.25s cubic-bezier(0.4,0,0.2,1) !important;
 }
@@ -7625,7 +7625,7 @@ body.history-mode .dashboard-shell textarea {
   transform: translateY(100%) !important;
 }
 
-/* ─── Mobile: expression/activity grid mulai dari bawah topbar ─── */
+/* â”€â”€â”€ Mobile: expression/activity grid mulai dari bawah topbar â”€â”€â”€ */
 @media (max-width: 768px) {
   .expression-wide-grid {
     margin: 0 !important;
@@ -7826,14 +7826,14 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =========================================
-   📱 MOBILE LANDSCAPE — Native Desktop-Feel Layout
+   ðŸ“± MOBILE LANDSCAPE â€” Native Desktop-Feel Layout
    Target: perangkat sentuh yang diputar horizontal
    (max-height: 520px = identifikasi paling andal utk HP landscape)
    JANGAN SENTUH RULES DI LUAR BLOK INI
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ── 0. Override CSS variables khusus landscape ── */
+  /* â”€â”€ 0. Override CSS variables khusus landscape â”€â”€ */
   :root {
     --topbar-height: 44px !important;
     --body-sidebar-width: 200px !important;
@@ -7841,7 +7841,7 @@ body.history-mode .dashboard-shell textarea {
     --bottom-nav-height: 0px !important;
   }
 
-  /* ── 1. Topbar: ramping & rapat ── */
+  /* â”€â”€ 1. Topbar: ramping & rapat â”€â”€ */
   .topbar {
     height: var(--topbar-height) !important;
     min-height: var(--topbar-height) !important;
@@ -7882,7 +7882,7 @@ body.history-mode .dashboard-shell textarea {
     display: inline-flex !important;
   }
 
-  /* ── 2. App body shell: desktop split layout ── */
+  /* â”€â”€ 2. App body shell: desktop split layout â”€â”€ */
   body {
     overflow: hidden !important;
   }
@@ -7900,7 +7900,7 @@ body.history-mode .dashboard-shell textarea {
     overflow: hidden !important;
   }
 
-  /* ── 3. Sidebar: permanen di kiri seperti desktop ── */
+  /* â”€â”€ 3. Sidebar: permanen di kiri seperti desktop â”€â”€ */
   #overlay {
     display: none !important;
   }
@@ -7981,7 +7981,7 @@ body.history-mode .dashboard-shell textarea {
     border-radius: 12px !important;
     background: #242526 !important;
     border: 1px solid rgba(255,255,255,0.14) !important;
-    /* ── version tag nempel di bawah border, tetap di atas garis MENU ── */
+    /* â”€â”€ version tag nempel di bawah border, tetap di atas garis MENU â”€â”€ */
     position: relative !important;
     overflow: visible !important;
     margin-bottom: -10px !important;
@@ -8028,7 +8028,7 @@ body.history-mode .dashboard-shell textarea {
     text-overflow: ellipsis !important;
   }
 
-  /* ── 4. Content panel: scrollable kanan ── */
+  /* â”€â”€ 4. Content panel: scrollable kanan â”€â”€ */
   .content-panel {
     height: 100% !important;
     min-height: 0 !important;
@@ -8038,7 +8038,7 @@ body.history-mode .dashboard-shell textarea {
     display: block !important;
   }
 
-  /* ── 5. Grid utama: 3 kolom compact ── */
+  /* â”€â”€ 5. Grid utama: 3 kolom compact â”€â”€ */
   #grid {
     position: relative !important;
     top: auto !important;
@@ -8060,7 +8060,7 @@ body.history-mode .dashboard-shell textarea {
     height: 135px !important;
   }
 
-  /* ── 6. Bottom nav: hilangkan (sidebar sudah tampil) ── */
+  /* â”€â”€ 6. Bottom nav: hilangkan (sidebar sudah tampil) â”€â”€ */
   .bottom-nav {
     display: none !important;
   }
@@ -8071,7 +8071,7 @@ body.history-mode .dashboard-shell textarea {
     min-height: auto !important;
   }
 
-  /* ── 7. Pagination: tampil & tidak tenggelam ── */
+  /* â”€â”€ 7. Pagination: tampil & tidak tenggelam â”€â”€ */
   .pagination-container {
     position: static !important;
     left: auto !important;
@@ -8087,7 +8087,7 @@ body.history-mode .dashboard-shell textarea {
     border-top: 1px solid rgba(148, 163, 184, 0.3) !important;
   }
 
-  /* ── 8. Halaman Latihan (practice hub) ── */
+  /* â”€â”€ 8. Halaman Latihan (practice hub) â”€â”€ */
   #grid.hub-mode {
     padding: 10px !important;
   }
@@ -8143,7 +8143,7 @@ body.history-mode .dashboard-shell textarea {
     gap: 6px !important;
   }
 
-  /* ── 9. Flashcard / Review mode ── */
+  /* â”€â”€ 9. Flashcard / Review mode â”€â”€ */
   #grid.review-active-mode {
     padding: 10px !important;
     min-height: auto !important;
@@ -8156,7 +8156,7 @@ body.history-mode .dashboard-shell textarea {
     width: 100% !important;
   }
 
-  /* ── 10. Quiz active mode ── */
+  /* â”€â”€ 10. Quiz active mode â”€â”€ */
   #grid.quiz-active-mode {
     padding: 10px !important;
     overflow-y: auto !important;
@@ -8187,7 +8187,7 @@ body.history-mode .dashboard-shell textarea {
     gap: 8px !important;
   }
 
-  /* ── 11. Support / Dukung Pengembang page ── */
+  /* â”€â”€ 11. Support / Dukung Pengembang page â”€â”€ */
   #grid.support-mode {
     padding: 10px 14px !important;
     min-height: auto !important;
@@ -8210,7 +8210,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.88rem !important;
   }
 
-  /* ── 12. Favorit page ── */
+  /* â”€â”€ 12. Favorit page â”€â”€ */
   .favorit-cards-row {
     grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
     gap: 8px !important;
@@ -8225,12 +8225,12 @@ body.history-mode .dashboard-shell textarea {
     font-size: clamp(14px, 3vw, 22px) !important;
   }
 
-  /* ── 13. Footer: sembunyikan ── */
+  /* â”€â”€ 13. Footer: sembunyikan â”€â”€ */
   .app-footer {
     display: none !important;
   }
 
-  /* ── 14. Dashboard / History ── */
+  /* â”€â”€ 14. Dashboard / History â”€â”€ */
   body.history-mode #grid {
     padding: 12px !important;
     align-items: flex-start !important;
@@ -8246,7 +8246,7 @@ body.history-mode .dashboard-shell textarea {
     min-height: 80px !important;
   }
 
-  /* ── 15. Expression / Aktivitas grid ── */
+  /* â”€â”€ 15. Expression / Aktivitas grid â”€â”€ */
   .expression-wide-grid {
     grid-template-columns: 1fr !important;
     gap: 8px !important;
@@ -8254,7 +8254,7 @@ body.history-mode .dashboard-shell textarea {
     margin: 0 !important;
   }
 
-  /* ── 16. Sidebar body-mode #grid (landscape fix) ── */
+  /* â”€â”€ 16. Sidebar body-mode #grid (landscape fix) â”€â”€ */
   #grid,
   #grid.support-mode,
   #grid.pattern-grid-layout,
@@ -8262,7 +8262,7 @@ body.history-mode .dashboard-shell textarea {
     margin-top: 0 !important;
   }
 
-  /* ── 17. Training session (quiz full-page) landscape ── */
+  /* â”€â”€ 17. Training session (quiz full-page) landscape â”€â”€ */
   body.training-session .topbar {
     height: var(--topbar-height) !important;
     min-height: var(--topbar-height) !important;
@@ -8276,7 +8276,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =========================================
-   📱 LOGIN POPUP — Compact Mode untuk Mobile Landscape
+   ðŸ“± LOGIN POPUP â€” Compact Mode untuk Mobile Landscape
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
@@ -8303,7 +8303,7 @@ body.history-mode .dashboard-shell textarea {
     box-shadow: 0 12px 32px rgba(15, 23, 42, 0.35) !important;
   }
 
-  /* Logo kolom kiri — span semua baris */
+  /* Logo kolom kiri â€” span semua baris */
   .auth-gate-logo {
     grid-column: 1 !important;
     grid-row: 1 / 7 !important;
@@ -8380,14 +8380,14 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =========================================
-   📱 MOBILE LANDSCAPE — BUG FIX ROUND 2
+   ðŸ“± MOBILE LANDSCAPE â€” BUG FIX ROUND 2
    Semua perbaikan dari feedback screenshot:
    kanji acak, resultInfo, profil, latihan, quiz popup,
    expand kanji, rekomendasi, poster huruf, foto profil
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ══ 1. KANJI GRID — pastikan seragam & tidak berantakan ══ */
+  /* â•â• 1. KANJI GRID â€” pastikan seragam & tidak berantakan â•â• */
   #grid {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 10px !important;
@@ -8417,7 +8417,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.75rem !important;
   }
 
-  /* ══ 2. RESULT INFO — center vertikal dalam topbar ══ */
+  /* â•â• 2. RESULT INFO â€” center vertikal dalam topbar â•â• */
   #resultInfo {
     align-self: center !important;
     margin: 0 6px !important;
@@ -8430,7 +8430,7 @@ body.history-mode .dashboard-shell textarea {
     align-items: center !important;
   }
 
-  /* ══ 3. PROFIL SIDEBAR — border tidak terpeped logout btn ══ */
+  /* â•â• 3. PROFIL SIDEBAR â€” border tidak terpeped logout btn â•â• */
   #logged-in-view {
     padding: 6px 8px 6px 8px !important;
     padding-right: 46px !important;
@@ -8452,7 +8452,7 @@ body.history-mode .dashboard-shell textarea {
     z-index: 5 !important;
   }
 
-  /* ══ 4. POPUP NILAI AKHIRI LATIHAN — compact & bisa diklik ══ */
+  /* â•â• 4. POPUP NILAI AKHIRI LATIHAN â€” compact & bisa diklik â•â• */
   /* Result/score popup setelah quiz selesai */
   body.training-session {
     touch-action: auto !important; /* izinkan klik di result popup */
@@ -8488,7 +8488,7 @@ body.history-mode .dashboard-shell textarea {
     z-index: 99999 !important;
   }
 
-  /* ══ 7. EXPAND KANJI MODAL — compact & tidak oversized ══ */
+  /* â•â• 7. EXPAND KANJI MODAL â€” compact & tidak oversized â•â• */
   .kanji-modal,
   #kanjiModal {
     padding: 8px !important;
@@ -8528,7 +8528,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: clamp(13px, 2.2vw, 16px) !important;
   }
 
-  /* ══ 8. REKOMENDASI KANJI — tidak tenggelam ══ */
+  /* â•â• 8. REKOMENDASI KANJI â€” tidak tenggelam â•â• */
   #kanjiModal #recommendationRow,
   #kanjiModal .recommendation-row {
     display: flex !important;
@@ -8555,7 +8555,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 10px !important;
   }
 
-  /* ══ 9. POSTER HURUF — tidak offside ══ */
+  /* â•â• 9. POSTER HURUF â€” tidak offside â•â• */
   .letter-poster {
     margin: 8px 8px 12px !important;
     padding: 12px 10px 14px !important;
@@ -8607,7 +8607,7 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: 50px repeat(calc(var(--cols, 6) - 1), 1fr) !important;
   }
 
-  /* ══ 10. FOTO PROFIL USER — tidak nabrak topbar ══ */
+  /* â•â• 10. FOTO PROFIL USER â€” tidak nabrak topbar â•â• */
   .dashboard-avatar-wrap {
     transform: translateY(-30px) !important;
     margin-bottom: -20px !important;
@@ -8662,14 +8662,14 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =========================================
-   📱 MOBILE LANDSCAPE — FIX ROUND 3
-   1. Quiz result popup → lebih kecil, fit center, no scroll, blokir backdrop
-   2. Expand kanji → font kecil, tidak offside vertikal
-   3. Recommendation → 2 per view, scroll horizontal invisible
+   ðŸ“± MOBILE LANDSCAPE â€” FIX ROUND 3
+   1. Quiz result popup â†’ lebih kecil, fit center, no scroll, blokir backdrop
+   2. Expand kanji â†’ font kecil, tidak offside vertikal
+   3. Recommendation â†’ 2 per view, scroll horizontal invisible
 ========================================= */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ══ A. QUIZ RESULT POPUP ══
+  /* â•â• A. QUIZ RESULT POPUP â•â•
      Blokir klik ke backdrop, compact card fit layar landscape. */
 
   body.training-session [class*="result"][style*="position"],
@@ -8726,7 +8726,7 @@ body.history-mode .dashboard-shell textarea {
     margin-top: 5px !important;
   }
 
-  /* ══ B. EXPAND KANJI MODAL — teks tidak offside vertikal ══ */
+  /* â•â• B. EXPAND KANJI MODAL â€” teks tidak offside vertikal â•â• */
 
   #kanjiModal .card-image.expanded,
   .kanji-modal .card-image.expanded {
@@ -8772,7 +8772,7 @@ body.history-mode .dashboard-shell textarea {
     padding: 8px !important;
   }
 
-  /* ══ C. RECOMMENDATION ROW ══
+  /* â•â• C. RECOMMENDATION ROW â•â•
      Semua item tetap tampil. Scroll horizontal invisible.
      Setiap item lebar 50%-3px = selalu tepat 2 per viewport.
      scroll-snap berhenti per pasangan 2 item. */
@@ -8836,20 +8836,20 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =========================================
-   🏆 QUIZ RESULT POPUP — DEDICATED DESIGN
+   ðŸ† QUIZ RESULT POPUP â€” DEDICATED DESIGN
    Target: #kanjiModal.quiz-result-active
    Berlaku: mobile portrait + landscape
    TIDAK menyentuh desktop (min-width: 769px)
 ========================================= */
 
-/* ── Backdrop ── */
+/* â”€â”€ Backdrop â”€â”€ */
 #kanjiModal.quiz-result-active {
   background: rgba(3, 7, 18, 0.92) !important;
   backdrop-filter: blur(6px) !important;
   -webkit-backdrop-filter: blur(6px) !important;
 }
 
-/* ── Modal container (card putih) → ganti jadi card gelap custom ── */
+/* â”€â”€ Modal container (card putih) â†’ ganti jadi card gelap custom â”€â”€ */
 #kanjiModal.quiz-result-active .kanji-modal-content {
   background: linear-gradient(145deg, #1e1b4b 0%, #1a1a2e 60%, #0f172a 100%) !important;
   border: 1px solid rgba(255,255,255,0.08) !important;
@@ -8858,13 +8858,13 @@ body.history-mode .dashboard-shell textarea {
   overflow: hidden !important;
 }
 
-/* ── Sembunyikan close button di quiz result ── */
+/* â”€â”€ Sembunyikan close button di quiz result â”€â”€ */
 #kanjiModal.quiz-result-active .modal-close-btn,
 #kanjiModal.quiz-result-active [class*="modal-close"] {
   display: none !important;
 }
 
-/* ── Hapus padding expandedCard bawaan ── */
+/* â”€â”€ Hapus padding expandedCard bawaan â”€â”€ */
 #kanjiModal.quiz-result-active #expandedCard {
   padding: 0 !important;
   margin: 0 !important;
@@ -8882,11 +8882,11 @@ body.history-mode .dashboard-shell textarea {
   display: block !important;
 }
 
-/* ════════════════════════════════════════
-   LAYOUT: .qr-wrap — wrapper utama
-   Portrait  → kolom vertikal
-   Landscape → baris horizontal
-════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LAYOUT: .qr-wrap â€” wrapper utama
+   Portrait  â†’ kolom vertikal
+   Landscape â†’ baris horizontal
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #kanjiModal.quiz-result-active .qr-wrap {
   display: flex;
   flex-direction: column;
@@ -8897,7 +8897,7 @@ body.history-mode .dashboard-shell textarea {
   box-sizing: border-box;
 }
 
-/* ── Kolom kiri: skor panel ── */
+/* â”€â”€ Kolom kiri: skor panel â”€â”€ */
 #kanjiModal.quiz-result-active .qr-left {
   display: flex;
   flex-direction: column;
@@ -8908,7 +8908,7 @@ body.history-mode .dashboard-shell textarea {
   flex-shrink: 0;
 }
 
-/* Status label (GAGAL ❌ / LULUS ✅) */
+/* Status label (GAGAL âŒ / LULUS âœ…) */
 #kanjiModal.quiz-result-active .qr-status {
   font-size: 1.05rem;
   font-weight: 800;
@@ -8944,7 +8944,7 @@ body.history-mode .dashboard-shell textarea {
   font-weight: 700;
 }
 
-/* ── Divider antara kiri & kanan ── */
+/* â”€â”€ Divider antara kiri & kanan â”€â”€ */
 #kanjiModal.quiz-result-active .qr-left::after {
   content: '';
   display: block;
@@ -8955,7 +8955,7 @@ body.history-mode .dashboard-shell textarea {
   border-radius: 999px;
 }
 
-/* ── Kolom kanan: kutipan + tombol ── */
+/* â”€â”€ Kolom kanan: kutipan + tombol â”€â”€ */
 #kanjiModal.quiz-result-active .qr-right {
   display: flex;
   flex-direction: column;
@@ -9013,9 +9013,9 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 4px 16px rgba(255, 77, 109, 0.4);
 }
 
-/* ════════════════════════════════
-   MOBILE PORTRAIT — ukuran card
-════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE PORTRAIT â€” ukuran card
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media (max-width: 768px) {
   #kanjiModal.quiz-result-active .kanji-modal-content {
     width: min(88vw, 340px) !important;
@@ -9029,10 +9029,10 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ════════════════════════════════
-   MOBILE LANDSCAPE — layout horizontal
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   MOBILE LANDSCAPE â€” layout horizontal
    Left: status + skor | Right: quote + tombol
-════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
   #kanjiModal.quiz-result-active .kanji-modal-content {
@@ -9049,7 +9049,7 @@ body.history-mode .dashboard-shell textarea {
     align-items: stretch !important;
   }
 
-  /* Kiri: skor panel — lebar fixed, ada border kanan */
+  /* Kiri: skor panel â€” lebar fixed, ada border kanan */
   #kanjiModal.quiz-result-active .qr-left {
     flex: 0 0 180px !important;
     width: 180px !important;
@@ -9077,7 +9077,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.72rem !important;
   }
 
-  /* Kanan: quote + tombol — isi sisa */
+  /* Kanan: quote + tombol â€” isi sisa */
   #kanjiModal.quiz-result-active .qr-right {
     flex: 1 !important;
     padding: 14px 18px !important;
@@ -9104,7 +9104,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ── QUIZ RESULT: blokir klik backdrop & hide close btn ── */
+/* â”€â”€ QUIZ RESULT: blokir klik backdrop & hide close btn â”€â”€ */
 #kanjiModal.quiz-result-active #modalBackdrop {
   pointer-events: none !important;
   cursor: default !important;
@@ -9116,7 +9116,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   📱 MOBILE PORTRAIT — FIX KONTEN TENGGELAM
+   ðŸ“± MOBILE PORTRAIT â€” FIX KONTEN TENGGELAM
    Target: semua halaman di layar HP vertikal
    Penyebab: padding-bottom tidak cukup memberi ruang
    dari bottom nav yang fixed (62px + safe-area)
@@ -9124,7 +9124,7 @@ body.history-mode .dashboard-shell textarea {
 ===================================================== */
 @media (max-width: 767px) {
 
-  /* ── 1. KANJI GRID UTAMA + SEMUA MODE GRID ──
+  /* â”€â”€ 1. KANJI GRID UTAMA + SEMUA MODE GRID â”€â”€
      Semua variant #grid butuh padding bawah agar
      kartu + pagination tidak tertutup bottom nav */
   #grid,
@@ -9139,7 +9139,7 @@ body.history-mode .dashboard-shell textarea {
     flex: 0 0 auto !important; /* jangan expand, biarkan pagination tampil */
   }
 
-  /* ── 2. PAGINATION ──
+  /* â”€â”€ 2. PAGINATION â”€â”€
      Harus muncul di atas bottom nav */
   .pagination-container {
     position: relative !important;
@@ -9148,7 +9148,7 @@ body.history-mode .dashboard-shell textarea {
     margin-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 10px) !important;
   }
 
-  /* ── 3. CONTENT PANEL (umum) ──
+  /* â”€â”€ 3. CONTENT PANEL (umum) â”€â”€
      Wrapper scrollable semua halaman non-quiz */
   body:not(.training-session):not(.review-mode-active) .content-panel {
     overflow-y: auto !important;
@@ -9156,9 +9156,9 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 20px) !important;
   }
 
-  /* ── 4. MODE LATIHAN (QUIZ) — dipindah ke blok portrait-only di bawah ── */
+  /* â”€â”€ 4. MODE LATIHAN (QUIZ) â€” dipindah ke blok portrait-only di bawah â”€â”€ */
 
-  /* ── 5. MODE TINJAU LATIHAN (REVIEW) ──
+  /* â”€â”€ 5. MODE TINJAU LATIHAN (REVIEW) â”€â”€
      Tinggi wrapper pas dengan layar minus topbar */
   .review-wrapper {
     height: calc(100dvh - var(--topbar-height) - 8px) !important;
@@ -9174,7 +9174,7 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: 20px !important;
   }
 
-  /* ── 6. HISTORY / DASBOR ──
+  /* â”€â”€ 6. HISTORY / DASBOR â”€â”€
      Riwayat latihan butuh ruang bawah */
   body.history-mode #grid,
   body.dashboard-mode #grid {
@@ -9182,14 +9182,14 @@ body.history-mode .dashboard-shell textarea {
     overflow-y: auto !important;
   }
 
-  /* ── 7. FAVORIT / BELAJAR ──
+  /* â”€â”€ 7. FAVORIT / BELAJAR â”€â”€
      Grid kosakata kategori */
   body.favorit-mode #grid,
   body.belajar-mode #grid {
     padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 24px) !important;
   }
 
-  /* ── 8. HUB MENU & LATIHAN (bottom nav hub) ──
+  /* â”€â”€ 8. HUB MENU & LATIHAN (bottom nav hub) â”€â”€
      Panel hub juga perlu clearance */
   .bottom-nav-hub {
     padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
@@ -9199,7 +9199,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🖥️ TABLET + DESKTOP — FIX KONTEN TENGGELAM DI BAWAH
+   ðŸ–¥ï¸ TABLET + DESKTOP â€” FIX KONTEN TENGGELAM DI BAWAH
    Layout sidebar aktif (min-width: 768px).
    content-panel sudah overflow-y:auto, tapi #grid dan
    konten di dalamnya kekurangan padding-bottom sehingga
@@ -9207,18 +9207,18 @@ body.history-mode .dashboard-shell textarea {
 ===================================================== */
 @media (min-width: 768px) {
 
-  /* ── 1. GRID UTAMA — padding bawah cukup ── */
+  /* â”€â”€ 1. GRID UTAMA â€” padding bawah cukup â”€â”€ */
   body:not(.training-session):not(.review-mode-active) #grid {
     padding-bottom: 40px !important;
   }
 
-  /* ── 2. PAGINATION — selalu muncul di bawah konten ── */
+  /* â”€â”€ 2. PAGINATION â€” selalu muncul di bawah konten â”€â”€ */
   body:not(.training-session):not(.review-mode-active) .pagination-container {
     padding-bottom: 24px !important;
     flex-shrink: 0 !important;
   }
 
-  /* ── 3. HUB BELAJAR / MENU / LATIHAN ──
+  /* â”€â”€ 3. HUB BELAJAR / MENU / LATIHAN â”€â”€
      Konten hub di dalam content-panel perlu clearance bawah */
   .bottom-nav-hub,
   .menu-hub-container,
@@ -9228,14 +9228,14 @@ body.history-mode .dashboard-shell textarea {
     box-sizing: border-box !important;
   }
 
-  /* ── 4. CONTENT-PANEL — pastikan bisa scroll sampai bawah ── */
+  /* â”€â”€ 4. CONTENT-PANEL â€” pastikan bisa scroll sampai bawah â”€â”€ */
   body:not(.training-session):not(.review-mode-active) .content-panel {
     overflow-y: auto !important;
     /* hapus contain agar padding-bottom child terbaca */
     contain: none !important;
   }
 
-  /* ── 5. GRID DALAM HUB MODE ── */
+  /* â”€â”€ 5. GRID DALAM HUB MODE â”€â”€ */
   #grid.hub-mode,
   #grid.expression-grid,
   #grid.activity-grid,
@@ -9244,7 +9244,7 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: 40px !important;
   }
 
-  /* ── 6. HISTORY / DASBOR ── */
+  /* â”€â”€ 6. HISTORY / DASBOR â”€â”€ */
   body.history-mode .content-panel,
   body.dashboard-mode .content-panel {
     overflow-y: auto !important;
@@ -9257,7 +9257,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =====================================================
-   🔍 FILTER MODAL — MOBILE PORTRAIT TOP-SHEET
+   ðŸ” FILTER MODAL â€” MOBILE PORTRAIT TOP-SHEET
    Berlaku: max-width 767px + portrait
    Slide turun dari bawah topbar
 ===================================================== */
@@ -9283,7 +9283,7 @@ body.history-mode .dashboard-shell textarea {
     pointer-events: auto !important;
   }
 
-  /* ── Top-sheet ── */
+  /* â”€â”€ Top-sheet â”€â”€ */
   .filter-modal-content {
     position: fixed !important;
     top: 42px !important;
@@ -9310,7 +9310,7 @@ body.history-mode .dashboard-shell textarea {
     opacity: 1 !important;
   }
 
-  /* ── Header ── */
+  /* â”€â”€ Header â”€â”€ */
   .filter-modal-header {
     background: #242526 !important;
     padding: 11px 14px !important;
@@ -9355,7 +9355,7 @@ body.history-mode .dashboard-shell textarea {
 
   #filterModalClose svg { stroke: #f3f4f6 !important; }
 
-  /* ── Body ── */
+  /* â”€â”€ Body â”€â”€ */
   .filter-modal-body {
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -9363,7 +9363,7 @@ body.history-mode .dashboard-shell textarea {
     padding-bottom: 4px !important;
   }
 
-  /* ── Search input ── */
+  /* â”€â”€ Search input â”€â”€ */
   .modal-search-input {
     width: calc(100% - 32px) !important;
     margin: 12px auto 8px !important;
@@ -9382,7 +9382,7 @@ body.history-mode .dashboard-shell textarea {
     border-color: #242526 !important;
   }
 
-  /* ── Section label ── */
+  /* â”€â”€ Section label â”€â”€ */
   .filter-section h4 {
     font-size: 0.62rem !important;
     margin: 10px 0 6px 16px !important;
@@ -9391,7 +9391,7 @@ body.history-mode .dashboard-shell textarea {
     letter-spacing: 0.08em !important;
   }
 
-  /* ── Level: SEMUA centered + N chips bulat sempurna ── */
+  /* â”€â”€ Level: SEMUA centered + N chips bulat sempurna â”€â”€ */
   .level-grid {
     display: flex !important;
     flex-direction: column !important;
@@ -9447,7 +9447,7 @@ body.history-mode .dashboard-shell textarea {
     color: #ffffff !important;
   }
 
-  /* ── Category: 2 kolom, item terakhir ganjil → center ── */
+  /* â”€â”€ Category: 2 kolom, item terakhir ganjil â†’ center â”€â”€ */
   .category-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -9481,7 +9481,7 @@ body.history-mode .dashboard-shell textarea {
     color: #ffffff !important;
   }
 
-  /* ── Actions: stacked (atas bawah) ── */
+  /* â”€â”€ Actions: stacked (atas bawah) â”€â”€ */
   .filter-actions {
     padding: 10px 16px 16px !important;
     gap: 7px !important;
@@ -9520,7 +9520,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🔍 FILTER MODAL — MOBILE LANDSCAPE
+   ðŸ” FILTER MODAL â€” MOBILE LANDSCAPE
    Panel slide dari kanan ~58% lebar
    Berlaku: landscape + max-height 520px
 ===================================================== */
@@ -9762,7 +9762,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =====================================================
-   🔍 FILTER MODAL — DESKTOP
+   ðŸ” FILTER MODAL â€” DESKTOP
    Panel slide dari kanan ~44% lebar
    Berlaku: min-width 768px (non landscape mobile)
 ===================================================== */
@@ -9869,7 +9869,7 @@ body.history-mode .dashboard-shell textarea {
     min-height: 0 !important;
   }
 
-  /* Search bar — compact */
+  /* Search bar â€” compact */
   .modal-search-input {
     width: calc(100% - 28px) !important;
     margin: 10px auto 4px !important;
@@ -9943,7 +9943,7 @@ body.history-mode .dashboard-shell textarea {
     color: #ffffff !important;
   }
 
-  /* Kategori — flex wrap chips seperti kotoba */
+  /* Kategori â€” flex wrap chips seperti kotoba */
   .category-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -10008,7 +10008,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =====================================================
-   📱 DOKKAI SPLIT-SCREEN — Mobile Landscape
+   ðŸ“± DOKKAI SPLIT-SCREEN â€” Mobile Landscape
    Paksa layout kiri-kanan (split) seperti desktop,
    ukuran teks & border dikompres agar muat di layar kecil
    Berlaku: landscape + max-height 520px
@@ -10026,7 +10026,7 @@ body.history-mode .dashboard-shell textarea {
     border-width: 1px !important;
   }
 
-  /* Panel kiri: bacaan — scroll mandiri, border tipis */
+  /* Panel kiri: bacaan â€” scroll mandiri, border tipis */
   .dokkai-passage-side {
     flex: 1 !important;
     height: 92% !important;
@@ -10043,7 +10043,7 @@ body.history-mode .dashboard-shell textarea {
     line-height: 1.65 !important;
   }
 
-  /* Panel kanan: soal — scroll mandiri */
+  /* Panel kanan: soal â€” scroll mandiri */
   .dokkai-question-side {
     flex: 1.3 !important;
     height: 100% !important;
@@ -10062,21 +10062,21 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   📱 GOI & BUNPOU (KOSAKATA & TATA BAHASA) — MODE LATIHAN
+   ðŸ“± GOI & BUNPOU (KOSAKATA & TATA BAHASA) â€” MODE LATIHAN
    Mobile Portrait
    Hub pilihan latihan + sesi quiz aktif (GOI & BUNPOU)
    Berlaku: max-width 767px + portrait
-   ⚠️  JANGAN sentuh block landscape di bawah sini
+   âš ï¸  JANGAN sentuh block landscape di bawah sini
 ===================================================== */
 @media (max-width: 767px) and (orientation: portrait) {
 
-  /* ── Hub pilih latihan ── */
+  /* â”€â”€ Hub pilih latihan â”€â”€ */
   #grid.hub-mode {
     overflow-y: auto !important;
     padding: 10px !important;
   }
 
-  /* ── Sesi quiz aktif: grid perlu scroll ── */
+  /* â”€â”€ Sesi quiz aktif: grid perlu scroll â”€â”€ */
   body.training-session #grid.quiz-active-mode {
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -10098,7 +10098,7 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: 1fr 1fr !important;
   }
 
-  /* ── quiz-qcard & question ── */
+  /* â”€â”€ quiz-qcard & question â”€â”€ */
   .quiz-qcard-pro {
     min-height: 100px !important;
     padding: 14px !important;
@@ -10113,7 +10113,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.96rem !important;
   }
 
-  /* ── Header soal ── */
+  /* â”€â”€ Header soal â”€â”€ */
   .quiz-section-title {
     font-size: 0.96rem !important;
     padding-top: 34px !important;
@@ -10132,7 +10132,7 @@ body.history-mode .dashboard-shell textarea {
     font-size: 0.82rem !important;
   }
 
-  /* ── Tombol selesai ── */
+  /* â”€â”€ Tombol selesai â”€â”€ */
   #finishBtnManual {
     top: 20px !important;
     right: 23px !important;
@@ -10143,15 +10143,15 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   📱 GOI & BUNPOU (KOSAKATA & TATA BAHASA) — MODE LATIHAN
+   ðŸ“± GOI & BUNPOU (KOSAKATA & TATA BAHASA) â€” MODE LATIHAN
    Mobile Landscape
    Hub pilihan latihan + sesi quiz aktif (GOI & BUNPOU)
    Berlaku: landscape + max-height 520px
-   ⚠️  JANGAN sentuh block portrait di atas sini
+   âš ï¸  JANGAN sentuh block portrait di atas sini
 ===================================================== */
 @media screen and (orientation: landscape) and (max-height: 520px) {
 
-  /* ── Hub pilih latihan: tidak offside ── */
+  /* â”€â”€ Hub pilih latihan: tidak offside â”€â”€ */
   #grid.hub-mode {
     overflow-y: auto !important;
     padding: 10px !important;
@@ -10184,7 +10184,7 @@ body.history-mode .dashboard-shell textarea {
     margin-top: 8px !important;
   }
 
-  /* ── Sesi quiz aktif: wrapper tidak tenggelam ── */
+  /* â”€â”€ Sesi quiz aktif: wrapper tidak tenggelam â”€â”€ */
   body.training-session .app-body-shell {
     display: block !important;
     height: calc(100vh - var(--topbar-height)) !important;
@@ -10260,15 +10260,15 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🔄 BUG FIX — ROTASI ORIENTASI SAAT MODE LATIHAN
-   Masalah: rotate landscape → portrait (atau sebaliknya)
-   saat quiz aktif → render balik ke menu latihan.
+   ðŸ”„ BUG FIX â€” ROTASI ORIENTASI SAAT MODE LATIHAN
+   Masalah: rotate landscape â†’ portrait (atau sebaliknya)
+   saat quiz aktif â†’ render balik ke menu latihan.
 
    CSS fix: paksa body.training-session & quiz-active-mode
    tetap tampil benar di KEDUA orientasi agar browser
    tidak collapse layout dan memicu JS re-render.
 
-   ⚠️  Note untuk developer: jika bug masih muncul setelah
+   âš ï¸  Note untuk developer: jika bug masih muncul setelah
    CSS fix ini, tambahkan handler JS berikut:
      window.addEventListener('orientationchange', (e) => {
        if (document.body.classList.contains('training-session')) {
@@ -10278,7 +10278,7 @@ body.history-mode .dashboard-shell textarea {
      });
 ===================================================== */
 
-/* ── Portrait: pastikan quiz tetap tampil ── */
+/* â”€â”€ Portrait: pastikan quiz tetap tampil â”€â”€ */
 @media (max-width: 767px) and (orientation: portrait) {
   body.training-session {
     overflow: hidden !important;
@@ -10325,7 +10325,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ── Landscape: pastikan quiz tetap tampil ── */
+/* â”€â”€ Landscape: pastikan quiz tetap tampil â”€â”€ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
   body.training-session {
     overflow: hidden !important;
@@ -10386,13 +10386,13 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🎧 CHOUKAI — LISTENING COMPREHENSION
-   Layout terpisah: Desktop · Mobile Portrait · Landscape
+   ðŸŽ§ CHOUKAI â€” LISTENING COMPREHENSION
+   Layout terpisah: Desktop Â· Mobile Portrait Â· Landscape
    Rule ini BERDIRI SENDIRI, tidak ada kaitan dengan
    dokkai maupun quiz-wrapper-pro
 ===================================================== */
 
-/* ─── DESKTOP BASE ─────────────────────────────────── */
+/* â”€â”€â”€ DESKTOP BASE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-wrapper-pro {
   max-width: 700px;
   width: 100%;
@@ -10457,7 +10457,7 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 6px 16px rgba(225, 29, 72, 0.45);
 }
 
-/* ─── STAGE AUDIO ──────────────────────────────────── */
+/* â”€â”€â”€ STAGE AUDIO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-stage {
   flex: 1;
   min-height: 160px;
@@ -10475,7 +10475,7 @@ body.history-mode .dashboard-shell textarea {
   cursor: default;
 }
 
-/* Icon speaker — now SVG-based */
+/* Icon speaker â€” now SVG-based */
 .choukai-speaker-icon {
   display: flex;
   align-items: center;
@@ -10505,7 +10505,7 @@ body.history-mode .dashboard-shell textarea {
   display: none;
 }
 
-/* ─── WAVEFORM ANIMASI ─────────────────────────────── */
+/* â”€â”€â”€ WAVEFORM ANIMASI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-waveform {
   display: none;
   align-items: flex-end;
@@ -10544,7 +10544,7 @@ body.history-mode .dashboard-shell textarea {
   50%       { transform: scaleY(1.2); opacity: 1; }
 }
 
-/* ─── KONTROL PLAYER ───────────────────────────────── */
+/* â”€â”€â”€ KONTROL PLAYER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-controls {
   display: flex;
   align-items: center;
@@ -10582,7 +10582,7 @@ body.history-mode .dashboard-shell textarea {
   transform: none;
 }
 
-/* Tombol Lambat — hanya N5, disembunyikan di N4-N1 via JS */
+/* Tombol Lambat â€” hanya N5, disembunyikan di N4-N1 via JS */
 .choukai-btn-slow {
   display: flex;
   align-items: center;
@@ -10614,7 +10614,7 @@ body.history-mode .dashboard-shell textarea {
   color: #92400e;
 }
 
-/* Counter replay ●● */
+/* Counter replay â—â— */
 .choukai-replay-counter {
   display: flex;
   align-items: center;
@@ -10636,7 +10636,7 @@ body.history-mode .dashboard-shell textarea {
   background: #e2e8f0;
 }
 
-/* ─── PILIHAN JAWABAN ──────────────────────────────── */
+/* â”€â”€â”€ PILIHAN JAWABAN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-options {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10666,7 +10666,7 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 4px 12px rgba(168, 85, 247, 0.12);
 }
 
-/* State: LOCKED — audio belum selesai */
+/* State: LOCKED â€” audio belum selesai */
 .choukai-opt-btn:disabled,
 .choukai-options.locked .choukai-opt-btn {
   opacity: 0.38;
@@ -10690,7 +10690,7 @@ body.history-mode .dashboard-shell textarea {
   color: #b91c1c;
 }
 
-/* ─── STATUS LABEL (Memutar... / Dengarkan dengan seksama) */
+/* â”€â”€â”€ STATUS LABEL (Memutar... / Dengarkan dengan seksama) */
 .choukai-status-label {
   text-align: center;
   font-size: 0.82rem;
@@ -10705,7 +10705,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 
-/* ─── PLAYER SIDE & ANSWER SIDE (base) ────────────── */
+/* â”€â”€â”€ PLAYER SIDE & ANSWER SIDE (base) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .choukai-player-side {
   display: flex;
   flex-direction: column;
@@ -10720,7 +10720,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🎧 CHOUKAI — MOBILE PORTRAIT
+   ðŸŽ§ CHOUKAI â€” MOBILE PORTRAIT
    Full width kiri ke kanan, layout kolom
 ===================================================== */
 @media (max-width: 767px) and (orientation: portrait) {
@@ -10785,7 +10785,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🎧 CHOUKAI — MOBILE LANDSCAPE
+   ðŸŽ§ CHOUKAI â€” MOBILE LANDSCAPE
    Split kiri-kanan: player | pilihan jawaban
    Full horizontal kiri ke kanan
 ===================================================== */
@@ -10899,7 +10899,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🎧 CHOUKAI — TRAINING SESSION STABILITY
+   ðŸŽ§ CHOUKAI â€” TRAINING SESSION STABILITY
    Pastikan layout stabil saat orientasi berubah
 ===================================================== */
 @media (max-width: 767px) and (orientation: portrait) {
@@ -10923,7 +10923,7 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* =====================================================
-   🎯 CUSTOM CONFIRM MODAL — Pengganti browser confirm()
+   ðŸŽ¯ CUSTOM CONFIRM MODAL â€” Pengganti browser confirm()
    Clean, poster-style, ditengah layar
 ===================================================== */
 .confirm-modal-overlay {
@@ -11045,7 +11045,7 @@ body.history-mode .dashboard-shell textarea {
   transform: translateY(-1px);
 }
 
-/* ─── Mobile ─── */
+/* â”€â”€â”€ Mobile â”€â”€â”€ */
 @media (max-width: 480px) {
   .confirm-modal-card {
     padding: 28px 20px 22px;
@@ -11072,7 +11072,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =====================================================
-   🎧 CHOUKAI — SESSION INFO BAR (timer + sesi label)
+   ðŸŽ§ CHOUKAI â€” SESSION INFO BAR (timer + sesi label)
 ===================================================== */
 .choukai-session-bar {
   display: flex;
@@ -11123,7 +11123,7 @@ body.history-mode .dashboard-shell textarea {
   line-height: 1.5;
 }
 
-/* Desktop: CHOUKAI SESSION — wider max-width */
+/* Desktop: CHOUKAI SESSION â€” wider max-width */
 @media (min-width: 768px) {
   .choukai-wrapper-pro {
     max-width: 820px;
@@ -11167,7 +11167,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ─── CHOUKAI BUTTON SVG ICONS ─── */
+/* â”€â”€â”€ CHOUKAI BUTTON SVG ICONS â”€â”€â”€ */
 .choukai-play-icon,
 .choukai-slow-icon {
   display: inline-flex;
@@ -11228,7 +11228,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 /* =====================================================
-   🎧 CHOUKAI — PLAYER PANEL (dalam dokkai-passage-side)
+   ðŸŽ§ CHOUKAI â€” PLAYER PANEL (dalam dokkai-passage-side)
    Panel kiri audio player, sejajar dengan passage teks Dokkai
 ===================================================== */
 .choukai-player-panel {
@@ -11247,7 +11247,7 @@ body.history-mode .dashboard-shell textarea {
   min-height: 180px;
 }
 
-/* ─── DESKTOP ─── */
+/* â”€â”€â”€ DESKTOP â”€â”€â”€ */
 @media (min-width: 768px) {
   .choukai-player-panel {
     gap: 18px;
@@ -11258,7 +11258,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ─── MOBILE PORTRAIT ─── */
+/* â”€â”€â”€ MOBILE PORTRAIT â”€â”€â”€ */
 @media (max-width: 767px) and (orientation: portrait) {
   .choukai-player-panel {
     gap: 12px;
@@ -11269,7 +11269,7 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ─── MOBILE LANDSCAPE ─── */
+/* â”€â”€â”€ MOBILE LANDSCAPE â”€â”€â”€ */
 @media screen and (orientation: landscape) and (max-height: 520px) {
   .choukai-player-panel {
     gap: 8px;
@@ -11283,14 +11283,14 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ─── CHOUKAI OPTIONS — locked state pakai quiz-opt-btn-pro ─── */
+/* â”€â”€â”€ CHOUKAI OPTIONS â€” locked state pakai quiz-opt-btn-pro â”€â”€â”€ */
 #choukaiOptions.locked .quiz-opt-btn-pro {
   opacity: 0.38;
   cursor: not-allowed !important;
   pointer-events: none;
 }
 
-/* ─── DASHBOARD SVG ICONS ─── */
+/* â”€â”€â”€ DASHBOARD SVG ICONS â”€â”€â”€ */
 .dash-icon {
   display: inline-block;
   width: 14px;
@@ -11354,12 +11354,12 @@ body.history-mode .dashboard-shell textarea {
 .status-lulus .dash-icon { color: inherit; }
 .status-remidi .dash-icon { color: inherit; }
 
-/* ═══════════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    GRAMMAR STYLES (gr-*)
-   Modul independen — JANGAN digabung dengan verb-forms (.form-*)
-   ═══════════════════════════════════════════════════════════ */
+   Modul independen â€” JANGAN digabung dengan verb-forms (.form-*)
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ── Hub Container ── */
+/* â”€â”€ Hub Container â”€â”€ */
 .gr-hub,
 .gr-poster {
   grid-column: 1 / -1 !important;
@@ -11374,7 +11374,7 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 22px 48px -30px rgba(15, 23, 42, 0.55);
 }
 
-/* ── Hub Head ── */
+/* â”€â”€ Hub Head â”€â”€ */
 .gr-hub-head {
   display: flex;
   justify-content: space-between;
@@ -11415,7 +11415,7 @@ body.history-mode .dashboard-shell textarea {
   background: #fff;
 }
 
-/* ── Brick Grid (Hub Cards) ── */
+/* â”€â”€ Brick Grid (Hub Cards) â”€â”€ */
 .gr-brick-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -11487,7 +11487,7 @@ body.history-mode .dashboard-shell textarea {
   font-weight: 800;
 }
 
-/* ── Pagination ── */
+/* â”€â”€ Pagination â”€â”€ */
 .gr-hub-pagination {
   display: flex;
   justify-content: center;
@@ -11533,7 +11533,7 @@ body.history-mode .dashboard-shell textarea {
   font-weight: 700;
 }
 
-/* ── Poster (Detail Page) ── */
+/* â”€â”€ Poster (Detail Page) â”€â”€ */
 .gr-poster {
   width: min(1240px, calc(100% - 30px));
   margin: 0 auto 28px;
@@ -11573,7 +11573,7 @@ body.history-mode .dashboard-shell textarea {
   cursor: pointer;
 }
 
-/* ── Group Panel (setiap group: これ, それ, あれ, dll) ── */
+/* â”€â”€ Group Panel (setiap group: ã“ã‚Œ, ãã‚Œ, ã‚ã‚Œ, dll) â”€â”€ */
 .gr-group-panel {
   border: 1px solid rgba(125, 211, 252, 0.7);
   border-radius: 14px;
@@ -11616,7 +11616,7 @@ body.history-mode .dashboard-shell textarea {
   line-height: 1.5;
 }
 
-/* ── Sentence Card ── */
+/* â”€â”€ Sentence Card â”€â”€ */
 .gr-sentence-card {
   border: 1px solid rgba(191, 219, 254, 0.95);
   border-radius: 12px;
@@ -11650,7 +11650,7 @@ body.history-mode .dashboard-shell textarea {
   font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
 }
 
-/* ── Play Button ── */
+/* â”€â”€ Play Button â”€â”€ */
 .gr-play-btn {
   position: absolute !important;
   top: 8px !important;
@@ -11677,7 +11677,7 @@ body.history-mode .dashboard-shell textarea {
   fill: currentColor;
 }
 
-/* ── Sentence Actions (Acak Kalimat) ── */
+/* â”€â”€ Sentence Actions (Acak Kalimat) â”€â”€ */
 .gr-sentence-actions {
   margin-top: 10px;
   display: flex;
@@ -11716,7 +11716,7 @@ body.history-mode .dashboard-shell textarea {
   stroke-linejoin: round;
 }
 
-/* ── Mobile Responsive ── */
+/* â”€â”€ Mobile Responsive â”€â”€ */
 @media (max-width: 767px) {
   .gr-brick-grid {
     grid-template-columns: 1fr;
@@ -11755,10 +11755,10 @@ body.history-mode .dashboard-shell textarea {
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   LETTER CIRCLE BUTTONS (あ / ア) — inside Huruf panel card
-   Clean native style — no pink, slate/dark tones
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LETTER CIRCLE BUTTONS (ã‚ / ã‚¢) â€” inside Huruf panel card
+   Clean native style â€” no pink, slate/dark tones
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 .menu-panel-card--static {
   cursor: default;
@@ -11833,7 +11833,7 @@ body.history-mode .dashboard-shell textarea {
 }
 
 
-/* ── Search Modal: Level button locked state ── */
+/* â”€â”€ Search Modal: Level button locked state â”€â”€ */
 .level-btn--locked {
   opacity: 0.35 !important;
   cursor: not-allowed !important;
@@ -11852,10 +11852,10 @@ body.history-mode .dashboard-shell textarea {
 
 
 /* ============================================================
-   PROGRESS TRACKING — Dashboard + Latihan Lock
+   PROGRESS TRACKING â€” Dashboard + Latihan Lock
    ============================================================ */
 
-/* ── Dashboard Progress Bar ── */
+/* â”€â”€ Dashboard Progress Bar â”€â”€ */
 .dash-progress-wrap {
   margin-top: 14px;
   padding: 14px 16px;
@@ -11932,7 +11932,7 @@ body.history-mode .dashboard-shell textarea {
   50% { opacity: 0.7; }
 }
 
-/* ── Latihan Lock Banner ── */
+/* â”€â”€ Latihan Lock Banner â”€â”€ */
 .latihan-lock-banner {
   grid-column: 1 / -1;
   margin-bottom: 12px;
@@ -11952,7 +11952,7 @@ body.history-mode .dashboard-shell textarea {
 
 .latihan-lock-banner__inner strong { font-weight: 800; }
 
-/* ── Locked hub level buttons ── */
+/* â”€â”€ Locked hub level buttons â”€â”€ */
 .hub-level-btn--locked {
   opacity: 0.35 !important;
   cursor: not-allowed !important;
@@ -13488,8 +13488,36 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
     margin-top: 0 !important;
   }
 
+  #grid.support-mode .support-poster::before {
+    content: "\63F4";
+    position: absolute;
+    top: 8px;
+    right: -12px;
+    font-family: var(--jp-calligraphy), serif;
+    font-size: 7.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(194, 65, 12, 0.12);
+    transform: rotate(-7deg);
+    pointer-events: none;
+  }
+
+  #grid.support-mode .support-poster::after {
+    content: "\652F";
+    position: absolute;
+    left: -2px;
+    bottom: 0;
+    font-family: var(--jp-calligraphy), serif;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(13, 148, 136, 0.1);
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
   #grid.support-mode .support-poster__content {
-    gap: 12px !important;
+    gap: 0 !important;
     padding: 12px 12px 14px !important;
   }
 
@@ -13497,27 +13525,16 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
     max-width: none;
     position: relative;
     z-index: 1;
-    padding: 12px 12px 14px !important;
+    padding: 14px 14px 16px !important;
     border-radius: 18px;
     border: 1px solid rgba(255, 255, 255, 0.72);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 250, 244, 0.66));
-    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.05);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 250, 244, 0.68));
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
     overflow: hidden;
   }
 
   #grid.support-mode .support-poster__copy::after {
-    content: "支";
-    position: absolute;
-    top: 2px;
-    right: 6px;
-    font-family: var(--jp-calligraphy), serif;
-    font-size: 4.8rem;
-    font-weight: 700;
-    line-height: 1;
-    color: rgba(194, 65, 12, 0.08);
-    transform: rotate(-7deg);
-    z-index: 0;
-    pointer-events: none;
+    content: none;
   }
 
   #grid.support-mode .support-poster__copy > * {
@@ -13572,89 +13589,1243 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
     font-weight: 800 !important;
   }
 
-  #grid.support-mode .support-poster__visual {
-    position: relative;
-    z-index: 1;
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 9px !important;
-    align-items: stretch;
-    margin-top: 0;
-    padding: 10px;
-    border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.68);
-    background: linear-gradient(180deg, rgba(255, 251, 245, 0.42), rgba(255, 247, 237, 0.3));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
-    overflow: hidden;
-  }
-
+  #grid.support-mode .support-poster__visual,
   #grid.support-mode .support-poster__visual::after {
-    content: "援";
-    position: absolute;
-    right: -4px;
-    bottom: -8px;
-    font-family: var(--jp-calligraphy), serif;
-    font-size: 6.2rem;
-    font-weight: 700;
-    line-height: 1;
-    color: rgba(13, 148, 136, 0.1);
-    transform: rotate(-8deg);
-    z-index: 0;
-    pointer-events: none;
+    display: none !important;
+    content: none !important;
   }
 
-  #grid.support-mode .support-poster__mini-card {
-    position: relative;
-    width: 100%;
-    min-height: 46px;
-    padding: 10px 10px 10px 26px;
-    border-radius: 12px;
-    box-shadow: none;
-    border: 1px solid rgba(255, 255, 255, 0.56);
-    text-align: left;
-    z-index: 1;
-  }
-
-  #grid.support-mode .support-poster__mini-card::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0.26;
-    transform: translateY(-50%);
-  }
-
-  #grid.support-mode .support-poster__mini-card span {
-    display: block;
-    font-size: 0.74rem;
-    line-height: 1.14;
-    font-weight: 860;
-  }
-
-  #grid.support-mode .support-poster__mini-card--sub {
-    grid-column: 1 / -1;
-  }
-
-  #grid.support-mode .support-poster__mini-card--free {
-    background: linear-gradient(135deg, rgba(255, 247, 237, 0.9), rgba(255, 237, 213, 0.82));
-  }
-
-  #grid.support-mode .support-poster__mini-card--ads {
-    background: linear-gradient(135deg, rgba(240, 253, 250, 0.9), rgba(204, 251, 241, 0.82));
-  }
-
-  #grid.support-mode .support-poster__mini-card--sub {
-    background: linear-gradient(135deg, rgba(255, 251, 235, 0.9), rgba(254, 243, 199, 0.82));
-  }
-
-  #grid.support-mode .support-poster__kanji--main {
+  #grid.support-mode .support-poster__kanji--main,
+  #grid.support-mode .support-poster__kanji--sub {
     display: none;
   }
 
+  #grid.support-mode .support-poster__orb {
+    opacity: 0.14;
+  }
+
+  #grid.support-mode .support-poster__grid-lines {
+    opacity: 0.08;
+  }
+}
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
+  #grid.hub-mode {
+    padding: 10px 12px 16px !important;
+  }
+
+  .menu-hub-screen {
+    box-sizing: border-box !important;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    border: 1px solid #c0bfbc !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
+  }
+
+  .menu-hub-screen .menu-hub-header,
+  .menu-hub-screen .menu-panel-grid,
+  .menu-hub-screen .menu-hub-section-card--kotoba,
+  .menu-panel-card {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+
+  .menu-panel-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+    gap: 10px !important;
+    grid-auto-rows: 86px !important;
+  }
+
+  .menu-panel-card {
+    min-height: 86px !important;
+    height: 86px !important;
+    padding: 10px !important;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+  }
+
+  .menu-panel-card--letters {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+  }
+
+  .menu-panel-card--letters .menu-panel-card__letters-rail {
+    gap: 6px;
+  }
+
+  .menu-panel-card__icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+
+  .menu-panel-card__icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu-panel-card__body strong {
+    font-size: 0.88rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .menu-panel-card__body > span {
+    font-size: 0.74rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .menu-panel-card--expressions .menu-panel-card__body strong {
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+  }
+
+  .hub-screen--practice .hub-practice-shell {
+    padding: 12px !important;
+  }
+
+  .practice-hub-title-pill {
+    font-size: 1.65rem !important;
+  }
+
+  .hub-screen--practice .hub-header--practice p {
+    font-size: 1.0rem !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px !important;
+  }
+
+  .hub-screen--practice .hub-practice-wrapper .hub-section {
+    padding: 10px 10px 9px !important;
+  }
+
+  .hub-screen--practice .hub-section-capsule {
+    font-size: 0.82rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .hub-screen--practice .hub-levels {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  .hub-screen--practice .hub-level-btn--patterns {
+    min-width: 0 !important;
+    width: 100% !important;
+    font-size: 0.76rem !important;
+    padding: 6px 0 !important;
+  }
+}
+
+/* mobile portrait: hanya polish warna menu latihan (UX tetap sama) */
+@media (max-width: 767px) and (orientation: portrait) {
+  .bottom-nav-hub {
+    padding: calc(var(--topbar-height) + 8px) 10px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 8px) !important;
+    overflow-x: hidden !important;
+  }
+
+  .bottom-nav-hub__screen {
+    gap: 10px !important;
+  }
+
+  .bottom-nav-hub__screen--menu {
+    background: #f3f4f6 !important;
+    border: 1px solid #c7c6c2 !important;
+    border-radius: 16px !important;
+    padding: 10px !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__header,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card,
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group {
+    border: 1px solid #bebdb8 !important;
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .bottom-nav-hub__header {
+    border-radius: 14px !important;
+    padding: 12px !important;
+  }
+
+  .bottom-nav-hub__header h2 {
+    font-size: 1.08rem !important;
+    line-height: 1.06 !important;
+  }
+
+  .bottom-nav-hub__header p {
+    margin-top: 4px !important;
+    font-size: 0.74rem !important;
+    line-height: 1.28 !important;
+  }
+
+  .bottom-nav-hub__menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    grid-auto-rows: 96px !important;
+  }
+
+  .bottom-nav-hub__menu-card--expressions {
+    grid-column: 1 / -1 !important;
+  }
+
+  .bottom-nav-hub__menu-grid > .bottom-nav-hub__menu-card--expressions:not(:last-child) {
+    grid-column: auto !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card {
+    min-height: 96px !important;
+    height: 96px !important;
+    max-height: 96px !important;
+    box-sizing: border-box !important;
+    padding: 10px !important;
+    border-radius: 18px !important;
+    border: 1px solid #bebdb8 !important;
+    background: #ffffff !important;
+    box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08) !important;
+    display: grid !important;
+    grid-template-columns: 46px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    overflow: hidden !important;
+    align-self: stretch !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters {
+    min-height: 96px !important;
+    height: 96px !important;
+    max-height: 96px !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body {
+    min-width: 0;
+    display: block;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body strong {
+    display: block;
+    color: var(--nb-native-text) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.12 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-body > span {
+    display: block;
+    margin-top: 4px;
+    color: #56657a !important;
+    font-size: 0.86rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body > span {
+    display: none !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body strong {
+    display: block !important;
+    margin: 0 !important;
+    line-height: 1.05 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn-row {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card--letters .bottom-nav-hub__menu-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__letter-btn {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 6px !important;
+    border: 1px solid #b7b7b3 !important;
+    background: #ffffff !important;
+    color: #e44773 !important;
+    font-size: 0.68rem !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
+    padding: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(148, 163, 184, 0.28) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon img {
+    width: 19px !important;
+    height: 19px !important;
+    object-fit: contain;
+    display: block;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--letters {
+    background: linear-gradient(150deg, #fff6ea, #ffece0) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--grammar {
+    background: linear-gradient(150deg, #fff2ef, #ffe6df) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--verb {
+    background: linear-gradient(150deg, #ebf6ff, #def0ff) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--adjective {
+    background: linear-gradient(150deg, #f3edff, #ece3ff) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-icon--expressions {
+    background: linear-gradient(150deg, #fff5e8, #ffe9d0) !important;
+  }
+
+  .bottom-nav-hub__group {
+    border-radius: 14px !important;
+    padding: 10px !important;
+  }
+
+  .bottom-nav-hub__capsule {
+    padding: 6px 11px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .bottom-nav-hub__chips {
+    gap: 6px !important;
+  }
+
+  .bottom-nav-hub__chip {
+    min-height: 30px !important;
+    padding: 6px 9px !important;
+    font-size: 0.72rem !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chips {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    padding-bottom: 0 !important;
+    gap: 9px !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip {
+    flex: 0 1 auto !important;
+    max-width: 100% !important;
+    position: relative !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    min-height: 28px !important;
+    padding: 7px 10px 7px 20px !important;
+    font-size: 0.74rem !important;
+    line-height: 1 !important;
+    box-shadow: 0 3px 7px rgba(15, 23, 42, 0.14) !important;
+    font-weight: 820 !important;
+    color: #ffffff !important;
+    clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 8px !important;
+    top: 50% !important;
+    width: 4px !important;
+    height: 4px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 1) {
+    background: linear-gradient(135deg, #1ea7e1, #0b8fc6) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 2) {
+    background: linear-gradient(135deg, #99c907, #7fb100) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 3) {
+    background: linear-gradient(135deg, #ff9f1f, #f08700) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n + 4) {
+    background: linear-gradient(135deg, #2db3e9, #1398ce) !important;
+  }
+
+  .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba .bottom-nav-hub__chip:nth-child(5n) {
+    background: linear-gradient(135deg, #f34a8b, #df236f) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
+    background: #228b22 !important;
+    border: 1px solid rgba(34, 139, 34, 0.38) !important;
+    box-shadow: none !important;
+    border-radius: 14px !important;
+    padding: 12px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .latihan-lock-banner {
+    margin-bottom: 0px !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .latihan-lock-banner__inner {
+    padding: 10px 12px !important;
+    border-radius: 12px !important;
+    font-size: 0.64rem !important;
+    line-height: 1.22 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header h2 {
+    color: #ffffff !important;
+    font-size: 1.55rem !important;
+    line-height: 1 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__header p {
+    color: #ffffff !important;
+    font-weight: 760 !important;
+    font-size: 0.78rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__practice-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    border-radius: 14px !important;
+    padding: 10px !important;
+    background: #ffffff !important;
+    border: 1px solid #c0bfbc !important;
+    box-shadow: 0 8px 18px rgba(34, 139, 34, 0.08) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group {
+    background: #FFD700 !important;
+    border: 1px solid #b9b8b4 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.06) !important;
+    padding: 10px 10px 9px !important;
+    margin: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule {
+    background: var(--nb-forest) !important;
+    color: #ffffff !important;
+    border-radius: 999px !important;
+    font-size: 0.82rem !important;
+    font-weight: 890 !important;
+    padding: 6px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--goi,
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--bunpou,
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--dokkai,
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--choukai {
+    background: var(--nb-forest) !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chips {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+    min-width: 0 !important;
+    width: 100% !important;
+    min-height: 30px !important;
+    padding: 6px 0 !important;
+    border-radius: 999px !important;
+    border: 1px solid var(--nb-forest) !important;
+    background: var(--nb-sunset) !important;
+    color: var(--nb-ink) !important;
+    font-size: 0.74rem !important;
+    font-weight: 850 !important;
+    line-height: 1 !important;
+    box-shadow: none !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip[disabled],
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip[aria-disabled="true"] {
+    background: #F9F6EE !important;
+    border-color: var(--nb-forest) !important;
+    color: rgba(36, 37, 38, 0.42) !important;
+    opacity: 1 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__note {
+    margin-top: 8px !important;
+    border-radius: 999px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .bottom-nav-hub__screen--practice .bottom-nav-hub__note--choukai {
+    background: linear-gradient(135deg, #2e96f5, #2563eb) !important;
+    color: #ffffff !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (orientation: landscape) and (max-height: 520px) {
+    .hub-screen--practice .hub-header--practice {
+      padding: 14px 10px !important;
+    }
+}
+
+/* Dashboard modal scroll lock hard override (desktop + mobile landscape included) */
+body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .content-panel {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
+/* Letter poster perf tune - mobile only (portrait + landscape) */
+@media (max-width: 767px) and (orientation: portrait),
+       screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
+  .letter-poster {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .letter-poster-body {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .letter-cell,
+  .letter-label,
+  .letter-empty {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .letter-cell:hover,
+  .letter-label:hover,
+  .letter-empty:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* iOS landscape stabilize (Safari + Chrome iOS only, Android untouched) */
+@media screen and (orientation: landscape) and (min-width: 768px) and (max-width: 1366px) {
+  .ios-device,
+  .ios-device body {
+    overflow: auto !important;
+    height: auto !important;
+  }
+
+  .ios-device .app-body-shell {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: var(--topbar-height) !important;
+    min-height: calc(100dvh - var(--topbar-height)) !important;
+    height: auto !important;
+  }
+
+  .ios-device #sidebar,
+  .ios-device .content-panel {
+    height: calc(100dvh - var(--topbar-height)) !important;
+    max-height: calc(100dvh - var(--topbar-height)) !important;
+  }
+
+  .ios-device .content-panel {
+    padding-bottom: calc(54px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .ios-device .menu-panel-card {
+    align-items: center !important;
+  }
+
+  .ios-device .menu-panel-card__body strong,
+  .ios-device .menu-panel-card__body > span {
+    display: block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+  }
+}
+
+/* =========================================
+   Support Poster Refresh
+========================================= */
+#grid.support-mode {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: calc(100dvh - var(--topbar-height) - 24px) !important;
+  padding: calc(var(--topbar-height) + 18px) 20px 28px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+#grid.support-mode .support-poster {
+  position: relative;
+  overflow: hidden;
+  width: min(1120px, 100%);
+  min-height: min(620px, calc(100dvh - var(--topbar-height) - 64px));
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border-radius: 32px !important;
+  border: 1px solid rgba(120, 53, 15, 0.12) !important;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(249, 115, 22, 0.18), transparent 26%),
+    radial-gradient(circle at 88% 20%, rgba(13, 148, 136, 0.13), transparent 24%),
+    radial-gradient(circle at 78% 82%, rgba(245, 158, 11, 0.14), transparent 28%),
+    linear-gradient(135deg, #fff8f1 0%, #f7f3ec 52%, #f3efe7 100%) !important;
+  box-shadow: 0 22px 54px rgba(15, 23, 42, 0.16) !important;
+  color: #1f2937 !important;
+  text-align: left !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#grid.support-mode .support-poster,
+#grid.support-mode .support-poster * {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+#grid.support-mode .support-poster__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#grid.support-mode .support-poster__orb {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.72;
+}
+
+#grid.support-mode .support-poster__orb--1 {
+  top: -48px;
+  right: 12%;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.34) 0%, rgba(251, 146, 60, 0) 68%);
+}
+
+#grid.support-mode .support-poster__orb--2 {
+  left: -52px;
+  bottom: 12%;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.24) 0%, rgba(20, 184, 166, 0) 72%);
+}
+
+#grid.support-mode .support-poster__orb--3 {
+  right: 24%;
+  bottom: -84px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.18) 0%, rgba(251, 191, 36, 0) 72%);
+}
+
+#grid.support-mode .support-poster__grid-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgba(120, 53, 15, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 53, 15, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 85%);
+}
+
+#grid.support-mode .support-poster__kanji {
+  position: absolute;
+  font-family: var(--jp-calligraphy), serif;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+#grid.support-mode .support-poster__kanji--main {
+  top: 24px;
+  right: 24px;
+  font-size: clamp(9rem, 17vw, 15rem);
+  color: rgba(194, 65, 12, 0.09);
+  transform: rotate(-8deg);
+}
+
+#grid.support-mode .support-poster__kanji--sub {
+  left: 28px;
+  bottom: -10px;
+  font-size: clamp(6rem, 11vw, 9rem);
+  color: rgba(13, 148, 136, 0.09);
+  transform: rotate(8deg);
+}
+
+#grid.support-mode .support-poster__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 28px;
+  align-items: center;
+  min-height: inherit;
+  padding: 40px 42px;
+}
+
+#grid.support-mode .support-poster__copy {
+  max-width: 640px;
+  animation: supportRiseIn 0.62s ease both;
+}
+
+#grid.support-mode .support-poster__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -8px;
+  margin-bottom: 14px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(194, 65, 12, 0.14);
+  color: #a14a23;
+  font-size: 0.92rem;
+  font-weight: 860;
+  letter-spacing: 0.02em;
+}
+
+#grid.support-mode .support-poster h2 {
+  margin: 0 0 14px !important;
+  color: #3e302c !important;
+  font-size: clamp(2.1rem, 3.5vw, 3.7rem) !important;
+  font-weight: 980 !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.03em !important;
+  text-shadow: none !important;
+}
+
+#grid.support-mode .support-poster__lead,
+#grid.support-mode .support-poster__text,
+#grid.support-mode .support-poster__closing {
+  margin: 0 !important;
+  color: #635650 !important;
+  max-width: 60ch;
+}
+
+#grid.support-mode .support-poster__lead {
+  font-size: clamp(1.05rem, 1.35vw, 1.3rem) !important;
+  line-height: 1.62 !important;
+  font-weight: 750 !important;
+}
+
+#grid.support-mode .support-poster__text {
+  margin-top: 12px !important;
+  font-size: clamp(0.98rem, 1.1vw, 1.12rem) !important;
+  line-height: 1.68 !important;
+  font-weight: 680 !important;
+}
+
+#grid.support-mode .support-poster__closing {
+  margin-top: 16px !important;
+  color: #b45309 !important;
+  font-size: 1rem !important;
+  font-weight: 860 !important;
+}
+
+#grid.support-mode .support-poster__actions {
+  margin-top: 26px;
+}
+
+#grid.support-mode .support-poster__cta {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 208px;
+  padding: 15px 30px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #c2410c, #ea580c) !important;
+  color: #fff7ed !important;
+  border: 1px solid rgba(255, 247, 237, 0.42) !important;
+  box-shadow: 0 14px 28px rgba(194, 65, 12, 0.22) !important;
+  text-decoration: none !important;
+  font-size: 1.06rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.01em;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease !important;
+  animation: supportRiseIn 0.72s ease 0.12s both;
+}
+
+#grid.support-mode .support-poster__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(194, 65, 12, 0.28) !important;
+  filter: brightness(1.02);
+}
+
+#grid.support-mode .support-poster__cta:active {
+  transform: translateY(0);
+}
+
+#grid.support-mode .support-poster__visual {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  justify-items: end;
+  animation: supportRiseIn 0.76s ease 0.08s both;
+}
+
+#grid.support-mode .support-poster__mini-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 82px;
+  min-width: 230px;
+  padding: 0 22px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  color: #111827;
+  text-align: center;
+}
+
+#grid.support-mode .support-poster__mini-card span {
+  display: block;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+#grid.support-mode .support-poster__mini-card--free {
+  background: linear-gradient(135deg, rgba(255, 247, 237, 0.96), rgba(255, 237, 213, 0.92));
+  color: #9a3412;
+}
+
+#grid.support-mode .support-poster__mini-card--ads {
+  margin-right: 34px;
+  background: linear-gradient(135deg, rgba(240, 253, 250, 0.96), rgba(204, 251, 241, 0.92));
+  color: #0f766e;
+}
+
+#grid.support-mode .support-poster__mini-card--sub {
+  margin-right: 10px;
+  background: linear-gradient(135deg, rgba(255, 251, 235, 0.96), rgba(254, 243, 199, 0.92));
+  color: #b45309;
+}
+
+@keyframes supportRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes supportFloatLift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes supportOrbDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@media (min-width: 768px) {
+  #grid.support-mode .support-poster__content {
+    align-items: start;
+  }
+
+  #grid.support-mode .support-poster__copy {
+    position: relative;
+    align-self: start;
+    padding-top: 56px;
+  }
+
+  #grid.support-mode .support-poster__badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 !important;
+    z-index: 2;
+  }
+
+  #grid.support-mode .support-poster__visual {
+    align-self: center;
+    justify-self: end;
+    margin-top: 32px;
+  }
+
+  #grid.support-mode .support-poster__orb--1 {
+    animation: supportOrbDrift 10s ease-in-out infinite;
+  }
+
+  #grid.support-mode .support-poster__orb--2 {
+    animation: supportOrbDrift 12s ease-in-out infinite reverse;
+  }
+
+  #grid.support-mode .support-poster__mini-card--free {
+    animation: supportRiseIn 0.62s ease 0.1s both, supportFloatLift 6.8s ease-in-out 1.2s infinite;
+  }
+
+  #grid.support-mode .support-poster__mini-card--ads {
+    animation: supportRiseIn 0.68s ease 0.16s both, supportFloatLift 7.4s ease-in-out 1.35s infinite reverse;
+  }
+
+  #grid.support-mode .support-poster__mini-card--sub {
+    animation: supportRiseIn 0.74s ease 0.22s both, supportFloatLift 7s ease-in-out 1.5s infinite;
+  }
+}
+
+@media (max-width: 767px) {
+  #grid.support-mode {
+    min-height: auto !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    padding: calc(var(--topbar-height) + 12px) 14px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 18px) !important;
+  }
+
+  #grid.support-mode .support-poster {
+    width: 100% !important;
+    min-height: auto !important;
+    border-radius: 22px !important;
+  }
+
+  #grid.support-mode .support-poster__content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 20px 18px 22px;
+  }
+
+  #grid.support-mode .support-poster__badge {
+    margin-top: -4px;
+    margin-bottom: 12px;
+    padding: 7px 13px;
+    font-size: 0.82rem;
+  }
+
+  #grid.support-mode .support-poster h2 {
+    font-size: 1.82rem !important;
+  }
+
+  #grid.support-mode .support-poster__lead {
+    font-size: 0.98rem !important;
+    line-height: 1.58 !important;
+  }
+
+  #grid.support-mode .support-poster__text,
+  #grid.support-mode .support-poster__closing {
+    font-size: 0.9rem !important;
+    line-height: 1.56 !important;
+  }
+
+  #grid.support-mode .support-poster__visual {
+    justify-items: stretch;
+    gap: 10px;
+  }
+
+  #grid.support-mode .support-poster__mini-card,
+  #grid.support-mode .support-poster__mini-card--ads,
+  #grid.support-mode .support-poster__mini-card--sub {
+    min-width: 0;
+    margin-right: 0;
+  }
+
+  #grid.support-mode .support-poster__mini-card {
+    min-height: 64px;
+    padding: 0 16px;
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    animation: supportRiseIn 0.56s ease both;
+  }
+
+  #grid.support-mode .support-poster__mini-card--ads {
+    animation-delay: 0.08s;
+  }
+
+  #grid.support-mode .support-poster__mini-card--sub {
+    animation-delay: 0.14s;
+  }
+
+  #grid.support-mode .support-poster__mini-card span {
+    font-size: 1rem;
+  }
+
+  #grid.support-mode .support-poster__cta {
+    width: 100%;
+    min-width: 0;
+    padding: 14px 18px !important;
+    font-size: 1rem !important;
+    animation: supportRiseIn 0.6s ease 0.18s both;
+  }
+
+  #grid.support-mode .support-poster__kanji--main {
+    top: 8px;
+    right: 4px;
+    font-size: 6.6rem;
+    opacity: 0.06;
+  }
+
+  #grid.support-mode .support-poster__kanji--sub {
+    left: 10px;
+    bottom: -4px;
+    font-size: 4.2rem;
+    opacity: 0.06;
+  }
+
+  #grid.support-mode .support-poster__orb {
+    opacity: 0.48;
+  }
+}
+
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 520px) {
+  #grid.support-mode {
+    padding: calc(var(--topbar-height) + 8px) 12px 16px !important;
+  }
+
+  #grid.support-mode .support-poster__content {
+    grid-template-columns: minmax(0, 1.12fr) minmax(220px, 0.88fr);
+    gap: 14px;
+    padding: 16px;
+  }
+
+  #grid.support-mode .support-poster__badge {
+    margin-top: -2px;
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  #grid.support-mode .support-poster h2 {
+    font-size: 1.56rem !important;
+  }
+
+  #grid.support-mode .support-poster__lead,
+  #grid.support-mode .support-poster__text,
+  #grid.support-mode .support-poster__closing {
+    font-size: 0.84rem !important;
+    line-height: 1.48 !important;
+  }
+
+  #grid.support-mode .support-poster__visual {
+    gap: 8px;
+  }
+
+  #grid.support-mode .support-poster__mini-card {
+    min-height: 54px;
+    border-radius: 14px;
+    padding: 0 12px;
+    animation: none !important;
+  }
+
+  #grid.support-mode .support-poster__mini-card span {
+    font-size: 0.88rem;
+  }
+
+  #grid.support-mode .support-poster__cta {
+    width: auto;
+    min-width: 180px;
+    padding: 12px 18px !important;
+    animation: none !important;
+  }
+
+  #grid.support-mode .support-poster__orb {
+    animation: none !important;
+  }
+}
+
+.ios-device #grid.support-mode .support-poster__orb,
+.ios-device #grid.support-mode .support-poster__mini-card,
+.ios-device #grid.support-mode .support-poster__cta {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #grid.support-mode .support-poster__copy,
+  #grid.support-mode .support-poster__visual,
+  #grid.support-mode .support-poster__mini-card,
+  #grid.support-mode .support-poster__cta,
+  #grid.support-mode .support-poster__orb {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  #grid.support-mode {
+    padding: calc(var(--topbar-height) - 4px) 12px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
+  }
+
+  #grid.support-mode .support-poster {
+    border-radius: 22px !important;
+    border-color: rgba(120, 53, 15, 0.1) !important;
+    background:
+      radial-gradient(circle at 18% 10%, rgba(249, 115, 22, 0.14), transparent 30%),
+      radial-gradient(circle at 86% 22%, rgba(13, 148, 136, 0.08), transparent 24%),
+      radial-gradient(circle at 74% 88%, rgba(245, 158, 11, 0.1), transparent 26%),
+      linear-gradient(160deg, #fff8f1 0%, #fbf6ef 62%, #f5efe6 100%) !important;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.1) !important;
+    margin-top: 0 !important;
+  }
+
+  #grid.support-mode .support-poster::before {
+    content: "\63F4";
+    position: absolute;
+    top: 8px;
+    right: -12px;
+    font-family: var(--jp-calligraphy), serif;
+    font-size: 7.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(194, 65, 12, 0.12);
+    transform: rotate(-7deg);
+    pointer-events: none;
+  }
+
+  #grid.support-mode .support-poster::after {
+    content: "\652F";
+    position: absolute;
+    left: -2px;
+    bottom: 0;
+    font-family: var(--jp-calligraphy), serif;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(13, 148, 136, 0.1);
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
+  #grid.support-mode .support-poster__content {
+    gap: 0 !important;
+    padding: 12px 12px 14px !important;
+  }
+
+  #grid.support-mode .support-poster__copy {
+    max-width: none;
+    position: relative;
+    z-index: 1;
+    padding: 14px 14px 16px !important;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 250, 244, 0.68));
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+  }
+
+  #grid.support-mode .support-poster__copy::after {
+    content: none;
+  }
+
+  #grid.support-mode .support-poster__copy > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  #grid.support-mode .support-poster__badge {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+    padding: 7px 12px !important;
+    font-size: 0.76rem !important;
+    border-color: rgba(194, 65, 12, 0.12) !important;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.05);
+  }
+
+  #grid.support-mode .support-poster__lead {
+    font-size: 0.95rem !important;
+    line-height: 1.62 !important;
+    color: #534741 !important;
+  }
+
+  #grid.support-mode .support-poster__text {
+    margin-top: 9px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.58 !important;
+    color: #6d6059 !important;
+  }
+
+  #grid.support-mode .support-poster__closing {
+    margin-top: 12px !important;
+    font-size: 0.82rem !important;
+    color: #b45309 !important;
+  }
+
+  #grid.support-mode .support-poster__actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 12px;
+  }
+
+  #grid.support-mode .support-poster__cta {
+    width: auto !important;
+    min-width: 128px;
+    max-width: 100%;
+    min-height: 38px;
+    padding: 9px 16px !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 8px 16px rgba(194, 65, 12, 0.16) !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+  }
+
+  #grid.support-mode .support-poster__visual,
+  #grid.support-mode .support-poster__visual::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  #grid.support-mode .support-poster__kanji--main,
   #grid.support-mode .support-poster__kanji--sub {
     display: none;
   }

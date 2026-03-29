@@ -13473,7 +13473,7 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
   #grid.support-mode {
-    padding: calc(var(--topbar-height) + 10px) 12px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
+    padding: calc(var(--topbar-height) + 2px) 12px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + 16px) !important;
   }
 
   #grid.support-mode .support-poster {
@@ -13485,100 +13485,106 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
       radial-gradient(circle at 78% 88%, rgba(245, 158, 11, 0.12), transparent 28%),
       linear-gradient(160deg, #fff8f1 0%, #faf5ef 58%, #f5efe6 100%) !important;
     box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12) !important;
+    margin-top: 0 !important;
   }
 
   #grid.support-mode .support-poster__content {
-    gap: 14px !important;
-    padding: 16px 14px 16px !important;
+    gap: 12px !important;
+    padding: 14px 14px 16px !important;
   }
 
   #grid.support-mode .support-poster__copy {
     max-width: none;
+    position: relative;
+    z-index: 1;
   }
 
   #grid.support-mode .support-poster__badge {
     margin-top: 0 !important;
-    margin-bottom: 10px !important;
-    padding: 7px 12px !important;
-    font-size: 0.78rem !important;
+    margin-bottom: 8px !important;
+    padding: 8px 14px !important;
+    font-size: 0.8rem !important;
     border-color: rgba(194, 65, 12, 0.12) !important;
     box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
   }
 
   #grid.support-mode .support-poster__lead {
-    font-size: 0.95rem !important;
-    line-height: 1.58 !important;
+    font-size: 0.93rem !important;
+    line-height: 1.56 !important;
   }
 
   #grid.support-mode .support-poster__text {
-    margin-top: 10px !important;
-    font-size: 0.83rem !important;
-    line-height: 1.6 !important;
+    margin-top: 9px !important;
+    font-size: 0.82rem !important;
+    line-height: 1.56 !important;
     color: #70615a !important;
   }
 
   #grid.support-mode .support-poster__closing {
-    margin-top: 12px !important;
+    margin-top: 11px !important;
     font-size: 0.86rem !important;
   }
 
   #grid.support-mode .support-poster__actions {
     display: flex;
-    justify-content: center;
-    margin-top: 12px;
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 
   #grid.support-mode .support-poster__cta {
     width: auto !important;
-    min-width: 172px;
-    max-width: 78%;
-    min-height: 44px;
-    padding: 12px 22px !important;
+    min-width: 148px;
+    max-width: 100%;
+    min-height: 40px;
+    padding: 10px 18px !important;
     border-radius: 999px !important;
     box-sizing: border-box !important;
-    box-shadow: 0 10px 20px rgba(194, 65, 12, 0.2) !important;
+    box-shadow: 0 9px 18px rgba(194, 65, 12, 0.18) !important;
+    font-size: 0.92rem !important;
   }
 
   #grid.support-mode .support-poster__visual {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    position: relative;
+    z-index: 1;
+    display: flex !important;
+    flex-wrap: wrap;
     gap: 8px !important;
-    justify-items: center;
+    justify-content: flex-start;
     align-items: start;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   #grid.support-mode .support-poster__mini-card {
     position: relative;
-    width: 100%;
-    max-width: 132px;
-    min-height: 58px;
-    padding: 10px 10px 8px;
-    border-radius: 16px;
-    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.06);
+    width: auto;
+    max-width: none;
+    min-height: auto;
+    padding: 18px 12px 9px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.04);
+    flex: 0 0 auto;
   }
 
   #grid.support-mode .support-poster__mini-card::before {
     content: "";
     position: absolute;
-    top: 11px;
-    left: 12px;
-    width: 28px;
-    height: 4px;
+    top: 8px;
+    left: 10px;
+    width: 18px;
+    height: 3px;
     border-radius: 999px;
     background: currentColor;
-    opacity: 0.18;
+    opacity: 0.24;
   }
 
   #grid.support-mode .support-poster__mini-card span {
-    font-size: 0.84rem;
-    line-height: 1.2;
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.12;
   }
 
   #grid.support-mode .support-poster__mini-card--sub {
-    grid-column: 1 / -1;
-    max-width: 176px;
-    justify-self: center;
+    max-width: none;
   }
 
   #grid.support-mode .support-poster__mini-card--free {
@@ -13594,21 +13600,21 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   }
 
   #grid.support-mode .support-poster__kanji--main {
-    top: auto;
-    right: -2px;
-    bottom: 94px;
-    font-size: 5.1rem;
-    opacity: 0.085;
+    top: 20px;
+    right: -6px;
+    bottom: auto;
+    font-size: 7rem;
+    opacity: 0.115;
   }
 
   #grid.support-mode .support-poster__kanji--sub {
-    left: 8px;
-    bottom: 8px;
-    font-size: 3.1rem;
-    opacity: 0.075;
+    left: 6px;
+    bottom: 18px;
+    font-size: 3.8rem;
+    opacity: 0.09;
   }
 
   #grid.support-mode .support-poster__orb {
-    opacity: 0.28;
+    opacity: 0.2;
   }
 }

@@ -295,6 +295,21 @@
     }
 
     @media (max-width: 767px) and (orientation: portrait) {
+      html, body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .sp-shell {
+        min-height: 100dvh;
+        height: auto;
+      }
+
       .sp-orb-1 {
         width: 320px;
         height: 320px;
@@ -335,8 +350,12 @@
       }
 
       .sp-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 6;
         height: 52px;
         padding: 0 12px;
+        background: rgba(10, 10, 10, 0.92);
       }
 
       .sp-back,
@@ -360,15 +379,15 @@
       }
 
       .sp-main {
-        align-items: stretch;
-        justify-content: flex-start;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 10px 14px 18px;
+        display: block;
+        flex: 1 1 auto;
+        overflow: visible;
+        padding: 10px 14px calc(18px + env(safe-area-inset-bottom));
       }
 
       .sp-layout {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         max-width: none;
         height: auto;
@@ -383,8 +402,10 @@
 
       .sp-left,
       .sp-right {
+        display: block;
         justify-content: flex-start;
         padding: 0;
+        width: 100%;
       }
 
       .sp-left {
@@ -465,6 +486,7 @@
         background: rgba(255,255,255,0.03);
         box-shadow: 0 12px 26px rgba(0,0,0,0.18);
         padding: 14px;
+        margin-top: 0;
       }
 
       .sp-right-label {

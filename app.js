@@ -3956,13 +3956,39 @@ grid.style.display="grid";
         <div class="support-poster__content">
           <div class="support-poster__copy">
             <div class="support-poster__badge">Dukung Pengembang</div>
-            <p class="support-poster__lead">NihonByte dibuat dengan semangat berbagi ilmu Bahasa Jepang secara gratis dan terbuka untuk semua pembelajar.</p>
-            <p class="support-poster__text">Dukungan Anda membantu proyek ini tetap hidup, berkembang, dan menjangkau lebih banyak orang tanpa iklan dan tanpa batasan akses.</p>
-            <p class="support-poster__text">Setiap bentuk dukungan, sekecil apa pun, berarti kami bisa terus menambah materi baru, memperbaiki fitur, dan membangun komunitas belajar yang lebih baik.</p>
-            <p class="support-poster__closing">Terima kasih telah menjadi bagian dari perjalanan ini.</p>
+
+            <p class="support-poster__lead"></p>
+            <p class="support-poster__text"></p>
+
+            <div class="support-poster__sep" aria-hidden="true"></div>
+
+            <ul class="support-poster__benefits" aria-label="Alasan mendukung">
+              <li class="support-poster__benefit">
+                <span class="support-poster__benefit-num" aria-hidden="true">一</span>
+                <div>
+                  <p class="support-poster__benefit-title"></p>
+                  <p class="support-poster__benefit-desc"></p>
+                </div>
+              </li>
+              <li class="support-poster__benefit">
+                <span class="support-poster__benefit-num" aria-hidden="true">二</span>
+                <div>
+                  <p class="support-poster__benefit-title"></p>
+                  <p class="support-poster__benefit-desc"></p>
+                </div>
+              </li>
+              <li class="support-poster__benefit">
+                <span class="support-poster__benefit-num" aria-hidden="true">三</span>
+                <div>
+                  <p class="support-poster__benefit-title"></p>
+                  <p class="support-poster__benefit-desc"></p>
+                </div>
+              </li>
+            </ul>
 
             <div class="support-poster__actions">
-              <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn support-poster__cta">Klik Disini</a>
+              <a href="https://sociabuzz.com/syncxcode/tribe" target="_blank" rel="noopener noreferrer" class="support-btn support-poster__cta">Dukung Sekarang</a>
+              <p class="support-poster__cta-note">Sekali saja. Tidak ada langganan.</p>
             </div>
           </div>
 
@@ -3971,10 +3997,11 @@ grid.style.display="grid";
               <span>Gratis</span>
             </div>
             <div class="support-poster__mini-card support-poster__mini-card--ads">
+              <span class="support-poster__mini-badge">Pendukung</span>
               <span>Bebas Iklan</span>
             </div>
             <div class="support-poster__mini-card support-poster__mini-card--sub">
-              <span>Tanpa Berlangganan</span>
+              <span>Tanpa Langganan</span>
             </div>
           </div>
         </div>

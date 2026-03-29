@@ -13309,40 +13309,160 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   #grid.support-mode .support-poster {
     width: 100% !important;
     min-height: auto !important;
-    border-radius: 22px !important;
+    border-radius: 26px !important;
+    background:
+      radial-gradient(circle at 0% 10%, rgba(184, 58, 31, 0.32), transparent 45%),
+      linear-gradient(160deg, #141414 0%, #0d0d0d 100%) !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    box-shadow: 0 24px 48px rgba(0,0,0,0.45) !important;
+    color: #f0ede8 !important;
   }
 
   #grid.support-mode .support-poster__content {
     grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 20px 18px 22px;
+    gap: 0;
+    padding: 22px 20px 24px;
+  }
+
+  #grid.support-mode .support-poster__kanji--main {
+    top: 8px;
+    right: 4px;
+    font-size: 6.6rem;
+    color: rgba(255,255,255,0.03) !important;
+    opacity: 1;
+  }
+
+  #grid.support-mode .support-poster__kanji--sub {
+    left: 10px;
+    bottom: -4px;
+    font-size: 4.2rem;
+    color: rgba(255,255,255,0.03) !important;
+    opacity: 1;
+  }
+
+  #grid.support-mode .support-poster__grid-lines {
+    opacity: 0.5 !important;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px) !important;
+  }
+
+  #grid.support-mode .support-poster__orb {
+    opacity: 0.6;
+  }
+
+  #grid.support-mode .support-poster__orb--1 {
+    background: radial-gradient(circle, rgba(184, 58, 31, 0.45) 0%, transparent 68%) !important;
+  }
+
+  #grid.support-mode .support-poster__orb--2 {
+    background: radial-gradient(circle, rgba(184, 58, 31, 0.2) 0%, transparent 72%) !important;
   }
 
   #grid.support-mode .support-poster__badge {
-    margin-top: -4px;
-    margin-bottom: 12px;
-    padding: 7px 13px;
-    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: transparent !important;
+    border: 1px solid rgba(184, 58, 31, 0.45) !important;
+    color: #c4593a !important;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+  }
+
+  #grid.support-mode .support-poster__badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #B83A1F;
+    display: inline-block;
+    flex-shrink: 0;
   }
 
   #grid.support-mode .support-poster h2 {
-    font-size: 1.82rem !important;
+    font-size: 1.7rem !important;
+    color: #f0ede8 !important;
   }
 
   #grid.support-mode .support-poster__lead {
-    font-size: 0.98rem !important;
-    line-height: 1.58 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.75 !important;
+    color: rgba(240,237,232,0.55) !important;
+    font-weight: 400 !important;
   }
 
-  #grid.support-mode .support-poster__text,
+  #grid.support-mode .support-poster__text {
+    margin-top: 8px !important;
+    font-size: 0.88rem !important;
+    line-height: 1.75 !important;
+    color: rgba(240,237,232,0.55) !important;
+    font-weight: 400 !important;
+  }
+
   #grid.support-mode .support-poster__closing {
-    font-size: 0.9rem !important;
-    line-height: 1.56 !important;
+    margin-top: 8px !important;
+    font-size: 0.88rem !important;
+    color: rgba(240,237,232,0.55) !important;
+    font-weight: 400 !important;
+  }
+
+  #grid.support-mode .support-poster__sep {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(184,58,31,0.35), transparent);
+    margin: 18px 0;
+  }
+
+  #grid.support-mode .support-poster__benefits {
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  #grid.support-mode .support-poster__benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  #grid.support-mode .support-poster__benefit-num {
+    font-family: var(--jp-calligraphy), serif;
+    font-size: 0.75rem;
+    color: rgba(184,58,31,0.5);
+    min-width: 16px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  #grid.support-mode .support-poster__benefit-title {
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    color: rgba(240,237,232,0.85) !important;
+    margin: 0 0 2px !important;
+    line-height: 1.4 !important;
+  }
+
+  #grid.support-mode .support-poster__benefit-desc {
+    font-size: 0.78rem !important;
+    font-weight: 400 !important;
+    color: rgba(255,255,255,0.35) !important;
+    margin: 0 !important;
+    line-height: 1.55 !important;
   }
 
   #grid.support-mode .support-poster__visual {
-    justify-items: stretch;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 18px;
   }
 
   #grid.support-mode .support-poster__mini-card,
@@ -13350,52 +13470,82 @@ body.dashboard-modal-open:not(.training-session):not(.review-mode-active) .conte
   #grid.support-mode .support-poster__mini-card--sub {
     min-width: 0;
     margin-right: 0;
+    flex-direction: column;
+    gap: 3px;
   }
 
   #grid.support-mode .support-poster__mini-card {
-    min-height: 64px;
-    padding: 0 16px;
-    border-radius: 16px;
-    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70px;
+    padding: 10px 8px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: none !important;
     animation: supportRiseIn 0.56s ease both;
   }
 
+  #grid.support-mode .support-poster__mini-card--free {
+    background: rgba(255,255,255,0.04) !important;
+    color: rgba(240,237,232,0.6) !important;
+  }
+
   #grid.support-mode .support-poster__mini-card--ads {
+    background: rgba(184, 58, 31, 0.12) !important;
+    border-color: rgba(184, 58, 31, 0.35) !important;
+    color: #f0ede8 !important;
     animation-delay: 0.08s;
   }
 
   #grid.support-mode .support-poster__mini-card--sub {
+    background: rgba(255,255,255,0.04) !important;
+    color: rgba(240,237,232,0.6) !important;
     animation-delay: 0.14s;
   }
 
+  #grid.support-mode .support-poster__mini-badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #B83A1F;
+  }
+
   #grid.support-mode .support-poster__mini-card span {
-    font-size: 1rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  #grid.support-mode .support-poster__actions {
+    margin-top: 0;
   }
 
   #grid.support-mode .support-poster__cta {
+    display: block !important;
     width: 100%;
     min-width: 0;
     padding: 14px 18px !important;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
+    border-radius: 14px !important;
+    background: #B83A1F !important;
+    border: none !important;
+    box-shadow: 0 8px 24px rgba(184, 58, 31, 0.3) !important;
     animation: supportRiseIn 0.6s ease 0.18s both;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
-  #grid.support-mode .support-poster__kanji--main {
-    top: 8px;
-    right: 4px;
-    font-size: 6.6rem;
-    opacity: 0.06;
-  }
-
-  #grid.support-mode .support-poster__kanji--sub {
-    left: 10px;
-    bottom: -4px;
-    font-size: 4.2rem;
-    opacity: 0.06;
-  }
-
-  #grid.support-mode .support-poster__orb {
-    opacity: 0.48;
+  #grid.support-mode .support-poster__cta-note {
+    text-align: center;
+    font-size: 0.75rem !important;
+    color: rgba(255,255,255,0.22) !important;
+    margin: 0 !important;
+    font-weight: 400 !important;
   }
 }
 

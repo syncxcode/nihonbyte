@@ -166,11 +166,14 @@
       font-size: 0.68rem; font-weight: 600; color: #c4593a;
       letter-spacing: 0.12em; text-transform: uppercase;
     }
-    .sp-title {
+      .sp-title {
       font-family: 'Noto Serif JP', serif;
       font-size: clamp(1.7rem, 2.6vw, 2.3rem);
       font-weight: 700; color: var(--text-primary);
       line-height: 1.25; margin-bottom: 12px;
+    }
+    .sp-title-line {
+      display: block;
     }
     .sp-title em { color: var(--red); font-style: normal; }
     .sp-desc {
@@ -647,6 +650,11 @@
         text-wrap: balance;
       }
 
+      .sp-title-line--top,
+      .sp-title-line--bottom {
+        white-space: nowrap;
+      }
+
       .sp-desc {
         max-width: 360px;
         margin-bottom: 18px;
@@ -759,7 +767,8 @@
           <span class="sp-badge-txt">Dukung Pengembang</span>
         </div>
         <h1 class="sp-title">
-          Dukung <em>NihonByte</em><br>untuk Terus Berkembang.
+          <span class="sp-title-line sp-title-line--top">Dukung <em>NihonByte</em></span>
+          <span class="sp-title-line sp-title-line--bottom">untuk Terus Berkembang.</span>
         </h1>
         <p class="sp-desc">
           Kontribusimu membantu NihonByte tetap berkembang dengan fokus pada kualitas, stabilitas, dan pengalaman terbaik.

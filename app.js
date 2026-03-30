@@ -2137,15 +2137,21 @@ grid.style.display="grid";
       );
     }
 
+    function isKotobaFilterContext() {
+      return viewMode === "vocab" && !!getCurrentKotobaFilterKey() && !isExpressionFilterContext();
+    }
+
     function setFilterModalContext(context) {
-      activeFilterContext = ["grammar", "expression"].includes(context) ? context : "vocab";
+      activeFilterContext = ["grammar", "expression", "kotoba"].includes(context) ? context : "vocab";
       if (filterModalTitleText) {
         filterModalTitleText.textContent =
           activeFilterContext === "grammar"
             ? "Cari & Filter Grammar"
             : activeFilterContext === "expression"
               ? "Cari & Filter Ungkapan"
-              : "Cari & Filter";
+              : activeFilterContext === "kotoba"
+                ? getKotobaFilterModalTitle()
+                : "Cari & Filter";
       }
       if (modalSearchInput) {
         modalSearchInput.placeholder =
@@ -2153,10 +2159,12 @@ grid.style.display="grid";
             ? "Cari grammar..."
             : activeFilterContext === "expression"
               ? "Cari ungkapan..."
-              : "Cari kanji / kana / romaji / arti...";
+              : activeFilterContext === "kotoba"
+                ? "Cari kosakata..."
+                : "Cari kanji / kana / romaji / arti...";
       }
       if (levelFilterSection) {
-        const hideLevelSection = activeFilterContext === "expression";
+        const hideLevelSection = activeFilterContext === "expression" || activeFilterContext === "kotoba";
         levelFilterSection.hidden = hideLevelSection;
         levelFilterSection.setAttribute("aria-hidden", hideLevelSection ? "true" : "false");
       }
@@ -2222,6 +2230,8 @@ grid.style.display="grid";
           ? "grammar"
           : isExpressionFilterContext()
             ? "expression"
+            : isKotobaFilterContext()
+              ? "kotoba"
             : "vocab"
       );
     });
@@ -2310,6 +2320,14 @@ grid.style.display="grid";
         return;
       }
 
+      if (activeFilterContext === "kotoba") {
+        setCurrentKotobaSearchQuery(modalSearchInput?.value.trim() || "");
+        viewMode = "vocab";
+        closeFilterModal();
+        render();
+        return;
+      }
+
       // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
@@ -2359,6 +2377,17 @@ grid.style.display="grid";
 
         if (activeFilterContext === "expression") {
           expressionSearchQuery = "";
+          if (modalSearchInput) modalSearchInput.value = "";
+          document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+          document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+          viewMode = "vocab";
+          closeFilterModal();
+          render();
+          return;
+        }
+
+        if (activeFilterContext === "kotoba") {
+          setCurrentKotobaSearchQuery("");
           if (modalSearchInput) modalSearchInput.value = "";
           document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
           document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
@@ -2606,6 +2635,41 @@ grid.style.display="grid";
     "noun-construction": "Konstruksi",
     "noun-body-medical": "Kesehatan",
   };
+
+  const kotobaSearchState = Object.create(null);
+
+  function isKotobaTypeKey(typeKey) {
+    return KOTOBA_CATEGORY_KEYS.includes(typeKey);
+  }
+
+  function getCurrentKotobaFilterKey() {
+    const dropdownType = category ? category.value : "all";
+    const effectiveType = selectedType === "all" ? dropdownType : selectedType;
+    return isKotobaTypeKey(effectiveType) ? effectiveType : null;
+  }
+
+  function getCurrentKotobaSearchQuery() {
+    const key = getCurrentKotobaFilterKey();
+    return key ? String(kotobaSearchState[key] || "") : "";
+  }
+
+  function setCurrentKotobaSearchQuery(value) {
+    const key = getCurrentKotobaFilterKey();
+    if (!key) return;
+    kotobaSearchState[key] = String(value || "").trim();
+  }
+
+  function getKotobaFilterModalTitle() {
+    const key = getCurrentKotobaFilterKey();
+    if (!key || key === "noun") return "Cari & Filter Kosakata";
+
+    let label = String(typeLabelMap[key] || KOTOBA_SHORT_LABELS[key] || "Kosakata").trim();
+    label = label.replace(/^Kosakata\s+/i, "").trim();
+    if (label.includes("&")) {
+      label = label.split("&")[0].trim();
+    }
+    return `Cari & Filter Kosakata ${label}`.trim();
+  }
 
   const JLPT_LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
 
@@ -2932,7 +2996,9 @@ grid.style.display="grid";
   const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
 
   function getFilteredWords() {
-    const key = (search.value || "").toLowerCase().trim();
+    const kotobaKey = getCurrentKotobaFilterKey();
+    const isKotobaContext = viewMode === "vocab" && !!kotobaKey;
+    const key = (isKotobaContext ? getCurrentKotobaSearchQuery() : (search.value || "")).toLowerCase().trim();
     const selectedFromDropdown = category ? category.value : "all";
     if (typeof vocabularyData === "undefined") return []; // Safety check
 
@@ -2945,6 +3011,7 @@ grid.style.display="grid";
     const filtered = vocabularyData.filter((word) => {
       const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
       const isLockedType = LOCKED_VOCAB_TYPES.includes(word.type);
+      const isKotobaAllSearch = isKotobaContext && effectiveType === "noun" && !!key;
 
       if (isLockedType) {
         // Vocab inti: filter berdasarkan level unlock dari onboarding
@@ -2956,7 +3023,13 @@ grid.style.display="grid";
         if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       }
 
-      if (effectiveType !== "all" && !matchType(word.type, effectiveType)) return false;
+      if (isKotobaAllSearch) {
+        const isKotobaFamily = KOTOBA_CATEGORY_KEYS.some((typeKey) => matchType(word.type, typeKey));
+        if (!isKotobaFamily) return false;
+      } else if (effectiveType !== "all" && !matchType(word.type, effectiveType)) {
+        return false;
+      }
+
       const text = [
         word.kanji || "",
         word.kana || "",
@@ -5049,6 +5122,7 @@ grid.style.display="grid";
 
     // Guard: kanji-card-single = openWord mode, jangan di-re-render
     if (viewMode === "kanji-card-single") return;
+    const activeCardSearchQuery = getCurrentKotobaFilterKey() ? getCurrentKotobaSearchQuery() : (search ? search.value : "");
 
     let words = getFilteredWords();
     if (paginationContainer) {
@@ -5068,7 +5142,7 @@ grid.style.display="grid";
     }
 
     // --- LOGIKA JATAH KARTU ---
-    const currentState = `${selectedLevel}-${selectedType}-${search ? search.value : ""}`;
+    const currentState = `${selectedLevel}-${selectedType}-${activeCardSearchQuery}`;
     if (lastQueryState !== currentState) {
        currentPage = 1; // Otomatis balik ke halaman 1 kalau ganti folder/pencarian
        lastQueryState = currentState;

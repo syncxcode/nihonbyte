@@ -26,6 +26,7 @@
   const modalSearchInput = document.getElementById("modalSearchInput");
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
+  const levelFilterSection = document.getElementById("levelFilterSection");
   const categoryFilterSection = document.getElementById("categoryFilterSection");
 
   // ==========================================
@@ -2127,21 +2128,42 @@ grid.style.display="grid";
       return viewMode === "grammar" || viewMode.startsWith("grammar:");
     }
 
+    function isExpressionFilterContext() {
+      return viewMode === "vocab" && (
+        category?.value === "ekspresi" ||
+        selectedType === "ekspresi" ||
+        selectedType === "expression" ||
+        selectedType === "ungkapan umum"
+      );
+    }
+
     function setFilterModalContext(context) {
-      activeFilterContext = context === "grammar" ? "grammar" : "vocab";
+      activeFilterContext = ["grammar", "expression"].includes(context) ? context : "vocab";
       if (filterModalTitleText) {
-        filterModalTitleText.textContent = activeFilterContext === "grammar"
-          ? "Cari & Filter Grammar"
-          : "Cari & Filter";
+        filterModalTitleText.textContent =
+          activeFilterContext === "grammar"
+            ? "Cari & Filter Grammar"
+            : activeFilterContext === "expression"
+              ? "Cari & Filter Ungkapan"
+              : "Cari & Filter";
       }
       if (modalSearchInput) {
-        modalSearchInput.placeholder = activeFilterContext === "grammar"
-          ? "Cari grammar..."
-          : "Cari kanji / kana / romaji / arti...";
+        modalSearchInput.placeholder =
+          activeFilterContext === "grammar"
+            ? "Cari grammar..."
+            : activeFilterContext === "expression"
+              ? "Cari ungkapan..."
+              : "Cari kanji / kana / romaji / arti...";
+      }
+      if (levelFilterSection) {
+        const hideLevelSection = activeFilterContext === "expression";
+        levelFilterSection.hidden = hideLevelSection;
+        levelFilterSection.setAttribute("aria-hidden", hideLevelSection ? "true" : "false");
       }
       if (categoryFilterSection) {
-        categoryFilterSection.hidden = activeFilterContext === "grammar";
-        categoryFilterSection.setAttribute("aria-hidden", activeFilterContext === "grammar" ? "true" : "false");
+        const hideCategorySection = activeFilterContext !== "vocab";
+        categoryFilterSection.hidden = hideCategorySection;
+        categoryFilterSection.setAttribute("aria-hidden", hideCategorySection ? "true" : "false");
       }
     }
 
@@ -2162,7 +2184,7 @@ grid.style.display="grid";
       document.body.style.top = `-${bodyScrollY}px`;
 
       resetFilterModalControls();
-      _applySearchLevelGate(context !== "grammar");
+      _applySearchLevelGate(context === "vocab");
 
       filterModal.classList.add("active");
       filterModal.setAttribute("aria-hidden", "false");
@@ -2195,7 +2217,13 @@ grid.style.display="grid";
         `);
         return;
       }
-      openFilterModal(isGrammarFilterContext() ? "grammar" : "vocab");
+      openFilterModal(
+        isGrammarFilterContext()
+          ? "grammar"
+          : isExpressionFilterContext()
+            ? "expression"
+            : "vocab"
+      );
     });
   
     function closeFilterModal() {
@@ -2274,6 +2302,14 @@ grid.style.display="grid";
         return;
       }
 
+      if (activeFilterContext === "expression") {
+        expressionSearchQuery = modalSearchInput?.value.trim() || "";
+        viewMode = "vocab";
+        closeFilterModal();
+        render();
+        return;
+      }
+
       // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
@@ -2316,6 +2352,17 @@ grid.style.display="grid";
           document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
           document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
           viewMode = "grammar";
+          closeFilterModal();
+          render();
+          return;
+        }
+
+        if (activeFilterContext === "expression") {
+          expressionSearchQuery = "";
+          if (modalSearchInput) modalSearchInput.value = "";
+          document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+          document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+          viewMode = "vocab";
           closeFilterModal();
           render();
           return;
@@ -2453,6 +2500,7 @@ grid.style.display="grid";
   let selectedType = "verb-adj-only";
   let viewMode = "menu";
   let activeFilterContext = "vocab";
+  let expressionSearchQuery = "";
   let currentPage = 1;      
   let lastQueryState = "";
   let userBookmarks = new Set(); // Set of bookmarked word IDs
@@ -2980,18 +3028,28 @@ grid.style.display="grid";
     if (paginationContainer) paginationContainer.innerHTML = "";
 
     if (typeof vocabularyData === "undefined") return;
-    
-    const expressions = sortWordsShortAZ(vocabularyData.filter(w =>
-      w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum"
-    ));
+
+    const query = String(expressionSearchQuery || "").trim().toLowerCase();
+    const expressions = sortWordsShortAZ(vocabularyData.filter((w) => {
+      const isExpressionType = w.type === "expression" || w.type === "ekspresi" || w.type === "ungkapan umum";
+      if (!isExpressionType) return false;
+      if (!query) return true;
+      const text = [
+        w.kanji || "",
+        w.kana || "",
+        w.romaji || "",
+        w.meaning || ""
+      ].join(" ").toLowerCase();
+      return text.includes(query);
+    }));
     if (!expressions.length) {
-      grid.innerHTML = '<div class="empty-state">Belum ada ungkapan umum.</div>';
+      grid.innerHTML = `<div class="empty-state">${query ? "Belum ada hasil ungkapan." : "Belum ada ungkapan umum."}</div>`;
       if(resultInfo) resultInfo.textContent = formatResultInfo(0, { typeOverride: "expression" });
       return;
     }
 
     // MANTRA JATAH KARTU (Desktop: 12, HP: 10)
-    const currentState = "ekspresi-poster";
+    const currentState = `ekspresi-poster-${query}`;
     if (lastQueryState !== currentState) {
       currentPage = 1;
       lastQueryState = currentState;

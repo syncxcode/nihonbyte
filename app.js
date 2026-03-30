@@ -22,9 +22,11 @@
   const filterModal = document.getElementById("filterModal");
   const filterBackdrop = document.getElementById("filterBackdrop");
   const filterModalClose = document.getElementById("filterModalClose");
+  const filterModalTitleText = document.getElementById("filterModalTitleText");
   const modalSearchInput = document.getElementById("modalSearchInput");
   const applyFilterBtn = document.getElementById("applyFilterBtn");
   const resetFilterBtn = document.getElementById("resetFilterBtn");
+  const categoryFilterSection = document.getElementById("categoryFilterSection");
 
   // ==========================================
   // MESIN LOGIN FIREBASE & PROFIL USER
@@ -2121,6 +2123,63 @@ grid.style.display="grid";
     grid.innerHTML = reviewHTML;
   };
       
+    function isGrammarFilterContext() {
+      return viewMode === "grammar" || viewMode.startsWith("grammar:");
+    }
+
+    function setFilterModalContext(context) {
+      activeFilterContext = context === "grammar" ? "grammar" : "vocab";
+      if (filterModalTitleText) {
+        filterModalTitleText.textContent = activeFilterContext === "grammar"
+          ? "Cari & Filter Grammar"
+          : "Cari & Filter";
+      }
+      if (modalSearchInput) {
+        modalSearchInput.placeholder = activeFilterContext === "grammar"
+          ? "Cari grammar..."
+          : "Cari kanji / kana / romaji / arti...";
+      }
+      if (categoryFilterSection) {
+        categoryFilterSection.hidden = activeFilterContext === "grammar";
+        categoryFilterSection.setAttribute("aria-hidden", activeFilterContext === "grammar" ? "true" : "false");
+      }
+    }
+
+    function resetFilterModalControls() {
+      if (modalSearchInput) modalSearchInput.value = "";
+      document.querySelectorAll("#levelGrid .level-btn").forEach((button) => button.classList.remove("active"));
+      document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+      document.querySelectorAll("#categoryGrid .cat-btn").forEach((button) => button.classList.remove("active"));
+    }
+
+    function openFilterModal(context = "vocab") {
+      setFilterModalContext(context);
+      if (modalSearchInput) modalSearchInput.removeAttribute("readonly");
+      bodyScrollY = window.scrollY;
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.top = `-${bodyScrollY}px`;
+
+      resetFilterModalControls();
+      _applySearchLevelGate(context !== "grammar");
+
+      filterModal.classList.add("active");
+      filterModal.setAttribute("aria-hidden", "false");
+
+      if (modalSearchInput && window.innerWidth > 768) {
+        modalSearchInput.focus();
+      }
+
+      if (modalSearchInput && window.innerWidth <= 767) {
+        modalSearchInput.setAttribute("readonly", "readonly");
+        modalSearchInput.addEventListener("touchstart", function _removeMobileReadonly() {
+          modalSearchInput.removeAttribute("readonly");
+          modalSearchInput.removeEventListener("touchstart", _removeMobileReadonly);
+        }, { once: true });
+      }
+    }
+
     searchBtn.addEventListener("click", () => {
       if (accessMode === "guest") {
         openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Pencarian & filter dikunci untuk mode tamu. Silakan login untuk membuka fitur ini.</p>");
@@ -2136,45 +2195,7 @@ grid.style.display="grid";
         `);
         return;
       }
-      bodyScrollY = window.scrollY;
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.width = "100%";
-      document.body.style.top = `-${bodyScrollY}px`;
-
-      // --- RESET TAMPILAN MODAL SAAT DIBUKA ---
-      // 1. Kosongkan input pencarian
-      if (modalSearchInput) modalSearchInput.value = "";
-      
-      // 2. Reset Level JLPT kembali ke "Semua Level"
-      document.querySelectorAll("#levelGrid .level-btn").forEach(b => b.classList.remove("active"));
-      document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
-      
-      // 3. Reset Kategori Khusus (Lepas semua pilihan)
-      document.querySelectorAll("#categoryGrid .cat-btn").forEach(b => b.classList.remove("active"));
-
-      // 4. Apply level gate sesuai onboarding - SELALU apply saat modal dibuka
-      _applySearchLevelGate(true);
-      // ----------------------------------------
-
-      filterModal.classList.add("active");
-      filterModal.setAttribute("aria-hidden", "false");
-      
-      // FOKUS INPUT: Hanya jalan di Desktop (lebar layar > 768px). 
-      // Di HP tidak akan fokus otomatis, jadi keyboard tidak akan tiba-tiba muncul!
-      if (modalSearchInput && window.innerWidth > 768) {
-        modalSearchInput.focus();
-      }
-
-      // â”€â”€ Mobile: pasang readonly agar keyboard tidak muncul saat modal buka â”€â”€
-      // Keyboard baru muncul kalau user sengaja tap input
-      if (modalSearchInput && window.innerWidth <= 767) {
-        modalSearchInput.setAttribute('readonly', 'readonly');
-        modalSearchInput.addEventListener('touchstart', function _removeMobileReadonly() {
-          modalSearchInput.removeAttribute('readonly');
-          modalSearchInput.removeEventListener('touchstart', _removeMobileReadonly);
-        }, { once: true });
-      }
+      openFilterModal(isGrammarFilterContext() ? "grammar" : "vocab");
     });
   
     function closeFilterModal() {
@@ -2242,6 +2263,17 @@ grid.style.display="grid";
         ? ["all"]
         : [...document.querySelectorAll("#levelGrid .level-btn:not(.level-btn--all).active")].map(b => b.dataset.level);
 
+      if (activeFilterContext === "grammar") {
+        window.grammarUI?.setHubFilters({
+          searchQuery: modalSearchInput?.value.trim() || "",
+          levels: activeLevels.length ? activeLevels : ["all"]
+        });
+        viewMode = "grammar";
+        closeFilterModal();
+        render();
+        return;
+      }
+
       // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
@@ -2278,6 +2310,17 @@ grid.style.display="grid";
 
     if (resetFilterBtn) {
       resetFilterBtn.addEventListener("click", () => {
+        if (activeFilterContext === "grammar") {
+          window.grammarUI?.resetHubFilters();
+          if (modalSearchInput) modalSearchInput.value = "";
+          document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+          document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+          viewMode = "grammar";
+          closeFilterModal();
+          render();
+          return;
+        }
+
         selectedLevel = "all";
         selectedType = "verb-adj-only";
         if (search) search.value = "";
@@ -2409,6 +2452,7 @@ grid.style.display="grid";
   let selectedLevel = "all";
   let selectedType = "verb-adj-only";
   let viewMode = "menu";
+  let activeFilterContext = "vocab";
   let currentPage = 1;      
   let lastQueryState = "";
   let userBookmarks = new Set(); // Set of bookmarked word IDs

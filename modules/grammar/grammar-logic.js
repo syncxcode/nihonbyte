@@ -8,6 +8,8 @@
   const hubState = {
     page: 1,
     level: "all",
+    filterLevels: ["all"],
+    searchQuery: "",
     anchorId: null,
     scrollTop: 0,
     shouldRestoreScroll: false
@@ -33,6 +35,56 @@
     return Object.prototype.hasOwnProperty.call(order, level) ? order[level] : 999;
   }
 
+  function normalizeSearchText(value) {
+    return String(value || "").trim().toLowerCase();
+  }
+
+  function resolveHubFilterLevels(activeLevels) {
+    const requestedLevels = Array.isArray(hubState.filterLevels) && hubState.filterLevels.length
+      ? hubState.filterLevels
+      : ["all"];
+    const specificLevels = requestedLevels.filter((level) => level !== "all" && activeLevels.includes(level));
+    return specificLevels.length ? specificLevels : ["all"];
+  }
+
+  function grammarMatchesQuery(pattern, normalizedQuery) {
+    if (!normalizedQuery) return true;
+
+    const fields = [
+      pattern?.title,
+      pattern?.summary,
+      ...(Array.isArray(pattern?.groups)
+        ? pattern.groups.flatMap((group) => [group?.name, group?.description])
+        : [])
+    ];
+
+    return fields.some((field) => normalizeSearchText(field).includes(normalizedQuery));
+  }
+
+  function setHubFilters({ searchQuery = "", levels = ["all"] } = {}) {
+    const nextLevels = Array.isArray(levels) && levels.length ? levels.map(String) : ["all"];
+    const specificLevels = nextLevels.filter((level) => level !== "all");
+
+    hubState.searchQuery = String(searchQuery || "").trim();
+    hubState.filterLevels = specificLevels.length ? specificLevels : ["all"];
+    hubState.level = "all";
+    hubState.page = 1;
+    hubState.anchorId = null;
+    hubState.scrollTop = 0;
+    hubState.shouldRestoreScroll = true;
+  }
+
+  function resetHubFilters() {
+    setHubFilters({ searchQuery: "", levels: ["all"] });
+  }
+
+  function getHubFilters() {
+    return {
+      searchQuery: hubState.searchQuery,
+      levels: Array.isArray(hubState.filterLevels) ? [...hubState.filterLevels] : ["all"]
+    };
+  }
+
   // ═══════════════════════════════════════════
   //  HUB — Daftar semua grammar (cards)
   // ═══════════════════════════════════════════
@@ -44,19 +96,27 @@
     const levels = configuredLevels.filter((level) => levelsInData.has(level));
     const activeLevels = levels.length ? levels : fallbackLevels.filter((level) => levelsInData.has(level));
     const unlockedLevelSet = new Set(activeLevels);
+    const effectiveFilterLevels = resolveHubFilterLevels(activeLevels);
+    const allowedFilterLevels = effectiveFilterLevels[0] === "all"
+      ? activeLevels
+      : activeLevels.filter((level) => effectiveFilterLevels.includes(level));
+    const allowedLevelSet = new Set(allowedFilterLevels);
+    const normalizedQuery = normalizeSearchText(hubState.searchQuery);
     const originalIndexMap = new Map();
     allPatterns.forEach((item, index) => originalIndexMap.set(item, index));
     const patterns = allPatterns
       .filter((p) => unlockedLevelSet.has(p.level))
+      .filter((p) => allowedLevelSet.has(p.level))
+      .filter((p) => grammarMatchesQuery(p, normalizedQuery))
       .slice()
       .sort((a, b) => {
         const byLevel = getLevelRank(a.level) - getLevelRank(b.level);
         if (byLevel !== 0) return byLevel;
         return (originalIndexMap.get(a) || 0) - (originalIndexMap.get(b) || 0);
       });
-    const allLevelLabel = activeLevels.length > 1
-      ? `${activeLevels[0]}~${activeLevels[activeLevels.length - 1]}`
-      : (activeLevels[0] || "N5");
+    const allLevelLabel = allowedFilterLevels.length > 1
+      ? `${allowedFilterLevels[0]}~${allowedFilterLevels[allowedFilterLevels.length - 1]}`
+      : (allowedFilterLevels[0] || "N5");
 
     grid.innerHTML = `
       <section class="gr-hub">
@@ -69,7 +129,7 @@
             <span>${t("Level")}</span>
             <select id="gr-level-filter" class="gr-level-filter">
               <option value="all">${t(`Semua Level (${allLevelLabel})`)}</option>
-              ${activeLevels.map((level) => `<option value="${level}">${level}</option>`).join("")}
+              ${allowedFilterLevels.map((level) => `<option value="${level}">${level}</option>`).join("")}
             </select>
           </label>
         </div>
@@ -126,7 +186,8 @@
       }
       setTimeout(() => scrollHubToTop(), 0);
     }
-    if (levelSelect && [...levelSelect.options].some((opt) => opt.value === hubState.level)) {
+    const selectableLevels = ["all", ...allowedFilterLevels];
+    if (levelSelect && selectableLevels.includes(hubState.level)) {
       levelSelect.value = hubState.level;
     }
 
@@ -182,7 +243,7 @@
 
     function paintList() {
       const rawSelectedLevel = levelSelect?.value || "all";
-      const selectedLevel = rawSelectedLevel === "all" || activeLevels.includes(rawSelectedLevel)
+      const selectedLevel = rawSelectedLevel === "all" || allowedFilterLevels.includes(rawSelectedLevel)
         ? rawSelectedLevel
         : "all";
       if (levelSelect && levelSelect.value !== selectedLevel) levelSelect.value = selectedLevel;
@@ -202,7 +263,7 @@
       brickGrid.innerHTML = "";
 
       if (!filteredPatterns.length) {
-        brickGrid.innerHTML = `<div class="empty-state">${t("Belum ada materi untuk level ini.")}</div>`;
+        brickGrid.innerHTML = `<div class="empty-state">${t(normalizedQuery ? "Belum ada hasil grammar untuk pencarian ini." : "Belum ada materi untuk level ini.")}</div>`;
         if (localPagination) {
           localPagination.innerHTML = "";
           localPagination.style.display = "none";
@@ -259,7 +320,7 @@
       forceScrollHubToTop();
     });
     if (levelSelect) {
-      levelSelect.disabled = activeLevels.length <= 1;
+      levelSelect.disabled = allowedFilterLevels.length <= 1;
     }
     paintList();
 
@@ -475,6 +536,9 @@
   // ═══════════════════════════════════════════
   window.grammarUI = {
     renderHub: renderGrammarHub,
-    renderPoster: renderGrammarPoster
+    renderPoster: renderGrammarPoster,
+    setHubFilters,
+    resetHubFilters,
+    getHubFilters
   };
 })();

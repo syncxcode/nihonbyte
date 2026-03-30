@@ -7746,6 +7746,252 @@ body.history-mode .dashboard-shell textarea {
     }
 }
 
+/* =====================================================
+   FAVORIT OVERVIEW + GRAMMAR BOOKMARK
+   ===================================================== */
+
+.gr-brick {
+  position: relative;
+}
+
+.gr-brick .card-action-btn.bookmark-card-btn {
+  top: 10px !important;
+  right: 10px !important;
+  left: auto !important;
+}
+
+.gr-brick:hover .card-action-btn.bookmark-card-btn,
+.gr-brick.touch-revealed .card-action-btn.bookmark-card-btn {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.favorit-overview-screen,
+.favorit-full-screen {
+  display: grid;
+  gap: 18px;
+}
+
+.favorit-section {
+  display: grid;
+  gap: 14px;
+  overflow: hidden;
+}
+
+.favorit-section-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.favorit-section-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #1f2937;
+}
+
+.favorit-section-head p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.favorit-head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.favorit-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.favorit-section-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.favorit-see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.favorit-see-more-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.08);
+  color: #2563eb;
+}
+
+.favorit-see-more-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.favorit-empty--section {
+  padding: 26px 16px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(248, 250, 252, 0.88), rgba(255, 255, 255, 0.98));
+  border: 1px dashed rgba(148, 163, 184, 0.4);
+}
+
+.favorit-grammar-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.favorit-grammar-card {
+  cursor: pointer;
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.favorit-grammar-card:hover {
+  transform: translateY(-2px);
+}
+
+.favorit-grammar-card-inner {
+  position: relative;
+  min-height: 78px;
+  padding: 14px 16px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+  box-shadow: 0 10px 24px -20px rgba(15, 23, 42, 0.5);
+  display: grid;
+  align-content: center;
+  gap: 10px;
+}
+
+.favorit-grammar-title {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.favorit-grammar-level {
+  justify-self: start;
+  display: inline-flex;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(34, 139, 34, 0.12);
+  color: #228b22;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.favorit-grammar-remove {
+  opacity: 0;
+}
+
+.favorit-grammar-card:hover .favorit-grammar-remove {
+  opacity: 1;
+}
+
+.favorit-grammar-grid--full .favorit-grammar-card-inner {
+  padding-right: 40px;
+}
+
+.favorit-grammar-grid--preview .favorit-grammar-card-inner {
+  min-height: 74px;
+}
+
+.favorit-cards-row--preview .favorit-mini-remove,
+.favorit-grammar-grid--preview .favorit-grammar-remove {
+  display: none !important;
+}
+
+@media (min-width: 769px) {
+  .favorit-cards-row--preview {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  .favorit-grammar-grid--preview,
+  .favorit-grammar-grid--full {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .favorit-cards-row--preview {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  .favorit-grammar-grid--preview,
+  .favorit-grammar-grid--full {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .favorit-section {
+    gap: 12px;
+  }
+
+  .favorit-cards-row--preview {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .favorit-grammar-grid--preview,
+  .favorit-grammar-grid--full {
+    grid-template-columns: 1fr;
+  }
+
+  .favorit-section-head h3 {
+    font-size: 1rem;
+  }
+
+  .favorit-section-head p,
+  .favorit-see-more-btn {
+    font-size: 0.82rem;
+  }
+
+  .favorit-grammar-card-inner {
+    min-height: 72px;
+    padding: 12px 14px;
+  }
+
+  .favorit-grammar-title {
+    font-size: 0.94rem;
+  }
+
+  .favorit-head-actions {
+    width: 100%;
+  }
+}
+
 /* =========================================
    Ã°Å¸â€œÂ± MOBILE LANDSCAPE Ã¢â‚¬â€ Native Desktop-Feel Layout
    Target: perangkat sentuh yang diputar horizontal

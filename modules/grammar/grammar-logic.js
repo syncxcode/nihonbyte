@@ -88,7 +88,7 @@
   // ═══════════════════════════════════════════
   //  HUB — Daftar semua grammar (cards)
   // ═══════════════════════════════════════════
-  function renderGrammarHub({ grid, onOpenPoster }) {
+  function renderGrammarHub({ grid, onOpenPoster, isFavoritePattern, onToggleFavorite }) {
     const allPatterns = getData();
     const fallbackLevels = ["N5", "N4", "N3", "N2", "N1"];
     const configuredLevels = Array.isArray(window.grammarLevels) ? window.grammarLevels : fallbackLevels;
@@ -280,15 +280,50 @@
       const currentPatterns = filteredPatterns.slice(start, start + HUB_PAGE_SIZE);
 
       currentPatterns.forEach((pattern) => {
-        const btn = document.createElement("button");
+        const patternId = String(pattern.id || "");
+        const isFavorite = typeof isFavoritePattern === "function" ? !!isFavoritePattern(patternId) : false;
+        const bookmarkFill = isFavorite ? "#ff4d6d" : "none";
+        const bookmarkStroke = isFavorite ? "#ff4d6d" : "currentColor";
+        const btn = document.createElement("article");
         btn.className = "gr-brick";
-        btn.type = "button";
+        btn.setAttribute("role", "button");
+        btn.setAttribute("tabindex", "0");
         btn.innerHTML = `
+            <button
+              class="card-action-btn bookmark-card-btn ${isFavorite ? "is-bookmarked" : ""}"
+            type="button"
+            data-bookmark-kind="grammar"
+            data-pattern-id="${patternId}"
+            title="${isFavorite ? t("Hapus dari Favorit") : t("Simpan ke Favorit")}"
+            aria-label="${isFavorite ? t("Hapus dari Favorit") : t("Simpan ke Favorit")}"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="${bookmarkFill}" stroke="${bookmarkStroke}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </button>
           <strong class="gr-brick-title">${t(pattern.title)}</strong>
           <span class="gr-brick-desc">${t(pattern.summary)}</span>
           <small class="gr-level-badge">${pattern.level || "-"}</small>
         `;
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", (event) => {
+          const bookmarkButton = event?.target?.closest?.(".bookmark-card-btn");
+          if (bookmarkButton) {
+            onToggleFavorite?.(event, patternId);
+            return;
+          }
+
+          const isTouchDevice = navigator.maxTouchPoints > 0 || (typeof window.matchMedia === "function" && window.matchMedia("(hover: none)").matches);
+          if (isTouchDevice) {
+            if (!btn.classList.contains("touch-revealed")) {
+              document.querySelectorAll(".gr-brick.touch-revealed").forEach((card) => {
+                if (card !== btn) card.classList.remove("touch-revealed");
+              });
+              btn.classList.add("touch-revealed");
+              return;
+            }
+            btn.classList.remove("touch-revealed");
+          }
+
           hubState.scrollTop = getCurrentScrollTop();
           hubState.anchorId = pattern.id;
           hubState.shouldRestoreScroll = true;
@@ -299,6 +334,12 @@
               window.requestAnimationFrame(() => scrollViewportToTop());
             }
             setTimeout(() => scrollViewportToTop(), 0);
+          }
+        });
+        btn.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            btn.click();
           }
         });
         brickGrid.appendChild(btn);

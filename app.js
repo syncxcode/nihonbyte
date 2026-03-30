@@ -429,7 +429,7 @@ grid.style.display="grid";
     let activeKey = "learn";
     if (viewMode === "practice-hub") activeKey = "practice";
     else if (viewMode === "menu") activeKey = "menu";
-    else if (viewMode === "favorit") activeKey = "favorit";
+    else if (viewMode === "favorit" || viewMode.startsWith("favorit:")) activeKey = "favorit";
     else if (viewMode.startsWith("letters:")) activeKey = "letters";
     else if (
       viewMode === "grammar" || viewMode.startsWith("grammar:") ||
@@ -2141,8 +2141,12 @@ grid.style.display="grid";
       return viewMode === "vocab" && !!getCurrentKotobaFilterKey() && !isExpressionFilterContext();
     }
 
+    function isFavoritVocabFilterContext() {
+      return viewMode === "favorit" || viewMode === "favorit:vocab";
+    }
+
     function setFilterModalContext(context) {
-      activeFilterContext = ["grammar", "expression", "kotoba"].includes(context) ? context : "vocab";
+      activeFilterContext = ["grammar", "expression", "kotoba", "favorit-vocab"].includes(context) ? context : "vocab";
       if (filterModalTitleText) {
         filterModalTitleText.textContent =
           activeFilterContext === "grammar"
@@ -2151,6 +2155,8 @@ grid.style.display="grid";
               ? "Cari & Filter Ungkapan"
               : activeFilterContext === "kotoba"
                 ? getKotobaFilterModalTitle()
+                : activeFilterContext === "favorit-vocab"
+                  ? "Cari & Filter Favorit Kosakata"
                 : "Cari & Filter";
       }
       if (modalSearchInput) {
@@ -2161,10 +2167,12 @@ grid.style.display="grid";
               ? "Cari ungkapan..."
               : activeFilterContext === "kotoba"
                 ? "Cari kosakata..."
+                : activeFilterContext === "favorit-vocab"
+                  ? "Cari kosakata..."
                 : "Cari kanji / kana / romaji / arti...";
       }
       if (levelFilterSection) {
-        const hideLevelSection = activeFilterContext === "expression" || activeFilterContext === "kotoba";
+        const hideLevelSection = activeFilterContext === "expression" || activeFilterContext === "kotoba" || activeFilterContext === "favorit-vocab";
         levelFilterSection.hidden = hideLevelSection;
         levelFilterSection.setAttribute("aria-hidden", hideLevelSection ? "true" : "false");
       }
@@ -2232,6 +2240,8 @@ grid.style.display="grid";
             ? "expression"
             : isKotobaFilterContext()
               ? "kotoba"
+              : isFavoritVocabFilterContext()
+                ? "favorit-vocab"
             : "vocab"
       );
     });
@@ -2328,6 +2338,14 @@ grid.style.display="grid";
         return;
       }
 
+      if (activeFilterContext === "favorit-vocab") {
+        favoriteVocabSearchQuery = modalSearchInput?.value.trim() || "";
+        viewMode = "favorit:vocab";
+        closeFilterModal();
+        render();
+        return;
+      }
+
       // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
@@ -2392,6 +2410,17 @@ grid.style.display="grid";
           document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
           document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
           viewMode = "vocab";
+          closeFilterModal();
+          render();
+          return;
+        }
+
+        if (activeFilterContext === "favorit-vocab") {
+          favoriteVocabSearchQuery = "";
+          if (modalSearchInput) modalSearchInput.value = "";
+          document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+          document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+          viewMode = "favorit:vocab";
           closeFilterModal();
           render();
           return;
@@ -2530,9 +2559,12 @@ grid.style.display="grid";
   let viewMode = "menu";
   let activeFilterContext = "vocab";
   let expressionSearchQuery = "";
+  let favoriteVocabSearchQuery = "";
   let currentPage = 1;      
   let lastQueryState = "";
   let userBookmarks = new Set(); // Set of bookmarked word IDs
+  let userGrammarBookmarks = new Set(); // Set of bookmarked grammar IDs
+  let favoritGrammarBackView = "favorit";
   
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
@@ -4004,47 +4036,232 @@ grid.style.display="grid";
   // ==========================================
   // HALAMAN FAVORIT
   // ==========================================
-  function renderFavoritPage() {
-    grid.classList.add("hub-mode");
-    grid.classList.remove("support-mode");
-    grid.style.removeProperty("grid-template-columns");
+  function tGrammarText(text) {
+    return window.NIHONBYTE_I18N?.tMeaning ? window.NIHONBYTE_I18N.tMeaning(text) : text;
+  }
 
-    updateFavoritBadge();
+  function getBookmarkedWords(query = "") {
+    if (typeof vocabularyData === "undefined") return [];
+    const normalizedQuery = String(query || "").trim().toLowerCase();
+    return vocabularyData.filter((word) => {
+      const wordId = String(word.id || word.kanji || word.kana || "");
+      if (!userBookmarks.has(wordId)) return false;
+      if (!normalizedQuery) return true;
+      const text = [
+        word.kanji || "",
+        word.kana || "",
+        word.romaji || "",
+        word.meaning || ""
+      ].join(" ").toLowerCase();
+      return text.includes(normalizedQuery);
+    });
+  }
 
-    const bookmarkedWords = (typeof vocabularyData !== "undefined")
-      ? vocabularyData.filter(w => userBookmarks.has(String(w.id || w.kanji || w.kana || "")))
-      : [];
+  function getBookmarkedGrammarPatterns() {
+    const allPatterns = Array.isArray(window.grammarData) ? window.grammarData : [];
+    return allPatterns.filter((pattern) => userGrammarBookmarks.has(String(pattern.id || "")));
+  }
 
-    const countText = bookmarkedWords.length > 0
-      ? `${bookmarkedWords.length} kata tersimpan`
-      : "Belum ada kata tersimpan";
+  function getFilteredBookmarkedGrammarPatterns(query = "") {
+    const normalizedQuery = String(query || "").trim().toLowerCase();
+    return getBookmarkedGrammarPatterns().filter((pattern) => {
+      if (!normalizedQuery) return true;
+      const haystack = [
+        pattern?.title,
+        pattern?.summary,
+        ...(Array.isArray(pattern?.groups)
+          ? pattern.groups.flatMap((group) => [group?.name, group?.description])
+          : [])
+      ].join(" ").toLowerCase();
+      return haystack.includes(normalizedQuery);
+    });
+  }
 
-    const cardsHTML = bookmarkedWords.length === 0
-      ? `<div class="favorit-empty">
-          <div class="favorit-empty-icon"><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' style='width:1em;height:1em;vertical-align:-0.15em' aria-hidden='true'><circle cx='12' cy='12' r='3'/><path d='M12 2a2 2 0 0 1 2 2c0 1.5-2 3-2 3s-2-1.5-2-3a2 2 0 0 1 2-2z'/><path d='M12 22a2 2 0 0 1-2-2c0-1.5 2-3 2-3s2 1.5 2 3a2 2 0 0 1-2 2z'/><path d='M2 12a2 2 0 0 1 2-2c1.5 0 3 2 3 2s-1.5 2-3 2a2 2 0 0 1-2-2z'/><path d='M22 12a2 2 0 0 1-2 2c-1.5 0-3-2-3-2s1.5-2 3-2a2 2 0 0 1 2 2z'/></svg></div>
-          <p class="favorit-empty-title">Belum ada kata tersimpan</p>
-          <p class="favorit-empty-sub">Tap ikon bookmark di kartu untuk menyimpan kata favoritmu</p>
-        </div>`
-      : `<div class="favorit-cards-row">
-          ${bookmarkedWords.map(word => {
-            const wordId = String(word.id || word.kanji || word.kana || "");
-            return `
-              <div class="favorit-mini-card" data-word-id="${wordId}" data-word='${JSON.stringify(word).replace(/'/g, "&#39;")}'>
-                <div class="favorit-mini-inner">
+  function getFavoritVocabPreviewCount() {
+    if (isMobilePortraitLayout()) return 9;
+    return isDesktopLayout() ? 10 : 8;
+  }
+
+  function getFavoritGrammarPreviewCount() {
+    if (isMobilePortraitLayout()) return 3;
+    return 4;
+  }
+
+  function buildFavoritSeeMoreButton(targetView) {
+    return `
+      <button class="favorit-see-more-btn" type="button" data-target-view="${targetView}">
+        <span class="favorit-see-more-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M13 6l6 6-6 6"></path>
+          </svg>
+        </span>
+        <span>Lihat Selengkapnya</span>
+      </button>
+    `;
+  }
+
+  function renderFavoritWordCards(words, { preview = false } = {}) {
+    if (!words.length) {
+      return `
+        <div class="favorit-empty favorit-empty--section">
+          <p class="favorit-empty-title">Belum ada kosakata favorit</p>
+          <p class="favorit-empty-sub">Simpan kosakata dari class card untuk melihatnya di sini.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="favorit-cards-row ${preview ? "favorit-cards-row--preview" : "favorit-cards-row--full"}">
+        ${words.map((word) => {
+          const wordId = String(word.id || word.kanji || word.kana || "");
+          return `
+            <div class="favorit-mini-card" data-word-id="${wordId}" data-word='${JSON.stringify(word).replace(/'/g, "&#39;")}'>
+              <div class="favorit-mini-inner">
+                ${preview ? "" : `
                   <button class="favorit-mini-remove" data-word-id="${wordId}" title="Hapus dari favorit">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#ff4d6d" stroke="#ff4d6d" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff4d6d" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                   </button>
-                  <div class="favorit-mini-kanji">${word.kanji || word.kana || "â€”"}</div>
-                  <div class="favorit-mini-kana">${word.kana || ""}</div>
-                  <div class="favorit-mini-meaning">${tMeaning(word.meaning) || "â€”"}</div>
-                </div>
+                `}
+                <div class="favorit-mini-kanji">${escapeHTML(word.kanji || word.kana || "—")}</div>
+                <div class="favorit-mini-kana">${escapeHTML(word.kana || "")}</div>
+                <div class="favorit-mini-meaning">${escapeHTML(tMeaning(word.meaning) || "—")}</div>
               </div>
-            `;
-          }).join("")}
-        </div>`;
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function renderFavoritGrammarCards(patterns, { preview = false } = {}) {
+    if (!patterns.length) {
+      return `
+        <div class="favorit-empty favorit-empty--section">
+          <p class="favorit-empty-title">Belum ada grammar favorit</p>
+          <p class="favorit-empty-sub">Simpan materi grammar dari kartu grammar untuk melihatnya di sini.</p>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="favorit-grammar-grid ${preview ? "favorit-grammar-grid--preview" : "favorit-grammar-grid--full"}">
+        ${patterns.map((pattern) => {
+          const patternId = String(pattern.id || "");
+          return `
+            <article class="favorit-grammar-card" data-pattern-id="${patternId}" role="button" tabindex="0" aria-label="Buka grammar ${escapeHTML(tGrammarText(pattern.title))}">
+              <div class="favorit-grammar-card-inner">
+                ${preview ? "" : `
+                  <button class="favorit-mini-remove favorit-grammar-remove" data-pattern-id="${patternId}" title="Hapus dari favorit">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff4d6d" stroke="#ff4d6d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  </button>
+                `}
+                <strong class="favorit-grammar-title" title="${escapeHTML(tGrammarText(pattern.title))}">${escapeHTML(tGrammarText(pattern.title))}</strong>
+                <span class="favorit-grammar-level">${escapeHTML(pattern.level || "-")}</span>
+              </div>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function bindFavoritWordCards(words) {
+    grid.querySelectorAll(".favorit-mini-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".favorit-mini-remove")) return;
+        try {
+          const word = JSON.parse(card.dataset.word);
+          const recs = words.filter((w) =>
+            String(w.id || w.kanji || w.kana) !== String(word.id || word.kanji || word.kana)
+          ).slice(0, 6);
+          openModal(word, recs);
+        } catch (err) {}
+      });
+    });
+
+    grid.querySelectorAll(".favorit-mini-remove[data-word-id]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleBookmark(e, btn.dataset.wordId);
+      });
+    });
+  }
+
+  function openFavoritGrammarPoster(patternId) {
+    favoritGrammarBackView = viewMode;
+    viewMode = `favorit:grammar-item:${patternId}`;
+    render();
+  }
+
+  function bindFavoritGrammarCards() {
+    grid.querySelectorAll(".favorit-grammar-card").forEach((card) => {
+      const patternId = card.dataset.patternId;
+      const openCard = () => openFavoritGrammarPoster(patternId);
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".favorit-grammar-remove")) return;
+        openCard();
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openCard();
+        }
+      });
+    });
+
+    grid.querySelectorAll(".favorit-grammar-remove").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleBookmark(e, btn.dataset.patternId, "grammar");
+      });
+    });
+  }
+
+  function bindFavoritCommonActions() {
+    grid.querySelectorAll(".favorit-see-more-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetView = btn.dataset.targetView;
+        if (!targetView) return;
+        viewMode = targetView;
+        render();
+      });
+    });
+
+    grid.querySelectorAll("[data-favorit-back]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        viewMode = btn.dataset.favoritBack || "favorit";
+        render();
+      });
+    });
+
+    grid.querySelectorAll("[data-favorit-clear]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const kind = btn.dataset.favoritClear;
+        if (kind === "grammar") {
+          if (!confirm("Hapus semua grammar dari favorit?")) return;
+          userGrammarBookmarks.clear();
+          if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
+        } else {
+          if (!confirm("Hapus semua kata dari favorit?")) return;
+          userBookmarks.clear();
+          if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
+        }
+        refreshBookmarkStateOnCards();
+        renderFavoritPage();
+      });
+    });
+  }
+
+  function renderFavoritOverview() {
+    const bookmarkedWords = getBookmarkedWords();
+    const grammarPatterns = getBookmarkedGrammarPatterns();
+    const vocabPreview = bookmarkedWords.slice(0, getFavoritVocabPreviewCount());
+    const grammarPreview = grammarPatterns.slice(0, getFavoritGrammarPreviewCount());
+    const summaryText = `${bookmarkedWords.length} kosakata favorit • ${grammarPatterns.length} grammar favorit`;
 
     grid.innerHTML = `
-      <section class="hub-screen menu-hub-screen favorit-hub-screen">
+      <section class="hub-screen menu-hub-screen favorit-hub-screen favorit-overview-screen">
         <header class="hub-header menu-hub-header favorit-hub-header">
           <h2>
             <span class="menu-hub-title-pill favorit-title-pill">
@@ -4054,60 +4271,164 @@ grid.style.display="grid";
               Favorit
             </span>
           </h2>
-          <p>${countText} dari kartu kosakata</p>
-          ${bookmarkedWords.length > 0 ? `<button class="favorit-clear-btn" id="favoritClearBtn">Hapus Semua</button>` : ""}
+          <p>${summaryText}</p>
         </header>
 
-        <div class="hub-section menu-hub-section-card favorit-card-section">
-          ${cardsHTML}
-        </div>
+        <section class="hub-section menu-hub-section-card favorit-card-section favorit-section favorit-section--vocab">
+          <div class="favorit-section-head">
+            <div>
+              <h3>Favorit Kosakata</h3>
+              <p>${bookmarkedWords.length} kata tersimpan dari kartu kosakata</p>
+            </div>
+          </div>
+          ${renderFavoritWordCards(vocabPreview, { preview: true })}
+          <div class="favorit-section-footer">
+            ${buildFavoritSeeMoreButton("favorit:vocab")}
+          </div>
+        </section>
+
+        <section class="hub-section menu-hub-section-card favorit-card-section favorit-section favorit-section--grammar">
+          <div class="favorit-section-head">
+            <div>
+              <h3>Favorit Grammar</h3>
+              <p>${grammarPatterns.length} materi grammar tersimpan</p>
+            </div>
+          </div>
+          ${renderFavoritGrammarCards(grammarPreview, { preview: true })}
+          <div class="favorit-section-footer">
+            ${buildFavoritSeeMoreButton("favorit:grammar")}
+          </div>
+        </section>
       </section>
     `;
 
     if (resultInfo) resultInfo.textContent = "Favorit";
+    bindFavoritWordCards(bookmarkedWords);
+    bindFavoritGrammarCards();
+    bindFavoritCommonActions();
+  }
 
-    // Event: klik kartu â†’ buka modal
-    grid.querySelectorAll(".favorit-mini-card").forEach(card => {
-      card.addEventListener("click", (e) => {
-        if (e.target.closest(".favorit-mini-remove")) return;
-        try {
-          const word = JSON.parse(card.dataset.word);
-          const recs = bookmarkedWords.filter(w =>
-            String(w.id || w.kanji || w.kana) !== String(word.id || word.kanji || word.kana)
-          ).slice(0, 6);
-          openModal(word, recs);
-        } catch(err) {}
-      });
+  function renderFavoritVocabPage() {
+    const bookmarkedWords = getBookmarkedWords(favoriteVocabSearchQuery);
+    const countText = bookmarkedWords.length > 0
+      ? `${bookmarkedWords.length} kata favorit tersimpan`
+      : (favoriteVocabSearchQuery ? "Belum ada hasil favorit kosakata" : "Belum ada kosakata favorit");
+
+    grid.innerHTML = `
+      <section class="hub-screen menu-hub-screen favorit-hub-screen favorit-full-screen">
+        <header class="hub-header menu-hub-header favorit-hub-header">
+          <h2>
+            <span class="menu-hub-title-pill favorit-title-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+              Favorit Kosakata
+            </span>
+          </h2>
+          <p>${countText}</p>
+          <div class="favorit-head-actions">
+            <button class="favorit-ghost-btn" type="button" data-favorit-back="favorit">Kembali ke Ringkasan</button>
+            ${bookmarkedWords.length > 0 ? `<button class="favorit-clear-btn" type="button" data-favorit-clear="word">Hapus Semua</button>` : ""}
+          </div>
+        </header>
+
+        <div class="hub-section menu-hub-section-card favorit-card-section favorit-card-section--full">
+          ${renderFavoritWordCards(bookmarkedWords, { preview: false })}
+        </div>
+      </section>
+    `;
+
+    if (resultInfo) resultInfo.textContent = "Favorit Kosakata";
+    bindFavoritWordCards(bookmarkedWords);
+    bindFavoritCommonActions();
+  }
+
+  function renderFavoritGrammarPage() {
+    const grammarPatterns = getFilteredBookmarkedGrammarPatterns();
+    const countText = grammarPatterns.length > 0
+      ? `${grammarPatterns.length} materi grammar tersimpan`
+      : "Belum ada grammar favorit";
+
+    grid.innerHTML = `
+      <section class="hub-screen menu-hub-screen favorit-hub-screen favorit-full-screen">
+        <header class="hub-header menu-hub-header favorit-hub-header">
+          <h2>
+            <span class="menu-hub-title-pill favorit-title-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2 2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+              Favorit Grammar
+            </span>
+          </h2>
+          <p>${countText}</p>
+          <div class="favorit-head-actions">
+            <button class="favorit-ghost-btn" type="button" data-favorit-back="favorit">Kembali ke Ringkasan</button>
+            ${grammarPatterns.length > 0 ? `<button class="favorit-clear-btn" type="button" data-favorit-clear="grammar">Hapus Semua</button>` : ""}
+          </div>
+        </header>
+
+        <div class="hub-section menu-hub-section-card favorit-card-section favorit-card-section--full favorit-card-section--grammar">
+          ${renderFavoritGrammarCards(grammarPatterns, { preview: false })}
+        </div>
+      </section>
+    `;
+
+    if (resultInfo) resultInfo.textContent = "Favorit Grammar";
+    bindFavoritGrammarCards();
+    bindFavoritCommonActions();
+  }
+
+  function renderFavoritGrammarPosterView(patternId) {
+    const pattern = (Array.isArray(window.grammarData) ? window.grammarData : []).find((item) => String(item.id) === String(patternId));
+    if (!pattern) {
+      viewMode = favoritGrammarBackView || "favorit";
+      render();
+      return;
+    }
+
+    saveGrammarProgress(patternId);
+    window.grammarUI?.renderPoster({
+      grid,
+      patternId,
+      onBack: () => {
+        viewMode = favoritGrammarBackView || "favorit";
+        render();
+      }
     });
 
-    // Event: tombol hapus per kartu
-    grid.querySelectorAll(".favorit-mini-remove").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const id = String(btn.dataset.wordId);
-        userBookmarks.delete(id);
-        if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
-        refreshBookmarkStateOnCards();
-        renderFavoritPage();
-      });
-    });
+    if (resultInfo) resultInfo.textContent = `Favorit Grammar • ${String(pattern.id).toUpperCase()}`;
+  }
 
-    // Event: hapus semua
-    document.getElementById("favoritClearBtn")?.addEventListener("click", () => {
-      if (!confirm("Hapus semua kata dari favorit?")) return;
-      userBookmarks.clear();
-      if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
-      refreshBookmarkStateOnCards();
-      renderFavoritPage();
-    });
+  function renderFavoritPage() {
+    if (viewMode === "favorit:vocab") {
+      renderFavoritVocabPage();
+      return;
+    }
+
+    if (viewMode === "favorit:grammar") {
+      renderFavoritGrammarPage();
+      return;
+    }
+
+    if (viewMode.startsWith("favorit:grammar-item:")) {
+      renderFavoritGrammarPosterView(viewMode.split(":").slice(3).join(":"));
+      return;
+    }
+
+    grid.classList.add("hub-mode");
+    grid.classList.remove("support-mode");
+    grid.style.removeProperty("grid-template-columns");
+    updateFavoritBadge();
+    renderFavoritOverview();
   }
 
   // Update badge angka di tombol sidebar
   function updateFavoritBadge() {
     const badge = document.getElementById("favoritCount");
     if (!badge) return;
-    if (userBookmarks.size > 0) {
-      badge.textContent = userBookmarks.size;
+    const totalFavorit = userBookmarks.size + userGrammarBookmarks.size;
+    if (totalFavorit > 0) {
+      badge.textContent = totalFavorit;
       badge.style.display = "inline-flex";
     } else {
       badge.style.display = "none";
@@ -5001,7 +5322,7 @@ grid.style.display="grid";
     syncDuoSidebarNav();
     closeBottomNavHub();
 
-    if (viewMode === "favorit") {
+    if (viewMode === "favorit" || viewMode.startsWith("favorit:")) {
       renderFavoritPage();
       return;
     }
@@ -5079,6 +5400,8 @@ grid.style.display="grid";
     if (viewMode === "grammar") {
       window.grammarUI?.renderHub({
         grid,
+        isFavoritePattern: (patternId) => userGrammarBookmarks.has(String(patternId || "")),
+        onToggleFavorite: (event, patternId) => toggleBookmark(event, patternId, "grammar"),
         onOpenPoster: (patternId) => {
           viewMode = `grammar:${patternId}`;
           render();
@@ -5453,13 +5776,23 @@ grid.style.display="grid";
   async function loadUserBookmarks(uid) {
     if (!window.firebaseDb || !window.doc || !window.getDoc) return;
     try {
-      const ref = window.doc(window.firebaseDb, "users", uid, "bookmarks", "words");
-      const snap = await window.getDoc(ref);
-      if (snap.exists()) {
-        const data = snap.data();
+      const [wordSnap, grammarSnap] = await Promise.all([
+        window.getDoc(window.doc(window.firebaseDb, "users", uid, "bookmarks", "words")),
+        window.getDoc(window.doc(window.firebaseDb, "users", uid, "bookmarks", "grammar"))
+      ]);
+
+      if (wordSnap.exists()) {
+        const data = wordSnap.data();
         userBookmarks = new Set(data.ids || []);
       } else {
         userBookmarks = new Set();
+      }
+
+      if (grammarSnap.exists()) {
+        const data = grammarSnap.data();
+        userGrammarBookmarks = new Set(data.ids || []);
+      } else {
+        userGrammarBookmarks = new Set();
       }
       // Re-render kartu yang sudah ada biar state bookmark sinkron
       refreshBookmarkStateOnCards();
@@ -5479,30 +5812,52 @@ grid.style.display="grid";
     }
   }
 
+  async function saveUserGrammarBookmarks(uid) {
+    if (!window.firebaseDb || !window.doc || !window.setDoc) return;
+    try {
+      const ref = window.doc(window.firebaseDb, "users", uid, "bookmarks", "grammar");
+      await window.setDoc(ref, { ids: Array.from(userGrammarBookmarks) });
+    } catch (e) {
+      console.error("Gagal simpan grammar favorit:", e);
+    }
+  }
+
   // Toggle bookmark on/off
-  window.toggleBookmark = function(event, wordId) {
+  window.toggleBookmark = function(event, wordId, kind = "word") {
     event.stopPropagation();
     if (!window.currentUser) {
       openInfoModal("<h3>Login Dulu</h3><p>Simpan kata favorit kamu dengan login terlebih dahulu.</p>");
       return;
     }
     const id = String(wordId);
-    if (userBookmarks.has(id)) {
-      userBookmarks.delete(id);
+    const targetSet = kind === "grammar" ? userGrammarBookmarks : userBookmarks;
+    if (targetSet.has(id)) {
+      targetSet.delete(id);
     } else {
-      userBookmarks.add(id);
+      targetSet.add(id);
     }
-    saveUserBookmarks(window.currentUser.uid);
+    if (kind === "grammar") {
+      saveUserGrammarBookmarks(window.currentUser.uid);
+    } else {
+      saveUserBookmarks(window.currentUser.uid);
+    }
     refreshBookmarkStateOnCards();
+    if (viewMode === "favorit" || viewMode.startsWith("favorit:")) {
+      renderFavoritPage();
+    }
   };
 
   // Update visual semua tombol bookmark di halaman yang sedang ditampilkan
   function refreshBookmarkStateOnCards() {
     document.querySelectorAll(".bookmark-card-btn").forEach((btn) => {
-      const id = String(btn.dataset.wordId);
-      const isBookmarked = userBookmarks.has(id);
+      const grammarId = String(btn.dataset.patternId || "");
+      const wordId = String(btn.dataset.wordId || "");
+      const isGrammarBookmark = !!grammarId;
+      const id = isGrammarBookmark ? grammarId : wordId;
+      const isBookmarked = isGrammarBookmark ? userGrammarBookmarks.has(id) : userBookmarks.has(id);
       btn.classList.toggle("is-bookmarked", isBookmarked);
       btn.title = isBookmarked ? "Hapus dari Favorit" : "Simpan ke Favorit";
+      btn.setAttribute("aria-label", isBookmarked ? "Hapus dari Favorit" : "Simpan ke Favorit");
       const svg = btn.querySelector("svg");
       if (svg) {
         svg.setAttribute("fill", isBookmarked ? "#ff4d6d" : "none");

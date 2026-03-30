@@ -5309,7 +5309,7 @@ grid.style.display="grid";
     if (!isTesting) unlockQuizScroll();
     syncMobileTopbarLayout();
     setHistoryMode(false);
-    grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode");
+    grid.classList.remove("hub-mode", "support-mode", "kc-grid-mode", "favorit-detail-mode");
     grid.style.removeProperty("grid-template-columns");
     grid.innerHTML = "";
     const paginationContainer = document.getElementById("pagination-container");

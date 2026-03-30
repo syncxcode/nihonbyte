@@ -7774,6 +7774,8 @@ body.history-mode .dashboard-shell textarea {
 }
 
 .favorit-detail-shell {
+  grid-column: 1 / -1;
+  justify-self: stretch;
   width: 100%;
   max-width: none;
   display: grid;
@@ -7812,6 +7814,12 @@ body.history-mode .dashboard-shell textarea {
 .favorit-detail-body .favorit-cards-row,
 .favorit-detail-body .favorit-grammar-grid {
   width: 100%;
+}
+
+.favorit-detail-body .favorit-cards-row--full {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  padding: 6px 0 12px !important;
 }
 
 .favorit-section {
@@ -7990,6 +7998,10 @@ body.history-mode .dashboard-shell textarea {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 
+  .favorit-detail-body .favorit-cards-row--full {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
   .favorit-grammar-grid--preview,
   .favorit-grammar-grid--full {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -8019,6 +8031,10 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .favorit-cards-row--preview {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .favorit-detail-body .favorit-cards-row--full {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 

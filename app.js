@@ -4315,8 +4315,8 @@ grid.style.display="grid";
       : (favoriteVocabSearchQuery ? "Belum ada hasil favorit kosakata" : "Belum ada kosakata favorit");
 
     grid.innerHTML = `
-      <section class="hub-screen menu-hub-screen favorit-hub-screen favorit-full-screen">
-        <header class="hub-header menu-hub-header favorit-hub-header">
+      <section class="favorit-detail-shell favorit-full-screen favorit-detail-shell--vocab">
+        <header class="favorit-detail-header">
           <h2>
             <span class="menu-hub-title-pill favorit-title-pill">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
@@ -4332,7 +4332,7 @@ grid.style.display="grid";
           </div>
         </header>
 
-        <div class="hub-section menu-hub-section-card favorit-card-section favorit-card-section--full">
+        <div class="favorit-detail-body favorit-detail-body--vocab">
           ${renderFavoritWordCards(bookmarkedWords, { preview: false })}
         </div>
       </section>
@@ -4350,8 +4350,8 @@ grid.style.display="grid";
       : "Belum ada grammar favorit";
 
     grid.innerHTML = `
-      <section class="hub-screen menu-hub-screen favorit-hub-screen favorit-full-screen">
-        <header class="hub-header menu-hub-header favorit-hub-header">
+      <section class="favorit-detail-shell favorit-full-screen favorit-detail-shell--grammar">
+        <header class="favorit-detail-header">
           <h2>
             <span class="menu-hub-title-pill favorit-title-pill">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
@@ -4367,7 +4367,7 @@ grid.style.display="grid";
           </div>
         </header>
 
-        <div class="hub-section menu-hub-section-card favorit-card-section favorit-card-section--full favorit-card-section--grammar">
+        <div class="favorit-detail-body favorit-detail-body--grammar">
           ${renderFavoritGrammarCards(grammarPatterns, { preview: false })}
         </div>
       </section>

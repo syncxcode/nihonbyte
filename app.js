@@ -2038,6 +2038,7 @@ grid.style.display="grid";
     function cleanup() {
       overlay.classList.remove("active");
       overlay.setAttribute("aria-hidden", "true");
+      overlay.removeEventListener("click", handleBackdrop);
     }
     function handleOk()     { cleanup(); if (onOk) onOk(); }
     function handleCancel() { cleanup(); }
@@ -4248,29 +4249,90 @@ grid.style.display="grid";
   }
 
   function confirmClearFavoritVocab() {
-    openConfirmModal(
-      "Hapus Semua Favorit Kosakata?",
-      "Semua kosakata yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?",
-      () => {
-        userBookmarks.clear();
-        if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
-        refreshBookmarkStateOnCards();
-        renderFavoritPage();
-      }
-    );
+    const overlay = document.getElementById("favoritVocabConfirmModal");
+    const titleEl = document.getElementById("favoritVocabConfirmTitle");
+    const bodyEl = overlay?.querySelector(".favorit-vocab-confirm-body");
+    const okBtn = document.getElementById("favoritVocabConfirmOk");
+    const cancelBtn = document.getElementById("favoritVocabConfirmCancel");
+    if (!overlay) {
+      userBookmarks.clear();
+      if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
+      refreshBookmarkStateOnCards();
+      renderFavoritPage();
+      return;
+    }
+
+    if (titleEl) titleEl.textContent = "Hapus Semua Favorit Kosakata?";
+    if (bodyEl) bodyEl.textContent = "Semua kosakata yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?";
+
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+    okBtn?.focus();
+
+    function cleanup() {
+      overlay.classList.remove("active");
+      overlay.setAttribute("aria-hidden", "true");
+    }
+    function handleOk() {
+      cleanup();
+      userBookmarks.clear();
+      if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
+      refreshBookmarkStateOnCards();
+      renderFavoritPage();
+    }
+    function handleCancel() { cleanup(); }
+    function handleBackdrop(e) {
+      if (e.target !== overlay) return;
+      cleanup();
+    }
+
+    overlay.addEventListener("click", handleBackdrop);
+    okBtn?.addEventListener("click", handleOk, { once: true });
+    cancelBtn?.addEventListener("click", handleCancel, { once: true });
   }
 
   function confirmClearFavoritGrammar() {
-    openConfirmModal(
-      "Hapus Semua Favorit Grammar?",
-      "Semua materi grammar yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?",
-      () => {
-        userGrammarBookmarks.clear();
-        if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
-        refreshBookmarkStateOnCards();
-        renderFavoritPage();
-      }
-    );
+    const overlay = document.getElementById("favoritGrammarConfirmModal");
+    const titleEl = document.getElementById("favoritGrammarConfirmTitle");
+    const bodyEl = overlay?.querySelector(".favorit-grammar-confirm-body");
+    const okBtn = document.getElementById("favoritGrammarConfirmOk");
+    const cancelBtn = document.getElementById("favoritGrammarConfirmCancel");
+    if (!overlay) {
+      userGrammarBookmarks.clear();
+      if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
+      refreshBookmarkStateOnCards();
+      renderFavoritPage();
+      return;
+    }
+
+    if (titleEl) titleEl.textContent = "Hapus Semua Favorit Grammar?";
+    if (bodyEl) bodyEl.textContent = "Semua materi grammar yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?";
+
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+    okBtn?.focus();
+
+    function cleanup() {
+      overlay.classList.remove("active");
+      overlay.setAttribute("aria-hidden", "true");
+      overlay.removeEventListener("click", handleBackdrop);
+    }
+    function handleOk() {
+      cleanup();
+      userGrammarBookmarks.clear();
+      if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
+      refreshBookmarkStateOnCards();
+      renderFavoritPage();
+    }
+    function handleCancel() { cleanup(); }
+    function handleBackdrop(e) {
+      if (e.target !== overlay) return;
+      cleanup();
+    }
+
+    overlay.addEventListener("click", handleBackdrop);
+    okBtn?.addEventListener("click", handleOk, { once: true });
+    cancelBtn?.addEventListener("click", handleCancel, { once: true });
   }
 
   function bindFavoritCommonActions() {

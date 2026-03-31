@@ -442,6 +442,54 @@
   </div>
 </div>
 
+<div id="favoritVocabConfirmModal" class="favorit-vocab-confirm-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="favoritVocabConfirmTitle">
+  <div class="favorit-vocab-confirm-card">
+    <div class="favorit-vocab-confirm-icon">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="#fff3cd" stroke="#f59e0b" stroke-width="2.5"/>
+        <path d="M24 14v12" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="24" cy="33" r="2" fill="#f59e0b"/>
+      </svg>
+    </div>
+    <h3 id="favoritVocabConfirmTitle" class="favorit-vocab-confirm-title">Hapus Semua Favorit Kosakata?</h3>
+    <p class="favorit-vocab-confirm-body">Semua kosakata favorit akan dihapus. Yakin ingin melanjutkan?</p>
+    <div class="favorit-vocab-confirm-actions">
+      <button id="favoritVocabConfirmCancel" class="favorit-vocab-confirm-btn favorit-vocab-confirm-btn--cancel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Batal
+      </button>
+      <button id="favoritVocabConfirmOk" class="favorit-vocab-confirm-btn favorit-vocab-confirm-btn--ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Hapus
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="favoritGrammarConfirmModal" class="favorit-grammar-confirm-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="favoritGrammarConfirmTitle">
+  <div class="favorit-grammar-confirm-card">
+    <div class="favorit-grammar-confirm-icon">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="#fff3cd" stroke="#f59e0b" stroke-width="2.5"/>
+        <path d="M24 14v12" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="24" cy="33" r="2" fill="#f59e0b"/>
+      </svg>
+    </div>
+    <h3 id="favoritGrammarConfirmTitle" class="favorit-grammar-confirm-title">Hapus Semua Favorit Grammar?</h3>
+    <p class="favorit-grammar-confirm-body">Semua grammar favorit akan dihapus. Yakin ingin melanjutkan?</p>
+    <div class="favorit-grammar-confirm-actions">
+      <button id="favoritGrammarConfirmCancel" class="favorit-grammar-confirm-btn favorit-grammar-confirm-btn--cancel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Batal
+      </button>
+      <button id="favoritGrammarConfirmOk" class="favorit-grammar-confirm-btn favorit-grammar-confirm-btn--ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Hapus
+      </button>
+    </div>
+  </div>
+</div>
+
 <script src="./modules/vocab/vocab-data.js"></script>
 <script src="./modules/grammar/grammar-data.js"></script>
 <script src="./modules/grammar/grammar-logic.js"></script>

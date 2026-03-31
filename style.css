@@ -8152,6 +8152,13 @@ body.history-mode .dashboard-shell textarea {
   font-weight: 800;
 }
 
+.favorit-overview-screen .favorit-section--vocab .favorit-section-head h3,
+.favorit-overview-screen .favorit-section--grammar .favorit-section-head h3 {
+  color: #242526 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
 .favorit-section-head p {
   margin: 4px 0 0;
   color: #64748b;

@@ -4316,7 +4316,7 @@ grid.style.display="grid";
 
     grid.innerHTML = `
       <section class="favorit-vocab-detail">
-        <header class="favorit-vocab-detail__header">
+        <div class="favorit-vocab-detail__header" role="region" aria-label="Favorit Kosakata">
           <div class="favorit-vocab-detail__top">
             <button class="favorit-vocab-detail__icon-btn favorit-vocab-detail__icon-btn--back" type="button" data-favorit-back="favorit" aria-label="Kembali ke ringkasan" title="Kembali">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -4344,7 +4344,7 @@ grid.style.display="grid";
             ` : `<span class="favorit-vocab-detail__icon-spacer" aria-hidden="true"></span>`}
           </div>
           <p class="favorit-vocab-detail__count">${countText}</p>
-        </header>
+        </div>
 
         <div class="favorit-vocab-detail__body">
           ${renderFavoritWordCards(bookmarkedWords, { preview: false })}

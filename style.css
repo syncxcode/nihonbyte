@@ -7773,6 +7773,10 @@ body.history-mode .dashboard-shell textarea {
   gap: 18px;
 }
 
+.favorit-overview-screen {
+  align-content: start;
+}
+
 .favorit-detail-shell {
   grid-column: 1 / -1;
   justify-self: stretch;
@@ -7956,6 +7960,10 @@ body.history-mode .dashboard-shell textarea {
   overflow: hidden;
 }
 
+.favorit-overview-screen .favorit-section:first-of-type {
+  margin-top: -8px;
+}
+
 .favorit-section-head {
   display: flex;
   align-items: flex-start;
@@ -7966,7 +7974,8 @@ body.history-mode .dashboard-shell textarea {
 .favorit-section-head h3 {
   margin: 0;
   font-size: 1.15rem;
-  color: #1f2937;
+  color: #334155;
+  font-weight: 800;
 }
 
 .favorit-section-head p {
@@ -8177,6 +8186,10 @@ body.history-mode .dashboard-shell textarea {
 
   .favorit-section {
     gap: 12px;
+  }
+
+  .favorit-overview-screen .favorit-section:first-of-type {
+    margin-top: -6px;
   }
 
   .favorit-cards-row--preview {

@@ -4247,6 +4247,32 @@ grid.style.display="grid";
     });
   }
 
+  function confirmClearFavoritVocab() {
+    openConfirmModal(
+      "Hapus Semua Favorit Kosakata?",
+      "Semua kosakata yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?",
+      () => {
+        userBookmarks.clear();
+        if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
+        refreshBookmarkStateOnCards();
+        renderFavoritPage();
+      }
+    );
+  }
+
+  function confirmClearFavoritGrammar() {
+    openConfirmModal(
+      "Hapus Semua Favorit Grammar?",
+      "Semua materi grammar yang kamu simpan di favorit akan dihapus. Yakin ingin melanjutkan?",
+      () => {
+        userGrammarBookmarks.clear();
+        if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
+        refreshBookmarkStateOnCards();
+        renderFavoritPage();
+      }
+    );
+  }
+
   function bindFavoritCommonActions() {
     grid.querySelectorAll(".favorit-see-more-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -4268,16 +4294,10 @@ grid.style.display="grid";
       btn.addEventListener("click", () => {
         const kind = btn.dataset.favoritClear;
         if (kind === "grammar") {
-          if (!confirm("Hapus semua grammar dari favorit?")) return;
-          userGrammarBookmarks.clear();
-          if (window.currentUser) saveUserGrammarBookmarks(window.currentUser.uid);
+          confirmClearFavoritGrammar();
         } else {
-          if (!confirm("Hapus semua kata dari favorit?")) return;
-          userBookmarks.clear();
-          if (window.currentUser) saveUserBookmarks(window.currentUser.uid);
+          confirmClearFavoritVocab();
         }
-        refreshBookmarkStateOnCards();
-        renderFavoritPage();
       });
     });
   }

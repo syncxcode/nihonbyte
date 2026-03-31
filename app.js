@@ -4083,8 +4083,7 @@ grid.style.display="grid";
   }
 
   function getFavoritGrammarPreviewCount() {
-    if (isMobilePortraitLayout()) return 3;
-    return 4;
+    return getFavoritVocabPreviewCount();
   }
 
   function buildFavoritSeeMoreButton(targetView) {

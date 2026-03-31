@@ -9,7 +9,10 @@ body {
   display: flex !important;
   flex-direction: column !important;
   min-height: 100vh !important;
-  background: none; 
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.20) 0%, transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.08) 0%, transparent 36%),
+    linear-gradient(180deg, #0f0d0d 0%, #0a0a0a 100%) !important;
   font-family: 'Ubuntu', 'Ubuntu Mono', 'Cantarell', 'Noto Sans', 'Liberation Sans', 'FreeSans', 'DejaVu Sans', sans-serif;
   color: #1f2937;
 }
@@ -22,8 +25,14 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 75%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 75%);
   z-index: -1;
+  pointer-events: none;
 }
 
 /* =========================================
@@ -659,7 +668,13 @@ select, input, .action-btn {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
-  background: #D3D3D3 !important;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px),
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.18) 0%, transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.08) 0%, transparent 36%),
+    linear-gradient(180deg, #100d0d 0%, #0a0a0a 100%) !important;
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
   will-change: transform;
   transform: translateX(-100%);
   transition: transform 0.35s ease-in-out;
@@ -667,7 +682,7 @@ select, input, .action-btn {
   padding: 2rem 1.5rem 120px 1.5rem; 
   box-sizing: border-box !important; 
   color: #ffffff;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.28);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   overflow-y: auto;

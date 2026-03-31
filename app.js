@@ -4315,24 +4315,38 @@ grid.style.display="grid";
       : (favoriteVocabSearchQuery ? "Belum ada hasil favorit kosakata" : "Belum ada kosakata favorit");
 
     grid.innerHTML = `
-      <section class="favorit-detail-shell favorit-full-screen favorit-detail-shell--vocab">
-        <header class="favorit-detail-header">
-          <h2>
+      <section class="favorit-vocab-detail">
+        <header class="favorit-vocab-detail__header">
+          <div class="favorit-vocab-detail__top">
+            <button class="favorit-vocab-detail__icon-btn favorit-vocab-detail__icon-btn--back" type="button" data-favorit-back="favorit" aria-label="Kembali ke ringkasan" title="Kembali">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"/>
+              </svg>
+            </button>
+            <h2 class="favorit-vocab-detail__title">
             <span class="menu-hub-title-pill favorit-title-pill">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
                 <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
               </svg>
               Favorit Kosakata
             </span>
-          </h2>
-          <p>${countText}</p>
-          <div class="favorit-head-actions">
-            <button class="favorit-ghost-btn" type="button" data-favorit-back="favorit">Kembali ke Ringkasan</button>
-            ${bookmarkedWords.length > 0 ? `<button class="favorit-clear-btn" type="button" data-favorit-clear="word">Hapus Semua</button>` : ""}
           </div>
+          </h2>
+            ${bookmarkedWords.length > 0 ? `
+              <button class="favorit-vocab-detail__icon-btn favorit-vocab-detail__icon-btn--clear" type="button" data-favorit-clear="word" aria-label="Hapus semua favorit kosakata" title="Hapus semua">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 6h18"/>
+                  <path d="M8 6V4h8v2"/>
+                  <path d="M19 6l-1 14H6L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                </svg>
+              </button>
+            ` : `<span class="favorit-vocab-detail__icon-spacer" aria-hidden="true"></span>`}
+          </div>
+          <p class="favorit-vocab-detail__count">${countText}</p>
         </header>
 
-        <div class="favorit-detail-body favorit-detail-body--vocab">
+        <div class="favorit-vocab-detail__body">
           ${renderFavoritWordCards(bookmarkedWords, { preview: false })}
         </div>
       </section>

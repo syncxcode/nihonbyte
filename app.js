@@ -4371,29 +4371,42 @@ grid.style.display="grid";
 
   function renderFavoritGrammarPage() {
     const grammarPatterns = getFilteredBookmarkedGrammarPatterns();
-    const countText = grammarPatterns.length > 0
-      ? `${grammarPatterns.length} materi grammar tersimpan`
-      : "Belum ada grammar favorit";
 
     grid.innerHTML = `
-      <section class="favorit-detail-shell favorit-full-screen favorit-detail-shell--grammar">
-        <header class="favorit-detail-header">
-          <h2>
-            <span class="menu-hub-title-pill favorit-title-pill">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2 2h10a2 2 0 0 1 2 2z"/>
+      <section class="favorit-grammar-detail">
+        <div class="favorit-grammar-detail__header" role="region" aria-label="Favorit Grammar">
+          <div class="favorit-grammar-detail__top">
+            <button class="favorit-grammar-detail__icon-btn favorit-grammar-detail__icon-btn--back" type="button" data-favorit-back="favorit" aria-label="Kembali ke ringkasan" title="Kembali">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6"/>
               </svg>
-              Favorit Grammar
-            </span>
-          </h2>
-          <p>${countText}</p>
-          <div class="favorit-head-actions">
-            <button class="favorit-ghost-btn" type="button" data-favorit-back="favorit">Kembali ke Ringkasan</button>
-            ${grammarPatterns.length > 0 ? `<button class="favorit-clear-btn" type="button" data-favorit-clear="grammar">Hapus Semua</button>` : ""}
+            </button>
+            <h2 class="favorit-grammar-detail__title">
+              <span class="menu-hub-title-pill favorit-title-pill">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2 2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+                Favorit Grammar
+              </span>
+            </h2>
           </div>
-        </header>
+          ${grammarPatterns.length > 0 ? `
+            <div class="favorit-grammar-detail__subrow">
+              <span class="favorit-grammar-detail__subrow-spacer" aria-hidden="true"></span>
+              <button class="favorit-grammar-detail__clear-btn" type="button" data-favorit-clear="grammar" aria-label="Hapus semua favorit grammar" title="Hapus semua">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 6h18"/>
+                  <path d="M8 6V4h8v2"/>
+                  <path d="M19 6l-1 14H6L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                </svg>
+                <span>Hapus Semua</span>
+              </button>
+            </div>
+          ` : ``}
+        </div>
 
-        <div class="favorit-detail-body favorit-detail-body--grammar">
+        <div class="favorit-grammar-detail__body">
           ${renderFavoritGrammarCards(grammarPatterns, { preview: false })}
         </div>
       </section>

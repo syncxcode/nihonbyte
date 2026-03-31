@@ -4310,6 +4310,19 @@ grid.style.display="grid";
 
   function renderFavoritVocabPage() {
     const bookmarkedWords = getBookmarkedWords(favoriteVocabSearchQuery);
+    const currentState = `favorit-vocab-${favoriteVocabSearchQuery || ""}`;
+    if (lastQueryState !== currentState) {
+      currentPage = 1;
+      lastQueryState = currentState;
+    }
+
+    const itemsPerPage = 25;
+    const totalPages = Math.ceil(bookmarkedWords.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedBookmarkedWords = bookmarkedWords.slice(startIndex, endIndex);
 
     grid.innerHTML = `
       <section class="favorit-vocab-detail">
@@ -4346,7 +4359,7 @@ grid.style.display="grid";
         </div>
 
         <div class="favorit-vocab-detail__body">
-          ${renderFavoritWordCards(bookmarkedWords, { preview: false })}
+          ${renderFavoritWordCards(paginatedBookmarkedWords, { preview: false })}
         </div>
       </section>
     `;
@@ -4354,6 +4367,7 @@ grid.style.display="grid";
     if (resultInfo) resultInfo.textContent = "Favorit Kosakata";
     bindFavoritWordCards(bookmarkedWords);
     bindFavoritCommonActions();
+    renderPagination(totalPages);
   }
 
   function renderFavoritGrammarPage() {

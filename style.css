@@ -7842,7 +7842,8 @@ body.history-mode .dashboard-shell textarea {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 12px;
+  column-gap: 14px;
+  row-gap: 10px;
 }
 
 .favorit-vocab-detail__title {
@@ -7875,7 +7876,7 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-  gap: 6px;
+  gap: 0;
   padding: 0 12px;
 }
 
@@ -7894,6 +7895,8 @@ body.history-mode .dashboard-shell textarea {
   border-color: rgba(255, 77, 109, 0.28);
   background: rgba(255, 77, 109, 0.08);
   color: #ff4d6d;
+  padding: 0 16px;
+  margin-left: 8px;
 }
 
 .favorit-vocab-detail__icon-btn--clear span {
@@ -8167,7 +8170,8 @@ body.history-mode .dashboard-shell textarea {
   }
 
   .favorit-vocab-detail__top {
-    gap: 10px;
+    column-gap: 10px;
+    row-gap: 8px;
   }
 
   .favorit-vocab-detail__icon-btn,
@@ -8180,7 +8184,8 @@ body.history-mode .dashboard-shell textarea {
   .favorit-vocab-detail__icon-btn--clear {
     width: auto;
     min-width: 36px;
-    padding: 0 10px;
+    padding: 0 12px;
+    margin-left: 4px;
   }
 
   .favorit-vocab-detail__icon-btn svg {

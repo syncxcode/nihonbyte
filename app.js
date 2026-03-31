@@ -4321,22 +4321,15 @@ grid.style.display="grid";
               </svg>
             </button>
             <h2 class="favorit-vocab-detail__title">
-            <span class="menu-hub-title-pill favorit-title-pill">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-              </svg>
-              Favorit Kosakata
-            </span>
-          </div>
-          </h2>
+              <span class="menu-hub-title-pill favorit-title-pill">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;vertical-align:middle">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+                Favorit Kosakata
+              </span>
+            </h2>
             ${bookmarkedWords.length > 0 ? `
               <button class="favorit-vocab-detail__icon-btn favorit-vocab-detail__icon-btn--clear" type="button" data-favorit-clear="word" aria-label="Hapus semua favorit kosakata" title="Hapus semua">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M3 6h18"/>
-                  <path d="M8 6V4h8v2"/>
-                  <path d="M19 6l-1 14H6L5 6"/>
-                  <path d="M10 11v6M14 11v6"/>
-                </svg>
                 <span>Hapus Semua</span>
               </button>
             ` : `<span class="favorit-vocab-detail__icon-spacer" aria-hidden="true"></span>`}

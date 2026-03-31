@@ -4328,12 +4328,21 @@ grid.style.display="grid";
                 Favorit Kosakata
               </span>
             </h2>
-            ${bookmarkedWords.length > 0 ? `
-              <button class="favorit-vocab-detail__icon-btn favorit-vocab-detail__icon-btn--clear" type="button" data-favorit-clear="word" aria-label="Hapus semua favorit kosakata" title="Hapus semua">
+          </div>
+          ${bookmarkedWords.length > 0 ? `
+            <div class="favorit-vocab-detail__subrow">
+              <span class="favorit-vocab-detail__subrow-spacer" aria-hidden="true"></span>
+              <button class="favorit-vocab-detail__clear-btn" type="button" data-favorit-clear="word" aria-label="Hapus semua favorit kosakata" title="Hapus semua">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 6h18"/>
+                  <path d="M8 6V4h8v2"/>
+                  <path d="M19 6l-1 14H6L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                </svg>
                 <span>Hapus Semua</span>
               </button>
-            ` : `<span class="favorit-vocab-detail__icon-spacer" aria-hidden="true"></span>`}
-          </div>
+            </div>
+          ` : ``}
         </div>
 
         <div class="favorit-vocab-detail__body">

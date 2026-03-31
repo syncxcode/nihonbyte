@@ -2145,8 +2145,12 @@ grid.style.display="grid";
       return viewMode === "favorit" || viewMode === "favorit:vocab";
     }
 
+    function isFavoritGrammarFilterContext() {
+      return viewMode === "favorit:grammar" || viewMode.startsWith("favorit:grammar-item:");
+    }
+
     function setFilterModalContext(context) {
-      activeFilterContext = ["grammar", "expression", "kotoba", "favorit-vocab"].includes(context) ? context : "vocab";
+      activeFilterContext = ["grammar", "expression", "kotoba", "favorit-vocab", "favorit-grammar"].includes(context) ? context : "vocab";
       if (filterModalTitleText) {
         filterModalTitleText.textContent =
           activeFilterContext === "grammar"
@@ -2157,6 +2161,8 @@ grid.style.display="grid";
                 ? getKotobaFilterModalTitle()
                 : activeFilterContext === "favorit-vocab"
                   ? "Cari & Filter Favorit Kosakata"
+                  : activeFilterContext === "favorit-grammar"
+                    ? "Cari & Filter Favorit Grammar"
                 : "Cari & Filter";
       }
       if (modalSearchInput) {
@@ -2169,10 +2175,12 @@ grid.style.display="grid";
                 ? "Cari kosakata..."
                 : activeFilterContext === "favorit-vocab"
                   ? "Cari kosakata..."
+                  : activeFilterContext === "favorit-grammar"
+                    ? "Cari Grammar..."
                 : "Cari kanji / kana / romaji / arti...";
       }
       if (levelFilterSection) {
-        const hideLevelSection = activeFilterContext === "expression" || activeFilterContext === "kotoba" || activeFilterContext === "favorit-vocab";
+        const hideLevelSection = activeFilterContext === "expression" || activeFilterContext === "kotoba" || activeFilterContext === "favorit-vocab" || activeFilterContext === "favorit-grammar";
         levelFilterSection.hidden = hideLevelSection;
         levelFilterSection.setAttribute("aria-hidden", hideLevelSection ? "true" : "false");
       }
@@ -2240,6 +2248,8 @@ grid.style.display="grid";
             ? "expression"
             : isKotobaFilterContext()
               ? "kotoba"
+              : isFavoritGrammarFilterContext()
+                ? "favorit-grammar"
               : isFavoritVocabFilterContext()
                 ? "favorit-vocab"
             : "vocab"
@@ -2346,6 +2356,14 @@ grid.style.display="grid";
         return;
       }
 
+      if (activeFilterContext === "favorit-grammar") {
+        favoriteGrammarSearchQuery = modalSearchInput?.value.trim() || "";
+        viewMode = "favorit:grammar";
+        closeFilterModal();
+        render();
+        return;
+      }
+
       // Kumpulkan kategori aktif (single select)
       const activeTypes = [...document.querySelectorAll("#categoryGrid .cat-btn.active")].map(b => b.dataset.type);
 
@@ -2421,6 +2439,17 @@ grid.style.display="grid";
           document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
           document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
           viewMode = "favorit:vocab";
+          closeFilterModal();
+          render();
+          return;
+        }
+
+        if (activeFilterContext === "favorit-grammar") {
+          favoriteGrammarSearchQuery = "";
+          if (modalSearchInput) modalSearchInput.value = "";
+          document.querySelectorAll(".level-btn, .cat-btn").forEach(b => b.classList.remove("active"));
+          document.querySelector('#levelGrid .level-btn--all')?.classList.add("active");
+          viewMode = "favorit:grammar";
           closeFilterModal();
           render();
           return;
@@ -2560,6 +2589,7 @@ grid.style.display="grid";
   let activeFilterContext = "vocab";
   let expressionSearchQuery = "";
   let favoriteVocabSearchQuery = "";
+  let favoriteGrammarSearchQuery = "";
   let currentPage = 1;      
   let lastQueryState = "";
   let userBookmarks = new Set(); // Set of bookmarked word IDs
@@ -4370,7 +4400,7 @@ grid.style.display="grid";
   }
 
   function renderFavoritGrammarPage() {
-    const grammarPatterns = getFilteredBookmarkedGrammarPatterns();
+    const grammarPatterns = getFilteredBookmarkedGrammarPatterns(favoriteGrammarSearchQuery);
 
     grid.innerHTML = `
       <section class="favorit-grammar-detail">

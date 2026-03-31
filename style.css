@@ -7875,6 +7875,8 @@ body.history-mode .dashboard-shell textarea {
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  gap: 6px;
+  padding: 0 12px;
 }
 
 .favorit-vocab-detail__icon-btn:hover {
@@ -7888,9 +7890,17 @@ body.history-mode .dashboard-shell textarea {
 }
 
 .favorit-vocab-detail__icon-btn--clear {
+  width: auto;
   border-color: rgba(255, 77, 109, 0.28);
   background: rgba(255, 77, 109, 0.08);
   color: #ff4d6d;
+}
+
+.favorit-vocab-detail__icon-btn--clear span {
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .favorit-vocab-detail__body {
@@ -8167,9 +8177,19 @@ body.history-mode .dashboard-shell textarea {
     min-width: 36px;
   }
 
+  .favorit-vocab-detail__icon-btn--clear {
+    width: auto;
+    min-width: 36px;
+    padding: 0 10px;
+  }
+
   .favorit-vocab-detail__icon-btn svg {
     width: 16px;
     height: 16px;
+  }
+
+  .favorit-vocab-detail__icon-btn--clear span {
+    font-size: 0.76rem;
   }
 
   .favorit-section-head h3 {

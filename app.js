@@ -4310,9 +4310,6 @@ grid.style.display="grid";
 
   function renderFavoritVocabPage() {
     const bookmarkedWords = getBookmarkedWords(favoriteVocabSearchQuery);
-    const countText = bookmarkedWords.length > 0
-      ? `${bookmarkedWords.length} kata favorit tersimpan`
-      : (favoriteVocabSearchQuery ? "Belum ada hasil favorit kosakata" : "Belum ada kosakata favorit");
 
     grid.innerHTML = `
       <section class="favorit-vocab-detail">
@@ -4340,10 +4337,10 @@ grid.style.display="grid";
                   <path d="M19 6l-1 14H6L5 6"/>
                   <path d="M10 11v6M14 11v6"/>
                 </svg>
+                <span>Hapus Semua</span>
               </button>
             ` : `<span class="favorit-vocab-detail__icon-spacer" aria-hidden="true"></span>`}
           </div>
-          <p class="favorit-vocab-detail__count">${countText}</p>
         </div>
 
         <div class="favorit-vocab-detail__body">

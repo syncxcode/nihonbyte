@@ -14602,41 +14602,41 @@ body::before {
 ========================================= */
 .menu-hub-screen {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
-  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(12px) saturate(118%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
 }
 
 .menu-hub-screen .menu-hub-header {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 
 .menu-hub-screen .menu-hub-section-card--kotoba {
   background:
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.26)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
+  backdrop-filter: blur(18px) saturate(128%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
 }
 
 /* =========================================
@@ -14644,29 +14644,29 @@ body::before {
 ========================================= */
 .hub-screen--practice {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
-  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(12px) saturate(118%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
 }
 
 .hub-screen--practice .hub-practice-shell {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 
 /* =========================================
@@ -14674,41 +14674,41 @@ body::before {
 ========================================= */
 .favorit-overview-screen {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
-  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(12px) saturate(118%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
 }
 
 .favorit-overview-screen .menu-hub-header {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 
 .favorit-overview-screen .favorit-section {
   background:
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.26)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
+  backdrop-filter: blur(18px) saturate(128%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
 }
 
 /* =========================================
@@ -14716,41 +14716,41 @@ body::before {
 ========================================= */
 .favorit-vocab-detail {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
-  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(12px) saturate(118%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
 }
 
 .favorit-vocab-detail__header {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 
 .favorit-vocab-detail__body {
   background:
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.26)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
+  backdrop-filter: blur(18px) saturate(128%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
 }
 
 /* =========================================
@@ -14758,39 +14758,39 @@ body::before {
 ========================================= */
 .favorit-grammar-detail {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
-  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(12px) saturate(118%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
 }
 
 .favorit-grammar-detail__header {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0.28)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
 }
 
 .favorit-grammar-detail__body {
   background:
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
-  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+    linear-gradient(135deg, rgba(255, 255, 255, 0.50), rgba(255, 255, 255, 0.26)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.12),
-    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
-  backdrop-filter: blur(10px) saturate(116%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
+  backdrop-filter: blur(18px) saturate(128%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
 }

@@ -14606,11 +14606,11 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
-  backdrop-filter: blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .menu-hub-screen .menu-hub-header {
@@ -14621,10 +14621,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
   border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
-  backdrop-filter: blur(18px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .menu-hub-screen .menu-hub-section-card--kotoba {
@@ -14633,10 +14633,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
   border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
-  backdrop-filter: blur(18px) saturate(128%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* =========================================
@@ -14650,11 +14650,11 @@ body::before {
   overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
-  backdrop-filter: blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .hub-screen--practice .hub-practice-shell {
@@ -14665,10 +14665,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
   border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
-  backdrop-filter: blur(18px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* =========================================
@@ -14680,11 +14680,11 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
-  backdrop-filter: blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-overview-screen .menu-hub-header {
@@ -14695,10 +14695,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
   border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
-  backdrop-filter: blur(18px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-overview-screen .favorit-section {
@@ -14707,10 +14707,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
   border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
-  backdrop-filter: blur(18px) saturate(128%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* =========================================
@@ -14722,11 +14722,11 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
-  backdrop-filter: blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-vocab-detail__header {
@@ -14737,10 +14737,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
   border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
-  backdrop-filter: blur(18px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-vocab-detail__body {
@@ -14749,10 +14749,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
   border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
-  backdrop-filter: blur(18px) saturate(128%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* =========================================
@@ -14764,11 +14764,11 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
-    0 18px 42px rgba(0, 0, 0, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.18),
     0 1px 0 rgba(255, 255, 255, 0.18) inset,
     0 -1px 0 rgba(255, 255, 255, 0.08) inset !important;
-  backdrop-filter: blur(22px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-grammar-detail__header {
@@ -14779,10 +14779,10 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.10)) !important;
   border: 1px solid rgba(255, 255, 255, 0.36) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.28) inset !important;
-  backdrop-filter: blur(18px) saturate(130%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(130%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .favorit-grammar-detail__body {
@@ -14791,8 +14791,8 @@ body::before {
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08)) !important;
   border: 1px solid rgba(255, 255, 255, 0.34) !important;
   box-shadow:
-    0 14px 32px rgba(0, 0, 0, 0.16),
+    0 10px 22px rgba(0, 0, 0, 0.14),
     0 1px 0 rgba(255, 255, 255, 0.24) inset !important;
-  backdrop-filter: blur(18px) saturate(128%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(128%) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }

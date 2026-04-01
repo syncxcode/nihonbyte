@@ -14596,3 +14596,65 @@ body::before {
   color: #ffffff !important;
   border-right: 1px solid rgba(255, 255, 255, 0.14) !important;
 }
+
+/* =========================================
+   SHELL PANELS: semi-glass wrappers only
+   Menu, Latihan, Favorit ringkasan & detail
+========================================= */
+.menu-hub-screen,
+.hub-screen--practice,
+.favorit-vocab-detail,
+.favorit-grammar-detail {
+  background: rgba(255, 255, 255, 0.84) !important;
+  border: 1px solid rgba(255, 255, 255, 0.34) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.12) inset !important;
+  backdrop-filter: blur(12px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+}
+
+.menu-hub-screen .menu-hub-header,
+.menu-hub-screen .menu-hub-section-card--kotoba,
+.favorit-overview-screen .menu-hub-header,
+.favorit-overview-screen .favorit-section,
+.favorit-vocab-detail__header,
+.favorit-vocab-detail__body,
+.favorit-grammar-detail__header,
+.favorit-grammar-detail__body,
+.hub-screen--practice .hub-practice-shell {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.80) 100%
+  ) !important;
+  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+.menu-hub-screen .menu-hub-header,
+.favorit-overview-screen .menu-hub-header,
+.favorit-vocab-detail__header,
+.favorit-grammar-detail__header,
+.hub-screen--practice .hub-practice-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-hub-screen .menu-hub-header::before,
+.favorit-overview-screen .menu-hub-header::before,
+.favorit-vocab-detail__header::before,
+.favorit-grammar-detail__header::before,
+.hub-screen--practice .hub-practice-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 36%);
+  pointer-events: none;
+}

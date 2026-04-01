@@ -2615,8 +2615,7 @@ grid.style.display="grid";
   let userGrammarBookmarks = new Set(); // Set of bookmarked grammar IDs
   let favoritGrammarBackView = "favorit";
   let favoritGrammarLastPatternId = "";
-  let favoritGrammarScrollTop = 0;
-  let favoritGrammarShouldRestoreScroll = false;
+  let favoritGrammarShouldScrollTop = false;
   
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
@@ -4264,28 +4263,25 @@ grid.style.display="grid";
   }
 
   function openFavoritGrammarPoster(patternId) {
-    const cp = document.querySelector(".content-panel");
     favoritGrammarBackView = viewMode;
     favoritGrammarLastPatternId = String(patternId || "");
-    favoritGrammarScrollTop = cp ? cp.scrollTop : (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0);
-    favoritGrammarShouldRestoreScroll = false;
+    favoritGrammarShouldScrollTop = false;
     viewMode = `favorit:grammar-item:${patternId}`;
     render();
   }
 
-  function restoreFavoritGrammarScrollPosition() {
-    if (!favoritGrammarShouldRestoreScroll) return;
-    favoritGrammarShouldRestoreScroll = false;
+  function scrollFavoritGrammarToTop() {
+    if (!favoritGrammarShouldScrollTop) return;
+    favoritGrammarShouldScrollTop = false;
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const cp = document.querySelector(".content-panel");
         if (cp) {
-          cp.scrollTop = Math.max(0, favoritGrammarScrollTop || 0);
+          cp.scrollTop = 0;
         } else {
-          const top = Math.max(0, favoritGrammarScrollTop || 0);
-          if (document.documentElement) document.documentElement.scrollTop = top;
-          if (document.body) document.body.scrollTop = top;
-          window.scrollTo({ top, behavior: "auto" });
+          if (document.documentElement) document.documentElement.scrollTop = 0;
+          if (document.body) document.body.scrollTop = 0;
+          window.scrollTo({ top: 0, behavior: "auto" });
         }
       });
     });
@@ -4484,7 +4480,7 @@ grid.style.display="grid";
     bindFavoritWordCards(bookmarkedWords);
     bindFavoritGrammarCards();
     bindFavoritCommonActions();
-    restoreFavoritGrammarScrollPosition();
+    scrollFavoritGrammarToTop();
   }
 
   function renderFavoritVocabPage() {
@@ -4595,7 +4591,7 @@ grid.style.display="grid";
     if (resultInfo) resultInfo.textContent = "Favorit Grammar";
     bindFavoritGrammarCards();
     bindFavoritCommonActions();
-    restoreFavoritGrammarScrollPosition();
+    scrollFavoritGrammarToTop();
   }
 
   function renderFavoritGrammarPosterView(patternId) {
@@ -4612,7 +4608,7 @@ grid.style.display="grid";
       patternId,
       backLabel: "Kembali ke favorit",
       onBack: () => {
-        favoritGrammarShouldRestoreScroll = true;
+        favoritGrammarShouldScrollTop = true;
         viewMode = favoritGrammarBackView || "favorit";
         render();
       }

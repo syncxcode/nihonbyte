@@ -2143,11 +2143,30 @@ grid.style.display="grid";
     }
 
     function isFavoritVocabFilterContext() {
-      return viewMode === "favorit" || viewMode === "favorit:vocab";
+      return viewMode === "favorit:vocab";
     }
 
     function isFavoritGrammarFilterContext() {
       return viewMode === "favorit:grammar" || viewMode.startsWith("favorit:grammar-item:");
+    }
+
+    function isSearchDisabledContext() {
+      return viewMode === "menu" ||
+             viewMode === "practice-hub" ||
+             viewMode === "dashboard" ||
+             viewMode === "favorit";
+    }
+
+    function syncSearchButtonAvailability() {
+      if (!searchBtn) return;
+      const disabled = isSearchDisabledContext();
+      searchBtn.disabled = disabled;
+      searchBtn.setAttribute("aria-disabled", disabled ? "true" : "false");
+      if (disabled) {
+        searchBtn.setAttribute("tabindex", "-1");
+      } else {
+        searchBtn.removeAttribute("tabindex");
+      }
     }
 
     function setFilterModalContext(context) {
@@ -2228,6 +2247,7 @@ grid.style.display="grid";
     }
 
     searchBtn.addEventListener("click", () => {
+      if (searchBtn.disabled) return;
       if (accessMode === "guest") {
         openInfoModal("<h3>Akses Tamu Terbatas</h3><p>Pencarian & filter dikunci untuk mode tamu. Silakan login untuk membuka fitur ini.</p>");
         return;
@@ -2372,12 +2392,9 @@ grid.style.display="grid";
       // Multi-level: simpan sebagai comma string, render akan handle
       selectedLevel = activeLevels.length === 0 ? "all" : (activeLevels.length === 1 ? activeLevels[0] : activeLevels.join(","));
 
-      // Single-cat: ambil yang aktif, atau "all" kalau kosong
-      if (modalSearchInput && modalSearchInput.value.trim() !== "" && activeTypes.length === 0) {
-        selectedType = "all";
-      } else {
-        selectedType = activeTypes.length === 0 ? "verb-adj-only" : activeTypes[0];
-      }
+      // Single-cat: kalau kosong tetap balik ke Kosakata Utama,
+      // jangan bocor ke semua vocab.
+      selectedType = activeTypes.length === 0 ? "verb-adj-only" : activeTypes[0];
 
       viewMode = "vocab";
       if (search && modalSearchInput) search.value = modalSearchInput.value.trim();
@@ -2735,6 +2752,24 @@ grid.style.display="grid";
   }
 
   const JLPT_LEVEL_ORDER = ["N5", "N4", "N3", "N2", "N1"];
+  const CORE_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
+
+  function isCoreVocabType(type) {
+    return CORE_VOCAB_TYPES.includes(type);
+  }
+
+  function isExpressionType(type) {
+    return ["expression", "ekspresi", "ungkapan umum"].includes(type);
+  }
+
+  function isKotobaWordType(type) {
+    if (!type) return false;
+    if (isCoreVocabType(type)) return false;
+    if (isExpressionType(type)) return false;
+    if (type === "activity") return false;
+    if (type === "noun") return true;
+    return KOTOBA_CATEGORY_KEYS.includes(type) && type !== "activity";
+  }
 
   function shouldShowLevelInResult(typeKey) {
     return ["verb-adj-only", "verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"].includes(typeKey);
@@ -3056,7 +3091,7 @@ grid.style.display="grid";
     return coreTypeOrder.flatMap((type) => sortWordsShortAZ(grouped.get(type) || []));
   }
 
-  const LOCKED_VOCAB_TYPES = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
+  const LOCKED_VOCAB_TYPES = [...CORE_VOCAB_TYPES];
 
   function getFilteredWords() {
     const kotobaKey = getCurrentKotobaFilterKey();
@@ -3072,9 +3107,12 @@ grid.style.display="grid";
       : null; // null = belum onboarding / tidak ada restrict
 
     const filtered = vocabularyData.filter((word) => {
-      const effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+      let effectiveType = selectedType === "all" ? selectedFromDropdown : selectedType;
+      if (!isKotobaContext && effectiveType === "all") {
+        effectiveType = "verb-adj-only";
+      }
       const isLockedType = LOCKED_VOCAB_TYPES.includes(word.type);
-      const isKotobaAllSearch = isKotobaContext && effectiveType === "noun" && !!key;
+      const isKotobaAllContext = isKotobaContext && effectiveType === "noun";
 
       if (isLockedType) {
         // Vocab inti: filter berdasarkan level unlock dari onboarding
@@ -3086,9 +3124,12 @@ grid.style.display="grid";
         if (selectedLevel !== "all" && word.level !== selectedLevel) return false;
       }
 
-      if (isKotobaAllSearch) {
-        const isKotobaFamily = KOTOBA_CATEGORY_KEYS.some((typeKey) => matchType(word.type, typeKey));
-        if (!isKotobaFamily) return false;
+      if (isKotobaContext) {
+        if (isKotobaAllContext) {
+          if (!isKotobaWordType(word.type)) return false;
+        } else if (!matchType(word.type, effectiveType)) {
+          return false;
+        }
       } else if (effectiveType !== "all" && !matchType(word.type, effectiveType)) {
         return false;
       }
@@ -5434,6 +5475,8 @@ grid.style.display="grid";
       document.documentElement.style.overflow = "";
     }
 
+    syncSearchButtonAvailability();
+
     // SAFETY GUARD: jangan re-render halaman saat latihan sedang aktif.
     //     Ini mencegah rotasi / navigasi tidak sengaja mengusir user dari quiz.
     if (isTesting || document.body.classList.contains('training-session')) {
@@ -5822,16 +5865,11 @@ grid.style.display="grid";
   if (search) {
     search.addEventListener("input", (e) => {
       const query = e.target.value.trim();
-      
-      // Buka gembok: Kalau user ngetik pencarian dan posisi lagi di halaman default
-      if (query !== "" && selectedType === "verb-adj-only") {
-        selectedType = "all";
-      } 
-      // Kunci lagi: Kalau pencarian dihapus bersih & gak ada kategori yg lagi aktif
-      else if (query === "" && !document.querySelector("#categoryGrid .cat-btn.active") && !document.querySelector(".sidebar-filter-btn.active")) {
+
+      if (query === "" && !document.querySelector("#categoryGrid .cat-btn.active") && !document.querySelector(".sidebar-filter-btn.active")) {
         selectedType = "verb-adj-only";
       }
-      
+
       render();
     });
   }

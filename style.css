@@ -185,7 +185,7 @@ select, input, .action-btn {
 }
 
 .search-icon-btn:disabled {
-  opacity: 0.45;
+  opacity: 0.28;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;

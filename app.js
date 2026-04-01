@@ -2154,7 +2154,8 @@ grid.style.display="grid";
       return viewMode === "menu" ||
              viewMode === "practice-hub" ||
              viewMode === "dashboard" ||
-             viewMode === "favorit";
+             viewMode === "favorit" ||
+             viewMode.startsWith("letters:");
     }
 
     function syncSearchButtonAvailability() {

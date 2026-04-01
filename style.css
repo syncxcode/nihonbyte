@@ -14796,3 +14796,26 @@ body::before {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
 }
+
+/* =========================================
+   FAVORIT PERF OVERRIDE
+   simpler shell, less paint cost
+========================================= */
+.favorit-overview-screen,
+.favorit-vocab-detail,
+.favorit-grammar-detail {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14) !important;
+}
+
+.favorit-overview-screen .menu-hub-header,
+.favorit-overview-screen .favorit-section,
+.favorit-vocab-detail__header,
+.favorit-vocab-detail__body,
+.favorit-grammar-detail__header,
+.favorit-grammar-detail__body {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 247, 247, 0.90)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10) !important;
+}

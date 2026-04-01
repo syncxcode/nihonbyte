@@ -14598,37 +14598,40 @@ body::before {
 }
 
 /* =========================================
-   SHELL PANELS: semi-glass wrappers only
-   Menu, Latihan, Favorit ringkasan & detail
+   MENU: warm glass shell
 ========================================= */
-.menu-hub-screen,
-.hub-screen--practice,
-.favorit-vocab-detail,
-.favorit-grammar-detail {
-  background: rgba(255, 255, 255, 0.84) !important;
-  border: 1px solid rgba(255, 255, 255, 0.34) !important;
+.menu-hub-screen {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
+  border: 1px solid rgba(255, 244, 238, 0.36) !important;
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.16),
-    0 1px 0 rgba(255, 255, 255, 0.12) inset !important;
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
   backdrop-filter: blur(12px) saturate(118%) !important;
   -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
 }
 
-.menu-hub-screen .menu-hub-header,
-.menu-hub-screen .menu-hub-section-card--kotoba,
-.favorit-overview-screen .menu-hub-header,
-.favorit-overview-screen .favorit-section,
-.favorit-vocab-detail__header,
-.favorit-vocab-detail__body,
-.favorit-grammar-detail__header,
-.favorit-grammar-detail__body,
-.hub-screen--practice .hub-practice-shell {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.88) 0%,
-    rgba(255, 255, 255, 0.80) 100%
-  ) !important;
-  border: 1px solid rgba(255, 255, 255, 0.42) !important;
+.menu-hub-screen .menu-hub-header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+.menu-hub-screen .menu-hub-section-card--kotoba {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
   box-shadow:
     0 14px 32px rgba(0, 0, 0, 0.12),
     0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
@@ -14636,25 +14639,158 @@ body::before {
   -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
 }
 
-.menu-hub-screen .menu-hub-header,
-.favorit-overview-screen .menu-hub-header,
-.favorit-vocab-detail__header,
-.favorit-grammar-detail__header,
+/* =========================================
+   LATIHAN: warm glass shell
+========================================= */
+.hub-screen--practice {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
+  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(12px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+}
+
 .hub-screen--practice .hub-practice-shell {
   position: relative;
   overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
 }
 
-.menu-hub-screen .menu-hub-header::before,
-.favorit-overview-screen .menu-hub-header::before,
-.favorit-vocab-detail__header::before,
-.favorit-grammar-detail__header::before,
-.hub-screen--practice .hub-practice-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* =========================================
+   FAVORIT RINGKASAN: warm glass shell
+========================================= */
+.favorit-overview-screen {
   background:
-    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 34%),
-    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 36%);
-  pointer-events: none;
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
+  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(12px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+}
+
+.favorit-overview-screen .menu-hub-header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+.favorit-overview-screen .favorit-section {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+/* =========================================
+   FAVORIT VOCAB DETAIL: warm glass shell
+========================================= */
+.favorit-vocab-detail {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
+  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(12px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+}
+
+.favorit-vocab-detail__header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+.favorit-vocab-detail__body {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+/* =========================================
+   FAVORIT GRAMMAR DETAIL: warm glass shell
+========================================= */
+.favorit-grammar-detail {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.10) 0%, transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.05) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 249, 245, 0.94) 0%, rgba(246, 238, 231, 0.90) 100%) !important;
+  border: 1px solid rgba(255, 244, 238, 0.36) !important;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(12px) saturate(118%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(118%) !important;
+}
+
+.favorit-grammar-detail__header {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(184, 58, 31, 0.08) 0%, transparent 30%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.96) 0%, rgba(247, 240, 233, 0.92) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.22) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
+}
+
+.favorit-grammar-detail__body {
+  background:
+    radial-gradient(circle at 100% 100%, rgba(184, 58, 31, 0.04) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 251, 248, 0.95) 0%, rgba(246, 239, 233, 0.91) 100%) !important;
+  border: 1px solid rgba(255, 246, 242, 0.44) !important;
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.18) inset !important;
+  backdrop-filter: blur(10px) saturate(116%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(116%) !important;
 }

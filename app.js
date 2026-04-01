@@ -5730,7 +5730,17 @@ grid.style.display="grid";
 
         try {
           var word = JSON.parse(cardButton.dataset.word);
-          if (window.kanjiCardUI) {
+          var wordId = String(word.id || word.kanji || word.kana || "");
+          var recs = words.filter(function(item) {
+            return String(item.id || item.kanji || item.kana || "") !== wordId;
+          }).slice(0, 6);
+
+          if (isKotobaWordType(word.type)) {
+            openModal(word, recs);
+            return;
+          }
+
+          if (window.kanjiCardUI && LOCKED_VOCAB_TYPES.includes(word.type)) {
             var contentPanel = document.querySelector(".content-panel");
             var savedScroll = contentPanel
               ? contentPanel.scrollTop
@@ -5799,6 +5809,8 @@ grid.style.display="grid";
                 }, 50);
               }
             });
+          } else {
+            openModal(word, recs);
           }
         } catch (err) {}
       });

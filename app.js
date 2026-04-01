@@ -4624,7 +4624,7 @@ grid.style.display="grid";
     }
 
     if (viewMode.startsWith("favorit:grammar-item:")) {
-      renderFavoritGrammarPosterView(viewMode.split(":").slice(3).join(":"));
+      renderFavoritGrammarPosterView(viewMode.split(":").slice(2).join(":"));
       return;
     }
 

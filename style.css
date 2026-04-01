@@ -14720,6 +14720,8 @@ body::before {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.18),
@@ -14762,6 +14764,8 @@ body::before {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.10)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04)) !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
   border: 1px solid rgba(255, 255, 255, 0.28) !important;
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.18),
@@ -14818,4 +14822,16 @@ body::before {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 247, 247, 0.90)) !important;
   border: 1px solid rgba(255, 255, 255, 0.26) !important;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.10) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .hub-screen--practice {
+    padding: 0 !important;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .hub-screen--practice {
+    padding: 0 !important;
+  }
 }

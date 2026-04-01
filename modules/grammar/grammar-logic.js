@@ -401,7 +401,7 @@
   // ═══════════════════════════════════════════
   //  POSTER — Detail grammar (groups + sentences)
   // ═══════════════════════════════════════════
-  function renderGrammarPoster({ grid, patternId, onBack }) {
+  function renderGrammarPoster({ grid, patternId, onBack, backLabel }) {
     const pattern = getData().find((item) => item.id === patternId);
     if (!pattern) {
       grid.innerHTML = `<div class="empty-state">${t("Materi grammar tidak ditemukan.")}</div>`;
@@ -493,7 +493,7 @@
 
     grid.innerHTML = `
       <section class="gr-poster">
-        <button type="button" class="gr-back-btn">← ${t("Kembali ke daftar")}</button>
+        <button type="button" class="gr-back-btn">← ${t(backLabel || "Kembali ke daftar")}</button>
         <h2>${t(pattern.title)}</h2>
         <p class="gr-poster-summary">${t(pattern.summary)}</p>
         ${formulaHtml}

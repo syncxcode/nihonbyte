@@ -2614,6 +2614,8 @@ grid.style.display="grid";
   let userBookmarks = new Set(); // Set of bookmarked word IDs
   let userGrammarBookmarks = new Set(); // Set of bookmarked grammar IDs
   let favoritGrammarBackView = "favorit";
+  let favoritGrammarLastPatternId = "";
+  let favoritGrammarShouldRestoreCard = false;
   
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
@@ -4262,8 +4264,22 @@ grid.style.display="grid";
 
   function openFavoritGrammarPoster(patternId) {
     favoritGrammarBackView = viewMode;
+    favoritGrammarLastPatternId = String(patternId || "");
+    favoritGrammarShouldRestoreCard = false;
     viewMode = `favorit:grammar-item:${patternId}`;
     render();
+  }
+
+  function restoreFavoritGrammarCardFocus() {
+    if (!favoritGrammarShouldRestoreCard || !favoritGrammarLastPatternId) return;
+    const target = grid.querySelector(`.favorit-grammar-card[data-pattern-id="${favoritGrammarLastPatternId}"]`);
+    if (!target) return;
+    favoritGrammarShouldRestoreCard = false;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        target.scrollIntoView({ behavior: "auto", block: "center", inline: "nearest" });
+      });
+    });
   }
 
   function bindFavoritGrammarCards() {
@@ -4459,6 +4475,7 @@ grid.style.display="grid";
     bindFavoritWordCards(bookmarkedWords);
     bindFavoritGrammarCards();
     bindFavoritCommonActions();
+    restoreFavoritGrammarCardFocus();
   }
 
   function renderFavoritVocabPage() {
@@ -4569,6 +4586,7 @@ grid.style.display="grid";
     if (resultInfo) resultInfo.textContent = "Favorit Grammar";
     bindFavoritGrammarCards();
     bindFavoritCommonActions();
+    restoreFavoritGrammarCardFocus();
   }
 
   function renderFavoritGrammarPosterView(patternId) {
@@ -4583,7 +4601,9 @@ grid.style.display="grid";
     window.grammarUI?.renderPoster({
       grid,
       patternId,
+      backLabel: "Kembali ke favorit",
       onBack: () => {
+        favoritGrammarShouldRestoreCard = true;
         viewMode = favoritGrammarBackView || "favorit";
         render();
       }

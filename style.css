@@ -15188,3 +15188,17 @@ body::before {
   color: #2e2e2e !important;
   cursor: not-allowed !important;
 }
+
+/* ── Fix: mobile portrait wrapper putih ── */
+#bottomNavHub .bottom-nav-hub__practice-wrapper {
+  background: #232323 !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: none !important;
+}
+
+#bottomNavHub .bottom-nav-hub__practice-wrapper .bottom-nav-hub__group {
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 13px !important;
+  padding: 12px !important;
+}

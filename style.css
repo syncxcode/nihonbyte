@@ -15202,3 +15202,470 @@ body::before {
   border-radius: 13px !important;
   padding: 12px !important;
 }
+
+/* ================================================
+   NihonByte — Menu (Belajar) Hub Override
+   Paste di paling bawah style.css
+
+   Breakpoint terpisah:
+   1. Desktop          ≥769px
+   2. Mobile Landscape ≤768px + orientation landscape
+   3. Mobile Portrait  ≤768px + orientation portrait
+   ================================================ */
+
+
+/* ════════════════════════════════════════════════
+   1. DESKTOP (≥769px)
+   Render ke #grid via renderMenuHub()
+   ════════════════════════════════════════════════ */
+
+@media (min-width: 769px) {
+
+  /* ── Header ─────────────────────────────────── */
+  #grid .menu-hub-header {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    padding: 18px 22px !important;
+    margin-bottom: 12px !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #grid .menu-hub-header::before {
+    content: '' !important;
+    position: absolute !important;
+    right: -30px; top: -50px;
+    width: 260px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  #grid .menu-hub-header::after {
+    content: 'メニュー' !important;
+    position: absolute !important;
+    right: 22px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 52px; font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none; user-select: none;
+    line-height: 1;
+  }
+
+  #grid .menu-hub-header h2 {
+    margin: 0 0 4px !important;
+    color: #ffffff !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+    position: relative; z-index: 1;
+  }
+
+  #grid .menu-hub-title-pill {
+    display: block !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.4px !important;
+    padding: 0 !important;
+    background: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  #grid .menu-hub-header p {
+    color: rgba(255,255,255,0.5) !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    position: relative; z-index: 1;
+  }
+
+  /* ── Panel cards (Huruf, Grammar, Ungkapan) ── */
+  #grid .menu-panel-grid {
+    gap: 9px !important;
+  }
+
+  #grid .menu-panel-card {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    padding: 14px !important;
+    min-height: unset !important;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.18s;
+  }
+
+  #grid .menu-panel-card:hover {
+    border-color: rgba(255,255,255,0.16) !important;
+  }
+
+  #grid .menu-panel-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 13px 13px 0 0;
+  }
+
+  #grid .menu-panel-card--letters::before  { background: linear-gradient(90deg, #d4537e, transparent) !important; }
+  #grid .menu-panel-card--grammar::before  { background: linear-gradient(90deg, #7f77dd, transparent) !important; }
+  #grid .menu-panel-card--expressions::before { background: linear-gradient(90deg, #ba7517, transparent) !important; }
+
+  #grid .menu-panel-card__icon-wrap {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #grid .menu-panel-card--letters  .menu-panel-card__icon-wrap { background: rgba(212,83,126,0.12) !important; }
+  #grid .menu-panel-card--grammar  .menu-panel-card__icon-wrap { background: rgba(127,119,221,0.12) !important; }
+  #grid .menu-panel-card--expressions .menu-panel-card__icon-wrap { background: rgba(186,117,23,0.12) !important; }
+
+  #grid .menu-panel-card__icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  #grid .menu-panel-card strong {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+  }
+
+  #grid .menu-panel-card span {
+    color: rgba(255,255,255,0.5) !important;
+    font-weight: 400 !important;
+    font-size: 11px !important;
+  }
+
+  /* Hiragana & Katakana letter buttons */
+  #grid .letter-circle-btn,
+  #grid .letter-btn-pair .letter-circle-btn {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 9px !important;
+    background: rgba(212,83,126,0.12) !important;
+    border: 1px solid rgba(212,83,126,0.25) !important;
+    color: #e07ab8 !important;
+    font-size: 17px !important;
+    box-shadow: none !important;
+  }
+
+  #grid .letter-circle-btn:hover {
+    background: rgba(212,83,126,0.22) !important;
+  }
+
+  /* ── Kotoba section ──────────────────────────── */
+  #grid .menu-hub-section-card--kotoba,
+  #grid .menu-hub-section-card--kotoba .hub-details,
+  #grid .menu-hub-section-card--kotoba .hub-details--always-open {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+  }
+
+  #grid .menu-hub-section-card--kotoba {
+    position: relative;
+    overflow: hidden;
+    padding: 14px 15px !important;
+  }
+
+  #grid .menu-hub-section-card--kotoba::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 13px 13px 0 0;
+    background: linear-gradient(90deg, #4ea820, transparent) !important;
+  }
+
+  #grid .menu-hub-section-card--kotoba .menu-section-title-pill {
+    display: block !important;
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #7ed64a !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    margin-bottom: 10px !important;
+    text-shadow: none !important;
+  }
+
+  #grid .menu-hub-section-card--kotoba .hub-details--always-open {
+    border: none !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Kotoba category buttons */
+  #grid .hub-level-btn--category {
+    height: 26px !important;
+    padding: 0 10px !important;
+    border-radius: 7px !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    background: rgba(255,255,255,0.05) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  /* Hover warna per kategori — pakai data-type */
+  #grid [data-type="noun"]:hover               { background: rgba(78,168,32,0.2) !important;   border-color: rgba(78,168,32,0.4) !important; }
+  #grid [data-type="activity"]:hover           { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #grid [data-type="noun-number-counter"]:hover { background: rgba(55,138,221,0.2) !important; border-color: rgba(55,138,221,0.4) !important; }
+  #grid [data-type="noun-time-weather"]:hover  { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #grid [data-type="noun-place"]:hover         { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #grid [data-type="noun-house-family"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #grid [data-type="noun-work"]:hover          { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #grid [data-type="noun-government"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #grid [data-type="noun-profession"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #grid [data-type="noun-school"]:hover        { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #grid [data-type="noun-restaurant"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #grid [data-type="noun-food-drink"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #grid [data-type="noun-color"]:hover         { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #grid [data-type="noun-animal"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #grid [data-type="noun-nature"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #grid [data-type="noun-sports"]:hover        { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #grid [data-type="noun-hobby"]:hover         { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #grid [data-type="question"]:hover           { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #grid [data-type="adv"]:hover                { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #grid [data-type="noun-vehicle"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-factory"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-agriculture"]:hover   { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-caregiving"]:hover    { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-hotel"]:hover         { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-construction"]:hover  { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #grid [data-type="noun-body-medical"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+
+  /* Active state (is-active class dari app.js) */
+  #grid .hub-level-btn--category.is-active,
+  #grid .hub-level-btn--category.active {
+    background: rgba(78,168,32,0.18) !important;
+    border-color: rgba(78,168,32,0.35) !important;
+    color: #ffffff !important;
+  }
+}
+
+
+/* ════════════════════════════════════════════════
+   2. MOBILE LANDSCAPE (≤768px + landscape)
+   Render ke #bottomNavHub via openBottomNavHub()
+   ════════════════════════════════════════════════ */
+
+@media (max-width: 768px) and (orientation: landscape) {
+
+  /* Header */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    position: relative; overflow: hidden;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header h2 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
+    color: rgba(255,255,255,0.5) !important;
+    font-weight: 400 !important;
+  }
+
+  /* Group cards */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    position: relative; overflow: hidden;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; border-radius: 13px 13px 0 0;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(1)::before { background: linear-gradient(90deg,#d4537e,transparent); }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(2)::before { background: linear-gradient(90deg,#7f77dd,transparent); }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba::before        { background: linear-gradient(90deg,#4ea820,transparent); }
+
+  /* Capsule label */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule {
+    display: block !important;
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    margin-bottom: 10px !important;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--letters  { color: #e07ab8 !important; }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--patterns { color: #a498f8 !important; }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--kotoba   { color: #7ed64a !important; }
+
+  /* Chips */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__chip {
+    background: rgba(255,255,255,0.05) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 7px !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  /* Kotoba chips hover per data-type */
+  #bottomNavHub [data-type="noun"]:hover               { background: rgba(78,168,32,0.2) !important;   border-color: rgba(78,168,32,0.4) !important; }
+  #bottomNavHub [data-type="activity"]:hover           { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-number-counter"]:hover { background: rgba(55,138,221,0.2) !important; border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-time-weather"]:hover  { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-place"]:hover         { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-house-family"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-work"]:hover          { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-government"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-profession"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-school"]:hover        { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-restaurant"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-food-drink"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-color"]:hover         { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-animal"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-nature"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-sports"]:hover        { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #bottomNavHub [data-type="noun-hobby"]:hover         { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #bottomNavHub [data-type="question"]:hover           { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #bottomNavHub [data-type="adv"]:hover                { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #bottomNavHub [data-type="noun-vehicle"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-factory"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-agriculture"]:hover   { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-caregiving"]:hover    { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-hotel"]:hover         { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-construction"]:hover  { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-body-medical"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+}
+
+
+/* ════════════════════════════════════════════════
+   3. MOBILE PORTRAIT (≤768px + portrait)
+   Render ke #bottomNavHub via openBottomNavHub()
+   ════════════════════════════════════════════════ */
+
+@media (max-width: 768px) and (orientation: portrait) {
+
+  /* Header */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    position: relative; overflow: hidden;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header h2 {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__header p {
+    color: rgba(255,255,255,0.5) !important;
+    font-weight: 400 !important;
+  }
+
+  /* Group cards */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group {
+    background: #2a2a2a !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 13px !important;
+    box-shadow: none !important;
+    position: relative; overflow: hidden;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; border-radius: 13px 13px 0 0;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(1)::before { background: linear-gradient(90deg,#d4537e,transparent); }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group:nth-of-type(2)::before { background: linear-gradient(90deg,#7f77dd,transparent); }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__group--kotoba::before        { background: linear-gradient(90deg,#4ea820,transparent); }
+
+  /* Capsule label */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule {
+    display: block !important;
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    margin-bottom: 10px !important;
+  }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--letters  { color: #e07ab8 !important; }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--patterns { color: #a498f8 !important; }
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__capsule--kotoba   { color: #7ed64a !important; }
+
+  /* Chips */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__chip {
+    background: rgba(255,255,255,0.05) !important;
+    background-image: none !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 7px !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  /* Kotoba chips hover per data-type */
+  #bottomNavHub [data-type="noun"]:hover               { background: rgba(78,168,32,0.2) !important;   border-color: rgba(78,168,32,0.4) !important; }
+  #bottomNavHub [data-type="activity"]:hover           { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-number-counter"]:hover { background: rgba(55,138,221,0.2) !important; border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-time-weather"]:hover  { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-place"]:hover         { background: rgba(55,138,221,0.2) !important;  border-color: rgba(55,138,221,0.4) !important; }
+  #bottomNavHub [data-type="noun-house-family"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-work"]:hover          { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-government"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-profession"]:hover    { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-school"]:hover        { background: rgba(186,117,23,0.2) !important;  border-color: rgba(186,117,23,0.4) !important; }
+  #bottomNavHub [data-type="noun-restaurant"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-food-drink"]:hover    { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-color"]:hover         { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+  #bottomNavHub [data-type="noun-animal"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-nature"]:hover        { background: rgba(14,158,138,0.2) !important;  border-color: rgba(14,158,138,0.4) !important; }
+  #bottomNavHub [data-type="noun-sports"]:hover        { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #bottomNavHub [data-type="noun-hobby"]:hover         { background: rgba(110,98,208,0.2) !important;  border-color: rgba(110,98,208,0.4) !important; }
+  #bottomNavHub [data-type="question"]:hover           { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #bottomNavHub [data-type="adv"]:hover                { background: rgba(168,100,200,0.2) !important; border-color: rgba(168,100,200,0.4) !important; }
+  #bottomNavHub [data-type="noun-vehicle"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-factory"]:hover       { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-agriculture"]:hover   { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-caregiving"]:hover    { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-hotel"]:hover         { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-construction"]:hover  { background: rgba(196,122,16,0.2) !important;  border-color: rgba(196,122,16,0.4) !important; }
+  #bottomNavHub [data-type="noun-body-medical"]:hover  { background: rgba(212,83,126,0.2) !important;  border-color: rgba(212,83,126,0.4) !important; }
+
+  /* Wrapper putih (portrait-specific) */
+  #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__practice-wrapper {
+    background: #232323 !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    box-shadow: none !important;
+  }
+}

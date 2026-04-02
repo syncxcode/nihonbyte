@@ -15410,7 +15410,7 @@ body::before {
   /* Kotoba category buttons */
   #grid .hub-level-btn--category {
     height: 26px !important;
-    padding: 0 00px !important;
+    padding: 0 20px !important;
     border-radius: 7px !important;
     font-size: 11px !important;
     font-weight: 500 !important;

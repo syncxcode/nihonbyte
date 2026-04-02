@@ -15708,6 +15708,12 @@ body::before {
 }
 
 @media (max-width: 768px) and (orientation: portrait) {
+  #bottomNavHub .bottom-nav-hub__screen--menu {
+    background: #232323 !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    box-shadow: none !important;
+  }
+
   #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__practice-wrapper {
     background: #232323 !important;
     border: 1px solid rgba(255,255,255,0.07) !important;

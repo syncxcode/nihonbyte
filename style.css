@@ -14837,366 +14837,354 @@ body::before {
 }
 
 /* ================================================
-   NihonByte — Latihan Hub Override (All Devices)
-   
-   Desktop  ≥769px : .hub-screen--practice
-   Mobile   ≤768px : .bottom-nav-hub__screen--practice
-   
+   NihonByte — Latihan Hub Override v3
    Paste di paling bawah style.css
    ================================================ */
 
 
-/* ════════════════════════════════════════════════
-   DESKTOP (≥769px)
-   Render ke #grid via renderPracticeHub()
-   ════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════
+   DESKTOP — prefix #grid untuk specificity tinggi
+   ════════════════════════════════════════════ */
 
-@media (min-width: 769px) {
-
-  /* Shell utama */
-  .hub-screen--practice .hub-practice-shell {
-    background: #232323 !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
-    border-radius: 16px !important;
-    box-shadow: none !important;
-    padding: 16px !important;
-    width: min(100%, 900px);
-    margin: 0 auto 26px;
-  }
-
-  /* Hero header */
-  .hub-screen--practice .hub-header--practice {
-    position: relative;
-    overflow: hidden;
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 16px;
-    width: 100% !important;
-    max-width: 100% !important;
-    background: #2c2c2c !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 13px !important;
-    padding: 18px 22px !important;
-    box-shadow: none !important;
-    margin-bottom: 14px !important;
-  }
-
-  /* glow hijau kanan */
-  .hub-screen--practice .hub-header--practice::before {
-    content: '';
-    position: absolute;
-    right: -30px; top: -50px;
-    width: 260px; height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(80, 175, 40, 0.13) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  /* kanji dekoratif */
-  .hub-screen--practice .hub-header--practice::after {
-    content: '練習';
-    position: absolute;
-    right: 22px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 64px; font-weight: 700;
-    color: rgba(100, 200, 60, 0.07);
-    pointer-events: none; user-select: none;
-    line-height: 1;
-  }
-
-  /* Title pill → plain bold text */
-  .practice-hub-title-pill {
-    display: block !important;
-    font-size: 22px !important;
-    font-weight: 600 !important;
-    color: #eeeeee !important;
-    letter-spacing: -0.4px !important;
-    text-shadow: none !important;
-    line-height: 1.15 !important;
-    padding: 0 !important;
-    background: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-  }
-
-  /* Eyebrow pill di atas judul */
-  .hub-screen--practice .hub-header--practice h2::before {
-    content: '● JLPT Practice';
-    display: flex;
-    align-items: center;
-    font-size: 11px; font-weight: 500;
-    color: #7ed64a;
-    background: rgba(80, 175, 40, 0.13);
-    border: 1px solid rgba(80, 175, 40, 0.25);
-    border-radius: 999px;
-    padding: 3px 10px;
-    width: fit-content;
-    margin-bottom: 8px;
-    letter-spacing: 0.02em;
-  }
-
-  .hub-screen--practice .hub-header--practice h2 {
-    margin: 0;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hub-screen--practice .hub-header--practice p {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    color: #666666 !important;
-    line-height: 1.5 !important;
-    position: relative; z-index: 1;
-    max-width: 360px;
-  }
-
-  /* Divider */
-  .hub-practice-divider {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
-    margin: 4px 0 14px !important;
-  }
-
-  /* Grid 2 kolom untuk kartu */
-  .hub-screen--practice .hub-practice-wrapper {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  /* Kartu tiap kategori */
-  .hub-screen--practice .hub-section {
-    margin-top: 0 !important;
-    background: #2c2c2c;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 13px;
-    padding: 14px 15px 12px;
-    position: relative; overflow: hidden;
-    transition: border-color 0.18s;
-  }
-  .hub-screen--practice .hub-section:hover {
-    border-color: rgba(255, 255, 255, 0.14);
-  }
-
-  /* Accent bar atas tiap kartu */
-  .hub-screen--practice .hub-section::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 13px 13px 0 0;
-  }
-  .hub-screen--practice .hub-section:nth-of-type(1)::before { background: linear-gradient(90deg, #4ea820, transparent); }
-  .hub-screen--practice .hub-section:nth-of-type(2)::before { background: linear-gradient(90deg, #0e9e8a, transparent); }
-  .hub-screen--practice .hub-section:nth-of-type(3)::before { background: linear-gradient(90deg, #6e62d0, transparent); }
-  .hub-screen--practice .hub-section:nth-of-type(4)::before { background: linear-gradient(90deg, #c47a10, transparent); }
-
-  /* Section capsule → label flat */
-  .hub-section-capsule {
-    display: block !important;
-    background: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 0 8px !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    margin-bottom: 10px !important;
-  }
-  .hub-section-capsule--goi     { color: #7ed64a !important; }
-  .hub-section-capsule--bunpou  { color: #1dc8b0 !important; }
-  .hub-section-capsule--dokkai  { color: #a498f8 !important; }
-  .hub-section-capsule--choukai { color: #f5a520 !important; }
-
-  /* Level buttons - base */
-  .hub-levels { gap: 6px !important; flex-wrap: nowrap !important; }
-
-  .hub-screen--practice .hub-level-btn--patterns {
-    flex: 1;
-    height: 28px;
-    border-radius: 7px !important;
-    padding: 0 !important;
-    font-size: 11px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    color: #383838 !important;
-    box-shadow: none !important;
-    transition: background 0.15s, border-color 0.15s, color 0.15s;
-  }
-
-  /* Level unlocked per kategori */
-  .hub-screen--practice .hub-section:nth-of-type(1) .hub-level-btn--patterns:not(.hub-level-btn--locked) {
-    background: rgba(78, 168, 32, 0.18) !important;
-    border-color: rgba(78, 168, 32, 0.35) !important;
-    color: #7ed64a !important;
-  }
-  .hub-screen--practice .hub-section:nth-of-type(2) .hub-level-btn--patterns:not(.hub-level-btn--locked) {
-    background: rgba(14, 158, 138, 0.18) !important;
-    border-color: rgba(14, 158, 138, 0.35) !important;
-    color: #1dc8b0 !important;
-  }
-  .hub-screen--practice .hub-section:nth-of-type(3) .hub-level-btn--patterns:not(.hub-level-btn--locked) {
-    background: rgba(110, 98, 208, 0.18) !important;
-    border-color: rgba(110, 98, 208, 0.35) !important;
-    color: #a498f8 !important;
-  }
-  .hub-screen--practice .hub-section:nth-of-type(4) .hub-level-btn--patterns:not(.hub-level-btn--locked) {
-    background: rgba(196, 122, 16, 0.18) !important;
-    border-color: rgba(196, 122, 16, 0.35) !important;
-    color: #f5a520 !important;
-  }
-
-  /* Level locked */
-  .hub-screen--practice .hub-level-btn--patterns.hub-level-btn--locked {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-color: rgba(255, 255, 255, 0.04) !important;
-    color: #2e2e2e !important;
-    cursor: not-allowed;
-  }
-
-  /* Lock banner */
-  .latihan-lock-banner {
-    background: rgba(245, 184, 20, 0.07) !important;
-    border: 1px solid rgba(245, 184, 20, 0.2) !important;
-    border-radius: 10px !important;
-    margin-bottom: 12px !important;
-    padding: 10px 14px !important;
-  }
-  .latihan-lock-banner__inner {
-    font-size: 13px !important;
-    color: #a08030 !important;
-    font-weight: 400 !important;
-  }
-  .latihan-lock-banner__inner strong { color: #f5b820 !important; font-weight: 600 !important; }
-  .latihan-lock-banner__inner svg   { color: #f5b820 !important; vertical-align: -2px; }
+/* Shell */
+#grid .hub-practice-shell {
+  background: #232323 !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  padding: 16px !important;
 }
 
+/* Hero header */
+#grid .hub-header--practice {
+  position: relative !important;
+  overflow: hidden !important;
+  display: block !important;
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 13px !important;
+  padding: 18px 22px !important;
+  box-shadow: none !important;
+  margin-bottom: 14px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
 
-/* ════════════════════════════════════════════════
-   MOBILE portrait + landscape (≤768px)
-   Render ke .bottom-nav-hub via openBottomNavHub()
-   ════════════════════════════════════════════════ */
+#grid .hub-header--practice::before {
+  content: '' !important;
+  position: absolute !important;
+  right: -30px; top: -50px;
+  width: 260px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,175,40,0.12) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-@media (max-width: 768px) {
+#grid .hub-header--practice::after {
+  content: '練習' !important;
+  position: absolute !important;
+  right: 24px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 62px; font-weight: 700;
+  color: rgba(100,200,60,0.06);
+  pointer-events: none; user-select: none;
+  line-height: 1; z-index: 0;
+}
 
-  /* Header banner */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
-    background: #2c2c2c !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 13px !important;
-    box-shadow: none !important;
-    color: #eeeeee !important;
-    position: relative;
-    overflow: hidden;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__header::before {
-    content: '';
-    position: absolute;
-    right: -20px; top: -40px;
-    width: 200px; height: 160px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(80, 175, 40, 0.12) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__header h2 {
-    color: #eeeeee !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    position: relative; z-index: 1;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__header p {
-    color: #666666 !important;
-    font-size: 0.82rem !important;
-    font-weight: 400 !important;
-    position: relative; z-index: 1;
-  }
+#grid .hub-header--practice h2 {
+  margin: 0 0 4px !important;
+  position: relative; z-index: 1;
+}
 
-  /* Kartu tiap kategori */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group {
-    background: #2c2c2c !important;
-    border: 1px solid rgba(255, 255, 255, 0.07) !important;
-    border-radius: 13px !important;
-    box-shadow: none !important;
-    position: relative;
-    overflow: hidden;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    border-radius: 13px 13px 0 0;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(1)::before { background: linear-gradient(90deg, #4ea820, transparent); }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2)::before { background: linear-gradient(90deg, #0e9e8a, transparent); }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(3)::before { background: linear-gradient(90deg, #6e62d0, transparent); }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(4)::before { background: linear-gradient(90deg, #c47a10, transparent); }
+#grid .hub-header--practice h2::before {
+  content: '● JLPT Practice';
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px; font-weight: 500;
+  color: #7ed64a;
+  background: rgba(80,175,40,0.12);
+  border: 1px solid rgba(80,175,40,0.22);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
 
-  /* Capsule label */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule {
-    display: block !important;
-    background: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 0 0 8px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    margin-bottom: 10px !important;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--goi     { color: #7ed64a !important; }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--bunpou  { color: #1dc8b0 !important; }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--dokkai  { color: #a498f8 !important; }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--choukai { color: #f5a520 !important; }
+#grid .practice-hub-title-pill {
+  display: block !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #eeeeee !important;
+  letter-spacing: -0.4px !important;
+  text-shadow: none !important;
+  line-height: 1.15 !important;
+  padding: 0 !important;
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
 
-  /* Chip buttons - base */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
-    border-radius: 7px !important;
-    min-height: 28px !important;
-    padding: 0 10px !important;
-    font-size: 11px !important;
-    font-weight: 500 !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    color: #666666 !important;
-    box-shadow: none !important;
-  }
+#grid .hub-header--practice p {
+  margin: 3px 0 0 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #666666 !important;
+  line-height: 1.5 !important;
+  position: relative; z-index: 1;
+}
 
-  /* Chip unlocked per kategori */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(1) .bottom-nav-hub__chip:not(.hub-level-btn--locked) {
-    background: rgba(78, 168, 32, 0.18) !important;
-    border-color: rgba(78, 168, 32, 0.35) !important;
-    color: #7ed64a !important;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2) .bottom-nav-hub__chip:not(.hub-level-btn--locked) {
-    background: rgba(14, 158, 138, 0.18) !important;
-    border-color: rgba(14, 158, 138, 0.35) !important;
-    color: #1dc8b0 !important;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(3) .bottom-nav-hub__chip:not(.hub-level-btn--locked) {
-    background: rgba(110, 98, 208, 0.18) !important;
-    border-color: rgba(110, 98, 208, 0.35) !important;
-    color: #a498f8 !important;
-  }
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(4) .bottom-nav-hub__chip:not(.hub-level-btn--locked) {
-    background: rgba(196, 122, 16, 0.18) !important;
-    border-color: rgba(196, 122, 16, 0.35) !important;
-    color: #f5a520 !important;
-  }
+/* Divider */
+#grid .hub-practice-divider {
+  border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  margin: 4px 0 12px !important;
+}
 
-  /* Chip locked */
-  .bottom-nav-hub__screen--practice .bottom-nav-hub__chip.hub-level-btn--locked {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-color: rgba(255, 255, 255, 0.04) !important;
-    color: #2e2e2e !important;
-    cursor: not-allowed;
-  }
+/* Wrapper — 2 kolom */
+#grid .hub-practice-wrapper {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+}
+
+/* Kartu */
+#grid .hub-screen--practice .hub-section {
+  margin-top: 0 !important;
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 13px !important;
+  padding: 14px 15px 13px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition: border-color 0.18s;
+}
+#grid .hub-screen--practice .hub-section:hover {
+  border-color: rgba(255,255,255,0.14) !important;
+}
+
+/* Accent bar */
+#grid .hub-screen--practice .hub-section::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0; left: 0; right: 0;
+  height: 2px; z-index: 1;
+  border-radius: 13px 13px 0 0;
+}
+#grid .hub-screen--practice .hub-section:nth-of-type(1)::before { background: linear-gradient(90deg,#4ea820,transparent) !important; }
+#grid .hub-screen--practice .hub-section:nth-of-type(2)::before { background: linear-gradient(90deg,#0e9e8a,transparent) !important; }
+#grid .hub-screen--practice .hub-section:nth-of-type(3)::before { background: linear-gradient(90deg,#6e62d0,transparent) !important; }
+#grid .hub-screen--practice .hub-section:nth-of-type(4)::before { background: linear-gradient(90deg,#c47a10,transparent) !important; }
+
+/* Section capsule label */
+#grid .hub-section-capsule {
+  display: block !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 8px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  margin-bottom: 10px !important;
+}
+#grid .hub-section-capsule--goi     { color: #7ed64a !important; }
+#grid .hub-section-capsule--bunpou  { color: #1dc8b0 !important; }
+#grid .hub-section-capsule--dokkai  { color: #a498f8 !important; }
+#grid .hub-section-capsule--choukai { color: #f5a520 !important; }
+
+/* Level buttons */
+#grid .hub-screen--practice .hub-levels {
+  gap: 6px !important;
+  flex-wrap: nowrap !important;
+}
+
+#grid .hub-screen--practice .hub-level-btn--patterns {
+  flex: 1 !important;
+  height: 28px !important;
+  border-radius: 7px !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  background: rgba(255,255,255,0.04) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  color: #404040 !important;
+  box-shadow: none !important;
+}
+
+/* Unlocked per section */
+#grid .hub-screen--practice .hub-section:nth-of-type(1) .hub-level-btn--patterns:not([disabled]) {
+  background: rgba(78,168,32,0.18) !important;
+  border-color: rgba(78,168,32,0.35) !important;
+  color: #7ed64a !important;
+}
+#grid .hub-screen--practice .hub-section:nth-of-type(2) .hub-level-btn--patterns:not([disabled]) {
+  background: rgba(14,158,138,0.18) !important;
+  border-color: rgba(14,158,138,0.35) !important;
+  color: #1dc8b0 !important;
+}
+#grid .hub-screen--practice .hub-section:nth-of-type(3) .hub-level-btn--patterns:not([disabled]) {
+  background: rgba(110,98,208,0.18) !important;
+  border-color: rgba(110,98,208,0.35) !important;
+  color: #a498f8 !important;
+}
+#grid .hub-screen--practice .hub-section:nth-of-type(4) .hub-level-btn--patterns:not([disabled]) {
+  background: rgba(196,122,16,0.18) !important;
+  border-color: rgba(196,122,16,0.35) !important;
+  color: #f5a520 !important;
+}
+
+/* Locked */
+#grid .hub-screen--practice .hub-level-btn--patterns[disabled] {
+  background: rgba(255,255,255,0.03) !important;
+  background-image: none !important;
+  border-color: rgba(255,255,255,0.04) !important;
+  color: #2e2e2e !important;
+  cursor: not-allowed !important;
+}
+
+/* Lock banner */
+#grid .latihan-lock-banner {
+  background: rgba(245,184,20,0.07) !important;
+  border: 1px solid rgba(245,184,20,0.2) !important;
+  border-radius: 10px !important;
+  margin-bottom: 12px !important;
+  padding: 10px 14px !important;
+  box-shadow: none !important;
+}
+#grid .latihan-lock-banner__inner {
+  font-size: 13px !important;
+  color: #a08030 !important;
+  font-weight: 400 !important;
+}
+#grid .latihan-lock-banner__inner strong { color: #f5b820 !important; font-weight: 600 !important; }
+#grid .latihan-lock-banner__inner svg    { color: #f5b820 !important; vertical-align: -2px; }
+
+
+/* ════════════════════════════════════════════
+   MOBILE — prefix #bottomNavHub
+   ════════════════════════════════════════════ */
+
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__header {
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 13px !important;
+  box-shadow: none !important;
+  color: #eeeeee !important;
+  position: relative; overflow: hidden;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__header::before {
+  content: '';
+  position: absolute;
+  right: -20px; top: -40px;
+  width: 200px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,175,40,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__header h2 {
+  color: #eeeeee !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  position: relative; z-index: 1;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__header p {
+  color: #666666 !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  position: relative; z-index: 1;
+}
+
+/* Kartu grup */
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group {
+  background: #2a2a2a !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 13px !important;
+  box-shadow: none !important;
+  position: relative; overflow: hidden;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  border-radius: 13px 13px 0 0;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(1)::before { background: linear-gradient(90deg,#4ea820,transparent); }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2)::before { background: linear-gradient(90deg,#0e9e8a,transparent); }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(3)::before { background: linear-gradient(90deg,#6e62d0,transparent); }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(4)::before { background: linear-gradient(90deg,#c47a10,transparent); }
+
+/* Capsule label */
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule {
+  display: block !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 8px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  margin-bottom: 10px !important;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--goi     { color: #7ed64a !important; }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--bunpou  { color: #1dc8b0 !important; }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--dokkai  { color: #a498f8 !important; }
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__capsule--choukai { color: #f5a520 !important; }
+
+/* Chip buttons */
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__chip {
+  border-radius: 7px !important;
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  background: rgba(255,255,255,0.04) !important;
+  background-image: none !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  color: #505050 !important;
+  box-shadow: none !important;
+}
+
+/* Chip unlocked */
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(1) .bottom-nav-hub__chip:not([disabled]) {
+  background: rgba(78,168,32,0.18) !important;
+  border-color: rgba(78,168,32,0.35) !important;
+  color: #7ed64a !important;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(2) .bottom-nav-hub__chip:not([disabled]) {
+  background: rgba(14,158,138,0.18) !important;
+  border-color: rgba(14,158,138,0.35) !important;
+  color: #1dc8b0 !important;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(3) .bottom-nav-hub__chip:not([disabled]) {
+  background: rgba(110,98,208,0.18) !important;
+  border-color: rgba(110,98,208,0.35) !important;
+  color: #a498f8 !important;
+}
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__group:nth-of-type(4) .bottom-nav-hub__chip:not([disabled]) {
+  background: rgba(196,122,16,0.18) !important;
+  border-color: rgba(196,122,16,0.35) !important;
+  color: #f5a520 !important;
+}
+
+/* Chip locked */
+#bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__chip[disabled] {
+  background: rgba(255,255,255,0.03) !important;
+  background-image: none !important;
+  border-color: rgba(255,255,255,0.04) !important;
+  color: #2e2e2e !important;
+  cursor: not-allowed !important;
 }

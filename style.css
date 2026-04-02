@@ -15100,7 +15100,7 @@ body::before {
   position: relative; z-index: 1;
 }
 #bottomNavHub .bottom-nav-hub__screen--practice .bottom-nav-hub__header p {
-  color: #666666 !important;
+  color: #ffffff !important;
   font-size: 0.82rem !important;
   font-weight: 400 !important;
   position: relative; z-index: 1;
@@ -15185,7 +15185,7 @@ body::before {
   background: rgba(255,255,255,0.03) !important;
   background-image: none !important;
   border-color: rgba(255,255,255,0.04) !important;
-  color: #2e2e2e !important;
+  color: #a3a3a3 !important;
   cursor: not-allowed !important;
 }
 

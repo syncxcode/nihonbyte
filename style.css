@@ -14930,7 +14930,7 @@ body::before {
   margin: 3px 0 0 !important;
   font-size: 13px !important;
   font-weight: 400 !important;
-  color: #666666 !important;
+  color: #ffffff !important;
   line-height: 1.5 !important;
   position: relative; z-index: 1;
 }
@@ -15050,7 +15050,7 @@ body::before {
   background: rgba(255,255,255,0.03) !important;
   background-image: none !important;
   border-color: rgba(255,255,255,0.04) !important;
-  color: #2e2e2e !important;
+  color: #a3a3a3 !important;
   cursor: not-allowed !important;
 }
 

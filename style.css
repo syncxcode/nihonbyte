@@ -5693,13 +5693,13 @@ body.review-mode-active .bottom-nav {
   display: inline-flex;
   align-items: center;
   padding: 6px 14px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #f97316, #ef4444);
+  border-radius: 0;
+  background: none;
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: 950;
   letter-spacing: 0.2px;
-  box-shadow: 0 8px 16px rgba(239, 68, 68, 0.22);
+  box-shadow: none;
 }
 
 .menu-hub-header p {
@@ -15410,7 +15410,7 @@ body::before {
   /* Kotoba category buttons */
   #grid .hub-level-btn--category {
     height: 26px !important;
-    padding: 0 10px !important;
+    padding: 0 00px !important;
     border-radius: 7px !important;
     font-size: 11px !important;
     font-weight: 500 !important;
@@ -15681,7 +15681,7 @@ body::before {
   }
 
   #grid .hub-level-btn--category {
-    font-size: 12px !important;
+    font-size: 18px !important;
   }
 
   #grid .letter-btn-pair {
@@ -15729,7 +15729,8 @@ body::before {
   }
 
   #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__chip {
-    font-size: 12px !important;
+    font-size: 16px !important;
+	Padding: 0 18px !important;
   }
 
   #bottomNavHub .bottom-nav-hub__screen--menu .bottom-nav-hub__menu-card {

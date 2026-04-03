@@ -3082,6 +3082,39 @@ grid.style.display="grid";
     });
   }
 
+  function sortKotobaCardsByAZ(list) {
+    return [...list].sort((a, b) => {
+      const aMeaning = String(tMeaning(a?.meaning) || a?.meaning || "").trim();
+      const bMeaning = String(tMeaning(b?.meaning) || b?.meaning || "").trim();
+
+      const meaningCompare = aMeaning.localeCompare(bMeaning, "id", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (meaningCompare !== 0) return meaningCompare;
+
+      const aKey = getWordSortKey(a);
+      const bKey = getWordSortKey(b);
+
+      const romajiCompare = aKey.romaji.localeCompare(bKey.romaji, "en", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (romajiCompare !== 0) return romajiCompare;
+
+      const kanaCompare = aKey.kana.localeCompare(bKey.kana, "ja", {
+        sensitivity: "base",
+        numeric: true
+      });
+      if (kanaCompare !== 0) return kanaCompare;
+
+      return aKey.kanji.localeCompare(bKey.kanji, "ja", {
+        sensitivity: "base",
+        numeric: true
+      });
+    });
+  }
+
   function sortCoreWordsByCategoryAndAZ(list) {
     const coreTypeOrder = ["verb-godan", "verb-ru", "verb-irregular", "verb-suru", "adj-i", "adj-na"];
     const grouped = new Map(coreTypeOrder.map((type) => [type, []]));
@@ -3148,6 +3181,10 @@ grid.style.display="grid";
 
     if (selectedType === "verb-adj-only") {
       return sortCoreWordsByCategoryAndAZ(filtered);
+    }
+
+    if (isKotobaContext) {
+      return sortKotobaCardsByAZ(filtered);
     }
 
     return sortWordsShortAZ(filtered);

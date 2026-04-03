@@ -15413,7 +15413,7 @@ body::before {
     padding: 0 20px !important;
     border-radius: 7px !important;
     font-size: 11px !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     background: rgba(255,255,255,0.05) !important;
     background-image: none !important;
     border: 1px solid rgba(255,255,255,0.08) !important;
@@ -15681,7 +15681,7 @@ body::before {
   }
 
   #grid .hub-level-btn--category {
-    font-size: 18px !important;
+    font-size: 17px !important;
   }
 
   #grid .letter-btn-pair {

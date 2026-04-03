@@ -15795,3 +15795,504 @@ body::before {
     box-shadow: none !important;
   }
 }
+
+/* =============================================================================
+   FAVORIT THEME OVERRIDE — Gaya Latihan
+   File  : favorit-override.css
+   Muat  : setelah style.css di <head>
+   Revisi: edit per blok breakpoint, tidak ada yang tabrakan satu sama lain
+
+   Struktur:
+   1. CSS Variables
+   2. BASE        — tema (warna, bg) berlaku semua ukuran layar
+   3. DESKTOP     — @media (min-width: 769px)
+   4. MOBILE      — @media (max-width: 767px)  [generic mobile]
+   5. PORTRAIT    — @media (max-width: 767px) and (orientation: portrait)
+   6. LANDSCAPE   — @media (orientation: landscape) and (max-height: 520px)
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. CSS VARIABLES
+   ============================================================================= */
+:root {
+  --fav-accent-vocab    : #1D9E75;
+  --fav-accent-grammar  : #7F77DD;
+  --fav-bg-banner       : #181818;
+  --fav-bg-section      : #161616;
+  --fav-border          : #2a2a2a;
+  --fav-border-inner    : #222222;
+  --fav-text-muted      : #888888;
+  --fav-text-count      : #666666;
+}
+
+
+/* =============================================================================
+   2. BASE — TEMA (berlaku semua ukuran, jangan taruh layout di sini)
+   ============================================================================= */
+
+/* --- Banner (hub-header) --------------------------------------------------- */
+
+.favorit-hub-header.hub-header.menu-hub-header {
+  background         : var(--fav-bg-banner) !important;
+  border             : 1px solid var(--fav-border) !important;
+  box-shadow         : none !important;
+  backdrop-filter    : none !important;
+  -webkit-backdrop-filter: none !important;
+  position           : relative;
+  overflow           : hidden;
+}
+
+/* watermark 文 via pseudo-element, tidak perlu sentuh app.js */
+.favorit-hub-header::after {
+  content          : '文';
+  position         : absolute;
+  right            : 22px;
+  top              : 50%;
+  transform        : translateY(-50%);
+  font-size        : 72px;
+  opacity          : 0.06;
+  pointer-events   : none;
+  font-family      : 'Noto Serif JP', serif;
+  color            : #ffffff;
+  line-height      : 1;
+  user-select      : none;
+}
+
+.favorit-hub-header h2,
+.favorit-hub-header .menu-hub-title-pill {
+  color: #ffffff !important;
+}
+
+.favorit-hub-header p {
+  color        : var(--fav-text-muted) !important;
+  margin-bottom: 0 !important;
+}
+
+/* Pill bookmark icon color */
+.favorit-hub-header .favorit-title-pill {
+  background: transparent !important;
+}
+
+/* --- Section card ---------------------------------------------------------- */
+
+/* Reset padding agar header section rata border */
+.menu-hub-screen .menu-hub-section-card.favorit-card-section,
+.favorit-card-section {
+  background   : var(--fav-bg-section) !important;
+  border       : 1px solid var(--fav-border) !important;
+  box-shadow   : none !important;
+  padding      : 0 !important;
+  overflow     : hidden !important;
+  border-radius: 16px !important;
+}
+
+/* Gap antar elemen dalam section = 0, pakai padding internal */
+.favorit-section {
+  gap: 0 !important;
+}
+
+/* Vocab section — border-top teal */
+.favorit-section--vocab.favorit-card-section {
+  border-top: 2.5px solid var(--fav-accent-vocab) !important;
+}
+
+/* Grammar section — border-top purple */
+.favorit-section--grammar.favorit-card-section {
+  border-top: 2.5px solid var(--fav-accent-grammar) !important;
+}
+
+/* Margin: hapus negative margin bawaan overview */
+.favorit-overview-screen .favorit-section:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* --- Section head ---------------------------------------------------------- */
+
+.favorit-section .favorit-section-head {
+  padding       : 16px 18px 14px !important;
+  border-bottom : 1px solid var(--fav-border-inner) !important;
+}
+
+/* --- Section tag (elemen baru dari app.js) --------------------------------- */
+
+.favorit-section-tag {
+  display    : inline-flex;
+  align-items: center;
+  gap        : 7px;
+  margin-bottom: 7px;
+  font-size  : 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.favorit-section-tag__dot {
+  width       : 7px;
+  height      : 7px;
+  border-radius: 50%;
+  flex-shrink : 0;
+  display     : inline-block;
+}
+
+.favorit-section-tag--vocab  .favorit-section-tag__dot   { background: var(--fav-accent-vocab); }
+.favorit-section-tag--vocab  .favorit-section-tag__label { color: var(--fav-accent-vocab); }
+.favorit-section-tag--grammar .favorit-section-tag__dot  { background: var(--fav-accent-grammar); }
+.favorit-section-tag--grammar .favorit-section-tag__label{ color: var(--fav-accent-grammar); }
+
+.favorit-section-head__count,
+.favorit-section-head p {
+  color      : var(--fav-text-count) !important;
+  margin     : 0 !important;
+  font-size  : 0.88rem;
+}
+
+/* --- Cards row padding (vocab) --------------------------------------------- */
+
+.favorit-section .favorit-cards-row {
+  padding: 14px 14px 4px !important;
+}
+
+/* --- Grammar grid padding (preview) --------------------------------------- */
+
+.favorit-section .favorit-grammar-grid {
+  padding: 14px 14px 4px !important;
+}
+
+/* --- Section footer (see more) --------------------------------------------- */
+
+.favorit-section .favorit-section-footer {
+  padding: 8px 18px 14px !important;
+  border-top: 1px solid var(--fav-border-inner);
+}
+
+/* See more button warna per section */
+.favorit-section--vocab .favorit-see-more-btn {
+  color: var(--fav-accent-vocab) !important;
+}
+.favorit-section--vocab .favorit-see-more-icon {
+  background: rgba(29, 158, 117, 0.12) !important;
+  color     : var(--fav-accent-vocab) !important;
+}
+.favorit-section--grammar .favorit-see-more-btn {
+  color: var(--fav-accent-grammar) !important;
+}
+.favorit-section--grammar .favorit-see-more-icon {
+  background: rgba(127, 119, 221, 0.12) !important;
+  color     : var(--fav-accent-grammar) !important;
+}
+
+/* --- Detail: Favorit Kosakata header & body --------------------------------- */
+
+.favorit-vocab-detail__header {
+  background   : var(--fav-bg-banner) !important;
+  border       : 1px solid var(--fav-border) !important;
+  border-top   : 2.5px solid var(--fav-accent-vocab) !important;
+  box-shadow   : none !important;
+  border-radius: 16px !important;
+}
+
+.favorit-vocab-detail__body {
+  background   : var(--fav-bg-section) !important;
+  border       : 1px solid var(--fav-border) !important;
+  box-shadow   : none !important;
+  border-radius: 16px !important;
+}
+
+/* Back button dark — vocab */
+.favorit-vocab-detail__icon-btn {
+  background : #242424 !important;
+  border     : 1px solid #333333 !important;
+  color      : #aaaaaa !important;
+  box-shadow : none !important;
+}
+.favorit-vocab-detail__icon-btn:hover {
+  background : #2e2e2e !important;
+  box-shadow : none !important;
+  transform  : none !important;
+}
+
+/* Title pill color vocab */
+.favorit-vocab-detail__title .favorit-title-pill {
+  background: transparent !important;
+  color     : #ffffff !important;
+}
+.favorit-vocab-detail__title .favorit-title-pill svg {
+  color : var(--fav-accent-vocab);
+  stroke: var(--fav-accent-vocab);
+}
+
+/* --- Detail: Favorit Grammar header & body --------------------------------- */
+
+.favorit-grammar-detail__header {
+  background   : var(--fav-bg-banner) !important;
+  border       : 1px solid var(--fav-border) !important;
+  border-top   : 2.5px solid var(--fav-accent-grammar) !important;
+  box-shadow   : none !important;
+  border-radius: 16px !important;
+}
+
+.favorit-grammar-detail__body {
+  background   : var(--fav-bg-section) !important;
+  border       : 1px solid var(--fav-border) !important;
+  box-shadow   : none !important;
+  border-radius: 16px !important;
+}
+
+/* Back button dark — grammar */
+.favorit-grammar-detail__icon-btn {
+  background : #242424 !important;
+  border     : 1px solid #333333 !important;
+  color      : #aaaaaa !important;
+  box-shadow : none !important;
+}
+.favorit-grammar-detail__icon-btn:hover {
+  background : #2e2e2e !important;
+  box-shadow : none !important;
+  transform  : none !important;
+}
+
+/* Title pill color grammar */
+.favorit-grammar-detail__title .favorit-title-pill {
+  background: transparent !important;
+  color     : #ffffff !important;
+}
+.favorit-grammar-detail__title .favorit-title-pill svg {
+  color : var(--fav-accent-grammar);
+  stroke: var(--fav-accent-grammar);
+}
+
+/* --- Empty state ----------------------------------------------------------- */
+
+.favorit-empty--section {
+  background  : #1e1e1e !important;
+  border-color: #333333 !important;
+}
+.favorit-empty-title {
+  color: #555555 !important;
+}
+
+
+/* =============================================================================
+   3. DESKTOP — @media (min-width: 769px)
+   Layout grid, sizing card — hanya edit blok ini untuk revisi desktop
+   ============================================================================= */
+@media (min-width: 769px) {
+
+  .favorit-hub-header.hub-header.menu-hub-header {
+    border-radius: 18px !important;
+  }
+
+  /* Section cards: radius konsisten dengan hub lain */
+  .menu-hub-screen .menu-hub-section-card.favorit-card-section {
+    border-radius: 18px !important;
+    width        : 100% !important;
+    max-width    : 100% !important;
+  }
+
+  .favorit-vocab-detail__header,
+  .favorit-grammar-detail__header {
+    border-radius: 18px !important;
+  }
+
+  .favorit-vocab-detail__body,
+  .favorit-grammar-detail__body {
+    border-radius: 18px !important;
+  }
+
+  /* Grid vocab preview: 5 kolom */
+  .favorit-section .favorit-cards-row--preview {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar preview: 5 kolom */
+  .favorit-section .favorit-grammar-grid--preview {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid vocab full (detail page): 5 kolom */
+  .favorit-vocab-detail__body .favorit-cards-row--full {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar full (detail page): 5 kolom */
+  .favorit-grammar-detail__body .favorit-grammar-grid--full {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+}
+
+
+/* =============================================================================
+   4. MOBILE GENERIC — @media (max-width: 767px)
+   Override yang harus menang di semua kondisi mobile (portrait + landscape)
+   Hanya edit blok ini untuk revisi yang berlaku kedua orientasi
+   ============================================================================= */
+@media (max-width: 767px) {
+
+  /* Pastikan tema dark tetap menang di mobile (override !important dari style.css) */
+  .favorit-card-section,
+  .menu-hub-section-card.favorit-card-section {
+    background   : var(--fav-bg-section) !important;
+    border       : 1px solid var(--fav-border) !important;
+    box-shadow   : none !important;
+  }
+
+  .favorit-section--vocab.favorit-card-section {
+    border-top: 2.5px solid var(--fav-accent-vocab) !important;
+  }
+
+  .favorit-section--grammar.favorit-card-section {
+    border-top: 2.5px solid var(--fav-accent-grammar) !important;
+  }
+
+  .favorit-hub-header.hub-header.menu-hub-header {
+    background: var(--fav-bg-banner) !important;
+  }
+
+  .favorit-vocab-detail__header,
+  .favorit-grammar-detail__header,
+  .favorit-vocab-detail__body,
+  .favorit-grammar-detail__body {
+    box-shadow: none !important;
+  }
+
+}
+
+
+/* =============================================================================
+   5. MOBILE PORTRAIT — @media (max-width: 767px) and (orientation: portrait)
+   Layout khusus portrait — hanya edit blok ini untuk revisi portrait
+   ============================================================================= */
+@media (max-width: 767px) and (orientation: portrait) {
+
+  .favorit-hub-header.hub-header.menu-hub-header {
+    border-radius: 14px !important;
+  }
+
+  .menu-hub-screen .menu-hub-section-card.favorit-card-section,
+  .favorit-card-section {
+    border-radius: 14px !important;
+  }
+
+  .favorit-vocab-detail__header,
+  .favorit-grammar-detail__header,
+  .favorit-vocab-detail__body,
+  .favorit-grammar-detail__body {
+    border-radius: 14px !important;
+  }
+
+  .favorit-section .favorit-section-head {
+    padding: 14px 14px 12px !important;
+  }
+
+  .favorit-section .favorit-cards-row {
+    padding: 10px 10px 4px !important;
+  }
+
+  .favorit-section .favorit-grammar-grid {
+    padding: 10px 10px 4px !important;
+  }
+
+  .favorit-section .favorit-section-footer {
+    padding: 8px 14px 12px !important;
+  }
+
+  /* Grid vocab preview: 3 kolom (portrait) */
+  .favorit-section .favorit-cards-row--preview {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar preview: 3 kolom (portrait) */
+  .favorit-section .favorit-grammar-grid--preview {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid vocab full (detail): 3 kolom */
+  .favorit-vocab-detail__body .favorit-cards-row--full {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar full (detail): 3 kolom */
+  .favorit-grammar-detail__body .favorit-grammar-grid--full {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  /* Tag font kecil sedikit di portrait */
+  .favorit-section-tag {
+    font-size: 11px;
+  }
+
+  /* Watermark ukuran lebih kecil di portrait */
+  .favorit-hub-header::after {
+    font-size: 56px;
+    right    : 16px;
+  }
+
+}
+
+
+/* =============================================================================
+   6. MOBILE LANDSCAPE — @media (orientation: landscape) and (max-height: 520px)
+   Layout khusus landscape — hanya edit blok ini untuk revisi landscape
+   ============================================================================= */
+@media screen and (orientation: landscape) and (max-height: 520px) {
+
+  .favorit-hub-header.hub-header.menu-hub-header {
+    border-radius: 14px !important;
+  }
+
+  .menu-hub-screen .menu-hub-section-card.favorit-card-section,
+  .favorit-card-section {
+    border-radius: 14px !important;
+  }
+
+  .favorit-vocab-detail__header,
+  .favorit-grammar-detail__header,
+  .favorit-vocab-detail__body,
+  .favorit-grammar-detail__body {
+    border-radius: 14px !important;
+  }
+
+  .favorit-section .favorit-section-head {
+    padding: 12px 16px 10px !important;
+  }
+
+  .favorit-section .favorit-cards-row {
+    padding: 10px 12px 4px !important;
+  }
+
+  .favorit-section .favorit-grammar-grid {
+    padding: 10px 12px 4px !important;
+  }
+
+  .favorit-section .favorit-section-footer {
+    padding: 6px 16px 10px !important;
+  }
+
+  /* Grid vocab preview: 4 kolom (landscape) */
+  .favorit-section .favorit-cards-row--preview {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar preview: 4 kolom (landscape) */
+  .favorit-section .favorit-grammar-grid--preview {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid vocab full (detail): 4 kolom */
+  .favorit-vocab-detail__body .favorit-cards-row--full {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Grid grammar full (detail): 4 kolom */
+  .favorit-grammar-detail__body .favorit-grammar-grid--full {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  /* Watermark lebih kecil di landscape */
+  .favorit-hub-header::after {
+    font-size: 52px;
+    right    : 14px;
+  }
+
+}

@@ -4451,8 +4451,11 @@ grid.style.display="grid";
         <section class="hub-section menu-hub-section-card favorit-card-section favorit-section favorit-section--vocab">
           <div class="favorit-section-head">
             <div>
-              <h3>Favorit Kosakata</h3>
-              <p>${bookmarkedWords.length} kata tersimpan dari kartu kosakata</p>
+              <div class="favorit-section-tag favorit-section-tag--vocab">
+                <span class="favorit-section-tag__dot" aria-hidden="true"></span>
+                <span class="favorit-section-tag__label">語彙&nbsp;&nbsp;Favorit Kosakata</span>
+              </div>
+              <p class="favorit-section-head__count">${bookmarkedWords.length} kata tersimpan dari kartu kosakata</p>
             </div>
           </div>
           ${renderFavoritWordCards(vocabPreview, { preview: true })}
@@ -4464,8 +4467,11 @@ grid.style.display="grid";
         <section class="hub-section menu-hub-section-card favorit-card-section favorit-section favorit-section--grammar">
           <div class="favorit-section-head">
             <div>
-              <h3>Favorit Grammar</h3>
-              <p>${grammarPatterns.length} materi grammar tersimpan</p>
+              <div class="favorit-section-tag favorit-section-tag--grammar">
+                <span class="favorit-section-tag__dot" aria-hidden="true"></span>
+                <span class="favorit-section-tag__label">文法&nbsp;&nbsp;Favorit Grammar</span>
+              </div>
+              <p class="favorit-section-head__count">${grammarPatterns.length} materi grammar tersimpan</p>
             </div>
           </div>
           ${renderFavoritGrammarCards(grammarPreview, { preview: true })}

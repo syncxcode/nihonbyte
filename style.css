@@ -16810,7 +16810,7 @@ body::before {
    ============================================= */
 @media (min-width: 769px) {
   .gr-poster {
-    padding: 22px !important;
+    padding: 15px !important;
     border-radius: 20px !important;
   }
 
@@ -16890,7 +16890,7 @@ body::before {
   .gr-poster {
     padding: 12px !important;
     border-radius: 14px !important;
-    width: calc(100% - 16px) !important;
+    width: auto !important;
   }
 
   .gr-poster h2 {
@@ -16924,11 +16924,11 @@ body::before {
   }
 
   .gr-sentence-jp {
-    font-size: 0.88rem !important;
+    font-size: 1.3rem !important;
   }
 
   .gr-sentence-card [data-role="sentence-kana"] {
-    font-size: 0.64rem !important;
+    font-size: 0.95rem !important;
   }
 
   .gr-sentence-actions {

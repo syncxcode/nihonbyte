@@ -16949,3 +16949,200 @@ body::before {
     padding: 5px 10px !important;
   }
 }
+
+/* =============================================
+   POSTER HURUF — THEME OVERRIDE
+   HANYA mengubah warna, background, border, shadow.
+   Font size, height, gap, padding, layout = TIDAK DISENTUH.
+
+   Breakpoint sesuai app.js:
+   - Desktop     : min-width: 769px  (DESKTOP_LAYOUT_QUERY line 72)
+   - Mobile landscape : max-width: 767px + orientation: landscape
+   - Mobile portrait  : max-width: 767px + orientation: portrait (line 4329)
+   ============================================= */
+
+/* ── Base tema (semua ukuran) ── */
+
+.letter-poster {
+  background: #111111 !important;
+  border: 1px solid #1e1e1e !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.letter-poster h2 {
+  color: #ffffff !important;
+}
+
+.letter-poster-subtitle {
+  color: #C0401E !important;
+}
+
+/* Kotak karakter */
+.letter-cell {
+  background: #161616 !important;
+  border: 1px solid #1e1e1e !important;
+  color: #e8e4dc !important;
+  box-shadow: none !important;
+}
+
+.letter-cell:hover {
+  background: #1e1e1e !important;
+  border-color: #C0401E !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Label kolom (A, KA, SA, ...) */
+.letter-label {
+  background: #161616 !important;
+  border: 1px solid #1e1e1e !important;
+  color: #555555 !important;
+}
+
+/* Label vokal (A, I, U, E, O) — baris kiri */
+.label-vokal {
+  background: #1c0c09 !important;
+  border-color: #3a1a10 !important;
+  color: #C0401E !important;
+}
+
+/* Kotak kosong */
+.letter-empty {
+  background: #0f0f0f !important;
+  border: 1px dashed #1a1a1a !important;
+  box-shadow: none !important;
+}
+
+/* =============================================
+   DESKTOP  ≥ 769px
+   ============================================= */
+@media (min-width: 769px) {
+  .letter-poster {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .letter-cell {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #e8e4dc !important;
+    box-shadow: none !important;
+  }
+
+  .letter-cell:hover {
+    background: #1e1e1e !important;
+    border-color: #C0401E !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .letter-label {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #555555 !important;
+  }
+
+  .label-vokal {
+    background: #1c0c09 !important;
+    border-color: #3a1a10 !important;
+    color: #C0401E !important;
+  }
+
+  .letter-empty {
+    background: #0f0f0f !important;
+    border-color: #1a1a1a !important;
+  }
+}
+
+/* =============================================
+   MOBILE LANDSCAPE  ≤ 767px + landscape
+   ============================================= */
+@media (max-width: 767px) and (orientation: landscape) {
+  .letter-poster {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .letter-cell {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #e8e4dc !important;
+    box-shadow: none !important;
+  }
+
+  .letter-cell:hover {
+    background: #1e1e1e !important;
+    border-color: #C0401E !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .letter-label {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #555555 !important;
+  }
+
+  .label-vokal {
+    background: #1c0c09 !important;
+    border-color: #3a1a10 !important;
+    color: #C0401E !important;
+  }
+
+  .letter-empty {
+    background: #0f0f0f !important;
+    border-color: #1a1a1a !important;
+  }
+}
+
+/* =============================================
+   MOBILE PORTRAIT  ≤ 767px + portrait
+   ============================================= */
+@media (max-width: 767px) and (orientation: portrait) {
+  .letter-poster {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .letter-cell {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #e8e4dc !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+
+  .letter-cell:hover {
+    background: #1e1e1e !important;
+    border-color: #C0401E !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .letter-label {
+    background: #161616 !important;
+    border-color: #1e1e1e !important;
+    color: #555555 !important;
+    transition: none !important;
+  }
+
+  .label-vokal {
+    background: #1c0c09 !important;
+    border-color: #3a1a10 !important;
+    color: #C0401E !important;
+    transition: none !important;
+  }
+
+  .letter-empty {
+    background: #0f0f0f !important;
+    border-color: #1a1a1a !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+}

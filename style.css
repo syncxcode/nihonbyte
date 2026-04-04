@@ -16339,11 +16339,11 @@ body::before {
 }
 
 .gr-hub-head p {
-  color: #3e3e3e !important;
+  color: #ffffff !important;
 }
 
 .gr-level-filter-wrap {
-  color: #3e3e3e !important;
+  color: #ffffff !important;
   font-size: 0.75rem !important;
 }
 
@@ -16403,7 +16403,7 @@ body::before {
 }
 
 .gr-brick-desc {
-  color: #484848 !important;
+  color: #e7e7e7 !important;
   font-weight: 400 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
@@ -16489,7 +16489,7 @@ body::before {
   }
 
   .gr-brick-title {
-    font-size: 1rem !important;
+    font-size: 0.90rem !important;
     margin-bottom: 8px !important;
   }
 
@@ -16608,7 +16608,7 @@ body::before {
   }
 
   .gr-brick-title {
-    font-size: 0.9rem !important;
+    font-size: 1rem !important;
     padding: 5px 11px !important;
     margin-bottom: 6px !important;
     width: 50% !important;

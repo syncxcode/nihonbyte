@@ -16677,7 +16677,7 @@ body::before {
 
 .gr-poster-summary {
   color: #aaaaaa !important;
-  font-size: 0.78rem !important;
+  font-size: 0.99rem !important;
   line-height: 1.8 !important;
   margin-bottom: 0 !important;
 }
@@ -16721,7 +16721,7 @@ body::before {
 
 .gr-group-desc {
   color: #aaaaaa !important;
-  font-size: 0.72rem !important;
+  font-size: 1rem !important;
   line-height: 1.65 !important;
   margin: 0 16px 12px !important;
 }
@@ -16736,8 +16736,8 @@ body::before {
 }
 
 .gr-sentence-box {
-  background: transparent !important;
-  border: none !important;
+  background: #2A2A2A !important;
+  border: 20px !important;
   border-bottom: 1px solid #1a1a1a !important;
   border-radius: 0 !important;
   padding: 14px 48px 14px 16px !important;
@@ -16756,7 +16756,7 @@ body::before {
 
 .gr-sentence-card [data-role="sentence-kana"] {
   color: #999999 !important;
-  font-size: 0.68rem !important;
+  font-size: 1rem !important;
 }
 
 .gr-play-btn {
@@ -16824,7 +16824,7 @@ body::before {
   }
 
   .gr-sentence-jp {
-    font-size: 0.94rem !important;
+    font-size: 1.5rem !important;
   }
 }
 

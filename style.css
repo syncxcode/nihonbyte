@@ -16739,7 +16739,7 @@ body::before {
   background: #2A2A2A !important;
   border: 20px !important;
   border-bottom: 1px solid #1a1a1a !important;
-  border-radius: 0 !important;
+  border-radius: 20px !important;
   padding: 14px 48px 14px 16px !important;
 }
 

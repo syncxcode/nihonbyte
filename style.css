@@ -16306,3 +16306,328 @@ body::before {
     margin-bottom: 0 !important;
   }
 }
+
+/* =============================================
+   GRAMMAR HUB — DESIGN OVERRIDE
+   Hanya menyentuh .gr-hub dan turunannya.
+   .gr-poster (halaman materi) tidak disentuh.
+
+   Breakpoint sesuai app.js:
+   - Desktop     : min-width: 769px  (DESKTOP_LAYOUT_QUERY line 72)
+   - Mobile      : max-width: 767px  (line 964, 4078, 4329)
+   - Landscape   : max-width: 767px + orientation: landscape
+   - Portrait    : max-width: 767px + orientation: portrait  (line 4329)
+   ============================================= */
+
+/* ── Base (semua ukuran) ── */
+.gr-hub {
+  background: #111111 !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  border: 1px solid #1e1e1e !important;
+}
+
+.gr-hub-head {
+  background: #0f0f0f !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 12px !important;
+}
+
+.gr-hub-head h2 {
+  color: #ffffff !important;
+  letter-spacing: -0.3px !important;
+}
+
+.gr-hub-head p {
+  color: #3e3e3e !important;
+}
+
+.gr-level-filter-wrap {
+  color: #3e3e3e !important;
+  font-size: 0.75rem !important;
+}
+
+.gr-level-filter {
+  background: #1a1a1a !important;
+  color: #888 !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  font-size: 0.78rem !important;
+}
+
+.gr-brick {
+  background: #141414 !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.gr-brick::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #B83A1F;
+  opacity: 0;
+  border-radius: 12px 0 0 12px;
+  transition: opacity 0.18s ease;
+}
+
+.gr-brick:hover {
+  background: #181818 !important;
+  border-color: #2a2a2a !important;
+  box-shadow: none !important;
+  transform: translateY(-2px) !important;
+}
+
+.gr-brick:hover::before {
+  opacity: 1;
+}
+
+.gr-brick-title {
+  background: #1c0c09 !important;
+  color: #D86040 !important;
+  box-shadow: none !important;
+  border: 1px solid #3a1a10 !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  padding: 5px 12px !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.gr-brick-desc {
+  color: #484848 !important;
+  font-weight: 400 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.gr-level-badge {
+  background: #122012 !important;
+  color: #458845 !important;
+  border: 1px solid #1e3a1e !important;
+  border-radius: 4px !important;
+  font-size: 0.72rem !important;
+  padding: 2px 7px !important;
+}
+
+.gr-hub-pagination {
+  gap: 5px !important;
+}
+
+.gr-page-btn {
+  background: transparent !important;
+  border: 1px solid #1e1e1e !important;
+  border-radius: 7px !important;
+  color: #444 !important;
+}
+
+.gr-page-btn:hover {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #777 !important;
+}
+
+.gr-page-btn.active {
+  background: #B83A1F !important;
+  border-color: #B83A1F !important;
+  color: #fff !important;
+}
+
+.gr-page-btn:disabled {
+  opacity: 0.25 !important;
+}
+
+.gr-page-dots {
+  color: #333 !important;
+}
+
+/* =============================================
+   DESKTOP  ≥ 769px
+   Sesuai DESKTOP_LAYOUT_QUERY = "(min-width: 769px)" — app.js line 72
+   3 kolom, 12 kartu per halaman
+   ============================================= */
+@media (min-width: 769px) {
+  .gr-hub {
+    padding: 22px !important;
+    border-radius: 20px !important;
+  }
+
+  .gr-hub-head {
+    padding: 14px 18px !important;
+    margin-bottom: 18px !important;
+    flex-direction: row !important;
+    align-items: flex-end !important;
+  }
+
+  .gr-hub-head h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .gr-hub-head p {
+    font-size: 0.8rem !important;
+  }
+
+  .gr-brick-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .gr-brick {
+    min-height: 120px !important;
+    padding: 16px 15px 14px !important;
+  }
+
+  .gr-brick-title {
+    font-size: 1rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .gr-brick-desc {
+    font-size: 0.88rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .gr-page-btn {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.78rem !important;
+  }
+}
+
+/* =============================================
+   MOBILE LANDSCAPE  ≤ 767px + landscape
+   Sesuai orientation check — app.js line 215, 2578
+   2 kolom, header tetap row
+   ============================================= */
+@media (max-width: 767px) and (orientation: landscape) {
+  .gr-hub {
+    padding: 14px !important;
+    border-radius: 14px !important;
+    width: calc(100% - 16px) !important;
+  }
+
+  .gr-hub-head {
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    margin-bottom: 12px !important;
+    gap: 10px !important;
+  }
+
+  .gr-hub-head h2 {
+    font-size: 1rem !important;
+  }
+
+  .gr-hub-head p {
+    font-size: 0.73rem !important;
+    margin-top: 2px !important;
+  }
+
+  .gr-brick-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px !important;
+  }
+
+  .gr-brick {
+    min-height: 100px !important;
+    padding: 12px 13px 11px !important;
+  }
+
+  .gr-brick-title {
+    font-size: 0.88rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .gr-brick-desc {
+    font-size: 0.82rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .gr-page-btn {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.74rem !important;
+  }
+}
+
+/* =============================================
+   MOBILE PORTRAIT  ≤ 767px + portrait
+   Sesuai isMobilePortrait() — app.js line 4329
+   1 kolom full-width, header collapse, 10 kartu
+   ============================================= */
+@media (max-width: 767px) and (orientation: portrait) {
+  .gr-hub {
+    padding: 12px !important;
+    border-radius: 14px !important;
+    width: calc(100% - 16px) !important;
+  }
+
+  .gr-hub-head {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .gr-hub-head h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .gr-hub-head p {
+    font-size: 0.76rem !important;
+    margin-top: 3px !important;
+  }
+
+  .gr-level-filter {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  .gr-brick-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .gr-brick {
+    min-height: 90px !important;
+    padding: 12px 13px 11px !important;
+    overflow: hidden !important;
+  }
+
+  .gr-brick-title {
+    font-size: 0.9rem !important;
+    padding: 5px 11px !important;
+    margin-bottom: 6px !important;
+    width: 50% !important;
+    max-width: 50% !important;
+  }
+
+  .gr-brick-desc {
+    font-size: 0.85rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .gr-hub-pagination {
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+
+  .gr-page-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.76rem !important;
+  }
+}

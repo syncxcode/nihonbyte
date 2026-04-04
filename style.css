@@ -2413,7 +2413,7 @@ body.review-mode-active .app-footer {
   .letter-poster {
     max-width: 1180px !important;
     margin: 16px auto 28px !important;
-    padding: 24px 28px 30px !important;
+    padding: 24px 18px 30px !important;
   }
 
   .letter-grid-desktop {

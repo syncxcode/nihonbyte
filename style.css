@@ -17146,3 +17146,295 @@ body::before {
     transition: none !important;
   }
 }
+
+/* =============================================
+   DASBOR — THEME OVERRIDE
+   HANYA mengubah warna, background, border, shadow.
+   Font size, height, gap, padding, layout = TIDAK DISENTUH.
+
+   Breakpoint sesuai app.js:
+   - Desktop     : min-width: 769px  (DESKTOP_LAYOUT_QUERY line 72)
+   - Mobile landscape : max-width: 767px + orientation: landscape
+   - Mobile portrait  : max-width: 767px + orientation: portrait (line 4329)
+   ============================================= */
+
+/* ── Shell & Cover ── */
+.dashboard-shell {
+  background: #111111 !important;
+  box-shadow: none !important;
+  border: 1px solid #1e1e1e !important;
+}
+
+.dashboard-cover {
+  background: #0f0f0f !important;
+}
+
+/* ── Profile Card ── */
+.dashboard-profile-card {
+  background: #141414 !important;
+  box-shadow: none !important;
+  border: 1px solid #1e1e1e !important;
+}
+
+.dashboard-avatar-frame {
+  border-color: #1e1e1e !important;
+  background: #1a1a1a !important;
+  box-shadow: none !important;
+}
+
+.dashboard-profile-card h2 {
+  color: #ffffff !important;
+}
+
+.dashboard-email {
+  color: #3a3a3a !important;
+}
+
+/* ── Settings & Camera Btn ── */
+.dashboard-settings-btn {
+  background: #1a1a1a !important;
+  color: #555 !important;
+  box-shadow: none !important;
+  border: 1px solid #242424 !important;
+}
+
+.dashboard-settings-btn:hover {
+  background: #222 !important;
+  color: #888 !important;
+}
+
+.dashboard-camera-btn {
+  background: #C0401E !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  border: 2px solid #0d0d0d !important;
+}
+
+/* ── Progress ── */
+.dash-progress-wrap {
+  background: #161616 !important;
+  border: 1px solid #1e1e1e !important;
+}
+
+.dash-progress-label {
+  color: #888 !important;
+}
+
+.dash-progress-pct {
+  color: #C0401E !important;
+}
+
+.dash-progress-pct--ready {
+  color: #458845 !important;
+}
+
+.dash-progress-bar-outer {
+  background: #1e1e1e !important;
+}
+
+.dash-progress-bar-fill {
+  background: #C0401E !important;
+}
+
+.dash-progress-bar-fill--ready {
+  background: #458845 !important;
+}
+
+.dash-progress-breakdown {
+  color: #3a3a3a !important;
+}
+
+.dash-progress-unlock-hint {
+  background: rgba(69, 136, 69, 0.08) !important;
+  border-color: rgba(69, 136, 69, 0.2) !important;
+  color: #458845 !important;
+}
+
+/* ── History Panel ── */
+.dashboard-history-panel h3 {
+  color: #cccccc !important;
+}
+
+.dashboard-history-sub {
+  color: #383838 !important;
+}
+
+.dashboard-history-item {
+  background: #111 !important;
+  border: 1px solid #1c1c1c !important;
+}
+
+.dashboard-history-item:hover {
+  border-color: #2a2a2a !important;
+}
+
+.dashboard-history-date {
+  color: #333333 !important;
+}
+
+.dashboard-history-item h4 {
+  color: #bbbbbb !important;
+}
+
+.dashboard-level {
+  color: #383838 !important;
+}
+
+.dashboard-history-score {
+  color: #C0401E !important;
+}
+
+.dashboard-history-meta {
+  color: #383838 !important;
+}
+
+.dashboard-empty {
+  background: #111 !important;
+  border-color: #1e1e1e !important;
+  color: #383838 !important;
+}
+
+.dashboard-error {
+  background: #1a0808 !important;
+  color: #C0401E !important;
+}
+
+/* ── Modal ── */
+.dashboard-modal {
+  background: #141414 !important;
+  box-shadow: none !important;
+  border: 1px solid #1e1e1e !important;
+}
+
+.dashboard-modal h4 {
+  color: #ffffff !important;
+}
+
+.dashboard-modal-close {
+  color: #555 !important;
+}
+
+.dashboard-cancel-btn {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #aaaaaa !important;
+}
+
+.dashboard-save-btn {
+  background: #C0401E !important;
+}
+
+/* ── Profile Form ── */
+.dashboard-profile-form label {
+  color: #aaaaaa !important;
+}
+
+.dashboard-profile-form input[type="text"] {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+  color: #e0dbd2 !important;
+}
+
+.dashboard-form-note {
+  color: #3a3a3a !important;
+}
+
+.dashboard-avatar-tools {
+  background: #161616 !important;
+  border-color: #1e1e1e !important;
+}
+
+.dashboard-avatar-tools > p {
+  color: #aaaaaa !important;
+}
+
+.avatar-preset-btn {
+  background: #1a1a1a !important;
+  border-color: #2a2a2a !important;
+}
+
+.avatar-preset-btn:hover,
+.avatar-preset-btn.active {
+  border-color: #C0401E !important;
+  box-shadow: none !important;
+}
+
+.dashboard-upload-label {
+  color: #555 !important;
+}
+
+.dashboard-upload-disabled {
+  color: #3a3a3a !important;
+}
+
+/* =============================================
+   DESKTOP  ≥ 769px
+   ============================================= */
+@media (min-width: 769px) {
+  .dashboard-shell {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .dashboard-profile-card {
+    background: #141414 !important;
+    box-shadow: none !important;
+    border: 1px solid #1e1e1e !important;
+  }
+
+  .dashboard-history-item {
+    background: #111 !important;
+    border-color: #1c1c1c !important;
+  }
+}
+
+/* =============================================
+   MOBILE LANDSCAPE  ≤ 767px + landscape
+   ============================================= */
+@media (max-width: 767px) and (orientation: landscape) {
+  .dashboard-shell {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .dashboard-profile-card {
+    background: #141414 !important;
+    box-shadow: none !important;
+    border: 1px solid #1e1e1e !important;
+  }
+
+  .dashboard-history-item {
+    background: #111 !important;
+    border-color: #1c1c1c !important;
+  }
+}
+
+/* =============================================
+   MOBILE PORTRAIT  ≤ 767px + portrait
+   ============================================= */
+@media (max-width: 767px) and (orientation: portrait) {
+  .dashboard-shell {
+    background: #111111 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+
+  .dashboard-profile-card {
+    background: #141414 !important;
+    box-shadow: none !important;
+    border: 1px solid #1e1e1e !important;
+  }
+
+  .dashboard-history-item {
+    background: #111 !important;
+    border-color: #1c1c1c !important;
+  }
+
+  .dashboard-modal {
+    background: #141414 !important;
+    border: 1px solid #1e1e1e !important;
+    box-shadow: none !important;
+  }
+}

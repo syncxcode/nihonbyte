@@ -2616,6 +2616,7 @@ grid.style.display="grid";
   let favoritGrammarBackView = "favorit";
   let favoritGrammarLastPatternId = "";
   let favoritGrammarShouldScrollTop = false;
+  let favoritDetailShouldScrollTop = false;
   
   const typeLabelMap = {
     "verb-godan": "Kata Kerja Godan",
@@ -4324,6 +4325,24 @@ grid.style.display="grid";
     });
   }
 
+  function isMobilePortraitFavoritView() {
+    return window.innerWidth <= 767 && window.matchMedia("(orientation: portrait)").matches;
+  }
+
+  function scrollFavoritDetailToTopOnPortrait() {
+    if (!favoritDetailShouldScrollTop || !isMobilePortraitFavoritView()) return;
+    favoritDetailShouldScrollTop = false;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const cp = document.querySelector(".content-panel");
+        if (cp) cp.scrollTop = 0;
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+        window.scrollTo({ top: 0, behavior: "auto" });
+      });
+    });
+  }
+
   function bindFavoritGrammarCards() {
     grid.querySelectorAll(".favorit-grammar-card").forEach((card) => {
       const patternId = card.dataset.patternId;
@@ -4440,6 +4459,9 @@ grid.style.display="grid";
       btn.addEventListener("click", () => {
         const targetView = btn.dataset.targetView;
         if (!targetView) return;
+        favoritDetailShouldScrollTop =
+          isMobilePortraitFavoritView() &&
+          (targetView === "favorit:vocab" || targetView === "favorit:grammar");
         viewMode = targetView;
         render();
       });
@@ -4586,6 +4608,7 @@ grid.style.display="grid";
     bindFavoritWordCards(bookmarkedWords);
     bindFavoritCommonActions();
     renderPagination(totalPages);
+    scrollFavoritDetailToTopOnPortrait();
   }
 
   function renderFavoritGrammarPage() {
@@ -4634,6 +4657,7 @@ grid.style.display="grid";
     if (resultInfo) resultInfo.textContent = "Favorit Grammar";
     bindFavoritGrammarCards();
     bindFavoritCommonActions();
+    scrollFavoritDetailToTopOnPortrait();
     scrollFavoritGrammarToTop();
   }
 

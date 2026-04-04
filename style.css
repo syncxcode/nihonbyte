@@ -16296,3 +16296,13 @@ body::before {
   }
 
 }
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .favorit-overview-screen {
+    gap: 10px !important;
+  }
+
+  .favorit-overview-screen .favorit-card-section {
+    margin-bottom: 0 !important;
+  }
+}

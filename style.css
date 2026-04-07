@@ -17438,3 +17438,445 @@ body::before {
     box-shadow: none !important;
   }
 }
+
+/* =====================================================
+   NIHONBYTE — FILTER MODAL THEME OVERRIDE
+   Cuma color / background / border / shadow.
+   TIDAK MENYENTUH: logika, layout, font-size, padding,
+   gap, posisi, atau struktur DOM apapun.
+   Tempel file ini SETELAH style.css di <head>.
+   ===================================================== */
+
+:root {
+  --nb-bg:           #0d0d0d;
+  --nb-bg-elev:      #141414;
+  --nb-bg-deep:      #0a0a0a;
+  --nb-input-bg:     #161616;
+  --nb-border:       #1f1f1f;
+  --nb-border-mid:   #242424;
+  --nb-border-strong:#2a2a2a;
+  --nb-text:         #f0f0f0;
+  --nb-text-soft:    #c8c8c8;
+  --nb-text-muted:   #8a8a8a;
+  --nb-text-faint:   #6b6b6b;
+  --nb-accent:       #C0401E;
+  --nb-accent-soft:  rgba(192, 64, 30, 0.18);
+}
+
+/* =====================================================
+   1. BASE — berlaku di semua viewport
+   (override style.css line 458–620 area)
+   ===================================================== */
+
+.filter-modal {
+  background: rgba(0, 0, 0, 0.78) !important;
+}
+
+.filter-modal-content {
+  background: var(--nb-bg) !important;
+  border: 1px solid var(--nb-border) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+}
+
+.filter-modal-header {
+  background: var(--nb-bg-elev) !important;
+  border-bottom: 1px solid var(--nb-border) !important;
+}
+
+.filter-modal-header h3,
+.filter-modal-content h2,
+.modal-header {
+  background: transparent !important;
+  color: var(--nb-text) !important;
+}
+
+.filter-modal-header h3 svg {
+  stroke: var(--nb-accent) !important;
+}
+
+#filterModalClose {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--nb-border-strong) !important;
+  color: var(--nb-text-soft) !important;
+  box-shadow: none !important;
+}
+
+#filterModalClose svg {
+  stroke: var(--nb-text-soft) !important;
+}
+
+.modal-search-input {
+  background: var(--nb-input-bg) !important;
+  border: 1px solid var(--nb-border-strong) !important;
+  color: var(--nb-text) !important;
+  caret-color: var(--nb-accent) !important;
+}
+
+.modal-search-input::placeholder {
+  color: var(--nb-text-faint) !important;
+}
+
+.modal-search-input:focus {
+  border-color: var(--nb-accent) !important;
+  box-shadow: 0 0 0 2px var(--nb-accent-soft) !important;
+}
+
+.filter-section h4 {
+  color: var(--nb-text-faint) !important;
+}
+
+.level-btn,
+.cat-btn {
+  background: transparent !important;
+  border: 1px solid var(--nb-border-strong) !important;
+  color: var(--nb-text-soft) !important;
+}
+
+.level-btn:hover,
+.cat-btn:hover {
+  border-color: var(--nb-accent) !important;
+  color: var(--nb-text) !important;
+}
+
+.level-btn.active,
+.cat-btn.active {
+  background: var(--nb-accent) !important;
+  border-color: var(--nb-accent) !important;
+  color: #ffffff !important;
+}
+
+.filter-actions {
+  background: var(--nb-bg-deep) !important;
+  border-top: 1px solid var(--nb-border) !important;
+}
+
+.apply-filter-btn {
+  background: var(--nb-accent) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.apply-filter-btn:hover,
+.apply-filter-btn:active {
+  background: #d44a25 !important;
+}
+
+.reset-filter-btn {
+  background: transparent !important;
+  border: 1px solid var(--nb-border-strong) !important;
+  color: var(--nb-text-muted) !important;
+}
+
+.reset-filter-btn:hover {
+  border-color: var(--nb-accent) !important;
+  color: var(--nb-text-soft) !important;
+}
+
+
+/* =====================================================
+   2. DESKTOP — @media (min-width: 768px)
+   (sinkron dengan style.css line 9975 & 10532)
+   ===================================================== */
+
+@media (min-width: 768px) {
+  .filter-modal-content {
+    background: var(--nb-bg) !important;
+    border: 1px solid var(--nb-border) !important;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .filter-modal-header {
+    background: var(--nb-bg-elev) !important;
+    border-bottom: 1px solid var(--nb-border) !important;
+  }
+
+  .filter-modal-header h3 {
+    color: var(--nb-text) !important;
+  }
+
+  .filter-modal-header h3 svg {
+    stroke: var(--nb-accent) !important;
+  }
+
+  #filterModalClose {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  #filterModalClose svg {
+    stroke: var(--nb-text-soft) !important;
+  }
+
+  .modal-search-input {
+    background: var(--nb-input-bg) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text) !important;
+  }
+
+  .level-btn,
+  .cat-btn {
+    background: transparent !important;
+    border-color: var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .level-btn.active,
+  .cat-btn.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .filter-actions {
+    background: var(--nb-bg-deep) !important;
+    border-top: 1px solid var(--nb-border) !important;
+  }
+
+  .apply-filter-btn {
+    background: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .reset-filter-btn {
+    background: transparent !important;
+    border-color: var(--nb-border-strong) !important;
+    color: var(--nb-text-muted) !important;
+  }
+}
+
+
+/* =====================================================
+   3. MOBILE PORTRAIT
+   @media (max-width: 767px) and (orientation: portrait)
+   (sinkron dengan style.css line 10028)
+   ===================================================== */
+
+@media (max-width: 767px) and (orientation: portrait) {
+  .filter-modal {
+    background: transparent !important;
+  }
+
+  .filter-modal-backdrop {
+    background: rgba(0, 0, 0, 0.78) !important;
+  }
+
+  .filter-modal-content {
+    background: var(--nb-bg) !important;
+    border: 1px solid var(--nb-border) !important;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .filter-modal-header {
+    background: var(--nb-bg-elev) !important;
+    border-bottom: 1px solid var(--nb-border) !important;
+  }
+
+  .filter-modal-header h3 {
+    color: var(--nb-text) !important;
+  }
+
+  .filter-modal-header h3 svg {
+    stroke: var(--nb-accent) !important;
+  }
+
+  #filterModalClose {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  #filterModalClose svg {
+    stroke: var(--nb-text-soft) !important;
+  }
+
+  .modal-search-input {
+    background: var(--nb-input-bg) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text) !important;
+  }
+
+  .modal-search-input::placeholder {
+    color: var(--nb-text-faint) !important;
+  }
+
+  .filter-section h4 {
+    color: var(--nb-text-faint) !important;
+  }
+
+  .level-btn--all {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .level-btn--all.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .level-btn-row .level-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .level-btn-row .level-btn.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .cat-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .cat-btn.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .filter-actions {
+    background: var(--nb-bg-deep) !important;
+    border-top: 1px solid var(--nb-border) !important;
+  }
+
+  .apply-filter-btn {
+    background: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .apply-filter-btn:active {
+    background: #a8351a !important;
+  }
+
+  .reset-filter-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-muted) !important;
+  }
+}
+
+
+/* =====================================================
+   4. MOBILE LANDSCAPE
+   @media screen and (orientation: landscape)
+   and (max-height: 520px)
+   (sinkron dengan style.css line 10290 & 10778)
+   ===================================================== */
+
+@media screen and (orientation: landscape) and (max-height: 520px) {
+  .filter-modal {
+    background: transparent !important;
+  }
+
+  .filter-modal-backdrop {
+    background: rgba(0, 0, 0, 0.78) !important;
+  }
+
+  .filter-modal-content {
+    background: var(--nb-bg) !important;
+    border: 1px solid var(--nb-border) !important;
+    box-shadow: -16px 0 50px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .filter-modal-header {
+    background: var(--nb-bg-elev) !important;
+    border-bottom: 1px solid var(--nb-border) !important;
+  }
+
+  .filter-modal-header h3 {
+    color: var(--nb-text) !important;
+  }
+
+  .filter-modal-header h3 svg {
+    stroke: var(--nb-accent) !important;
+  }
+
+  #filterModalClose {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  #filterModalClose svg {
+    stroke: var(--nb-text-soft) !important;
+  }
+
+  .modal-search-input {
+    background: var(--nb-input-bg) !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text) !important;
+  }
+
+  .modal-search-input::placeholder {
+    color: var(--nb-text-faint) !important;
+  }
+
+  .filter-section h4 {
+    color: var(--nb-text-faint) !important;
+  }
+
+  .level-btn--all {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .level-btn--all.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .level-btn-row .level-btn,
+  .level-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .level-btn-row .level-btn.active,
+  .level-btn.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .cat-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-soft) !important;
+  }
+
+  .cat-btn.active {
+    background: var(--nb-accent) !important;
+    border-color: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .filter-actions {
+    background: var(--nb-bg-deep) !important;
+    border-top: 1px solid var(--nb-border) !important;
+  }
+
+  .apply-filter-btn {
+    background: var(--nb-accent) !important;
+    color: #ffffff !important;
+  }
+
+  .apply-filter-btn:active {
+    background: #a8351a !important;
+  }
+
+  .reset-filter-btn {
+    background: transparent !important;
+    border: 1px solid var(--nb-border-strong) !important;
+    color: var(--nb-text-muted) !important;
+  }
+}
